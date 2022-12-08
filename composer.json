@@ -1,0 +1,40 @@
+{
+    "name": "nuvem-fiscal/nuvemfiscal-sdk-php",
+    "version": "1.0.0",
+    "description": "API para automação comercial e documentos fiscais.",
+    "keywords": [
+        "openapitools",
+        "openapi-generator",
+        "openapi",
+        "php",
+        "sdk",
+        "rest",
+        "api"
+    ],
+    "homepage": "https://www.nuvemfiscal.com.br",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Nuvem Fiscal",
+            "homepage": "https://www.nuvemfiscal.com.br"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^7.3",
+        "guzzlehttp/psr7": "^1.7 || ^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0 || ^9.0",
+        "friendsofphp/php-cs-fixer": "^3.5"
+    },
+    "autoload": {
+        "psr-4": { "NuvemFiscal\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "NuvemFiscal\\Test\\" : "test/" }
+    }
+}
