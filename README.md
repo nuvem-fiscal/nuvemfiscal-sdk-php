@@ -1,6 +1,6 @@
-# Nuvem Fiscal: SDK para .NET
+# Nuvem Fiscal: SDK para PHP
 
-Biblioteca para uso da API da [Nuvem Fiscal](https://www.nuvemfiscal.com.br) com PHP. 
+Biblioteca para uso da API da [Nuvem Fiscal](https://www.nuvemfiscal.com.br) com [PHP](https://www.php.net). 
 Consultar também a [documentação oficial da Nuvem Fiscal](https://dev.nuvemfiscal.com.br/docs).
 
 ## Instalação e uso
@@ -533,7 +533,7 @@ Classe | Método | Endpoint | Descrição
 
 - **Tipo**: `OAuth`
 - **Flow**: `application`
-- **URL de autorização**: ``
+- **URL de autorização**: `https://auth.nuvemfiscal.com.br/oauth/token`
 - **Scopes**: 
     - **empresa**: 
     - **cep**: 
