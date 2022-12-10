@@ -12,7 +12,7 @@ Nome | Tipo | Descrição | Comentários
 **x_mun** | **string** | Nome do município.  Informar EXTERIOR para operações com o exterior. |
 **cep** | **string** | CEP.  Informar os zeros não significativos. | [optional]
 **uf** | **string** | Sigla da UF.  Informar EX para operações com o exterior. |
-**c_pais** | **int** | Código do país.  Utilizar a tabela do BACEN. | [optional]
+**c_pais** | **string** | Código do país.  Utilizar a tabela do BACEN. | [optional]
 **x_pais** | **string** | Nome do país. | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

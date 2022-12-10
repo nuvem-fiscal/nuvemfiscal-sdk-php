@@ -12,7 +12,7 @@ Nome | Tipo | Descrição | Comentários
 **x_mun** | **string** | Nome do município, informar EXTERIOR para operações com o exterior. |
 **uf** | **string** | Sigla da UF, informar EX para operações com o exterior. |
 **cep** | **string** | CEP. | [optional]
-**c_pais** | **int** | Código de Pais. | [optional]
+**c_pais** | **string** | Código de Pais. | [optional]
 **x_pais** | **string** | Nome do país. | [optional]
 **fone** | **string** | Telefone, preencher com Código DDD + número do telefone , nas operações com exterior é permtido informar o código do país + código da localidade + número do telefone. | [optional]
 

@@ -99,7 +99,7 @@ Classe | Método | Endpoint | Descrição
 *CteApi* | [**criarCartaCorrecaoCte**](docs/Api/CteApi.md#criarcartacorrecaocte) | **POST** /cte/{id}/carta-correcao | Solicitar correção do CT-e
 *CteApi* | [**emitirCte**](docs/Api/CteApi.md#emitircte) | **POST** /cte | Emitir CT-e
 *CteApi* | [**emitirLoteCte**](docs/Api/CteApi.md#emitirlotecte) | **POST** /cte/lotes | Emitir lote de CT-e
-*CteApi* | [**inutilizarCte**](docs/Api/CteApi.md#inutilizarcte) | **POST** /cte/inutilizacoes | Inutilizar uma sequência de numeração de CT-e
+*CteApi* | [**inutilizarNumeracaoCte**](docs/Api/CteApi.md#inutilizarnumeracaocte) | **POST** /cte/inutilizacoes | Inutilizar uma sequência de numeração de CT-e
 *CteApi* | [**listarCte**](docs/Api/CteApi.md#listarcte) | **GET** /cte | Listar CT-e
 *CteApi* | [**listarLotesCte**](docs/Api/CteApi.md#listarlotescte) | **GET** /cte/lotes | Listar lotes de CT-e
 *EmpresaApi* | [**alterarConfigCte**](docs/Api/EmpresaApi.md#alterarconfigcte) | **PUT** /empresas/{cpf_cnpj}/cte | Alterar configuração de CT-e
@@ -151,7 +151,7 @@ Classe | Método | Endpoint | Descrição
 *NfceApi* | [**consultarStatusSefazNfce**](docs/Api/NfceApi.md#consultarstatussefaznfce) | **GET** /nfce/sefaz/status | Consulta do Status do Serviço na SEFAZ Autorizadora
 *NfceApi* | [**emitirLoteNfce**](docs/Api/NfceApi.md#emitirlotenfce) | **POST** /nfce/lotes | Emitir lote de NFC-e
 *NfceApi* | [**emitirNfce**](docs/Api/NfceApi.md#emitirnfce) | **POST** /nfce | Emitir NFC-e
-*NfceApi* | [**inutilizarNfce**](docs/Api/NfceApi.md#inutilizarnfce) | **POST** /nfce/inutilizacoes | Inutilizar uma sequência de numeração de NFC-e
+*NfceApi* | [**inutilizarNumeracaoNfce**](docs/Api/NfceApi.md#inutilizarnumeracaonfce) | **POST** /nfce/inutilizacoes | Inutilizar uma sequência de numeração de NFC-e
 *NfceApi* | [**listarLotesNfce**](docs/Api/NfceApi.md#listarlotesnfce) | **GET** /nfce/lotes | Listar lotes de NFC-e
 *NfceApi* | [**listarNfce**](docs/Api/NfceApi.md#listarnfce) | **GET** /nfce | Listar NFC-e
 *NfeApi* | [**baixarPdfNfe**](docs/Api/NfeApi.md#baixarpdfnfe) | **GET** /nfe/{id}/pdf | Baixar PDF do DANFE
@@ -171,7 +171,7 @@ Classe | Método | Endpoint | Descrição
 *NfeApi* | [**criarCartaCorrecaoNfe**](docs/Api/NfeApi.md#criarcartacorrecaonfe) | **POST** /nfe/{id}/carta-correcao | Solicitar correção da NF-e
 *NfeApi* | [**emitirLoteNfe**](docs/Api/NfeApi.md#emitirlotenfe) | **POST** /nfe/lotes | Emitir lote de NF-e
 *NfeApi* | [**emitirNfe**](docs/Api/NfeApi.md#emitirnfe) | **POST** /nfe | Emitir NF-e
-*NfeApi* | [**inutilizarNfe**](docs/Api/NfeApi.md#inutilizarnfe) | **POST** /nfe/inutilizacoes | Inutilizar uma sequência de numeração de NF-e
+*NfeApi* | [**inutilizarNumeracaoNfe**](docs/Api/NfeApi.md#inutilizarnumeracaonfe) | **POST** /nfe/inutilizacoes | Inutilizar uma sequência de numeração de NF-e
 *NfeApi* | [**listarLotesNfe**](docs/Api/NfeApi.md#listarlotesnfe) | **GET** /nfe/lotes | Listar lotes de NF-e
 *NfeApi* | [**listarNfe**](docs/Api/NfeApi.md#listarnfe) | **GET** /nfe | Listar NF-e
 *NfseApi* | [**baixarXmlNfse**](docs/Api/NfseApi.md#baixarxmlnfse) | **GET** /nfse/{id}/xml | Baixar XML da NFS-e processada
@@ -546,6 +546,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `1.2.2`
-    - Versão do package: `1.0.0`
+- Versão da API: `1.2.9`
+    - Versão do package: `1.1.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

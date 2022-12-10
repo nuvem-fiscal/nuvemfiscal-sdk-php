@@ -6,7 +6,7 @@ Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
 **data_encerramento** | **\DateTime** | Data que o manifesto foi encerrado. | [optional]
 **uf** | **string** | UF de encerramento do manifesto. | [optional]
-**codigo_municipio** | **int** | Código do Município de encerramento do manifesto. | [optional]
+**codigo_municipio** | **string** | Código do Município de encerramento do manifesto. | [optional]
 **id** | **string** | ID único gerado pela Nuvem Fiscal para este evento. | [optional]
 **ambiente** | **string** | Identificação do ambiente. | [optional]
 **status** | **string** | Status do Evento. | [optional]

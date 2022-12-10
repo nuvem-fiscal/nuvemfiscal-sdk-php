@@ -12,7 +12,7 @@ Nome | Tipo | Descrição | Comentários
 **x_mun** | **string** | Nome do município.  Caso não seja informado, será utilizado o do cadastro da empresa. | [optional]
 **uf** | **string** | Sigla da UF.  Caso não seja informado, será utilizado o do cadastro da empresa. | [optional]
 **cep** | **string** | CEP - NT 2011/004.  Caso não seja informado, será utilizado o do cadastro da empresa. | [optional]
-**c_pais** | **int** | Código do país.  Caso não seja informado, será utilizado o do cadastro da empresa. | [optional]
+**c_pais** | **string** | Código do país.  Caso não seja informado, será utilizado o do cadastro da empresa. | [optional]
 **x_pais** | **string** | Nome do país.  Caso não seja informado, será utilizado o do cadastro da empresa. | [optional]
 **fone** | **string** | Preencher com Código DDD + número do telefone (v.2.0).  Caso não seja informado, será utilizado o do cadastro da empresa. | [optional]
 

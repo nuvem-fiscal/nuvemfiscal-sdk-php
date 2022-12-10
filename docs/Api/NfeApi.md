@@ -21,7 +21,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**criarCartaCorrecaoNfe()**](NfeApi.md#criarCartaCorrecaoNfe) | **POST** /nfe/{id}/carta-correcao | Solicitar correção da NF-e |
 | [**emitirLoteNfe()**](NfeApi.md#emitirLoteNfe) | **POST** /nfe/lotes | Emitir lote de NF-e |
 | [**emitirNfe()**](NfeApi.md#emitirNfe) | **POST** /nfe | Emitir NF-e |
-| [**inutilizarNfe()**](NfeApi.md#inutilizarNfe) | **POST** /nfe/inutilizacoes | Inutilizar uma sequência de numeração de NF-e |
+| [**inutilizarNumeracaoNfe()**](NfeApi.md#inutilizarNumeracaoNfe) | **POST** /nfe/inutilizacoes | Inutilizar uma sequência de numeração de NF-e |
 | [**listarLotesNfe()**](NfeApi.md#listarLotesNfe) | **GET** /nfe/lotes | Listar lotes de NF-e |
 | [**listarNfe()**](NfeApi.md#listarNfe) | **GET** /nfe | Listar NF-e |
 
@@ -1109,10 +1109,10 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
-## `inutilizarNfe()`
+## `inutilizarNumeracaoNfe()`
 
 ```php
-inutilizarNfe($body): \NuvemFiscal\Model\DfeInutilizacao
+inutilizarNumeracaoNfe($body): \NuvemFiscal\Model\DfeInutilizacao
 ```
 
 Inutilizar uma sequência de numeração de NF-e
@@ -1142,10 +1142,10 @@ $apiInstance = new NuvemFiscal\Api\NfeApi(
 $body = new \NuvemFiscal\Model\DfePedidoInutilizacao(); // \NuvemFiscal\Model\DfePedidoInutilizacao
 
 try {
-    $result = $apiInstance->inutilizarNfe($body);
+    $result = $apiInstance->inutilizarNumeracaoNfe($body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NfeApi->inutilizarNfe: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NfeApi->inutilizarNumeracaoNfe: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

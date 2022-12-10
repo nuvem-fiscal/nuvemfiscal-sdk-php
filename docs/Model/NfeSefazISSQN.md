@@ -17,7 +17,7 @@ Nome | Tipo | Descrição | Comentários
 **ind_iss** | **int** | Exibilidade do ISS:1-Exigível;2-Não incidente;3-Isenção;4-Exportação;5-Imunidade;6-Exig.Susp. Judicial;7-Exig.Susp. ADM. |
 **c_servico** | **string** | Código do serviço prestado dentro do município. | [optional]
 **c_mun** | **string** | Código do Município de Incidência do Imposto. | [optional]
-**c_pais** | **int** | Código de Pais. | [optional]
+**c_pais** | **string** | Código de Pais. | [optional]
 **n_processo** | **string** | Número do Processo administrativo ou judicial de suspenção do processo. | [optional]
 **ind_incentivo** | **int** | Indicador de Incentivo Fiscal. 1&#x3D;Sim; 2&#x3D;Não. |
 

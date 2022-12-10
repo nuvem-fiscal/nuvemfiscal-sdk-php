@@ -16,7 +16,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**consultarStatusSefazNfce()**](NfceApi.md#consultarStatusSefazNfce) | **GET** /nfce/sefaz/status | Consulta do Status do Serviço na SEFAZ Autorizadora |
 | [**emitirLoteNfce()**](NfceApi.md#emitirLoteNfce) | **POST** /nfce/lotes | Emitir lote de NFC-e |
 | [**emitirNfce()**](NfceApi.md#emitirNfce) | **POST** /nfce | Emitir NFC-e |
-| [**inutilizarNfce()**](NfceApi.md#inutilizarNfce) | **POST** /nfce/inutilizacoes | Inutilizar uma sequência de numeração de NFC-e |
+| [**inutilizarNumeracaoNfce()**](NfceApi.md#inutilizarNumeracaoNfce) | **POST** /nfce/inutilizacoes | Inutilizar uma sequência de numeração de NFC-e |
 | [**listarLotesNfce()**](NfceApi.md#listarLotesNfce) | **GET** /nfce/lotes | Listar lotes de NFC-e |
 | [**listarNfce()**](NfceApi.md#listarNfce) | **GET** /nfce | Listar NFC-e |
 
@@ -785,10 +785,10 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
-## `inutilizarNfce()`
+## `inutilizarNumeracaoNfce()`
 
 ```php
-inutilizarNfce($body): \NuvemFiscal\Model\DfeInutilizacao
+inutilizarNumeracaoNfce($body): \NuvemFiscal\Model\DfeInutilizacao
 ```
 
 Inutilizar uma sequência de numeração de NFC-e
@@ -818,10 +818,10 @@ $apiInstance = new NuvemFiscal\Api\NfceApi(
 $body = new \NuvemFiscal\Model\DfePedidoInutilizacao(); // \NuvemFiscal\Model\DfePedidoInutilizacao
 
 try {
-    $result = $apiInstance->inutilizarNfce($body);
+    $result = $apiInstance->inutilizarNumeracaoNfce($body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NfceApi->inutilizarNfce: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NfceApi->inutilizarNumeracaoNfce: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

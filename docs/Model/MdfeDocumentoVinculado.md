@@ -4,7 +4,7 @@
 
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
-**codigo_municipio_descarga** | **int** | Código do Município de descarregamento. | [optional]
+**codigo_municipio_descarga** | **string** | Código do Município de descarregamento. | [optional]
 **municipio_descarga** | **string** | Nome do Município de descarregamento. | [optional]
 **chave_acesso_nfe** | **string** | Chave de acesso da NF-e. | [optional]
 

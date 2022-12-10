@@ -20,7 +20,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**criarCartaCorrecaoCte()**](CteApi.md#criarCartaCorrecaoCte) | **POST** /cte/{id}/carta-correcao | Solicitar correção do CT-e |
 | [**emitirCte()**](CteApi.md#emitirCte) | **POST** /cte | Emitir CT-e |
 | [**emitirLoteCte()**](CteApi.md#emitirLoteCte) | **POST** /cte/lotes | Emitir lote de CT-e |
-| [**inutilizarCte()**](CteApi.md#inutilizarCte) | **POST** /cte/inutilizacoes | Inutilizar uma sequência de numeração de CT-e |
+| [**inutilizarNumeracaoCte()**](CteApi.md#inutilizarNumeracaoCte) | **POST** /cte/inutilizacoes | Inutilizar uma sequência de numeração de CT-e |
 | [**listarCte()**](CteApi.md#listarCte) | **GET** /cte | Listar CT-e |
 | [**listarLotesCte()**](CteApi.md#listarLotesCte) | **GET** /cte/lotes | Listar lotes de CT-e |
 
@@ -1045,10 +1045,10 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
-## `inutilizarCte()`
+## `inutilizarNumeracaoCte()`
 
 ```php
-inutilizarCte($body): \NuvemFiscal\Model\DfeInutilizacao
+inutilizarNumeracaoCte($body): \NuvemFiscal\Model\DfeInutilizacao
 ```
 
 Inutilizar uma sequência de numeração de CT-e
@@ -1078,10 +1078,10 @@ $apiInstance = new NuvemFiscal\Api\CteApi(
 $body = new \NuvemFiscal\Model\DfePedidoInutilizacao(); // \NuvemFiscal\Model\DfePedidoInutilizacao
 
 try {
-    $result = $apiInstance->inutilizarCte($body);
+    $result = $apiInstance->inutilizarNumeracaoCte($body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CteApi->inutilizarCte: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CteApi->inutilizarNumeracaoCte: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
