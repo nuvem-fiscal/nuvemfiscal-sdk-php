@@ -270,10 +270,16 @@ class EmpresaPedidoCadastroCertificado implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['certificado']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['certificado'])) {
+        if ($this->container['certificado'] === null) {
+            $invalidProperties[] = "'certificado' can't be null";
+        }
+        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['certificado'])) {
             $invalidProperties[] = "invalid value for 'certificado', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
         }
 
+        if ($this->container['password'] === null) {
+            $invalidProperties[] = "'password' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -292,7 +298,7 @@ class EmpresaPedidoCadastroCertificado implements ModelInterface, ArrayAccess, \
     /**
      * Gets certificado
      *
-     * @return string|null
+     * @return string
      */
     public function getCertificado()
     {
@@ -302,14 +308,14 @@ class EmpresaPedidoCadastroCertificado implements ModelInterface, ArrayAccess, \
     /**
      * Sets certificado
      *
-     * @param string|null $certificado certificado
+     * @param string $certificado Binário do certificado digital (.pfx ou .p12) codificado em base64.
      *
      * @return self
      */
     public function setCertificado($certificado)
     {
 
-        if (!is_null($certificado) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $certificado))) {
+        if ((!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $certificado))) {
             throw new \InvalidArgumentException("invalid value for \$certificado when calling EmpresaPedidoCadastroCertificado., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
         }
 
@@ -326,7 +332,7 @@ class EmpresaPedidoCadastroCertificado implements ModelInterface, ArrayAccess, \
     /**
      * Gets password
      *
-     * @return string|null
+     * @return string
      */
     public function getPassword()
     {
@@ -336,7 +342,7 @@ class EmpresaPedidoCadastroCertificado implements ModelInterface, ArrayAccess, \
     /**
      * Sets password
      *
-     * @param string|null $password password
+     * @param string $password Senha do certificado.
      *
      * @return self
      */

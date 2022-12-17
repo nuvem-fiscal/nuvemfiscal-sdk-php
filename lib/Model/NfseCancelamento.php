@@ -58,6 +58,8 @@ class NfseCancelamento implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'status' => 'string',
+        'codigo' => 'string',
+        'motivo' => 'string',
         'data_hora' => '\DateTime',
         'mensagens' => '\NuvemFiscal\Model\NfseMensagemRetorno[]'
     ];
@@ -72,6 +74,8 @@ class NfseCancelamento implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'id' => null,
         'status' => null,
+        'codigo' => null,
+        'motivo' => null,
         'data_hora' => 'date-time',
         'mensagens' => null
     ];
@@ -84,6 +88,8 @@ class NfseCancelamento implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'id' => false,
 		'status' => false,
+		'codigo' => false,
+		'motivo' => false,
 		'data_hora' => false,
 		'mensagens' => false
     ];
@@ -166,6 +172,8 @@ class NfseCancelamento implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'id' => 'id',
         'status' => 'status',
+        'codigo' => 'codigo',
+        'motivo' => 'motivo',
         'data_hora' => 'data_hora',
         'mensagens' => 'mensagens'
     ];
@@ -178,6 +186,8 @@ class NfseCancelamento implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'id' => 'setId',
         'status' => 'setStatus',
+        'codigo' => 'setCodigo',
+        'motivo' => 'setMotivo',
         'data_hora' => 'setDataHora',
         'mensagens' => 'setMensagens'
     ];
@@ -190,6 +200,8 @@ class NfseCancelamento implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'id' => 'getId',
         'status' => 'getStatus',
+        'codigo' => 'getCodigo',
+        'motivo' => 'getMotivo',
         'data_hora' => 'getDataHora',
         'mensagens' => 'getMensagens'
     ];
@@ -274,6 +286,8 @@ class NfseCancelamento implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('codigo', $data ?? [], null);
+        $this->setIfExists('motivo', $data ?? [], null);
         $this->setIfExists('data_hora', $data ?? [], null);
         $this->setIfExists('mensagens', $data ?? [], null);
     }
@@ -393,6 +407,64 @@ class NfseCancelamento implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets codigo
+     *
+     * @return string|null
+     */
+    public function getCodigo()
+    {
+        return $this->container['codigo'];
+    }
+
+    /**
+     * Sets codigo
+     *
+     * @param string|null $codigo codigo
+     *
+     * @return self
+     */
+    public function setCodigo($codigo)
+    {
+
+        if (is_null($codigo)) {
+            throw new \InvalidArgumentException('non-nullable codigo cannot be null');
+        }
+
+        $this->container['codigo'] = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Gets motivo
+     *
+     * @return string|null
+     */
+    public function getMotivo()
+    {
+        return $this->container['motivo'];
+    }
+
+    /**
+     * Sets motivo
+     *
+     * @param string|null $motivo motivo
+     *
+     * @return self
+     */
+    public function setMotivo($motivo)
+    {
+
+        if (is_null($motivo)) {
+            throw new \InvalidArgumentException('non-nullable motivo cannot be null');
+        }
+
+        $this->container['motivo'] = $motivo;
 
         return $this;
     }

@@ -81,7 +81,7 @@ try {
 ## `cancelarNfse()`
 
 ```php
-cancelarNfse($id): \NuvemFiscal\Model\NfseCancelamento
+cancelarNfse($id, $body): \NuvemFiscal\Model\NfseCancelamento
 ```
 
 Cancelar uma NFS-e autorizada
@@ -109,9 +109,10 @@ $apiInstance = new NuvemFiscal\Api\NfseApi(
     $config
 );
 $id = 'id_example'; // string | ID único da NFS-e gerado pela Nuvem Fiscal.
+$body = new \NuvemFiscal\Model\NfsePedidoCancelamento(); // \NuvemFiscal\Model\NfsePedidoCancelamento
 
 try {
-    $result = $apiInstance->cancelarNfse($id);
+    $result = $apiInstance->cancelarNfse($id, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfseApi->cancelarNfse: ', $e->getMessage(), PHP_EOL;
@@ -123,6 +124,7 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único da NFS-e gerado pela Nuvem Fiscal. | |
+| **body** | [**\NuvemFiscal\Model\NfsePedidoCancelamento**](../Model/NfsePedidoCancelamento.md)|  | [optional] |
 
 ### Tipo do retorno
 
@@ -134,7 +136,7 @@ try {
 
 ### Headers HTTP da requisição
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)

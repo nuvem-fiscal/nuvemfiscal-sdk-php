@@ -307,7 +307,7 @@ $apiInstance = new NuvemFiscal\Api\MdfeApi(
     $config
 );
 $id = 'id_example'; // string | ID único do MDF-e gerado pela Nuvem Fiscal.
-$body = new \NuvemFiscal\Model\MdfePedidoCancelamento(); // \NuvemFiscal\Model\MdfePedidoCancelamento
+$body = new \NuvemFiscal\Model\MdfePedidoCancelamento(); // \NuvemFiscal\Model\MdfePedidoCancelamento | Dados do cancelamento.
 
 try {
     $result = $apiInstance->cancelarMdfe($id, $body);
@@ -322,7 +322,7 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único do MDF-e gerado pela Nuvem Fiscal. | |
-| **body** | [**\NuvemFiscal\Model\MdfePedidoCancelamento**](../Model/MdfePedidoCancelamento.md)|  | |
+| **body** | [**\NuvemFiscal\Model\MdfePedidoCancelamento**](../Model/MdfePedidoCancelamento.md)| Dados do cancelamento. | |
 
 ### Tipo do retorno
 

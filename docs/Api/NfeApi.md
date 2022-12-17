@@ -949,7 +949,7 @@ $apiInstance = new NuvemFiscal\Api\NfeApi(
     $config
 );
 $id = 'id_example'; // string | ID único da NF-e gerado pela Nuvem Fiscal.
-$body = new \NuvemFiscal\Model\NfePedidoCartaCorrecao(); // \NuvemFiscal\Model\NfePedidoCartaCorrecao
+$body = new \NuvemFiscal\Model\NfePedidoCartaCorrecao(); // \NuvemFiscal\Model\NfePedidoCartaCorrecao | Contém os dados do pedido para carta de correção.
 
 try {
     $result = $apiInstance->criarCartaCorrecaoNfe($id, $body);
@@ -964,7 +964,7 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único da NF-e gerado pela Nuvem Fiscal. | |
-| **body** | [**\NuvemFiscal\Model\NfePedidoCartaCorrecao**](../Model/NfePedidoCartaCorrecao.md)|  | |
+| **body** | [**\NuvemFiscal\Model\NfePedidoCartaCorrecao**](../Model/NfePedidoCartaCorrecao.md)| Contém os dados do pedido para carta de correção. | |
 
 ### Tipo do retorno
 

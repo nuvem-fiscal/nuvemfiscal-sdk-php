@@ -1300,7 +1300,7 @@ class MdfeApi
      * Cancelar um MDF-e autorizado
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body body (required)
+     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (required)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1318,7 +1318,7 @@ class MdfeApi
      * Cancelar um MDF-e autorizado
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body (required)
+     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (required)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1422,7 +1422,7 @@ class MdfeApi
      * Cancelar um MDF-e autorizado
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body (required)
+     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1443,7 +1443,7 @@ class MdfeApi
      * Cancelar um MDF-e autorizado
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body (required)
+     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1493,7 +1493,7 @@ class MdfeApi
      * Create request for operation 'cancelarMdfe'
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body (required)
+     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -5,7 +5,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | Método | Endpoint | Descrição |
 | ------------- | ------------- | ------------- |
 | [**consultarCnpj()**](CnpjApi.md#consultarCnpj) | **GET** /cnpj/{Cnpj} | Consultar dados do CNPJ |
-| [**listarCnpj()**](CnpjApi.md#listarCnpj) | **GET** /cnpj | Listar estabelecimentos a partir da base de CNPJ |
+| [**listarCnpj()**](CnpjApi.md#listarCnpj) | **GET** /cnpj | Listar estabelecimentos ativos a partir da base de CNPJ |
 
 
 ## `consultarCnpj()`
@@ -77,9 +77,9 @@ try {
 listarCnpj($cnae_principal, $municipio, $natureza_juridica, $top, $skip): \NuvemFiscal\Model\CnpjListagem
 ```
 
-Listar estabelecimentos a partir da base de CNPJ
+Listar estabelecimentos ativos a partir da base de CNPJ
 
-Retorna uma lista de estabelecimentos de acordo com os critérios de busca utilizados.
+Retorna uma lista de estabelecimentos de acordo com os critérios de busca utilizados.  Somente serão retornados estabelecimentos com situação cadastral \"Ativa\".
 
 ### Exemplo
 

@@ -393,7 +393,7 @@ class EmpresaConfigNfse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets ambiente
      *
-     * @param string $ambiente ambiente
+     * @param string $ambiente Indica se a empresa irá emitir em produção ou homologação.
      *
      * @return self
      */

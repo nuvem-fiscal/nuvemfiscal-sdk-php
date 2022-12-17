@@ -305,7 +305,7 @@ class EmpresaConfigPrefeitura implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets login
      *
-     * @param string|null $login login
+     * @param string|null $login Login de autenticação com a prefeitura, caso não utilize certificado digital.
      *
      * @return self
      */
@@ -334,7 +334,7 @@ class EmpresaConfigPrefeitura implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets senha
      *
-     * @param string|null $senha senha
+     * @param string|null $senha Senha de autenticação com a prefeitura, caso não utilize certificado digital.
      *
      * @return self
      */
@@ -363,7 +363,7 @@ class EmpresaConfigPrefeitura implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets token
      *
-     * @param string|null $token token
+     * @param string|null $token Token de autenticação com a prefeitura, caso não utilize certificado digital.
      *
      * @return self
      */

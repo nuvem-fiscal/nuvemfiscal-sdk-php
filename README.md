@@ -82,7 +82,7 @@ Classe | Método | Endpoint | Descrição
 ------------ | ------------- | ------------- | -------------
 *CepApi* | [**consultarCep**](docs/Api/CepApi.md#consultarcep) | **GET** /cep/{Cep} | Consultar endereço através do CEP
 *CnpjApi* | [**consultarCnpj**](docs/Api/CnpjApi.md#consultarcnpj) | **GET** /cnpj/{Cnpj} | Consultar dados do CNPJ
-*CnpjApi* | [**listarCnpj**](docs/Api/CnpjApi.md#listarcnpj) | **GET** /cnpj | Listar estabelecimentos a partir da base de CNPJ
+*CnpjApi* | [**listarCnpj**](docs/Api/CnpjApi.md#listarcnpj) | **GET** /cnpj | Listar estabelecimentos ativos a partir da base de CNPJ
 *CteApi* | [**baixarXmlCancelamentoCte**](docs/Api/CteApi.md#baixarxmlcancelamentocte) | **GET** /cte/{id}/cancelamento/xml | Baixar XML do cancelamento
 *CteApi* | [**baixarXmlCartaCorrecaoCte**](docs/Api/CteApi.md#baixarxmlcartacorrecaocte) | **GET** /cte/{id}/carta-correcao/xml | Baixar XML da carta de correção
 *CteApi* | [**baixarXmlCte**](docs/Api/CteApi.md#baixarxmlcte) | **GET** /cte/{id}/xml | Baixar XML do CT-e processado
@@ -502,6 +502,7 @@ Classe | Método | Endpoint | Descrição
 - [NfseCancelamento](docs/Model/NfseCancelamento.md)
 - [NfseListagem](docs/Model/NfseListagem.md)
 - [NfseMensagemRetorno](docs/Model/NfseMensagemRetorno.md)
+- [NfsePedidoCancelamento](docs/Model/NfsePedidoCancelamento.md)
 - [NfsePedidoEmissao](docs/Model/NfsePedidoEmissao.md)
 - [Rps](docs/Model/Rps.md)
 - [RpsDados](docs/Model/RpsDados.md)
@@ -546,6 +547,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `1.2.9`
-    - Versão do package: `1.1.0`
+- Versão da API: `1.3.3`
+    - Versão do package: `1.2.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

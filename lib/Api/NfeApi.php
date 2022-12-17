@@ -4269,7 +4269,7 @@ class NfeApi
      * Solicitar correção da NF-e
      *
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\NfePedidoCartaCorrecao $body body (required)
+     * @param  \NuvemFiscal\Model\NfePedidoCartaCorrecao $body Contém os dados do pedido para carta de correção. (required)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4287,7 +4287,7 @@ class NfeApi
      * Solicitar correção da NF-e
      *
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\NfePedidoCartaCorrecao $body (required)
+     * @param  \NuvemFiscal\Model\NfePedidoCartaCorrecao $body Contém os dados do pedido para carta de correção. (required)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4391,7 +4391,7 @@ class NfeApi
      * Solicitar correção da NF-e
      *
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\NfePedidoCartaCorrecao $body (required)
+     * @param  \NuvemFiscal\Model\NfePedidoCartaCorrecao $body Contém os dados do pedido para carta de correção. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4412,7 +4412,7 @@ class NfeApi
      * Solicitar correção da NF-e
      *
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\NfePedidoCartaCorrecao $body (required)
+     * @param  \NuvemFiscal\Model\NfePedidoCartaCorrecao $body Contém os dados do pedido para carta de correção. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4462,7 +4462,7 @@ class NfeApi
      * Create request for operation 'criarCartaCorrecaoNfe'
      *
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\NfePedidoCartaCorrecao $body (required)
+     * @param  \NuvemFiscal\Model\NfePedidoCartaCorrecao $body Contém os dados do pedido para carta de correção. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

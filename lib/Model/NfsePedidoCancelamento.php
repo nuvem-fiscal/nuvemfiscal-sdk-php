@@ -1,6 +1,6 @@
 <?php
 /**
- * EmpresaConfigNfe
+ * NfsePedidoCancelamento
  *
  * PHP version 7.4
  *
@@ -31,7 +31,7 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * EmpresaConfigNfe Class Doc Comment
+ * NfsePedidoCancelamento Class Doc Comment
  *
  * @category Class
  * @package  NuvemFiscal
@@ -39,7 +39,7 @@ use \NuvemFiscal\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EmpresaConfigNfe implements ModelInterface, ArrayAccess, \JsonSerializable
+class NfsePedidoCancelamento implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class EmpresaConfigNfe implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EmpresaConfigNfe';
+    protected static $openAPIModelName = 'NfsePedidoCancelamento';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,8 @@ class EmpresaConfigNfe implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ambiente' => 'string'
+        'codigo' => 'string',
+        'motivo' => 'string'
     ];
 
     /**
@@ -67,7 +68,8 @@ class EmpresaConfigNfe implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'ambiente' => null
+        'codigo' => null,
+        'motivo' => null
     ];
 
     /**
@@ -76,7 +78,8 @@ class EmpresaConfigNfe implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ambiente' => false
+        'codigo' => false,
+		'motivo' => false
     ];
 
     /**
@@ -155,7 +158,8 @@ class EmpresaConfigNfe implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'ambiente' => 'ambiente'
+        'codigo' => 'codigo',
+        'motivo' => 'motivo'
     ];
 
     /**
@@ -164,7 +168,8 @@ class EmpresaConfigNfe implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'ambiente' => 'setAmbiente'
+        'codigo' => 'setCodigo',
+        'motivo' => 'setMotivo'
     ];
 
     /**
@@ -173,7 +178,8 @@ class EmpresaConfigNfe implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'ambiente' => 'getAmbiente'
+        'codigo' => 'getCodigo',
+        'motivo' => 'getMotivo'
     ];
 
     /**
@@ -217,21 +223,6 @@ class EmpresaConfigNfe implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const AMBIENTE_HOMOLOGACAO = 'homologacao';
-    public const AMBIENTE_PRODUCAO = 'producao';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAmbienteAllowableValues()
-    {
-        return [
-            self::AMBIENTE_HOMOLOGACAO,
-            self::AMBIENTE_PRODUCAO,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -248,7 +239,8 @@ class EmpresaConfigNfe implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('ambiente', $data ?? [], null);
+        $this->setIfExists('codigo', $data ?? [], null);
+        $this->setIfExists('motivo', $data ?? [], null);
     }
 
     /**
@@ -278,18 +270,6 @@ class EmpresaConfigNfe implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['ambiente'] === null) {
-            $invalidProperties[] = "'ambiente' can't be null";
-        }
-        $allowedValues = $this->getAmbienteAllowableValues();
-        if (!is_null($this->container['ambiente']) && !in_array($this->container['ambiente'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'ambiente', must be one of '%s'",
-                $this->container['ambiente'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -306,40 +286,59 @@ class EmpresaConfigNfe implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets ambiente
+     * Gets codigo
      *
-     * @return string
+     * @return string|null
      */
-    public function getAmbiente()
+    public function getCodigo()
     {
-        return $this->container['ambiente'];
+        return $this->container['codigo'];
     }
 
     /**
-     * Sets ambiente
+     * Sets codigo
      *
-     * @param string $ambiente Indica se a empresa irá emitir em produção ou homologação.
+     * @param string|null $codigo Código de cancelamento, exigido por algumas prefeituras.  Para saber quais valores são aceitos, consulte o manual da prefeitura.
      *
      * @return self
      */
-    public function setAmbiente($ambiente)
+    public function setCodigo($codigo)
     {
-        $allowedValues = $this->getAmbienteAllowableValues();
-        if (!in_array($ambiente, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ambiente', must be one of '%s'",
-                    $ambiente,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+        if (is_null($codigo)) {
+            throw new \InvalidArgumentException('non-nullable codigo cannot be null');
         }
 
-        if (is_null($ambiente)) {
-            throw new \InvalidArgumentException('non-nullable ambiente cannot be null');
+        $this->container['codigo'] = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Gets motivo
+     *
+     * @return string|null
+     */
+    public function getMotivo()
+    {
+        return $this->container['motivo'];
+    }
+
+    /**
+     * Sets motivo
+     *
+     * @param string|null $motivo Motivo de cancelamento, exigido por algumas prefeituras.
+     *
+     * @return self
+     */
+    public function setMotivo($motivo)
+    {
+
+        if (is_null($motivo)) {
+            throw new \InvalidArgumentException('non-nullable motivo cannot be null');
         }
 
-        $this->container['ambiente'] = $ambiente;
+        $this->container['motivo'] = $motivo;
 
         return $this;
     }

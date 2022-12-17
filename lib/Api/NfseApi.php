@@ -415,14 +415,15 @@ class NfseApi
      * Cancelar uma NFS-e autorizada
      *
      * @param  string $id ID único da NFS-e gerado pela Nuvem Fiscal. (required)
+     * @param  \NuvemFiscal\Model\NfsePedidoCancelamento $body body (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\NfseCancelamento
      */
-    public function cancelarNfse($id)
+    public function cancelarNfse($id, $body = null)
     {
-        list($response) = $this->cancelarNfseWithHttpInfo($id);
+        list($response) = $this->cancelarNfseWithHttpInfo($id, $body);
         return $response;
     }
 
@@ -432,14 +433,15 @@ class NfseApi
      * Cancelar uma NFS-e autorizada
      *
      * @param  string $id ID único da NFS-e gerado pela Nuvem Fiscal. (required)
+     * @param  \NuvemFiscal\Model\NfsePedidoCancelamento $body (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\NfseCancelamento, HTTP status code, HTTP response headers (array of strings)
      */
-    public function cancelarNfseWithHttpInfo($id)
+    public function cancelarNfseWithHttpInfo($id, $body = null)
     {
-        $request = $this->cancelarNfseRequest($id);
+        $request = $this->cancelarNfseRequest($id, $body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -535,13 +537,14 @@ class NfseApi
      * Cancelar uma NFS-e autorizada
      *
      * @param  string $id ID único da NFS-e gerado pela Nuvem Fiscal. (required)
+     * @param  \NuvemFiscal\Model\NfsePedidoCancelamento $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cancelarNfseAsync($id)
+    public function cancelarNfseAsync($id, $body = null)
     {
-        return $this->cancelarNfseAsyncWithHttpInfo($id)
+        return $this->cancelarNfseAsyncWithHttpInfo($id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -555,14 +558,15 @@ class NfseApi
      * Cancelar uma NFS-e autorizada
      *
      * @param  string $id ID único da NFS-e gerado pela Nuvem Fiscal. (required)
+     * @param  \NuvemFiscal\Model\NfsePedidoCancelamento $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cancelarNfseAsyncWithHttpInfo($id)
+    public function cancelarNfseAsyncWithHttpInfo($id, $body = null)
     {
         $returnType = '\NuvemFiscal\Model\NfseCancelamento';
-        $request = $this->cancelarNfseRequest($id);
+        $request = $this->cancelarNfseRequest($id, $body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -604,11 +608,12 @@ class NfseApi
      * Create request for operation 'cancelarNfse'
      *
      * @param  string $id ID único da NFS-e gerado pela Nuvem Fiscal. (required)
+     * @param  \NuvemFiscal\Model\NfsePedidoCancelamento $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function cancelarNfseRequest($id)
+    public function cancelarNfseRequest($id, $body = null)
     {
 
         // verify the required parameter 'id' is set
@@ -617,6 +622,7 @@ class NfseApi
                 'Missing the required parameter $id when calling cancelarNfse'
             );
         }
+
 
         $resourcePath = '/nfse/{id}/cancelamento';
         $formParams = [];
@@ -644,12 +650,18 @@ class NfseApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                []
+                ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($body)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {

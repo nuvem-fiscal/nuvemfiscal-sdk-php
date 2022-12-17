@@ -412,7 +412,7 @@ class CnpjApi
     /**
      * Operation listarCnpj
      *
-     * Listar estabelecimentos a partir da base de CNPJ
+     * Listar estabelecimentos ativos a partir da base de CNPJ
      *
      * @param  string $cnae_principal Filtro pelo código CNAE da atividade principal do estabelecimento.  Utilize o valor sem máscara. (required)
      * @param  string $municipio Filtro pelo código IBGE ou TOM (Tabela de Órgãos e Municípios) do município do estabelecimento.  Utilize o valor sem máscara. (required)
@@ -433,7 +433,7 @@ class CnpjApi
     /**
      * Operation listarCnpjWithHttpInfo
      *
-     * Listar estabelecimentos a partir da base de CNPJ
+     * Listar estabelecimentos ativos a partir da base de CNPJ
      *
      * @param  string $cnae_principal Filtro pelo código CNAE da atividade principal do estabelecimento.  Utilize o valor sem máscara. (required)
      * @param  string $municipio Filtro pelo código IBGE ou TOM (Tabela de Órgãos e Municípios) do município do estabelecimento.  Utilize o valor sem máscara. (required)
@@ -540,7 +540,7 @@ class CnpjApi
     /**
      * Operation listarCnpjAsync
      *
-     * Listar estabelecimentos a partir da base de CNPJ
+     * Listar estabelecimentos ativos a partir da base de CNPJ
      *
      * @param  string $cnae_principal Filtro pelo código CNAE da atividade principal do estabelecimento.  Utilize o valor sem máscara. (required)
      * @param  string $municipio Filtro pelo código IBGE ou TOM (Tabela de Órgãos e Municípios) do município do estabelecimento.  Utilize o valor sem máscara. (required)
@@ -564,7 +564,7 @@ class CnpjApi
     /**
      * Operation listarCnpjAsyncWithHttpInfo
      *
-     * Listar estabelecimentos a partir da base de CNPJ
+     * Listar estabelecimentos ativos a partir da base de CNPJ
      *
      * @param  string $cnae_principal Filtro pelo código CNAE da atividade principal do estabelecimento.  Utilize o valor sem máscara. (required)
      * @param  string $municipio Filtro pelo código IBGE ou TOM (Tabela de Órgãos e Municípios) do município do estabelecimento.  Utilize o valor sem máscara. (required)
