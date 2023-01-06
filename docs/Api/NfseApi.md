@@ -4,6 +4,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 
 | Método | Endpoint | Descrição |
 | ------------- | ------------- | ------------- |
+| [**baixarPdfNfse()**](NfseApi.md#baixarPdfNfse) | **GET** /nfse/{id}/pdf | Baixar PDF do DANFSE |
 | [**baixarXmlNfse()**](NfseApi.md#baixarXmlNfse) | **GET** /nfse/{id}/xml | Baixar XML da NFS-e processada |
 | [**cancelarNfse()**](NfseApi.md#cancelarNfse) | **POST** /nfse/{id}/cancelamento | Cancelar uma NFS-e autorizada |
 | [**consultarCancelamentoNfse()**](NfseApi.md#consultarCancelamentoNfse) | **GET** /nfse/{id}/cancelamento | Consultar o cancelamento da NFS-e |
@@ -14,6 +15,69 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**listarLotesNfse()**](NfseApi.md#listarLotesNfse) | **GET** /nfse/lotes | Listar lotes de NFS-e |
 | [**listarNfse()**](NfseApi.md#listarNfse) | **GET** /nfse | Listar NFS-e |
 
+
+## `baixarPdfNfse()`
+
+```php
+baixarPdfNfse($id): \SplFileObject
+```
+
+Baixar PDF do DANFSE
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfseApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NFS-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarPdfNfse($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfseApi->baixarPdfNfse: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NFS-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
 
 ## `baixarXmlNfse()`
 
@@ -538,7 +602,7 @@ try {
 ## `listarNfse()`
 
 ```php
-listarNfse($cpf_cnpj, $ambiente, $top, $skip, $referencia): \NuvemFiscal\Model\NfseListagem
+listarNfse($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave): \NuvemFiscal\Model\NfseListagem
 ```
 
 Listar NFS-e
@@ -572,9 +636,10 @@ $ambiente = 'ambiente_example'; // string | Identificação do Ambiente.  Valore
 $top = 56; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: `10`.
 $skip = 56; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
 $referencia = 'referencia_example'; // string
+$chave = 'chave_example'; // string | Chave de acesso do DF-e.
 
 try {
-    $result = $apiInstance->listarNfse($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+    $result = $apiInstance->listarNfse($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfseApi->listarNfse: ', $e->getMessage(), PHP_EOL;
@@ -590,6 +655,7 @@ try {
 | **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. | [optional] |
 | **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] |
 | **referencia** | **string**|  | [optional] |
+| **chave** | **string**| Chave de acesso do DF-e. | [optional] |
 
 ### Tipo do retorno
 

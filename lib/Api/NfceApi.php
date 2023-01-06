@@ -4334,14 +4334,15 @@ class NfceApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
      * @param  string $referencia referencia (optional)
+     * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\DfeListagem
      */
-    public function listarNfce($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarNfce($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
     {
-        list($response) = $this->listarNfceWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+        list($response) = $this->listarNfceWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
         return $response;
     }
 
@@ -4355,14 +4356,15 @@ class NfceApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
      * @param  string $referencia (optional)
+     * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\DfeListagem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listarNfceWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarNfceWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
     {
-        $request = $this->listarNfceRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+        $request = $this->listarNfceRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4462,13 +4464,14 @@ class NfceApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
      * @param  string $referencia (optional)
+     * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarNfceAsync($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarNfceAsync($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
     {
-        return $this->listarNfceAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia)
+        return $this->listarNfceAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4486,14 +4489,15 @@ class NfceApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
      * @param  string $referencia (optional)
+     * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarNfceAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarNfceAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
     {
         $returnType = '\NuvemFiscal\Model\DfeListagem';
-        $request = $this->listarNfceRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+        $request = $this->listarNfceRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4539,11 +4543,12 @@ class NfceApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
      * @param  string $referencia (optional)
+     * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listarNfceRequest($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarNfceRequest($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
     {
 
         // verify the required parameter 'cpf_cnpj' is set
@@ -4559,6 +4564,7 @@ class NfceApi
                 'Missing the required parameter $ambiente when calling listarNfce'
             );
         }
+
 
 
 
@@ -4614,6 +4620,15 @@ class NfceApi
             '', // style
             false, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $chave,
+            'chave', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
         ) ?? []);
 
 

@@ -10,7 +10,7 @@ Nome | Tipo | Descrição | Comentários
 **codigo_cnae** | **string** | Código CNAE (Classificação Nacional de Atividades Econômicas). | [optional]
 **codigo_tributacao_municipio** | **string** | Código de tributação do município. | [optional]
 **discriminacao** | **string** | Detalhamento do serviço prestado. |
-**codigo_municipio** | **string** | Código IBGE do município de prestação do serviço. | [optional]
+**codigo_municipio** | **string** | Código IBGE do município de prestação do serviço.  Caso não informado, será considerado o município do prestador. | [optional]
 **codigo_pais** | **string** | Código do país de prestação do serviço. | [optional]
 **tipo_tributacao** | **int** | Tipo de Tributação do Serviço:  1 - Isento de ISS  2 - Imune  3 - Não Incidência no Município  4 - Não Tributável  5 - Retido  6 - Tributável Dentro do Município  7 - Tributável Fora do Município  8 - Tributável Dentro do Município pelo tomador    Valor padrão: &#x60;6&#x60; | [optional]
 **exigibilidade_iss** | **int** | Exigibilidade do ISS:  1 - Exigível  2 - Não Incidência  3 - Isenção  4 - Exportação  5 - Imunidade  6 - Suspenso por Decisão Judicial  7 - Suspenso por Processo Administrativo    Valor padrão: &#x60;1&#x60; | [optional]

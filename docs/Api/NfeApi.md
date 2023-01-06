@@ -1248,7 +1248,7 @@ try {
 ## `listarNfe()`
 
 ```php
-listarNfe($cpf_cnpj, $ambiente, $top, $skip, $referencia): \NuvemFiscal\Model\DfeListagem
+listarNfe($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave): \NuvemFiscal\Model\DfeListagem
 ```
 
 Listar NF-e
@@ -1282,9 +1282,10 @@ $ambiente = 'ambiente_example'; // string | Identificação do Ambiente.  Valore
 $top = 56; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: `10`.
 $skip = 56; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
 $referencia = 'referencia_example'; // string
+$chave = 'chave_example'; // string | Chave de acesso do DF-e.
 
 try {
-    $result = $apiInstance->listarNfe($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+    $result = $apiInstance->listarNfe($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfeApi->listarNfe: ', $e->getMessage(), PHP_EOL;
@@ -1300,6 +1301,7 @@ try {
 | **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. | [optional] |
 | **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] |
 | **referencia** | **string**|  | [optional] |
+| **chave** | **string**| Chave de acesso do DF-e. | [optional] |
 
 ### Tipo do retorno
 

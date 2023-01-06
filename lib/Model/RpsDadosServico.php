@@ -572,7 +572,7 @@ class RpsDadosServico implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets codigo_municipio
      *
-     * @param string|null $codigo_municipio Código IBGE do município de prestação do serviço.
+     * @param string|null $codigo_municipio Código IBGE do município de prestação do serviço.  Caso não informado, será considerado o município do prestador.
      *
      * @return self
      */

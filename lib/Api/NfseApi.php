@@ -115,6 +115,301 @@ class NfseApi
     }
 
     /**
+     * Operation baixarPdfNfse
+     *
+     * Baixar PDF do DANFSE
+     *
+     * @param  string $id ID único da NFS-e gerado pela Nuvem Fiscal. (required)
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \SplFileObject
+     */
+    public function baixarPdfNfse($id)
+    {
+        list($response) = $this->baixarPdfNfseWithHttpInfo($id);
+        return $response;
+    }
+
+    /**
+     * Operation baixarPdfNfseWithHttpInfo
+     *
+     * Baixar PDF do DANFSE
+     *
+     * @param  string $id ID único da NFS-e gerado pela Nuvem Fiscal. (required)
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function baixarPdfNfseWithHttpInfo($id)
+    {
+        $request = $this->baixarPdfNfseRequest($id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+            
+                case 200:
+                    if ('\SplFileObject' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SplFileObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            
+            }
+
+            $returnType = '\SplFileObject';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SplFileObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation baixarPdfNfseAsync
+     *
+     * Baixar PDF do DANFSE
+     *
+     * @param  string $id ID único da NFS-e gerado pela Nuvem Fiscal. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function baixarPdfNfseAsync($id)
+    {
+        return $this->baixarPdfNfseAsyncWithHttpInfo($id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation baixarPdfNfseAsyncWithHttpInfo
+     *
+     * Baixar PDF do DANFSE
+     *
+     * @param  string $id ID único da NFS-e gerado pela Nuvem Fiscal. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function baixarPdfNfseAsyncWithHttpInfo($id)
+    {
+        $returnType = '\SplFileObject';
+        $request = $this->baixarPdfNfseRequest($id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'baixarPdfNfse'
+     *
+     * @param  string $id ID único da NFS-e gerado pela Nuvem Fiscal. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function baixarPdfNfseRequest($id)
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling baixarPdfNfse'
+            );
+        }
+
+        $resourcePath = '/nfse/{id}/pdf';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation baixarXmlNfse
      *
      * Baixar XML da NFS-e processada
@@ -2559,14 +2854,15 @@ class NfseApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
      * @param  string $referencia referencia (optional)
+     * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\NfseListagem
      */
-    public function listarNfse($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarNfse($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
     {
-        list($response) = $this->listarNfseWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+        list($response) = $this->listarNfseWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
         return $response;
     }
 
@@ -2580,14 +2876,15 @@ class NfseApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
      * @param  string $referencia (optional)
+     * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\NfseListagem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listarNfseWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarNfseWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
     {
-        $request = $this->listarNfseRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+        $request = $this->listarNfseRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2687,13 +2984,14 @@ class NfseApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
      * @param  string $referencia (optional)
+     * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarNfseAsync($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarNfseAsync($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
     {
-        return $this->listarNfseAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia)
+        return $this->listarNfseAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2711,14 +3009,15 @@ class NfseApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
      * @param  string $referencia (optional)
+     * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarNfseAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarNfseAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
     {
         $returnType = '\NuvemFiscal\Model\NfseListagem';
-        $request = $this->listarNfseRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+        $request = $this->listarNfseRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2764,11 +3063,12 @@ class NfseApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
      * @param  string $referencia (optional)
+     * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listarNfseRequest($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarNfseRequest($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
     {
 
         // verify the required parameter 'cpf_cnpj' is set
@@ -2784,6 +3084,7 @@ class NfseApi
                 'Missing the required parameter $ambiente when calling listarNfse'
             );
         }
+
 
 
 
@@ -2839,6 +3140,15 @@ class NfseApi
             '', // style
             false, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $chave,
+            'chave', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
         ) ?? []);
 
 
