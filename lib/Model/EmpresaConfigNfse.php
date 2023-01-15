@@ -275,7 +275,7 @@ class EmpresaConfigNfse implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('reg_trib', $data ?? [], null);
         $this->setIfExists('rps', $data ?? [], null);
         $this->setIfExists('prefeitura', $data ?? [], null);
-        $this->setIfExists('incentivo_fiscal', $data ?? [], null);
+        $this->setIfExists('incentivo_fiscal', $data ?? [], false);
         $this->setIfExists('ambiente', $data ?? [], null);
     }
 

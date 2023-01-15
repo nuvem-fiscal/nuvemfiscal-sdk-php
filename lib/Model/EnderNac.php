@@ -34,7 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * EnderNac Class Doc Comment
  *
  * @category Class
- * @description Grupo de informações específicas de endereço nacional.  Caso não seja informado, será utilizado o do cadastro da empresa.
+ * @description Grupo de informações específicas de endereço nacional.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -299,7 +299,7 @@ class EnderNac implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_mun
      *
-     * @param string|null $c_mun Código do município, conforme Tabela do IBGE.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $c_mun Código do município, conforme Tabela do IBGE.
      *
      * @return self
      */
@@ -328,7 +328,7 @@ class EnderNac implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cep
      *
-     * @param string|null $cep Número do CEP.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $cep Número do CEP.
      *
      * @return self
      */

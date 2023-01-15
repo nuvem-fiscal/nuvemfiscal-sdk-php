@@ -4,7 +4,7 @@
 
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
-**iss_retido** | **bool** | Reter ISSQN. | [optional]
+**iss_retido** | **bool** | Reter ISSQN. | [optional] [default to false]
 **responsavel_retencao** | **int** | Responsável pela retenção:  * 0 - Prestador;  * 1 - Tomador;  * 2 - Intermediário. | [optional]
 **item_lista_servico** | **string** | Código do item da lista de serviço, geralmente segue a LC116, podendo variar de acordo com a prefeitura.    Você pode encontrar esse dado no portal da prefeitura, em uma nota emitida ou junto ao contador. |
 **codigo_cnae** | **string** | Código CNAE (Classificação Nacional de Atividades Econômicas). | [optional]

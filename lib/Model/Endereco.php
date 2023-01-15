@@ -385,7 +385,7 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_lgr
      *
-     * @param string|null $x_lgr Tipo e nome do logradouro da localização do imóvel.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_lgr Tipo e nome do logradouro da localização do imóvel.
      *
      * @return self
      */
@@ -414,7 +414,7 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets nro
      *
-     * @param string|null $nro Número do imóvel.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $nro Número do imóvel.
      *
      * @return self
      */
@@ -443,7 +443,7 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_cpl
      *
-     * @param string|null $x_cpl Complemento do endereço.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_cpl Complemento do endereço.
      *
      * @return self
      */
@@ -472,7 +472,7 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_bairro
      *
-     * @param string|null $x_bairro Bairro.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_bairro Bairro.
      *
      * @return self
      */

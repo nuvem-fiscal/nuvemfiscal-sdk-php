@@ -5464,14 +5464,14 @@ class NfeApi
      * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      * @param  string $referencia referencia (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\DfeLoteListagem
      */
-    public function listarLotesNfe($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
+    public function listarLotesNfe($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = false, $referencia = null)
     {
         list($response) = $this->listarLotesNfeWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia);
         return $response;
@@ -5486,14 +5486,14 @@ class NfeApi
      * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      * @param  string $referencia (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\DfeLoteListagem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listarLotesNfeWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
+    public function listarLotesNfeWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = false, $referencia = null)
     {
         $request = $this->listarLotesNfeRequest($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia);
 
@@ -5594,13 +5594,13 @@ class NfeApi
      * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      * @param  string $referencia (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarLotesNfeAsync($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
+    public function listarLotesNfeAsync($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = false, $referencia = null)
     {
         return $this->listarLotesNfeAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia)
             ->then(
@@ -5619,13 +5619,13 @@ class NfeApi
      * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      * @param  string $referencia (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarLotesNfeAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
+    public function listarLotesNfeAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = false, $referencia = null)
     {
         $returnType = '\NuvemFiscal\Model\DfeLoteListagem';
         $request = $this->listarLotesNfeRequest($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia);
@@ -5673,13 +5673,13 @@ class NfeApi
      * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      * @param  string $referencia (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listarLotesNfeRequest($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
+    public function listarLotesNfeRequest($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = false, $referencia = null)
     {
 
         // verify the required parameter 'cpf_cnpj' is set
@@ -5841,7 +5841,7 @@ class NfeApi
      * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      * @param  string $referencia referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
@@ -5849,7 +5849,7 @@ class NfeApi
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\DfeListagem
      */
-    public function listarNfe($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
+    public function listarNfe($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = false, $referencia = null, $chave = null)
     {
         list($response) = $this->listarNfeWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave);
         return $response;
@@ -5864,7 +5864,7 @@ class NfeApi
      * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      * @param  string $referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
@@ -5872,7 +5872,7 @@ class NfeApi
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\DfeListagem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listarNfeWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
+    public function listarNfeWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = false, $referencia = null, $chave = null)
     {
         $request = $this->listarNfeRequest($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave);
 
@@ -5973,14 +5973,14 @@ class NfeApi
      * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      * @param  string $referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarNfeAsync($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
+    public function listarNfeAsync($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = false, $referencia = null, $chave = null)
     {
         return $this->listarNfeAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave)
             ->then(
@@ -5999,14 +5999,14 @@ class NfeApi
      * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      * @param  string $referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarNfeAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
+    public function listarNfeAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = false, $referencia = null, $chave = null)
     {
         $returnType = '\NuvemFiscal\Model\DfeListagem';
         $request = $this->listarNfeRequest($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave);
@@ -6054,14 +6054,14 @@ class NfeApi
      * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      * @param  string $referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listarNfeRequest($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
+    public function listarNfeRequest($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = false, $referencia = null, $chave = null)
     {
 
         // verify the required parameter 'cpf_cnpj' is set

@@ -22,7 +22,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**enviarCertificadoEmpresa()**](EmpresaApi.md#enviarCertificadoEmpresa) | **PUT** /empresas/{cpf_cnpj}/certificado/upload | Upload de certificado |
 | [**excluirCertificadoEmpresa()**](EmpresaApi.md#excluirCertificadoEmpresa) | **DELETE** /empresas/{cpf_cnpj}/certificado | Deletar certificado |
 | [**excluirEmpresa()**](EmpresaApi.md#excluirEmpresa) | **DELETE** /empresas/{cpf_cnpj} | Deletar empresa |
-| [**listarEmpresas()**](EmpresaApi.md#listarEmpresas) | **GET** /empresas | Consultar empresas |
+| [**listarEmpresas()**](EmpresaApi.md#listarEmpresas) | **GET** /empresas | Listar empresas |
 
 
 ## `alterarConfigCte()`
@@ -1187,7 +1187,7 @@ void (empty response body)
 listarEmpresas($top, $skip, $inlinecount, $cpf_cnpj): \NuvemFiscal\Model\EmpresaListagem
 ```
 
-Consultar empresas
+Listar empresas
 
 Retorna a lista das empresas associadas à sua conta. As empresas são retornadas ordenadas pela data da criação, com as mais recentes aparecendo primeiro.
 
@@ -1215,7 +1215,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
 );
 $top = 10; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.
 $skip = 0; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
-$inlinecount = True; // bool | Inclui no JSON de resposta, na propriedade `@count`, o número total de registros que o filtro retornaria, independente dos filtros de paginação.
+$inlinecount = false; // bool | Inclui no JSON de resposta, na propriedade `@count`, o número total de registros que o filtro retornaria, independente dos filtros de paginação.
 $cpf_cnpj = 'cpf_cnpj_example'; // string | Filtrar pelo CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 
 try {
@@ -1232,7 +1232,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100. | [optional] [default to 10] |
 | **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] [default to 0] |
-| **inlinecount** | **bool**| Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. | [optional] |
+| **inlinecount** | **bool**| Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. | [optional] [default to false] |
 | **cpf_cnpj** | **string**| Filtrar pelo CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | [optional] |
 
 ### Tipo do retorno

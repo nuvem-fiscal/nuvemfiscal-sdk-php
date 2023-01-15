@@ -122,7 +122,7 @@ Classe | Método | Endpoint | Descrição
 *EmpresaApi* | [**enviarCertificadoEmpresa**](docs/Api/EmpresaApi.md#enviarcertificadoempresa) | **PUT** /empresas/{cpf_cnpj}/certificado/upload | Upload de certificado
 *EmpresaApi* | [**excluirCertificadoEmpresa**](docs/Api/EmpresaApi.md#excluircertificadoempresa) | **DELETE** /empresas/{cpf_cnpj}/certificado | Deletar certificado
 *EmpresaApi* | [**excluirEmpresa**](docs/Api/EmpresaApi.md#excluirempresa) | **DELETE** /empresas/{cpf_cnpj} | Deletar empresa
-*EmpresaApi* | [**listarEmpresas**](docs/Api/EmpresaApi.md#listarempresas) | **GET** /empresas | Consultar empresas
+*EmpresaApi* | [**listarEmpresas**](docs/Api/EmpresaApi.md#listarempresas) | **GET** /empresas | Listar empresas
 *MdfeApi* | [**baixarXmlCancelamentoMdfe**](docs/Api/MdfeApi.md#baixarxmlcancelamentomdfe) | **GET** /mdfe/{id}/cancelamento/xml | Baixar XML do cancelamento
 *MdfeApi* | [**baixarXmlEncerramentoMdfe**](docs/Api/MdfeApi.md#baixarxmlencerramentomdfe) | **GET** /mdfe/{id}/encerramento/xml | Baixar XML do encerramento
 *MdfeApi* | [**baixarXmlEventoMdfe**](docs/Api/MdfeApi.md#baixarxmleventomdfe) | **GET** /mdfe/eventos/{id}/xml | Baixar XML do evento
@@ -598,5 +598,5 @@ Classe | Método | Endpoint | Descrição
 ## Sobre este package
 
 - Versão da API: `2.0.0`
-    - Versão do package: `2.0.0`
+    - Versão do package: `2.1.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

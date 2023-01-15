@@ -317,7 +317,7 @@ class RpsDadosServico implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('iss_retido', $data ?? [], null);
+        $this->setIfExists('iss_retido', $data ?? [], false);
         $this->setIfExists('responsavel_retencao', $data ?? [], null);
         $this->setIfExists('item_lista_servico', $data ?? [], null);
         $this->setIfExists('codigo_cnae', $data ?? [], null);

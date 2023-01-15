@@ -419,13 +419,13 @@ class CnpjApi
      * @param  string $natureza_juridica Filtro pela natureza jurídica do estabelecimento   Utilize o valor de quatro dígitos sem máscara. (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\CnpjListagem
      */
-    public function listarCnpj($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = null)
+    public function listarCnpj($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = false)
     {
         list($response) = $this->listarCnpjWithHttpInfo($cnae_principal, $municipio, $natureza_juridica, $top, $skip, $inlinecount);
         return $response;
@@ -441,13 +441,13 @@ class CnpjApi
      * @param  string $natureza_juridica Filtro pela natureza jurídica do estabelecimento   Utilize o valor de quatro dígitos sem máscara. (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\CnpjListagem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listarCnpjWithHttpInfo($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = null)
+    public function listarCnpjWithHttpInfo($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = false)
     {
         $request = $this->listarCnpjRequest($cnae_principal, $municipio, $natureza_juridica, $top, $skip, $inlinecount);
 
@@ -549,12 +549,12 @@ class CnpjApi
      * @param  string $natureza_juridica Filtro pela natureza jurídica do estabelecimento   Utilize o valor de quatro dígitos sem máscara. (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarCnpjAsync($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = null)
+    public function listarCnpjAsync($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = false)
     {
         return $this->listarCnpjAsyncWithHttpInfo($cnae_principal, $municipio, $natureza_juridica, $top, $skip, $inlinecount)
             ->then(
@@ -574,12 +574,12 @@ class CnpjApi
      * @param  string $natureza_juridica Filtro pela natureza jurídica do estabelecimento   Utilize o valor de quatro dígitos sem máscara. (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarCnpjAsyncWithHttpInfo($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = null)
+    public function listarCnpjAsyncWithHttpInfo($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = false)
     {
         $returnType = '\NuvemFiscal\Model\CnpjListagem';
         $request = $this->listarCnpjRequest($cnae_principal, $municipio, $natureza_juridica, $top, $skip, $inlinecount);
@@ -628,12 +628,12 @@ class CnpjApi
      * @param  string $natureza_juridica Filtro pela natureza jurídica do estabelecimento   Utilize o valor de quatro dígitos sem máscara. (required)
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
-     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listarCnpjRequest($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = null)
+    public function listarCnpjRequest($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = false)
     {
 
         // verify the required parameter 'cnae_principal' is set
