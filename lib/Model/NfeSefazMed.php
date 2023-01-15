@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazMed Class Doc Comment
  *
  * @category Class
+ * @description grupo do detalhamento de Medicamentos e de matérias-primas farmacêuticas.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

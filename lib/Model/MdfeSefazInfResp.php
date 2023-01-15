@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfResp Class Doc Comment
  *
  * @category Class
+ * @description Informações do responsável pelo seguro da carga.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -308,7 +309,7 @@ class MdfeSefazInfResp implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets resp_seg
      *
-     * @param int $resp_seg Responsável pelo seguro.  Preencher com:                 1- Emitente do MDF-e;    22 - Responsável pela contratação do serviço de transporte (contratante)       Dados obrigatórios apenas no modal Rodoviário, depois da lei 11.442/07. Para os demais modais esta informação é opcional.
+     * @param int $resp_seg Responsável pelo seguro.  Preencher com:  * 1 - Emitente do MDF-e  * 22 - Responsável pela contratação do serviço de transporte (contratante)  Dados obrigatórios apenas no modal Rodoviário, depois da lei 11.442/07. Para os demais modais esta informação é opcional.
      *
      * @return self
      */

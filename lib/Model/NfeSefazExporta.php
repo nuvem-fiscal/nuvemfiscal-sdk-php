@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazExporta Class Doc Comment
  *
  * @category Class
+ * @description Informações de exportação.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

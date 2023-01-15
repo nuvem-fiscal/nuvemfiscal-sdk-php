@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfMDFeTranspPeri Class Doc Comment
  *
  * @category Class
+ * @description Preenchido quando for  transporte de produtos classificados pela ONU como perigosos.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -419,7 +420,7 @@ class MdfeSefazInfMDFeTranspPeri implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets gr_emb
      *
-     * @param string|null $gr_emb Grupo de Embalagem.  Ver a legislação de transporte de produtos perigosos aplicadas ao modal                 Preenchimento obrigatório para o modal aéreo.                 A legislação para o modal rodoviário e ferroviário não atribui grupo de embalagem para todos os produtos, portanto haverá casos de não preenchimento desse campo.
+     * @param string|null $gr_emb Grupo de Embalagem.  Ver a legislação de transporte de produtos perigosos aplicadas ao modal  Preenchimento obrigatório para o modal aéreo.  A legislação para o modal rodoviário e ferroviário não atribui grupo de embalagem para todos os produtos, portanto haverá casos de não preenchimento desse campo.
      *
      * @return self
      */

@@ -480,7 +480,7 @@ class CteSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets peri
      *
-     * @param \NuvemFiscal\Model\CteSefazPeri[]|null $peri Preenchido quando for  transporte de produtos classificados pela ONU como perigosos.  O preenchimento desses campos não desobriga a empresa aérea de emitir os demais documentos que constam na legislação vigente.
+     * @param \NuvemFiscal\Model\CteSefazPeri[]|null $peri peri
      *
      * @return self
      */

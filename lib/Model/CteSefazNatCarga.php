@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazNatCarga Class Doc Comment
  *
  * @category Class
+ * @description Natureza da carga.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -327,7 +328,7 @@ class CteSefazNatCarga implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_inf_manu
      *
-     * @param string[]|null $c_inf_manu Informações de manuseio.  01 - certificado do expedidor para embarque de animal vivo;    02 - artigo perigoso conforme Declaração do Expedidor anexa;    03 - somente em aeronave cargueira;     04 - artigo perigoso - declaração do expedidor não requerida;     05 - artigo perigoso em quantidade isenta;    06 - gelo seco para refrigeração (especificar no campo observações a quantidade);     07 - não restrito (especificar a Disposição Especial no campo observações);    08 - artigo perigoso em carga consolidada (especificar a quantidade no campo observações)  ;  09 - autorização da autoridade governamental anexa (especificar no campo observações);     10 – baterias de íons de lítio em conformidade com a Seção II da PI965 – CAO  ;   11 - baterias de íons de lítio em conformidade com a Seção II da PI966  ;   12 - baterias de íons de lítio em conformidade com a Seção II da PI967  ;   13 – baterias de metal lítio em conformidade com a Seção II da PI968 — CAO;     14 - baterias de metal lítio em conformidade com a Seção II da PI969;     15 - baterias de metal lítio em conformidade com a Seção II da PI970  ;   99 - outro (especificar no campo observações)  .
+     * @param string[]|null $c_inf_manu Informações de manuseio.  * 01 - certificado do expedidor para embarque de animal vivo  * 02 - artigo perigoso conforme Declaração do Expedidor anexa  * 03 - somente em aeronave cargueira  * 04 - artigo perigoso - declaração do expedidor não requerida  * 05 - artigo perigoso em quantidade isenta  * 06 - gelo seco para refrigeração (especificar no campo observações a quantidade)  * 07 - não restrito (especificar a Disposição Especial no campo observações)  * 08 - artigo perigoso em carga consolidada (especificar a quantidade no campo observações)  * 09 - autorização da autoridade governamental anexa (especificar no campo observações)  * 10 - baterias de íons de lítio em conformidade com a Seção II da PI965 - CAO  * 11 - baterias de íons de lítio em conformidade com a Seção II da PI966  * 12 - baterias de íons de lítio em conformidade com a Seção II da PI967  * 13 - baterias de metal lítio em conformidade com a Seção II da PI968 — CAO  * 14 - baterias de metal lítio em conformidade com a Seção II da PI969  * 15 - baterias de metal lítio em conformidade com a Seção II da PI970  * 99 - outro (especificar no campo observações)
      *
      * @return self
      */

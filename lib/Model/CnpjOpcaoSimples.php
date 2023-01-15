@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CnpjOpcaoSimples Class Doc Comment
  *
  * @category Class
+ * @description Informações da opção do Simples Nacional.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

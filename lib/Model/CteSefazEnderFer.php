@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazEnderFer Class Doc Comment
  *
  * @category Class
+ * @description Dados do endereço da ferrovia envolvida.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -471,7 +472,7 @@ class CteSefazEnderFer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_mun
      *
-     * @param string $c_mun Código do município.  Utilizar a tabela do IBGE       Informar 9999999 para operações com o exterior.
+     * @param string $c_mun Código do município.  Utilizar a tabela do IBGE  Informar 9999999 para operações com o exterior.
      *
      * @return self
      */

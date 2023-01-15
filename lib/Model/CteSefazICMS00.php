@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazICMS00 Class Doc Comment
  *
  * @category Class
+ * @description Prestação sujeito à tributação normal do ICMS.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -324,7 +325,7 @@ class CteSefazICMS00 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cst
      *
-     * @param string $cst classificação Tributária do Serviço.  00 - tributação normal ICMS.
+     * @param string $cst classificação Tributária do Serviço.  * 00 - tributação normal ICMS
      *
      * @return self
      */

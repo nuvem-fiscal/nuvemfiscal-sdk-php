@@ -851,7 +851,7 @@ try {
 ## `listarLotesNfce()`
 
 ```php
-listarLotesNfce($cpf_cnpj, $ambiente, $top, $skip, $referencia): \NuvemFiscal\Model\DfeLoteListagem
+listarLotesNfce($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia): \NuvemFiscal\Model\DfeLoteListagem
 ```
 
 Listar lotes de NFC-e
@@ -881,13 +881,14 @@ $apiInstance = new NuvemFiscal\Api\NfceApi(
     $config
 );
 $cpf_cnpj = 'cpf_cnpj_example'; // string | Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara.
-$ambiente = 'ambiente_example'; // string | Identificação do Ambiente.  Valores aceitos: homologacao, producao
-$top = 56; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: `10`.
-$skip = 56; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
+$ambiente = 'ambiente_example'; // string | Identificação do Ambiente.    Valores aceitos: homologacao, producao
+$top = 10; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.
+$skip = 0; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
+$inlinecount = True; // bool | Inclui no JSON de resposta, na propriedade `@count`, o número total de registros que o filtro retornaria, independente dos filtros de paginação.
 $referencia = 'referencia_example'; // string
 
 try {
-    $result = $apiInstance->listarLotesNfce($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+    $result = $apiInstance->listarLotesNfce($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfceApi->listarLotesNfce: ', $e->getMessage(), PHP_EOL;
@@ -899,9 +900,10 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **cpf_cnpj** | **string**| Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. | |
-| **ambiente** | **string**| Identificação do Ambiente.  Valores aceitos: homologacao, producao | |
-| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. | [optional] |
-| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] |
+| **ambiente** | **string**| Identificação do Ambiente.    Valores aceitos: homologacao, producao | |
+| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100. | [optional] [default to 10] |
+| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] [default to 0] |
+| **inlinecount** | **bool**| Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. | [optional] |
 | **referencia** | **string**|  | [optional] |
 
 ### Tipo do retorno
@@ -924,7 +926,7 @@ try {
 ## `listarNfce()`
 
 ```php
-listarNfce($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave): \NuvemFiscal\Model\DfeListagem
+listarNfce($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave): \NuvemFiscal\Model\DfeListagem
 ```
 
 Listar NFC-e
@@ -953,15 +955,16 @@ $apiInstance = new NuvemFiscal\Api\NfceApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string | Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara.
-$ambiente = 'ambiente_example'; // string | Identificação do Ambiente.  Valores aceitos: homologacao, producao
-$top = 56; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: `10`.
-$skip = 56; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
+$cpf_cnpj = 'cpf_cnpj_example'; // string | Filtrar pelo CPF ou CNPJ do emitente.    Utilize o valor sem máscara.
+$ambiente = 'ambiente_example'; // string | Identificação do Ambiente.    Valores aceitos: homologacao, producao
+$top = 10; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.
+$skip = 0; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
+$inlinecount = True; // bool | Inclui no JSON de resposta, na propriedade `@count`, o número total de registros que o filtro retornaria, independente dos filtros de paginação.
 $referencia = 'referencia_example'; // string
 $chave = 'chave_example'; // string | Chave de acesso do DF-e.
 
 try {
-    $result = $apiInstance->listarNfce($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
+    $result = $apiInstance->listarNfce($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfceApi->listarNfce: ', $e->getMessage(), PHP_EOL;
@@ -972,10 +975,11 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**| Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. | |
-| **ambiente** | **string**| Identificação do Ambiente.  Valores aceitos: homologacao, producao | |
-| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. | [optional] |
-| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] |
+| **cpf_cnpj** | **string**| Filtrar pelo CPF ou CNPJ do emitente.    Utilize o valor sem máscara. | |
+| **ambiente** | **string**| Identificação do Ambiente.    Valores aceitos: homologacao, producao | |
+| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100. | [optional] [default to 10] |
+| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] [default to 0] |
+| **inlinecount** | **bool**| Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. | [optional] |
 | **referencia** | **string**|  | [optional] |
 | **chave** | **string**| Chave de acesso do DF-e. | [optional] |
 

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazInfAdicObsFisco Class Doc Comment
  *
  * @category Class
+ * @description Campo de uso exclusivo do Fisco  informar o nome do campo no atributo xCampo  e o conteúdo do campo no xTexto.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

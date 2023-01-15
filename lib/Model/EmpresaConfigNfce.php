@@ -56,6 +56,7 @@ class EmpresaConfigNfce implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
+        'crt' => 'int',
         'sefaz' => '\NuvemFiscal\Model\EmpresaConfigNfceSefaz',
         'ambiente' => 'string'
     ];
@@ -68,6 +69,7 @@ class EmpresaConfigNfce implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'crt' => null,
         'sefaz' => null,
         'ambiente' => null
     ];
@@ -78,7 +80,8 @@ class EmpresaConfigNfce implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sefaz' => false,
+        'crt' => false,
+		'sefaz' => false,
 		'ambiente' => false
     ];
 
@@ -158,6 +161,7 @@ class EmpresaConfigNfce implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
+        'crt' => 'CRT',
         'sefaz' => 'sefaz',
         'ambiente' => 'ambiente'
     ];
@@ -168,6 +172,7 @@ class EmpresaConfigNfce implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
+        'crt' => 'setCrt',
         'sefaz' => 'setSefaz',
         'ambiente' => 'setAmbiente'
     ];
@@ -178,6 +183,7 @@ class EmpresaConfigNfce implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
+        'crt' => 'getCrt',
         'sefaz' => 'getSefaz',
         'ambiente' => 'getAmbiente'
     ];
@@ -254,6 +260,7 @@ class EmpresaConfigNfce implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('crt', $data ?? [], null);
         $this->setIfExists('sefaz', $data ?? [], null);
         $this->setIfExists('ambiente', $data ?? [], null);
     }
@@ -314,6 +321,35 @@ class EmpresaConfigNfce implements ModelInterface, ArrayAccess, \JsonSerializabl
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets crt
+     *
+     * @return int|null
+     */
+    public function getCrt()
+    {
+        return $this->container['crt'];
+    }
+
+    /**
+     * Sets crt
+     *
+     * @param int|null $crt Código de Regime Tributário.  Este campo será preenchido com:  * 1 – Simples Nacional;  * 2 – Simples Nacional – excesso de sublimite de receita bruta;  * 3 – Regime Normal.
+     *
+     * @return self
+     */
+    public function setCrt($crt)
+    {
+
+        if (is_null($crt)) {
+            throw new \InvalidArgumentException('non-nullable crt cannot be null');
+        }
+
+        $this->container['crt'] = $crt;
+
+        return $this;
+    }
 
     /**
      * Gets sefaz

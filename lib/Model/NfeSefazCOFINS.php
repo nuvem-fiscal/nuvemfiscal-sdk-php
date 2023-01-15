@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazCOFINS Class Doc Comment
  *
  * @category Class
+ * @description Dados do COFINS.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

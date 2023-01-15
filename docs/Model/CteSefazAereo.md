@@ -9,6 +9,6 @@ Nome | Tipo | Descrição | Comentários
 **d_prev_aereo** | **\DateTime** | Data prevista da entrega.  Formato AAAA-MM-DD. |
 **nat_carga** | [**\NuvemFiscal\Model\CteSefazNatCarga**](CteSefazNatCarga.md) |  |
 **tarifa** | [**\NuvemFiscal\Model\CteSefazTarifa**](CteSefazTarifa.md) |  |
-**peri** | [**\NuvemFiscal\Model\CteSefazPeri[]**](CteSefazPeri.md) | Preenchido quando for  transporte de produtos classificados pela ONU como perigosos.  O preenchimento desses campos não desobriga a empresa aérea de emitir os demais documentos que constam na legislação vigente. | [optional]
+**peri** | [**\NuvemFiscal\Model\CteSefazPeri[]**](CteSefazPeri.md) |  | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazInfIntermed Class Doc Comment
  *
  * @category Class
+ * @description Grupo de Informações do Intermediador da Transação.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

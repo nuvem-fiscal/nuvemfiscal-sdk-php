@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazICMSUFDest Class Doc Comment
  *
  * @category Class
+ * @description Grupo a ser informado nas vendas interestarduais para consumidor final, não contribuinte de ICMS.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -481,7 +482,7 @@ class NfeSefazICMSUFDest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets p_icms_inter
      *
-     * @param float $p_icms_inter Alíquota interestadual das UF envolvidas: - 4%% alíquota interestadual para produtos importados; - 7%% para os Estados de origem do Sul e Sudeste (exceto ES), destinado para os Estados do Norte e Nordeste  ou ES; - 12%% para os demais casos.
+     * @param float $p_icms_inter Alíquota interestadual das UF envolvidas:  * 4%% alíquota interestadual para produtos importados  * 7%% para os Estados de origem do Sul e Sudeste (exceto ES), destinado para os Estados do Norte e Nordeste  ou ES  * 12%% para os demais casos.
      *
      * @return self
      */
@@ -510,7 +511,7 @@ class NfeSefazICMSUFDest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets p_icms_inter_part
      *
-     * @param float $p_icms_inter_part Percentual de partilha para a UF do destinatário: - 40%% em 2016; - 60%% em 2017; - 80%% em 2018; - 100%% a partir de 2019.
+     * @param float $p_icms_inter_part Percentual de partilha para a UF do destinatário:  * 40%% em 2016  * 60%% em 2017  * 80%% em 2018  * 100%% a partir de 2019.
      *
      * @return self
      */

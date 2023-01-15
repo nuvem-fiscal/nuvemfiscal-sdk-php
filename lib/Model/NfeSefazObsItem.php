@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazObsItem Class Doc Comment
  *
  * @category Class
+ * @description Grupo de observações de uso livre (para o item da NF-e).
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

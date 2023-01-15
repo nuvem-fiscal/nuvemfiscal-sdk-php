@@ -340,7 +340,7 @@ class CteSefazMultimodal implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets ind_negociavel
      *
-     * @param int $ind_negociavel Indicador Negociável  Preencher com: 0 - Não Negociável; 1 - Negociável.
+     * @param int $ind_negociavel Indicador Negociável  Preencher com: 0 - Não Negociável  * 1 - Negociável
      *
      * @return self
      */

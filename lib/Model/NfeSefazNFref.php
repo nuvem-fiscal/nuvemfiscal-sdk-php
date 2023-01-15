@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazNFref Class Doc Comment
  *
  * @category Class
+ * @description Grupo de infromações da NF referenciada.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -57,6 +58,7 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'ref_nfe' => 'string',
+        'ref_nfe_sig' => 'string',
         'ref_nf' => '\NuvemFiscal\Model\NfeSefazRefNF',
         'ref_nfp' => '\NuvemFiscal\Model\NfeSefazRefNFP',
         'ref_cte' => 'string',
@@ -72,6 +74,7 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'ref_nfe' => null,
+        'ref_nfe_sig' => null,
         'ref_nf' => null,
         'ref_nfp' => null,
         'ref_cte' => null,
@@ -85,6 +88,7 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'ref_nfe' => false,
+		'ref_nfe_sig' => false,
 		'ref_nf' => false,
 		'ref_nfp' => false,
 		'ref_cte' => false,
@@ -168,6 +172,7 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'ref_nfe' => 'refNFe',
+        'ref_nfe_sig' => 'refNFeSig',
         'ref_nf' => 'refNF',
         'ref_nfp' => 'refNFP',
         'ref_cte' => 'refCTe',
@@ -181,6 +186,7 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'ref_nfe' => 'setRefNfe',
+        'ref_nfe_sig' => 'setRefNfeSig',
         'ref_nf' => 'setRefNf',
         'ref_nfp' => 'setRefNfp',
         'ref_cte' => 'setRefCte',
@@ -194,6 +200,7 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'ref_nfe' => 'getRefNfe',
+        'ref_nfe_sig' => 'getRefNfeSig',
         'ref_nf' => 'getRefNf',
         'ref_nfp' => 'getRefNfp',
         'ref_cte' => 'getRefCte',
@@ -258,6 +265,7 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('ref_nfe', $data ?? [], null);
+        $this->setIfExists('ref_nfe_sig', $data ?? [], null);
         $this->setIfExists('ref_nf', $data ?? [], null);
         $this->setIfExists('ref_nfp', $data ?? [], null);
         $this->setIfExists('ref_cte', $data ?? [], null);
@@ -331,6 +339,35 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['ref_nfe'] = $ref_nfe;
+
+        return $this;
+    }
+
+    /**
+     * Gets ref_nfe_sig
+     *
+     * @return string|null
+     */
+    public function getRefNfeSig()
+    {
+        return $this->container['ref_nfe_sig'];
+    }
+
+    /**
+     * Sets ref_nfe_sig
+     *
+     * @param string|null $ref_nfe_sig Referencia uma NF-e (modelo 55) emitida anteriormente pela sua Chave de Acesso com código numérico zerado, permitindo manter o sigilo da NF-e referenciada.
+     *
+     * @return self
+     */
+    public function setRefNfeSig($ref_nfe_sig)
+    {
+
+        if (is_null($ref_nfe_sig)) {
+            throw new \InvalidArgumentException('non-nullable ref_nfe_sig cannot be null');
+        }
+
+        $this->container['ref_nfe_sig'] = $ref_nfe_sig;
 
         return $this;
     }

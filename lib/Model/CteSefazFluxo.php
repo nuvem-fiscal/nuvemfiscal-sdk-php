@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazFluxo Class Doc Comment
  *
  * @category Class
+ * @description Previsão do fluxo da carga.  Preenchimento obrigatório para o modal aéreo.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -312,7 +313,7 @@ class CteSefazFluxo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_orig
      *
-     * @param string|null $x_orig Sigla ou código interno da Filial/Porto/Estação/ Aeroporto de Origem.  Observações para o modal aéreo:                - Preenchimento obrigatório para o modal aéreo.                - O código de três letras IATA do aeroporto de partida deverá ser incluído como primeira anotação. Quando não for possível, utilizar a sigla OACI.
+     * @param string|null $x_orig Sigla ou código interno da Filial/Porto/Estação/ Aeroporto de Origem.  Observações para o modal aéreo:  * Preenchimento obrigatório para o modal aéreo.
      *
      * @return self
      */
@@ -370,7 +371,7 @@ class CteSefazFluxo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_dest
      *
-     * @param string|null $x_dest Sigla ou código interno da Filial/Porto/Estação/Aeroporto de Destino.  Observações para o modal aéreo:                - Preenchimento obrigatório para o modal aéreo.                - Deverá ser incluído o código de três letras IATA do aeroporto de destino. Quando não for possível, utilizar a sigla OACI.
+     * @param string|null $x_dest Sigla ou código interno da Filial/Porto/Estação/Aeroporto de Destino.  Observações para o modal aéreo:  * Preenchimento obrigatório para o modal aéreo.
      *
      * @return self
      */

@@ -1184,7 +1184,7 @@ void (empty response body)
 ## `listarEmpresas()`
 
 ```php
-listarEmpresas($top, $skip, $cpf_cnpj): \NuvemFiscal\Model\EmpresaListagem
+listarEmpresas($top, $skip, $inlinecount, $cpf_cnpj): \NuvemFiscal\Model\EmpresaListagem
 ```
 
 Consultar empresas
@@ -1213,12 +1213,13 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$top = 56; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: `10`.
-$skip = 56; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
+$top = 10; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.
+$skip = 0; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
+$inlinecount = True; // bool | Inclui no JSON de resposta, na propriedade `@count`, o número total de registros que o filtro retornaria, independente dos filtros de paginação.
 $cpf_cnpj = 'cpf_cnpj_example'; // string | Filtrar pelo CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 
 try {
-    $result = $apiInstance->listarEmpresas($top, $skip, $cpf_cnpj);
+    $result = $apiInstance->listarEmpresas($top, $skip, $inlinecount, $cpf_cnpj);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmpresaApi->listarEmpresas: ', $e->getMessage(), PHP_EOL;
@@ -1229,8 +1230,9 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. | [optional] |
-| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] |
+| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100. | [optional] [default to 10] |
+| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] [default to 0] |
+| **inlinecount** | **bool**| Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. | [optional] |
 | **cpf_cnpj** | **string**| Filtrar pelo CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | [optional] |
 
 ### Tipo do retorno

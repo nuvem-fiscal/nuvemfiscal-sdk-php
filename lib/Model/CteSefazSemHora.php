@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazSemHora Class Doc Comment
  *
  * @category Class
+ * @description Entrega sem hora definida.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -294,7 +295,7 @@ class CteSefazSemHora implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_hor
      *
-     * @param int $tp_hor Tipo de hora.  0- Sem hora definida.
+     * @param int $tp_hor Tipo de hora.  * 0 - Sem hora definida
      *
      * @return self
      */

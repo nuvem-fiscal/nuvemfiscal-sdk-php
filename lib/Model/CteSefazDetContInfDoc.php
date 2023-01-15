@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazDetContInfDoc Class Doc Comment
  *
  * @category Class
+ * @description Informações dos documentos dos conteiners.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -298,7 +299,7 @@ class CteSefazDetContInfDoc implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets inf_nf
      *
-     * @param \NuvemFiscal\Model\CteSefazDetContInfDocInfNF[]|null $inf_nf Informações das NF.
+     * @param \NuvemFiscal\Model\CteSefazDetContInfDocInfNF[]|null $inf_nf inf_nf
      *
      * @return self
      */
@@ -327,7 +328,7 @@ class CteSefazDetContInfDoc implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets inf_nfe
      *
-     * @param \NuvemFiscal\Model\CteSefazDetContInfDocInfNFe[]|null $inf_nfe Informações das NFe.
+     * @param \NuvemFiscal\Model\CteSefazDetContInfDocInfNFe[]|null $inf_nfe inf_nfe
      *
      * @return self
      */

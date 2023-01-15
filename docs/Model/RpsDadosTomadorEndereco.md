@@ -11,7 +11,7 @@ Nome | Tipo | Descrição | Comentários
 **codigo_municipio** | **string** | Código IBGE do município. | [optional]
 **cidade** | **string** | Cidade. | [optional]
 **uf** | **string** | Sigla do estado. | [optional]
-**codigo_pais** | **string** | Código do país.  Valor padrão: &#x60;1058&#x60; | [optional]
+**codigo_pais** | **string** |  | [optional] [default to '1058']
 **pais** | **string** | Nome do país. | [optional]
 **cep** | **string** | CEP.  Utilize o valor sem máscara. | [optional]
 

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazEmit Class Doc Comment
  *
  * @category Class
+ * @description Identificação do Emitente do Manifesto.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -355,7 +356,7 @@ class MdfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cpf
      *
-     * @param string|null $cpf CPF do emitente.  Informar zeros não significativos.    Usar com série específica 920-969 para emitente pessoa física com inscrição estadual.  Poderá ser usado também para emissão do Regime Especial da Nota Fiscal Fácil.  Obrigatorio caso o emitente seja pessoa física.
+     * @param string|null $cpf CPF do emitente.  Informar zeros não significativos.  Usar com série específica 920-969 para emitente pessoa física com inscrição estadual.  Poderá ser usado também para emissão do Regime Especial da Nota Fiscal Fácil.  Obrigatorio caso o emitente seja pessoa física.
      *
      * @return self
      */

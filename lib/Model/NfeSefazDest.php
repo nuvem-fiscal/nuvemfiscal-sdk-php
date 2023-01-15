@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazDest Class Doc Comment
  *
  * @category Class
+ * @description Identificação do Destinatário.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -502,7 +503,7 @@ class NfeSefazDest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ind_ie_dest
      *
-     * @param int $ind_ie_dest Indicador da IE do destinatário:  1 – Contribuinte ICMSpagamento à vista;  2 – Contribuinte isento de inscrição;  9 – Não Contribuinte.
+     * @param int $ind_ie_dest Indicador da IE do destinatário:  * 1 - Contribuinte ICMSpagamento à vista  * 2 - Contribuinte isento de inscrição  * 9 - Não Contribuinte
      *
      * @return self
      */

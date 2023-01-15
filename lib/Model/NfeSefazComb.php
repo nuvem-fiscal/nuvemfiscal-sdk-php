@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazComb Class Doc Comment
  *
  * @category Class
+ * @description Informar apenas para operações com combustíveis líquidos.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -29,9 +29,9 @@ Nome | Tipo | Descrição | Comentários
 **v_seg** | **float** | Valor Total do Seguro. | [optional]
 **v_desc** | **float** | Valor do Desconto. | [optional]
 **v_outro** | **float** | Outras despesas acessórias. | [optional]
-**ind_tot** | **int** | Este campo deverá ser preenchido com:   0 – o valor do item (vProd) não compõe o valor total da NF-e (vProd)   1  – o valor do item (vProd) compõe o valor total da NF-e (vProd). |
-**di** | [**\NuvemFiscal\Model\NfeSefazDI[]**](NfeSefazDI.md) | Delcaração de Importação  (NT 2011/004). | [optional]
-**det_export** | [**\NuvemFiscal\Model\NfeSefazDetExport[]**](NfeSefazDetExport.md) | Detalhe da exportação. | [optional]
+**ind_tot** | **int** | Este campo deverá ser preenchido com:  * 0 - o valor do item (vProd) não compõe o valor total da NF-e (vProd)  * 1 - o valor do item (vProd) compõe o valor total da NF-e (vProd) |
+**di** | [**\NuvemFiscal\Model\NfeSefazDI[]**](NfeSefazDI.md) |  | [optional]
+**det_export** | [**\NuvemFiscal\Model\NfeSefazDetExport[]**](NfeSefazDetExport.md) |  | [optional]
 **x_ped** | **string** | pedido de compra - Informação de interesse do emissor para controle do B2B. | [optional]
 **n_item_ped** | **int** | Número do Item do Pedido de Compra - Identificação do número do item do pedido de Compra. | [optional]
 **n_fci** | **string** | Número de controle da FCI - Ficha de Conteúdo de Importação. | [optional]
@@ -40,7 +40,7 @@ Nome | Tipo | Descrição | Comentários
 **inf_prod_emb** | [**\NuvemFiscal\Model\NfeSefazInfProdEmb**](NfeSefazInfProdEmb.md) |  | [optional]
 **veic_prod** | [**\NuvemFiscal\Model\NfeSefazVeicProd**](NfeSefazVeicProd.md) |  | [optional]
 **med** | [**\NuvemFiscal\Model\NfeSefazMed**](NfeSefazMed.md) |  | [optional]
-**arma** | [**\NuvemFiscal\Model\NfeSefazArma[]**](NfeSefazArma.md) | Armamentos. | [optional]
+**arma** | [**\NuvemFiscal\Model\NfeSefazArma[]**](NfeSefazArma.md) |  | [optional]
 **comb** | [**\NuvemFiscal\Model\NfeSefazComb**](NfeSefazComb.md) |  | [optional]
 **n_recopi** | **string** | Número do RECOPI. | [optional]
 

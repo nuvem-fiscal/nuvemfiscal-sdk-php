@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazSemData Class Doc Comment
  *
  * @category Class
+ * @description Entrega sem data definida.  Esta opção é proibida para o modal aéreo.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -294,7 +295,7 @@ class CteSefazSemData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_per
      *
-     * @param int $tp_per Tipo de data/período programado para entrega.  0- Sem data definida.
+     * @param int $tp_per Tipo de data/período programado para entrega.  * 0 - Sem data definida
      *
      * @return self
      */

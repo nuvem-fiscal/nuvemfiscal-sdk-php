@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazTarifa Class Doc Comment
  *
  * @category Class
+ * @description Informações de tarifa.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -311,7 +312,7 @@ class CteSefazTarifa implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cl
      *
-     * @param string $cl Classe.  Preencher com:           M - Tarifa Mínima;           G - Tarifa Geral;           E - Tarifa Específica.
+     * @param string $cl Classe.  Preencher com:  * M - Tarifa Mínima  * G - Tarifa Geral  * E - Tarifa Específica
      *
      * @return self
      */

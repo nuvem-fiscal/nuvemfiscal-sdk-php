@@ -330,7 +330,7 @@ class CteSefazRodo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets occ
      *
-     * @param \NuvemFiscal\Model\CteSefazOcc[]|null $occ Ordens de Coleta associados.
+     * @param \NuvemFiscal\Model\CteSefazOcc[]|null $occ occ
      *
      * @return self
      */

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * EmpresaEndereco Class Doc Comment
  *
  * @category Class
+ * @description Endereço da empresa.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -294,8 +295,8 @@ class EmpresaEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('codigo_municipio', $data ?? [], null);
         $this->setIfExists('cidade', $data ?? [], null);
         $this->setIfExists('uf', $data ?? [], null);
-        $this->setIfExists('codigo_pais', $data ?? [], null);
-        $this->setIfExists('pais', $data ?? [], null);
+        $this->setIfExists('codigo_pais', $data ?? [], '1058');
+        $this->setIfExists('pais', $data ?? [], 'Brasil');
         $this->setIfExists('cep', $data ?? [], null);
     }
 
@@ -575,7 +576,7 @@ class EmpresaEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets codigo_pais
      *
-     * @param string|null $codigo_pais Código do país.  Valor padrão: `1058`
+     * @param string|null $codigo_pais Código do país.
      *
      * @return self
      */
@@ -604,7 +605,7 @@ class EmpresaEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets pais
      *
-     * @param string|null $pais Nome do país.  Valor padrão: `Brasil`
+     * @param string|null $pais Nome do país.
      *
      * @return self
      */

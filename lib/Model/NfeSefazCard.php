@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazCard Class Doc Comment
  *
  * @category Class
+ * @description Grupo de Cartões.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -315,7 +316,7 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_integra
      *
-     * @param int $tp_integra Tipo de Integração do processo de pagamento com o sistema de automação da empresa/                   1=Pagamento integrado com o sistema de automação da empresa Ex. equipamento TEF , Comercio Eletronico                  2=Pagamento não integrado com o sistema de automação da empresa Ex: equipamento POS.
+     * @param int $tp_integra Tipo de Integração do processo de pagamento com o sistema de automação da empresa/  * 1 - Pagamento integrado com o sistema de automação da empresa Ex. equipamento TEF , Comercio Eletronico  * 2 - Pagamento não integrado com o sistema de automação da empresa Ex: equipamento POS
      *
      * @return self
      */

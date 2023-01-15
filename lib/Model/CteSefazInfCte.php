@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazInfCte Class Doc Comment
  *
  * @category Class
+ * @description Informações do CT-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -824,7 +825,7 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets aut_xml
      *
-     * @param \NuvemFiscal\Model\CteSefazAutXML[]|null $aut_xml Autorizados para download do XML do DF-e.  Informar CNPJ ou CPF. Preencher os zeros não significativos.
+     * @param \NuvemFiscal\Model\CteSefazAutXML[]|null $aut_xml aut_xml
      *
      * @return self
      */

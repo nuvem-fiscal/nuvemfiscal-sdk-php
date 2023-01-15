@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfLotacao Class Doc Comment
  *
  * @category Class
+ * @description Informações da carga lotação. Informar somente quando MDF-e for de carga lotação.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

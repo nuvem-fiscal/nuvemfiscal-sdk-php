@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazInfNFeSupl Class Doc Comment
  *
  * @category Class
+ * @description Informações suplementares Nota Fiscal.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

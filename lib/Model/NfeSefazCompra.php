@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazCompra Class Doc Comment
  *
  * @category Class
+ * @description Informações de compras  (Nota de Empenho, Pedido e Contrato).
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

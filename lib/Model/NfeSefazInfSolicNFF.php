@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazInfSolicNFF Class Doc Comment
  *
  * @category Class
+ * @description Grupo para informações da solicitação da NFF.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

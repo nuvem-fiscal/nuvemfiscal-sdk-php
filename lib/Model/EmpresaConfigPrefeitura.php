@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * EmpresaConfigPrefeitura Class Doc Comment
  *
  * @category Class
+ * @description Dados adicionais para comunicação com a prefeitura. Essa validação é  dinâmica, de acordo com a necessidade de cada município.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

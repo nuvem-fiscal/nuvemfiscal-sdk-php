@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazComData Class Doc Comment
  *
  * @category Class
+ * @description Entrega com data definida.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -304,7 +305,7 @@ class CteSefazComData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_per
      *
-     * @param int $tp_per Tipo de data/período programado para entrega.  Preencher com:                    1-Na data;                    2-Até a data;                    3-A partir da data.
+     * @param int $tp_per Tipo de data/período programado para entrega.  Preencher com:  * 1 - Na data  * 2 - Até a data  * 3 - A partir da data
      *
      * @return self
      */

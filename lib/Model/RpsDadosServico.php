@@ -398,7 +398,7 @@ class RpsDadosServico implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets iss_retido
      *
-     * @param bool|null $iss_retido Reter ISSQN.  Valor padrão: `false`
+     * @param bool|null $iss_retido Reter ISSQN.
      *
      * @return self
      */
@@ -427,7 +427,7 @@ class RpsDadosServico implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets responsavel_retencao
      *
-     * @param int|null $responsavel_retencao Responsável pela retenção:  0 - Prestador;  1 - Tomador;  2 - Intermediário.    Valor padrão: `0`
+     * @param int|null $responsavel_retencao Responsável pela retenção:  * 0 - Prestador;  * 1 - Tomador;  * 2 - Intermediário.
      *
      * @return self
      */
@@ -630,7 +630,7 @@ class RpsDadosServico implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tipo_tributacao
      *
-     * @param int|null $tipo_tributacao Tipo de Tributação do Serviço:  1 - Isento de ISS  2 - Imune  3 - Não Incidência no Município  4 - Não Tributável  5 - Retido  6 - Tributável Dentro do Município  7 - Tributável Fora do Município  8 - Tributável Dentro do Município pelo tomador    Valor padrão: `6`
+     * @param int|null $tipo_tributacao Tipo de Tributação do Serviço:  * 1 - Isento de ISS  * 2 - Imune  * 3 - Não Incidência no Município  * 4 - Não Tributável  * 5 - Retido  * 6 - Tributável Dentro do Município  * 7 - Tributável Fora do Município  * 8 - Tributável Dentro do Município pelo tomador
      *
      * @return self
      */
@@ -659,7 +659,7 @@ class RpsDadosServico implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets exigibilidade_iss
      *
-     * @param int|null $exigibilidade_iss Exigibilidade do ISS:  1 - Exigível  2 - Não Incidência  3 - Isenção  4 - Exportação  5 - Imunidade  6 - Suspenso por Decisão Judicial  7 - Suspenso por Processo Administrativo    Valor padrão: `1`
+     * @param int|null $exigibilidade_iss Exigibilidade do ISS:  * 1 - Exigível  * 2 - Não Incidência  * 3 - Isenção  * 4 - Exportação  * 5 - Imunidade  * 6 - Suspenso por Decisão Judicial  * 7 - Suspenso por Processo Administrativo
      *
      * @return self
      */
@@ -775,7 +775,7 @@ class RpsDadosServico implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets quantidade
      *
-     * @param float|null $quantidade Quantidade dos serviços prestados.  Valor padrão: `1`
+     * @param float|null $quantidade Quantidade dos serviços prestados.
      *
      * @return self
      */

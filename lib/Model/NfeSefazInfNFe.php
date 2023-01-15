@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazInfNFe Class Doc Comment
  *
  * @category Class
+ * @description Informações da Nota Fiscal eletrônica.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -684,7 +685,7 @@ class NfeSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets aut_xml
      *
-     * @param \NuvemFiscal\Model\NfeSefazAutXML[]|null $aut_xml Pessoas autorizadas para o download do XML da NF-e.
+     * @param \NuvemFiscal\Model\NfeSefazAutXML[]|null $aut_xml aut_xml
      *
      * @return self
      */
@@ -713,7 +714,7 @@ class NfeSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets det
      *
-     * @param \NuvemFiscal\Model\NfeSefazDet[] $det Dados dos detalhes da NF-e.
+     * @param \NuvemFiscal\Model\NfeSefazDet[] $det det
      *
      * @return self
      */

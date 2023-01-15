@@ -5457,17 +5457,18 @@ class EmpresaApi
      *
      * Consultar empresas
      *
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\EmpresaListagem
      */
-    public function listarEmpresas($top = null, $skip = null, $cpf_cnpj = null)
+    public function listarEmpresas($top = 10, $skip = 0, $inlinecount = null, $cpf_cnpj = null)
     {
-        list($response) = $this->listarEmpresasWithHttpInfo($top, $skip, $cpf_cnpj);
+        list($response) = $this->listarEmpresasWithHttpInfo($top, $skip, $inlinecount, $cpf_cnpj);
         return $response;
     }
 
@@ -5476,17 +5477,18 @@ class EmpresaApi
      *
      * Consultar empresas
      *
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\EmpresaListagem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listarEmpresasWithHttpInfo($top = null, $skip = null, $cpf_cnpj = null)
+    public function listarEmpresasWithHttpInfo($top = 10, $skip = 0, $inlinecount = null, $cpf_cnpj = null)
     {
-        $request = $this->listarEmpresasRequest($top, $skip, $cpf_cnpj);
+        $request = $this->listarEmpresasRequest($top, $skip, $inlinecount, $cpf_cnpj);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5581,16 +5583,17 @@ class EmpresaApi
      *
      * Consultar empresas
      *
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarEmpresasAsync($top = null, $skip = null, $cpf_cnpj = null)
+    public function listarEmpresasAsync($top = 10, $skip = 0, $inlinecount = null, $cpf_cnpj = null)
     {
-        return $this->listarEmpresasAsyncWithHttpInfo($top, $skip, $cpf_cnpj)
+        return $this->listarEmpresasAsyncWithHttpInfo($top, $skip, $inlinecount, $cpf_cnpj)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5603,17 +5606,18 @@ class EmpresaApi
      *
      * Consultar empresas
      *
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarEmpresasAsyncWithHttpInfo($top = null, $skip = null, $cpf_cnpj = null)
+    public function listarEmpresasAsyncWithHttpInfo($top = 10, $skip = 0, $inlinecount = null, $cpf_cnpj = null)
     {
         $returnType = '\NuvemFiscal\Model\EmpresaListagem';
-        $request = $this->listarEmpresasRequest($top, $skip, $cpf_cnpj);
+        $request = $this->listarEmpresasRequest($top, $skip, $inlinecount, $cpf_cnpj);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5654,15 +5658,17 @@ class EmpresaApi
     /**
      * Create request for operation 'listarEmpresas'
      *
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listarEmpresasRequest($top = null, $skip = null, $cpf_cnpj = null)
+    public function listarEmpresasRequest($top = 10, $skip = 0, $inlinecount = null, $cpf_cnpj = null)
     {
+
 
 
 
@@ -5688,6 +5694,15 @@ class EmpresaApi
             $skip,
             '$skip', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $inlinecount,
+            '$inlinecount', // param base name
+            'boolean', // openApiType
             '', // style
             false, // explode
             false // required

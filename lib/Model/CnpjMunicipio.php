@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CnpjMunicipio Class Doc Comment
  *
  * @category Class
+ * @description Município de jurisdição onde se encontra o estabelecimento.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

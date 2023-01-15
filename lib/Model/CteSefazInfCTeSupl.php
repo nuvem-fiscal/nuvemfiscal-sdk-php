@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazInfCTeSupl Class Doc Comment
  *
  * @category Class
+ * @description Informações suplementares do CT-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

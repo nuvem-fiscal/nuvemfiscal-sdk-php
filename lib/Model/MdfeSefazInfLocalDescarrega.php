@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfLocalDescarrega Class Doc Comment
  *
  * @category Class
+ * @description Informações da localização de descarregamento do MDF-e de carga lotação.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

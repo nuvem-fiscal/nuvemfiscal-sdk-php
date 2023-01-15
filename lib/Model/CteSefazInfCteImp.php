@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazInfCteImp Class Doc Comment
  *
  * @category Class
+ * @description Informações relativas aos Impostos.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

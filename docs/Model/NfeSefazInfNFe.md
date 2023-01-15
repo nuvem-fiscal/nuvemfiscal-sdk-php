@@ -12,8 +12,8 @@ Nome | Tipo | Descrição | Comentários
 **dest** | [**\NuvemFiscal\Model\NfeSefazDest**](NfeSefazDest.md) |  | [optional]
 **retirada** | [**\NuvemFiscal\Model\NfeSefazLocal**](NfeSefazLocal.md) |  | [optional]
 **entrega** | [**\NuvemFiscal\Model\NfeSefazLocal**](NfeSefazLocal.md) |  | [optional]
-**aut_xml** | [**\NuvemFiscal\Model\NfeSefazAutXML[]**](NfeSefazAutXML.md) | Pessoas autorizadas para o download do XML da NF-e. | [optional]
-**det** | [**\NuvemFiscal\Model\NfeSefazDet[]**](NfeSefazDet.md) | Dados dos detalhes da NF-e. |
+**aut_xml** | [**\NuvemFiscal\Model\NfeSefazAutXML[]**](NfeSefazAutXML.md) |  | [optional]
+**det** | [**\NuvemFiscal\Model\NfeSefazDet[]**](NfeSefazDet.md) |  |
 **total** | [**\NuvemFiscal\Model\NfeSefazTotal**](NfeSefazTotal.md) |  |
 **transp** | [**\NuvemFiscal\Model\NfeSefazTransp**](NfeSefazTransp.md) |  |
 **cobr** | [**\NuvemFiscal\Model\NfeSefazCobr**](NfeSefazCobr.md) |  | [optional]

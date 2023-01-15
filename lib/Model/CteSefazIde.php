@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazIde Class Doc Comment
  *
  * @category Class
+ * @description Identificação do CT-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -826,7 +827,7 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_imp
      *
-     * @param int $tp_imp Formato de impressão do DACTE.  Preencher com: 1 - Retrato; 2 - Paisagem.
+     * @param int $tp_imp Formato de impressão do DACTE:  * 1 - Retrato  * 2 - Paisagem
      *
      * @return self
      */
@@ -855,7 +856,7 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_emis
      *
-     * @param int $tp_emis Forma de emissão do CT-e.  Preencher com:  1 - Normal;   3-Regime Especial NFF;  4-EPEC pela SVC; 5 - Contingência FSDA;   7 - Autorização pela SVC-RS;    8 - Autorização pela SVC-SP.
+     * @param int $tp_emis Forma de emissão do CT-e.  Preencher com:  * 1 - Normal  * 3 - Regime Especial NFF  * 4 - EPEC pela SVC  * 5 - Contingência FSDA  * 7 - Autorização pela SVC-RS  * 8 - Autorização pela SVC-SP
      *
      * @return self
      */
@@ -913,7 +914,7 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_amb
      *
-     * @param int|null $tp_amb Tipo do Ambiente.  Preencher com:1 - Produção; 2 - Homologação.
+     * @param int|null $tp_amb Tipo do Ambiente:  * 1 - Produção  * 2 - Homologação
      *
      * @return self
      */
@@ -942,7 +943,7 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_cte
      *
-     * @param int $tp_cte Tipo do CT-e.  Preencher com:   0 - CT-e Normal;   1 - CT-e de Complemento de Valores; 2 - CT-e de Anulação;   3 - CT-e de Substituição.
+     * @param int $tp_cte Tipo do CT-e.  Preencher com:  * 0 - CT-e Normal  * 1 - CT-e de Complemento de Valores  * 2 - CT-e de Anulação  * 3 - CT-e de Substituição
      *
      * @return self
      */
@@ -971,7 +972,7 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets proc_emi
      *
-     * @param int $proc_emi Identificador do processo de emissão do CT-e.  Preencher com:              0 - emissão de CT-e com aplicativo do contribuinte;             3- emissão CT-e pelo contribuinte com aplicativo fornecido pelo SEBRAE.
+     * @param int $proc_emi Identificador do processo de emissão do CT-e.  Preencher com:  * 0 - emissão de CT-e com aplicativo do contribuinte  * 3 - emissão CT-e pelo contribuinte com aplicativo fornecido pelo SEBRAE
      *
      * @return self
      */
@@ -1145,7 +1146,7 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets modal
      *
-     * @param string $modal Modal.  Preencher com:01-Rodoviário;  02-Aéreo;03-Aquaviário;04-Ferroviário;05-Dutoviário;06-Multimodal;.
+     * @param string $modal Modal. Preencher com:  * 01 - Rodoviário  * 02 - Aéreo  * 03 - Aquaviário  * 04 - Ferroviário  * 05 - Dutoviário  * 06 - Multimodal
      *
      * @return self
      */
@@ -1174,7 +1175,7 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_serv
      *
-     * @param int $tp_serv Tipo do Serviço.  Preencher com:   0 - Normal;1 - Subcontratação;  2 - Redespacho;3 - Redespacho Intermediário; 4 - Serviço Vinculado a Multimodal.
+     * @param int $tp_serv Tipo do Serviço.  Preencher com:  * 0 - Normal  * 1 - Subcontratação  * 2 - Redespacho  * 3 - Redespacho Intermediário  * 4 - Serviço Vinculado a Multimodal
      *
      * @return self
      */
@@ -1377,7 +1378,7 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets retira
      *
-     * @param int $retira Indicador se o Recebedor retira no Aeroporto, Filial, Porto ou Estação de Destino?.  Preencher com: 0 - sim; 1 - não.
+     * @param int $retira Indicador se o Recebedor retira no Aeroporto, Filial, Porto ou Estação de Destino? Preencher com:  * 0 - Sim  * 1 - Não
      *
      * @return self
      */
@@ -1435,7 +1436,7 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ind_ie_toma
      *
-     * @param int $ind_ie_toma Indicador do papel do tomador na prestação do serviço:  1 – Contribuinte ICMS;  2 – Contribuinte isento de inscrição;  9 – Não Contribuinte.  Aplica-se ao tomador que for indicado no toma3 ou toma4.
+     * @param int $ind_ie_toma Indicador do papel do tomador na prestação do serviço:  * 1 - Contribuinte ICMS  * 2 - Contribuinte isento de inscrição  * 9 - Não Contribuinte  Aplica-se ao tomador que for indicado no toma3 ou toma4.
      *
      * @return self
      */

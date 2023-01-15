@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazICMS60 Class Doc Comment
  *
  * @category Class
+ * @description Tributação pelo ICMS60 - ICMS cobrado por substituição tributária.Responsabilidade do recolhimento do ICMS atribuído ao tomador ou 3º por ST.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -331,7 +332,7 @@ class CteSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cst
      *
-     * @param string $cst Classificação Tributária do Serviço.  60 - ICMS cobrado por substituição tributária.
+     * @param string $cst Classificação Tributária do Serviço.  * 60 - ICMS cobrado por substituição tributária
      *
      * @return self
      */
@@ -389,7 +390,7 @@ class CteSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets v_icmsst_ret
      *
-     * @param float $v_icmsst_ret Valor do ICMS ST retido.  Resultado da multiplicação do “vBCSTRet” x “pICMSSTRet” – que será valor do ICMS a ser retido pelo Substituto. Podendo o valor do ICMS a ser retido efetivamente, sofrer ajustes conforme a opção tributaria do transportador substituído.
+     * @param float $v_icmsst_ret Valor do ICMS ST retido.  Resultado da multiplicação do “vBCSTRet” x “pICMSSTRet” - que será valor do ICMS a ser retido pelo Substituto. Podendo o valor do ICMS a ser retido efetivamente, sofrer ajustes conforme a opção tributaria do transportador substituído.
      *
      * @return self
      */

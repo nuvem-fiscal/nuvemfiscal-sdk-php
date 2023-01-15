@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfMunDescarga Class Doc Comment
  *
  * @category Class
+ * @description Informações dos Municípios de descarregamento.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -383,7 +384,7 @@ class MdfeSefazInfMunDescarga implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets inf_cte
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfCTe[]|null $inf_cte Conhecimentos de Tranporte - usar este grupo quando for prestador de serviço de transporte.
+     * @param \NuvemFiscal\Model\MdfeSefazInfCTe[]|null $inf_cte inf_cte
      *
      * @return self
      */
@@ -412,7 +413,7 @@ class MdfeSefazInfMunDescarga implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets inf_nfe
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfNFe[]|null $inf_nfe Nota Fiscal Eletronica.
+     * @param \NuvemFiscal\Model\MdfeSefazInfNFe[]|null $inf_nfe inf_nfe
      *
      * @return self
      */
@@ -441,7 +442,7 @@ class MdfeSefazInfMunDescarga implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets inf_mdfe_transp
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfMDFeTransp[]|null $inf_mdfe_transp Manifesto Eletrônico de Documentos Fiscais. Somente para modal Aquaviário (vide regras MOC).
+     * @param \NuvemFiscal\Model\MdfeSefazInfMDFeTransp[]|null $inf_mdfe_transp inf_mdfe_transp
      *
      * @return self
      */

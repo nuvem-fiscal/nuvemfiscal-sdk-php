@@ -332,7 +332,7 @@ class NfeSefazIPITrib implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cst
      *
-     * @param string $cst Código da Situação Tributária do IPI:  00-Entrada com recuperação de crédito  49 - Outras entradas  50-Saída tributada  99-Outras saídas.
+     * @param string $cst Código da Situação Tributária do IPI:  * 00 - Entrada com recuperação de crédito  * 49 - Outras entradas  * 50 - Saída tributada  * 99 - Outras saídas
      *
      * @return self
      */

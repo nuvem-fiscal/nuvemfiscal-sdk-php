@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazTrafMut Class Doc Comment
  *
  * @category Class
+ * @description Detalhamento de informações para o tráfego mútuo.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -328,7 +329,7 @@ class CteSefazTrafMut implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets resp_fat
      *
-     * @param int $resp_fat Responsável pelo Faturamento.  Preencher com:            1-Ferrovia de origem;            2-Ferrovia de destino.
+     * @param int $resp_fat Responsável pelo Faturamento.  Preencher com:  * 1 - Ferrovia de origem  * 2 - Ferrovia de destino
      *
      * @return self
      */
@@ -357,7 +358,7 @@ class CteSefazTrafMut implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ferr_emi
      *
-     * @param int $ferr_emi Ferrovia Emitente do CTe.  Preencher com:            1-Ferrovia de origem;            2-Ferrovia de destino.
+     * @param int $ferr_emi Ferrovia Emitente do CTe.  Preencher com:  * 1 - Ferrovia de origem  * 2 - Ferrovia de destino
      *
      * @return self
      */
@@ -444,7 +445,7 @@ class CteSefazTrafMut implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ferro_env
      *
-     * @param \NuvemFiscal\Model\CteSefazFerroEnv[]|null $ferro_env Informações das Ferrovias Envolvidas.
+     * @param \NuvemFiscal\Model\CteSefazFerroEnv[]|null $ferro_env ferro_env
      *
      * @return self
      */

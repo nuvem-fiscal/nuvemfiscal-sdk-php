@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazRespTec Class Doc Comment
  *
  * @category Class
+ * @description Informações do Responsável Técnico pela emissão do DF-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -483,7 +484,7 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hash_csrt
      *
-     * @param string|null $hash_csrt Hash do token do código de segurança do responsável técnico.  O hashCSRT é o resultado das funções SHA-1 e base64 do token CSRT fornecido pelo fisco + chave de acesso do DF-e. (Implementação em futura NT)    Observação: 28 caracteres são representados no schema como 20 bytes do tipo base64Binary.
+     * @param string|null $hash_csrt Hash do token do código de segurança do responsável técnico.  O hashCSRT é o resultado das funções SHA-1 e base64 do token CSRT fornecido pelo fisco + chave de acesso do DF-e. (Implementação em futura NT)  Observação: 28 caracteres são representados no schema como 20 bytes do tipo base64Binary.
      *
      * @return self
      */

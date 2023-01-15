@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazInfCarga Class Doc Comment
  *
  * @category Class
+ * @description Informações da Carga do CT-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -412,7 +413,7 @@ class CteSefazInfCarga implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_q
      *
-     * @param \NuvemFiscal\Model\CteSefazInfQ[] $inf_q Informações de quantidades da Carga do CT-e.  Para o Aéreo é obrigatório o preenchimento desse campo da seguinte forma.  1 - Peso Bruto, sempre em quilogramas (obrigatório);  2 - Peso Cubado; sempre em quilogramas;  3 - Quantidade de volumes, sempre em unidades (obrigatório);  4 - Cubagem, sempre em metros cúbicos (obrigatório apenas quando for impossível preencher as dimensões da(s) embalagem(ens) na tag xDime do leiaute do Aéreo).
+     * @param \NuvemFiscal\Model\CteSefazInfQ[] $inf_q inf_q
      *
      * @return self
      */

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazInfCTeNorm Class Doc Comment
  *
  * @category Class
+ * @description Grupo de informações do CT-e Normal e Substituto.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -469,7 +470,7 @@ class CteSefazInfCTeNorm implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets veic_novos
      *
-     * @param \NuvemFiscal\Model\CteSefazVeicNovos[]|null $veic_novos informações dos veículos transportados.
+     * @param \NuvemFiscal\Model\CteSefazVeicNovos[]|null $veic_novos veic_novos
      *
      * @return self
      */

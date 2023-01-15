@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CnpjSituacaoEspecial Class Doc Comment
  *
  * @category Class
+ * @description Situação especial da empresa.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfEmbComb Class Doc Comment
  *
  * @category Class
+ * @description Informações das Embarcações do Comboio.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -183,14 +183,20 @@ Classe | Método | Endpoint | Descrição
 *NfseApi* | [**consultarLoteNfse**](docs/Api/NfseApi.md#consultarlotenfse) | **GET** /nfse/lotes/{id} | Consultar lote de NFS-e
 *NfseApi* | [**consultarNfse**](docs/Api/NfseApi.md#consultarnfse) | **GET** /nfse/{id} | Consultar NFS-e
 *NfseApi* | [**emitirLoteNfse**](docs/Api/NfseApi.md#emitirlotenfse) | **POST** /nfse/lotes | Emitir lote de NFS-e
+*NfseApi* | [**emitirLoteNfseDps**](docs/Api/NfseApi.md#emitirlotenfsedps) | **POST** /nfse/dps/lotes | Emitir lote de NFS-e
 *NfseApi* | [**emitirNfse**](docs/Api/NfseApi.md#emitirnfse) | **POST** /nfse | Emitir NFS-e
+*NfseApi* | [**emitirNfseDps**](docs/Api/NfseApi.md#emitirnfsedps) | **POST** /nfse/dps | Emitir NFS-e
 *NfseApi* | [**listarLotesNfse**](docs/Api/NfseApi.md#listarlotesnfse) | **GET** /nfse/lotes | Listar lotes de NFS-e
 *NfseApi* | [**listarNfse**](docs/Api/NfseApi.md#listarnfse) | **GET** /nfse | Listar NFS-e
 
 ## Documentação dos DTOs
 
+- [AtvEvento](docs/Model/AtvEvento.md)
+- [BeneficioMunicipal](docs/Model/BeneficioMunicipal.md)
+- [CServ](docs/Model/CServ.md)
 - [CepEndereco](docs/Model/CepEndereco.md)
 - [CnpjCnae](docs/Model/CnpjCnae.md)
+- [CnpjCnaeSecundario](docs/Model/CnpjCnaeSecundario.md)
 - [CnpjEmpresa](docs/Model/CnpjEmpresa.md)
 - [CnpjEndereco](docs/Model/CnpjEndereco.md)
 - [CnpjListagem](docs/Model/CnpjListagem.md)
@@ -204,6 +210,7 @@ Classe | Método | Endpoint | Descrição
 - [CnpjSituacaoCadastral](docs/Model/CnpjSituacaoCadastral.md)
 - [CnpjSituacaoEspecial](docs/Model/CnpjSituacaoEspecial.md)
 - [CnpjTelefone](docs/Model/CnpjTelefone.md)
+- [ComExterior](docs/Model/ComExterior.md)
 - [ContaCota](docs/Model/ContaCota.md)
 - [ContaCotaListagem](docs/Model/ContaCotaListagem.md)
 - [CteCartaCorrecao](docs/Model/CteCartaCorrecao.md)
@@ -303,6 +310,7 @@ Classe | Método | Endpoint | Descrição
 - [CteSefazUnidadeTransp](docs/Model/CteSefazUnidadeTransp.md)
 - [CteSefazVPrest](docs/Model/CteSefazVPrest.md)
 - [CteSefazVeicNovos](docs/Model/CteSefazVeicNovos.md)
+- [DPS](docs/Model/DPS.md)
 - [Dfe](docs/Model/Dfe.md)
 - [DfeAutorEvento](docs/Model/DfeAutorEvento.md)
 - [DfeAutorizacao](docs/Model/DfeAutorizacao.md)
@@ -316,7 +324,9 @@ Classe | Método | Endpoint | Descrição
 - [DfePedidoInutilizacao](docs/Model/DfePedidoInutilizacao.md)
 - [DfeRecibo](docs/Model/DfeRecibo.md)
 - [DfeSefazStatus](docs/Model/DfeSefazStatus.md)
-- [Dps](docs/Model/Dps.md)
+- [DocDedRed](docs/Model/DocDedRed.md)
+- [DocNFNFS](docs/Model/DocNFNFS.md)
+- [DocOutNFSe](docs/Model/DocOutNFSe.md)
 - [Empresa](docs/Model/Empresa.md)
 - [EmpresaCertificado](docs/Model/EmpresaCertificado.md)
 - [EmpresaConfigCte](docs/Model/EmpresaConfigCte.md)
@@ -325,11 +335,32 @@ Classe | Método | Endpoint | Descrição
 - [EmpresaConfigNfceSefaz](docs/Model/EmpresaConfigNfceSefaz.md)
 - [EmpresaConfigNfe](docs/Model/EmpresaConfigNfe.md)
 - [EmpresaConfigNfse](docs/Model/EmpresaConfigNfse.md)
+- [EmpresaConfigNfseRegTrib](docs/Model/EmpresaConfigNfseRegTrib.md)
 - [EmpresaConfigPrefeitura](docs/Model/EmpresaConfigPrefeitura.md)
 - [EmpresaConfigRps](docs/Model/EmpresaConfigRps.md)
 - [EmpresaEndereco](docs/Model/EmpresaEndereco.md)
 - [EmpresaListagem](docs/Model/EmpresaListagem.md)
 - [EmpresaPedidoCadastroCertificado](docs/Model/EmpresaPedidoCadastroCertificado.md)
+- [EnderExt](docs/Model/EnderExt.md)
+- [EnderExtSimples](docs/Model/EnderExtSimples.md)
+- [EnderNac](docs/Model/EnderNac.md)
+- [Endereco](docs/Model/Endereco.md)
+- [EnderecoSimples](docs/Model/EnderecoSimples.md)
+- [ExigSuspensa](docs/Model/ExigSuspensa.md)
+- [ExploracaoRodoviaria](docs/Model/ExploracaoRodoviaria.md)
+- [InfDPS](docs/Model/InfDPS.md)
+- [InfoCompl](docs/Model/InfoCompl.md)
+- [InfoDedRed](docs/Model/InfoDedRed.md)
+- [InfoFornecDocDedRed](docs/Model/InfoFornecDocDedRed.md)
+- [InfoIntermediario](docs/Model/InfoIntermediario.md)
+- [InfoObra](docs/Model/InfoObra.md)
+- [InfoPrestador](docs/Model/InfoPrestador.md)
+- [InfoTomador](docs/Model/InfoTomador.md)
+- [InfoTributacao](docs/Model/InfoTributacao.md)
+- [InfoValores](docs/Model/InfoValores.md)
+- [ListaDocDedRed](docs/Model/ListaDocDedRed.md)
+- [LocPrest](docs/Model/LocPrest.md)
+- [LocacaoSublocacao](docs/Model/LocacaoSublocacao.md)
 - [MdfeDocumentoVinculado](docs/Model/MdfeDocumentoVinculado.md)
 - [MdfeEncerramento](docs/Model/MdfeEncerramento.md)
 - [MdfeInclusaoCondutor](docs/Model/MdfeInclusaoCondutor.md)
@@ -506,7 +537,9 @@ Classe | Método | Endpoint | Descrição
 - [NfeSefazVol](docs/Model/NfeSefazVol.md)
 - [Nfse](docs/Model/Nfse.md)
 - [NfseCancelamento](docs/Model/NfseCancelamento.md)
+- [NfseDpsPedidoEmissao](docs/Model/NfseDpsPedidoEmissao.md)
 - [NfseListagem](docs/Model/NfseListagem.md)
+- [NfseLoteDpsPedidoEmissao](docs/Model/NfseLoteDpsPedidoEmissao.md)
 - [NfseMensagemRetorno](docs/Model/NfseMensagemRetorno.md)
 - [NfsePedidoCancelamento](docs/Model/NfsePedidoCancelamento.md)
 - [NfsePedidoEmissao](docs/Model/NfsePedidoEmissao.md)
@@ -525,6 +558,16 @@ Classe | Método | Endpoint | Descrição
 - [RpsPedidoEmissao](docs/Model/RpsPedidoEmissao.md)
 - [RpsPedidoEmissaoLote](docs/Model/RpsPedidoEmissaoLote.md)
 - [RpsServicoValores](docs/Model/RpsServicoValores.md)
+- [Serv](docs/Model/Serv.md)
+- [Substituicao](docs/Model/Substituicao.md)
+- [TribFederal](docs/Model/TribFederal.md)
+- [TribMunicipal](docs/Model/TribMunicipal.md)
+- [TribOutrosPisCofins](docs/Model/TribOutrosPisCofins.md)
+- [TribTotal](docs/Model/TribTotal.md)
+- [TribTotalMonet](docs/Model/TribTotalMonet.md)
+- [TribTotalPercent](docs/Model/TribTotalPercent.md)
+- [VDescCondIncond](docs/Model/VDescCondIncond.md)
+- [VServPrest](docs/Model/VServPrest.md)
 
 ## Autorização
 
@@ -554,6 +597,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `1.5.0`
-    - Versão do package: `1.3.0`
+- Versão da API: `2.0.0`
+    - Versão do package: `2.0.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

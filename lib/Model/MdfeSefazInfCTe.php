@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfCTe Class Doc Comment
  *
  * @category Class
+ * @description Conhecimentos de Tranporte - usar este grupo quando for prestador de serviço de transporte.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -416,7 +417,7 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_unid_transp
      *
-     * @param \NuvemFiscal\Model\MdfeSefazUnidadeTransp[]|null $inf_unid_transp Informações das Unidades de Transporte (Carreta/Reboque/Vagão).  Deve ser preenchido com as informações das unidades de transporte utilizadas.
+     * @param \NuvemFiscal\Model\MdfeSefazUnidadeTransp[]|null $inf_unid_transp inf_unid_transp
      *
      * @return self
      */
@@ -445,7 +446,7 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets peri
      *
-     * @param \NuvemFiscal\Model\MdfeSefazPeri[]|null $peri Preenchido quando for  transporte de produtos classificados pela ONU como perigosos.
+     * @param \NuvemFiscal\Model\MdfeSefazPeri[]|null $peri peri
      *
      * @return self
      */

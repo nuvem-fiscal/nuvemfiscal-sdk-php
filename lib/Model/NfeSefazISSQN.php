@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazISSQN Class Doc Comment
  *
  * @category Class
+ * @description ISSQN.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -707,7 +708,7 @@ class NfeSefazISSQN implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ind_iss
      *
-     * @param int $ind_iss Exibilidade do ISS:1-Exigível;2-Não incidente;3-Isenção;4-Exportação;5-Imunidade;6-Exig.Susp. Judicial;7-Exig.Susp. ADM.
+     * @param int $ind_iss Exibilidade do ISS:1-Exigível  * 2 - Não incidente  * 3 - Isenção  * 4 - Exportação  * 5 - Imunidade  * 6 - Exig.Susp. Judicial  * 7 - Exig.Susp. ADM
      *
      * @return self
      */
@@ -852,7 +853,7 @@ class NfeSefazISSQN implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ind_incentivo
      *
-     * @param int $ind_incentivo Indicador de Incentivo Fiscal. 1=Sim; 2=Não.
+     * @param int $ind_incentivo Indicador de Incentivo Fiscal. 1=Sim  * 2 - Não
      *
      * @return self
      */

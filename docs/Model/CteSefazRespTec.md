@@ -9,6 +9,6 @@ Nome | Tipo | Descrição | Comentários
 **email** | **string** | Email da pessoa jurídica a ser contatada. |
 **fone** | **string** | Telefone da pessoa jurídica a ser contatada.  Preencher com o Código DDD + número do telefone. |
 **id_csrt** | **int** | Identificador do código de segurança do responsável técnico.  Identificador do CSRT utilizado para geração do hash. | [optional]
-**hash_csrt** | **string** | Hash do token do código de segurança do responsável técnico.  O hashCSRT é o resultado das funções SHA-1 e base64 do token CSRT fornecido pelo fisco + chave de acesso do DF-e. (Implementação em futura NT)    Observação: 28 caracteres são representados no schema como 20 bytes do tipo base64Binary. | [optional]
+**hash_csrt** | **string** | Hash do token do código de segurança do responsável técnico.  O hashCSRT é o resultado das funções SHA-1 e base64 do token CSRT fornecido pelo fisco + chave de acesso do DF-e. (Implementação em futura NT)  Observação: 28 caracteres são representados no schema como 20 bytes do tipo base64Binary. | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

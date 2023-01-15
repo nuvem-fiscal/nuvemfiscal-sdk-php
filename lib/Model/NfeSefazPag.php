@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazPag Class Doc Comment
  *
  * @category Class
+ * @description Dados de Pagamento. Obrigatório apenas para (NFC-e) NT 2012/004.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -301,7 +302,7 @@ class NfeSefazPag implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets det_pag
      *
-     * @param \NuvemFiscal\Model\NfeSefazDetPag[] $det_pag Grupo de detalhamento da forma de pagamento.
+     * @param \NuvemFiscal\Model\NfeSefazDetPag[] $det_pag det_pag
      *
      * @return self
      */

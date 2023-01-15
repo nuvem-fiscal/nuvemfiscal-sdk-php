@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfContrato Class Doc Comment
  *
  * @category Class
+ * @description Grupo de informações do contrato entre transportador e contratante.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

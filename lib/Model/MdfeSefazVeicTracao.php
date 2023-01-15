@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazVeicTracao Class Doc Comment
  *
  * @category Class
+ * @description Dados do Veículo com a Tração.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -579,7 +580,7 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets condutor
      *
-     * @param \NuvemFiscal\Model\MdfeSefazCondutor[] $condutor Informações do(s) Condutor(es) do veículo.
+     * @param \NuvemFiscal\Model\MdfeSefazCondutor[] $condutor condutor
      *
      * @return self
      */
@@ -608,7 +609,7 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets tp_rod
      *
-     * @param string $tp_rod Tipo de Rodado.  Preencher com:           01 - Truck;           02 - Toco;           03 - Cavalo Mecânico;           04 - VAN;           05 - Utilitário;           06 - Outros.
+     * @param string $tp_rod Tipo de Rodado.  Preencher com:  * 01 - Truck  * 02 - Toco  * 03 - Cavalo Mecânico  * 04 - VAN  * 05 - Utilitário  * 06 - Outros
      *
      * @return self
      */
@@ -637,7 +638,7 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets tp_car
      *
-     * @param string $tp_car Tipo de Carroceria.  Preencher com:           00 - não aplicável;           01 - Aberta;           02 - Fechada/Baú;           03 - Granelera;           04 - Porta Container;           05 - Sider.
+     * @param string $tp_car Tipo de Carroceria.  Preencher com:  * 00 - não aplicável  * 01 - Aberta  * 02 - Fechada/Baú  * 03 - Granelera  * 04 - Porta Container  * 05 - Sider
      *
      * @return self
      */

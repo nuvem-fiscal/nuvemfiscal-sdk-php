@@ -18,7 +18,7 @@ Nome | Tipo | Descrição | Comentários
 **inf_cte_norm** | [**\NuvemFiscal\Model\CteSefazInfCTeNorm**](CteSefazInfCTeNorm.md) |  | [optional]
 **inf_cte_comp** | [**\NuvemFiscal\Model\CteSefazInfCteComp**](CteSefazInfCteComp.md) |  | [optional]
 **inf_cte_anu** | [**\NuvemFiscal\Model\CteSefazInfCteAnu**](CteSefazInfCteAnu.md) |  | [optional]
-**aut_xml** | [**\NuvemFiscal\Model\CteSefazAutXML[]**](CteSefazAutXML.md) | Autorizados para download do XML do DF-e.  Informar CNPJ ou CPF. Preencher os zeros não significativos. | [optional]
+**aut_xml** | [**\NuvemFiscal\Model\CteSefazAutXML[]**](CteSefazAutXML.md) |  | [optional]
 **inf_resp_tec** | [**\NuvemFiscal\Model\CteSefazRespTec**](CteSefazRespTec.md) |  | [optional]
 **inf_solic_nff** | [**\NuvemFiscal\Model\CteSefazInfSolicNFF**](CteSefazInfSolicNFF.md) |  | [optional]
 

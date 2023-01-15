@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazPISAliq Class Doc Comment
  *
  * @category Class
+ * @description Código de Situação Tributária do PIS.  * 01 - Operação Tributável - Base de Cálculo &#x3D; Valor da Operação Alíquota Normal (Cumulativo/Não Cumulativo)  * 02 - Operação Tributável - Base de Calculo &#x3D; Valor da Operação (Alíquota Diferenciada)
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -324,7 +325,7 @@ class NfeSefazPISAliq implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cst
      *
-     * @param string $cst Código de Situação Tributária do PIS.   01 – Operação Tributável - Base de Cálculo = Valor da Operação Alíquota Normal (Cumulativo/Não Cumulativo);  02 - Operação Tributável - Base de Calculo = Valor da Operação (Alíquota Diferenciada);.
+     * @param string $cst Código de Situação Tributária do PIS.  * 01 - Operação Tributável - Base de Cálculo = Valor da Operação Alíquota Normal (Cumulativo/Não Cumulativo)  * 02 - Operação Tributável - Base de Calculo = Valor da Operação (Alíquota Diferenciada)
      *
      * @return self
      */

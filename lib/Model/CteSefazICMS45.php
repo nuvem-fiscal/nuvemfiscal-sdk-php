@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazICMS45 Class Doc Comment
  *
  * @category Class
+ * @description ICMS  Isento, não Tributado ou diferido.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -294,7 +295,7 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cst
      *
-     * @param string $cst Classificação Tributária do Serviço.  Preencher com:          40 - ICMS isenção;          41 - ICMS não tributada;          51 - ICMS diferido.
+     * @param string $cst Classificação Tributária do Serviço.  Preencher com:  * 40 - ICMS isenção  * 41 - ICMS não tributada  * 51 - ICMS diferido
      *
      * @return self
      */

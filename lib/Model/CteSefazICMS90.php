@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazICMS90 Class Doc Comment
  *
  * @category Class
+ * @description ICMS Outros.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -338,7 +339,7 @@ class CteSefazICMS90 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cst
      *
-     * @param string $cst Classificação Tributária do Serviço.  90 - ICMS outros.
+     * @param string $cst Classificação Tributária do Serviço.  * 90 - ICMS outros
      *
      * @return self
      */

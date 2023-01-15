@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfMunCarrega Class Doc Comment
  *
  * @category Class
+ * @description Informações dos Municípios de Carregamento.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazRem Class Doc Comment
  *
  * @category Class
+ * @description Informações do Remetente das mercadorias transportadas pelo CT-e.  Poderá não ser informado para os CT-e de redespacho intermediário e serviço vinculado a multimodal. Nos demais casos deverá sempre ser informado.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -346,7 +347,7 @@ class CteSefazRem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cnpj
      *
-     * @param string|null $cnpj Número do CNPJ.  Em caso de empresa não estabelecida no Brasil, será informado o CNPJ com zeros.              Informar os zeros não significativos.
+     * @param string|null $cnpj Número do CNPJ.  Em caso de empresa não estabelecida no Brasil, será informado o CNPJ com zeros.  Informar os zeros não significativos.
      *
      * @return self
      */

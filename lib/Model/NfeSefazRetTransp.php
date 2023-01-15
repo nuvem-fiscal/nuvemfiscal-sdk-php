@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazRetTransp Class Doc Comment
  *
  * @category Class
+ * @description Dados da retenção  ICMS do Transporte.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

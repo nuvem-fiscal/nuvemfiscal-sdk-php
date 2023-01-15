@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazPISNT Class Doc Comment
  *
  * @category Class
+ * @description Código de Situação Tributária do PIS.  * 04 - Operação Tributável - Tributação Monofásica - (Alíquota Zero)  * 06 - Operação Tributável - Alíquota Zero  * 07 - Operação Isenta da contribuição  * 08 - Operação Sem Incidência da contribuição  * 09 - Operação com suspensão da contribuição
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -294,7 +295,7 @@ class NfeSefazPISNT implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cst
      *
-     * @param string $cst Código de Situação Tributária do PIS.  04 - Operação Tributável - Tributação Monofásica - (Alíquota Zero);  05 - Operação Tributável (ST);  06 - Operação Tributável - Alíquota Zero;  07 - Operação Isenta da contribuição;  08 - Operação Sem Incidência da contribuição;  09 - Operação com suspensão da contribuição;.
+     * @param string $cst Código de Situação Tributária do PIS.  * 04 - Operação Tributável - Tributação Monofásica - (Alíquota Zero)  * 05 - Operação Tributável (ST)  * 06 - Operação Tributável - Alíquota Zero  * 07 - Operação Isenta da contribuição  * 08 - Operação Sem Incidência da contribuição  * 09 - Operação com suspensão da contribuição
      *
      * @return self
      */

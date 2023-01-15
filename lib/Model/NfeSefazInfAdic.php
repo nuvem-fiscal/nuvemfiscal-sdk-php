@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazInfAdic Class Doc Comment
  *
  * @category Class
+ * @description Informações adicionais da NF-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -377,7 +378,7 @@ class NfeSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets obs_cont
      *
-     * @param \NuvemFiscal\Model\NfeSefazInfAdicObsCont[]|null $obs_cont Campo de uso livre do contribuinte  informar o nome do campo no atributo xCampo  e o conteúdo do campo no xTexto.
+     * @param \NuvemFiscal\Model\NfeSefazInfAdicObsCont[]|null $obs_cont obs_cont
      *
      * @return self
      */
@@ -406,7 +407,7 @@ class NfeSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets obs_fisco
      *
-     * @param \NuvemFiscal\Model\NfeSefazInfAdicObsFisco[]|null $obs_fisco Campo de uso exclusivo do Fisco  informar o nome do campo no atributo xCampo  e o conteúdo do campo no xTexto.
+     * @param \NuvemFiscal\Model\NfeSefazInfAdicObsFisco[]|null $obs_fisco obs_fisco
      *
      * @return self
      */
@@ -435,7 +436,7 @@ class NfeSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets proc_ref
      *
-     * @param \NuvemFiscal\Model\NfeSefazProcRef[]|null $proc_ref Grupo de informações do  processo referenciado.
+     * @param \NuvemFiscal\Model\NfeSefazProcRef[]|null $proc_ref proc_ref
      *
      * @return self
      */

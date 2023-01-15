@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazDup Class Doc Comment
  *
  * @category Class
+ * @description Dados das duplicatas NT 2011/004.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CnpjPais Class Doc Comment
  *
  * @category Class
+ * @description País.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

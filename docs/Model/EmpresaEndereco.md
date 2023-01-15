@@ -11,8 +11,8 @@ Nome | Tipo | Descrição | Comentários
 **codigo_municipio** | **string** | Código IBGE do município. |
 **cidade** | **string** | Cidade. | [optional]
 **uf** | **string** | Sigla do estado. |
-**codigo_pais** | **string** | Código do país.  Valor padrão: &#x60;1058&#x60; | [optional]
-**pais** | **string** | Nome do país.  Valor padrão: &#x60;Brasil&#x60; | [optional]
+**codigo_pais** | **string** | Código do país. | [optional] [default to '1058']
+**pais** | **string** | Nome do país. | [optional] [default to 'Brasil']
 **cep** | **string** | CEP.  Utilize o valor sem máscara. |
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

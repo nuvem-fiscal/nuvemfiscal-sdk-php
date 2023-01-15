@@ -6,8 +6,8 @@ Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
 **c_mun_descarga** | **string** | Código do Município de Descarregamento. |
 **x_mun_descarga** | **string** | Nome do Município de Descarregamento. |
-**inf_cte** | [**\NuvemFiscal\Model\MdfeSefazInfCTe[]**](MdfeSefazInfCTe.md) | Conhecimentos de Tranporte - usar este grupo quando for prestador de serviço de transporte. | [optional]
-**inf_nfe** | [**\NuvemFiscal\Model\MdfeSefazInfNFe[]**](MdfeSefazInfNFe.md) | Nota Fiscal Eletronica. | [optional]
-**inf_mdfe_transp** | [**\NuvemFiscal\Model\MdfeSefazInfMDFeTransp[]**](MdfeSefazInfMDFeTransp.md) | Manifesto Eletrônico de Documentos Fiscais. Somente para modal Aquaviário (vide regras MOC). | [optional]
+**inf_cte** | [**\NuvemFiscal\Model\MdfeSefazInfCTe[]**](MdfeSefazInfCTe.md) |  | [optional]
+**inf_nfe** | [**\NuvemFiscal\Model\MdfeSefazInfNFe[]**](MdfeSefazInfNFe.md) |  | [optional]
+**inf_mdfe_transp** | [**\NuvemFiscal\Model\MdfeSefazInfMDFeTransp[]**](MdfeSefazInfMDFeTransp.md) |  | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

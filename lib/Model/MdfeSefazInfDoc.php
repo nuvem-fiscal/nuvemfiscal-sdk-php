@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfDoc Class Doc Comment
  *
  * @category Class
+ * @description Informações dos Documentos fiscais vinculados ao manifesto.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -294,7 +295,7 @@ class MdfeSefazInfDoc implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_mun_descarga
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfMunDescarga[] $inf_mun_descarga Informações dos Municípios de descarregamento.
+     * @param \NuvemFiscal\Model\MdfeSefazInfMunDescarga[] $inf_mun_descarga inf_mun_descarga
      *
      * @return self
      */

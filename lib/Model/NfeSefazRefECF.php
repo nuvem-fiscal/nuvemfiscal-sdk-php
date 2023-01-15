@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazRefECF Class Doc Comment
  *
  * @category Class
+ * @description Grupo do Cupom Fiscal vinculado à NF-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -314,7 +315,7 @@ class NfeSefazRefECF implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mod
      *
-     * @param string $mod Código do modelo do Documento Fiscal   Preencher com \"2B\", quando se tratar de Cupom Fiscal emitido por máquina registradora (não ECF), com \"2C\", quando se tratar de Cupom Fiscal PDV, ou \"2D\", quando se tratar de Cupom Fiscal (emitido por ECF).
+     * @param string $mod Código do modelo do Documento Fiscal  Preencher com \"2B\", quando se tratar de Cupom Fiscal emitido por máquina registradora (não ECF), com \"2C\", quando se tratar de Cupom Fiscal PDV, ou \"2D\", quando se tratar de Cupom Fiscal (emitido por ECF).
      *
      * @return self
      */

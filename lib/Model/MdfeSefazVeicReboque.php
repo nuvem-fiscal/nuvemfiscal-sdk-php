@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazVeicReboque Class Doc Comment
  *
  * @category Class
+ * @description Dados dos reboques.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -562,7 +563,7 @@ class MdfeSefazVeicReboque implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets tp_car
      *
-     * @param string $tp_car Tipo de Carroceria.  Preencher com:           00 - não aplicável;           01 - Aberta;           02 - Fechada/Baú;           03 - Granelera;           04 - Porta Container;           05 - Sider.
+     * @param string $tp_car Tipo de Carroceria.  Preencher com:  * 00 - não aplicável  * 01 - Aberta  * 02 - Fechada/Baú  * 03 - Granelera  * 04 - Porta Container  * 05 - Sider
      *
      * @return self
      */

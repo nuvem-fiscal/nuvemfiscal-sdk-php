@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazIdDocAntEle Class Doc Comment
  *
  * @category Class
+ * @description Documentos de transporte anterior eletrônicos.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

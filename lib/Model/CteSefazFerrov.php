@@ -311,7 +311,7 @@ class CteSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_traf
      *
-     * @param int $tp_traf Tipo de Tráfego.  Preencher com:        0-Próprio;        1-Mútuo;        2-Rodoferroviário;        3-Rodoviário.
+     * @param int $tp_traf Tipo de Tráfego.  Preencher com:  * 0 - Próprio  * 1 - Mútuo  * 2 - Rodoferroviário  * 3 - Rodoviário
      *
      * @return self
      */

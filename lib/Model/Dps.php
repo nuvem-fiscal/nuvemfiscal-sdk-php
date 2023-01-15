@@ -1,6 +1,6 @@
 <?php
 /**
- * Dps
+ * DPS
  *
  * PHP version 7.4
  *
@@ -31,15 +31,16 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * Dps Class Doc Comment
+ * DPS Class Doc Comment
  *
  * @category Class
+ * @description Grupo de informações da DPS relativas ao serviço prestado.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Dps implements ModelInterface, ArrayAccess, \JsonSerializable
+class DPS implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +49,7 @@ class Dps implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Dps';
+    protected static $openAPIModelName = 'DPS';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +57,8 @@ class Dps implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'numero' => 'string',
-        'serie' => 'string'
+        'serie' => 'string',
+        'n_dps' => 'string'
     ];
 
     /**
@@ -69,9 +69,8 @@ class Dps implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'numero' => null,
-        'serie' => null
+        'serie' => null,
+        'n_dps' => null
     ];
 
     /**
@@ -80,9 +79,8 @@ class Dps implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-		'numero' => false,
-		'serie' => false
+        'serie' => false,
+		'n_dps' => false
     ];
 
     /**
@@ -161,9 +159,8 @@ class Dps implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'numero' => 'numero',
-        'serie' => 'serie'
+        'serie' => 'serie',
+        'n_dps' => 'nDPS'
     ];
 
     /**
@@ -172,9 +169,8 @@ class Dps implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'numero' => 'setNumero',
-        'serie' => 'setSerie'
+        'serie' => 'setSerie',
+        'n_dps' => 'setNDps'
     ];
 
     /**
@@ -183,9 +179,8 @@ class Dps implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'numero' => 'getNumero',
-        'serie' => 'getSerie'
+        'serie' => 'getSerie',
+        'n_dps' => 'getNDps'
     ];
 
     /**
@@ -245,9 +240,8 @@ class Dps implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('numero', $data ?? [], null);
         $this->setIfExists('serie', $data ?? [], null);
+        $this->setIfExists('n_dps', $data ?? [], null);
     }
 
     /**
@@ -293,64 +287,6 @@ class Dps implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets numero
-     *
-     * @return string|null
-     */
-    public function getNumero()
-    {
-        return $this->container['numero'];
-    }
-
-    /**
-     * Sets numero
-     *
-     * @param string|null $numero numero
-     *
-     * @return self
-     */
-    public function setNumero($numero)
-    {
-
-        if (is_null($numero)) {
-            throw new \InvalidArgumentException('non-nullable numero cannot be null');
-        }
-
-        $this->container['numero'] = $numero;
-
-        return $this;
-    }
-
-    /**
      * Gets serie
      *
      * @return string|null
@@ -363,7 +299,7 @@ class Dps implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets serie
      *
-     * @param string|null $serie serie
+     * @param string|null $serie Série do DPS.
      *
      * @return self
      */
@@ -375,6 +311,35 @@ class Dps implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['serie'] = $serie;
+
+        return $this;
+    }
+
+    /**
+     * Gets n_dps
+     *
+     * @return string|null
+     */
+    public function getNDps()
+    {
+        return $this->container['n_dps'];
+    }
+
+    /**
+     * Sets n_dps
+     *
+     * @param string|null $n_dps Número do DPS.
+     *
+     * @return self
+     */
+    public function setNDps($n_dps)
+    {
+
+        if (is_null($n_dps)) {
+            throw new \InvalidArgumentException('non-nullable n_dps cannot be null');
+        }
+
+        $this->container['n_dps'] = $n_dps;
 
         return $this;
     }

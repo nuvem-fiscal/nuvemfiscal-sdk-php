@@ -4,7 +4,7 @@
 
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
-**ind_pag** | **int** | Indicador da Forma de Pagamento:0-Pagamento à Vista;1-Pagamento à Prazo;. | [optional]
+**ind_pag** | **int** | Indicador da Forma de Pagamento:0-Pagamento à Vista  * 1 - Pagamento à Prazo | [optional]
 **t_pag** | **string** | Forma de Pagamento:. |
 **x_pag** | **string** | Descrição do Meio de Pagamento. | [optional]
 **v_pag** | **float** | Valor do Pagamento. Esta tag poderá ser omitida quando a tag tPag&#x3D;90 (Sem Pagamento), caso contrário deverá ser preenchida. |

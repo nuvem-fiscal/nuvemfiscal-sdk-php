@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazInfDoc Class Doc Comment
  *
  * @category Class
+ * @description Informações dos documentos transportados pelo CT-e  Opcional para Redespacho Intermediario e Serviço vinculado a multimodal.  Poderá não ser informado para os CT-e de redespacho intermediário e serviço vinculado a multimodal. Nos demais casos deverá sempre ser informado.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -305,7 +306,7 @@ class CteSefazInfDoc implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_nf
      *
-     * @param \NuvemFiscal\Model\CteSefazInfNF[]|null $inf_nf Informações das NF.  Este grupo deve ser informado quando o documento originário for NF.
+     * @param \NuvemFiscal\Model\CteSefazInfNF[]|null $inf_nf inf_nf
      *
      * @return self
      */
@@ -334,7 +335,7 @@ class CteSefazInfDoc implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_nfe
      *
-     * @param \NuvemFiscal\Model\CteSefazInfNFe[]|null $inf_nfe Informações das NF-e.
+     * @param \NuvemFiscal\Model\CteSefazInfNFe[]|null $inf_nfe inf_nfe
      *
      * @return self
      */
@@ -363,7 +364,7 @@ class CteSefazInfDoc implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_outros
      *
-     * @param \NuvemFiscal\Model\CteSefazInfOutros[]|null $inf_outros Informações dos demais documentos.
+     * @param \NuvemFiscal\Model\CteSefazInfOutros[]|null $inf_outros inf_outros
      *
      * @return self
      */

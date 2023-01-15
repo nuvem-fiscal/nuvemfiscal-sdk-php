@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazVeicProd Class Doc Comment
  *
  * @category Class
+ * @description Veículos novos.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -785,7 +786,7 @@ class NfeSefazVeicProd implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_comb
      *
-     * @param string $tp_comb Tipo de combustível-Tabela RENAVAM: 01-Álcool; 02-Gasolina; 03-Diesel; 16-Álcool/Gas.; 17-Gas./Álcool/GNV; 18-Gasolina/Elétrico.
+     * @param string $tp_comb Tipo de combustível-Tabela RENAVAM: 01-Álcool  * 02 - Gasolina  * 03 - Diesel  * 16 - Álcool/Gas  * 17 - Gas./Álcool/GNV  * 18 - Gasolina/Elétrico
      *
      * @return self
      */
@@ -1046,7 +1047,7 @@ class NfeSefazVeicProd implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets vin
      *
-     * @param string $vin Informa-se o veículo tem VIN (chassi) remarcado.  R-Remarcado  N-NormalVIN.
+     * @param string $vin Informa-se o veículo tem VIN (chassi) remarcado.  * R-Remarcado  * N-NormalVIN
      *
      * @return self
      */
@@ -1133,7 +1134,7 @@ class NfeSefazVeicProd implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_cor_denatran
      *
-     * @param string $c_cor_denatran Código da Cor Segundo as regras de pré-cadastro do DENATRAN: 01-AMARELO;02-AZUL;03-BEGE;04-BRANCA;05-CINZA;06-DOURADA;07-GRENA   08-LARANJA;09-MARROM;10-PRATA;11-PRETA;12-ROSA;13-ROXA;14-VERDE;15-VERMELHA;16-FANTASIA.
+     * @param string $c_cor_denatran Código da Cor Segundo as regras de pré-cadastro do DENATRAN: 01-AMARELO  * 02 - AZUL  * 03 - BEGE  * 04 - BRANCA  * 05 - CINZA  * 06 - DOURADA  * 07 - GRENA  * 08 - LARANJA  * 09 - MARROM  * 10 - PRATA  * 11 - PRETA  * 12 - ROSA  * 13 - ROXA  * 14 - VERDE  * 15 - VERMELHA  * 16 - FANTASIA
      *
      * @return self
      */
@@ -1191,7 +1192,7 @@ class NfeSefazVeicProd implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_rest
      *
-     * @param int $tp_rest Restrição  0 - Não há;  1 - Alienação Fiduciária;  2 - Arrendamento Mercantil;  3 - Reserva de Domínio;  4 - Penhor de Veículos;  9 - outras.
+     * @param int $tp_rest Restrição  * 0 - Não há  * 1 - Alienação Fiduciária  * 2 - Arrendamento Mercantil  * 3 - Reserva de Domínio  * 4 - Penhor de Veículos  * 9 - outras
      *
      * @return self
      */

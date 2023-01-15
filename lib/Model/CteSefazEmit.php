@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazEmit Class Doc Comment
  *
  * @category Class
+ * @description Identificação do Emitente do CT-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -369,7 +370,7 @@ class CteSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cpf
      *
-     * @param string|null $cpf CPF do emitente.  Informar zeros não significativos.    Usar com série específica 920-969 para emitente pessoa física com inscrição estadual.  Obrigatorio caso o emitente seja pessoa física.
+     * @param string|null $cpf CPF do emitente.  Informar zeros não significativos.  Usar com série específica 920-969 para emitente pessoa física com inscrição estadual.  Obrigatorio caso o emitente seja pessoa física.
      *
      * @return self
      */
@@ -543,7 +544,7 @@ class CteSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets crt
      *
-     * @param int|null $crt Código do Regime Tributário.  Informar: 1=Simples Nacional;   2=Simples Nacional, excesso sublimite de receita bruta;  3=Regime Normal.
+     * @param int|null $crt Código do Regime Tributário.  Informar: 1=Simples Nacional  * 2 - Simples Nacional, excesso sublimite de receita bruta  * 3 - Regime Normal
      *
      * @return self
      */

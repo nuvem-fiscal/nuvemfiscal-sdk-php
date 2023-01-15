@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CnpjPorteEmpresa Class Doc Comment
  *
  * @category Class
+ * @description Porte da empresa.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

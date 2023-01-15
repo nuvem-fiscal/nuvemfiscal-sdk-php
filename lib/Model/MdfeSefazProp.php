@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazProp Class Doc Comment
  *
  * @category Class
+ * @description Proprietário ou possuidor do Veículo.  Só preenchido quando o veículo não pertencer à empresa emitente do MDF-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -516,7 +517,7 @@ class MdfeSefazProp implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_prop
      *
-     * @param int $tp_prop Tipo Proprietário ou possuidor.  Preencher com:              0-TAC Agregado;              1-TAC Independente;               2 – Outros.
+     * @param int $tp_prop Tipo Proprietário ou possuidor.  Preencher com:  * 0 - TAC Agregado  * 1 - TAC Independente  * 2 - Outros
      *
      * @return self
      */

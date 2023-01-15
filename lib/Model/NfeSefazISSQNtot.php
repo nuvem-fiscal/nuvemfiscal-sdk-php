@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazISSQNtot Class Doc Comment
  *
  * @category Class
+ * @description Totais referentes ao ISSQN.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

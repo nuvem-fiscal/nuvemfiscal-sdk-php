@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazToma3 Class Doc Comment
  *
  * @category Class
+ * @description Indicador do \&quot;papel\&quot; do tomador do serviço no CT-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -294,7 +295,7 @@ class CteSefazToma3 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets toma
      *
-     * @param int $toma Tomador do Serviço.  Preencher com:                 0-Remetente;                 1-Expedidor;                 2-Recebedor;                 3-Destinatário                 Serão utilizadas as informações contidas no respectivo grupo, conforme indicado pelo conteúdo deste campo.
+     * @param int $toma Tomador do Serviço.  Preencher com:  * 0 - Remetente  * 1 - Expedidor  * 2 - Recebedor  * 3 - Destinatário  Serão utilizadas as informações contidas no respectivo grupo, conforme indicado pelo conteúdo deste campo.
      *
      * @return self
      */

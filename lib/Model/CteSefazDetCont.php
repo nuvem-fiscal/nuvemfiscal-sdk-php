@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazDetCont Class Doc Comment
  *
  * @category Class
+ * @description Grupo de informações de detalhamento dos conteiners  (Somente para Redespacho Intermediário e Serviço Vinculado a Multimodal).
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -337,7 +338,7 @@ class CteSefazDetCont implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets lacre
      *
-     * @param \NuvemFiscal\Model\CteSefazLacre[]|null $lacre Grupo de informações dos lacres dos cointainers da qtde da carga.
+     * @param \NuvemFiscal\Model\CteSefazLacre[]|null $lacre lacre
      *
      * @return self
      */

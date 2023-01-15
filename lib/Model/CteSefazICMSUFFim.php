@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazICMSUFFim Class Doc Comment
  *
  * @category Class
+ * @description Informações do ICMS de partilha com a UF de término do serviço de transporte na operação interestadual.  Grupo a ser informado nas prestações interestaduais para consumidor final, não contribuinte do ICMS.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

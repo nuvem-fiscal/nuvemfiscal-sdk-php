@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazComHora Class Doc Comment
  *
  * @category Class
+ * @description Entrega com hora definida.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -304,7 +305,7 @@ class CteSefazComHora implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_hor
      *
-     * @param int $tp_hor Tipo de hora.  Preencher com:                    1 - No horário;                    2 - Até o horário;                    3 - A partir do horário.
+     * @param int $tp_hor Tipo de hora.  Preencher com:  * 1 - No horário  * 2 - Até o horário  * 3 - A partir do horário
      *
      * @return self
      */

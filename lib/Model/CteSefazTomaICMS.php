@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazTomaICMS Class Doc Comment
  *
  * @category Class
+ * @description Tomador é contribuinte do ICMS, mas não é emitente de documento fiscal eletrônico.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

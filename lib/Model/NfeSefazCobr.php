@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazCobr Class Doc Comment
  *
  * @category Class
+ * @description Dados da cobrança da NF-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -327,7 +328,7 @@ class NfeSefazCobr implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dup
      *
-     * @param \NuvemFiscal\Model\NfeSefazDup[]|null $dup Dados das duplicatas NT 2011/004.
+     * @param \NuvemFiscal\Model\NfeSefazDup[]|null $dup dup
      *
      * @return self
      */

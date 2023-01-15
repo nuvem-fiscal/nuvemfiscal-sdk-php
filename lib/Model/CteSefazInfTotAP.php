@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazInfTotAP Class Doc Comment
  *
  * @category Class
+ * @description Grupo de informações das quantidades totais de artigos perigosos.  Preencher conforme a legislação de transporte de produtos perigosos aplicada ao modal.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -304,7 +305,7 @@ class CteSefazInfTotAP implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets q_tot_prod
      *
-     * @param float $q_tot_prod Quantidade total de artigos perigosos.  15 posições, sendo 11 inteiras e 4 decimais.   Deve indicar a quantidade total do artigo perigoso, tendo como base a unidade referenciada na Tabela 3-1 do Doc 9284, por exemplo: litros; quilogramas; quilograma bruto etc. O preenchimento não deve, entretanto, incluir a unidade de medida. No caso de transporte de material radioativo, deve-se indicar o somatório dos Índices de Transporte (TI). Não indicar a quantidade do artigo perigoso por embalagem.
+     * @param float $q_tot_prod Quantidade total de artigos perigosos.  15 posições, sendo 11 inteiras e 4 decimais.  Deve indicar a quantidade total do artigo perigoso, tendo como base a unidade referenciada na Tabela 3-1 do Doc 9284, por exemplo: litros  quilogramas  quilograma bruto etc. O preenchimento não deve, entretanto, incluir a unidade de medida. No caso de transporte de material radioativo, deve-se indicar o somatório dos Índices de Transporte (TI). Não indicar a quantidade do artigo perigoso por embalagem.
      *
      * @return self
      */
@@ -333,7 +334,7 @@ class CteSefazInfTotAP implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets uni_ap
      *
-     * @param int $uni_ap Unidade de medida.  1 – KG;   2 – KG G (quilograma bruto);  3 – LITROS;  4 – TI (índice de transporte para radioativos); 5- Unidades (apenas para artigos perigosos medidos em unidades que não se enquadram nos itens acima. Exemplo: baterias, celulares, equipamentos, veículos, dentre outros).
+     * @param int $uni_ap Unidade de medida.  * 1 - KG  * 2 - KG G (quilograma bruto)  * 3 - LITROS  * 4 - TI (índice de transporte para radioativos)  * 5 - Unidades (apenas para artigos perigosos medidos em unidades que não se enquadram nos itens acima. Exemplo: baterias, celulares, equipamentos, veículos, dentre outros)
      *
      * @return self
      */

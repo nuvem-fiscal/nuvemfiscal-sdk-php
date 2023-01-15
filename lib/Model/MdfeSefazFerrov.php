@@ -333,7 +333,7 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets vag
      *
-     * @param \NuvemFiscal\Model\MdfeSefazVag[] $vag informações dos Vagões.
+     * @param \NuvemFiscal\Model\MdfeSefazVag[] $vag vag
      *
      * @return self
      */

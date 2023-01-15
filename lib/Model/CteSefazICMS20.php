@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazICMS20 Class Doc Comment
  *
  * @category Class
+ * @description Prestação sujeito à tributação com redução de BC do ICMS.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -334,7 +335,7 @@ class CteSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cst
      *
-     * @param string $cst Classificação Tributária do serviço.  20 - tributação com BC reduzida do ICMS.
+     * @param string $cst Classificação Tributária do serviço.  * 20 - tributação com BC reduzida do ICMS
      *
      * @return self
      */

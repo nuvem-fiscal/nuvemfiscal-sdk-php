@@ -4,7 +4,7 @@
 
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
-**cst** | **string** | classificação Tributária do Serviço.  00 - tributação normal ICMS. |
+**cst** | **string** | classificação Tributária do Serviço.  * 00 - tributação normal ICMS |
 **v_bc** | **float** | Valor da BC do ICMS. |
 **p_icms** | **float** | Alíquota do ICMS. |
 **v_icms** | **float** | Valor do ICMS. |

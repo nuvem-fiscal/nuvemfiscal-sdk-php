@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazInfServVinc Class Doc Comment
  *
  * @category Class
+ * @description Informações do Serviço Vinculado a Multimodal.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -294,7 +295,7 @@ class CteSefazInfServVinc implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets inf_cte_multimodal
      *
-     * @param \NuvemFiscal\Model\CteSefazInfCTeMultimodal[] $inf_cte_multimodal informações do CT-e multimodal vinculado.
+     * @param \NuvemFiscal\Model\CteSefazInfCTeMultimodal[] $inf_cte_multimodal inf_cte_multimodal
      *
      * @return self
      */

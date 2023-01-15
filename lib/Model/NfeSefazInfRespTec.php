@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazInfRespTec Class Doc Comment
  *
  * @category Class
+ * @description Informações do Responsável Técnico pela emissão do DF-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -483,7 +484,7 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets hash_csrt
      *
-     * @param string|null $hash_csrt O hashCSRT é o resultado da função hash (SHA-1 – Base64) do CSRT fornecido pelo fisco mais a Chave de Acesso da NFe.
+     * @param string|null $hash_csrt O hashCSRT é o resultado da função hash (SHA-1 - Base64) do CSRT fornecido pelo fisco mais a Chave de Acesso da NFe.
      *
      * @return self
      */

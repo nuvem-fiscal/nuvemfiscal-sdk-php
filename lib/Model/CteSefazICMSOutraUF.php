@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazICMSOutraUF Class Doc Comment
  *
  * @category Class
+ * @description ICMS devido à UF de origem da prestação, quando  diferente da UF do emitente.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -331,7 +332,7 @@ class CteSefazICMSOutraUF implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets cst
      *
-     * @param string $cst Classificação Tributária do Serviço.  90 - ICMS Outra UF.
+     * @param string $cst Classificação Tributária do Serviço.  * 90 - ICMS Outra UF
      *
      * @return self
      */

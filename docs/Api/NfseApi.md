@@ -11,7 +11,9 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**consultarLoteNfse()**](NfseApi.md#consultarLoteNfse) | **GET** /nfse/lotes/{id} | Consultar lote de NFS-e |
 | [**consultarNfse()**](NfseApi.md#consultarNfse) | **GET** /nfse/{id} | Consultar NFS-e |
 | [**emitirLoteNfse()**](NfseApi.md#emitirLoteNfse) | **POST** /nfse/lotes | Emitir lote de NFS-e |
+| [**emitirLoteNfseDps()**](NfseApi.md#emitirLoteNfseDps) | **POST** /nfse/dps/lotes | Emitir lote de NFS-e |
 | [**emitirNfse()**](NfseApi.md#emitirNfse) | **POST** /nfse | Emitir NFS-e |
+| [**emitirNfseDps()**](NfseApi.md#emitirNfseDps) | **POST** /nfse/dps | Emitir NFS-e |
 | [**listarLotesNfse()**](NfseApi.md#listarLotesNfse) | **GET** /nfse/lotes | Listar lotes de NFS-e |
 | [**listarNfse()**](NfseApi.md#listarNfse) | **GET** /nfse | Listar NFS-e |
 
@@ -463,6 +465,69 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
+## `emitirLoteNfseDps()`
+
+```php
+emitirLoteNfseDps($body): \NuvemFiscal\Model\RpsLote
+```
+
+Emitir lote de NFS-e
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfseApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$body = new \NuvemFiscal\Model\NfseLoteDpsPedidoEmissao(); // \NuvemFiscal\Model\NfseLoteDpsPedidoEmissao
+
+try {
+    $result = $apiInstance->emitirLoteNfseDps($body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfseApi->emitirLoteNfseDps: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **body** | [**\NuvemFiscal\Model\NfseLoteDpsPedidoEmissao**](../Model/NfseLoteDpsPedidoEmissao.md)|  | |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\RpsLote**](../Model/RpsLote.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
 ## `emitirNfse()`
 
 ```php
@@ -526,10 +591,73 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
+## `emitirNfseDps()`
+
+```php
+emitirNfseDps($body): \NuvemFiscal\Model\Nfse
+```
+
+Emitir NFS-e
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfseApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$body = new \NuvemFiscal\Model\NfseDpsPedidoEmissao(); // \NuvemFiscal\Model\NfseDpsPedidoEmissao
+
+try {
+    $result = $apiInstance->emitirNfseDps($body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfseApi->emitirNfseDps: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **body** | [**\NuvemFiscal\Model\NfseDpsPedidoEmissao**](../Model/NfseDpsPedidoEmissao.md)|  | |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\Nfse**](../Model/Nfse.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
 ## `listarLotesNfse()`
 
 ```php
-listarLotesNfse($cpf_cnpj, $ambiente, $top, $skip, $referencia): \NuvemFiscal\Model\RpsLoteListagem
+listarLotesNfse($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia): \NuvemFiscal\Model\RpsLoteListagem
 ```
 
 Listar lotes de NFS-e
@@ -559,13 +687,14 @@ $apiInstance = new NuvemFiscal\Api\NfseApi(
     $config
 );
 $cpf_cnpj = 'cpf_cnpj_example'; // string | Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara.
-$ambiente = 'ambiente_example'; // string | Identificação do Ambiente.  Valores aceitos: homologacao, producao
-$top = 56; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: `10`.
-$skip = 56; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
+$ambiente = 'ambiente_example'; // string | Identificação do Ambiente.    Valores aceitos: homologacao, producao
+$top = 10; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.
+$skip = 0; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
+$inlinecount = True; // bool | Inclui no JSON de resposta, na propriedade `@count`, o número total de registros que o filtro retornaria, independente dos filtros de paginação.
 $referencia = 'referencia_example'; // string
 
 try {
-    $result = $apiInstance->listarLotesNfse($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+    $result = $apiInstance->listarLotesNfse($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfseApi->listarLotesNfse: ', $e->getMessage(), PHP_EOL;
@@ -577,9 +706,10 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **cpf_cnpj** | **string**| Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. | |
-| **ambiente** | **string**| Identificação do Ambiente.  Valores aceitos: homologacao, producao | |
-| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. | [optional] |
-| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] |
+| **ambiente** | **string**| Identificação do Ambiente.    Valores aceitos: homologacao, producao | |
+| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100. | [optional] [default to 10] |
+| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] [default to 0] |
+| **inlinecount** | **bool**| Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. | [optional] |
 | **referencia** | **string**|  | [optional] |
 
 ### Tipo do retorno
@@ -602,7 +732,7 @@ try {
 ## `listarNfse()`
 
 ```php
-listarNfse($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave): \NuvemFiscal\Model\NfseListagem
+listarNfse($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave): \NuvemFiscal\Model\NfseListagem
 ```
 
 Listar NFS-e
@@ -631,15 +761,16 @@ $apiInstance = new NuvemFiscal\Api\NfseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string | Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara.
-$ambiente = 'ambiente_example'; // string | Identificação do Ambiente.  Valores aceitos: homologacao, producao
-$top = 56; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: `10`.
-$skip = 56; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
+$cpf_cnpj = 'cpf_cnpj_example'; // string | Filtrar pelo CPF ou CNPJ do emitente.    Utilize o valor sem máscara.
+$ambiente = 'ambiente_example'; // string | Identificação do Ambiente.    Valores aceitos: homologacao, producao
+$top = 10; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.
+$skip = 0; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
+$inlinecount = True; // bool | Inclui no JSON de resposta, na propriedade `@count`, o número total de registros que o filtro retornaria, independente dos filtros de paginação.
 $referencia = 'referencia_example'; // string
 $chave = 'chave_example'; // string | Chave de acesso do DF-e.
 
 try {
-    $result = $apiInstance->listarNfse($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
+    $result = $apiInstance->listarNfse($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfseApi->listarNfse: ', $e->getMessage(), PHP_EOL;
@@ -650,10 +781,11 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**| Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. | |
-| **ambiente** | **string**| Identificação do Ambiente.  Valores aceitos: homologacao, producao | |
-| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. | [optional] |
-| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] |
+| **cpf_cnpj** | **string**| Filtrar pelo CPF ou CNPJ do emitente.    Utilize o valor sem máscara. | |
+| **ambiente** | **string**| Identificação do Ambiente.    Valores aceitos: homologacao, producao | |
+| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100. | [optional] [default to 10] |
+| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] [default to 0] |
+| **inlinecount** | **bool**| Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. | [optional] |
 | **referencia** | **string**|  | [optional] |
 | **chave** | **string**| Chave de acesso do DF-e. | [optional] |
 

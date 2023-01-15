@@ -10,11 +10,11 @@ Nome | Tipo | Descrição | Comentários
 **emit** | [**\NuvemFiscal\Model\MdfeSefazEmit**](MdfeSefazEmit.md) |  |
 **inf_modal** | [**\NuvemFiscal\Model\MdfeSefazInfModal**](MdfeSefazInfModal.md) |  |
 **inf_doc** | [**\NuvemFiscal\Model\MdfeSefazInfDoc**](MdfeSefazInfDoc.md) |  |
-**seg** | [**\NuvemFiscal\Model\MdfeSefazSeg[]**](MdfeSefazSeg.md) | Informações de Seguro da Carga. | [optional]
+**seg** | [**\NuvemFiscal\Model\MdfeSefazSeg[]**](MdfeSefazSeg.md) |  | [optional]
 **prod_pred** | [**\NuvemFiscal\Model\MdfeSefazProdPred**](MdfeSefazProdPred.md) |  | [optional]
 **tot** | [**\NuvemFiscal\Model\MdfeSefazTot**](MdfeSefazTot.md) |  |
-**lacres** | [**\NuvemFiscal\Model\MdfeSefazLacres[]**](MdfeSefazLacres.md) | Lacres do MDF-e.  Preechimento opcional para os modais Rodoviário e Ferroviário. | [optional]
-**aut_xml** | [**\NuvemFiscal\Model\MdfeSefazAutXML[]**](MdfeSefazAutXML.md) | Autorizados para download do XML do DF-e.  Informar CNPJ ou CPF. Preencher os zeros não significativos. | [optional]
+**lacres** | [**\NuvemFiscal\Model\MdfeSefazLacres[]**](MdfeSefazLacres.md) |  | [optional]
+**aut_xml** | [**\NuvemFiscal\Model\MdfeSefazAutXML[]**](MdfeSefazAutXML.md) |  | [optional]
 **inf_adic** | [**\NuvemFiscal\Model\MdfeSefazInfAdic**](MdfeSefazInfAdic.md) |  | [optional]
 **inf_resp_tec** | [**\NuvemFiscal\Model\MdfeSefazRespTec**](MdfeSefazRespTec.md) |  | [optional]
 **inf_solic_nff** | [**\NuvemFiscal\Model\MdfeSefazInfSolicNFF**](MdfeSefazInfSolicNFF.md) |  | [optional]

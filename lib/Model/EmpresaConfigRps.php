@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * EmpresaConfigRps Class Doc Comment
  *
  * @category Class
+ * @description Configuração de numeração de lote, série e RPS.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -74,7 +74,7 @@ try {
 ## `listarCnpj()`
 
 ```php
-listarCnpj($cnae_principal, $municipio, $natureza_juridica, $top, $skip): \NuvemFiscal\Model\CnpjListagem
+listarCnpj($cnae_principal, $municipio, $natureza_juridica, $top, $skip, $inlinecount): \NuvemFiscal\Model\CnpjListagem
 ```
 
 Listar estabelecimentos ativos a partir da base de CNPJ
@@ -106,11 +106,12 @@ $apiInstance = new NuvemFiscal\Api\CnpjApi(
 $cnae_principal = 'cnae_principal_example'; // string | Filtro pelo código CNAE da atividade principal do estabelecimento.  Utilize o valor sem máscara.
 $municipio = 'municipio_example'; // string | Filtro pelo código IBGE ou TOM (Tabela de Órgãos e Municípios) do município do estabelecimento.  Utilize o valor sem máscara.
 $natureza_juridica = 'natureza_juridica_example'; // string | Filtro pela natureza jurídica do estabelecimento   Utilize o valor de quatro dígitos sem máscara.
-$top = 56; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: `10`.
-$skip = 56; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
+$top = 10; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.
+$skip = 0; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
+$inlinecount = True; // bool | Inclui no JSON de resposta, na propriedade `@count`, o número total de registros que o filtro retornaria, independente dos filtros de paginação.
 
 try {
-    $result = $apiInstance->listarCnpj($cnae_principal, $municipio, $natureza_juridica, $top, $skip);
+    $result = $apiInstance->listarCnpj($cnae_principal, $municipio, $natureza_juridica, $top, $skip, $inlinecount);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CnpjApi->listarCnpj: ', $e->getMessage(), PHP_EOL;
@@ -124,8 +125,9 @@ try {
 | **cnae_principal** | **string**| Filtro pelo código CNAE da atividade principal do estabelecimento.  Utilize o valor sem máscara. | |
 | **municipio** | **string**| Filtro pelo código IBGE ou TOM (Tabela de Órgãos e Municípios) do município do estabelecimento.  Utilize o valor sem máscara. | |
 | **natureza_juridica** | **string**| Filtro pela natureza jurídica do estabelecimento   Utilize o valor de quatro dígitos sem máscara. | |
-| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. | [optional] |
-| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] |
+| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100. | [optional] [default to 10] |
+| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] [default to 0] |
+| **inlinecount** | **bool**| Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. | [optional] |
 
 ### Tipo do retorno
 

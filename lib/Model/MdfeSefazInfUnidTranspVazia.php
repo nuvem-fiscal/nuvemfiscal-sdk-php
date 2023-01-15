@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfUnidTranspVazia Class Doc Comment
  *
  * @category Class
+ * @description Informações das Undades de Transporte vazias.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

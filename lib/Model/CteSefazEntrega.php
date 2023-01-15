@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazEntrega Class Doc Comment
  *
  * @category Class
+ * @description Informações ref. a previsão de entrega.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

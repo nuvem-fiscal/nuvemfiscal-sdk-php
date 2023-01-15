@@ -65,9 +65,10 @@ class Nfse implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_emissao' => '\DateTime',
         'ambiente' => 'string',
         'referencia' => 'string',
-        'declaracao_prestacao_servico' => '\NuvemFiscal\Model\Rps',
+        'dps' => '\NuvemFiscal\Model\DPS',
         'cancelamento' => '\NuvemFiscal\Model\NfseCancelamento',
-        'mensagens' => '\NuvemFiscal\Model\NfseMensagemRetorno[]'
+        'mensagens' => '\NuvemFiscal\Model\NfseMensagemRetorno[]',
+        'rps' => '\NuvemFiscal\Model\Rps'
     ];
 
     /**
@@ -87,9 +88,10 @@ class Nfse implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_emissao' => 'date-time',
         'ambiente' => null,
         'referencia' => null,
-        'declaracao_prestacao_servico' => null,
+        'dps' => null,
         'cancelamento' => null,
-        'mensagens' => null
+        'mensagens' => null,
+        'rps' => null
     ];
 
     /**
@@ -107,9 +109,10 @@ class Nfse implements ModelInterface, ArrayAccess, \JsonSerializable
 		'data_emissao' => false,
 		'ambiente' => false,
 		'referencia' => false,
-		'declaracao_prestacao_servico' => false,
+		'dps' => false,
 		'cancelamento' => false,
-		'mensagens' => false
+		'mensagens' => false,
+		'rps' => false
     ];
 
     /**
@@ -197,9 +200,10 @@ class Nfse implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_emissao' => 'data_emissao',
         'ambiente' => 'ambiente',
         'referencia' => 'referencia',
-        'declaracao_prestacao_servico' => 'declaracao_prestacao_servico',
+        'dps' => 'DPS',
         'cancelamento' => 'cancelamento',
-        'mensagens' => 'mensagens'
+        'mensagens' => 'mensagens',
+        'rps' => 'rps'
     ];
 
     /**
@@ -217,9 +221,10 @@ class Nfse implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_emissao' => 'setDataEmissao',
         'ambiente' => 'setAmbiente',
         'referencia' => 'setReferencia',
-        'declaracao_prestacao_servico' => 'setDeclaracaoPrestacaoServico',
+        'dps' => 'setDps',
         'cancelamento' => 'setCancelamento',
-        'mensagens' => 'setMensagens'
+        'mensagens' => 'setMensagens',
+        'rps' => 'setRps'
     ];
 
     /**
@@ -237,9 +242,10 @@ class Nfse implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_emissao' => 'getDataEmissao',
         'ambiente' => 'getAmbiente',
         'referencia' => 'getReferencia',
-        'declaracao_prestacao_servico' => 'getDeclaracaoPrestacaoServico',
+        'dps' => 'getDps',
         'cancelamento' => 'getCancelamento',
-        'mensagens' => 'getMensagens'
+        'mensagens' => 'getMensagens',
+        'rps' => 'getRps'
     ];
 
     /**
@@ -346,9 +352,10 @@ class Nfse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('data_emissao', $data ?? [], null);
         $this->setIfExists('ambiente', $data ?? [], null);
         $this->setIfExists('referencia', $data ?? [], null);
-        $this->setIfExists('declaracao_prestacao_servico', $data ?? [], null);
+        $this->setIfExists('dps', $data ?? [], null);
         $this->setIfExists('cancelamento', $data ?? [], null);
         $this->setIfExists('mensagens', $data ?? [], null);
+        $this->setIfExists('rps', $data ?? [], null);
     }
 
     /**
@@ -693,30 +700,30 @@ class Nfse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets declaracao_prestacao_servico
+     * Gets dps
      *
-     * @return \NuvemFiscal\Model\Rps|null
+     * @return \NuvemFiscal\Model\DPS|null
      */
-    public function getDeclaracaoPrestacaoServico()
+    public function getDps()
     {
-        return $this->container['declaracao_prestacao_servico'];
+        return $this->container['dps'];
     }
 
     /**
-     * Sets declaracao_prestacao_servico
+     * Sets dps
      *
-     * @param \NuvemFiscal\Model\Rps|null $declaracao_prestacao_servico declaracao_prestacao_servico
+     * @param \NuvemFiscal\Model\DPS|null $dps dps
      *
      * @return self
      */
-    public function setDeclaracaoPrestacaoServico($declaracao_prestacao_servico)
+    public function setDps($dps)
     {
 
-        if (is_null($declaracao_prestacao_servico)) {
-            throw new \InvalidArgumentException('non-nullable declaracao_prestacao_servico cannot be null');
+        if (is_null($dps)) {
+            throw new \InvalidArgumentException('non-nullable dps cannot be null');
         }
 
-        $this->container['declaracao_prestacao_servico'] = $declaracao_prestacao_servico;
+        $this->container['dps'] = $dps;
 
         return $this;
     }
@@ -775,6 +782,35 @@ class Nfse implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['mensagens'] = $mensagens;
+
+        return $this;
+    }
+
+    /**
+     * Gets rps
+     *
+     * @return \NuvemFiscal\Model\Rps|null
+     */
+    public function getRps()
+    {
+        return $this->container['rps'];
+    }
+
+    /**
+     * Sets rps
+     *
+     * @param \NuvemFiscal\Model\Rps|null $rps rps
+     *
+     * @return self
+     */
+    public function setRps($rps)
+    {
+
+        if (is_null($rps)) {
+            throw new \InvalidArgumentException('non-nullable rps cannot be null');
+        }
+
+        $this->container['rps'] = $rps;
 
         return $this;
     }

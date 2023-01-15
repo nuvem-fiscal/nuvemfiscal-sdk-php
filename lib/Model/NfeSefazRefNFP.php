@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazRefNFP Class Doc Comment
  *
  * @category Class
+ * @description Grupo com as informações NF de produtor referenciada.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -561,7 +562,7 @@ class NfeSefazRefNFP implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets n_nf
      *
-     * @param int $n_nf Número do Documento Fiscal - 1 – 999999999.
+     * @param int $n_nf Número do Documento Fiscal - 1 - 999999999.
      *
      * @return self
      */

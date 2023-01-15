@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazPISQtde Class Doc Comment
  *
  * @category Class
+ * @description Código de Situação Tributária do PIS.  * 03 - Operação Tributável - Base de Calculo &#x3D; Quantidade Vendida x Alíquota por Unidade de Produto
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -324,7 +325,7 @@ class NfeSefazPISQtde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cst
      *
-     * @param string $cst Código de Situação Tributária do PIS.  03 - Operação Tributável - Base de Calculo = Quantidade Vendida x Alíquota por Unidade de Produto;.
+     * @param string $cst Código de Situação Tributária do PIS.  * 03 - Operação Tributável - Base de Calculo = Quantidade Vendida x Alíquota por Unidade de Produto
      *
      * @return self
      */

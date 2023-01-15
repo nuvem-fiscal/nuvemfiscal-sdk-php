@@ -417,16 +417,17 @@ class CnpjApi
      * @param  string $cnae_principal Filtro pelo código CNAE da atividade principal do estabelecimento.  Utilize o valor sem máscara. (required)
      * @param  string $municipio Filtro pelo código IBGE ou TOM (Tabela de Órgãos e Municípios) do município do estabelecimento.  Utilize o valor sem máscara. (required)
      * @param  string $natureza_juridica Filtro pela natureza jurídica do estabelecimento   Utilize o valor de quatro dígitos sem máscara. (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\CnpjListagem
      */
-    public function listarCnpj($cnae_principal, $municipio, $natureza_juridica, $top = null, $skip = null)
+    public function listarCnpj($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = null)
     {
-        list($response) = $this->listarCnpjWithHttpInfo($cnae_principal, $municipio, $natureza_juridica, $top, $skip);
+        list($response) = $this->listarCnpjWithHttpInfo($cnae_principal, $municipio, $natureza_juridica, $top, $skip, $inlinecount);
         return $response;
     }
 
@@ -438,16 +439,17 @@ class CnpjApi
      * @param  string $cnae_principal Filtro pelo código CNAE da atividade principal do estabelecimento.  Utilize o valor sem máscara. (required)
      * @param  string $municipio Filtro pelo código IBGE ou TOM (Tabela de Órgãos e Municípios) do município do estabelecimento.  Utilize o valor sem máscara. (required)
      * @param  string $natureza_juridica Filtro pela natureza jurídica do estabelecimento   Utilize o valor de quatro dígitos sem máscara. (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\CnpjListagem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listarCnpjWithHttpInfo($cnae_principal, $municipio, $natureza_juridica, $top = null, $skip = null)
+    public function listarCnpjWithHttpInfo($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = null)
     {
-        $request = $this->listarCnpjRequest($cnae_principal, $municipio, $natureza_juridica, $top, $skip);
+        $request = $this->listarCnpjRequest($cnae_principal, $municipio, $natureza_juridica, $top, $skip, $inlinecount);
 
         try {
             $options = $this->createHttpClientOption();
@@ -545,15 +547,16 @@ class CnpjApi
      * @param  string $cnae_principal Filtro pelo código CNAE da atividade principal do estabelecimento.  Utilize o valor sem máscara. (required)
      * @param  string $municipio Filtro pelo código IBGE ou TOM (Tabela de Órgãos e Municípios) do município do estabelecimento.  Utilize o valor sem máscara. (required)
      * @param  string $natureza_juridica Filtro pela natureza jurídica do estabelecimento   Utilize o valor de quatro dígitos sem máscara. (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarCnpjAsync($cnae_principal, $municipio, $natureza_juridica, $top = null, $skip = null)
+    public function listarCnpjAsync($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = null)
     {
-        return $this->listarCnpjAsyncWithHttpInfo($cnae_principal, $municipio, $natureza_juridica, $top, $skip)
+        return $this->listarCnpjAsyncWithHttpInfo($cnae_principal, $municipio, $natureza_juridica, $top, $skip, $inlinecount)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -569,16 +572,17 @@ class CnpjApi
      * @param  string $cnae_principal Filtro pelo código CNAE da atividade principal do estabelecimento.  Utilize o valor sem máscara. (required)
      * @param  string $municipio Filtro pelo código IBGE ou TOM (Tabela de Órgãos e Municípios) do município do estabelecimento.  Utilize o valor sem máscara. (required)
      * @param  string $natureza_juridica Filtro pela natureza jurídica do estabelecimento   Utilize o valor de quatro dígitos sem máscara. (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarCnpjAsyncWithHttpInfo($cnae_principal, $municipio, $natureza_juridica, $top = null, $skip = null)
+    public function listarCnpjAsyncWithHttpInfo($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = null)
     {
         $returnType = '\NuvemFiscal\Model\CnpjListagem';
-        $request = $this->listarCnpjRequest($cnae_principal, $municipio, $natureza_juridica, $top, $skip);
+        $request = $this->listarCnpjRequest($cnae_principal, $municipio, $natureza_juridica, $top, $skip, $inlinecount);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -622,13 +626,14 @@ class CnpjApi
      * @param  string $cnae_principal Filtro pelo código CNAE da atividade principal do estabelecimento.  Utilize o valor sem máscara. (required)
      * @param  string $municipio Filtro pelo código IBGE ou TOM (Tabela de Órgãos e Municípios) do município do estabelecimento.  Utilize o valor sem máscara. (required)
      * @param  string $natureza_juridica Filtro pela natureza jurídica do estabelecimento   Utilize o valor de quatro dígitos sem máscara. (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listarCnpjRequest($cnae_principal, $municipio, $natureza_juridica, $top = null, $skip = null)
+    public function listarCnpjRequest($cnae_principal, $municipio, $natureza_juridica, $top = 10, $skip = 0, $inlinecount = null)
     {
 
         // verify the required parameter 'cnae_principal' is set
@@ -654,6 +659,7 @@ class CnpjApi
 
 
 
+
         $resourcePath = '/cnpj';
         $formParams = [];
         $queryParams = [];
@@ -675,6 +681,15 @@ class CnpjApi
             $skip,
             '$skip', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $inlinecount,
+            '$inlinecount', // param base name
+            'boolean', // openApiType
             '', // style
             false, // explode
             false // required

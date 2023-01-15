@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazInfCteAnu Class Doc Comment
  *
  * @category Class
+ * @description Detalhamento do CT-e do tipo Anulação.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfMDFe Class Doc Comment
  *
  * @category Class
+ * @description Informações do MDF-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -574,7 +575,7 @@ class MdfeSefazInfMDFe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets seg
      *
-     * @param \NuvemFiscal\Model\MdfeSefazSeg[]|null $seg Informações de Seguro da Carga.
+     * @param \NuvemFiscal\Model\MdfeSefazSeg[]|null $seg seg
      *
      * @return self
      */
@@ -661,7 +662,7 @@ class MdfeSefazInfMDFe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets lacres
      *
-     * @param \NuvemFiscal\Model\MdfeSefazLacres[]|null $lacres Lacres do MDF-e.  Preechimento opcional para os modais Rodoviário e Ferroviário.
+     * @param \NuvemFiscal\Model\MdfeSefazLacres[]|null $lacres lacres
      *
      * @return self
      */
@@ -690,7 +691,7 @@ class MdfeSefazInfMDFe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets aut_xml
      *
-     * @param \NuvemFiscal\Model\MdfeSefazAutXML[]|null $aut_xml Autorizados para download do XML do DF-e.  Informar CNPJ ou CPF. Preencher os zeros não significativos.
+     * @param \NuvemFiscal\Model\MdfeSefazAutXML[]|null $aut_xml aut_xml
      *
      * @return self
      */

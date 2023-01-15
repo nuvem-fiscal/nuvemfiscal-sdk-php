@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CnpjOpcaoSimei Class Doc Comment
  *
  * @category Class
+ * @description Informações da opção pelo MEI.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -449,7 +449,7 @@ class CteSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets balsa
      *
-     * @param \NuvemFiscal\Model\CteSefazBalsa[]|null $balsa Grupo de informações das balsas.
+     * @param \NuvemFiscal\Model\CteSefazBalsa[]|null $balsa balsa
      *
      * @return self
      */
@@ -565,7 +565,7 @@ class CteSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets det_cont
      *
-     * @param \NuvemFiscal\Model\CteSefazDetCont[]|null $det_cont Grupo de informações de detalhamento dos conteiners   (Somente para Redespacho Intermediário e Serviço Vinculado a Multimodal).
+     * @param \NuvemFiscal\Model\CteSefazDetCont[]|null $det_cont det_cont
      *
      * @return self
      */
@@ -594,7 +594,7 @@ class CteSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_nav
      *
-     * @param int|null $tp_nav Tipo de Navegação.  Preencher com:         0 - Interior;        1 - Cabotagem.
+     * @param int|null $tp_nav Tipo de Navegação.  Preencher com:  * 0 - Interior  * 1 - Cabotagem
      *
      * @return self
      */

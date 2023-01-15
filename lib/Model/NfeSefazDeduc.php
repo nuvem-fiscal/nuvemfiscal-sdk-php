@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazDeduc Class Doc Comment
  *
  * @category Class
+ * @description Deduções - Taxas e Contribuições.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

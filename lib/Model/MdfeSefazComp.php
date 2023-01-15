@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazComp Class Doc Comment
  *
  * @category Class
+ * @description Componentes do Pagamentoi do Frete.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -311,7 +312,7 @@ class MdfeSefazComp implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_comp
      *
-     * @param string $tp_comp Tipo do Componente.  Preencher com: 01 - Vale Pedágio;   02 - Impostos, taxas e contribuições;   03 - Despesas (bancárias, meios de pagamento, outras)  ; 99 - Outros.
+     * @param string $tp_comp Tipo do Componente.  Preencher com: 01 - Vale Pedágio  * 02 - Impostos, taxas e contribuições  * 03 - Despesas (bancárias, meios de pagamento, outras)  * 99 - Outros
      *
      * @return self
      */

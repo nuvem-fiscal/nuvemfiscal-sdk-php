@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfEntregaParcial Class Doc Comment
  *
  * @category Class
+ * @description Grupo de informações da Entrega Parcial (Corte de Voo).
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazICMS Class Doc Comment
  *
  * @category Class
+ * @description Dados do ICMS Normal e ST.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

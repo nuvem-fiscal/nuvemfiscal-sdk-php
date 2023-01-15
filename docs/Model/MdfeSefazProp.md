@@ -10,6 +10,6 @@ Nome | Tipo | Descrição | Comentários
 **x_nome** | **string** | Razão Social ou Nome do proprietário. |
 **ie** | **string** | Inscrição Estadual. | [optional]
 **uf** | **string** | UF. | [optional]
-**tp_prop** | **int** | Tipo Proprietário ou possuidor.  Preencher com:              0-TAC Agregado;              1-TAC Independente;               2 – Outros. |
+**tp_prop** | **int** | Tipo Proprietário ou possuidor.  Preencher com:  * 0 - TAC Agregado  * 1 - TAC Independente  * 2 - Outros |
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

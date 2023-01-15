@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazPISOutr Class Doc Comment
  *
  * @category Class
+ * @description Código de Situação Tributária do PIS.  * 99 - Outras Operações
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -332,7 +333,7 @@ class NfeSefazPISOutr implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cst
      *
-     * @param string $cst Código de Situação Tributária do PIS.  99 - Outras Operações.
+     * @param string $cst Código de Situação Tributária do PIS.  * 99 - Outras Operações
      *
      * @return self
      */

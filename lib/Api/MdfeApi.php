@@ -4909,18 +4909,19 @@ class MdfeApi
      * Listar lotes de MDF-e
      *
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia referencia (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\DfeLoteListagem
      */
-    public function listarLotesMdfe($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarLotesMdfe($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
     {
-        list($response) = $this->listarLotesMdfeWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+        list($response) = $this->listarLotesMdfeWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia);
         return $response;
     }
 
@@ -4930,18 +4931,19 @@ class MdfeApi
      * Listar lotes de MDF-e
      *
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\DfeLoteListagem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listarLotesMdfeWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarLotesMdfeWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
     {
-        $request = $this->listarLotesMdfeRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+        $request = $this->listarLotesMdfeRequest($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5037,17 +5039,18 @@ class MdfeApi
      * Listar lotes de MDF-e
      *
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarLotesMdfeAsync($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarLotesMdfeAsync($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
     {
-        return $this->listarLotesMdfeAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia)
+        return $this->listarLotesMdfeAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5061,18 +5064,19 @@ class MdfeApi
      * Listar lotes de MDF-e
      *
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarLotesMdfeAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarLotesMdfeAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
     {
         $returnType = '\NuvemFiscal\Model\DfeLoteListagem';
-        $request = $this->listarLotesMdfeRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+        $request = $this->listarLotesMdfeRequest($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5114,15 +5118,16 @@ class MdfeApi
      * Create request for operation 'listarLotesMdfe'
      *
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listarLotesMdfeRequest($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarLotesMdfeRequest($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
     {
 
         // verify the required parameter 'cpf_cnpj' is set
@@ -5138,6 +5143,7 @@ class MdfeApi
                 'Missing the required parameter $ambiente when calling listarLotesMdfe'
             );
         }
+
 
 
 
@@ -5163,6 +5169,15 @@ class MdfeApi
             $skip,
             '$skip', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $inlinecount,
+            '$inlinecount', // param base name
+            'boolean', // openApiType
             '', // style
             false, // explode
             false // required
@@ -5270,10 +5285,11 @@ class MdfeApi
      *
      * Listar MDF-e
      *
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.    Utilize o valor sem máscara. (required)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
@@ -5281,9 +5297,9 @@ class MdfeApi
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\DfeListagem
      */
-    public function listarMdfe($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
+    public function listarMdfe($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
     {
-        list($response) = $this->listarMdfeWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
+        list($response) = $this->listarMdfeWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave);
         return $response;
     }
 
@@ -5292,10 +5308,11 @@ class MdfeApi
      *
      * Listar MDF-e
      *
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.    Utilize o valor sem máscara. (required)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
@@ -5303,9 +5320,9 @@ class MdfeApi
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\DfeListagem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listarMdfeWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
+    public function listarMdfeWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
     {
-        $request = $this->listarMdfeRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
+        $request = $this->listarMdfeRequest($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5400,19 +5417,20 @@ class MdfeApi
      *
      * Listar MDF-e
      *
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.    Utilize o valor sem máscara. (required)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarMdfeAsync($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
+    public function listarMdfeAsync($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
     {
-        return $this->listarMdfeAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave)
+        return $this->listarMdfeAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5425,20 +5443,21 @@ class MdfeApi
      *
      * Listar MDF-e
      *
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.    Utilize o valor sem máscara. (required)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarMdfeAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
+    public function listarMdfeAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
     {
         $returnType = '\NuvemFiscal\Model\DfeListagem';
-        $request = $this->listarMdfeRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
+        $request = $this->listarMdfeRequest($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5479,17 +5498,18 @@ class MdfeApi
     /**
      * Create request for operation 'listarMdfe'
      *
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.    Utilize o valor sem máscara. (required)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listarMdfeRequest($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
+    public function listarMdfeRequest($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
     {
 
         // verify the required parameter 'cpf_cnpj' is set
@@ -5505,6 +5525,7 @@ class MdfeApi
                 'Missing the required parameter $ambiente when calling listarMdfe'
             );
         }
+
 
 
 
@@ -5531,6 +5552,15 @@ class MdfeApi
             $skip,
             '$skip', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $inlinecount,
+            '$inlinecount', // param base name
+            'boolean', // openApiType
             '', // style
             false, // explode
             false // required

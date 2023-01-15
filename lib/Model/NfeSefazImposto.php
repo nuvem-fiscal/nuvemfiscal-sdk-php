@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazImposto Class Doc Comment
  *
  * @category Class
+ * @description Tributos incidentes nos produtos ou serviços da NF-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

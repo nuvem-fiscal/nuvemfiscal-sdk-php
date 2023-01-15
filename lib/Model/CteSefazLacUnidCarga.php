@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazLacUnidCarga Class Doc Comment
  *
  * @category Class
+ * @description Lacres das Unidades de Carga.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

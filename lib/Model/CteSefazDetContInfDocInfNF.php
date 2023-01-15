@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazDetContInfDocInfNF Class Doc Comment
  *
  * @category Class
+ * @description Informações das NF.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

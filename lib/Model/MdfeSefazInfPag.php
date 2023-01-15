@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfPag Class Doc Comment
  *
  * @category Class
+ * @description Informações do Pagamento do Frete.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -503,7 +504,7 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets comp
      *
-     * @param \NuvemFiscal\Model\MdfeSefazComp[] $comp Componentes do Pagamentoi do Frete.
+     * @param \NuvemFiscal\Model\MdfeSefazComp[] $comp comp
      *
      * @return self
      */
@@ -590,7 +591,7 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ind_pag
      *
-     * @param int $ind_pag Indicador da Forma de Pagamento:0-Pagamento à Vista;1-Pagamento à Prazo;.
+     * @param int $ind_pag Indicador da Forma de Pagamento:0-Pagamento à Vista  * 1 - Pagamento à Prazo
      *
      * @return self
      */
@@ -677,7 +678,7 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_prazo
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfPrazo[]|null $inf_prazo Informações do pagamento a prazo.  Informar somente se indPag for à Prazo.
+     * @param \NuvemFiscal\Model\MdfeSefazInfPrazo[]|null $inf_prazo inf_prazo
      *
      * @return self
      */
@@ -706,7 +707,7 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_antecip
      *
-     * @param int|null $tp_antecip Tipo de Permissão em relação a antecipação das parcelas.  0 - Não permite antecipar    1 - Permite antecipar as parcelas    2 - Permite antecipar as parcelas mediante confirmação.
+     * @param int|null $tp_antecip Tipo de Permissão em relação a antecipação das parcelas.  * 0 - Não permite antecipar  * 1 - Permite antecipar as parcelas  * 2 - Permite antecipar as parcelas mediante confirmação
      *
      * @return self
      */

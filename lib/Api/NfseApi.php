@@ -1906,6 +1906,7 @@ class NfseApi
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\RpsLote
+     * @deprecated
      */
     public function emitirLoteNfse($body)
     {
@@ -1923,6 +1924,7 @@ class NfseApi
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\RpsLote, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function emitirLoteNfseWithHttpInfo($body)
     {
@@ -2025,6 +2027,7 @@ class NfseApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function emitirLoteNfseAsync($body)
     {
@@ -2045,6 +2048,7 @@ class NfseApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function emitirLoteNfseAsyncWithHttpInfo($body)
     {
@@ -2094,6 +2098,7 @@ class NfseApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function emitirLoteNfseRequest($body)
     {
@@ -2190,6 +2195,299 @@ class NfseApi
     }
 
     /**
+     * Operation emitirLoteNfseDps
+     *
+     * Emitir lote de NFS-e
+     *
+     * @param  \NuvemFiscal\Model\NfseLoteDpsPedidoEmissao $body body (required)
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \NuvemFiscal\Model\RpsLote
+     */
+    public function emitirLoteNfseDps($body)
+    {
+        list($response) = $this->emitirLoteNfseDpsWithHttpInfo($body);
+        return $response;
+    }
+
+    /**
+     * Operation emitirLoteNfseDpsWithHttpInfo
+     *
+     * Emitir lote de NFS-e
+     *
+     * @param  \NuvemFiscal\Model\NfseLoteDpsPedidoEmissao $body (required)
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \NuvemFiscal\Model\RpsLote, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function emitirLoteNfseDpsWithHttpInfo($body)
+    {
+        $request = $this->emitirLoteNfseDpsRequest($body);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+            
+                case 200:
+                    if ('\NuvemFiscal\Model\RpsLote' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\NuvemFiscal\Model\RpsLote' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\NuvemFiscal\Model\RpsLote', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            
+            }
+
+            $returnType = '\NuvemFiscal\Model\RpsLote';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\NuvemFiscal\Model\RpsLote',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation emitirLoteNfseDpsAsync
+     *
+     * Emitir lote de NFS-e
+     *
+     * @param  \NuvemFiscal\Model\NfseLoteDpsPedidoEmissao $body (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function emitirLoteNfseDpsAsync($body)
+    {
+        return $this->emitirLoteNfseDpsAsyncWithHttpInfo($body)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation emitirLoteNfseDpsAsyncWithHttpInfo
+     *
+     * Emitir lote de NFS-e
+     *
+     * @param  \NuvemFiscal\Model\NfseLoteDpsPedidoEmissao $body (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function emitirLoteNfseDpsAsyncWithHttpInfo($body)
+    {
+        $returnType = '\NuvemFiscal\Model\RpsLote';
+        $request = $this->emitirLoteNfseDpsRequest($body);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'emitirLoteNfseDps'
+     *
+     * @param  \NuvemFiscal\Model\NfseLoteDpsPedidoEmissao $body (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function emitirLoteNfseDpsRequest($body)
+    {
+
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling emitirLoteNfseDps'
+            );
+        }
+
+        $resourcePath = '/nfse/dps/lotes';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation emitirNfse
      *
      * Emitir NFS-e
@@ -2199,6 +2497,7 @@ class NfseApi
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\Nfse
+     * @deprecated
      */
     public function emitirNfse($body)
     {
@@ -2216,6 +2515,7 @@ class NfseApi
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\Nfse, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function emitirNfseWithHttpInfo($body)
     {
@@ -2318,6 +2618,7 @@ class NfseApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function emitirNfseAsync($body)
     {
@@ -2338,6 +2639,7 @@ class NfseApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function emitirNfseAsyncWithHttpInfo($body)
     {
@@ -2387,6 +2689,7 @@ class NfseApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function emitirNfseRequest($body)
     {
@@ -2483,23 +2786,317 @@ class NfseApi
     }
 
     /**
+     * Operation emitirNfseDps
+     *
+     * Emitir NFS-e
+     *
+     * @param  \NuvemFiscal\Model\NfseDpsPedidoEmissao $body body (required)
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \NuvemFiscal\Model\Nfse
+     */
+    public function emitirNfseDps($body)
+    {
+        list($response) = $this->emitirNfseDpsWithHttpInfo($body);
+        return $response;
+    }
+
+    /**
+     * Operation emitirNfseDpsWithHttpInfo
+     *
+     * Emitir NFS-e
+     *
+     * @param  \NuvemFiscal\Model\NfseDpsPedidoEmissao $body (required)
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \NuvemFiscal\Model\Nfse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function emitirNfseDpsWithHttpInfo($body)
+    {
+        $request = $this->emitirNfseDpsRequest($body);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+            
+                case 200:
+                    if ('\NuvemFiscal\Model\Nfse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\NuvemFiscal\Model\Nfse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\NuvemFiscal\Model\Nfse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            
+            }
+
+            $returnType = '\NuvemFiscal\Model\Nfse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\NuvemFiscal\Model\Nfse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation emitirNfseDpsAsync
+     *
+     * Emitir NFS-e
+     *
+     * @param  \NuvemFiscal\Model\NfseDpsPedidoEmissao $body (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function emitirNfseDpsAsync($body)
+    {
+        return $this->emitirNfseDpsAsyncWithHttpInfo($body)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation emitirNfseDpsAsyncWithHttpInfo
+     *
+     * Emitir NFS-e
+     *
+     * @param  \NuvemFiscal\Model\NfseDpsPedidoEmissao $body (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function emitirNfseDpsAsyncWithHttpInfo($body)
+    {
+        $returnType = '\NuvemFiscal\Model\Nfse';
+        $request = $this->emitirNfseDpsRequest($body);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'emitirNfseDps'
+     *
+     * @param  \NuvemFiscal\Model\NfseDpsPedidoEmissao $body (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function emitirNfseDpsRequest($body)
+    {
+
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling emitirNfseDps'
+            );
+        }
+
+        $resourcePath = '/nfse/dps';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listarLotesNfse
      *
      * Listar lotes de NFS-e
      *
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia referencia (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\RpsLoteListagem
      */
-    public function listarLotesNfse($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarLotesNfse($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
     {
-        list($response) = $this->listarLotesNfseWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+        list($response) = $this->listarLotesNfseWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia);
         return $response;
     }
 
@@ -2509,18 +3106,19 @@ class NfseApi
      * Listar lotes de NFS-e
      *
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\RpsLoteListagem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listarLotesNfseWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarLotesNfseWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
     {
-        $request = $this->listarLotesNfseRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+        $request = $this->listarLotesNfseRequest($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2616,17 +3214,18 @@ class NfseApi
      * Listar lotes de NFS-e
      *
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarLotesNfseAsync($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarLotesNfseAsync($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
     {
-        return $this->listarLotesNfseAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia)
+        return $this->listarLotesNfseAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2640,18 +3239,19 @@ class NfseApi
      * Listar lotes de NFS-e
      *
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarLotesNfseAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarLotesNfseAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
     {
         $returnType = '\NuvemFiscal\Model\RpsLoteListagem';
-        $request = $this->listarLotesNfseRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia);
+        $request = $this->listarLotesNfseRequest($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2693,15 +3293,16 @@ class NfseApi
      * Create request for operation 'listarLotesNfse'
      *
      * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listarLotesNfseRequest($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null)
+    public function listarLotesNfseRequest($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null)
     {
 
         // verify the required parameter 'cpf_cnpj' is set
@@ -2717,6 +3318,7 @@ class NfseApi
                 'Missing the required parameter $ambiente when calling listarLotesNfse'
             );
         }
+
 
 
 
@@ -2742,6 +3344,15 @@ class NfseApi
             $skip,
             '$skip', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $inlinecount,
+            '$inlinecount', // param base name
+            'boolean', // openApiType
             '', // style
             false, // explode
             false // required
@@ -2849,10 +3460,11 @@ class NfseApi
      *
      * Listar NFS-e
      *
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.    Utilize o valor sem máscara. (required)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
@@ -2860,9 +3472,9 @@ class NfseApi
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\NfseListagem
      */
-    public function listarNfse($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
+    public function listarNfse($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
     {
-        list($response) = $this->listarNfseWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
+        list($response) = $this->listarNfseWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave);
         return $response;
     }
 
@@ -2871,10 +3483,11 @@ class NfseApi
      *
      * Listar NFS-e
      *
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.    Utilize o valor sem máscara. (required)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
@@ -2882,9 +3495,9 @@ class NfseApi
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\NfseListagem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listarNfseWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
+    public function listarNfseWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
     {
-        $request = $this->listarNfseRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
+        $request = $this->listarNfseRequest($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2979,19 +3592,20 @@ class NfseApi
      *
      * Listar NFS-e
      *
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.    Utilize o valor sem máscara. (required)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarNfseAsync($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
+    public function listarNfseAsync($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
     {
-        return $this->listarNfseAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave)
+        return $this->listarNfseAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3004,20 +3618,21 @@ class NfseApi
      *
      * Listar NFS-e
      *
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.    Utilize o valor sem máscara. (required)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listarNfseAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
+    public function listarNfseAsyncWithHttpInfo($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
     {
         $returnType = '\NuvemFiscal\Model\NfseListagem';
-        $request = $this->listarNfseRequest($cpf_cnpj, $ambiente, $top, $skip, $referencia, $chave);
+        $request = $this->listarNfseRequest($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3058,17 +3673,18 @@ class NfseApi
     /**
      * Create request for operation 'listarNfse'
      *
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $ambiente Identificação do Ambiente.  Valores aceitos: homologacao, producao (required)
-     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100.  Valor padrão: &#x60;10&#x60;. (optional)
-     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ do emitente.    Utilize o valor sem máscara. (required)
+     * @param  string $ambiente Identificação do Ambiente.    Valores aceitos: homologacao, producao (required)
+     * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
+     * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
+     * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional)
      * @param  string $referencia (optional)
      * @param  string $chave Chave de acesso do DF-e. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listarNfseRequest($cpf_cnpj, $ambiente, $top = null, $skip = null, $referencia = null, $chave = null)
+    public function listarNfseRequest($cpf_cnpj, $ambiente, $top = 10, $skip = 0, $inlinecount = null, $referencia = null, $chave = null)
     {
 
         // verify the required parameter 'cpf_cnpj' is set
@@ -3084,6 +3700,7 @@ class NfseApi
                 'Missing the required parameter $ambiente when calling listarNfse'
             );
         }
+
 
 
 
@@ -3110,6 +3727,15 @@ class NfseApi
             $skip,
             '$skip', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $inlinecount,
+            '$inlinecount', // param base name
+            'boolean', // openApiType
             '', // style
             false, // explode
             false // required

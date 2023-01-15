@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazEnderEmi Class Doc Comment
  *
  * @category Class
+ * @description Endereço do emitente.  Caso não seja informado, será utilizado o do cadastro da empresa.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazUnidadeTransp Class Doc Comment
  *
  * @category Class
+ * @description Informações das Unidades de Transporte (Carreta/Reboque/Vagão).  Deve ser preenchido com as informações das unidades de transporte utilizadas.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -325,7 +326,7 @@ class CteSefazUnidadeTransp implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets tp_unid_transp
      *
-     * @param int $tp_unid_transp Tipo da Unidade de Transporte.  1 - Rodoviário Tração  2 - Rodoviário Reboque  3 - Navio  4 - Balsa  5 - Aeronave  6 - Vagão  7 - Outros.
+     * @param int $tp_unid_transp Tipo da Unidade de Transporte.  * 1 - Rodoviário Tração  * 2 - Rodoviário Reboque  * 3 - Navio  * 4 - Balsa  * 5 - Aeronave  * 6 - Vagão  * 7 - Outros
      *
      * @return self
      */
@@ -383,7 +384,7 @@ class CteSefazUnidadeTransp implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets lac_unid_transp
      *
-     * @param \NuvemFiscal\Model\CteSefazLacUnidTransp[]|null $lac_unid_transp Lacres das Unidades de Transporte.
+     * @param \NuvemFiscal\Model\CteSefazLacUnidTransp[]|null $lac_unid_transp lac_unid_transp
      *
      * @return self
      */
@@ -412,7 +413,7 @@ class CteSefazUnidadeTransp implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets inf_unid_carga
      *
-     * @param \NuvemFiscal\Model\CteSefazUnidCarga[]|null $inf_unid_carga Informações das Unidades de Carga (Containeres/ULD/Outros).  Dispositivo de carga utilizada (Unit Load Device - ULD) significa todo tipo de contêiner de carga, vagão, contêiner de avião, palete de aeronave com rede ou palete de aeronave com rede sobre um iglu.
+     * @param \NuvemFiscal\Model\CteSefazUnidCarga[]|null $inf_unid_carga inf_unid_carga
      *
      * @return self
      */

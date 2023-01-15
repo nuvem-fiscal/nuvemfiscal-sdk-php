@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CnpjNaturezaJuridica Class Doc Comment
  *
  * @category Class
+ * @description Natureza jurídica.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

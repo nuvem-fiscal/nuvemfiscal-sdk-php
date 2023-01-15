@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazDI Class Doc Comment
  *
  * @category Class
+ * @description Delcaração de Importação  (NT 2011/004).
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -540,7 +541,7 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_via_transp
      *
-     * @param int $tp_via_transp Via de transporte internacional informada na DI                   1-Maritima;2-Fluvial;3-Lacustre;4-Aerea;5-Postal;6-Ferroviaria;7-Rodoviaria;8-Conduto;9-Meios Proprios;10-Entrada/Saida Ficta;                   11-Courier;12-Em maos;13-Por reboque.
+     * @param int $tp_via_transp Via de transporte internacional informada na DI  * 1 - Maritima  * 2 - Fluvial  * 3 - Lacustre  * 4 - Aerea  * 5 - Postal  * 6 - Ferroviaria  * 7 - Rodoviaria  * 8 - Conduto  * 9 - Meios Proprios  * 10 - Entrada/Saida Ficta  * 11 - Courier  * 12 - Em maos  * 13 - Por reboque
      *
      * @return self
      */
@@ -598,7 +599,7 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_intermedio
      *
-     * @param int $tp_intermedio Forma de Importação quanto a intermediação                    1-por conta propria;2-por conta e ordem;3-encomenda.
+     * @param int $tp_intermedio Forma de Importação quanto a intermediação  * 1 - por conta propria  * 2 - por conta e ordem  * 3 - encomenda
      *
      * @return self
      */
@@ -714,7 +715,7 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets adi
      *
-     * @param \NuvemFiscal\Model\NfeSefazAdi[] $adi Adições (NT 2011/004).
+     * @param \NuvemFiscal\Model\NfeSefazAdi[] $adi adi
      *
      * @return self
      */

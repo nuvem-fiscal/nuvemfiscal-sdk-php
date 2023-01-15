@@ -5,6 +5,7 @@
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
 **ref_nfe** | **string** | Chave de acesso das NF-e referenciadas. Chave de acesso compostas por Código da UF (tabela do IBGE) + AAMM da emissão + CNPJ do Emitente + modelo, série e número da NF-e Referenciada + Código Numérico + DV. | [optional]
+**ref_nfe_sig** | **string** | Referencia uma NF-e (modelo 55) emitida anteriormente pela sua Chave de Acesso com código numérico zerado, permitindo manter o sigilo da NF-e referenciada. | [optional]
 **ref_nf** | [**\NuvemFiscal\Model\NfeSefazRefNF**](NfeSefazRefNF.md) |  | [optional]
 **ref_nfp** | [**\NuvemFiscal\Model\NfeSefazRefNFP**](NfeSefazRefNFP.md) |  | [optional]
 **ref_cte** | **string** | Utilizar esta TAG para referenciar um CT-e emitido anteriormente, vinculada a NF-e atual. | [optional]

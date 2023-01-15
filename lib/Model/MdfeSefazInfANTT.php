@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfANTT Class Doc Comment
  *
  * @category Class
+ * @description Grupo de informações para Agência Reguladora.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -348,7 +349,7 @@ class MdfeSefazInfANTT implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_ciot
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfCIOT[]|null $inf_ciot Dados do CIOT.
+     * @param \NuvemFiscal\Model\MdfeSefazInfCIOT[]|null $inf_ciot inf_ciot
      *
      * @return self
      */
@@ -406,7 +407,7 @@ class MdfeSefazInfANTT implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_contratante
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfContratante[]|null $inf_contratante Grupo de informações dos contratantes do serviço de transporte.
+     * @param \NuvemFiscal\Model\MdfeSefazInfContratante[]|null $inf_contratante inf_contratante
      *
      * @return self
      */
@@ -435,7 +436,7 @@ class MdfeSefazInfANTT implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_pag
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfPag[]|null $inf_pag Informações do Pagamento do Frete.
+     * @param \NuvemFiscal\Model\MdfeSefazInfPag[]|null $inf_pag inf_pag
      *
      * @return self
      */

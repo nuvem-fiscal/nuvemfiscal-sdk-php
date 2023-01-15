@@ -4,7 +4,7 @@
 
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
-**cst** | **string** | Classificação Tributária do Serviço.  90 - ICMS outros. |
+**cst** | **string** | Classificação Tributária do Serviço.  * 90 - ICMS outros |
 **p_red_bc** | **float** | Percentual de redução da BC. | [optional]
 **v_bc** | **float** | Valor da BC do ICMS. |
 **p_icms** | **float** | Alíquota do ICMS. |

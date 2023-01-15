@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazCompl Class Doc Comment
  *
  * @category Class
+ * @description Dados complementares do CT-e para fins operacionais ou comerciais.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -354,7 +355,7 @@ class CteSefazCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_carac_ad
      *
-     * @param string|null $x_carac_ad Característica adicional do transporte.  Texto livre:  REENTREGA; DEVOLUÇÃO; REFATURAMENTO; etc.
+     * @param string|null $x_carac_ad Característica adicional do transporte.  Texto livre:  REENTREGA  DEVOLUÇÃO  REFATURAMENTO  etc.
      *
      * @return self
      */
@@ -383,7 +384,7 @@ class CteSefazCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_carac_ser
      *
-     * @param string|null $x_carac_ser Característica adicional do serviço.  Texto livre:             ENTREGA EXPRESSA; LOGÍSTICA REVERSA; CONVENCIONAL; EMERGENCIAL; etc.
+     * @param string|null $x_carac_ser Característica adicional do serviço.  Texto livre:  ENTREGA EXPRESSA  LOGÍSTICA REVERSA  CONVENCIONAL  EMERGENCIAL  etc.
      *
      * @return self
      */
@@ -586,7 +587,7 @@ class CteSefazCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets obs_cont
      *
-     * @param \NuvemFiscal\Model\CteSefazObsCont[]|null $obs_cont Campo de uso livre do contribuinte.  Informar o nome do campo no atributo xCampo e o conteúdo do campo no XTexto.
+     * @param \NuvemFiscal\Model\CteSefazObsCont[]|null $obs_cont obs_cont
      *
      * @return self
      */
@@ -615,7 +616,7 @@ class CteSefazCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets obs_fisco
      *
-     * @param \NuvemFiscal\Model\CteSefazObsFisco[]|null $obs_fisco Campo de uso livre do contribuinte.  Informar o nome do campo no atributo xCampo e o conteúdo do campo no XTexto.
+     * @param \NuvemFiscal\Model\CteSefazObsFisco[]|null $obs_fisco obs_fisco
      *
      * @return self
      */

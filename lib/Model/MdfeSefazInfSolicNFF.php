@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfSolicNFF Class Doc Comment
  *
  * @category Class
+ * @description Grupo de informações do pedido de emissão da Nota Fiscal Fácil.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

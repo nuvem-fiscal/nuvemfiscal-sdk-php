@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazAdi Class Doc Comment
  *
  * @category Class
+ * @description Adições (NT 2011/004).
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -412,7 +413,7 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets v_desc_di
      *
-     * @param float|null $v_desc_di Valor do desconto do item da DI – adição.
+     * @param float|null $v_desc_di Valor do desconto do item da DI - adição.
      *
      * @return self
      */

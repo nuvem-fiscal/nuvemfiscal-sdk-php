@@ -65,12 +65,7 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
         'nome_fantasia' => 'string',
         'fone' => 'string',
         'email' => 'string',
-        'endereco' => '\NuvemFiscal\Model\EmpresaEndereco',
-        'optante_simples_nacional' => 'bool',
-        'regime_tributacao' => 'int',
-        'regime_especial_tributacao' => 'int',
-        'incentivo_fiscal' => 'bool',
-        'incentivador_cultural' => 'bool'
+        'endereco' => '\NuvemFiscal\Model\EmpresaEndereco'
     ];
 
     /**
@@ -90,12 +85,7 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
         'nome_fantasia' => null,
         'fone' => null,
         'email' => null,
-        'endereco' => null,
-        'optante_simples_nacional' => null,
-        'regime_tributacao' => null,
-        'regime_especial_tributacao' => null,
-        'incentivo_fiscal' => null,
-        'incentivador_cultural' => null
+        'endereco' => null
     ];
 
     /**
@@ -113,12 +103,7 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
 		'nome_fantasia' => false,
 		'fone' => false,
 		'email' => false,
-		'endereco' => false,
-		'optante_simples_nacional' => false,
-		'regime_tributacao' => false,
-		'regime_especial_tributacao' => false,
-		'incentivo_fiscal' => false,
-		'incentivador_cultural' => false
+		'endereco' => false
     ];
 
     /**
@@ -206,12 +191,7 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
         'nome_fantasia' => 'nome_fantasia',
         'fone' => 'fone',
         'email' => 'email',
-        'endereco' => 'endereco',
-        'optante_simples_nacional' => 'optante_simples_nacional',
-        'regime_tributacao' => 'regime_tributacao',
-        'regime_especial_tributacao' => 'regime_especial_tributacao',
-        'incentivo_fiscal' => 'incentivo_fiscal',
-        'incentivador_cultural' => 'incentivador_cultural'
+        'endereco' => 'endereco'
     ];
 
     /**
@@ -229,12 +209,7 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
         'nome_fantasia' => 'setNomeFantasia',
         'fone' => 'setFone',
         'email' => 'setEmail',
-        'endereco' => 'setEndereco',
-        'optante_simples_nacional' => 'setOptanteSimplesNacional',
-        'regime_tributacao' => 'setRegimeTributacao',
-        'regime_especial_tributacao' => 'setRegimeEspecialTributacao',
-        'incentivo_fiscal' => 'setIncentivoFiscal',
-        'incentivador_cultural' => 'setIncentivadorCultural'
+        'endereco' => 'setEndereco'
     ];
 
     /**
@@ -252,12 +227,7 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
         'nome_fantasia' => 'getNomeFantasia',
         'fone' => 'getFone',
         'email' => 'getEmail',
-        'endereco' => 'getEndereco',
-        'optante_simples_nacional' => 'getOptanteSimplesNacional',
-        'regime_tributacao' => 'getRegimeTributacao',
-        'regime_especial_tributacao' => 'getRegimeEspecialTributacao',
-        'incentivo_fiscal' => 'getIncentivoFiscal',
-        'incentivador_cultural' => 'getIncentivadorCultural'
+        'endereco' => 'getEndereco'
     ];
 
     /**
@@ -327,11 +297,6 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('fone', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('endereco', $data ?? [], null);
-        $this->setIfExists('optante_simples_nacional', $data ?? [], null);
-        $this->setIfExists('regime_tributacao', $data ?? [], null);
-        $this->setIfExists('regime_especial_tributacao', $data ?? [], null);
-        $this->setIfExists('incentivo_fiscal', $data ?? [], null);
-        $this->setIfExists('incentivador_cultural', $data ?? [], null);
     }
 
     /**
@@ -372,12 +337,6 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['endereco'] === null) {
             $invalidProperties[] = "'endereco' can't be null";
-        }
-        if ($this->container['regime_tributacao'] === null) {
-            $invalidProperties[] = "'regime_tributacao' can't be null";
-        }
-        if ($this->container['regime_especial_tributacao'] === null) {
-            $invalidProperties[] = "'regime_especial_tributacao' can't be null";
         }
         return $invalidProperties;
     }
@@ -680,151 +639,6 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['endereco'] = $endereco;
-
-        return $this;
-    }
-
-    /**
-     * Gets optante_simples_nacional
-     *
-     * @return bool|null
-     */
-    public function getOptanteSimplesNacional()
-    {
-        return $this->container['optante_simples_nacional'];
-    }
-
-    /**
-     * Sets optante_simples_nacional
-     *
-     * @param bool|null $optante_simples_nacional Optante pelo simples nacional.
-     *
-     * @return self
-     */
-    public function setOptanteSimplesNacional($optante_simples_nacional)
-    {
-
-        if (is_null($optante_simples_nacional)) {
-            throw new \InvalidArgumentException('non-nullable optante_simples_nacional cannot be null');
-        }
-
-        $this->container['optante_simples_nacional'] = $optante_simples_nacional;
-
-        return $this;
-    }
-
-    /**
-     * Gets regime_tributacao
-     *
-     * @return int
-     */
-    public function getRegimeTributacao()
-    {
-        return $this->container['regime_tributacao'];
-    }
-
-    /**
-     * Sets regime_tributacao
-     *
-     * @param int $regime_tributacao Regime Tributário da Empresa:  0 - Nenhum  1 - Simples Nacional  2 - Simples Nacional - Excesso  3 - Normal - Lucro Presumido  4 - Normal - Lucro Real
-     *
-     * @return self
-     */
-    public function setRegimeTributacao($regime_tributacao)
-    {
-
-        if (is_null($regime_tributacao)) {
-            throw new \InvalidArgumentException('non-nullable regime_tributacao cannot be null');
-        }
-
-        $this->container['regime_tributacao'] = $regime_tributacao;
-
-        return $this;
-    }
-
-    /**
-     * Gets regime_especial_tributacao
-     *
-     * @return int
-     */
-    public function getRegimeEspecialTributacao()
-    {
-        return $this->container['regime_especial_tributacao'];
-    }
-
-    /**
-     * Sets regime_especial_tributacao
-     *
-     * @param int $regime_especial_tributacao Regime especial de tributação da Empresa:  0 - Sem Regime Tributário Especial  1 - Micro Empresa Municipal  2 - Estimativa  3 - Sociedade de Profissionais  4 - Cooperativa  5 - Microempresário Individual - MEI  6 - Microempresa ou Pequeno Porte - ME EPP
-     *
-     * @return self
-     */
-    public function setRegimeEspecialTributacao($regime_especial_tributacao)
-    {
-
-        if (is_null($regime_especial_tributacao)) {
-            throw new \InvalidArgumentException('non-nullable regime_especial_tributacao cannot be null');
-        }
-
-        $this->container['regime_especial_tributacao'] = $regime_especial_tributacao;
-
-        return $this;
-    }
-
-    /**
-     * Gets incentivo_fiscal
-     *
-     * @return bool|null
-     */
-    public function getIncentivoFiscal()
-    {
-        return $this->container['incentivo_fiscal'];
-    }
-
-    /**
-     * Sets incentivo_fiscal
-     *
-     * @param bool|null $incentivo_fiscal Indicador se a empresa possui algum tipo de incentivo fiscal.
-     *
-     * @return self
-     */
-    public function setIncentivoFiscal($incentivo_fiscal)
-    {
-
-        if (is_null($incentivo_fiscal)) {
-            throw new \InvalidArgumentException('non-nullable incentivo_fiscal cannot be null');
-        }
-
-        $this->container['incentivo_fiscal'] = $incentivo_fiscal;
-
-        return $this;
-    }
-
-    /**
-     * Gets incentivador_cultural
-     *
-     * @return bool|null
-     */
-    public function getIncentivadorCultural()
-    {
-        return $this->container['incentivador_cultural'];
-    }
-
-    /**
-     * Sets incentivador_cultural
-     *
-     * @param bool|null $incentivador_cultural Indicador se a empresa é um incentivador cultural.
-     *
-     * @return self
-     */
-    public function setIncentivadorCultural($incentivador_cultural)
-    {
-
-        if (is_null($incentivador_cultural)) {
-            throw new \InvalidArgumentException('non-nullable incentivador_cultural cannot be null');
-        }
-
-        $this->container['incentivador_cultural'] = $incentivador_cultural;
 
         return $this;
     }

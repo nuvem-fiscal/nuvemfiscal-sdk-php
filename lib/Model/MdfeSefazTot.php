@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazTot Class Doc Comment
  *
  * @category Class
+ * @description Totalizadores da carga transportada e seus documentos fiscais.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -451,7 +452,7 @@ class MdfeSefazTot implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_unid
      *
-     * @param string $c_unid Código da unidade de medida do Peso Bruto da Carga / Mercadorias transportadas.  01 – KG;  02 - TON.
+     * @param string $c_unid Código da unidade de medida do Peso Bruto da Carga / Mercadorias transportadas.  * 01 - KG  * 02 - TON
      *
      * @return self
      */

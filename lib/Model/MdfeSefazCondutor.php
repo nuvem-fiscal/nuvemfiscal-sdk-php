@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazCondutor Class Doc Comment
  *
  * @category Class
+ * @description Informações do(s) Condutor(es) do veículo.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

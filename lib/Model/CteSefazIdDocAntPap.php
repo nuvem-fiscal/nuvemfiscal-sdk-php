@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazIdDocAntPap Class Doc Comment
  *
  * @category Class
+ * @description Documentos de transporte anterior em papel.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -331,7 +332,7 @@ class CteSefazIdDocAntPap implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets tp_doc
      *
-     * @param string $tp_doc Tipo do Documento de Transporte Anterior.  Preencher com:  07-ATRE;         08-DTA (Despacho de Transito Aduaneiro);  09-Conhecimento Aéreo Internacional;  10 – Conhecimento - Carta de Porte Internacional;  11 – Conhecimento Avulso;  12-TIF (Transporte Internacional Ferroviário); 13-BL (Bill of Lading).
+     * @param string $tp_doc Tipo do Documento de Transporte Anterior.  Preencher com:  * 07 - ATRE  * 08 - DTA (Despacho de Transito Aduaneiro)  * 09 - Conhecimento Aéreo Internacional  * 10 - Conhecimento - Carta de Porte Internacional  * 11 - Conhecimento Avulso  * 12 - TIF (Transporte Internacional Ferroviário)  * 13 - BL (Bill of Lading)
      *
      * @return self
      */

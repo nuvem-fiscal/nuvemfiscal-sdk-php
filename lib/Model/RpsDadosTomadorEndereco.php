@@ -294,7 +294,7 @@ class RpsDadosTomadorEndereco implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('codigo_municipio', $data ?? [], null);
         $this->setIfExists('cidade', $data ?? [], null);
         $this->setIfExists('uf', $data ?? [], null);
-        $this->setIfExists('codigo_pais', $data ?? [], null);
+        $this->setIfExists('codigo_pais', $data ?? [], '1058');
         $this->setIfExists('pais', $data ?? [], null);
         $this->setIfExists('cep', $data ?? [], null);
     }
@@ -557,7 +557,7 @@ class RpsDadosTomadorEndereco implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets codigo_pais
      *
-     * @param string|null $codigo_pais Código do país.  Valor padrão: `1058`
+     * @param string|null $codigo_pais codigo_pais
      *
      * @return self
      */

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazRefNF Class Doc Comment
  *
  * @category Class
+ * @description Informação da NF ou CT emitido pelo Tomador.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

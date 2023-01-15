@@ -311,7 +311,7 @@ class MdfePedidoEncerramento implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets data_encerramento
      *
-     * @param \DateTime|null $data_encerramento Data que o manifesto foi encerrado.  Opcional. Caso não seja informada, será utilizada a data em que a solicitação foi feita à API.
+     * @param \DateTime|null $data_encerramento Data que o manifesto foi encerrado.    Opcional. Caso não seja informada, será utilizada a data em que a solicitação foi feita à API.
      *
      * @return self
      */

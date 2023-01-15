@@ -63,7 +63,8 @@ class Rps implements ModelInterface, ArrayAccess, \JsonSerializable
         'tomador' => '\NuvemFiscal\Model\RpsDadosTomador',
         'intermediario' => '\NuvemFiscal\Model\RpsDadosIntermediario',
         'construcao_civil' => '\NuvemFiscal\Model\RpsDadosConstrucaoCivil',
-        'servicos' => '\NuvemFiscal\Model\RpsDadosServico[]'
+        'servicos' => '\NuvemFiscal\Model\RpsDadosServico[]',
+        'outras_informacoes' => 'string'
     ];
 
     /**
@@ -81,7 +82,8 @@ class Rps implements ModelInterface, ArrayAccess, \JsonSerializable
         'tomador' => null,
         'intermediario' => null,
         'construcao_civil' => null,
-        'servicos' => null
+        'servicos' => null,
+        'outras_informacoes' => null
     ];
 
     /**
@@ -97,7 +99,8 @@ class Rps implements ModelInterface, ArrayAccess, \JsonSerializable
 		'tomador' => false,
 		'intermediario' => false,
 		'construcao_civil' => false,
-		'servicos' => false
+		'servicos' => false,
+		'outras_informacoes' => false
     ];
 
     /**
@@ -183,7 +186,8 @@ class Rps implements ModelInterface, ArrayAccess, \JsonSerializable
         'tomador' => 'tomador',
         'intermediario' => 'intermediario',
         'construcao_civil' => 'construcao_civil',
-        'servicos' => 'servicos'
+        'servicos' => 'servicos',
+        'outras_informacoes' => 'outras_informacoes'
     ];
 
     /**
@@ -199,7 +203,8 @@ class Rps implements ModelInterface, ArrayAccess, \JsonSerializable
         'tomador' => 'setTomador',
         'intermediario' => 'setIntermediario',
         'construcao_civil' => 'setConstrucaoCivil',
-        'servicos' => 'setServicos'
+        'servicos' => 'setServicos',
+        'outras_informacoes' => 'setOutrasInformacoes'
     ];
 
     /**
@@ -215,7 +220,8 @@ class Rps implements ModelInterface, ArrayAccess, \JsonSerializable
         'tomador' => 'getTomador',
         'intermediario' => 'getIntermediario',
         'construcao_civil' => 'getConstrucaoCivil',
-        'servicos' => 'getServicos'
+        'servicos' => 'getServicos',
+        'outras_informacoes' => 'getOutrasInformacoes'
     ];
 
     /**
@@ -283,6 +289,7 @@ class Rps implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('intermediario', $data ?? [], null);
         $this->setIfExists('construcao_civil', $data ?? [], null);
         $this->setIfExists('servicos', $data ?? [], null);
+        $this->setIfExists('outras_informacoes', $data ?? [], null);
     }
 
     /**
@@ -558,6 +565,35 @@ class Rps implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['servicos'] = $servicos;
+
+        return $this;
+    }
+
+    /**
+     * Gets outras_informacoes
+     *
+     * @return string|null
+     */
+    public function getOutrasInformacoes()
+    {
+        return $this->container['outras_informacoes'];
+    }
+
+    /**
+     * Sets outras_informacoes
+     *
+     * @param string|null $outras_informacoes Informações adicionais ao documento.
+     *
+     * @return self
+     */
+    public function setOutrasInformacoes($outras_informacoes)
+    {
+
+        if (is_null($outras_informacoes)) {
+            throw new \InvalidArgumentException('non-nullable outras_informacoes cannot be null');
+        }
+
+        $this->container['outras_informacoes'] = $outras_informacoes;
 
         return $this;
     }

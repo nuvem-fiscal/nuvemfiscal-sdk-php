@@ -56,8 +56,10 @@ class EmpresaConfigNfse implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
+        'reg_trib' => '\NuvemFiscal\Model\EmpresaConfigNfseRegTrib',
         'rps' => '\NuvemFiscal\Model\EmpresaConfigRps',
         'prefeitura' => '\NuvemFiscal\Model\EmpresaConfigPrefeitura',
+        'incentivo_fiscal' => 'bool',
         'ambiente' => 'string'
     ];
 
@@ -69,8 +71,10 @@ class EmpresaConfigNfse implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'reg_trib' => null,
         'rps' => null,
         'prefeitura' => null,
+        'incentivo_fiscal' => null,
         'ambiente' => null
     ];
 
@@ -80,8 +84,10 @@ class EmpresaConfigNfse implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'rps' => false,
+        'reg_trib' => false,
+		'rps' => false,
 		'prefeitura' => false,
+		'incentivo_fiscal' => false,
 		'ambiente' => false
     ];
 
@@ -161,8 +167,10 @@ class EmpresaConfigNfse implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
+        'reg_trib' => 'regTrib',
         'rps' => 'rps',
         'prefeitura' => 'prefeitura',
+        'incentivo_fiscal' => 'incentivo_fiscal',
         'ambiente' => 'ambiente'
     ];
 
@@ -172,8 +180,10 @@ class EmpresaConfigNfse implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
+        'reg_trib' => 'setRegTrib',
         'rps' => 'setRps',
         'prefeitura' => 'setPrefeitura',
+        'incentivo_fiscal' => 'setIncentivoFiscal',
         'ambiente' => 'setAmbiente'
     ];
 
@@ -183,8 +193,10 @@ class EmpresaConfigNfse implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
+        'reg_trib' => 'getRegTrib',
         'rps' => 'getRps',
         'prefeitura' => 'getPrefeitura',
+        'incentivo_fiscal' => 'getIncentivoFiscal',
         'ambiente' => 'getAmbiente'
     ];
 
@@ -260,8 +272,10 @@ class EmpresaConfigNfse implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('reg_trib', $data ?? [], null);
         $this->setIfExists('rps', $data ?? [], null);
         $this->setIfExists('prefeitura', $data ?? [], null);
+        $this->setIfExists('incentivo_fiscal', $data ?? [], null);
         $this->setIfExists('ambiente', $data ?? [], null);
     }
 
@@ -323,6 +337,35 @@ class EmpresaConfigNfse implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
+     * Gets reg_trib
+     *
+     * @return \NuvemFiscal\Model\EmpresaConfigNfseRegTrib|null
+     */
+    public function getRegTrib()
+    {
+        return $this->container['reg_trib'];
+    }
+
+    /**
+     * Sets reg_trib
+     *
+     * @param \NuvemFiscal\Model\EmpresaConfigNfseRegTrib|null $reg_trib reg_trib
+     *
+     * @return self
+     */
+    public function setRegTrib($reg_trib)
+    {
+
+        if (is_null($reg_trib)) {
+            throw new \InvalidArgumentException('non-nullable reg_trib cannot be null');
+        }
+
+        $this->container['reg_trib'] = $reg_trib;
+
+        return $this;
+    }
+
+    /**
      * Gets rps
      *
      * @return \NuvemFiscal\Model\EmpresaConfigRps
@@ -376,6 +419,35 @@ class EmpresaConfigNfse implements ModelInterface, ArrayAccess, \JsonSerializabl
         }
 
         $this->container['prefeitura'] = $prefeitura;
+
+        return $this;
+    }
+
+    /**
+     * Gets incentivo_fiscal
+     *
+     * @return bool|null
+     */
+    public function getIncentivoFiscal()
+    {
+        return $this->container['incentivo_fiscal'];
+    }
+
+    /**
+     * Sets incentivo_fiscal
+     *
+     * @param bool|null $incentivo_fiscal Indicador se a empresa possui algum tipo de incentivo fiscal.
+     *
+     * @return self
+     */
+    public function setIncentivoFiscal($incentivo_fiscal)
+    {
+
+        if (is_null($incentivo_fiscal)) {
+            throw new \InvalidArgumentException('non-nullable incentivo_fiscal cannot be null');
+        }
+
+        $this->container['incentivo_fiscal'] = $incentivo_fiscal;
 
         return $this;
     }

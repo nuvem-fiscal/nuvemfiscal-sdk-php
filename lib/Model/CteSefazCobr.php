@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazCobr Class Doc Comment
  *
  * @category Class
+ * @description Dados da cobrança do CT-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -327,7 +328,7 @@ class CteSefazCobr implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dup
      *
-     * @param \NuvemFiscal\Model\CteSefazDup[]|null $dup Dados das duplicatas.
+     * @param \NuvemFiscal\Model\CteSefazDup[]|null $dup dup
      *
      * @return self
      */

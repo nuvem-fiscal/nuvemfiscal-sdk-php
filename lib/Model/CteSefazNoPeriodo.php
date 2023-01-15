@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazNoPeriodo Class Doc Comment
  *
  * @category Class
+ * @description Entrega no período definido.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -314,7 +315,7 @@ class CteSefazNoPeriodo implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets tp_per
      *
-     * @param int $tp_per Tipo período.  4-no período.
+     * @param int $tp_per Tipo período.  * 4 - no período
      *
      * @return self
      */

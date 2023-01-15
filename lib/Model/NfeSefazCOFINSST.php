@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazCOFINSST Class Doc Comment
  *
  * @category Class
+ * @description Dados do COFINS da  Substituição Tributaria.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

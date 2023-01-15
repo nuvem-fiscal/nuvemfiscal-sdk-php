@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfTermDescarreg Class Doc Comment
  *
  * @category Class
+ * @description Grupo de informações dos terminais de descarregamento.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CnpjEndereco Class Doc Comment
  *
  * @category Class
+ * @description Endereço do estabelecimento.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

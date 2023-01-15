@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazEmiDocAnt Class Doc Comment
  *
  * @category Class
+ * @description Emissor do documento anterior.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -332,7 +333,7 @@ class CteSefazEmiDocAnt implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets cnpj
      *
-     * @param string|null $cnpj Número do CNPJ.  Em caso de empresa não estabelecida no Brasil, será informado o CNPJ com zeros.                     Informar os zeros não significativos.
+     * @param string|null $cnpj Número do CNPJ.  Em caso de empresa não estabelecida no Brasil, será informado o CNPJ com zeros.  Informar os zeros não significativos.
      *
      * @return self
      */
@@ -477,7 +478,7 @@ class CteSefazEmiDocAnt implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets id_doc_ant
      *
-     * @param \NuvemFiscal\Model\CteSefazIdDocAnt[] $id_doc_ant Informações de identificação dos documentos de Transporte Anterior.
+     * @param \NuvemFiscal\Model\CteSefazIdDocAnt[] $id_doc_ant id_doc_ant
      *
      * @return self
      */

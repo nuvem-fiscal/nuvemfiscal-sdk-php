@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazImpostoDevolIPI Class Doc Comment
  *
  * @category Class
+ * @description Informação de IPI devolvido.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

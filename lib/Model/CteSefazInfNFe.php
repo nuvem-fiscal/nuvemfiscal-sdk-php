@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazInfNFe Class Doc Comment
  *
  * @category Class
+ * @description Informações das NF-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -409,7 +410,7 @@ class CteSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_unid_carga
      *
-     * @param \NuvemFiscal\Model\CteSefazUnidCarga[]|null $inf_unid_carga Informações das Unidades de Carga (Containeres/ULD/Outros).  Dispositivo de carga utilizada (Unit Load Device - ULD) significa todo tipo de contêiner de carga, vagão, contêiner de avião, palete de aeronave com rede ou palete de aeronave com rede sobre um iglu.
+     * @param \NuvemFiscal\Model\CteSefazUnidCarga[]|null $inf_unid_carga inf_unid_carga
      *
      * @return self
      */
@@ -438,7 +439,7 @@ class CteSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_unid_transp
      *
-     * @param \NuvemFiscal\Model\CteSefazUnidadeTransp[]|null $inf_unid_transp Informações das Unidades de Transporte (Carreta/Reboque/Vagão).  Deve ser preenchido com as informações das unidades de transporte utilizadas.
+     * @param \NuvemFiscal\Model\CteSefazUnidadeTransp[]|null $inf_unid_transp inf_unid_transp
      *
      * @return self
      */

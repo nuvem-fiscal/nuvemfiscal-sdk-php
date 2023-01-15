@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazNoInter Class Doc Comment
  *
  * @category Class
+ * @description Entrega no intervalo de horário definido.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -314,7 +315,7 @@ class CteSefazNoInter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_hor
      *
-     * @param int $tp_hor Tipo de hora.  4 - No intervalo de tempo.
+     * @param int $tp_hor Tipo de hora.  * 4 - No intervalo de tempo
      *
      * @return self
      */

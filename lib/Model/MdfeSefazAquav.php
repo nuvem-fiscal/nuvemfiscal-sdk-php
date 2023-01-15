@@ -635,7 +635,7 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_nav
      *
-     * @param int|null $tp_nav Tipo de Navegação.  Preencher com:         0 - Interior;        1 - Cabotagem.
+     * @param int|null $tp_nav Tipo de Navegação.  Preencher com:  * 0 - Interior  * 1 - Cabotagem
      *
      * @return self
      */
@@ -664,7 +664,7 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_term_carreg
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfTermCarreg[]|null $inf_term_carreg Grupo de informações dos terminais de carregamento.
+     * @param \NuvemFiscal\Model\MdfeSefazInfTermCarreg[]|null $inf_term_carreg inf_term_carreg
      *
      * @return self
      */
@@ -693,7 +693,7 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_term_descarreg
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfTermDescarreg[]|null $inf_term_descarreg Grupo de informações dos terminais de descarregamento.
+     * @param \NuvemFiscal\Model\MdfeSefazInfTermDescarreg[]|null $inf_term_descarreg inf_term_descarreg
      *
      * @return self
      */
@@ -722,7 +722,7 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_emb_comb
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfEmbComb[]|null $inf_emb_comb Informações das Embarcações do Comboio.
+     * @param \NuvemFiscal\Model\MdfeSefazInfEmbComb[]|null $inf_emb_comb inf_emb_comb
      *
      * @return self
      */
@@ -751,7 +751,7 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_unid_carga_vazia
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfUnidCargaVazia[]|null $inf_unid_carga_vazia Informações das Undades de Carga vazias.
+     * @param \NuvemFiscal\Model\MdfeSefazInfUnidCargaVazia[]|null $inf_unid_carga_vazia inf_unid_carga_vazia
      *
      * @return self
      */
@@ -780,7 +780,7 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_unid_transp_vazia
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfUnidTranspVazia[]|null $inf_unid_transp_vazia Informações das Undades de Transporte vazias.
+     * @param \NuvemFiscal\Model\MdfeSefazInfUnidTranspVazia[]|null $inf_unid_transp_vazia inf_unid_transp_vazia
      *
      * @return self
      */

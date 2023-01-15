@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfMDFeTransp Class Doc Comment
  *
  * @category Class
+ * @description Manifesto Eletrônico de Documentos Fiscais. Somente para modal Aquaviário (vide regras MOC).
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -373,7 +374,7 @@ class MdfeSefazInfMDFeTransp implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets inf_unid_transp
      *
-     * @param \NuvemFiscal\Model\MdfeSefazUnidadeTransp[]|null $inf_unid_transp Informações das Unidades de Transporte (Carreta/Reboque/Vagão).  Dispositivo de carga utilizada (Unit Load Device - ULD) significa todo tipo de contêiner de carga, vagão, contêiner de avião, palete de aeronave com rede ou palete de aeronave com rede sobre um iglu.
+     * @param \NuvemFiscal\Model\MdfeSefazUnidadeTransp[]|null $inf_unid_transp inf_unid_transp
      *
      * @return self
      */
@@ -402,7 +403,7 @@ class MdfeSefazInfMDFeTransp implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets peri
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfMDFeTranspPeri[]|null $peri Preenchido quando for  transporte de produtos classificados pela ONU como perigosos.
+     * @param \NuvemFiscal\Model\MdfeSefazInfMDFeTranspPeri[]|null $peri peri
      *
      * @return self
      */

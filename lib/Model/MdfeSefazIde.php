@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazIde Class Doc Comment
  *
  * @category Class
+ * @description Identificação do MDF-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -496,7 +497,7 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_amb
      *
-     * @param int|null $tp_amb Tipo do Ambiente.  1 - Produção  2 - Homologação.
+     * @param int|null $tp_amb Tipo do Ambiente.  * 1 - Produção  * 2 - Homologação
      *
      * @return self
      */
@@ -525,7 +526,7 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_emit
      *
-     * @param int $tp_emit Tipo do Emitente.  1 - Prestador de serviço de transporte   2 - Transportador de Carga Própria 3 - Prestador de serviço de transporte que emitirá CT-e Globalizado     OBS: Deve ser preenchido com 2 para emitentes de NF-e e pelas transportadoras quando estiverem fazendo transporte de carga própria. Deve ser preenchido com 3 para transportador de carga que emitirá à posteriori CT-e Globalizado relacionando as NF-e.
+     * @param int $tp_emit Tipo do Emitente.  * 1 - Prestador de serviço de transporte  * 2 - Transportador de Carga Própria 3 - Prestador de serviço de transporte que emitirá CT-e Globalizado  OBS: Deve ser preenchido com 2 para emitentes de NF-e e pelas transportadoras quando estiverem fazendo transporte de carga própria. Deve ser preenchido com 3 para transportador de carga que emitirá à posteriori CT-e Globalizado relacionando as NF-e.
      *
      * @return self
      */
@@ -554,7 +555,7 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_transp
      *
-     * @param int|null $tp_transp Tipo do Transportador.  1 - ETC    2 - TAC    3 - CTC.
+     * @param int|null $tp_transp Tipo do Transportador.  * 1 - ETC  * 2 - TAC  * 3 - CTC
      *
      * @return self
      */
@@ -728,7 +729,7 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets modal
      *
-     * @param int $modal Modalidade de transporte.  1 - Rodoviário;  2 - Aéreo; 3 - Aquaviário; 4 - Ferroviário.
+     * @param int $modal Modalidade de transporte.  * 1 - Rodoviário  * 2 - Aéreo  * 3 - Aquaviário  * 4 - Ferroviário
      *
      * @return self
      */
@@ -786,7 +787,7 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_emis
      *
-     * @param int $tp_emis Forma de emissão do Manifesto.  1 - Normal  ; 2 - Contingência; 3-Regime Especial NFF.
+     * @param int $tp_emis Forma de emissão do Manifesto.  * 1 - Normal  * 2 - Contingência  * 3 - Regime Especial NFF
      *
      * @return self
      */
@@ -815,7 +816,7 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets proc_emi
      *
-     * @param string $proc_emi Identificação do processo de emissão do Manifesto.  0 - emissão de MDF-e com aplicativo do contribuinte.
+     * @param string $proc_emi Identificação do processo de emissão do Manifesto.  * 0 - emissão de MDF-e com aplicativo do contribuinte
      *
      * @return self
      */
@@ -931,7 +932,7 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_mun_carrega
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfMunCarrega[] $inf_mun_carrega Informações dos Municípios de Carregamento.
+     * @param \NuvemFiscal\Model\MdfeSefazInfMunCarrega[] $inf_mun_carrega inf_mun_carrega
      *
      * @return self
      */
@@ -960,7 +961,7 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_percurso
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfPercurso[]|null $inf_percurso Informações do Percurso do MDF-e.
+     * @param \NuvemFiscal\Model\MdfeSefazInfPercurso[]|null $inf_percurso inf_percurso
      *
      * @return self
      */

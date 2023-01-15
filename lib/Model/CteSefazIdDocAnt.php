@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazIdDocAnt Class Doc Comment
  *
  * @category Class
+ * @description Informações de identificação dos documentos de Transporte Anterior.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -298,7 +299,7 @@ class CteSefazIdDocAnt implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id_doc_ant_pap
      *
-     * @param \NuvemFiscal\Model\CteSefazIdDocAntPap[]|null $id_doc_ant_pap Documentos de transporte anterior em papel.
+     * @param \NuvemFiscal\Model\CteSefazIdDocAntPap[]|null $id_doc_ant_pap id_doc_ant_pap
      *
      * @return self
      */
@@ -327,7 +328,7 @@ class CteSefazIdDocAnt implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id_doc_ant_ele
      *
-     * @param \NuvemFiscal\Model\CteSefazIdDocAntEle[]|null $id_doc_ant_ele Documentos de transporte anterior eletrônicos.
+     * @param \NuvemFiscal\Model\CteSefazIdDocAntEle[]|null $id_doc_ant_ele id_doc_ant_ele
      *
      * @return self
      */

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazCana Class Doc Comment
  *
  * @category Class
+ * @description Informações de registro aquisições de cana.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -439,7 +440,7 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets for_dia
      *
-     * @param \NuvemFiscal\Model\NfeSefazForDia[] $for_dia Fornecimentos diários.
+     * @param \NuvemFiscal\Model\NfeSefazForDia[] $for_dia for_dia
      *
      * @return self
      */
@@ -555,7 +556,7 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets deduc
      *
-     * @param \NuvemFiscal\Model\NfeSefazDeduc[]|null $deduc Deduções - Taxas e Contribuições.
+     * @param \NuvemFiscal\Model\NfeSefazDeduc[]|null $deduc deduc
      *
      * @return self
      */

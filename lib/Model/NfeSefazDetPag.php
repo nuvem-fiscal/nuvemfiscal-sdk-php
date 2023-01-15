@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazDetPag Class Doc Comment
  *
  * @category Class
+ * @description Grupo de detalhamento da forma de pagamento.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -325,7 +326,7 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ind_pag
      *
-     * @param int|null $ind_pag Indicador da Forma de Pagamento:0-Pagamento à Vista;1-Pagamento à Prazo;.
+     * @param int|null $ind_pag Indicador da Forma de Pagamento:0-Pagamento à Vista  * 1 - Pagamento à Prazo
      *
      * @return self
      */

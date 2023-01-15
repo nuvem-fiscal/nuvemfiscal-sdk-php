@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazToma4 Class Doc Comment
  *
  * @category Class
+ * @description Indicador do \&quot;papel\&quot; do tomador do serviço no CT-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -356,7 +357,7 @@ class CteSefazToma4 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets toma
      *
-     * @param int $toma Tomador do Serviço.  Preencher com:                  4 - Outros                 Obs: Informar os dados cadastrais do tomador do serviço.
+     * @param int $toma Tomador do Serviço.  Preencher com:  * 4 - Outros  Obs: Informar os dados cadastrais do tomador do serviço.
      *
      * @return self
      */
@@ -385,7 +386,7 @@ class CteSefazToma4 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cnpj
      *
-     * @param string|null $cnpj Número do CNPJ.  Em caso de empresa não estabelecida no Brasil, será informado o CNPJ com zeros.                 Informar os zeros não significativos.
+     * @param string|null $cnpj Número do CNPJ.  Em caso de empresa não estabelecida no Brasil, será informado o CNPJ com zeros.  Informar os zeros não significativos.
      *
      * @return self
      */

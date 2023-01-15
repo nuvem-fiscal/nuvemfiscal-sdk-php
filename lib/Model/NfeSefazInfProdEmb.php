@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazInfProdEmb Class Doc Comment
  *
  * @category Class
+ * @description Informações mais detalhadas do produto (usada na NFF).
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

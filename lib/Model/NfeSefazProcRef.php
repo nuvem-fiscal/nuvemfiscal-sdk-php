@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazProcRef Class Doc Comment
  *
  * @category Class
+ * @description Grupo de informações do  processo referenciado.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -340,7 +341,7 @@ class NfeSefazProcRef implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ind_proc
      *
-     * @param int $ind_proc Origem do processo, informar com:  0 - SEFAZ;  1 - Justiça Federal;  2 - Justiça Estadual;  3 - Secex/RFB;  9 - Outros.
+     * @param int $ind_proc Origem do processo, informar com:  * 0 - SEFAZ  * 1 - Justiça Federal  * 2 - Justiça Estadual  * 3 - Secex/RFB  * 9 - Outros
      *
      * @return self
      */
@@ -369,7 +370,7 @@ class NfeSefazProcRef implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_ato
      *
-     * @param string|null $tp_ato Tipo do ato concessório                Para origem do Processo na SEFAZ (indProc=0), informar o  tipo de ato concessório:  08=Termo de Acordo;  10=Regime Especial;  12=Autorização específica;.
+     * @param string|null $tp_ato Tipo do ato concessório  Para origem do Processo na SEFAZ (indProc=0), informar o  tipo de ato concessório:  * 08 - Termo de Acordo  * 10 - Regime Especial  * 12 - Autorização específica
      *
      * @return self
      */

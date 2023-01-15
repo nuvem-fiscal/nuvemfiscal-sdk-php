@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazAutXML Class Doc Comment
  *
  * @category Class
+ * @description Pessoas autorizadas para o download do XML da NF-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

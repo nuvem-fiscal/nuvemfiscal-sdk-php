@@ -70,7 +70,7 @@ class CnpjEmpresa implements ModelInterface, ArrayAccess, \JsonSerializable
         'nome_da_cidade_no_exterior' => 'string',
         'pais' => '\NuvemFiscal\Model\CnpjPais',
         'atividade_principal' => '\NuvemFiscal\Model\CnpjCnae',
-        'atividades_secundarias' => '\NuvemFiscal\Model\CnpjCnae[]',
+        'atividades_secundarias' => '\NuvemFiscal\Model\CnpjCnaeSecundario[]',
         'endereco' => '\NuvemFiscal\Model\CnpjEndereco',
         'telefones' => '\NuvemFiscal\Model\CnpjTelefone[]',
         'email' => 'string',
@@ -827,7 +827,7 @@ class CnpjEmpresa implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets atividades_secundarias
      *
-     * @return \NuvemFiscal\Model\CnpjCnae[]|null
+     * @return \NuvemFiscal\Model\CnpjCnaeSecundario[]|null
      */
     public function getAtividadesSecundarias()
     {
@@ -837,7 +837,7 @@ class CnpjEmpresa implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets atividades_secundarias
      *
-     * @param \NuvemFiscal\Model\CnpjCnae[]|null $atividades_secundarias Atividades econômicas secundárias do estabelecimento.
+     * @param \NuvemFiscal\Model\CnpjCnaeSecundario[]|null $atividades_secundarias atividades_secundarias
      *
      * @return self
      */
@@ -895,7 +895,7 @@ class CnpjEmpresa implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets telefones
      *
-     * @param \NuvemFiscal\Model\CnpjTelefone[]|null $telefones Telefones do estabelecimento.
+     * @param \NuvemFiscal\Model\CnpjTelefone[]|null $telefones telefones
      *
      * @return self
      */

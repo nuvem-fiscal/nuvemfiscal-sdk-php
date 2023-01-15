@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazRetTrib Class Doc Comment
  *
  * @category Class
+ * @description Retenção de Tributos Federais.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

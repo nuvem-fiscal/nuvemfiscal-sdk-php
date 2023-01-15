@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazLacres Class Doc Comment
  *
  * @category Class
+ * @description Lacres do MDF-e.  Preechimento opcional para os modais Rodoviário e Ferroviário.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

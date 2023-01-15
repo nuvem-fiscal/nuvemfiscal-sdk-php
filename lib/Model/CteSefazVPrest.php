@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazVPrest Class Doc Comment
  *
  * @category Class
+ * @description Valores da Prestação de Serviço.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -369,7 +370,7 @@ class CteSefazVPrest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets comp
      *
-     * @param \NuvemFiscal\Model\CteSefazComp[]|null $comp Componentes do Valor da Prestação.
+     * @param \NuvemFiscal\Model\CteSefazComp[]|null $comp comp
      *
      * @return self
      */

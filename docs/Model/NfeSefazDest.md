@@ -9,7 +9,7 @@ Nome | Tipo | Descrição | Comentários
 **id_estrangeiro** | **string** | Identificador do destinatário, em caso de comprador estrangeiro. | [optional]
 **x_nome** | **string** | Razão Social ou nome do destinatário. | [optional]
 **ender_dest** | [**\NuvemFiscal\Model\NfeSefazEndereco**](NfeSefazEndereco.md) |  | [optional]
-**ind_ie_dest** | **int** | Indicador da IE do destinatário:  1 – Contribuinte ICMSpagamento à vista;  2 – Contribuinte isento de inscrição;  9 – Não Contribuinte. |
+**ind_ie_dest** | **int** | Indicador da IE do destinatário:  * 1 - Contribuinte ICMSpagamento à vista  * 2 - Contribuinte isento de inscrição  * 9 - Não Contribuinte |
 **ie** | **string** | Inscrição Estadual (obrigatório nas operações com contribuintes do ICMS). | [optional]
 **isuf** | **string** | Inscrição na SUFRAMA (Obrigatório nas operações com as áreas com benefícios de incentivos fiscais sob controle da SUFRAMA) PL_005d - 11/08/09 - alterado para aceitar 8 ou 9 dígitos. | [optional]
 **im** | **string** | Inscrição Municipal do tomador do serviço. | [optional]

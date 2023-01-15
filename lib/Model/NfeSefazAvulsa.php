@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazAvulsa Class Doc Comment
  *
  * @category Class
+ * @description Emissão de avulsa, informar os dados do Fisco emitente.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

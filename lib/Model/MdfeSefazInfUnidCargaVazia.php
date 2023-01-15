@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfUnidCargaVazia Class Doc Comment
  *
  * @category Class
+ * @description Informações das Undades de Carga vazias.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -333,7 +334,7 @@ class MdfeSefazInfUnidCargaVazia implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets tp_unid_carga_vazia
      *
-     * @param int $tp_unid_carga_vazia Tipo da unidade de carga vazia.  1 - Container; 2 - ULD;3 - Pallet;4 - Outros;.
+     * @param int $tp_unid_carga_vazia Tipo da unidade de carga vazia.  * 1 - Container  * 2 - ULD  * 3 - Pallet  * 4 - Outros
      *
      * @return self
      */

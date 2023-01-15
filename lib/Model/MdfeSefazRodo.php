@@ -380,7 +380,7 @@ class MdfeSefazRodo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets veic_reboque
      *
-     * @param \NuvemFiscal\Model\MdfeSefazVeicReboque[]|null $veic_reboque Dados dos reboques.
+     * @param \NuvemFiscal\Model\MdfeSefazVeicReboque[]|null $veic_reboque veic_reboque
      *
      * @return self
      */
@@ -438,7 +438,7 @@ class MdfeSefazRodo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets lac_rodo
      *
-     * @param \NuvemFiscal\Model\MdfeSefazLacRodo[]|null $lac_rodo Lacres.
+     * @param \NuvemFiscal\Model\MdfeSefazLacRodo[]|null $lac_rodo lac_rodo
      *
      * @return self
      */

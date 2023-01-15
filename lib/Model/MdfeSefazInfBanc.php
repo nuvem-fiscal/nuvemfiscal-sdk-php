@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfBanc Class Doc Comment
  *
  * @category Class
+ * @description Informações bancárias.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -399,7 +400,7 @@ class MdfeSefazInfBanc implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets pix
      *
-     * @param string|null $pix Chave PIX.  Informar a chave PIX para recebimento do frete.   Pode ser email, CPF/ CNPJ (somente numeros), Telefone com a seguinte formatação (+5599999999999) ou a chave aleatória gerada pela instituição.
+     * @param string|null $pix Chave PIX.  Informar a chave PIX para recebimento do frete.  Pode ser email, CPF/ CNPJ (somente numeros), Telefone com a seguinte formatação (+5599999999999) ou a chave aleatória gerada pela instituição.
      *
      * @return self
      */

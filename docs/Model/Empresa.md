@@ -14,10 +14,5 @@ Nome | Tipo | Descrição | Comentários
 **fone** | **string** | Telefone da empresa. | [optional]
 **email** | **string** | Email da empresa. |
 **endereco** | [**\NuvemFiscal\Model\EmpresaEndereco**](EmpresaEndereco.md) |  |
-**optante_simples_nacional** | **bool** | Optante pelo simples nacional. | [optional]
-**regime_tributacao** | **int** | Regime Tributário da Empresa:  0 - Nenhum  1 - Simples Nacional  2 - Simples Nacional - Excesso  3 - Normal - Lucro Presumido  4 - Normal - Lucro Real |
-**regime_especial_tributacao** | **int** | Regime especial de tributação da Empresa:  0 - Sem Regime Tributário Especial  1 - Micro Empresa Municipal  2 - Estimativa  3 - Sociedade de Profissionais  4 - Cooperativa  5 - Microempresário Individual - MEI  6 - Microempresa ou Pequeno Porte - ME EPP |
-**incentivo_fiscal** | **bool** | Indicador se a empresa possui algum tipo de incentivo fiscal. | [optional]
-**incentivador_cultural** | **bool** | Indicador se a empresa é um incentivador cultural. | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfNFe Class Doc Comment
  *
  * @category Class
+ * @description Nota Fiscal Eletronica.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -409,7 +410,7 @@ class MdfeSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_unid_transp
      *
-     * @param \NuvemFiscal\Model\MdfeSefazUnidadeTransp[]|null $inf_unid_transp Informações das Unidades de Transporte (Carreta/Reboque/Vagão).  Deve ser preenchido com as informações das unidades de transporte utilizadas.
+     * @param \NuvemFiscal\Model\MdfeSefazUnidadeTransp[]|null $inf_unid_transp inf_unid_transp
      *
      * @return self
      */
@@ -438,7 +439,7 @@ class MdfeSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets peri
      *
-     * @param \NuvemFiscal\Model\MdfeSefazInfNFePeri[]|null $peri Preenchido quando for  transporte de produtos classificados pela ONU como perigosos.
+     * @param \NuvemFiscal\Model\MdfeSefazInfNFePeri[]|null $peri peri
      *
      * @return self
      */

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CnpjTelefone Class Doc Comment
  *
  * @category Class
+ * @description Telefone do estabelecimento.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

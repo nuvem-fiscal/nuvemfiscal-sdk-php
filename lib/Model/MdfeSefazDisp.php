@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazDisp Class Doc Comment
  *
  * @category Class
+ * @description Informações dos dispositivos do Vale Pedágio.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -332,7 +333,7 @@ class MdfeSefazDisp implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cnpj_forn
      *
-     * @param string $cnpj_forn CNPJ da empresa fornecedora do Vale-Pedágio.  - CNPJ da Empresa Fornecedora do Vale-Pedágio, ou seja, empresa que fornece ao Responsável pelo Pagamento do Vale-Pedágio os dispositivos do Vale-Pedágio.           - Informar os zeros não significativos.
+     * @param string $cnpj_forn CNPJ da empresa fornecedora do Vale-Pedágio.  * CNPJ da Empresa Fornecedora do Vale-Pedágio, ou seja, empresa que fornece ao Responsável pelo Pagamento do Vale-Pedágio os dispositivos do Vale-Pedágio.  * Informar os zeros não significativos.
      *
      * @return self
      */
@@ -361,7 +362,7 @@ class MdfeSefazDisp implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cnpjpg
      *
-     * @param string|null $cnpjpg CNPJ do responsável pelo pagamento do Vale-Pedágio.  - responsável pelo pagamento do Vale Pedágio. Informar somente quando o responsável não for o emitente do MDF-e.           - Informar os zeros não significativos.
+     * @param string|null $cnpjpg CNPJ do responsável pelo pagamento do Vale-Pedágio.  * responsável pelo pagamento do Vale Pedágio. Informar somente quando o responsável não for o emitente do MDF-e.  * Informar os zeros não significativos.
      *
      * @return self
      */
@@ -477,7 +478,7 @@ class MdfeSefazDisp implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_vale_ped
      *
-     * @param string|null $tp_vale_ped Tipo do Vale Pedagio.  01 - TAG; 02 - Cupom; 03 - Cartão.
+     * @param string|null $tp_vale_ped Tipo do Vale Pedagio.  * 01 - TAG  * 02 - Cupom  * 03 - Cartão
      *
      * @return self
      */

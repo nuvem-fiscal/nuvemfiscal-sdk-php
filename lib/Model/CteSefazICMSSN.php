@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazICMSSN Class Doc Comment
  *
  * @category Class
+ * @description Simples Nacional.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -304,7 +305,7 @@ class CteSefazICMSSN implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cst
      *
-     * @param string $cst Classificação Tributária do Serviço.  90 - ICMS Simples Nacional.
+     * @param string $cst Classificação Tributária do Serviço.  * 90 - ICMS Simples Nacional
      *
      * @return self
      */

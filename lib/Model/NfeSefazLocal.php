@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazLocal Class Doc Comment
  *
  * @category Class
+ * @description Identificação do Local de Entrega (informar apenas quando for diferente do endereço do destinatário).
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

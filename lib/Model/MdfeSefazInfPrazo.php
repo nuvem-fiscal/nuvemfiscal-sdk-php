@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfPrazo Class Doc Comment
  *
  * @category Class
+ * @description Informações do pagamento a prazo.  Informar somente se indPag for à Prazo.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

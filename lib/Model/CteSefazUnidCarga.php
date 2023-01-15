@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazUnidCarga Class Doc Comment
  *
  * @category Class
+ * @description Informações das Unidades de Carga (Containeres/ULD/Outros).  Dispositivo de carga utilizada (Unit Load Device - ULD) significa todo tipo de contêiner de carga, vagão, contêiner de avião, palete de aeronave com rede ou palete de aeronave com rede sobre um iglu.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -318,7 +319,7 @@ class CteSefazUnidCarga implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets tp_unid_carga
      *
-     * @param int $tp_unid_carga Tipo da Unidade de Carga.  1 - Container  2 - ULD  3 - Pallet  4 - Outros.
+     * @param int $tp_unid_carga Tipo da Unidade de Carga.  * 1 - Container  * 2 - ULD  * 3 - Pallet  * 4 - Outros
      *
      * @return self
      */
@@ -376,7 +377,7 @@ class CteSefazUnidCarga implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets lac_unid_carga
      *
-     * @param \NuvemFiscal\Model\CteSefazLacUnidCarga[]|null $lac_unid_carga Lacres das Unidades de Carga.
+     * @param \NuvemFiscal\Model\CteSefazLacUnidCarga[]|null $lac_unid_carga lac_unid_carga
      *
      * @return self
      */

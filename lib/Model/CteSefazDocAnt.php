@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazDocAnt Class Doc Comment
  *
  * @category Class
+ * @description Documentos de Transporte Anterior.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -294,7 +295,7 @@ class CteSefazDocAnt implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets emi_doc_ant
      *
-     * @param \NuvemFiscal\Model\CteSefazEmiDocAnt[] $emi_doc_ant Emissor do documento anterior.
+     * @param \NuvemFiscal\Model\CteSefazEmiDocAnt[] $emi_doc_ant emi_doc_ant
      *
      * @return self
      */

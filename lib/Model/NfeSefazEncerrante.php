@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazEncerrante Class Doc Comment
  *
  * @category Class
+ * @description Informações do grupo de \&quot;encerrante\&quot;.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

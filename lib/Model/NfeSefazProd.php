@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazProd Class Doc Comment
  *
  * @category Class
+ * @description Dados dos produtos e serviços da NF-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -1324,7 +1325,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ind_tot
      *
-     * @param int $ind_tot Este campo deverá ser preenchido com:   0 – o valor do item (vProd) não compõe o valor total da NF-e (vProd)   1  – o valor do item (vProd) compõe o valor total da NF-e (vProd).
+     * @param int $ind_tot Este campo deverá ser preenchido com:  * 0 - o valor do item (vProd) não compõe o valor total da NF-e (vProd)  * 1 - o valor do item (vProd) compõe o valor total da NF-e (vProd)
      *
      * @return self
      */
@@ -1353,7 +1354,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets di
      *
-     * @param \NuvemFiscal\Model\NfeSefazDI[]|null $di Delcaração de Importação  (NT 2011/004).
+     * @param \NuvemFiscal\Model\NfeSefazDI[]|null $di di
      *
      * @return self
      */
@@ -1382,7 +1383,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets det_export
      *
-     * @param \NuvemFiscal\Model\NfeSefazDetExport[]|null $det_export Detalhe da exportação.
+     * @param \NuvemFiscal\Model\NfeSefazDetExport[]|null $det_export det_export
      *
      * @return self
      */
@@ -1643,7 +1644,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets arma
      *
-     * @param \NuvemFiscal\Model\NfeSefazArma[]|null $arma Armamentos.
+     * @param \NuvemFiscal\Model\NfeSefazArma[]|null $arma arma
      *
      * @return self
      */

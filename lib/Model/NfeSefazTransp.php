@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazTransp Class Doc Comment
  *
  * @category Class
+ * @description Dados dos transportes da NF-e.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -343,7 +344,7 @@ class NfeSefazTransp implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mod_frete
      *
-     * @param int $mod_frete Modalidade do frete  0- Contratação do Frete por conta do Remetente (CIF);  1- Contratação do Frete por conta do destinatário/remetente (FOB);  2- Contratação do Frete por conta de terceiros;  3- Transporte próprio por conta do remetente;  4- Transporte próprio por conta do destinatário;  9- Sem Ocorrência de transporte.
+     * @param int $mod_frete Modalidade do frete  * 0 - Contratação do Frete por conta do Remetente (CIF)  * 1 - Contratação do Frete por conta do destinatário/remetente (FOB)  * 2 - Contratação do Frete por conta de terceiros  * 3 - Transporte próprio por conta do remetente  * 4 - Transporte próprio por conta do destinatário  * 9 - Sem Ocorrência de transporte
      *
      * @return self
      */
@@ -459,7 +460,7 @@ class NfeSefazTransp implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets reboque
      *
-     * @param \NuvemFiscal\Model\NfeSefazVeiculo[]|null $reboque Dados do reboque/Dolly (v2.0).
+     * @param \NuvemFiscal\Model\NfeSefazVeiculo[]|null $reboque reboque
      *
      * @return self
      */
@@ -546,7 +547,7 @@ class NfeSefazTransp implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets vol
      *
-     * @param \NuvemFiscal\Model\NfeSefazVol[]|null $vol Dados dos volumes.
+     * @param \NuvemFiscal\Model\NfeSefazVol[]|null $vol vol
      *
      * @return self
      */
