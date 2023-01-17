@@ -58,6 +58,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'trib_issqn' => 'int',
+        'c_loc_incid' => 'string',
         'c_pais_result' => 'string',
         'bm' => '\NuvemFiscal\Model\BeneficioMunicipal',
         'exig_susp' => '\NuvemFiscal\Model\ExigSuspensa',
@@ -75,6 +76,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'trib_issqn' => null,
+        'c_loc_incid' => null,
         'c_pais_result' => null,
         'bm' => null,
         'exig_susp' => null,
@@ -90,6 +92,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'trib_issqn' => false,
+		'c_loc_incid' => false,
 		'c_pais_result' => false,
 		'bm' => false,
 		'exig_susp' => false,
@@ -175,6 +178,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'trib_issqn' => 'tribISSQN',
+        'c_loc_incid' => 'cLocIncid',
         'c_pais_result' => 'cPaisResult',
         'bm' => 'BM',
         'exig_susp' => 'exigSusp',
@@ -190,6 +194,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'trib_issqn' => 'setTribIssqn',
+        'c_loc_incid' => 'setCLocIncid',
         'c_pais_result' => 'setCPaisResult',
         'bm' => 'setBm',
         'exig_susp' => 'setExigSusp',
@@ -205,6 +210,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'trib_issqn' => 'getTribIssqn',
+        'c_loc_incid' => 'getCLocIncid',
         'c_pais_result' => 'getCPaisResult',
         'bm' => 'getBm',
         'exig_susp' => 'getExigSusp',
@@ -271,6 +277,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('trib_issqn', $data ?? [], null);
+        $this->setIfExists('c_loc_incid', $data ?? [], null);
         $this->setIfExists('c_pais_result', $data ?? [], null);
         $this->setIfExists('bm', $data ?? [], null);
         $this->setIfExists('exig_susp', $data ?? [], null);
@@ -349,6 +356,35 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['trib_issqn'] = $trib_issqn;
+
+        return $this;
+    }
+
+    /**
+     * Gets c_loc_incid
+     *
+     * @return string|null
+     */
+    public function getCLocIncid()
+    {
+        return $this->container['c_loc_incid'];
+    }
+
+    /**
+     * Sets c_loc_incid
+     *
+     * @param string|null $c_loc_incid Código do município de incidência do ISSQN (tabela do IBGE).    Caso o envio seja pelo Sistema Nacional NFS-e, essa propriedade é ignorada e o município de incidência do ISSQN é determinado automaticamente pela SEFIN nacional, conforme regras do aspecto espacial da lei complementar federal (LC 116/03) que são válidas para todos os municípios.
+     *
+     * @return self
+     */
+    public function setCLocIncid($c_loc_incid)
+    {
+
+        if (is_null($c_loc_incid)) {
+            throw new \InvalidArgumentException('non-nullable c_loc_incid cannot be null');
+        }
+
+        $this->container['c_loc_incid'] = $c_loc_incid;
 
         return $this;
     }
