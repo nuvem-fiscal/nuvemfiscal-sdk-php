@@ -4,6 +4,10 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 
 | Método | Endpoint | Descrição |
 | ------------- | ------------- | ------------- |
+| [**baixarPdfCancelamentoNfe()**](NfeApi.md#baixarPdfCancelamentoNfe) | **GET** /nfe/{id}/cancelamento/pdf | Baixar PDF do cancelamento |
+| [**baixarPdfCartaCorrecaoNfe()**](NfeApi.md#baixarPdfCartaCorrecaoNfe) | **GET** /nfe/{id}/carta-correcao/pdf | Baixar PDF da carta de correção |
+| [**baixarPdfEventoNfe()**](NfeApi.md#baixarPdfEventoNfe) | **GET** /nfe/eventos/{id}/pdf | Baixar PDF do evento |
+| [**baixarPdfInutilizacaoNfe()**](NfeApi.md#baixarPdfInutilizacaoNfe) | **GET** /nfe/inutilizacoes/{id}/pdf | Baixar PDF da inutilização |
 | [**baixarPdfNfe()**](NfeApi.md#baixarPdfNfe) | **GET** /nfe/{id}/pdf | Baixar PDF do DANFE |
 | [**baixarXmlCancelamentoNfe()**](NfeApi.md#baixarXmlCancelamentoNfe) | **GET** /nfe/{id}/cancelamento/xml | Baixar XML do cancelamento |
 | [**baixarXmlCartaCorrecaoNfe()**](NfeApi.md#baixarXmlCartaCorrecaoNfe) | **GET** /nfe/{id}/carta-correcao/xml | Baixar XML da carta de correção |
@@ -25,6 +29,258 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**listarLotesNfe()**](NfeApi.md#listarLotesNfe) | **GET** /nfe/lotes | Listar lotes de NF-e |
 | [**listarNfe()**](NfeApi.md#listarNfe) | **GET** /nfe | Listar NF-e |
 
+
+## `baixarPdfCancelamentoNfe()`
+
+```php
+baixarPdfCancelamentoNfe($id): \SplFileObject
+```
+
+Baixar PDF do cancelamento
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfeApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NF-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarPdfCancelamentoNfe($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfeApi->baixarPdfCancelamentoNfe: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NF-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `baixarPdfCartaCorrecaoNfe()`
+
+```php
+baixarPdfCartaCorrecaoNfe($id): \SplFileObject
+```
+
+Baixar PDF da carta de correção
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfeApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NF-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarPdfCartaCorrecaoNfe($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfeApi->baixarPdfCartaCorrecaoNfe: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NF-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `baixarPdfEventoNfe()`
+
+```php
+baixarPdfEventoNfe($id): \SplFileObject
+```
+
+Baixar PDF do evento
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfeApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único do evento gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarPdfEventoNfe($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfeApi->baixarPdfEventoNfe: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único do evento gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `baixarPdfInutilizacaoNfe()`
+
+```php
+baixarPdfInutilizacaoNfe($id): \SplFileObject
+```
+
+Baixar PDF da inutilização
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfeApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único do evento gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarPdfInutilizacaoNfe($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfeApi->baixarPdfInutilizacaoNfe: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único do evento gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
 
 ## `baixarPdfNfe()`
 

@@ -4,6 +4,8 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 
 | Método | Endpoint | Descrição |
 | ------------- | ------------- | ------------- |
+| [**baixarPdfCancelamentoNfce()**](NfceApi.md#baixarPdfCancelamentoNfce) | **GET** /nfce/{id}/cancelamento/pdf | Baixar PDF do cancelamento |
+| [**baixarPdfInutilizacaoNfce()**](NfceApi.md#baixarPdfInutilizacaoNfce) | **GET** /nfce/inutilizacoes/{id}/pdf | Baixar PDF da inutilização |
 | [**baixarPdfNfce()**](NfceApi.md#baixarPdfNfce) | **GET** /nfce/{id}/pdf | Baixar PDF do DANFCE |
 | [**baixarXmlCancelamentoNfce()**](NfceApi.md#baixarXmlCancelamentoNfce) | **GET** /nfce/{id}/cancelamento/xml | Baixar XML do cancelamento |
 | [**baixarXmlInutilizacaoNfce()**](NfceApi.md#baixarXmlInutilizacaoNfce) | **GET** /nfce/inutilizacoes/{id}/xml | Baixar XML da inutilização |
@@ -20,6 +22,132 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**listarLotesNfce()**](NfceApi.md#listarLotesNfce) | **GET** /nfce/lotes | Listar lotes de NFC-e |
 | [**listarNfce()**](NfceApi.md#listarNfce) | **GET** /nfce | Listar NFC-e |
 
+
+## `baixarPdfCancelamentoNfce()`
+
+```php
+baixarPdfCancelamentoNfce($id): \SplFileObject
+```
+
+Baixar PDF do cancelamento
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfceApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NFC-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarPdfCancelamentoNfce($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfceApi->baixarPdfCancelamentoNfce: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NFC-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `baixarPdfInutilizacaoNfce()`
+
+```php
+baixarPdfInutilizacaoNfce($id): \SplFileObject
+```
+
+Baixar PDF da inutilização
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfceApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único do evento gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarPdfInutilizacaoNfce($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfceApi->baixarPdfInutilizacaoNfce: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único do evento gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
 
 ## `baixarPdfNfce()`
 
