@@ -85,6 +85,11 @@ Classe | Método | Endpoint | Descrição
 *CnpjApi* | [**listarCnpj**](docs/Api/CnpjApi.md#listarcnpj) | **GET** /cnpj | Listar estabelecimentos ativos a partir da base de CNPJ
 *ContaApi* | [**consultarCotaConta**](docs/Api/ContaApi.md#consultarcotaconta) | **GET** /conta/cotas/{nome} | Consultar o limite de uso e o consumo de uma cota específica.
 *ContaApi* | [**listarCotasConta**](docs/Api/ContaApi.md#listarcotasconta) | **GET** /conta/cotas | Consultar os limites de uso e consumo de todas as cotas existentes.
+*CteApi* | [**baixarPdfCancelamentoCte**](docs/Api/CteApi.md#baixarpdfcancelamentocte) | **GET** /cte/{id}/cancelamento/pdf | Baixar PDF do cancelamento
+*CteApi* | [**baixarPdfCartaCorrecaoCte**](docs/Api/CteApi.md#baixarpdfcartacorrecaocte) | **GET** /cte/{id}/carta-correcao/pdf | Baixar PDF da carta de correção
+*CteApi* | [**baixarPdfCte**](docs/Api/CteApi.md#baixarpdfcte) | **GET** /cte/{id}/pdf | Baixar PDF do DACTE
+*CteApi* | [**baixarPdfEventoCte**](docs/Api/CteApi.md#baixarpdfeventocte) | **GET** /cte/eventos/{id}/pdf | Baixar PDF do evento
+*CteApi* | [**baixarPdfInutilizacaoCte**](docs/Api/CteApi.md#baixarpdfinutilizacaocte) | **GET** /cte/inutilizacoes/{id}/pdf | Baixar PDF da inutilização
 *CteApi* | [**baixarXmlCancelamentoCte**](docs/Api/CteApi.md#baixarxmlcancelamentocte) | **GET** /cte/{id}/cancelamento/xml | Baixar XML do cancelamento
 *CteApi* | [**baixarXmlCartaCorrecaoCte**](docs/Api/CteApi.md#baixarxmlcartacorrecaocte) | **GET** /cte/{id}/carta-correcao/xml | Baixar XML da carta de correção
 *CteApi* | [**baixarXmlCte**](docs/Api/CteApi.md#baixarxmlcte) | **GET** /cte/{id}/xml | Baixar XML do CT-e processado
@@ -123,6 +128,10 @@ Classe | Método | Endpoint | Descrição
 *EmpresaApi* | [**excluirCertificadoEmpresa**](docs/Api/EmpresaApi.md#excluircertificadoempresa) | **DELETE** /empresas/{cpf_cnpj}/certificado | Deletar certificado
 *EmpresaApi* | [**excluirEmpresa**](docs/Api/EmpresaApi.md#excluirempresa) | **DELETE** /empresas/{cpf_cnpj} | Deletar empresa
 *EmpresaApi* | [**listarEmpresas**](docs/Api/EmpresaApi.md#listarempresas) | **GET** /empresas | Listar empresas
+*MdfeApi* | [**baixarPdfCancelamentoMdfe**](docs/Api/MdfeApi.md#baixarpdfcancelamentomdfe) | **GET** /mdfe/{id}/cancelamento/pdf | Baixar PDF do cancelamento
+*MdfeApi* | [**baixarPdfEncerramentoMdfe**](docs/Api/MdfeApi.md#baixarpdfencerramentomdfe) | **GET** /mdfe/{id}/encerramento/pdf | Baixar PDF do encerramento
+*MdfeApi* | [**baixarPdfEventoMdfe**](docs/Api/MdfeApi.md#baixarpdfeventomdfe) | **GET** /mdfe/eventos/{id}/pdf | Baixar PDF do evento
+*MdfeApi* | [**baixarPdfMdfe**](docs/Api/MdfeApi.md#baixarpdfmdfe) | **GET** /mdfe/{id}/pdf | Baixar PDF do DAMDFE
 *MdfeApi* | [**baixarXmlCancelamentoMdfe**](docs/Api/MdfeApi.md#baixarxmlcancelamentomdfe) | **GET** /mdfe/{id}/cancelamento/xml | Baixar XML do cancelamento
 *MdfeApi* | [**baixarXmlEncerramentoMdfe**](docs/Api/MdfeApi.md#baixarxmlencerramentomdfe) | **GET** /mdfe/{id}/encerramento/xml | Baixar XML do encerramento
 *MdfeApi* | [**baixarXmlEventoMdfe**](docs/Api/MdfeApi.md#baixarxmleventomdfe) | **GET** /mdfe/eventos/{id}/xml | Baixar XML do evento
@@ -603,6 +612,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.1.0`
-    - Versão do package: `2.3.0`
+- Versão da API: `2.2.0`
+    - Versão do package: `2.4.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
