@@ -56,6 +56,7 @@ class NfseDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
+        'provedor' => 'string',
         'ambiente' => 'string',
         'referencia' => 'string',
         'inf_dps' => '\NuvemFiscal\Model\InfDPS'
@@ -69,6 +70,7 @@ class NfseDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'provedor' => null,
         'ambiente' => null,
         'referencia' => null,
         'inf_dps' => null
@@ -80,7 +82,8 @@ class NfseDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ambiente' => false,
+        'provedor' => false,
+		'ambiente' => false,
 		'referencia' => false,
 		'inf_dps' => false
     ];
@@ -161,6 +164,7 @@ class NfseDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
+        'provedor' => 'provedor',
         'ambiente' => 'ambiente',
         'referencia' => 'referencia',
         'inf_dps' => 'infDPS'
@@ -172,6 +176,7 @@ class NfseDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
+        'provedor' => 'setProvedor',
         'ambiente' => 'setAmbiente',
         'referencia' => 'setReferencia',
         'inf_dps' => 'setInfDps'
@@ -183,6 +188,7 @@ class NfseDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
+        'provedor' => 'getProvedor',
         'ambiente' => 'getAmbiente',
         'referencia' => 'getReferencia',
         'inf_dps' => 'getInfDps'
@@ -229,8 +235,23 @@ class NfseDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
+    public const PROVEDOR_PADRAO = 'padrao';
+    public const PROVEDOR_NACIONAL = 'nacional';
     public const AMBIENTE_HOMOLOGACAO = 'homologacao';
     public const AMBIENTE_PRODUCAO = 'producao';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getProvedorAllowableValues()
+    {
+        return [
+            self::PROVEDOR_PADRAO,
+            self::PROVEDOR_NACIONAL,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -260,6 +281,7 @@ class NfseDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('provedor', $data ?? [], null);
         $this->setIfExists('ambiente', $data ?? [], null);
         $this->setIfExists('referencia', $data ?? [], null);
         $this->setIfExists('inf_dps', $data ?? [], null);
@@ -292,6 +314,15 @@ class NfseDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getProvedorAllowableValues();
+        if (!is_null($this->container['provedor']) && !in_array($this->container['provedor'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'provedor', must be one of '%s'",
+                $this->container['provedor'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['ambiente'] === null) {
             $invalidProperties[] = "'ambiente' can't be null";
         }
@@ -321,6 +352,45 @@ class NfseDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets provedor
+     *
+     * @return string|null
+     */
+    public function getProvedor()
+    {
+        return $this->container['provedor'];
+    }
+
+    /**
+     * Sets provedor
+     *
+     * @param string|null $provedor Default: `\"padrao\"`    Identificação do provedor para transmissão da DPS:   * `\"padrao\"`: Provedor padrão da prefeitura.   * `\"nacional\"`: Ambiente de Dados Nacional (ADN) do <a href=\"https://www.gov.br/nfse/pt-br\" target=\"blank\">Sistema Nacional NFS-e</a>.
+     *
+     * @return self
+     */
+    public function setProvedor($provedor)
+    {
+        $allowedValues = $this->getProvedorAllowableValues();
+        if (!is_null($provedor) && !in_array($provedor, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'provedor', must be one of '%s'",
+                    $provedor,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+
+        if (is_null($provedor)) {
+            throw new \InvalidArgumentException('non-nullable provedor cannot be null');
+        }
+
+        $this->container['provedor'] = $provedor;
+
+        return $this;
+    }
 
     /**
      * Gets ambiente

@@ -6,7 +6,7 @@ Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | ID único gerado pela Nuvem Fiscal para este documento. | [optional]
 **ambiente** | **string** |  | [optional]
-**created_at** | **\DateTime** | Data/hora em que o documento foi criado na Nuvem Fiscal. Representado no formato [&#x60;ISO 8601&#x60;](https://en.wikipedia.org/wiki/ISO_8601). | [optional]
+**created_at** | **\DateTime** | Data/hora em que o documento foi criado na Nuvem Fiscal. Representado no formato &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;blank\&quot;&gt;&#x60;ISO 8601&#x60;&lt;/a&gt;. | [optional]
 **status** | **string** |  | [optional]
 **referencia** | **string** | Seu identificador único para este documento. Opcional, ajuda a evitar o envio duplicado de um mesmo documento. | [optional]
 **data_emissao** | **\DateTime** |  | [optional]

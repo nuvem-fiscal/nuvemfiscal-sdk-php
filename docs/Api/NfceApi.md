@@ -4,14 +4,20 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 
 | Método | Endpoint | Descrição |
 | ------------- | ------------- | ------------- |
+| [**baixarEscPosNfce()**](NfceApi.md#baixarEscPosNfce) | **GET** /nfce/{id}/escpos | Comandos ESC/POS para impressão do DANFCE |
 | [**baixarPdfCancelamentoNfce()**](NfceApi.md#baixarPdfCancelamentoNfce) | **GET** /nfce/{id}/cancelamento/pdf | Baixar PDF do cancelamento |
+| [**baixarPdfEventoNfce()**](NfceApi.md#baixarPdfEventoNfce) | **GET** /nfce/eventos/{id}/pdf | Baixar PDF do evento |
 | [**baixarPdfInutilizacaoNfce()**](NfceApi.md#baixarPdfInutilizacaoNfce) | **GET** /nfce/inutilizacoes/{id}/pdf | Baixar PDF da inutilização |
 | [**baixarPdfNfce()**](NfceApi.md#baixarPdfNfce) | **GET** /nfce/{id}/pdf | Baixar PDF do DANFCE |
 | [**baixarXmlCancelamentoNfce()**](NfceApi.md#baixarXmlCancelamentoNfce) | **GET** /nfce/{id}/cancelamento/xml | Baixar XML do cancelamento |
+| [**baixarXmlEventoNfce()**](NfceApi.md#baixarXmlEventoNfce) | **GET** /nfce/eventos/{id}/xml | Baixar XML do evento |
 | [**baixarXmlInutilizacaoNfce()**](NfceApi.md#baixarXmlInutilizacaoNfce) | **GET** /nfce/inutilizacoes/{id}/xml | Baixar XML da inutilização |
 | [**baixarXmlNfce()**](NfceApi.md#baixarXmlNfce) | **GET** /nfce/{id}/xml | Baixar XML da NFC-e processada |
+| [**baixarXmlNfceNota()**](NfceApi.md#baixarXmlNfceNota) | **GET** /nfce/{id}/xml/nota | Baixar XML da NFC-e |
+| [**baixarXmlNfceProtocolo()**](NfceApi.md#baixarXmlNfceProtocolo) | **GET** /nfce/{id}/xml/protocolo | Baixar XML do Protocolo da SEFAZ |
 | [**cancelarNfce()**](NfceApi.md#cancelarNfce) | **POST** /nfce/{id}/cancelamento | Cancelar uma NFC-e autorizada |
 | [**consultarCancelamentoNfce()**](NfceApi.md#consultarCancelamentoNfce) | **GET** /nfce/{id}/cancelamento | Consultar o cancelamento da NFC-e |
+| [**consultarEventoNfce()**](NfceApi.md#consultarEventoNfce) | **GET** /nfce/eventos/{id} | Consultar evento |
 | [**consultarInutilizacaoNfce()**](NfceApi.md#consultarInutilizacaoNfce) | **GET** /nfce/inutilizacoes/{id} | Consultar a inutilização de sequência de numeração |
 | [**consultarLoteNfce()**](NfceApi.md#consultarLoteNfce) | **GET** /nfce/lotes/{id} | Consultar lote de NFC-e |
 | [**consultarNfce()**](NfceApi.md#consultarNfce) | **GET** /nfce/{id} | Consultar NFC-e |
@@ -19,9 +25,82 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**emitirLoteNfce()**](NfceApi.md#emitirLoteNfce) | **POST** /nfce/lotes | Emitir lote de NFC-e |
 | [**emitirNfce()**](NfceApi.md#emitirNfce) | **POST** /nfce | Emitir NFC-e |
 | [**inutilizarNumeracaoNfce()**](NfceApi.md#inutilizarNumeracaoNfce) | **POST** /nfce/inutilizacoes | Inutilizar uma sequência de numeração de NFC-e |
+| [**listarEventosNfce()**](NfceApi.md#listarEventosNfce) | **GET** /nfce/eventos | Listar eventos |
 | [**listarLotesNfce()**](NfceApi.md#listarLotesNfce) | **GET** /nfce/lotes | Listar lotes de NFC-e |
 | [**listarNfce()**](NfceApi.md#listarNfce) | **GET** /nfce | Listar NFC-e |
+| [**sincronizarNfce()**](NfceApi.md#sincronizarNfce) | **POST** /nfce/{id}/sincronizar | Sincroniza dados na NFC-e a partir da SEFAZ |
 
+
+## `baixarEscPosNfce()`
+
+```php
+baixarEscPosNfce($id, $modelo, $colunas, $qrcode_lateral): \SplFileObject
+```
+
+Comandos ESC/POS para impressão do DANFCE
+
+ESC/POS é um sistema de comando criado pela Epson usado em diversos sistemas de impressoras POS.    Com o formato ESC/POS, você poderá imprimir nativamente em uma vasta quantidade de modelos de impressora térmicas utilizadas no Brasil e no mundo. Com ela, você consegue fazer o envio de comandos em ESC/POS direto para a porta da impressora.
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfceApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NFC-e gerado pela Nuvem Fiscal.
+$modelo = 1; // int | Modelo da impressora:  * `0` - Texto  * `1` - Epson  * `2` - Bematech  * `3` - Daruma  * `4` - Vox  * `5` - Diebold  * `6` - Epson P2  * `7` - CustomPos  * `8` - Star  * `9` - Zjiang  * `10` - GPrinter  * `11` - Datecs  * `12` - Sunmi  * `13` - Externo
+$colunas = 48; // int | Define o máximo de caracteres, em uma linha, usando a fonte normal.    Ex: 40, 42, 48, 58, 80.
+$qrcode_lateral = false; // bool | Imprime o QRCode na lateral do DANFCe.    OBS: não suportado por alguns modelos de impressora.
+
+try {
+    $result = $apiInstance->baixarEscPosNfce($id, $modelo, $colunas, $qrcode_lateral);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfceApi->baixarEscPosNfce: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NFC-e gerado pela Nuvem Fiscal. | |
+| **modelo** | **int**| Modelo da impressora:  * &#x60;0&#x60; - Texto  * &#x60;1&#x60; - Epson  * &#x60;2&#x60; - Bematech  * &#x60;3&#x60; - Daruma  * &#x60;4&#x60; - Vox  * &#x60;5&#x60; - Diebold  * &#x60;6&#x60; - Epson P2  * &#x60;7&#x60; - CustomPos  * &#x60;8&#x60; - Star  * &#x60;9&#x60; - Zjiang  * &#x60;10&#x60; - GPrinter  * &#x60;11&#x60; - Datecs  * &#x60;12&#x60; - Sunmi  * &#x60;13&#x60; - Externo | [optional] [default to 1] |
+| **colunas** | **int**| Define o máximo de caracteres, em uma linha, usando a fonte normal.    Ex: 40, 42, 48, 58, 80. | [optional] [default to 48] |
+| **qrcode_lateral** | **bool**| Imprime o QRCode na lateral do DANFCe.    OBS: não suportado por alguns modelos de impressora. | [optional] [default to false] |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
 
 ## `baixarPdfCancelamentoNfce()`
 
@@ -68,6 +147,69 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único da NFC-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `baixarPdfEventoNfce()`
+
+```php
+baixarPdfEventoNfce($id): \SplFileObject
+```
+
+Baixar PDF do evento
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfceApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único do evento gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarPdfEventoNfce($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfceApi->baixarPdfEventoNfce: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único do evento gerado pela Nuvem Fiscal. | |
 
 ### Tipo do retorno
 
@@ -152,7 +294,7 @@ try {
 ## `baixarPdfNfce()`
 
 ```php
-baixarPdfNfce($id): \SplFileObject
+baixarPdfNfce($id, $resumido, $qrcode_lateral): \SplFileObject
 ```
 
 Baixar PDF do DANFCE
@@ -180,9 +322,11 @@ $apiInstance = new NuvemFiscal\Api\NfceApi(
     $config
 );
 $id = 'id_example'; // string | ID único da NFC-e gerado pela Nuvem Fiscal.
+$resumido = false; // bool | Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite.
+$qrcode_lateral = false; // bool | Imprime o QRCode na lateral do DANFE NFC-e.
 
 try {
-    $result = $apiInstance->baixarPdfNfce($id);
+    $result = $apiInstance->baixarPdfNfce($id, $resumido, $qrcode_lateral);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfceApi->baixarPdfNfce: ', $e->getMessage(), PHP_EOL;
@@ -194,6 +338,8 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único da NFC-e gerado pela Nuvem Fiscal. | |
+| **resumido** | **bool**| Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. | [optional] [default to false] |
+| **qrcode_lateral** | **bool**| Imprime o QRCode na lateral do DANFE NFC-e. | [optional] [default to false] |
 
 ### Tipo do retorno
 
@@ -257,6 +403,69 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único da NFC-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `baixarXmlEventoNfce()`
+
+```php
+baixarXmlEventoNfce($id): \SplFileObject
+```
+
+Baixar XML do evento
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfceApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único do evento gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarXmlEventoNfce($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfceApi->baixarXmlEventoNfce: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único do evento gerado pela Nuvem Fiscal. | |
 
 ### Tipo do retorno
 
@@ -401,6 +610,132 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
+## `baixarXmlNfceNota()`
+
+```php
+baixarXmlNfceNota($id): \SplFileObject
+```
+
+Baixar XML da NFC-e
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfceApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NFC-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarXmlNfceNota($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfceApi->baixarXmlNfceNota: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NFC-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `baixarXmlNfceProtocolo()`
+
+```php
+baixarXmlNfceProtocolo($id): \SplFileObject
+```
+
+Baixar XML do Protocolo da SEFAZ
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfceApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NFC-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarXmlNfceProtocolo($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfceApi->baixarXmlNfceProtocolo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NFC-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
 ## `cancelarNfce()`
 
 ```php
@@ -447,7 +782,7 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único da NFC-e gerado pela Nuvem Fiscal. | |
-| **body** | [**\NuvemFiscal\Model\NfePedidoCancelamento**](../Model/NfePedidoCancelamento.md)|  | |
+| **body** | [**\NuvemFiscal\Model\NfePedidoCancelamento**](../Model/NfePedidoCancelamento.md)|  | [optional] |
 
 ### Tipo do retorno
 
@@ -515,6 +850,69 @@ try {
 ### Tipo do retorno
 
 [**\NuvemFiscal\Model\DfeCancelamento**](../Model/DfeCancelamento.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `consultarEventoNfce()`
+
+```php
+consultarEventoNfce($id): \NuvemFiscal\Model\DfeEvento
+```
+
+Consultar evento
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfceApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único do evento gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->consultarEventoNfce($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfceApi->consultarEventoNfce: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único do evento gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\DfeEvento**](../Model/DfeEvento.md)
 
 ### Autorização
 
@@ -976,6 +1374,77 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
+## `listarEventosNfce()`
+
+```php
+listarEventosNfce($dfe_id, $top, $skip, $inlinecount): \NuvemFiscal\Model\DfeEventoListagem
+```
+
+Listar eventos
+
+Retorna a lista de eventos vinculados a um documento fiscal de acordo com os critérios de busca utilizados. Os eventos são retornados ordenados pela data da criação, com as mais recentes aparecendo primeiro.
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfceApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$dfe_id = 'dfe_id_example'; // string | ID único gerado pela Nuvem Fiscal para o documento fiscal.
+$top = 10; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.
+$skip = 0; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
+$inlinecount = false; // bool | Inclui no JSON de resposta, na propriedade `@count`, o número total de registros que o filtro retornaria, independente dos filtros de paginação.
+
+try {
+    $result = $apiInstance->listarEventosNfce($dfe_id, $top, $skip, $inlinecount);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfceApi->listarEventosNfce: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **dfe_id** | **string**| ID único gerado pela Nuvem Fiscal para o documento fiscal. | |
+| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100. | [optional] [default to 10] |
+| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] [default to 0] |
+| **inlinecount** | **bool**| Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. | [optional] [default to false] |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\DfeEventoListagem**](../Model/DfeEventoListagem.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
 ## `listarLotesNfce()`
 
 ```php
@@ -1114,6 +1583,71 @@ try {
 ### Tipo do retorno
 
 [**\NuvemFiscal\Model\DfeListagem**](../Model/DfeListagem.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `sincronizarNfce()`
+
+```php
+sincronizarNfce($id): \NuvemFiscal\Model\DfeSincronizacao
+```
+
+Sincroniza dados na NFC-e a partir da SEFAZ
+
+Realiza a sincronização dos dados a partir da consulta da situação atual da NFC-e na Base de Dados do Portal da Secretaria de Fazenda Estadual.    **Cenários de uso**:  * Sincronizar uma nota que se encontra com o status `erro` na Nuvem Fiscal, mas está autorizada na SEFAZ (útil em casos de erros de transmissão com a SEFAZ, como instabilidades e timeouts).  * Sincronizar uma nota que se encontra com o status `autorizado`na Nuvem Fiscal, mas está cancelada na SEFAZ.  * Sincronizar todos os eventos de Cancelamento, Carta de Correção e EPEC de uma nota que porventura não tenham sido feitos a partir da Nuvem Fiscal.
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfceApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NFC-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->sincronizarNfce($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfceApi->sincronizarNfce: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NFC-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\DfeSincronizacao**](../Model/DfeSincronizacao.md)
 
 ### Autorização
 

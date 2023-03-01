@@ -1,6 +1,6 @@
 <?php
 /**
- * Dfe
+ * DfeSincronizacao
  *
  * PHP version 7.4
  *
@@ -31,7 +31,7 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * Dfe Class Doc Comment
+ * DfeSincronizacao Class Doc Comment
  *
  * @category Class
  * @package  NuvemFiscal
@@ -39,7 +39,7 @@ use \NuvemFiscal\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
+class DfeSincronizacao implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Dfe';
+    protected static $openAPIModelName = 'DfeSincronizacao';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,18 +56,11 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'ambiente' => 'string',
-        'created_at' => '\DateTime',
         'status' => 'string',
-        'referencia' => 'string',
-        'data_emissao' => '\DateTime',
-        'modelo' => 'int',
-        'serie' => 'int',
-        'numero' => 'int',
-        'valor_total' => 'float',
-        'chave' => 'string',
-        'autorizacao' => '\NuvemFiscal\Model\DfeAutorizacao'
+        'codigo_status' => 'int',
+        'motivo_status' => 'string',
+        'data_recebimento' => '\DateTime',
+        'chave' => 'string'
     ];
 
     /**
@@ -78,18 +71,11 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'ambiente' => null,
-        'created_at' => 'date-time',
         'status' => null,
-        'referencia' => null,
-        'data_emissao' => 'date-time',
-        'modelo' => null,
-        'serie' => null,
-        'numero' => null,
-        'valor_total' => null,
-        'chave' => null,
-        'autorizacao' => null
+        'codigo_status' => null,
+        'motivo_status' => null,
+        'data_recebimento' => 'date-time',
+        'chave' => null
     ];
 
     /**
@@ -98,18 +84,11 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-		'ambiente' => false,
-		'created_at' => false,
-		'status' => false,
-		'referencia' => false,
-		'data_emissao' => false,
-		'modelo' => false,
-		'serie' => false,
-		'numero' => false,
-		'valor_total' => false,
-		'chave' => false,
-		'autorizacao' => false
+        'status' => false,
+		'codigo_status' => false,
+		'motivo_status' => false,
+		'data_recebimento' => false,
+		'chave' => false
     ];
 
     /**
@@ -188,18 +167,11 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'ambiente' => 'ambiente',
-        'created_at' => 'created_at',
         'status' => 'status',
-        'referencia' => 'referencia',
-        'data_emissao' => 'data_emissao',
-        'modelo' => 'modelo',
-        'serie' => 'serie',
-        'numero' => 'numero',
-        'valor_total' => 'valor_total',
-        'chave' => 'chave',
-        'autorizacao' => 'autorizacao'
+        'codigo_status' => 'codigo_status',
+        'motivo_status' => 'motivo_status',
+        'data_recebimento' => 'data_recebimento',
+        'chave' => 'chave'
     ];
 
     /**
@@ -208,18 +180,11 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'ambiente' => 'setAmbiente',
-        'created_at' => 'setCreatedAt',
         'status' => 'setStatus',
-        'referencia' => 'setReferencia',
-        'data_emissao' => 'setDataEmissao',
-        'modelo' => 'setModelo',
-        'serie' => 'setSerie',
-        'numero' => 'setNumero',
-        'valor_total' => 'setValorTotal',
-        'chave' => 'setChave',
-        'autorizacao' => 'setAutorizacao'
+        'codigo_status' => 'setCodigoStatus',
+        'motivo_status' => 'setMotivoStatus',
+        'data_recebimento' => 'setDataRecebimento',
+        'chave' => 'setChave'
     ];
 
     /**
@@ -228,18 +193,11 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'ambiente' => 'getAmbiente',
-        'created_at' => 'getCreatedAt',
         'status' => 'getStatus',
-        'referencia' => 'getReferencia',
-        'data_emissao' => 'getDataEmissao',
-        'modelo' => 'getModelo',
-        'serie' => 'getSerie',
-        'numero' => 'getNumero',
-        'valor_total' => 'getValorTotal',
-        'chave' => 'getChave',
-        'autorizacao' => 'getAutorizacao'
+        'codigo_status' => 'getCodigoStatus',
+        'motivo_status' => 'getMotivoStatus',
+        'data_recebimento' => 'getDataRecebimento',
+        'chave' => 'getChave'
     ];
 
     /**
@@ -283,28 +241,8 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const AMBIENTE_HOMOLOGACAO = 'homologacao';
-    public const AMBIENTE_PRODUCAO = 'producao';
     public const STATUS_PENDENTE = 'pendente';
-    public const STATUS_AUTORIZADO = 'autorizado';
-    public const STATUS_REJEITADO = 'rejeitado';
-    public const STATUS_DENEGADO = 'denegado';
-    public const STATUS_ENCERRADO = 'encerrado';
-    public const STATUS_CANCELADO = 'cancelado';
-    public const STATUS_ERRO = 'erro';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAmbienteAllowableValues()
-    {
-        return [
-            self::AMBIENTE_HOMOLOGACAO,
-            self::AMBIENTE_PRODUCAO,
-        ];
-    }
+    public const STATUS_SINCRONIZADO = 'sincronizado';
 
     /**
      * Gets allowable values of the enum
@@ -315,12 +253,7 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::STATUS_PENDENTE,
-            self::STATUS_AUTORIZADO,
-            self::STATUS_REJEITADO,
-            self::STATUS_DENEGADO,
-            self::STATUS_ENCERRADO,
-            self::STATUS_CANCELADO,
-            self::STATUS_ERRO,
+            self::STATUS_SINCRONIZADO,
         ];
     }
 
@@ -339,18 +272,11 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('ambiente', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('referencia', $data ?? [], null);
-        $this->setIfExists('data_emissao', $data ?? [], null);
-        $this->setIfExists('modelo', $data ?? [], null);
-        $this->setIfExists('serie', $data ?? [], null);
-        $this->setIfExists('numero', $data ?? [], null);
-        $this->setIfExists('valor_total', $data ?? [], null);
+        $this->setIfExists('codigo_status', $data ?? [], null);
+        $this->setIfExists('motivo_status', $data ?? [], null);
+        $this->setIfExists('data_recebimento', $data ?? [], null);
         $this->setIfExists('chave', $data ?? [], null);
-        $this->setIfExists('autorizacao', $data ?? [], null);
     }
 
     /**
@@ -380,15 +306,6 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getAmbienteAllowableValues();
-        if (!is_null($this->container['ambiente']) && !in_array($this->container['ambiente'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'ambiente', must be one of '%s'",
-                $this->container['ambiente'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -412,103 +329,6 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id ID único gerado pela Nuvem Fiscal para este documento.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets ambiente
-     *
-     * @return string|null
-     */
-    public function getAmbiente()
-    {
-        return $this->container['ambiente'];
-    }
-
-    /**
-     * Sets ambiente
-     *
-     * @param string|null $ambiente ambiente
-     *
-     * @return self
-     */
-    public function setAmbiente($ambiente)
-    {
-        $allowedValues = $this->getAmbienteAllowableValues();
-        if (!is_null($ambiente) && !in_array($ambiente, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ambiente', must be one of '%s'",
-                    $ambiente,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-
-        if (is_null($ambiente)) {
-            throw new \InvalidArgumentException('non-nullable ambiente cannot be null');
-        }
-
-        $this->container['ambiente'] = $ambiente;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at Data/hora em que o documento foi criado na Nuvem Fiscal. Representado no formato <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"blank\">`ISO 8601`</a>.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
 
     /**
      * Gets status
@@ -550,175 +370,88 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets referencia
+     * Gets codigo_status
+     *
+     * @return int|null
+     */
+    public function getCodigoStatus()
+    {
+        return $this->container['codigo_status'];
+    }
+
+    /**
+     * Sets codigo_status
+     *
+     * @param int|null $codigo_status Código da situação atual do DF-e.
+     *
+     * @return self
+     */
+    public function setCodigoStatus($codigo_status)
+    {
+
+        if (is_null($codigo_status)) {
+            throw new \InvalidArgumentException('non-nullable codigo_status cannot be null');
+        }
+
+        $this->container['codigo_status'] = $codigo_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets motivo_status
      *
      * @return string|null
      */
-    public function getReferencia()
+    public function getMotivoStatus()
     {
-        return $this->container['referencia'];
+        return $this->container['motivo_status'];
     }
 
     /**
-     * Sets referencia
+     * Sets motivo_status
      *
-     * @param string|null $referencia Seu identificador único para este documento. Opcional, ajuda a evitar o envio duplicado de um mesmo documento.
+     * @param string|null $motivo_status Descrição literal da situação atual do DF-e.
      *
      * @return self
      */
-    public function setReferencia($referencia)
+    public function setMotivoStatus($motivo_status)
     {
 
-        if (is_null($referencia)) {
-            throw new \InvalidArgumentException('non-nullable referencia cannot be null');
+        if (is_null($motivo_status)) {
+            throw new \InvalidArgumentException('non-nullable motivo_status cannot be null');
         }
 
-        $this->container['referencia'] = $referencia;
+        $this->container['motivo_status'] = $motivo_status;
 
         return $this;
     }
 
     /**
-     * Gets data_emissao
+     * Gets data_recebimento
      *
      * @return \DateTime|null
      */
-    public function getDataEmissao()
+    public function getDataRecebimento()
     {
-        return $this->container['data_emissao'];
+        return $this->container['data_recebimento'];
     }
 
     /**
-     * Sets data_emissao
+     * Sets data_recebimento
      *
-     * @param \DateTime|null $data_emissao data_emissao
+     * @param \DateTime|null $data_recebimento Data e hora de processamento.
      *
      * @return self
      */
-    public function setDataEmissao($data_emissao)
+    public function setDataRecebimento($data_recebimento)
     {
 
-        if (is_null($data_emissao)) {
-            throw new \InvalidArgumentException('non-nullable data_emissao cannot be null');
+        if (is_null($data_recebimento)) {
+            throw new \InvalidArgumentException('non-nullable data_recebimento cannot be null');
         }
 
-        $this->container['data_emissao'] = $data_emissao;
-
-        return $this;
-    }
-
-    /**
-     * Gets modelo
-     *
-     * @return int|null
-     */
-    public function getModelo()
-    {
-        return $this->container['modelo'];
-    }
-
-    /**
-     * Sets modelo
-     *
-     * @param int|null $modelo modelo
-     *
-     * @return self
-     */
-    public function setModelo($modelo)
-    {
-
-        if (is_null($modelo)) {
-            throw new \InvalidArgumentException('non-nullable modelo cannot be null');
-        }
-
-        $this->container['modelo'] = $modelo;
-
-        return $this;
-    }
-
-    /**
-     * Gets serie
-     *
-     * @return int|null
-     */
-    public function getSerie()
-    {
-        return $this->container['serie'];
-    }
-
-    /**
-     * Sets serie
-     *
-     * @param int|null $serie serie
-     *
-     * @return self
-     */
-    public function setSerie($serie)
-    {
-
-        if (is_null($serie)) {
-            throw new \InvalidArgumentException('non-nullable serie cannot be null');
-        }
-
-        $this->container['serie'] = $serie;
-
-        return $this;
-    }
-
-    /**
-     * Gets numero
-     *
-     * @return int|null
-     */
-    public function getNumero()
-    {
-        return $this->container['numero'];
-    }
-
-    /**
-     * Sets numero
-     *
-     * @param int|null $numero numero
-     *
-     * @return self
-     */
-    public function setNumero($numero)
-    {
-
-        if (is_null($numero)) {
-            throw new \InvalidArgumentException('non-nullable numero cannot be null');
-        }
-
-        $this->container['numero'] = $numero;
-
-        return $this;
-    }
-
-    /**
-     * Gets valor_total
-     *
-     * @return float|null
-     */
-    public function getValorTotal()
-    {
-        return $this->container['valor_total'];
-    }
-
-    /**
-     * Sets valor_total
-     *
-     * @param float|null $valor_total valor_total
-     *
-     * @return self
-     */
-    public function setValorTotal($valor_total)
-    {
-
-        if (is_null($valor_total)) {
-            throw new \InvalidArgumentException('non-nullable valor_total cannot be null');
-        }
-
-        $this->container['valor_total'] = $valor_total;
+        $this->container['data_recebimento'] = $data_recebimento;
 
         return $this;
     }
@@ -736,7 +469,7 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets chave
      *
-     * @param string|null $chave Chave de acesso do DF-e.
+     * @param string|null $chave Chave de Acesso do DF-e consultado.
      *
      * @return self
      */
@@ -748,35 +481,6 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['chave'] = $chave;
-
-        return $this;
-    }
-
-    /**
-     * Gets autorizacao
-     *
-     * @return \NuvemFiscal\Model\DfeAutorizacao|null
-     */
-    public function getAutorizacao()
-    {
-        return $this->container['autorizacao'];
-    }
-
-    /**
-     * Sets autorizacao
-     *
-     * @param \NuvemFiscal\Model\DfeAutorizacao|null $autorizacao autorizacao
-     *
-     * @return self
-     */
-    public function setAutorizacao($autorizacao)
-    {
-
-        if (is_null($autorizacao)) {
-            throw new \InvalidArgumentException('non-nullable autorizacao cannot be null');
-        }
-
-        $this->container['autorizacao'] = $autorizacao;
 
         return $this;
     }

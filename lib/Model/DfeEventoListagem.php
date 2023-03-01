@@ -1,6 +1,6 @@
 <?php
 /**
- * NfseLoteDpsPedidoEmissao
+ * DfeEventoListagem
  *
  * PHP version 7.4
  *
@@ -31,7 +31,7 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * NfseLoteDpsPedidoEmissao Class Doc Comment
+ * DfeEventoListagem Class Doc Comment
  *
  * @category Class
  * @package  NuvemFiscal
@@ -39,7 +39,7 @@ use \NuvemFiscal\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializable
+class DfeEventoListagem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'NfseLoteDpsPedidoEmissao';
+    protected static $openAPIModelName = 'DfeEventoListagem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,10 +56,8 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'provedor' => 'string',
-        'ambiente' => 'string',
-        'referencia' => 'string',
-        'documentos' => '\NuvemFiscal\Model\NfseDpsPedidoEmissao[]'
+        'at_count' => 'int',
+        'data' => '\NuvemFiscal\Model\DfeEvento[]'
     ];
 
     /**
@@ -70,10 +68,8 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'provedor' => null,
-        'ambiente' => null,
-        'referencia' => null,
-        'documentos' => null
+        'at_count' => null,
+        'data' => null
     ];
 
     /**
@@ -82,10 +78,8 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'provedor' => false,
-		'ambiente' => false,
-		'referencia' => false,
-		'documentos' => false
+        'at_count' => false,
+		'data' => false
     ];
 
     /**
@@ -164,10 +158,8 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'provedor' => 'provedor',
-        'ambiente' => 'ambiente',
-        'referencia' => 'referencia',
-        'documentos' => 'documentos'
+        'at_count' => '@count',
+        'data' => 'data'
     ];
 
     /**
@@ -176,10 +168,8 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'provedor' => 'setProvedor',
-        'ambiente' => 'setAmbiente',
-        'referencia' => 'setReferencia',
-        'documentos' => 'setDocumentos'
+        'at_count' => 'setAtCount',
+        'data' => 'setData'
     ];
 
     /**
@@ -188,10 +178,8 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'provedor' => 'getProvedor',
-        'ambiente' => 'getAmbiente',
-        'referencia' => 'getReferencia',
-        'documentos' => 'getDocumentos'
+        'at_count' => 'getAtCount',
+        'data' => 'getData'
     ];
 
     /**
@@ -235,36 +223,6 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
-    public const PROVEDOR_PADRAO = 'padrao';
-    public const PROVEDOR_NACIONAL = 'nacional';
-    public const AMBIENTE_HOMOLOGACAO = 'homologacao';
-    public const AMBIENTE_PRODUCAO = 'producao';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getProvedorAllowableValues()
-    {
-        return [
-            self::PROVEDOR_PADRAO,
-            self::PROVEDOR_NACIONAL,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAmbienteAllowableValues()
-    {
-        return [
-            self::AMBIENTE_HOMOLOGACAO,
-            self::AMBIENTE_PRODUCAO,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -281,10 +239,8 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('provedor', $data ?? [], null);
-        $this->setIfExists('ambiente', $data ?? [], null);
-        $this->setIfExists('referencia', $data ?? [], null);
-        $this->setIfExists('documentos', $data ?? [], null);
+        $this->setIfExists('at_count', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -314,27 +270,6 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getProvedorAllowableValues();
-        if (!is_null($this->container['provedor']) && !in_array($this->container['provedor'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'provedor', must be one of '%s'",
-                $this->container['provedor'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['ambiente'] === null) {
-            $invalidProperties[] = "'ambiente' can't be null";
-        }
-        $allowedValues = $this->getAmbienteAllowableValues();
-        if (!is_null($this->container['ambiente']) && !in_array($this->container['ambiente'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'ambiente', must be one of '%s'",
-                $this->container['ambiente'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -351,137 +286,59 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets provedor
+     * Gets at_count
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getProvedor()
+    public function getAtCount()
     {
-        return $this->container['provedor'];
+        return $this->container['at_count'];
     }
 
     /**
-     * Sets provedor
+     * Sets at_count
      *
-     * @param string|null $provedor Default: `\"padrao\"`    Identificação do provedor para transmissão da DPS:   * `\"padrao\"`: Provedor padrão da prefeitura.   * `\"nacional\"`: Ambiente de Dados Nacional (ADN) do <a href=\"https://www.gov.br/nfse/pt-br\" target=\"blank\">Sistema Nacional NFS-e</a>.
+     * @param int|null $at_count at_count
      *
      * @return self
      */
-    public function setProvedor($provedor)
+    public function setAtCount($at_count)
     {
-        $allowedValues = $this->getProvedorAllowableValues();
-        if (!is_null($provedor) && !in_array($provedor, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'provedor', must be one of '%s'",
-                    $provedor,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+        if (is_null($at_count)) {
+            throw new \InvalidArgumentException('non-nullable at_count cannot be null');
         }
 
-        if (is_null($provedor)) {
-            throw new \InvalidArgumentException('non-nullable provedor cannot be null');
-        }
-
-        $this->container['provedor'] = $provedor;
+        $this->container['at_count'] = $at_count;
 
         return $this;
     }
 
     /**
-     * Gets ambiente
+     * Gets data
      *
-     * @return string
+     * @return \NuvemFiscal\Model\DfeEvento[]|null
      */
-    public function getAmbiente()
+    public function getData()
     {
-        return $this->container['ambiente'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets ambiente
+     * Sets data
      *
-     * @param string $ambiente Identificação do Ambiente.
+     * @param \NuvemFiscal\Model\DfeEvento[]|null $data data
      *
      * @return self
      */
-    public function setAmbiente($ambiente)
+    public function setData($data)
     {
-        $allowedValues = $this->getAmbienteAllowableValues();
-        if (!in_array($ambiente, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ambiente', must be one of '%s'",
-                    $ambiente,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
 
-        if (is_null($ambiente)) {
-            throw new \InvalidArgumentException('non-nullable ambiente cannot be null');
-        }
-
-        $this->container['ambiente'] = $ambiente;
-
-        return $this;
-    }
-
-    /**
-     * Gets referencia
-     *
-     * @return string|null
-     */
-    public function getReferencia()
-    {
-        return $this->container['referencia'];
-    }
-
-    /**
-     * Sets referencia
-     *
-     * @param string|null $referencia Seu identificador único para este documento. Opcional, ajuda a evitar o envio duplicado de um mesmo documento.
-     *
-     * @return self
-     */
-    public function setReferencia($referencia)
-    {
-
-        if (is_null($referencia)) {
-            throw new \InvalidArgumentException('non-nullable referencia cannot be null');
-        }
-
-        $this->container['referencia'] = $referencia;
-
-        return $this;
-    }
-
-    /**
-     * Gets documentos
-     *
-     * @return \NuvemFiscal\Model\NfseDpsPedidoEmissao[]|null
-     */
-    public function getDocumentos()
-    {
-        return $this->container['documentos'];
-    }
-
-    /**
-     * Sets documentos
-     *
-     * @param \NuvemFiscal\Model\NfseDpsPedidoEmissao[]|null $documentos Lista com as informações das DPS relativas aos serviços prestados.
-     *
-     * @return self
-     */
-    public function setDocumentos($documentos)
-    {
-
-        if (is_null($documentos)) {
-            throw new \InvalidArgumentException('non-nullable documentos cannot be null');
-        }
-
-        $this->container['documentos'] = $documentos;
+        $this->container['data'] = $data;
 
         return $this;
     }

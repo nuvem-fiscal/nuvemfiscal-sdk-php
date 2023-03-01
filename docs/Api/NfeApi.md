@@ -14,6 +14,8 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**baixarXmlEventoNfe()**](NfeApi.md#baixarXmlEventoNfe) | **GET** /nfe/eventos/{id}/xml | Baixar XML do evento |
 | [**baixarXmlInutilizacaoNfe()**](NfeApi.md#baixarXmlInutilizacaoNfe) | **GET** /nfe/inutilizacoes/{id}/xml | Baixar XML da inutilização |
 | [**baixarXmlNfe()**](NfeApi.md#baixarXmlNfe) | **GET** /nfe/{id}/xml | Baixar XML da NF-e processada |
+| [**baixarXmlNfeNota()**](NfeApi.md#baixarXmlNfeNota) | **GET** /nfe/{id}/xml/nota | Baixar XML da NF-e |
+| [**baixarXmlNfeProtocolo()**](NfeApi.md#baixarXmlNfeProtocolo) | **GET** /nfe/{id}/xml/protocolo | Baixar XML do Protocolo da SEFAZ |
 | [**cancelarNfe()**](NfeApi.md#cancelarNfe) | **POST** /nfe/{id}/cancelamento | Cancelar uma NF-e autorizada |
 | [**consultarCancelamentoNfe()**](NfeApi.md#consultarCancelamentoNfe) | **GET** /nfe/{id}/cancelamento | Consultar o cancelamento da NF-e |
 | [**consultarCartaCorrecaoNfe()**](NfeApi.md#consultarCartaCorrecaoNfe) | **GET** /nfe/{id}/carta-correcao | Consultar a solicitação de correção da NF-e |
@@ -26,8 +28,10 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**emitirLoteNfe()**](NfeApi.md#emitirLoteNfe) | **POST** /nfe/lotes | Emitir lote de NF-e |
 | [**emitirNfe()**](NfeApi.md#emitirNfe) | **POST** /nfe | Emitir NF-e |
 | [**inutilizarNumeracaoNfe()**](NfeApi.md#inutilizarNumeracaoNfe) | **POST** /nfe/inutilizacoes | Inutilizar uma sequência de numeração de NF-e |
+| [**listarEventosNfe()**](NfeApi.md#listarEventosNfe) | **GET** /nfe/eventos | Listar eventos |
 | [**listarLotesNfe()**](NfeApi.md#listarLotesNfe) | **GET** /nfe/lotes | Listar lotes de NF-e |
 | [**listarNfe()**](NfeApi.md#listarNfe) | **GET** /nfe | Listar NF-e |
+| [**sincronizarNfe()**](NfeApi.md#sincronizarNfe) | **POST** /nfe/{id}/sincronizar | Sincroniza dados na NF-e a partir da SEFAZ |
 
 
 ## `baixarPdfCancelamentoNfe()`
@@ -660,6 +664,132 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
+## `baixarXmlNfeNota()`
+
+```php
+baixarXmlNfeNota($id): \SplFileObject
+```
+
+Baixar XML da NF-e
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfeApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NF-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarXmlNfeNota($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfeApi->baixarXmlNfeNota: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NF-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `baixarXmlNfeProtocolo()`
+
+```php
+baixarXmlNfeProtocolo($id): \SplFileObject
+```
+
+Baixar XML do Protocolo da SEFAZ
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfeApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NF-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarXmlNfeProtocolo($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfeApi->baixarXmlNfeProtocolo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NF-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
 ## `cancelarNfe()`
 
 ```php
@@ -706,7 +836,7 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único da NF-e gerado pela Nuvem Fiscal. | |
-| **body** | [**\NuvemFiscal\Model\NfePedidoCancelamento**](../Model/NfePedidoCancelamento.md)|  | |
+| **body** | [**\NuvemFiscal\Model\NfePedidoCancelamento**](../Model/NfePedidoCancelamento.md)|  | [optional] |
 
 ### Tipo do retorno
 
@@ -1428,6 +1558,77 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
+## `listarEventosNfe()`
+
+```php
+listarEventosNfe($dfe_id, $top, $skip, $inlinecount): \NuvemFiscal\Model\DfeEventoListagem
+```
+
+Listar eventos
+
+Retorna a lista de eventos vinculados a um documento fiscal de acordo com os critérios de busca utilizados. Os eventos são retornados ordenados pela data da criação, com as mais recentes aparecendo primeiro.
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfeApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$dfe_id = 'dfe_id_example'; // string | ID único gerado pela Nuvem Fiscal para o documento fiscal.
+$top = 10; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.
+$skip = 0; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
+$inlinecount = false; // bool | Inclui no JSON de resposta, na propriedade `@count`, o número total de registros que o filtro retornaria, independente dos filtros de paginação.
+
+try {
+    $result = $apiInstance->listarEventosNfe($dfe_id, $top, $skip, $inlinecount);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfeApi->listarEventosNfe: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **dfe_id** | **string**| ID único gerado pela Nuvem Fiscal para o documento fiscal. | |
+| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100. | [optional] [default to 10] |
+| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] [default to 0] |
+| **inlinecount** | **bool**| Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. | [optional] [default to false] |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\DfeEventoListagem**](../Model/DfeEventoListagem.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
 ## `listarLotesNfe()`
 
 ```php
@@ -1566,6 +1767,71 @@ try {
 ### Tipo do retorno
 
 [**\NuvemFiscal\Model\DfeListagem**](../Model/DfeListagem.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `sincronizarNfe()`
+
+```php
+sincronizarNfe($id): \NuvemFiscal\Model\DfeSincronizacao
+```
+
+Sincroniza dados na NF-e a partir da SEFAZ
+
+Realiza a sincronização dos dados a partir da consulta da situação atual da NF-e na Base de Dados do Portal da Secretaria de Fazenda Estadual.    **Cenários de uso**:  * Sincronizar uma nota que se encontra com o status `erro` na Nuvem Fiscal, mas está autorizada na SEFAZ (útil em casos de erros de transmissão com a SEFAZ, como instabilidades e timeouts).  * Sincronizar uma nota que se encontra com o status `autorizado`na Nuvem Fiscal, mas está cancelada na SEFAZ.  * Sincronizar todos os eventos de Cancelamento, Carta de Correção e EPEC de uma nota que porventura não tenham sido feitos a partir da Nuvem Fiscal.
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfeApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NF-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->sincronizarNfe($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfeApi->sincronizarNfe: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NF-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\DfeSincronizacao**](../Model/DfeSincronizacao.md)
 
 ### Autorização
 

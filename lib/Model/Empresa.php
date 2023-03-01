@@ -395,7 +395,7 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at Data e hora que o objeto foi criado.  A Nuvem Fiscal gerencia esse campo automaticamente.
+     * @param \DateTime|null $created_at Data/hora em que o objeto foi criado na Nuvem Fiscal. Representado no formato <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"blank\">`ISO 8601`</a>.    A Nuvem Fiscal gerencia esse campo automaticamente. Caso algum valor seja enviado, ele será ignorado.
      *
      * @return self
      */
@@ -424,7 +424,7 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at Data e hora que o objeto foi alterado pela última vez.  A Nuvem Fiscal gerencia esse campo automaticamente.
+     * @param \DateTime|null $updated_at Data e hora que o objeto foi alterado pela última vez na Nuvem Fiscal. Representado no formato <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"blank\">`ISO 8601`</a>.    A Nuvem Fiscal gerencia esse campo automaticamente. Caso algum valor seja enviado, ele será ignorado.
      *
      * @return self
      */
