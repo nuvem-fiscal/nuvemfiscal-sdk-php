@@ -665,6 +665,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.10.15`
-    - Versão do package: `2.6.0`
+- Versão da API: `2.10.16`
+    - Versão do package: `2.7.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

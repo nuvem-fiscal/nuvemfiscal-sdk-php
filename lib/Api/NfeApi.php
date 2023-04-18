@@ -8256,21 +8256,21 @@ class NfeApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $ambiente,
-            'ambiente', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            true // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $referencia,
             'referencia', // param base name
             'string', // openApiType
             '', // style
             false, // explode
             false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ambiente,
+            'ambiente', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
