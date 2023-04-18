@@ -46,16 +46,16 @@ Siga os [passos para instalação](#installation--usage) e então execute o segu
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-
-
-// Configurar authorização via API key: jwt
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// Obter token a partir das credenciais
+$token = get_oauth2_token(
+    'https://auth.nuvemfiscal.com.br/oauth/token', 
+    $_ENV['NUVEMFISCAL_CLIENTID'],
+    $_ENV['NUVEMFISCAL_CLIENTSECRET'],
+    'cep cnpj' // defina o scope a ser usado
+);
 
 // Configurar access token OAuth2 para autorização: oauth2
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
-
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken($token->access_token);
 
 $apiInstance = new NuvemFiscal\Api\CepApi(
     // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
@@ -63,7 +63,7 @@ $apiInstance = new NuvemFiscal\Api\CepApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cep = 'cep_example'; // string | CEP sem máscara.
+$cep = '80030030'; // string | CEP sem máscara.
 
 try {
     $result = $apiInstance->consultarCep($cep);
@@ -71,7 +71,37 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CepApi->consultarCep: ', $e->getMessage(), PHP_EOL;
 }
+```
 
+A função `get_oauth2_token` é uma função genérica para buscar o token OAuth2 a partir das credenciais. Isso não é definido pela Nuvem Fiscal,
+mas sim pelo padrão OAuth2. A seguir apresentamos uma sugestão básica de uso, mas essa função fica sob sua responsabilidade:
+
+```php
+function get_oauth2_token($auth_url, $client_id, $client_secret, $scope) {
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $auth_url);
+    curl_setopt($curl, CURLOPT_POST, TRUE);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query(array(        
+        'grant_type' => 'client_credentials', 
+        'scope' => $scope,  
+    )));
+
+    $headers[] = "Authorization: Basic " . base64_encode($client_id . ":" . $client_secret);
+    $headers[] = "Content-Type: application/x-www-form-urlencoded";
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+    if ($err) {
+        echo "cURL Error #:" . $err;
+    } else {
+        return json_decode($response);
+    }
+}
 ```
 
 ## Endpoints da API
@@ -216,6 +246,7 @@ Classe | Método | Endpoint | Descrição
 *NfseApi* | [**emitirNfseDps**](docs/Api/NfseApi.md#emitirnfsedps) | **POST** /nfse/dps | Emitir NFS-e
 *NfseApi* | [**listarLotesNfse**](docs/Api/NfseApi.md#listarlotesnfse) | **GET** /nfse/lotes | Listar lotes de NFS-e
 *NfseApi* | [**listarNfse**](docs/Api/NfseApi.md#listarnfse) | **GET** /nfse | Listar NFS-e
+*NfseApi* | [**sincronizarNfse**](docs/Api/NfseApi.md#sincronizarnfse) | **POST** /nfse/{id}/sincronizar | Sincroniza dados na NFS-e a partir da Prefeitura
 
 ## Documentação dos DTOs
 
@@ -499,12 +530,16 @@ Classe | Método | Endpoint | Descrição
 - [NfeSefazForDia](docs/Model/NfeSefazForDia.md)
 - [NfeSefazICMS](docs/Model/NfeSefazICMS.md)
 - [NfeSefazICMS00](docs/Model/NfeSefazICMS00.md)
+- [NfeSefazICMS02](docs/Model/NfeSefazICMS02.md)
 - [NfeSefazICMS10](docs/Model/NfeSefazICMS10.md)
+- [NfeSefazICMS15](docs/Model/NfeSefazICMS15.md)
 - [NfeSefazICMS20](docs/Model/NfeSefazICMS20.md)
 - [NfeSefazICMS30](docs/Model/NfeSefazICMS30.md)
 - [NfeSefazICMS40](docs/Model/NfeSefazICMS40.md)
 - [NfeSefazICMS51](docs/Model/NfeSefazICMS51.md)
+- [NfeSefazICMS53](docs/Model/NfeSefazICMS53.md)
 - [NfeSefazICMS60](docs/Model/NfeSefazICMS60.md)
+- [NfeSefazICMS61](docs/Model/NfeSefazICMS61.md)
 - [NfeSefazICMS70](docs/Model/NfeSefazICMS70.md)
 - [NfeSefazICMS90](docs/Model/NfeSefazICMS90.md)
 - [NfeSefazICMSPart](docs/Model/NfeSefazICMSPart.md)
@@ -544,6 +579,7 @@ Classe | Método | Endpoint | Descrição
 - [NfeSefazObsCont](docs/Model/NfeSefazObsCont.md)
 - [NfeSefazObsFisco](docs/Model/NfeSefazObsFisco.md)
 - [NfeSefazObsItem](docs/Model/NfeSefazObsItem.md)
+- [NfeSefazOrigComb](docs/Model/NfeSefazOrigComb.md)
 - [NfeSefazPIS](docs/Model/NfeSefazPIS.md)
 - [NfeSefazPISAliq](docs/Model/NfeSefazPISAliq.md)
 - [NfeSefazPISNT](docs/Model/NfeSefazPISNT.md)
@@ -573,6 +609,8 @@ Classe | Método | Endpoint | Descrição
 - [NfseMensagemRetorno](docs/Model/NfseMensagemRetorno.md)
 - [NfsePedidoCancelamento](docs/Model/NfsePedidoCancelamento.md)
 - [NfsePedidoEmissao](docs/Model/NfsePedidoEmissao.md)
+- [NfsePedidoSincronizacao](docs/Model/NfsePedidoSincronizacao.md)
+- [NfseSincronizacao](docs/Model/NfseSincronizacao.md)
 - [Rps](docs/Model/Rps.md)
 - [RpsDados](docs/Model/RpsDados.md)
 - [RpsDadosConstrucaoCivil](docs/Model/RpsDadosConstrucaoCivil.md)
@@ -627,6 +665,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.8.1`
-    - Versão do package: `2.5.0`
+- Versão da API: `2.10.15`
+    - Versão do package: `2.6.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

@@ -17,6 +17,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**emitirNfseDps()**](NfseApi.md#emitirNfseDps) | **POST** /nfse/dps | Emitir NFS-e |
 | [**listarLotesNfse()**](NfseApi.md#listarLotesNfse) | **GET** /nfse/lotes | Listar lotes de NFS-e |
 | [**listarNfse()**](NfseApi.md#listarNfse) | **GET** /nfse | Listar NFS-e |
+| [**sincronizarNfse()**](NfseApi.md#sincronizarNfse) | **POST** /nfse/{id}/sincronizar | Sincroniza dados na NFS-e a partir da Prefeitura |
 
 
 ## `baixarPdfNfse()`
@@ -796,7 +797,7 @@ try {
 ## `listarNfse()`
 
 ```php
-listarNfse($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave): \NuvemFiscal\Model\NfseListagem
+listarNfse($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave, $serie): \NuvemFiscal\Model\NfseListagem
 ```
 
 Listar NFS-e
@@ -830,11 +831,12 @@ $ambiente = 'ambiente_example'; // string | Identificação do Ambiente.    Valo
 $top = 10; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.
 $skip = 0; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
 $inlinecount = false; // bool | Inclui no JSON de resposta, na propriedade `@count`, o número total de registros que o filtro retornaria, independente dos filtros de paginação.
-$referencia = 'referencia_example'; // string
+$referencia = 'referencia_example'; // string | Seu identificador único para o documento.
 $chave = 'chave_example'; // string | Chave de acesso do DF-e.
+$serie = 'serie_example'; // string | Série do DF-e.
 
 try {
-    $result = $apiInstance->listarNfse($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave);
+    $result = $apiInstance->listarNfse($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia, $chave, $serie);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfseApi->listarNfse: ', $e->getMessage(), PHP_EOL;
@@ -850,8 +852,9 @@ try {
 | **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100. | [optional] [default to 10] |
 | **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] [default to 0] |
 | **inlinecount** | **bool**| Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. | [optional] [default to false] |
-| **referencia** | **string**|  | [optional] |
+| **referencia** | **string**| Seu identificador único para o documento. | [optional] |
 | **chave** | **string**| Chave de acesso do DF-e. | [optional] |
+| **serie** | **string**| Série do DF-e. | [optional] |
 
 ### Tipo do retorno
 
@@ -864,6 +867,73 @@ try {
 ### Headers HTTP da requisição
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `sincronizarNfse()`
+
+```php
+sincronizarNfse($id, $body): \NuvemFiscal\Model\NfseSincronizacao
+```
+
+Sincroniza dados na NFS-e a partir da Prefeitura
+
+Realiza a sincronização dos dados a partir da consulta da situação atual da NFS-e na prefeitura.    **Cenários de uso**:  * Sincronizar uma nota que se encontra com o status `erro` na Nuvem Fiscal, mas está autorizada na prefeitura (útil em casos de erros de transmissão, como instabilidades e timeouts).  * Sincronizar uma nota que se encontra com o status `autorizada`na Nuvem Fiscal, mas está cancelada na prefeitura.
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfseApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NFS-e gerado pela Nuvem Fiscal.
+$body = new \NuvemFiscal\Model\NfsePedidoSincronizacao(); // \NuvemFiscal\Model\NfsePedidoSincronizacao
+
+try {
+    $result = $apiInstance->sincronizarNfse($id, $body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfseApi->sincronizarNfse: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NFS-e gerado pela Nuvem Fiscal. | |
+| **body** | [**\NuvemFiscal\Model\NfsePedidoSincronizacao**](../Model/NfsePedidoSincronizacao.md)|  | [optional] |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\NfseSincronizacao**](../Model/NfseSincronizacao.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)

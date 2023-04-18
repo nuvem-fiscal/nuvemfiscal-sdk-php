@@ -5,12 +5,16 @@
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
 **icms00** | [**\NuvemFiscal\Model\NfeSefazICMS00**](NfeSefazICMS00.md) |  | [optional]
+**icms02** | [**\NuvemFiscal\Model\NfeSefazICMS02**](NfeSefazICMS02.md) |  | [optional]
 **icms10** | [**\NuvemFiscal\Model\NfeSefazICMS10**](NfeSefazICMS10.md) |  | [optional]
+**icms15** | [**\NuvemFiscal\Model\NfeSefazICMS15**](NfeSefazICMS15.md) |  | [optional]
 **icms20** | [**\NuvemFiscal\Model\NfeSefazICMS20**](NfeSefazICMS20.md) |  | [optional]
 **icms30** | [**\NuvemFiscal\Model\NfeSefazICMS30**](NfeSefazICMS30.md) |  | [optional]
 **icms40** | [**\NuvemFiscal\Model\NfeSefazICMS40**](NfeSefazICMS40.md) |  | [optional]
 **icms51** | [**\NuvemFiscal\Model\NfeSefazICMS51**](NfeSefazICMS51.md) |  | [optional]
+**icms53** | [**\NuvemFiscal\Model\NfeSefazICMS53**](NfeSefazICMS53.md) |  | [optional]
 **icms60** | [**\NuvemFiscal\Model\NfeSefazICMS60**](NfeSefazICMS60.md) |  | [optional]
+**icms61** | [**\NuvemFiscal\Model\NfeSefazICMS61**](NfeSefazICMS61.md) |  | [optional]
 **icms70** | [**\NuvemFiscal\Model\NfeSefazICMS70**](NfeSefazICMS70.md) |  | [optional]
 **icms90** | [**\NuvemFiscal\Model\NfeSefazICMS90**](NfeSefazICMS90.md) |  | [optional]
 **icms_part** | [**\NuvemFiscal\Model\NfeSefazICMSPart**](NfeSefazICMSPart.md) |  | [optional]

@@ -4,7 +4,7 @@
 
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
-**status** | **string** |  | [optional]
+**status** | **string** | Situação atual da sincronização. | [optional]
 **codigo_status** | **int** | Código da situação atual do DF-e. | [optional]
 **motivo_status** | **string** | Descrição literal da situação atual do DF-e. | [optional]
 **data_recebimento** | **\DateTime** | Data e hora de processamento. | [optional]

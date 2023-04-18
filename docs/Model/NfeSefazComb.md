@@ -15,5 +15,7 @@ Nome | Tipo | Descrição | Comentários
 **uf_cons** | **string** | Sigla da UF de Consumo. |
 **cide** | [**\NuvemFiscal\Model\NfeSefazCIDE**](NfeSefazCIDE.md) |  | [optional]
 **encerrante** | [**\NuvemFiscal\Model\NfeSefazEncerrante**](NfeSefazEncerrante.md) |  | [optional]
+**p_bio** | **float** | Percentual do índice de mistura do Biodiesel (B100) no Óleo Diesel B instituído pelo órgão regulamentador. | [optional]
+**orig_comb** | [**\NuvemFiscal\Model\NfeSefazOrigComb[]**](NfeSefazOrigComb.md) |  | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)
