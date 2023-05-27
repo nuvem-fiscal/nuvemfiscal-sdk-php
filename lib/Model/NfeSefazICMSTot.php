@@ -68,8 +68,11 @@ class NfeSefazICMSTot implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_st' => 'float',
         'v_fcpst' => 'float',
         'v_fcpst_ret' => 'float',
+        'q_bc_mono' => 'float',
         'v_icms_mono' => 'float',
+        'q_bc_mono_reten' => 'float',
         'v_icms_mono_reten' => 'float',
+        'q_bc_mono_ret' => 'float',
         'v_icms_mono_ret' => 'float',
         'v_prod' => 'float',
         'v_frete' => 'float',
@@ -104,8 +107,11 @@ class NfeSefazICMSTot implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_st' => null,
         'v_fcpst' => null,
         'v_fcpst_ret' => null,
+        'q_bc_mono' => null,
         'v_icms_mono' => null,
+        'q_bc_mono_reten' => null,
         'v_icms_mono_reten' => null,
+        'q_bc_mono_ret' => null,
         'v_icms_mono_ret' => null,
         'v_prod' => null,
         'v_frete' => null,
@@ -138,8 +144,11 @@ class NfeSefazICMSTot implements ModelInterface, ArrayAccess, \JsonSerializable
 		'v_st' => false,
 		'v_fcpst' => false,
 		'v_fcpst_ret' => false,
+		'q_bc_mono' => false,
 		'v_icms_mono' => false,
+		'q_bc_mono_reten' => false,
 		'v_icms_mono_reten' => false,
+		'q_bc_mono_ret' => false,
 		'v_icms_mono_ret' => false,
 		'v_prod' => false,
 		'v_frete' => false,
@@ -252,8 +261,11 @@ class NfeSefazICMSTot implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_st' => 'vST',
         'v_fcpst' => 'vFCPST',
         'v_fcpst_ret' => 'vFCPSTRet',
+        'q_bc_mono' => 'qBCMono',
         'v_icms_mono' => 'vICMSMono',
+        'q_bc_mono_reten' => 'qBCMonoReten',
         'v_icms_mono_reten' => 'vICMSMonoReten',
+        'q_bc_mono_ret' => 'qBCMonoRet',
         'v_icms_mono_ret' => 'vICMSMonoRet',
         'v_prod' => 'vProd',
         'v_frete' => 'vFrete',
@@ -286,8 +298,11 @@ class NfeSefazICMSTot implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_st' => 'setVSt',
         'v_fcpst' => 'setVFcpst',
         'v_fcpst_ret' => 'setVFcpstRet',
+        'q_bc_mono' => 'setQBcMono',
         'v_icms_mono' => 'setVIcmsMono',
+        'q_bc_mono_reten' => 'setQBcMonoReten',
         'v_icms_mono_reten' => 'setVIcmsMonoReten',
+        'q_bc_mono_ret' => 'setQBcMonoRet',
         'v_icms_mono_ret' => 'setVIcmsMonoRet',
         'v_prod' => 'setVProd',
         'v_frete' => 'setVFrete',
@@ -320,8 +335,11 @@ class NfeSefazICMSTot implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_st' => 'getVSt',
         'v_fcpst' => 'getVFcpst',
         'v_fcpst_ret' => 'getVFcpstRet',
+        'q_bc_mono' => 'getQBcMono',
         'v_icms_mono' => 'getVIcmsMono',
+        'q_bc_mono_reten' => 'getQBcMonoReten',
         'v_icms_mono_reten' => 'getVIcmsMonoReten',
+        'q_bc_mono_ret' => 'getQBcMonoRet',
         'v_icms_mono_ret' => 'getVIcmsMonoRet',
         'v_prod' => 'getVProd',
         'v_frete' => 'getVFrete',
@@ -405,8 +423,11 @@ class NfeSefazICMSTot implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('v_st', $data ?? [], null);
         $this->setIfExists('v_fcpst', $data ?? [], null);
         $this->setIfExists('v_fcpst_ret', $data ?? [], null);
+        $this->setIfExists('q_bc_mono', $data ?? [], null);
         $this->setIfExists('v_icms_mono', $data ?? [], null);
+        $this->setIfExists('q_bc_mono_reten', $data ?? [], null);
         $this->setIfExists('v_icms_mono_reten', $data ?? [], null);
+        $this->setIfExists('q_bc_mono_ret', $data ?? [], null);
         $this->setIfExists('v_icms_mono_ret', $data ?? [], null);
         $this->setIfExists('v_prod', $data ?? [], null);
         $this->setIfExists('v_frete', $data ?? [], null);
@@ -819,6 +840,33 @@ class NfeSefazICMSTot implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets q_bc_mono
+     *
+     * @return float|null
+     */
+    public function getQBcMono()
+    {
+        return $this->container['q_bc_mono'];
+    }
+
+    /**
+     * Sets q_bc_mono
+     *
+     * @param float|null $q_bc_mono Valor total da quantidade tributada do ICMS monofásico próprio.
+     *
+     * @return self
+     */
+    public function setQBcMono($q_bc_mono)
+    {
+        if (is_null($q_bc_mono)) {
+            throw new \InvalidArgumentException('non-nullable q_bc_mono cannot be null');
+        }
+        $this->container['q_bc_mono'] = $q_bc_mono;
+
+        return $this;
+    }
+
+    /**
      * Gets v_icms_mono
      *
      * @return float|null
@@ -846,6 +894,33 @@ class NfeSefazICMSTot implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets q_bc_mono_reten
+     *
+     * @return float|null
+     */
+    public function getQBcMonoReten()
+    {
+        return $this->container['q_bc_mono_reten'];
+    }
+
+    /**
+     * Sets q_bc_mono_reten
+     *
+     * @param float|null $q_bc_mono_reten Valor total da quantidade tributada do ICMS monofásico sujeito a retenção.
+     *
+     * @return self
+     */
+    public function setQBcMonoReten($q_bc_mono_reten)
+    {
+        if (is_null($q_bc_mono_reten)) {
+            throw new \InvalidArgumentException('non-nullable q_bc_mono_reten cannot be null');
+        }
+        $this->container['q_bc_mono_reten'] = $q_bc_mono_reten;
+
+        return $this;
+    }
+
+    /**
      * Gets v_icms_mono_reten
      *
      * @return float|null
@@ -868,6 +943,33 @@ class NfeSefazICMSTot implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable v_icms_mono_reten cannot be null');
         }
         $this->container['v_icms_mono_reten'] = $v_icms_mono_reten;
+
+        return $this;
+    }
+
+    /**
+     * Gets q_bc_mono_ret
+     *
+     * @return float|null
+     */
+    public function getQBcMonoRet()
+    {
+        return $this->container['q_bc_mono_ret'];
+    }
+
+    /**
+     * Sets q_bc_mono_ret
+     *
+     * @param float|null $q_bc_mono_ret Valor total da quantidade tributada do ICMS monofásico retido anteriormente.
+     *
+     * @return self
+     */
+    public function setQBcMonoRet($q_bc_mono_ret)
+    {
+        if (is_null($q_bc_mono_ret)) {
+            throw new \InvalidArgumentException('non-nullable q_bc_mono_ret cannot be null');
+        }
+        $this->container['q_bc_mono_ret'] = $q_bc_mono_ret;
 
         return $this;
     }

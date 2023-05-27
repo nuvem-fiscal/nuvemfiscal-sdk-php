@@ -59,6 +59,7 @@ class NfeSefazICMS02 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'orig' => 'int',
         'cst' => 'string',
+        'q_bc_mono' => 'float',
         'ad_rem_icms' => 'float',
         'v_icms_mono' => 'float'
     ];
@@ -73,6 +74,7 @@ class NfeSefazICMS02 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'orig' => null,
         'cst' => null,
+        'q_bc_mono' => null,
         'ad_rem_icms' => null,
         'v_icms_mono' => null
     ];
@@ -85,6 +87,7 @@ class NfeSefazICMS02 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'orig' => false,
 		'cst' => false,
+		'q_bc_mono' => false,
 		'ad_rem_icms' => false,
 		'v_icms_mono' => false
     ];
@@ -177,6 +180,7 @@ class NfeSefazICMS02 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'orig' => 'orig',
         'cst' => 'CST',
+        'q_bc_mono' => 'qBCMono',
         'ad_rem_icms' => 'adRemICMS',
         'v_icms_mono' => 'vICMSMono'
     ];
@@ -189,6 +193,7 @@ class NfeSefazICMS02 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'orig' => 'setOrig',
         'cst' => 'setCst',
+        'q_bc_mono' => 'setQBcMono',
         'ad_rem_icms' => 'setAdRemIcms',
         'v_icms_mono' => 'setVIcmsMono'
     ];
@@ -201,6 +206,7 @@ class NfeSefazICMS02 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'orig' => 'getOrig',
         'cst' => 'getCst',
+        'q_bc_mono' => 'getQBcMono',
         'ad_rem_icms' => 'getAdRemIcms',
         'v_icms_mono' => 'getVIcmsMono'
     ];
@@ -264,6 +270,7 @@ class NfeSefazICMS02 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('orig', $data ?? [], null);
         $this->setIfExists('cst', $data ?? [], null);
+        $this->setIfExists('q_bc_mono', $data ?? [], null);
         $this->setIfExists('ad_rem_icms', $data ?? [], null);
         $this->setIfExists('v_icms_mono', $data ?? [], null);
     }
@@ -372,6 +379,33 @@ class NfeSefazICMS02 implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable cst cannot be null');
         }
         $this->container['cst'] = $cst;
+
+        return $this;
+    }
+
+    /**
+     * Gets q_bc_mono
+     *
+     * @return float|null
+     */
+    public function getQBcMono()
+    {
+        return $this->container['q_bc_mono'];
+    }
+
+    /**
+     * Sets q_bc_mono
+     *
+     * @param float|null $q_bc_mono Quantidade tributada.
+     *
+     * @return self
+     */
+    public function setQBcMono($q_bc_mono)
+    {
+        if (is_null($q_bc_mono)) {
+            throw new \InvalidArgumentException('non-nullable q_bc_mono cannot be null');
+        }
+        $this->container['q_bc_mono'] = $q_bc_mono;
 
         return $this;
     }

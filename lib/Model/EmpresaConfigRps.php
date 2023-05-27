@@ -352,7 +352,7 @@ class EmpresaConfigRps implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets serie
      *
-     * @param string $serie Série do RPS.  A série dos RPS varia de acordo com cada prefeitura, podendo ser  número (1, 2 ou 3, por exemplo) ou letras (A, S, NFS, por exemplo).  Portanto, consulte-a com o município da empresa antes de iniciar a
+     * @param string $serie Série do RPS.  A série dos RPS varia de acordo com cada prefeitura, podendo ser  número (1, 2 ou 3, por exemplo) ou letras (A, S, NFS, por exemplo).  Portanto, consulte-a com o município da empresa antes de iniciar a  emissão das notas.
      *
      * @return self
      */

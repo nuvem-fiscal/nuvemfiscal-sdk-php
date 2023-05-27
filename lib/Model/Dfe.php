@@ -527,7 +527,7 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status status
+     * @param string|null $status * `pendente`: o pedido de emissão do documento foi recebido pela Nuvem Fiscal e está na fila de processamento.  * `autorizado`, `rejeitado` ou `denegado`: o documento foi transmitido para a SEFAZ, que retornou um desses status.  * `cancelado`: um evento de cancelamento foi homologado pela SEFAZ e associado ao documento.  * `encerrado`: um evento de encerramento foi homologado pela SEFAZ e associado a um MDF-e.  * `erro`: status próprio da Nuvem Fiscal que significa, na maioria das vezes, que houve algum erro que impediu a transmissão do documento para a SEFAZ (erros de validação, erros interno do servidor, timeouts, etc).
      *
      * @return self
      */

@@ -59,10 +59,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'orig' => 'int',
         'cst' => 'string',
+        'q_bc_mono' => 'float',
         'ad_rem_icms' => 'float',
         'v_icms_mono' => 'float',
+        'q_bc_mono_reten' => 'float',
         'ad_rem_icms_reten' => 'float',
-        'v_icms_mono_reten' => 'float'
+        'v_icms_mono_reten' => 'float',
+        'p_red_ad_rem' => 'float',
+        'mot_red_ad_rem' => 'int'
     ];
 
     /**
@@ -75,10 +79,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'orig' => null,
         'cst' => null,
+        'q_bc_mono' => null,
         'ad_rem_icms' => null,
         'v_icms_mono' => null,
+        'q_bc_mono_reten' => null,
         'ad_rem_icms_reten' => null,
-        'v_icms_mono_reten' => null
+        'v_icms_mono_reten' => null,
+        'p_red_ad_rem' => null,
+        'mot_red_ad_rem' => null
     ];
 
     /**
@@ -89,10 +97,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'orig' => false,
 		'cst' => false,
+		'q_bc_mono' => false,
 		'ad_rem_icms' => false,
 		'v_icms_mono' => false,
+		'q_bc_mono_reten' => false,
 		'ad_rem_icms_reten' => false,
-		'v_icms_mono_reten' => false
+		'v_icms_mono_reten' => false,
+		'p_red_ad_rem' => false,
+		'mot_red_ad_rem' => false
     ];
 
     /**
@@ -183,10 +195,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'orig' => 'orig',
         'cst' => 'CST',
+        'q_bc_mono' => 'qBCMono',
         'ad_rem_icms' => 'adRemICMS',
         'v_icms_mono' => 'vICMSMono',
+        'q_bc_mono_reten' => 'qBCMonoReten',
         'ad_rem_icms_reten' => 'adRemICMSReten',
-        'v_icms_mono_reten' => 'vICMSMonoReten'
+        'v_icms_mono_reten' => 'vICMSMonoReten',
+        'p_red_ad_rem' => 'pRedAdRem',
+        'mot_red_ad_rem' => 'motRedAdRem'
     ];
 
     /**
@@ -197,10 +213,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'orig' => 'setOrig',
         'cst' => 'setCst',
+        'q_bc_mono' => 'setQBcMono',
         'ad_rem_icms' => 'setAdRemIcms',
         'v_icms_mono' => 'setVIcmsMono',
+        'q_bc_mono_reten' => 'setQBcMonoReten',
         'ad_rem_icms_reten' => 'setAdRemIcmsReten',
-        'v_icms_mono_reten' => 'setVIcmsMonoReten'
+        'v_icms_mono_reten' => 'setVIcmsMonoReten',
+        'p_red_ad_rem' => 'setPRedAdRem',
+        'mot_red_ad_rem' => 'setMotRedAdRem'
     ];
 
     /**
@@ -211,10 +231,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'orig' => 'getOrig',
         'cst' => 'getCst',
+        'q_bc_mono' => 'getQBcMono',
         'ad_rem_icms' => 'getAdRemIcms',
         'v_icms_mono' => 'getVIcmsMono',
+        'q_bc_mono_reten' => 'getQBcMonoReten',
         'ad_rem_icms_reten' => 'getAdRemIcmsReten',
-        'v_icms_mono_reten' => 'getVIcmsMonoReten'
+        'v_icms_mono_reten' => 'getVIcmsMonoReten',
+        'p_red_ad_rem' => 'getPRedAdRem',
+        'mot_red_ad_rem' => 'getMotRedAdRem'
     ];
 
     /**
@@ -276,10 +300,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('orig', $data ?? [], null);
         $this->setIfExists('cst', $data ?? [], null);
+        $this->setIfExists('q_bc_mono', $data ?? [], null);
         $this->setIfExists('ad_rem_icms', $data ?? [], null);
         $this->setIfExists('v_icms_mono', $data ?? [], null);
+        $this->setIfExists('q_bc_mono_reten', $data ?? [], null);
         $this->setIfExists('ad_rem_icms_reten', $data ?? [], null);
         $this->setIfExists('v_icms_mono_reten', $data ?? [], null);
+        $this->setIfExists('p_red_ad_rem', $data ?? [], null);
+        $this->setIfExists('mot_red_ad_rem', $data ?? [], null);
     }
 
     /**
@@ -397,6 +425,33 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets q_bc_mono
+     *
+     * @return float|null
+     */
+    public function getQBcMono()
+    {
+        return $this->container['q_bc_mono'];
+    }
+
+    /**
+     * Sets q_bc_mono
+     *
+     * @param float|null $q_bc_mono Quantidade tributada.
+     *
+     * @return self
+     */
+    public function setQBcMono($q_bc_mono)
+    {
+        if (is_null($q_bc_mono)) {
+            throw new \InvalidArgumentException('non-nullable q_bc_mono cannot be null');
+        }
+        $this->container['q_bc_mono'] = $q_bc_mono;
+
+        return $this;
+    }
+
+    /**
      * Gets ad_rem_icms
      *
      * @return float
@@ -451,6 +506,33 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets q_bc_mono_reten
+     *
+     * @return float|null
+     */
+    public function getQBcMonoReten()
+    {
+        return $this->container['q_bc_mono_reten'];
+    }
+
+    /**
+     * Sets q_bc_mono_reten
+     *
+     * @param float|null $q_bc_mono_reten Quantidade tributada sujeita a retenção.
+     *
+     * @return self
+     */
+    public function setQBcMonoReten($q_bc_mono_reten)
+    {
+        if (is_null($q_bc_mono_reten)) {
+            throw new \InvalidArgumentException('non-nullable q_bc_mono_reten cannot be null');
+        }
+        $this->container['q_bc_mono_reten'] = $q_bc_mono_reten;
+
+        return $this;
+    }
+
+    /**
      * Gets ad_rem_icms_reten
      *
      * @return float
@@ -500,6 +582,60 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable v_icms_mono_reten cannot be null');
         }
         $this->container['v_icms_mono_reten'] = $v_icms_mono_reten;
+
+        return $this;
+    }
+
+    /**
+     * Gets p_red_ad_rem
+     *
+     * @return float|null
+     */
+    public function getPRedAdRem()
+    {
+        return $this->container['p_red_ad_rem'];
+    }
+
+    /**
+     * Sets p_red_ad_rem
+     *
+     * @param float|null $p_red_ad_rem Percentual de redução do valor da alíquota ad rem do ICMS.
+     *
+     * @return self
+     */
+    public function setPRedAdRem($p_red_ad_rem)
+    {
+        if (is_null($p_red_ad_rem)) {
+            throw new \InvalidArgumentException('non-nullable p_red_ad_rem cannot be null');
+        }
+        $this->container['p_red_ad_rem'] = $p_red_ad_rem;
+
+        return $this;
+    }
+
+    /**
+     * Gets mot_red_ad_rem
+     *
+     * @return int|null
+     */
+    public function getMotRedAdRem()
+    {
+        return $this->container['mot_red_ad_rem'];
+    }
+
+    /**
+     * Sets mot_red_ad_rem
+     *
+     * @param int|null $mot_red_ad_rem Motivo da redução do adrem  * 1 - Transporte coletivo de passageiros  * 9 - Outros
+     *
+     * @return self
+     */
+    public function setMotRedAdRem($mot_red_ad_rem)
+    {
+        if (is_null($mot_red_ad_rem)) {
+            throw new \InvalidArgumentException('non-nullable mot_red_ad_rem cannot be null');
+        }
+        $this->container['mot_red_ad_rem'] = $mot_red_ad_rem;
 
         return $this;
     }

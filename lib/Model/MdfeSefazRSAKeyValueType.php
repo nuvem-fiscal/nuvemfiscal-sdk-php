@@ -1,6 +1,6 @@
 <?php
 /**
- * NfeSefazICMS61
+ * MdfeSefazRSAKeyValueType
  *
  * PHP version 7.4
  *
@@ -31,16 +31,16 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * NfeSefazICMS61 Class Doc Comment
+ * MdfeSefazRSAKeyValueType Class Doc Comment
  *
  * @category Class
- * @description Tributação monofásica sobre combustíveis cobrada anteriormente.
+ * @description Chave Publica no padrão XML RSA Key.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
+class MdfeSefazRSAKeyValueType implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'NfeSefazICMS61';
+    protected static $openAPIModelName = 'MdfeSefazRSAKeyValueType';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,8 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'orig' => 'int',
-        'cst' => 'string',
-        'q_bc_mono_ret' => 'float',
-        'ad_rem_icms_ret' => 'float',
-        'v_icms_mono_ret' => 'float'
+        'modulus' => 'string',
+        'exponent' => 'string'
     ];
 
     /**
@@ -72,11 +69,8 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'orig' => null,
-        'cst' => null,
-        'q_bc_mono_ret' => null,
-        'ad_rem_icms_ret' => null,
-        'v_icms_mono_ret' => null
+        'modulus' => null,
+        'exponent' => null
     ];
 
     /**
@@ -85,11 +79,8 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'orig' => false,
-		'cst' => false,
-		'q_bc_mono_ret' => false,
-		'ad_rem_icms_ret' => false,
-		'v_icms_mono_ret' => false
+        'modulus' => false,
+		'exponent' => false
     ];
 
     /**
@@ -178,11 +169,8 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'orig' => 'orig',
-        'cst' => 'CST',
-        'q_bc_mono_ret' => 'qBCMonoRet',
-        'ad_rem_icms_ret' => 'adRemICMSRet',
-        'v_icms_mono_ret' => 'vICMSMonoRet'
+        'modulus' => 'Modulus',
+        'exponent' => 'Exponent'
     ];
 
     /**
@@ -191,11 +179,8 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'orig' => 'setOrig',
-        'cst' => 'setCst',
-        'q_bc_mono_ret' => 'setQBcMonoRet',
-        'ad_rem_icms_ret' => 'setAdRemIcmsRet',
-        'v_icms_mono_ret' => 'setVIcmsMonoRet'
+        'modulus' => 'setModulus',
+        'exponent' => 'setExponent'
     ];
 
     /**
@@ -204,11 +189,8 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'orig' => 'getOrig',
-        'cst' => 'getCst',
-        'q_bc_mono_ret' => 'getQBcMonoRet',
-        'ad_rem_icms_ret' => 'getAdRemIcmsRet',
-        'v_icms_mono_ret' => 'getVIcmsMonoRet'
+        'modulus' => 'getModulus',
+        'exponent' => 'getExponent'
     ];
 
     /**
@@ -268,11 +250,8 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('orig', $data ?? [], null);
-        $this->setIfExists('cst', $data ?? [], null);
-        $this->setIfExists('q_bc_mono_ret', $data ?? [], null);
-        $this->setIfExists('ad_rem_icms_ret', $data ?? [], null);
-        $this->setIfExists('v_icms_mono_ret', $data ?? [], null);
+        $this->setIfExists('modulus', $data ?? [], null);
+        $this->setIfExists('exponent', $data ?? [], null);
     }
 
     /**
@@ -302,18 +281,6 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['orig'] === null) {
-            $invalidProperties[] = "'orig' can't be null";
-        }
-        if ($this->container['cst'] === null) {
-            $invalidProperties[] = "'cst' can't be null";
-        }
-        if ($this->container['ad_rem_icms_ret'] === null) {
-            $invalidProperties[] = "'ad_rem_icms_ret' can't be null";
-        }
-        if ($this->container['v_icms_mono_ret'] === null) {
-            $invalidProperties[] = "'v_icms_mono_ret' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -330,136 +297,55 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets orig
+     * Gets modulus
      *
-     * @return int
+     * @return string|null
      */
-    public function getOrig()
+    public function getModulus()
     {
-        return $this->container['orig'];
+        return $this->container['modulus'];
     }
 
     /**
-     * Sets orig
+     * Sets modulus
      *
-     * @param int $orig Origem da mercadoria:  * 0 - Nacional, exceto as indicadas nos códigos 3, 4, 5 e 8;  * 1 - Estrangeira - Importação direta, exceto a indicada no código 6;  * 2 - Estrangeira - Adquirida no mercado interno, exceto a indicada no código 7;  * 3 - Nacional, mercadoria ou bem com Conteúdo de Importação superior a 40%% e inferior ou igual a 70%%;  * 4 - Nacional, cuja produção tenha sido feita em conformidade com os processos produtivos básicos de que tratam as legislações citadas nos Ajustes;  * 5 - Nacional, mercadoria ou bem com Conteúdo de Importação inferior ou igual a 40%%;  * 6 - Estrangeira - Importação direta, sem similar nacional, constante em lista da CAMEX e gás natural;  * 7 - Estrangeira - Adquirida no mercado interno, sem similar nacional, constante lista CAMEX e gás natural;  * 8 - Nacional, mercadoria ou bem com Conteúdo de Importação superior a 70%%.
+     * @param string|null $modulus modulus
      *
      * @return self
      */
-    public function setOrig($orig)
+    public function setModulus($modulus)
     {
-        if (is_null($orig)) {
-            throw new \InvalidArgumentException('non-nullable orig cannot be null');
+        if (is_null($modulus)) {
+            throw new \InvalidArgumentException('non-nullable modulus cannot be null');
         }
-        $this->container['orig'] = $orig;
+        $this->container['modulus'] = $modulus;
 
         return $this;
     }
 
     /**
-     * Gets cst
+     * Gets exponent
      *
-     * @return string
+     * @return string|null
      */
-    public function getCst()
+    public function getExponent()
     {
-        return $this->container['cst'];
+        return $this->container['exponent'];
     }
 
     /**
-     * Sets cst
+     * Sets exponent
      *
-     * @param string $cst Tributção pelo ICMS  * 61 - Tributação monofásica sobre combustíveis cobrada anteriormente
+     * @param string|null $exponent exponent
      *
      * @return self
      */
-    public function setCst($cst)
+    public function setExponent($exponent)
     {
-        if (is_null($cst)) {
-            throw new \InvalidArgumentException('non-nullable cst cannot be null');
+        if (is_null($exponent)) {
+            throw new \InvalidArgumentException('non-nullable exponent cannot be null');
         }
-        $this->container['cst'] = $cst;
-
-        return $this;
-    }
-
-    /**
-     * Gets q_bc_mono_ret
-     *
-     * @return float|null
-     */
-    public function getQBcMonoRet()
-    {
-        return $this->container['q_bc_mono_ret'];
-    }
-
-    /**
-     * Sets q_bc_mono_ret
-     *
-     * @param float|null $q_bc_mono_ret Quantidade tributada retida anteriormente.
-     *
-     * @return self
-     */
-    public function setQBcMonoRet($q_bc_mono_ret)
-    {
-        if (is_null($q_bc_mono_ret)) {
-            throw new \InvalidArgumentException('non-nullable q_bc_mono_ret cannot be null');
-        }
-        $this->container['q_bc_mono_ret'] = $q_bc_mono_ret;
-
-        return $this;
-    }
-
-    /**
-     * Gets ad_rem_icms_ret
-     *
-     * @return float
-     */
-    public function getAdRemIcmsRet()
-    {
-        return $this->container['ad_rem_icms_ret'];
-    }
-
-    /**
-     * Sets ad_rem_icms_ret
-     *
-     * @param float $ad_rem_icms_ret Alíquota ad rem do imposto retido anteriormente.
-     *
-     * @return self
-     */
-    public function setAdRemIcmsRet($ad_rem_icms_ret)
-    {
-        if (is_null($ad_rem_icms_ret)) {
-            throw new \InvalidArgumentException('non-nullable ad_rem_icms_ret cannot be null');
-        }
-        $this->container['ad_rem_icms_ret'] = $ad_rem_icms_ret;
-
-        return $this;
-    }
-
-    /**
-     * Gets v_icms_mono_ret
-     *
-     * @return float
-     */
-    public function getVIcmsMonoRet()
-    {
-        return $this->container['v_icms_mono_ret'];
-    }
-
-    /**
-     * Sets v_icms_mono_ret
-     *
-     * @param float $v_icms_mono_ret Valor do ICMS retido anteriormente.
-     *
-     * @return self
-     */
-    public function setVIcmsMonoRet($v_icms_mono_ret)
-    {
-        if (is_null($v_icms_mono_ret)) {
-            throw new \InvalidArgumentException('non-nullable v_icms_mono_ret cannot be null');
-        }
-        $this->container['v_icms_mono_ret'] = $v_icms_mono_ret;
+        $this->container['exponent'] = $exponent;
 
         return $this;
     }

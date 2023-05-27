@@ -59,8 +59,14 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'orig' => 'int',
         'cst' => 'string',
-        'ad_rem_icms_dif' => 'float',
-        'v_icms_mono_dif' => 'float'
+        'q_bc_mono' => 'float',
+        'ad_rem_icms' => 'float',
+        'v_icms_mono_op' => 'float',
+        'p_dif' => 'float',
+        'v_icms_mono_dif' => 'float',
+        'v_icms_mono' => 'float',
+        'q_bc_mono_dif' => 'float',
+        'ad_rem_icms_dif' => 'float'
     ];
 
     /**
@@ -73,8 +79,14 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'orig' => null,
         'cst' => null,
-        'ad_rem_icms_dif' => null,
-        'v_icms_mono_dif' => null
+        'q_bc_mono' => null,
+        'ad_rem_icms' => null,
+        'v_icms_mono_op' => null,
+        'p_dif' => null,
+        'v_icms_mono_dif' => null,
+        'v_icms_mono' => null,
+        'q_bc_mono_dif' => null,
+        'ad_rem_icms_dif' => null
     ];
 
     /**
@@ -85,8 +97,14 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'orig' => false,
 		'cst' => false,
-		'ad_rem_icms_dif' => false,
-		'v_icms_mono_dif' => false
+		'q_bc_mono' => false,
+		'ad_rem_icms' => false,
+		'v_icms_mono_op' => false,
+		'p_dif' => false,
+		'v_icms_mono_dif' => false,
+		'v_icms_mono' => false,
+		'q_bc_mono_dif' => false,
+		'ad_rem_icms_dif' => false
     ];
 
     /**
@@ -177,8 +195,14 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'orig' => 'orig',
         'cst' => 'CST',
-        'ad_rem_icms_dif' => 'adRemICMSDif',
-        'v_icms_mono_dif' => 'vICMSMonoDif'
+        'q_bc_mono' => 'qBCMono',
+        'ad_rem_icms' => 'adRemICMS',
+        'v_icms_mono_op' => 'vICMSMonoOp',
+        'p_dif' => 'pDif',
+        'v_icms_mono_dif' => 'vICMSMonoDif',
+        'v_icms_mono' => 'vICMSMono',
+        'q_bc_mono_dif' => 'qBCMonoDif',
+        'ad_rem_icms_dif' => 'adRemICMSDif'
     ];
 
     /**
@@ -189,8 +213,14 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'orig' => 'setOrig',
         'cst' => 'setCst',
-        'ad_rem_icms_dif' => 'setAdRemIcmsDif',
-        'v_icms_mono_dif' => 'setVIcmsMonoDif'
+        'q_bc_mono' => 'setQBcMono',
+        'ad_rem_icms' => 'setAdRemIcms',
+        'v_icms_mono_op' => 'setVIcmsMonoOp',
+        'p_dif' => 'setPDif',
+        'v_icms_mono_dif' => 'setVIcmsMonoDif',
+        'v_icms_mono' => 'setVIcmsMono',
+        'q_bc_mono_dif' => 'setQBcMonoDif',
+        'ad_rem_icms_dif' => 'setAdRemIcmsDif'
     ];
 
     /**
@@ -201,8 +231,14 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'orig' => 'getOrig',
         'cst' => 'getCst',
-        'ad_rem_icms_dif' => 'getAdRemIcmsDif',
-        'v_icms_mono_dif' => 'getVIcmsMonoDif'
+        'q_bc_mono' => 'getQBcMono',
+        'ad_rem_icms' => 'getAdRemIcms',
+        'v_icms_mono_op' => 'getVIcmsMonoOp',
+        'p_dif' => 'getPDif',
+        'v_icms_mono_dif' => 'getVIcmsMonoDif',
+        'v_icms_mono' => 'getVIcmsMono',
+        'q_bc_mono_dif' => 'getQBcMonoDif',
+        'ad_rem_icms_dif' => 'getAdRemIcmsDif'
     ];
 
     /**
@@ -264,8 +300,14 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('orig', $data ?? [], null);
         $this->setIfExists('cst', $data ?? [], null);
-        $this->setIfExists('ad_rem_icms_dif', $data ?? [], null);
+        $this->setIfExists('q_bc_mono', $data ?? [], null);
+        $this->setIfExists('ad_rem_icms', $data ?? [], null);
+        $this->setIfExists('v_icms_mono_op', $data ?? [], null);
+        $this->setIfExists('p_dif', $data ?? [], null);
         $this->setIfExists('v_icms_mono_dif', $data ?? [], null);
+        $this->setIfExists('v_icms_mono', $data ?? [], null);
+        $this->setIfExists('q_bc_mono_dif', $data ?? [], null);
+        $this->setIfExists('ad_rem_icms_dif', $data ?? [], null);
     }
 
     /**
@@ -300,12 +342,6 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['cst'] === null) {
             $invalidProperties[] = "'cst' can't be null";
-        }
-        if ($this->container['ad_rem_icms_dif'] === null) {
-            $invalidProperties[] = "'ad_rem_icms_dif' can't be null";
-        }
-        if ($this->container['v_icms_mono_dif'] === null) {
-            $invalidProperties[] = "'v_icms_mono_dif' can't be null";
         }
         return $invalidProperties;
     }
@@ -377,28 +413,109 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets ad_rem_icms_dif
+     * Gets q_bc_mono
      *
-     * @return float
+     * @return float|null
      */
-    public function getAdRemIcmsDif()
+    public function getQBcMono()
     {
-        return $this->container['ad_rem_icms_dif'];
+        return $this->container['q_bc_mono'];
     }
 
     /**
-     * Sets ad_rem_icms_dif
+     * Sets q_bc_mono
      *
-     * @param float $ad_rem_icms_dif Alíquota ad rem do imposto diferido.
+     * @param float|null $q_bc_mono Quantidade tributada.
      *
      * @return self
      */
-    public function setAdRemIcmsDif($ad_rem_icms_dif)
+    public function setQBcMono($q_bc_mono)
     {
-        if (is_null($ad_rem_icms_dif)) {
-            throw new \InvalidArgumentException('non-nullable ad_rem_icms_dif cannot be null');
+        if (is_null($q_bc_mono)) {
+            throw new \InvalidArgumentException('non-nullable q_bc_mono cannot be null');
         }
-        $this->container['ad_rem_icms_dif'] = $ad_rem_icms_dif;
+        $this->container['q_bc_mono'] = $q_bc_mono;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_rem_icms
+     *
+     * @return float|null
+     */
+    public function getAdRemIcms()
+    {
+        return $this->container['ad_rem_icms'];
+    }
+
+    /**
+     * Sets ad_rem_icms
+     *
+     * @param float|null $ad_rem_icms Alíquota ad rem do imposto.
+     *
+     * @return self
+     */
+    public function setAdRemIcms($ad_rem_icms)
+    {
+        if (is_null($ad_rem_icms)) {
+            throw new \InvalidArgumentException('non-nullable ad_rem_icms cannot be null');
+        }
+        $this->container['ad_rem_icms'] = $ad_rem_icms;
+
+        return $this;
+    }
+
+    /**
+     * Gets v_icms_mono_op
+     *
+     * @return float|null
+     */
+    public function getVIcmsMonoOp()
+    {
+        return $this->container['v_icms_mono_op'];
+    }
+
+    /**
+     * Sets v_icms_mono_op
+     *
+     * @param float|null $v_icms_mono_op Valor do ICMS da operação.
+     *
+     * @return self
+     */
+    public function setVIcmsMonoOp($v_icms_mono_op)
+    {
+        if (is_null($v_icms_mono_op)) {
+            throw new \InvalidArgumentException('non-nullable v_icms_mono_op cannot be null');
+        }
+        $this->container['v_icms_mono_op'] = $v_icms_mono_op;
+
+        return $this;
+    }
+
+    /**
+     * Gets p_dif
+     *
+     * @return float|null
+     */
+    public function getPDif()
+    {
+        return $this->container['p_dif'];
+    }
+
+    /**
+     * Sets p_dif
+     *
+     * @param float|null $p_dif Percentual do diferemento.
+     *
+     * @return self
+     */
+    public function setPDif($p_dif)
+    {
+        if (is_null($p_dif)) {
+            throw new \InvalidArgumentException('non-nullable p_dif cannot be null');
+        }
+        $this->container['p_dif'] = $p_dif;
 
         return $this;
     }
@@ -406,7 +523,7 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets v_icms_mono_dif
      *
-     * @return float
+     * @return float|null
      */
     public function getVIcmsMonoDif()
     {
@@ -416,7 +533,7 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets v_icms_mono_dif
      *
-     * @param float $v_icms_mono_dif Valor do ICMS diferido.
+     * @param float|null $v_icms_mono_dif Valor do ICMS diferido.
      *
      * @return self
      */
@@ -426,6 +543,87 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable v_icms_mono_dif cannot be null');
         }
         $this->container['v_icms_mono_dif'] = $v_icms_mono_dif;
+
+        return $this;
+    }
+
+    /**
+     * Gets v_icms_mono
+     *
+     * @return float|null
+     */
+    public function getVIcmsMono()
+    {
+        return $this->container['v_icms_mono'];
+    }
+
+    /**
+     * Sets v_icms_mono
+     *
+     * @param float|null $v_icms_mono Valor do ICMS próprio devido.
+     *
+     * @return self
+     */
+    public function setVIcmsMono($v_icms_mono)
+    {
+        if (is_null($v_icms_mono)) {
+            throw new \InvalidArgumentException('non-nullable v_icms_mono cannot be null');
+        }
+        $this->container['v_icms_mono'] = $v_icms_mono;
+
+        return $this;
+    }
+
+    /**
+     * Gets q_bc_mono_dif
+     *
+     * @return float|null
+     */
+    public function getQBcMonoDif()
+    {
+        return $this->container['q_bc_mono_dif'];
+    }
+
+    /**
+     * Sets q_bc_mono_dif
+     *
+     * @param float|null $q_bc_mono_dif Quantidade tributada diferida.  OBS: Campo revogado pela NT2023.001v1.20
+     *
+     * @return self
+     */
+    public function setQBcMonoDif($q_bc_mono_dif)
+    {
+        if (is_null($q_bc_mono_dif)) {
+            throw new \InvalidArgumentException('non-nullable q_bc_mono_dif cannot be null');
+        }
+        $this->container['q_bc_mono_dif'] = $q_bc_mono_dif;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_rem_icms_dif
+     *
+     * @return float|null
+     */
+    public function getAdRemIcmsDif()
+    {
+        return $this->container['ad_rem_icms_dif'];
+    }
+
+    /**
+     * Sets ad_rem_icms_dif
+     *
+     * @param float|null $ad_rem_icms_dif Alíquota ad rem do imposto diferido.  OBS: Campo revogado pela NT2023.001v1.20
+     *
+     * @return self
+     */
+    public function setAdRemIcmsDif($ad_rem_icms_dif)
+    {
+        if (is_null($ad_rem_icms_dif)) {
+            throw new \InvalidArgumentException('non-nullable ad_rem_icms_dif cannot be null');
+        }
+        $this->container['ad_rem_icms_dif'] = $ad_rem_icms_dif;
 
         return $this;
     }
