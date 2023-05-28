@@ -70,8 +70,7 @@ class MdfeSefazInfMDFe implements ModelInterface, ArrayAccess, \JsonSerializable
         'aut_xml' => '\NuvemFiscal\Model\MdfeSefazAutXML[]',
         'inf_adic' => '\NuvemFiscal\Model\MdfeSefazInfAdic',
         'inf_resp_tec' => '\NuvemFiscal\Model\MdfeSefazRespTec',
-        'inf_solic_nff' => '\NuvemFiscal\Model\MdfeSefazInfSolicNFF',
-        'inf_paa' => '\NuvemFiscal\Model\MdfeSefazInfPAA'
+        'inf_solic_nff' => '\NuvemFiscal\Model\MdfeSefazInfSolicNFF'
     ];
 
     /**
@@ -95,8 +94,7 @@ class MdfeSefazInfMDFe implements ModelInterface, ArrayAccess, \JsonSerializable
         'aut_xml' => null,
         'inf_adic' => null,
         'inf_resp_tec' => null,
-        'inf_solic_nff' => null,
-        'inf_paa' => null
+        'inf_solic_nff' => null
     ];
 
     /**
@@ -118,8 +116,7 @@ class MdfeSefazInfMDFe implements ModelInterface, ArrayAccess, \JsonSerializable
 		'aut_xml' => false,
 		'inf_adic' => false,
 		'inf_resp_tec' => false,
-		'inf_solic_nff' => false,
-		'inf_paa' => false
+		'inf_solic_nff' => false
     ];
 
     /**
@@ -221,8 +218,7 @@ class MdfeSefazInfMDFe implements ModelInterface, ArrayAccess, \JsonSerializable
         'aut_xml' => 'autXML',
         'inf_adic' => 'infAdic',
         'inf_resp_tec' => 'infRespTec',
-        'inf_solic_nff' => 'infSolicNFF',
-        'inf_paa' => 'infPAA'
+        'inf_solic_nff' => 'infSolicNFF'
     ];
 
     /**
@@ -244,8 +240,7 @@ class MdfeSefazInfMDFe implements ModelInterface, ArrayAccess, \JsonSerializable
         'aut_xml' => 'setAutXml',
         'inf_adic' => 'setInfAdic',
         'inf_resp_tec' => 'setInfRespTec',
-        'inf_solic_nff' => 'setInfSolicNff',
-        'inf_paa' => 'setInfPaa'
+        'inf_solic_nff' => 'setInfSolicNff'
     ];
 
     /**
@@ -267,8 +262,7 @@ class MdfeSefazInfMDFe implements ModelInterface, ArrayAccess, \JsonSerializable
         'aut_xml' => 'getAutXml',
         'inf_adic' => 'getInfAdic',
         'inf_resp_tec' => 'getInfRespTec',
-        'inf_solic_nff' => 'getInfSolicNff',
-        'inf_paa' => 'getInfPaa'
+        'inf_solic_nff' => 'getInfSolicNff'
     ];
 
     /**
@@ -342,7 +336,6 @@ class MdfeSefazInfMDFe implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('inf_adic', $data ?? [], null);
         $this->setIfExists('inf_resp_tec', $data ?? [], null);
         $this->setIfExists('inf_solic_nff', $data ?? [], null);
-        $this->setIfExists('inf_paa', $data ?? [], null);
     }
 
     /**
@@ -779,33 +772,6 @@ class MdfeSefazInfMDFe implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable inf_solic_nff cannot be null');
         }
         $this->container['inf_solic_nff'] = $inf_solic_nff;
-
-        return $this;
-    }
-
-    /**
-     * Gets inf_paa
-     *
-     * @return \NuvemFiscal\Model\MdfeSefazInfPAA|null
-     */
-    public function getInfPaa()
-    {
-        return $this->container['inf_paa'];
-    }
-
-    /**
-     * Sets inf_paa
-     *
-     * @param \NuvemFiscal\Model\MdfeSefazInfPAA|null $inf_paa inf_paa
-     *
-     * @return self
-     */
-    public function setInfPaa($inf_paa)
-    {
-        if (is_null($inf_paa)) {
-            throw new \InvalidArgumentException('non-nullable inf_paa cannot be null');
-        }
-        $this->container['inf_paa'] = $inf_paa;
 
         return $this;
     }

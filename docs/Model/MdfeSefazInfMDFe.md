@@ -18,6 +18,5 @@ Nome | Tipo | Descrição | Comentários
 **inf_adic** | [**\NuvemFiscal\Model\MdfeSefazInfAdic**](MdfeSefazInfAdic.md) |  | [optional]
 **inf_resp_tec** | [**\NuvemFiscal\Model\MdfeSefazRespTec**](MdfeSefazRespTec.md) |  | [optional]
 **inf_solic_nff** | [**\NuvemFiscal\Model\MdfeSefazInfSolicNFF**](MdfeSefazInfSolicNFF.md) |  | [optional]
-**inf_paa** | [**\NuvemFiscal\Model\MdfeSefazInfPAA**](MdfeSefazInfPAA.md) |  | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

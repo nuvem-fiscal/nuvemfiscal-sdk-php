@@ -464,7 +464,6 @@ Classe | Método | Endpoint | Descrição
 - [MdfeSefazInfMunDescarga](docs/Model/MdfeSefazInfMunDescarga.md)
 - [MdfeSefazInfNFe](docs/Model/MdfeSefazInfNFe.md)
 - [MdfeSefazInfNFePeri](docs/Model/MdfeSefazInfNFePeri.md)
-- [MdfeSefazInfPAA](docs/Model/MdfeSefazInfPAA.md)
 - [MdfeSefazInfPag](docs/Model/MdfeSefazInfPag.md)
 - [MdfeSefazInfPercurso](docs/Model/MdfeSefazInfPercurso.md)
 - [MdfeSefazInfPrazo](docs/Model/MdfeSefazInfPrazo.md)
@@ -479,11 +478,9 @@ Classe | Método | Endpoint | Descrição
 - [MdfeSefazLacUnidCarga](docs/Model/MdfeSefazLacUnidCarga.md)
 - [MdfeSefazLacUnidTransp](docs/Model/MdfeSefazLacUnidTransp.md)
 - [MdfeSefazLacres](docs/Model/MdfeSefazLacres.md)
-- [MdfeSefazPAASignature](docs/Model/MdfeSefazPAASignature.md)
 - [MdfeSefazPeri](docs/Model/MdfeSefazPeri.md)
 - [MdfeSefazProdPred](docs/Model/MdfeSefazProdPred.md)
 - [MdfeSefazProp](docs/Model/MdfeSefazProp.md)
-- [MdfeSefazRSAKeyValueType](docs/Model/MdfeSefazRSAKeyValueType.md)
 - [MdfeSefazRespTec](docs/Model/MdfeSefazRespTec.md)
 - [MdfeSefazRodo](docs/Model/MdfeSefazRodo.md)
 - [MdfeSefazSeg](docs/Model/MdfeSefazSeg.md)
@@ -668,6 +665,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.10.27`
-    - Versão do package: `2.8.0`
+- Versão da API: `2.10.28`
+    - Versão do package: `2.9.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
