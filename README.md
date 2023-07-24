@@ -145,6 +145,7 @@ Classe | Método | Endpoint | Descrição
 *EmpresaApi* | [**alterarConfigNfe**](docs/Api/EmpresaApi.md#alterarconfignfe) | **PUT** /empresas/{cpf_cnpj}/nfe | Alterar configuração de NF-e
 *EmpresaApi* | [**alterarConfigNfse**](docs/Api/EmpresaApi.md#alterarconfignfse) | **PUT** /empresas/{cpf_cnpj}/nfse | Alterar configuração de NFS-e
 *EmpresaApi* | [**atualizarEmpresa**](docs/Api/EmpresaApi.md#atualizarempresa) | **PUT** /empresas/{cpf_cnpj} | Alterar empresa
+*EmpresaApi* | [**baixarLogotipoEmpresa**](docs/Api/EmpresaApi.md#baixarlogotipoempresa) | **GET** /empresas/{cpf_cnpj}/logotipo | Baixar logotipo
 *EmpresaApi* | [**cadastrarCertificadoEmpresa**](docs/Api/EmpresaApi.md#cadastrarcertificadoempresa) | **PUT** /empresas/{cpf_cnpj}/certificado | Cadastrar certificado
 *EmpresaApi* | [**consultarCertificadoEmpresa**](docs/Api/EmpresaApi.md#consultarcertificadoempresa) | **GET** /empresas/{cpf_cnpj}/certificado | Consultar certificado
 *EmpresaApi* | [**consultarConfigCte**](docs/Api/EmpresaApi.md#consultarconfigcte) | **GET** /empresas/{cpf_cnpj}/cte | Consultar configuração de CT-e
@@ -155,8 +156,10 @@ Classe | Método | Endpoint | Descrição
 *EmpresaApi* | [**consultarEmpresa**](docs/Api/EmpresaApi.md#consultarempresa) | **GET** /empresas/{cpf_cnpj} | Consultar empresa
 *EmpresaApi* | [**criarEmpresa**](docs/Api/EmpresaApi.md#criarempresa) | **POST** /empresas | Cadastrar empresa
 *EmpresaApi* | [**enviarCertificadoEmpresa**](docs/Api/EmpresaApi.md#enviarcertificadoempresa) | **PUT** /empresas/{cpf_cnpj}/certificado/upload | Upload de certificado
+*EmpresaApi* | [**enviarLogotipoEmpresa**](docs/Api/EmpresaApi.md#enviarlogotipoempresa) | **PUT** /empresas/{cpf_cnpj}/logotipo | Enviar logotipo
 *EmpresaApi* | [**excluirCertificadoEmpresa**](docs/Api/EmpresaApi.md#excluircertificadoempresa) | **DELETE** /empresas/{cpf_cnpj}/certificado | Deletar certificado
 *EmpresaApi* | [**excluirEmpresa**](docs/Api/EmpresaApi.md#excluirempresa) | **DELETE** /empresas/{cpf_cnpj} | Deletar empresa
+*EmpresaApi* | [**excluirLogotipoEmpresa**](docs/Api/EmpresaApi.md#excluirlogotipoempresa) | **DELETE** /empresas/{cpf_cnpj}/logotipo | Deletar logotipo
 *EmpresaApi* | [**listarEmpresas**](docs/Api/EmpresaApi.md#listarempresas) | **GET** /empresas | Listar empresas
 *MdfeApi* | [**baixarPdfCancelamentoMdfe**](docs/Api/MdfeApi.md#baixarpdfcancelamentomdfe) | **GET** /mdfe/{id}/cancelamento/pdf | Baixar PDF do cancelamento
 *MdfeApi* | [**baixarPdfEncerramentoMdfe**](docs/Api/MdfeApi.md#baixarpdfencerramentomdfe) | **GET** /mdfe/{id}/encerramento/pdf | Baixar PDF do encerramento
@@ -258,6 +261,8 @@ Classe | Método | Endpoint | Descrição
 - [CnpjCnaeSecundario](docs/Model/CnpjCnaeSecundario.md)
 - [CnpjEmpresa](docs/Model/CnpjEmpresa.md)
 - [CnpjEndereco](docs/Model/CnpjEndereco.md)
+- [CnpjFaixaEtaria](docs/Model/CnpjFaixaEtaria.md)
+- [CnpjIdentificadorSocio](docs/Model/CnpjIdentificadorSocio.md)
 - [CnpjListagem](docs/Model/CnpjListagem.md)
 - [CnpjMotivoSituacaoCadastral](docs/Model/CnpjMotivoSituacaoCadastral.md)
 - [CnpjMunicipio](docs/Model/CnpjMunicipio.md)
@@ -266,8 +271,11 @@ Classe | Método | Endpoint | Descrição
 - [CnpjOpcaoSimples](docs/Model/CnpjOpcaoSimples.md)
 - [CnpjPais](docs/Model/CnpjPais.md)
 - [CnpjPorteEmpresa](docs/Model/CnpjPorteEmpresa.md)
+- [CnpjQualificacaoSocio](docs/Model/CnpjQualificacaoSocio.md)
+- [CnpjRepresentanteLegal](docs/Model/CnpjRepresentanteLegal.md)
 - [CnpjSituacaoCadastral](docs/Model/CnpjSituacaoCadastral.md)
 - [CnpjSituacaoEspecial](docs/Model/CnpjSituacaoEspecial.md)
+- [CnpjSocio](docs/Model/CnpjSocio.md)
 - [CnpjTelefone](docs/Model/CnpjTelefone.md)
 - [ComExterior](docs/Model/ComExterior.md)
 - [ContaCota](docs/Model/ContaCota.md)
@@ -665,6 +673,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.10.28`
-    - Versão do package: `2.9.0`
+- Versão da API: `2.14.0`
+    - Versão do package: `2.10.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

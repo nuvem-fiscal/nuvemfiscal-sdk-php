@@ -88,6 +88,9 @@ class EmpresaApi
         'atualizarEmpresa' => [
             'application/json',
         ],
+        'baixarLogotipoEmpresa' => [
+            'application/json',
+        ],
         'cadastrarCertificadoEmpresa' => [
             'application/json',
         ],
@@ -118,10 +121,16 @@ class EmpresaApi
         'enviarCertificadoEmpresa' => [
             'multipart/form-data',
         ],
+        'enviarLogotipoEmpresa' => [
+            'multipart/form-data',
+        ],
         'excluirCertificadoEmpresa' => [
             'application/json',
         ],
         'excluirEmpresa' => [
+            'application/json',
+        ],
+        'excluirLogotipoEmpresa' => [
             'application/json',
         ],
         'listarEmpresas' => [
@@ -180,7 +189,7 @@ class EmpresaApi
      *
      * Alterar configuração de CT-e
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigCte $body body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigCte'] to see the possible values for this operation
      *
@@ -199,7 +208,7 @@ class EmpresaApi
      *
      * Alterar configuração de CT-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigCte $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigCte'] to see the possible values for this operation
      *
@@ -300,7 +309,7 @@ class EmpresaApi
      *
      * Alterar configuração de CT-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigCte $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigCte'] to see the possible values for this operation
      *
@@ -322,7 +331,7 @@ class EmpresaApi
      *
      * Alterar configuração de CT-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigCte $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigCte'] to see the possible values for this operation
      *
@@ -373,7 +382,7 @@ class EmpresaApi
     /**
      * Create request for operation 'alterarConfigCte'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigCte $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigCte'] to see the possible values for this operation
      *
@@ -491,7 +500,7 @@ class EmpresaApi
      *
      * Alterar configuração de MDF-e
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigMdfe $body body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigMdfe'] to see the possible values for this operation
      *
@@ -510,7 +519,7 @@ class EmpresaApi
      *
      * Alterar configuração de MDF-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigMdfe $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigMdfe'] to see the possible values for this operation
      *
@@ -611,7 +620,7 @@ class EmpresaApi
      *
      * Alterar configuração de MDF-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigMdfe $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigMdfe'] to see the possible values for this operation
      *
@@ -633,7 +642,7 @@ class EmpresaApi
      *
      * Alterar configuração de MDF-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigMdfe $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigMdfe'] to see the possible values for this operation
      *
@@ -684,7 +693,7 @@ class EmpresaApi
     /**
      * Create request for operation 'alterarConfigMdfe'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigMdfe $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigMdfe'] to see the possible values for this operation
      *
@@ -802,7 +811,7 @@ class EmpresaApi
      *
      * Alterar configuração de NFC-e
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfce $body body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfce'] to see the possible values for this operation
      *
@@ -821,7 +830,7 @@ class EmpresaApi
      *
      * Alterar configuração de NFC-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfce $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfce'] to see the possible values for this operation
      *
@@ -922,7 +931,7 @@ class EmpresaApi
      *
      * Alterar configuração de NFC-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfce $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfce'] to see the possible values for this operation
      *
@@ -944,7 +953,7 @@ class EmpresaApi
      *
      * Alterar configuração de NFC-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfce $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfce'] to see the possible values for this operation
      *
@@ -995,7 +1004,7 @@ class EmpresaApi
     /**
      * Create request for operation 'alterarConfigNfce'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfce $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfce'] to see the possible values for this operation
      *
@@ -1113,7 +1122,7 @@ class EmpresaApi
      *
      * Alterar configuração de NF-e
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfe $body body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfe'] to see the possible values for this operation
      *
@@ -1132,7 +1141,7 @@ class EmpresaApi
      *
      * Alterar configuração de NF-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfe $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfe'] to see the possible values for this operation
      *
@@ -1233,7 +1242,7 @@ class EmpresaApi
      *
      * Alterar configuração de NF-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfe $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfe'] to see the possible values for this operation
      *
@@ -1255,7 +1264,7 @@ class EmpresaApi
      *
      * Alterar configuração de NF-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfe $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfe'] to see the possible values for this operation
      *
@@ -1306,7 +1315,7 @@ class EmpresaApi
     /**
      * Create request for operation 'alterarConfigNfe'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfe $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfe'] to see the possible values for this operation
      *
@@ -1424,7 +1433,7 @@ class EmpresaApi
      *
      * Alterar configuração de NFS-e
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfse $body body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfse'] to see the possible values for this operation
      *
@@ -1443,7 +1452,7 @@ class EmpresaApi
      *
      * Alterar configuração de NFS-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfse $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfse'] to see the possible values for this operation
      *
@@ -1544,7 +1553,7 @@ class EmpresaApi
      *
      * Alterar configuração de NFS-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfse $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfse'] to see the possible values for this operation
      *
@@ -1566,7 +1575,7 @@ class EmpresaApi
      *
      * Alterar configuração de NFS-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfse $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfse'] to see the possible values for this operation
      *
@@ -1617,7 +1626,7 @@ class EmpresaApi
     /**
      * Create request for operation 'alterarConfigNfse'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaConfigNfse $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigNfse'] to see the possible values for this operation
      *
@@ -1735,7 +1744,7 @@ class EmpresaApi
      *
      * Alterar empresa
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\Empresa $body body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['atualizarEmpresa'] to see the possible values for this operation
      *
@@ -1754,7 +1763,7 @@ class EmpresaApi
      *
      * Alterar empresa
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\Empresa $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['atualizarEmpresa'] to see the possible values for this operation
      *
@@ -1855,7 +1864,7 @@ class EmpresaApi
      *
      * Alterar empresa
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\Empresa $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['atualizarEmpresa'] to see the possible values for this operation
      *
@@ -1877,7 +1886,7 @@ class EmpresaApi
      *
      * Alterar empresa
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\Empresa $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['atualizarEmpresa'] to see the possible values for this operation
      *
@@ -1928,7 +1937,7 @@ class EmpresaApi
     /**
      * Create request for operation 'atualizarEmpresa'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\Empresa $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['atualizarEmpresa'] to see the possible values for this operation
      *
@@ -2042,11 +2051,303 @@ class EmpresaApi
     }
 
     /**
+     * Operation baixarLogotipoEmpresa
+     *
+     * Baixar logotipo
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \SplFileObject
+     */
+    public function baixarLogotipoEmpresa($cpf_cnpj, string $contentType = self::contentTypes['baixarLogotipoEmpresa'][0])
+    {
+        list($response) = $this->baixarLogotipoEmpresaWithHttpInfo($cpf_cnpj, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation baixarLogotipoEmpresaWithHttpInfo
+     *
+     * Baixar logotipo
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function baixarLogotipoEmpresaWithHttpInfo($cpf_cnpj, string $contentType = self::contentTypes['baixarLogotipoEmpresa'][0])
+    {
+        $request = $this->baixarLogotipoEmpresaRequest($cpf_cnpj, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\SplFileObject' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SplFileObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\SplFileObject';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SplFileObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation baixarLogotipoEmpresaAsync
+     *
+     * Baixar logotipo
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function baixarLogotipoEmpresaAsync($cpf_cnpj, string $contentType = self::contentTypes['baixarLogotipoEmpresa'][0])
+    {
+        return $this->baixarLogotipoEmpresaAsyncWithHttpInfo($cpf_cnpj, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation baixarLogotipoEmpresaAsyncWithHttpInfo
+     *
+     * Baixar logotipo
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function baixarLogotipoEmpresaAsyncWithHttpInfo($cpf_cnpj, string $contentType = self::contentTypes['baixarLogotipoEmpresa'][0])
+    {
+        $returnType = '\SplFileObject';
+        $request = $this->baixarLogotipoEmpresaRequest($cpf_cnpj, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'baixarLogotipoEmpresa'
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function baixarLogotipoEmpresaRequest($cpf_cnpj, string $contentType = self::contentTypes['baixarLogotipoEmpresa'][0])
+    {
+
+        // verify the required parameter 'cpf_cnpj' is set
+        if ($cpf_cnpj === null || (is_array($cpf_cnpj) && count($cpf_cnpj) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $cpf_cnpj when calling baixarLogotipoEmpresa'
+            );
+        }
+
+
+        $resourcePath = '/empresas/{cpf_cnpj}/logotipo';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($cpf_cnpj !== null) {
+            $resourcePath = str_replace(
+                '{' . 'cpf_cnpj' . '}',
+                ObjectSerializer::toPathValue($cpf_cnpj),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation cadastrarCertificadoEmpresa
      *
      * Cadastrar certificado
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaPedidoCadastroCertificado $body body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cadastrarCertificadoEmpresa'] to see the possible values for this operation
      *
@@ -2065,7 +2366,7 @@ class EmpresaApi
      *
      * Cadastrar certificado
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaPedidoCadastroCertificado $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cadastrarCertificadoEmpresa'] to see the possible values for this operation
      *
@@ -2166,7 +2467,7 @@ class EmpresaApi
      *
      * Cadastrar certificado
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaPedidoCadastroCertificado $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cadastrarCertificadoEmpresa'] to see the possible values for this operation
      *
@@ -2188,7 +2489,7 @@ class EmpresaApi
      *
      * Cadastrar certificado
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaPedidoCadastroCertificado $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cadastrarCertificadoEmpresa'] to see the possible values for this operation
      *
@@ -2239,7 +2540,7 @@ class EmpresaApi
     /**
      * Create request for operation 'cadastrarCertificadoEmpresa'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \NuvemFiscal\Model\EmpresaPedidoCadastroCertificado $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cadastrarCertificadoEmpresa'] to see the possible values for this operation
      *
@@ -2357,7 +2658,7 @@ class EmpresaApi
      *
      * Consultar certificado
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarCertificadoEmpresa'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -2375,7 +2676,7 @@ class EmpresaApi
      *
      * Consultar certificado
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarCertificadoEmpresa'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -2475,7 +2776,7 @@ class EmpresaApi
      *
      * Consultar certificado
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarCertificadoEmpresa'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2496,7 +2797,7 @@ class EmpresaApi
      *
      * Consultar certificado
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarCertificadoEmpresa'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2546,7 +2847,7 @@ class EmpresaApi
     /**
      * Create request for operation 'consultarCertificadoEmpresa'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarCertificadoEmpresa'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2649,7 +2950,7 @@ class EmpresaApi
      *
      * Consultar configuração de CT-e
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigCte'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -2667,7 +2968,7 @@ class EmpresaApi
      *
      * Consultar configuração de CT-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigCte'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -2767,7 +3068,7 @@ class EmpresaApi
      *
      * Consultar configuração de CT-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2788,7 +3089,7 @@ class EmpresaApi
      *
      * Consultar configuração de CT-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2838,7 +3139,7 @@ class EmpresaApi
     /**
      * Create request for operation 'consultarConfigCte'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2941,7 +3242,7 @@ class EmpresaApi
      *
      * Consultar configuração de MDF-e
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigMdfe'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -2959,7 +3260,7 @@ class EmpresaApi
      *
      * Consultar configuração de MDF-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigMdfe'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -3059,7 +3360,7 @@ class EmpresaApi
      *
      * Consultar configuração de MDF-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigMdfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3080,7 +3381,7 @@ class EmpresaApi
      *
      * Consultar configuração de MDF-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigMdfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3130,7 +3431,7 @@ class EmpresaApi
     /**
      * Create request for operation 'consultarConfigMdfe'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigMdfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3233,7 +3534,7 @@ class EmpresaApi
      *
      * Consultar configuração de NFC-e
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfce'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -3251,7 +3552,7 @@ class EmpresaApi
      *
      * Consultar configuração de NFC-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfce'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -3351,7 +3652,7 @@ class EmpresaApi
      *
      * Consultar configuração de NFC-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3372,7 +3673,7 @@ class EmpresaApi
      *
      * Consultar configuração de NFC-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3422,7 +3723,7 @@ class EmpresaApi
     /**
      * Create request for operation 'consultarConfigNfce'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3525,7 +3826,7 @@ class EmpresaApi
      *
      * Consultar configuração de NF-e
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfe'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -3543,7 +3844,7 @@ class EmpresaApi
      *
      * Consultar configuração de NF-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfe'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -3643,7 +3944,7 @@ class EmpresaApi
      *
      * Consultar configuração de NF-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3664,7 +3965,7 @@ class EmpresaApi
      *
      * Consultar configuração de NF-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3714,7 +4015,7 @@ class EmpresaApi
     /**
      * Create request for operation 'consultarConfigNfe'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3817,7 +4118,7 @@ class EmpresaApi
      *
      * Consultar configuração de NFS-e
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfse'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -3835,7 +4136,7 @@ class EmpresaApi
      *
      * Consultar configuração de NFS-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfse'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -3935,7 +4236,7 @@ class EmpresaApi
      *
      * Consultar configuração de NFS-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfse'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3956,7 +4257,7 @@ class EmpresaApi
      *
      * Consultar configuração de NFS-e
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfse'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4006,7 +4307,7 @@ class EmpresaApi
     /**
      * Create request for operation 'consultarConfigNfse'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigNfse'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4109,7 +4410,7 @@ class EmpresaApi
      *
      * Consultar empresa
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarEmpresa'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -4127,7 +4428,7 @@ class EmpresaApi
      *
      * Consultar empresa
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarEmpresa'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -4227,7 +4528,7 @@ class EmpresaApi
      *
      * Consultar empresa
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarEmpresa'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4248,7 +4549,7 @@ class EmpresaApi
      *
      * Consultar empresa
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarEmpresa'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4298,7 +4599,7 @@ class EmpresaApi
     /**
      * Create request for operation 'consultarEmpresa'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarEmpresa'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4692,7 +4993,7 @@ class EmpresaApi
      *
      * Upload de certificado
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \SplFileObject $input input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enviarCertificadoEmpresa'] to see the possible values for this operation
      *
@@ -4711,7 +5012,7 @@ class EmpresaApi
      *
      * Upload de certificado
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \SplFileObject $input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enviarCertificadoEmpresa'] to see the possible values for this operation
      *
@@ -4812,7 +5113,7 @@ class EmpresaApi
      *
      * Upload de certificado
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \SplFileObject $input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enviarCertificadoEmpresa'] to see the possible values for this operation
      *
@@ -4834,7 +5135,7 @@ class EmpresaApi
      *
      * Upload de certificado
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \SplFileObject $input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enviarCertificadoEmpresa'] to see the possible values for this operation
      *
@@ -4885,7 +5186,7 @@ class EmpresaApi
     /**
      * Create request for operation 'enviarCertificadoEmpresa'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  \SplFileObject $input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enviarCertificadoEmpresa'] to see the possible values for this operation
      *
@@ -4998,11 +5299,267 @@ class EmpresaApi
     }
 
     /**
+     * Operation enviarLogotipoEmpresa
+     *
+     * Enviar logotipo
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  \SplFileObject $input input (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enviarLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function enviarLogotipoEmpresa($cpf_cnpj, $input = null, string $contentType = self::contentTypes['enviarLogotipoEmpresa'][0])
+    {
+        $this->enviarLogotipoEmpresaWithHttpInfo($cpf_cnpj, $input, $contentType);
+    }
+
+    /**
+     * Operation enviarLogotipoEmpresaWithHttpInfo
+     *
+     * Enviar logotipo
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  \SplFileObject $input (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enviarLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function enviarLogotipoEmpresaWithHttpInfo($cpf_cnpj, $input = null, string $contentType = self::contentTypes['enviarLogotipoEmpresa'][0])
+    {
+        $request = $this->enviarLogotipoEmpresaRequest($cpf_cnpj, $input, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation enviarLogotipoEmpresaAsync
+     *
+     * Enviar logotipo
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  \SplFileObject $input (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enviarLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function enviarLogotipoEmpresaAsync($cpf_cnpj, $input = null, string $contentType = self::contentTypes['enviarLogotipoEmpresa'][0])
+    {
+        return $this->enviarLogotipoEmpresaAsyncWithHttpInfo($cpf_cnpj, $input, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation enviarLogotipoEmpresaAsyncWithHttpInfo
+     *
+     * Enviar logotipo
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  \SplFileObject $input (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enviarLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function enviarLogotipoEmpresaAsyncWithHttpInfo($cpf_cnpj, $input = null, string $contentType = self::contentTypes['enviarLogotipoEmpresa'][0])
+    {
+        $returnType = '';
+        $request = $this->enviarLogotipoEmpresaRequest($cpf_cnpj, $input, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'enviarLogotipoEmpresa'
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  \SplFileObject $input (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enviarLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function enviarLogotipoEmpresaRequest($cpf_cnpj, $input = null, string $contentType = self::contentTypes['enviarLogotipoEmpresa'][0])
+    {
+
+        // verify the required parameter 'cpf_cnpj' is set
+        if ($cpf_cnpj === null || (is_array($cpf_cnpj) && count($cpf_cnpj) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $cpf_cnpj when calling enviarLogotipoEmpresa'
+            );
+        }
+
+
+
+        $resourcePath = '/empresas/{cpf_cnpj}/logotipo';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($cpf_cnpj !== null) {
+            $resourcePath = str_replace(
+                '{' . 'cpf_cnpj' . '}',
+                ObjectSerializer::toPathValue($cpf_cnpj),
+                $resourcePath
+            );
+        }
+
+        // form params
+        if ($input !== null) {
+            $multipart = true;
+            $formParams['Input'] = [];
+            $paramFiles = is_array($input) ? $input : [$input];
+            foreach ($paramFiles as $paramFile) {
+                $formParams['Input'][] = \GuzzleHttp\Psr7\Utils::tryFopen(
+                    ObjectSerializer::toFormValue($paramFile),
+                    'rb'
+                );
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation excluirCertificadoEmpresa
      *
      * Deletar certificado
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirCertificadoEmpresa'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -5019,7 +5576,7 @@ class EmpresaApi
      *
      * Deletar certificado
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirCertificadoEmpresa'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -5079,7 +5636,7 @@ class EmpresaApi
      *
      * Deletar certificado
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirCertificadoEmpresa'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5100,7 +5657,7 @@ class EmpresaApi
      *
      * Deletar certificado
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirCertificadoEmpresa'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5137,7 +5694,7 @@ class EmpresaApi
     /**
      * Create request for operation 'excluirCertificadoEmpresa'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirCertificadoEmpresa'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5240,7 +5797,7 @@ class EmpresaApi
      *
      * Deletar empresa
      *
-     * @param  string $cpf_cnpj cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirEmpresa'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -5257,7 +5814,7 @@ class EmpresaApi
      *
      * Deletar empresa
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirEmpresa'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -5317,7 +5874,7 @@ class EmpresaApi
      *
      * Deletar empresa
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirEmpresa'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5338,7 +5895,7 @@ class EmpresaApi
      *
      * Deletar empresa
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirEmpresa'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5375,7 +5932,7 @@ class EmpresaApi
     /**
      * Create request for operation 'excluirEmpresa'
      *
-     * @param  string $cpf_cnpj (required)
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirEmpresa'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5393,6 +5950,244 @@ class EmpresaApi
 
 
         $resourcePath = '/empresas/{cpf_cnpj}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($cpf_cnpj !== null) {
+            $resourcePath = str_replace(
+                '{' . 'cpf_cnpj' . '}',
+                ObjectSerializer::toPathValue($cpf_cnpj),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation excluirLogotipoEmpresa
+     *
+     * Deletar logotipo
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function excluirLogotipoEmpresa($cpf_cnpj, string $contentType = self::contentTypes['excluirLogotipoEmpresa'][0])
+    {
+        $this->excluirLogotipoEmpresaWithHttpInfo($cpf_cnpj, $contentType);
+    }
+
+    /**
+     * Operation excluirLogotipoEmpresaWithHttpInfo
+     *
+     * Deletar logotipo
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function excluirLogotipoEmpresaWithHttpInfo($cpf_cnpj, string $contentType = self::contentTypes['excluirLogotipoEmpresa'][0])
+    {
+        $request = $this->excluirLogotipoEmpresaRequest($cpf_cnpj, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation excluirLogotipoEmpresaAsync
+     *
+     * Deletar logotipo
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function excluirLogotipoEmpresaAsync($cpf_cnpj, string $contentType = self::contentTypes['excluirLogotipoEmpresa'][0])
+    {
+        return $this->excluirLogotipoEmpresaAsyncWithHttpInfo($cpf_cnpj, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation excluirLogotipoEmpresaAsyncWithHttpInfo
+     *
+     * Deletar logotipo
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function excluirLogotipoEmpresaAsyncWithHttpInfo($cpf_cnpj, string $contentType = self::contentTypes['excluirLogotipoEmpresa'][0])
+    {
+        $returnType = '';
+        $request = $this->excluirLogotipoEmpresaRequest($cpf_cnpj, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'excluirLogotipoEmpresa'
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excluirLogotipoEmpresa'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function excluirLogotipoEmpresaRequest($cpf_cnpj, string $contentType = self::contentTypes['excluirLogotipoEmpresa'][0])
+    {
+
+        // verify the required parameter 'cpf_cnpj' is set
+        if ($cpf_cnpj === null || (is_array($cpf_cnpj) && count($cpf_cnpj) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $cpf_cnpj when calling excluirLogotipoEmpresa'
+            );
+        }
+
+
+        $resourcePath = '/empresas/{cpf_cnpj}/logotipo';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

@@ -25,5 +25,6 @@ Nome | Tipo | Descrição | Comentários
 **situacao_especial** | [**\NuvemFiscal\Model\CnpjSituacaoEspecial**](CnpjSituacaoEspecial.md) |  | [optional]
 **simples** | [**\NuvemFiscal\Model\CnpjOpcaoSimples**](CnpjOpcaoSimples.md) |  | [optional]
 **simei** | [**\NuvemFiscal\Model\CnpjOpcaoSimei**](CnpjOpcaoSimei.md) |  | [optional]
+**socios** | [**\NuvemFiscal\Model\CnpjSocio[]**](CnpjSocio.md) |  | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

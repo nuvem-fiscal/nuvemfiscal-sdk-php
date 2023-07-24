@@ -10,6 +10,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**alterarConfigNfe()**](EmpresaApi.md#alterarConfigNfe) | **PUT** /empresas/{cpf_cnpj}/nfe | Alterar configuração de NF-e |
 | [**alterarConfigNfse()**](EmpresaApi.md#alterarConfigNfse) | **PUT** /empresas/{cpf_cnpj}/nfse | Alterar configuração de NFS-e |
 | [**atualizarEmpresa()**](EmpresaApi.md#atualizarEmpresa) | **PUT** /empresas/{cpf_cnpj} | Alterar empresa |
+| [**baixarLogotipoEmpresa()**](EmpresaApi.md#baixarLogotipoEmpresa) | **GET** /empresas/{cpf_cnpj}/logotipo | Baixar logotipo |
 | [**cadastrarCertificadoEmpresa()**](EmpresaApi.md#cadastrarCertificadoEmpresa) | **PUT** /empresas/{cpf_cnpj}/certificado | Cadastrar certificado |
 | [**consultarCertificadoEmpresa()**](EmpresaApi.md#consultarCertificadoEmpresa) | **GET** /empresas/{cpf_cnpj}/certificado | Consultar certificado |
 | [**consultarConfigCte()**](EmpresaApi.md#consultarConfigCte) | **GET** /empresas/{cpf_cnpj}/cte | Consultar configuração de CT-e |
@@ -20,8 +21,10 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**consultarEmpresa()**](EmpresaApi.md#consultarEmpresa) | **GET** /empresas/{cpf_cnpj} | Consultar empresa |
 | [**criarEmpresa()**](EmpresaApi.md#criarEmpresa) | **POST** /empresas | Cadastrar empresa |
 | [**enviarCertificadoEmpresa()**](EmpresaApi.md#enviarCertificadoEmpresa) | **PUT** /empresas/{cpf_cnpj}/certificado/upload | Upload de certificado |
+| [**enviarLogotipoEmpresa()**](EmpresaApi.md#enviarLogotipoEmpresa) | **PUT** /empresas/{cpf_cnpj}/logotipo | Enviar logotipo |
 | [**excluirCertificadoEmpresa()**](EmpresaApi.md#excluirCertificadoEmpresa) | **DELETE** /empresas/{cpf_cnpj}/certificado | Deletar certificado |
 | [**excluirEmpresa()**](EmpresaApi.md#excluirEmpresa) | **DELETE** /empresas/{cpf_cnpj} | Deletar empresa |
+| [**excluirLogotipoEmpresa()**](EmpresaApi.md#excluirLogotipoEmpresa) | **DELETE** /empresas/{cpf_cnpj}/logotipo | Deletar logotipo |
 | [**listarEmpresas()**](EmpresaApi.md#listarEmpresas) | **GET** /empresas | Listar empresas |
 
 
@@ -55,7 +58,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 $body = new \NuvemFiscal\Model\EmpresaConfigCte(); // \NuvemFiscal\Model\EmpresaConfigCte
 
 try {
@@ -70,7 +73,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 | **body** | [**\NuvemFiscal\Model\EmpresaConfigCte**](../Model/EmpresaConfigCte.md)|  | |
 
 ### Tipo do retorno
@@ -120,7 +123,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 $body = new \NuvemFiscal\Model\EmpresaConfigMdfe(); // \NuvemFiscal\Model\EmpresaConfigMdfe
 
 try {
@@ -135,7 +138,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 | **body** | [**\NuvemFiscal\Model\EmpresaConfigMdfe**](../Model/EmpresaConfigMdfe.md)|  | |
 
 ### Tipo do retorno
@@ -185,7 +188,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 $body = new \NuvemFiscal\Model\EmpresaConfigNfce(); // \NuvemFiscal\Model\EmpresaConfigNfce
 
 try {
@@ -200,7 +203,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 | **body** | [**\NuvemFiscal\Model\EmpresaConfigNfce**](../Model/EmpresaConfigNfce.md)|  | |
 
 ### Tipo do retorno
@@ -250,7 +253,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 $body = new \NuvemFiscal\Model\EmpresaConfigNfe(); // \NuvemFiscal\Model\EmpresaConfigNfe
 
 try {
@@ -265,7 +268,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 | **body** | [**\NuvemFiscal\Model\EmpresaConfigNfe**](../Model/EmpresaConfigNfe.md)|  | |
 
 ### Tipo do retorno
@@ -315,7 +318,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 $body = new \NuvemFiscal\Model\EmpresaConfigNfse(); // \NuvemFiscal\Model\EmpresaConfigNfse
 
 try {
@@ -330,7 +333,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 | **body** | [**\NuvemFiscal\Model\EmpresaConfigNfse**](../Model/EmpresaConfigNfse.md)|  | |
 
 ### Tipo do retorno
@@ -382,7 +385,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 $body = new \NuvemFiscal\Model\Empresa(); // \NuvemFiscal\Model\Empresa
 
 try {
@@ -397,7 +400,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 | **body** | [**\NuvemFiscal\Model\Empresa**](../Model/Empresa.md)|  | |
 
 ### Tipo do retorno
@@ -412,6 +415,69 @@ try {
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `baixarLogotipoEmpresa()`
+
+```php
+baixarLogotipoEmpresa($cpf_cnpj): \SplFileObject
+```
+
+Baixar logotipo
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\EmpresaApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
+
+try {
+    $result = $apiInstance->baixarLogotipoEmpresa($cpf_cnpj);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmpresaApi->baixarLogotipoEmpresa: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
 
 [[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
 [[Voltar à lista de DTOs]](../../README.md#models)
@@ -449,7 +515,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 $body = new \NuvemFiscal\Model\EmpresaPedidoCadastroCertificado(); // \NuvemFiscal\Model\EmpresaPedidoCadastroCertificado
 
 try {
@@ -464,7 +530,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 | **body** | [**\NuvemFiscal\Model\EmpresaPedidoCadastroCertificado**](../Model/EmpresaPedidoCadastroCertificado.md)|  | |
 
 ### Tipo do retorno
@@ -514,7 +580,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 
 try {
     $result = $apiInstance->consultarCertificadoEmpresa($cpf_cnpj);
@@ -528,7 +594,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 
 ### Tipo do retorno
 
@@ -577,7 +643,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 
 try {
     $result = $apiInstance->consultarConfigCte($cpf_cnpj);
@@ -591,7 +657,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 
 ### Tipo do retorno
 
@@ -640,7 +706,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 
 try {
     $result = $apiInstance->consultarConfigMdfe($cpf_cnpj);
@@ -654,7 +720,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 
 ### Tipo do retorno
 
@@ -703,7 +769,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 
 try {
     $result = $apiInstance->consultarConfigNfce($cpf_cnpj);
@@ -717,7 +783,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 
 ### Tipo do retorno
 
@@ -766,7 +832,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 
 try {
     $result = $apiInstance->consultarConfigNfe($cpf_cnpj);
@@ -780,7 +846,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 
 ### Tipo do retorno
 
@@ -829,7 +895,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 
 try {
     $result = $apiInstance->consultarConfigNfse($cpf_cnpj);
@@ -843,7 +909,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 
 ### Tipo do retorno
 
@@ -892,7 +958,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 
 try {
     $result = $apiInstance->consultarEmpresa($cpf_cnpj);
@@ -906,7 +972,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 
 ### Tipo do retorno
 
@@ -1022,7 +1088,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 $input = "/path/to/file.txt"; // \SplFileObject
 
 try {
@@ -1037,7 +1103,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 | **input** | **\SplFileObject****\SplFileObject**|  | [optional] |
 
 ### Tipo do retorno
@@ -1052,6 +1118,72 @@ try {
 
 - **Content-Type**: `multipart/form-data`
 - **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `enviarLogotipoEmpresa()`
+
+```php
+enviarLogotipoEmpresa($cpf_cnpj, $input)
+```
+
+Enviar logotipo
+
+Cadastre ou atualize um logotipo e vincule a sua empresa.    **Restrições:**  * Tipos de mídia (MIME) suportados: `image/png` e `image/jpeg`  * Tamanho máximo do arquivo: 200 KB    **Cenários de uso:**  * Quero que minhas notas sejam impressas com esse logotipo.  * Quero trocar o logotipo utilizado em minhas impressões.
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\EmpresaApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
+$input = "/path/to/file.txt"; // \SplFileObject
+
+try {
+    $apiInstance->enviarLogotipoEmpresa($cpf_cnpj, $input);
+} catch (Exception $e) {
+    echo 'Exception when calling EmpresaApi->enviarLogotipoEmpresa: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
+| **input** | **\SplFileObject****\SplFileObject**|  | [optional] |
+
+### Tipo do retorno
+
+void (empty response body)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: `multipart/form-data`
+- **Accept**: Not defined
 
 [[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
 [[Voltar à lista de DTOs]](../../README.md#models)
@@ -1087,7 +1219,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 
 try {
     $apiInstance->excluirCertificadoEmpresa($cpf_cnpj);
@@ -1100,7 +1232,7 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 
 ### Tipo do retorno
 
@@ -1149,7 +1281,7 @@ $apiInstance = new NuvemFiscal\Api\EmpresaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cpf_cnpj = 'cpf_cnpj_example'; // string
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
 
 try {
     $apiInstance->excluirEmpresa($cpf_cnpj);
@@ -1162,7 +1294,69 @@ try {
 
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**|  | |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
+
+### Tipo do retorno
+
+void (empty response body)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `excluirLogotipoEmpresa()`
+
+```php
+excluirLogotipoEmpresa($cpf_cnpj)
+```
+
+Deletar logotipo
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\EmpresaApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
+
+try {
+    $apiInstance->excluirLogotipoEmpresa($cpf_cnpj);
+} catch (Exception $e) {
+    echo 'Exception when calling EmpresaApi->excluirLogotipoEmpresa: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
 
 ### Tipo do retorno
 

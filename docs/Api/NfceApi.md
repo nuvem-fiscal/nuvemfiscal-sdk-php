@@ -294,7 +294,7 @@ try {
 ## `baixarPdfNfce()`
 
 ```php
-baixarPdfNfce($id, $resumido, $qrcode_lateral): \SplFileObject
+baixarPdfNfce($id, $logotipo, $mensagem_rodape, $resumido, $qrcode_lateral): \SplFileObject
 ```
 
 Baixar PDF do DANFCE
@@ -322,11 +322,13 @@ $apiInstance = new NuvemFiscal\Api\NfceApi(
     $config
 );
 $id = 'id_example'; // string | ID único da NFC-e gerado pela Nuvem Fiscal.
+$logotipo = false; // bool | Imprime o documento com logotipo, desde que esteja cadastrado na empresa.
+$mensagem_rodape = 'mensagem_rodape_example'; // string | Imprime mensagem no rodapé do documento.    O caractere `|` (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * `\"esquerda\"`  * `\"esquerda|centro\"`  * `\"esquerda|centro|direita\"`  * `\"|centro\"`, `\"|centro|\"`  * `\"|centro|direita\"`  * `\"||direita\"`  * `\"esquerda||direita\"`
 $resumido = false; // bool | Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite.
 $qrcode_lateral = false; // bool | Imprime o QRCode na lateral do DANFE NFC-e.
 
 try {
-    $result = $apiInstance->baixarPdfNfce($id, $resumido, $qrcode_lateral);
+    $result = $apiInstance->baixarPdfNfce($id, $logotipo, $mensagem_rodape, $resumido, $qrcode_lateral);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfceApi->baixarPdfNfce: ', $e->getMessage(), PHP_EOL;
@@ -338,6 +340,8 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único da NFC-e gerado pela Nuvem Fiscal. | |
+| **logotipo** | **bool**| Imprime o documento com logotipo, desde que esteja cadastrado na empresa. | [optional] [default to false] |
+| **mensagem_rodape** | **string**| Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; | [optional] |
 | **resumido** | **bool**| Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. | [optional] [default to false] |
 | **qrcode_lateral** | **bool**| Imprime o QRCode na lateral do DANFE NFC-e. | [optional] [default to false] |
 

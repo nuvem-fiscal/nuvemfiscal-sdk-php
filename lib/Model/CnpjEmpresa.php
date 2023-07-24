@@ -76,7 +76,8 @@ class CnpjEmpresa implements ModelInterface, ArrayAccess, \JsonSerializable
         'email' => 'string',
         'situacao_especial' => '\NuvemFiscal\Model\CnpjSituacaoEspecial',
         'simples' => '\NuvemFiscal\Model\CnpjOpcaoSimples',
-        'simei' => '\NuvemFiscal\Model\CnpjOpcaoSimei'
+        'simei' => '\NuvemFiscal\Model\CnpjOpcaoSimei',
+        'socios' => '\NuvemFiscal\Model\CnpjSocio[]'
     ];
 
     /**
@@ -107,7 +108,8 @@ class CnpjEmpresa implements ModelInterface, ArrayAccess, \JsonSerializable
         'email' => null,
         'situacao_especial' => null,
         'simples' => null,
-        'simei' => null
+        'simei' => null,
+        'socios' => null
     ];
 
     /**
@@ -136,7 +138,8 @@ class CnpjEmpresa implements ModelInterface, ArrayAccess, \JsonSerializable
 		'email' => false,
 		'situacao_especial' => false,
 		'simples' => false,
-		'simei' => false
+		'simei' => false,
+		'socios' => false
     ];
 
     /**
@@ -245,7 +248,8 @@ class CnpjEmpresa implements ModelInterface, ArrayAccess, \JsonSerializable
         'email' => 'email',
         'situacao_especial' => 'situacao_especial',
         'simples' => 'simples',
-        'simei' => 'simei'
+        'simei' => 'simei',
+        'socios' => 'socios'
     ];
 
     /**
@@ -274,7 +278,8 @@ class CnpjEmpresa implements ModelInterface, ArrayAccess, \JsonSerializable
         'email' => 'setEmail',
         'situacao_especial' => 'setSituacaoEspecial',
         'simples' => 'setSimples',
-        'simei' => 'setSimei'
+        'simei' => 'setSimei',
+        'socios' => 'setSocios'
     ];
 
     /**
@@ -303,7 +308,8 @@ class CnpjEmpresa implements ModelInterface, ArrayAccess, \JsonSerializable
         'email' => 'getEmail',
         'situacao_especial' => 'getSituacaoEspecial',
         'simples' => 'getSimples',
-        'simei' => 'getSimei'
+        'simei' => 'getSimei',
+        'socios' => 'getSocios'
     ];
 
     /**
@@ -384,6 +390,7 @@ class CnpjEmpresa implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('situacao_especial', $data ?? [], null);
         $this->setIfExists('simples', $data ?? [], null);
         $this->setIfExists('simei', $data ?? [], null);
+        $this->setIfExists('socios', $data ?? [], null);
     }
 
     /**
@@ -991,6 +998,33 @@ class CnpjEmpresa implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable simei cannot be null');
         }
         $this->container['simei'] = $simei;
+
+        return $this;
+    }
+
+    /**
+     * Gets socios
+     *
+     * @return \NuvemFiscal\Model\CnpjSocio[]|null
+     */
+    public function getSocios()
+    {
+        return $this->container['socios'];
+    }
+
+    /**
+     * Sets socios
+     *
+     * @param \NuvemFiscal\Model\CnpjSocio[]|null $socios socios
+     *
+     * @return self
+     */
+    public function setSocios($socios)
+    {
+        if (is_null($socios)) {
+            throw new \InvalidArgumentException('non-nullable socios cannot be null');
+        }
+        $this->container['socios'] = $socios;
 
         return $this;
     }
