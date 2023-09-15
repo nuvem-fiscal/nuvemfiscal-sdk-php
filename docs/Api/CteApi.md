@@ -8,26 +8,19 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**baixarPdfCartaCorrecaoCte()**](CteApi.md#baixarPdfCartaCorrecaoCte) | **GET** /cte/{id}/carta-correcao/pdf | Baixar PDF da carta de correção |
 | [**baixarPdfCte()**](CteApi.md#baixarPdfCte) | **GET** /cte/{id}/pdf | Baixar PDF do DACTE |
 | [**baixarPdfEventoCte()**](CteApi.md#baixarPdfEventoCte) | **GET** /cte/eventos/{id}/pdf | Baixar PDF do evento |
-| [**baixarPdfInutilizacaoCte()**](CteApi.md#baixarPdfInutilizacaoCte) | **GET** /cte/inutilizacoes/{id}/pdf | Baixar PDF da inutilização |
 | [**baixarXmlCancelamentoCte()**](CteApi.md#baixarXmlCancelamentoCte) | **GET** /cte/{id}/cancelamento/xml | Baixar XML do cancelamento |
 | [**baixarXmlCartaCorrecaoCte()**](CteApi.md#baixarXmlCartaCorrecaoCte) | **GET** /cte/{id}/carta-correcao/xml | Baixar XML da carta de correção |
 | [**baixarXmlCte()**](CteApi.md#baixarXmlCte) | **GET** /cte/{id}/xml | Baixar XML do CT-e processado |
 | [**baixarXmlEventoCte()**](CteApi.md#baixarXmlEventoCte) | **GET** /cte/eventos/{id}/xml | Baixar XML do evento |
-| [**baixarXmlInutilizacaoCte()**](CteApi.md#baixarXmlInutilizacaoCte) | **GET** /cte/inutilizacoes/{id}/xml | Baixar XML da inutilização |
 | [**cancelarCte()**](CteApi.md#cancelarCte) | **POST** /cte/{id}/cancelamento | Cancelar um CT-e autorizado |
 | [**consultarCancelamentoCte()**](CteApi.md#consultarCancelamentoCte) | **GET** /cte/{id}/cancelamento | Consultar o cancelamento do CT-e |
 | [**consultarCartaCorrecaoCte()**](CteApi.md#consultarCartaCorrecaoCte) | **GET** /cte/{id}/carta-correcao | Consultar a solicitação de correção do CT-e |
 | [**consultarCte()**](CteApi.md#consultarCte) | **GET** /cte/{id} | Consultar CT-e |
 | [**consultarEventoCte()**](CteApi.md#consultarEventoCte) | **GET** /cte/eventos/{id} | Consultar evento |
-| [**consultarInutilizacaoCte()**](CteApi.md#consultarInutilizacaoCte) | **GET** /cte/inutilizacoes/{id} | Consultar a inutilização de sequência de numeração |
-| [**consultarLoteCte()**](CteApi.md#consultarLoteCte) | **GET** /cte/lotes/{id} | Consultar lote de CT-e |
 | [**consultarStatusSefazCte()**](CteApi.md#consultarStatusSefazCte) | **GET** /cte/sefaz/status | Consulta do Status do Serviço na SEFAZ Autorizadora |
 | [**criarCartaCorrecaoCte()**](CteApi.md#criarCartaCorrecaoCte) | **POST** /cte/{id}/carta-correcao | Solicitar correção do CT-e |
 | [**emitirCte()**](CteApi.md#emitirCte) | **POST** /cte | Emitir CT-e |
-| [**emitirLoteCte()**](CteApi.md#emitirLoteCte) | **POST** /cte/lotes | Emitir lote de CT-e |
-| [**inutilizarNumeracaoCte()**](CteApi.md#inutilizarNumeracaoCte) | **POST** /cte/inutilizacoes | Inutilizar uma sequência de numeração de CT-e |
 | [**listarCte()**](CteApi.md#listarCte) | **GET** /cte | Listar CT-e |
-| [**listarLotesCte()**](CteApi.md#listarLotesCte) | **GET** /cte/lotes | Listar lotes de CT-e |
 
 
 ## `baixarPdfCancelamentoCte()`
@@ -282,69 +275,6 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
-## `baixarPdfInutilizacaoCte()`
-
-```php
-baixarPdfInutilizacaoCte($id): \SplFileObject
-```
-
-Baixar PDF da inutilização
-
-### Exemplo
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configurar authorização via API key: jwt
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-// Configurar access token OAuth2 para autorização: oauth2
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
-
-
-$apiInstance = new NuvemFiscal\Api\CteApi(
-    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
-    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
-    new GuzzleHttp\Client(),
-    $config
-);
-$id = 'id_example'; // string | ID único do evento gerado pela Nuvem Fiscal.
-
-try {
-    $result = $apiInstance->baixarPdfInutilizacaoCte($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CteApi->baixarPdfInutilizacaoCte: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parâmetros
-
-| Nome | Tipo | Descrição  | Notas |
-| ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| ID único do evento gerado pela Nuvem Fiscal. | |
-
-### Tipo do retorno
-
-**\SplFileObject**
-
-### Autorização
-
-[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
-
-### Headers HTTP da requisição
-
-- **Content-Type**: Not defined
-- **Accept**: `*/*`
-
-[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
-[[Voltar à lista de DTOs]](../../README.md#models)
-[[Voltar ao README]](../../README.md)
-
 ## `baixarXmlCancelamentoCte()`
 
 ```php
@@ -571,69 +501,6 @@ try {
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CteApi->baixarXmlEventoCte: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parâmetros
-
-| Nome | Tipo | Descrição  | Notas |
-| ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| ID único do evento gerado pela Nuvem Fiscal. | |
-
-### Tipo do retorno
-
-**\SplFileObject**
-
-### Autorização
-
-[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
-
-### Headers HTTP da requisição
-
-- **Content-Type**: Not defined
-- **Accept**: `*/*`
-
-[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
-[[Voltar à lista de DTOs]](../../README.md#models)
-[[Voltar ao README]](../../README.md)
-
-## `baixarXmlInutilizacaoCte()`
-
-```php
-baixarXmlInutilizacaoCte($id): \SplFileObject
-```
-
-Baixar XML da inutilização
-
-### Exemplo
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configurar authorização via API key: jwt
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-// Configurar access token OAuth2 para autorização: oauth2
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
-
-
-$apiInstance = new NuvemFiscal\Api\CteApi(
-    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
-    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
-    new GuzzleHttp\Client(),
-    $config
-);
-$id = 'id_example'; // string | ID único do evento gerado pela Nuvem Fiscal.
-
-try {
-    $result = $apiInstance->baixarXmlInutilizacaoCte($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CteApi->baixarXmlInutilizacaoCte: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -979,134 +846,6 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
-## `consultarInutilizacaoCte()`
-
-```php
-consultarInutilizacaoCte($id): \NuvemFiscal\Model\DfeInutilizacao
-```
-
-Consultar a inutilização de sequência de numeração
-
-### Exemplo
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configurar authorização via API key: jwt
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-// Configurar access token OAuth2 para autorização: oauth2
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
-
-
-$apiInstance = new NuvemFiscal\Api\CteApi(
-    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
-    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
-    new GuzzleHttp\Client(),
-    $config
-);
-$id = 'id_example'; // string | ID único do evento gerado pela Nuvem Fiscal.
-
-try {
-    $result = $apiInstance->consultarInutilizacaoCte($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CteApi->consultarInutilizacaoCte: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parâmetros
-
-| Nome | Tipo | Descrição  | Notas |
-| ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| ID único do evento gerado pela Nuvem Fiscal. | |
-
-### Tipo do retorno
-
-[**\NuvemFiscal\Model\DfeInutilizacao**](../Model/DfeInutilizacao.md)
-
-### Autorização
-
-[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
-
-### Headers HTTP da requisição
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
-[[Voltar à lista de DTOs]](../../README.md#models)
-[[Voltar ao README]](../../README.md)
-
-## `consultarLoteCte()`
-
-```php
-consultarLoteCte($id): \NuvemFiscal\Model\DfeLote
-```
-
-Consultar lote de CT-e
-
-Consulta os detalhes de um lote já existente. Forneça o ID único obtido de uma requisição de emissão ou de listagem de lotes e a Nuvem Fiscal irá retornar as informações do lote correspondente.
-
-### Exemplo
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configurar authorização via API key: jwt
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-// Configurar access token OAuth2 para autorização: oauth2
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
-
-
-$apiInstance = new NuvemFiscal\Api\CteApi(
-    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
-    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
-    new GuzzleHttp\Client(),
-    $config
-);
-$id = 'id_example'; // string | ID único do lote gerado pela Nuvem Fiscal.
-
-try {
-    $result = $apiInstance->consultarLoteCte($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CteApi->consultarLoteCte: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parâmetros
-
-| Nome | Tipo | Descrição  | Notas |
-| ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| ID único do lote gerado pela Nuvem Fiscal. | |
-
-### Tipo do retorno
-
-[**\NuvemFiscal\Model\DfeLote**](../Model/DfeLote.md)
-
-### Autorização
-
-[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
-
-### Headers HTTP da requisição
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
-[[Voltar à lista de DTOs]](../../README.md#models)
-[[Voltar ao README]](../../README.md)
-
 ## `consultarStatusSefazCte()`
 
 ```php
@@ -1302,132 +1041,6 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
-## `emitirLoteCte()`
-
-```php
-emitirLoteCte($body): \NuvemFiscal\Model\DfeLote
-```
-
-Emitir lote de CT-e
-
-### Exemplo
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configurar authorização via API key: jwt
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-// Configurar access token OAuth2 para autorização: oauth2
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
-
-
-$apiInstance = new NuvemFiscal\Api\CteApi(
-    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
-    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
-    new GuzzleHttp\Client(),
-    $config
-);
-$body = new \NuvemFiscal\Model\CtePedidoEmissaoLote(); // \NuvemFiscal\Model\CtePedidoEmissaoLote
-
-try {
-    $result = $apiInstance->emitirLoteCte($body);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CteApi->emitirLoteCte: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parâmetros
-
-| Nome | Tipo | Descrição  | Notas |
-| ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\NuvemFiscal\Model\CtePedidoEmissaoLote**](../Model/CtePedidoEmissaoLote.md)|  | |
-
-### Tipo do retorno
-
-[**\NuvemFiscal\Model\DfeLote**](../Model/DfeLote.md)
-
-### Autorização
-
-[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
-
-### Headers HTTP da requisição
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
-[[Voltar à lista de DTOs]](../../README.md#models)
-[[Voltar ao README]](../../README.md)
-
-## `inutilizarNumeracaoCte()`
-
-```php
-inutilizarNumeracaoCte($body): \NuvemFiscal\Model\DfeInutilizacao
-```
-
-Inutilizar uma sequência de numeração de CT-e
-
-### Exemplo
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configurar authorização via API key: jwt
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-// Configurar access token OAuth2 para autorização: oauth2
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
-
-
-$apiInstance = new NuvemFiscal\Api\CteApi(
-    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
-    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
-    new GuzzleHttp\Client(),
-    $config
-);
-$body = new \NuvemFiscal\Model\DfePedidoInutilizacao(); // \NuvemFiscal\Model\DfePedidoInutilizacao
-
-try {
-    $result = $apiInstance->inutilizarNumeracaoCte($body);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CteApi->inutilizarNumeracaoCte: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parâmetros
-
-| Nome | Tipo | Descrição  | Notas |
-| ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\NuvemFiscal\Model\DfePedidoInutilizacao**](../Model/DfePedidoInutilizacao.md)|  | |
-
-### Tipo do retorno
-
-[**\NuvemFiscal\Model\DfeInutilizacao**](../Model/DfeInutilizacao.md)
-
-### Autorização
-
-[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
-
-### Headers HTTP da requisição
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
-[[Voltar à lista de DTOs]](../../README.md#models)
-[[Voltar ao README]](../../README.md)
-
 ## `listarCte()`
 
 ```php
@@ -1493,81 +1106,6 @@ try {
 ### Tipo do retorno
 
 [**\NuvemFiscal\Model\DfeListagem**](../Model/DfeListagem.md)
-
-### Autorização
-
-[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
-
-### Headers HTTP da requisição
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
-[[Voltar à lista de DTOs]](../../README.md#models)
-[[Voltar ao README]](../../README.md)
-
-## `listarLotesCte()`
-
-```php
-listarLotesCte($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia): \NuvemFiscal\Model\DfeLoteListagem
-```
-
-Listar lotes de CT-e
-
-Retorna a lista dos lotes de acordo com os critérios de busca utilizados. Os lotes são retornados ordenados pela data da criação, com os mais recentes aparecendo primeiro.
-
-### Exemplo
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configurar authorização via API key: jwt
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-// Configurar access token OAuth2 para autorização: oauth2
-$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
-
-
-$apiInstance = new NuvemFiscal\Api\CteApi(
-    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
-    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
-    new GuzzleHttp\Client(),
-    $config
-);
-$cpf_cnpj = 'cpf_cnpj_example'; // string | Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara.
-$ambiente = 'ambiente_example'; // string | Identificação do Ambiente.    Valores aceitos: homologacao, producao
-$top = 10; // int | Limite no número de objetos a serem retornados pela API, entre 1 e 100.
-$skip = 0; // int | Quantidade de objetos que serão ignorados antes da lista começar a ser retornada.
-$inlinecount = false; // bool | Inclui no JSON de resposta, na propriedade `@count`, o número total de registros que o filtro retornaria, independente dos filtros de paginação.
-$referencia = 'referencia_example'; // string
-
-try {
-    $result = $apiInstance->listarLotesCte($cpf_cnpj, $ambiente, $top, $skip, $inlinecount, $referencia);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CteApi->listarLotesCte: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parâmetros
-
-| Nome | Tipo | Descrição  | Notas |
-| ------------- | ------------- | ------------- | ------------- |
-| **cpf_cnpj** | **string**| Filtrar pelo CPF ou CNPJ do emitente.  Utilize o valor sem máscara. | |
-| **ambiente** | **string**| Identificação do Ambiente.    Valores aceitos: homologacao, producao | |
-| **top** | **int**| Limite no número de objetos a serem retornados pela API, entre 1 e 100. | [optional] [default to 10] |
-| **skip** | **int**| Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. | [optional] [default to 0] |
-| **inlinecount** | **bool**| Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. | [optional] [default to false] |
-| **referencia** | **string**|  | [optional] |
-
-### Tipo do retorno
-
-[**\NuvemFiscal\Model\DfeLoteListagem**](../Model/DfeLoteListagem.md)
 
 ### Autorização
 

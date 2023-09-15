@@ -69,8 +69,7 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_prest' => '\NuvemFiscal\Model\CteSefazVPrest',
         'imp' => '\NuvemFiscal\Model\CteSefazInfCteImp',
         'inf_cte_norm' => '\NuvemFiscal\Model\CteSefazInfCTeNorm',
-        'inf_cte_comp' => '\NuvemFiscal\Model\CteSefazInfCteComp',
-        'inf_cte_anu' => '\NuvemFiscal\Model\CteSefazInfCteAnu',
+        'inf_cte_comp' => '\NuvemFiscal\Model\CteSefazInfCteComp[]',
         'aut_xml' => '\NuvemFiscal\Model\CteSefazAutXML[]',
         'inf_resp_tec' => '\NuvemFiscal\Model\CteSefazRespTec',
         'inf_solic_nff' => '\NuvemFiscal\Model\CteSefazInfSolicNFF'
@@ -97,7 +96,6 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
         'imp' => null,
         'inf_cte_norm' => null,
         'inf_cte_comp' => null,
-        'inf_cte_anu' => null,
         'aut_xml' => null,
         'inf_resp_tec' => null,
         'inf_solic_nff' => null
@@ -122,7 +120,6 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
 		'imp' => false,
 		'inf_cte_norm' => false,
 		'inf_cte_comp' => false,
-		'inf_cte_anu' => false,
 		'aut_xml' => false,
 		'inf_resp_tec' => false,
 		'inf_solic_nff' => false
@@ -227,7 +224,6 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
         'imp' => 'imp',
         'inf_cte_norm' => 'infCTeNorm',
         'inf_cte_comp' => 'infCteComp',
-        'inf_cte_anu' => 'infCteAnu',
         'aut_xml' => 'autXML',
         'inf_resp_tec' => 'infRespTec',
         'inf_solic_nff' => 'infSolicNFF'
@@ -252,7 +248,6 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
         'imp' => 'setImp',
         'inf_cte_norm' => 'setInfCteNorm',
         'inf_cte_comp' => 'setInfCteComp',
-        'inf_cte_anu' => 'setInfCteAnu',
         'aut_xml' => 'setAutXml',
         'inf_resp_tec' => 'setInfRespTec',
         'inf_solic_nff' => 'setInfSolicNff'
@@ -277,7 +272,6 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
         'imp' => 'getImp',
         'inf_cte_norm' => 'getInfCteNorm',
         'inf_cte_comp' => 'getInfCteComp',
-        'inf_cte_anu' => 'getInfCteAnu',
         'aut_xml' => 'getAutXml',
         'inf_resp_tec' => 'getInfRespTec',
         'inf_solic_nff' => 'getInfSolicNff'
@@ -353,7 +347,6 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('imp', $data ?? [], null);
         $this->setIfExists('inf_cte_norm', $data ?? [], null);
         $this->setIfExists('inf_cte_comp', $data ?? [], null);
-        $this->setIfExists('inf_cte_anu', $data ?? [], null);
         $this->setIfExists('aut_xml', $data ?? [], null);
         $this->setIfExists('inf_resp_tec', $data ?? [], null);
         $this->setIfExists('inf_solic_nff', $data ?? [], null);
@@ -429,7 +422,7 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets versao
      *
-     * @param string $versao Versão do leiaute.  Ex: \"3.00\".
+     * @param string $versao Versão do leiaute.  Ex: \"4.00\".
      *
      * @return self
      */
@@ -743,7 +736,7 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets inf_cte_comp
      *
-     * @return \NuvemFiscal\Model\CteSefazInfCteComp|null
+     * @return \NuvemFiscal\Model\CteSefazInfCteComp[]|null
      */
     public function getInfCteComp()
     {
@@ -753,7 +746,7 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inf_cte_comp
      *
-     * @param \NuvemFiscal\Model\CteSefazInfCteComp|null $inf_cte_comp inf_cte_comp
+     * @param \NuvemFiscal\Model\CteSefazInfCteComp[]|null $inf_cte_comp inf_cte_comp
      *
      * @return self
      */
@@ -763,33 +756,6 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable inf_cte_comp cannot be null');
         }
         $this->container['inf_cte_comp'] = $inf_cte_comp;
-
-        return $this;
-    }
-
-    /**
-     * Gets inf_cte_anu
-     *
-     * @return \NuvemFiscal\Model\CteSefazInfCteAnu|null
-     */
-    public function getInfCteAnu()
-    {
-        return $this->container['inf_cte_anu'];
-    }
-
-    /**
-     * Sets inf_cte_anu
-     *
-     * @param \NuvemFiscal\Model\CteSefazInfCteAnu|null $inf_cte_anu inf_cte_anu
-     *
-     * @return self
-     */
-    public function setInfCteAnu($inf_cte_anu)
-    {
-        if (is_null($inf_cte_anu)) {
-            throw new \InvalidArgumentException('non-nullable inf_cte_anu cannot be null');
-        }
-        $this->container['inf_cte_anu'] = $inf_cte_anu;
 
         return $this;
     }

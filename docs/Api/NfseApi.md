@@ -23,7 +23,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 ## `baixarPdfNfse()`
 
 ```php
-baixarPdfNfse($id): \SplFileObject
+baixarPdfNfse($id, $logotipo, $mensagem_rodape): \SplFileObject
 ```
 
 Baixar PDF do DANFSE
@@ -51,9 +51,11 @@ $apiInstance = new NuvemFiscal\Api\NfseApi(
     $config
 );
 $id = 'id_example'; // string | ID único da NFS-e gerado pela Nuvem Fiscal.
+$logotipo = false; // bool | Imprime o documento com logotipo, desde que esteja cadastrado na empresa.
+$mensagem_rodape = 'mensagem_rodape_example'; // string | Imprime mensagem no rodapé do documento.    O caractere `|` (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * `\"esquerda\"`  * `\"esquerda|centro\"`  * `\"esquerda|centro|direita\"`  * `\"|centro\"`, `\"|centro|\"`  * `\"|centro|direita\"`  * `\"||direita\"`  * `\"esquerda||direita\"`    Default: `\"\"`
 
 try {
-    $result = $apiInstance->baixarPdfNfse($id);
+    $result = $apiInstance->baixarPdfNfse($id, $logotipo, $mensagem_rodape);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfseApi->baixarPdfNfse: ', $e->getMessage(), PHP_EOL;
@@ -65,6 +67,8 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único da NFS-e gerado pela Nuvem Fiscal. | |
+| **logotipo** | **bool**| Imprime o documento com logotipo, desde que esteja cadastrado na empresa. | [optional] [default to false] |
+| **mensagem_rodape** | **string**| Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60;    Default: &#x60;\&quot;\&quot;&#x60; | [optional] |
 
 ### Tipo do retorno
 

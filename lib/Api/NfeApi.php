@@ -1378,15 +1378,16 @@ class NfeApi
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
+     * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfe'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SplFileObject
      */
-    public function baixarPdfNfe($id, $logotipo = false, $mensagem_rodape = null, string $contentType = self::contentTypes['baixarPdfNfe'][0])
+    public function baixarPdfNfe($id, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
     {
-        list($response) = $this->baixarPdfNfeWithHttpInfo($id, $logotipo, $mensagem_rodape, $contentType);
+        list($response) = $this->baixarPdfNfeWithHttpInfo($id, $logotipo, $mensagem_rodape, $canhoto, $contentType);
         return $response;
     }
 
@@ -1398,15 +1399,16 @@ class NfeApi
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
+     * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfe'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function baixarPdfNfeWithHttpInfo($id, $logotipo = false, $mensagem_rodape = null, string $contentType = self::contentTypes['baixarPdfNfe'][0])
+    public function baixarPdfNfeWithHttpInfo($id, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
     {
-        $request = $this->baixarPdfNfeRequest($id, $logotipo, $mensagem_rodape, $contentType);
+        $request = $this->baixarPdfNfeRequest($id, $logotipo, $mensagem_rodape, $canhoto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1500,14 +1502,15 @@ class NfeApi
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
+     * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPdfNfeAsync($id, $logotipo = false, $mensagem_rodape = null, string $contentType = self::contentTypes['baixarPdfNfe'][0])
+    public function baixarPdfNfeAsync($id, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
     {
-        return $this->baixarPdfNfeAsyncWithHttpInfo($id, $logotipo, $mensagem_rodape, $contentType)
+        return $this->baixarPdfNfeAsyncWithHttpInfo($id, $logotipo, $mensagem_rodape, $canhoto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1523,15 +1526,16 @@ class NfeApi
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
+     * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPdfNfeAsyncWithHttpInfo($id, $logotipo = false, $mensagem_rodape = null, string $contentType = self::contentTypes['baixarPdfNfe'][0])
+    public function baixarPdfNfeAsyncWithHttpInfo($id, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->baixarPdfNfeRequest($id, $logotipo, $mensagem_rodape, $contentType);
+        $request = $this->baixarPdfNfeRequest($id, $logotipo, $mensagem_rodape, $canhoto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1575,12 +1579,13 @@ class NfeApi
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
+     * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function baixarPdfNfeRequest($id, $logotipo = false, $mensagem_rodape = null, string $contentType = self::contentTypes['baixarPdfNfe'][0])
+    public function baixarPdfNfeRequest($id, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -1589,6 +1594,7 @@ class NfeApi
                 'Missing the required parameter $id when calling baixarPdfNfe'
             );
         }
+
 
 
 
@@ -1614,6 +1620,15 @@ class NfeApi
             $mensagem_rodape,
             'mensagem_rodape', // param base name
             'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $canhoto,
+            'canhoto', // param base name
+            'boolean', // openApiType
             '', // style
             false, // explode
             false // required

@@ -56,6 +56,7 @@ class EmpresaConfigCte implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'crt' => 'int',
         'ambiente' => 'string'
     ];
 
@@ -67,6 +68,7 @@ class EmpresaConfigCte implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'crt' => null,
         'ambiente' => null
     ];
 
@@ -76,7 +78,8 @@ class EmpresaConfigCte implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ambiente' => false
+        'crt' => false,
+		'ambiente' => false
     ];
 
     /**
@@ -165,6 +168,7 @@ class EmpresaConfigCte implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'crt' => 'CRT',
         'ambiente' => 'ambiente'
     ];
 
@@ -174,6 +178,7 @@ class EmpresaConfigCte implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'crt' => 'setCrt',
         'ambiente' => 'setAmbiente'
     ];
 
@@ -183,6 +188,7 @@ class EmpresaConfigCte implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'crt' => 'getCrt',
         'ambiente' => 'getAmbiente'
     ];
 
@@ -258,6 +264,7 @@ class EmpresaConfigCte implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('crt', $data ?? [], null);
         $this->setIfExists('ambiente', $data ?? [], null);
     }
 
@@ -314,6 +321,33 @@ class EmpresaConfigCte implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets crt
+     *
+     * @return int|null
+     */
+    public function getCrt()
+    {
+        return $this->container['crt'];
+    }
+
+    /**
+     * Sets crt
+     *
+     * @param int|null $crt Código de Regime Tributário.  Este campo será preenchido com:  * 1 – Simples Nacional;  * 2 – Simples Nacional – excesso de sublimite de receita bruta;  * 3 – Regime Normal;  * 4 - Simples Nacional - Microempreendedor Individual (MEI).
+     *
+     * @return self
+     */
+    public function setCrt($crt)
+    {
+        if (is_null($crt)) {
+            throw new \InvalidArgumentException('non-nullable crt cannot be null');
+        }
+        $this->container['crt'] = $crt;
+
+        return $this;
+    }
 
     /**
      * Gets ambiente

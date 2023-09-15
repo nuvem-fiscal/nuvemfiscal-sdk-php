@@ -365,7 +365,7 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cnpj
      *
-     * @param string|null $cnpj Número do CNPJ do emitente.  Obrigatório caso o emitente seja pessoa jurídica.
+     * @param string|null $cnpj Número do CNPJ do emitente.    ***Obrigatório caso o emitente seja pessoa jurídica***.
      *
      * @return self
      */
@@ -392,7 +392,7 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cpf
      *
-     * @param string|null $cpf Número do CPF do emitente.  Obrigatorio caso o emitente seja pessoa física.
+     * @param string|null $cpf Número do CPF do emitente.    ***Obrigatorio caso o emitente seja pessoa física***.
      *
      * @return self
      */
@@ -419,7 +419,7 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_nome
      *
-     * @param string|null $x_nome Razão Social ou Nome do emitente.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_nome Razão Social ou Nome do emitente.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -446,7 +446,7 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_fant
      *
-     * @param string|null $x_fant Nome fantasia.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_fant Nome fantasia.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -500,7 +500,7 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ie
      *
-     * @param string|null $ie Inscrição Estadual do Emitente.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $ie Inscrição Estadual do Emitente.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -527,7 +527,7 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets iest
      *
-     * @param string|null $iest Inscricao Estadual do Substituto Tributário.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $iest Inscricao Estadual do Substituto Tributário.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -554,7 +554,7 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets im
      *
-     * @param string|null $im Inscrição Municipal.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $im Inscrição Municipal.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -581,7 +581,7 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cnae
      *
-     * @param string|null $cnae CNAE Fiscal.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $cnae CNAE Fiscal.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -608,7 +608,7 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets crt
      *
-     * @param int|null $crt Código de Regime Tributário.  Este campo será obrigatoriamente preenchido com:  * 1 - Simples Nacional  * 2 - Simples Nacional - excesso de sublimite de receita bruta  * 3 - Regime Normal  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param int|null $crt Código de Regime Tributário.  Este campo será obrigatoriamente preenchido com:  * 1 - Simples Nacional  * 2 - Simples Nacional - excesso de sublimite de receita bruta  * 3 - Regime Normal    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */

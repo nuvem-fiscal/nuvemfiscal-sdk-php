@@ -302,7 +302,7 @@ class MdfeSefazInfMDFeSupl implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets qr_cod_mdfe
      *
-     * @param string|null $qr_cod_mdfe Texto com o QR-Code para consulta do MDF-e.  Geramos automaticamente quando nenhum valor é informado.
+     * @param string|null $qr_cod_mdfe Texto com o QR-Code para consulta do MDF-e.    *Geramos automaticamente quando nenhum valor é informado.*
      *
      * @return self
      */

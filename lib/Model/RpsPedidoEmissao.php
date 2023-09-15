@@ -78,7 +78,7 @@ class RpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'referencia' => null,
         'data_emissao' => 'date-time',
-        'competencia' => 'date',
+        'competencia' => 'date-time',
         'natureza_tributacao' => null,
         'prestador' => null,
         'tomador' => null,

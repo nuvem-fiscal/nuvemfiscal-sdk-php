@@ -302,7 +302,7 @@ class CteSefazInfCTeSupl implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets qr_cod_cte
      *
-     * @param string|null $qr_cod_cte Texto com o QR-Code impresso no DACTE.  Geramos automaticamente quando nenhum valor é informado.
+     * @param string|null $qr_cod_cte Texto com o QR-Code impresso no DACTE.    *Geramos automaticamente quando nenhum valor é informado.*
      *
      * @return self
      */

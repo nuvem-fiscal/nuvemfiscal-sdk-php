@@ -535,7 +535,7 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_nf
      *
-     * @param string|null $c_nf Código numérico que compõe a Chave de Acesso. Número aleatório gerado pelo emitente para cada NF-e.  Geramos automaticamente quando nenhum valor é informado.
+     * @param string|null $c_nf Código numérico que compõe a Chave de Acesso. Número aleatório gerado pelo emitente para cada NF-e.    *Geramos automaticamente quando nenhum valor é informado.*
      *
      * @return self
      */
@@ -859,7 +859,7 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_dv
      *
-     * @param int|null $c_dv Digito Verificador da Chave de Acesso da NF-e.  Geramos automaticamente quando nenhum valor é informado.
+     * @param int|null $c_dv Digito Verificador da Chave de Acesso da NF-e.    *Geramos automaticamente quando nenhum valor é informado.*
      *
      * @return self
      */

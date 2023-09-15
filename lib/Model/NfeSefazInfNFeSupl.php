@@ -309,7 +309,7 @@ class NfeSefazInfNFeSupl implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets qr_code
      *
-     * @param string|null $qr_code Texto com o QR-Code impresso no DANFE NFC-e.  Geramos automaticamente quando nenhum valor é informado.
+     * @param string|null $qr_code Texto com o QR-Code impresso no DANFE NFC-e.    *Geramos automaticamente quando nenhum valor é informado.*
      *
      * @return self
      */
@@ -336,7 +336,7 @@ class NfeSefazInfNFeSupl implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets url_chave
      *
-     * @param string|null $url_chave Informar a URL da \"Consulta por chave de acesso da NFC-e\". A mesma URL que deve estar informada no DANFE NFC-e para consulta por chave de acesso.  Geramos automaticamente quando nenhum valor é informado.
+     * @param string|null $url_chave Informar a URL da \"Consulta por chave de acesso da NFC-e\". A mesma URL que deve estar informada no DANFE NFC-e para consulta por chave de acesso.    *Geramos automaticamente quando nenhum valor é informado.*
      *
      * @return self
      */

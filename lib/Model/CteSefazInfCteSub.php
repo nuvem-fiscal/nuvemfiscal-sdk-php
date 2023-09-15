@@ -58,8 +58,6 @@ class CteSefazInfCteSub implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'ch_cte' => 'string',
-        'ref_cte_anu' => 'string',
-        'toma_icms' => '\NuvemFiscal\Model\CteSefazTomaICMS',
         'ind_altera_toma' => 'int'
     ];
 
@@ -72,8 +70,6 @@ class CteSefazInfCteSub implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPIFormats = [
         'ch_cte' => null,
-        'ref_cte_anu' => null,
-        'toma_icms' => null,
         'ind_altera_toma' => null
     ];
 
@@ -84,8 +80,6 @@ class CteSefazInfCteSub implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPINullables = [
         'ch_cte' => false,
-		'ref_cte_anu' => false,
-		'toma_icms' => false,
 		'ind_altera_toma' => false
     ];
 
@@ -176,8 +170,6 @@ class CteSefazInfCteSub implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $attributeMap = [
         'ch_cte' => 'chCte',
-        'ref_cte_anu' => 'refCteAnu',
-        'toma_icms' => 'tomaICMS',
         'ind_altera_toma' => 'indAlteraToma'
     ];
 
@@ -188,8 +180,6 @@ class CteSefazInfCteSub implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $setters = [
         'ch_cte' => 'setChCte',
-        'ref_cte_anu' => 'setRefCteAnu',
-        'toma_icms' => 'setTomaIcms',
         'ind_altera_toma' => 'setIndAlteraToma'
     ];
 
@@ -200,8 +190,6 @@ class CteSefazInfCteSub implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $getters = [
         'ch_cte' => 'getChCte',
-        'ref_cte_anu' => 'getRefCteAnu',
-        'toma_icms' => 'getTomaIcms',
         'ind_altera_toma' => 'getIndAlteraToma'
     ];
 
@@ -263,8 +251,6 @@ class CteSefazInfCteSub implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function __construct(array $data = null)
     {
         $this->setIfExists('ch_cte', $data ?? [], null);
-        $this->setIfExists('ref_cte_anu', $data ?? [], null);
-        $this->setIfExists('toma_icms', $data ?? [], null);
         $this->setIfExists('ind_altera_toma', $data ?? [], null);
     }
 
@@ -336,60 +322,6 @@ class CteSefazInfCteSub implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable ch_cte cannot be null');
         }
         $this->container['ch_cte'] = $ch_cte;
-
-        return $this;
-    }
-
-    /**
-     * Gets ref_cte_anu
-     *
-     * @return string|null
-     */
-    public function getRefCteAnu()
-    {
-        return $this->container['ref_cte_anu'];
-    }
-
-    /**
-     * Sets ref_cte_anu
-     *
-     * @param string|null $ref_cte_anu Chave de acesso do CT-e de Anulação.
-     *
-     * @return self
-     */
-    public function setRefCteAnu($ref_cte_anu)
-    {
-        if (is_null($ref_cte_anu)) {
-            throw new \InvalidArgumentException('non-nullable ref_cte_anu cannot be null');
-        }
-        $this->container['ref_cte_anu'] = $ref_cte_anu;
-
-        return $this;
-    }
-
-    /**
-     * Gets toma_icms
-     *
-     * @return \NuvemFiscal\Model\CteSefazTomaICMS|null
-     */
-    public function getTomaIcms()
-    {
-        return $this->container['toma_icms'];
-    }
-
-    /**
-     * Sets toma_icms
-     *
-     * @param \NuvemFiscal\Model\CteSefazTomaICMS|null $toma_icms toma_icms
-     *
-     * @return self
-     */
-    public function setTomaIcms($toma_icms)
-    {
-        if (is_null($toma_icms)) {
-            throw new \InvalidArgumentException('non-nullable toma_icms cannot be null');
-        }
-        $this->container['toma_icms'] = $toma_icms;
 
         return $this;
     }

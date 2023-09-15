@@ -337,7 +337,7 @@ class MdfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cnpj
      *
-     * @param string|null $cnpj CNPJ do emitente.  Informar zeros não significativos.  Obrigatório caso o emitente seja pessoa jurídica.
+     * @param string|null $cnpj CNPJ do emitente.  Informar zeros não significativos.    ***Obrigatório caso o emitente seja pessoa jurídica***.
      *
      * @return self
      */
@@ -364,7 +364,7 @@ class MdfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cpf
      *
-     * @param string|null $cpf CPF do emitente.  Informar zeros não significativos.  Usar com série específica 920-969 para emitente pessoa física com inscrição estadual.  Poderá ser usado também para emissão do Regime Especial da Nota Fiscal Fácil.  Obrigatorio caso o emitente seja pessoa física.
+     * @param string|null $cpf CPF do emitente.  Informar zeros não significativos.  Usar com série específica 920-969 para emitente pessoa física com inscrição estadual.  Poderá ser usado também para emissão do Regime Especial da Nota Fiscal Fácil.    ***Obrigatorio caso o emitente seja pessoa física***.
      *
      * @return self
      */
@@ -391,7 +391,7 @@ class MdfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ie
      *
-     * @param string|null $ie Inscrição Estadual do emitemte.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $ie Inscrição Estadual do emitemte.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -418,7 +418,7 @@ class MdfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_nome
      *
-     * @param string|null $x_nome Razão social ou Nome do emitente.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_nome Razão social ou Nome do emitente.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -445,7 +445,7 @@ class MdfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_fant
      *
-     * @param string|null $x_fant Nome fantasia do emitente.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_fant Nome fantasia do emitente.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */

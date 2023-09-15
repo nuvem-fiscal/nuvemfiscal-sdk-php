@@ -632,7 +632,7 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_ct
      *
-     * @param string|null $c_ct Código numérico que compõe a Chave de Acesso.  Número aleatório gerado pelo emitente para cada CT-e, com o objetivo de evitar acessos indevidos ao documento.  Geramos automaticamente quando nenhum valor é informado.
+     * @param string|null $c_ct Código numérico que compõe a Chave de Acesso.  Número aleatório gerado pelo emitente para cada CT-e, com o objetivo de evitar acessos indevidos ao documento.    *Geramos automaticamente quando nenhum valor é informado.*
      *
      * @return self
      */
@@ -875,7 +875,7 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_dv
      *
-     * @param int|null $c_dv Digito Verificador da chave de acesso do CT-e.  Informar o dígito  de controle da chave de acesso do CT-e, que deve ser calculado com a aplicação do algoritmo módulo 11 (base 2,9) da chave de acesso.  Geramos automaticamente quando nenhum valor é informado.
+     * @param int|null $c_dv Digito Verificador da chave de acesso do CT-e.  Informar o dígito  de controle da chave de acesso do CT-e, que deve ser calculado com a aplicação do algoritmo módulo 11 (base 2,9) da chave de acesso.    *Geramos automaticamente quando nenhum valor é informado.*
      *
      * @return self
      */
@@ -929,7 +929,7 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_cte
      *
-     * @param int $tp_cte Tipo do CT-e.  Preencher com:  * 0 - CT-e Normal  * 1 - CT-e de Complemento de Valores  * 2 - CT-e de Anulação  * 3 - CT-e de Substituição
+     * @param int $tp_cte Tipo do CT-e.  Preencher com:  * 0 - CT-e Normal  * 1 - CT-e de Complemento de Valores  * 3 - CT-e de Substituição
      *
      * @return self
      */

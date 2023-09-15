@@ -34,7 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazEndeEmi Class Doc Comment
  *
  * @category Class
- * @description Endereço do emitente.  Caso não seja informado, será utilizado o do cadastro da empresa.
+ * @description Endereço do emitente.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -365,7 +365,7 @@ class MdfeSefazEndeEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_lgr
      *
-     * @param string|null $x_lgr Logradouro.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_lgr Logradouro.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -392,7 +392,7 @@ class MdfeSefazEndeEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets nro
      *
-     * @param string|null $nro Número.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $nro Número.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -419,7 +419,7 @@ class MdfeSefazEndeEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_cpl
      *
-     * @param string|null $x_cpl Complemento.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_cpl Complemento.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -446,7 +446,7 @@ class MdfeSefazEndeEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_bairro
      *
-     * @param string|null $x_bairro Bairro.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_bairro Bairro.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -473,7 +473,7 @@ class MdfeSefazEndeEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_mun
      *
-     * @param string|null $c_mun Código do município (utilizar a tabela do IBGE), informar 9999999 para operações com o exterior.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $c_mun Código do município (utilizar a tabela do IBGE), informar 9999999 para operações com o exterior.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -500,7 +500,7 @@ class MdfeSefazEndeEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_mun
      *
-     * @param string|null $x_mun Nome do município, , informar EXTERIOR para operações com o exterior.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_mun Nome do município, , informar EXTERIOR para operações com o exterior.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -527,7 +527,7 @@ class MdfeSefazEndeEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cep
      *
-     * @param string|null $cep CEP.  Informar zeros não significativos.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $cep CEP.  Informar zeros não significativos.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -554,7 +554,7 @@ class MdfeSefazEndeEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets uf
      *
-     * @param string|null $uf Sigla da UF, , informar EX para operações com o exterior.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $uf Sigla da UF, , informar EX para operações com o exterior.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -581,7 +581,7 @@ class MdfeSefazEndeEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fone
      *
-     * @param string|null $fone Telefone.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $fone Telefone.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */

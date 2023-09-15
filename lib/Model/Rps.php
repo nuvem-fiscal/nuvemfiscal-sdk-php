@@ -76,7 +76,7 @@ class Rps implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'rps' => null,
-        'competencia' => 'date',
+        'competencia' => 'date-time',
         'natureza_tributacao' => null,
         'prestador' => null,
         'tomador' => null,

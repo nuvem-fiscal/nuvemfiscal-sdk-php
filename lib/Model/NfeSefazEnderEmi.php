@@ -34,7 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazEnderEmi Class Doc Comment
  *
  * @category Class
- * @description Endereço do emitente.  Caso não seja informado, será utilizado o do cadastro da empresa.
+ * @description Endereço do emitente.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -372,7 +372,7 @@ class NfeSefazEnderEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_lgr
      *
-     * @param string|null $x_lgr Logradouro.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_lgr Logradouro.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -399,7 +399,7 @@ class NfeSefazEnderEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets nro
      *
-     * @param string|null $nro Número.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $nro Número.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -426,7 +426,7 @@ class NfeSefazEnderEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_cpl
      *
-     * @param string|null $x_cpl Complemento.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_cpl Complemento.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -453,7 +453,7 @@ class NfeSefazEnderEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_bairro
      *
-     * @param string|null $x_bairro Bairro.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_bairro Bairro.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -480,7 +480,7 @@ class NfeSefazEnderEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_mun
      *
-     * @param string|null $c_mun Código do município.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $c_mun Código do município.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -507,7 +507,7 @@ class NfeSefazEnderEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_mun
      *
-     * @param string|null $x_mun Nome do município.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_mun Nome do município.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -534,7 +534,7 @@ class NfeSefazEnderEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets uf
      *
-     * @param string|null $uf Sigla da UF.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $uf Sigla da UF.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -561,7 +561,7 @@ class NfeSefazEnderEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cep
      *
-     * @param string|null $cep CEP - NT 2011/004.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $cep CEP - NT 2011/004.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -588,7 +588,7 @@ class NfeSefazEnderEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_pais
      *
-     * @param string|null $c_pais Código do país.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $c_pais Código do país.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -615,7 +615,7 @@ class NfeSefazEnderEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_pais
      *
-     * @param string|null $x_pais Nome do país.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_pais Nome do país.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -642,7 +642,7 @@ class NfeSefazEnderEmi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fone
      *
-     * @param string|null $fone Preencher com Código DDD + número do telefone (v.2.0).  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $fone Preencher com Código DDD + número do telefone (v.2.0).    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */

@@ -351,7 +351,7 @@ class CteSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cnpj
      *
-     * @param string|null $cnpj CNPJ do emitente.  Informar zeros não significativos.  Obrigatório caso o emitente seja pessoa jurídica.
+     * @param string|null $cnpj CNPJ do emitente.  Informar zeros não significativos.    ***Obrigatório caso o emitente seja pessoa jurídica***.
      *
      * @return self
      */
@@ -378,7 +378,7 @@ class CteSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cpf
      *
-     * @param string|null $cpf CPF do emitente.  Informar zeros não significativos.  Usar com série específica 920-969 para emitente pessoa física com inscrição estadual.  Obrigatorio caso o emitente seja pessoa física.
+     * @param string|null $cpf CPF do emitente.  Informar zeros não significativos.  Usar com série específica 920-969 para emitente pessoa física com inscrição estadual.    ***Obrigatorio caso o emitente seja pessoa física***.
      *
      * @return self
      */
@@ -405,7 +405,7 @@ class CteSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ie
      *
-     * @param string|null $ie Inscrição Estadual do Emitente.  A IE do emitente somente ficará sem informação para o caso do Regime Especial da NFF (tpEmis=3).  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $ie Inscrição Estadual do Emitente.  A IE do emitente somente ficará sem informação para o caso do Regime Especial da NFF (tpEmis=3).    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -459,7 +459,7 @@ class CteSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_nome
      *
-     * @param string|null $x_nome Razão social ou Nome do emitente.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_nome Razão social ou Nome do emitente.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -486,7 +486,7 @@ class CteSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_fant
      *
-     * @param string|null $x_fant Nome fantasia.  Caso não seja informado, será utilizado o do cadastro da empresa.
+     * @param string|null $x_fant Nome fantasia.    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */
@@ -540,7 +540,7 @@ class CteSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets crt
      *
-     * @param int|null $crt Código do Regime Tributário.  Informar: 1=Simples Nacional  * 2 - Simples Nacional, excesso sublimite de receita bruta  * 3 - Regime Normal
+     * @param int|null $crt Código do Regime Tributário. Informar:  * 1 - Simples Nacional;  * 2 - Simples Nacional, excesso sublimite de receita bruta;  * 3 - Regime Normal;  * 4 - Simples Nacional - Microempreendedor Individual (MEI).    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */

@@ -4,7 +4,7 @@
 
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
-**versao** | **string** | Versão do leiaute.  Ex: \&quot;3.00\&quot;. |
+**versao** | **string** | Versão do leiaute.  Ex: \&quot;4.00\&quot;. |
 **id** | **string** | Identificador da tag a ser assinada.  Informar a chave de acesso do CT-e e precedida do literal \&quot;CTe\&quot;. | [optional]
 **ide** | [**\NuvemFiscal\Model\CteSefazIde**](CteSefazIde.md) |  |
 **compl** | [**\NuvemFiscal\Model\CteSefazCompl**](CteSefazCompl.md) |  | [optional]
@@ -16,8 +16,7 @@ Nome | Tipo | Descrição | Comentários
 **v_prest** | [**\NuvemFiscal\Model\CteSefazVPrest**](CteSefazVPrest.md) |  |
 **imp** | [**\NuvemFiscal\Model\CteSefazInfCteImp**](CteSefazInfCteImp.md) |  |
 **inf_cte_norm** | [**\NuvemFiscal\Model\CteSefazInfCTeNorm**](CteSefazInfCTeNorm.md) |  | [optional]
-**inf_cte_comp** | [**\NuvemFiscal\Model\CteSefazInfCteComp**](CteSefazInfCteComp.md) |  | [optional]
-**inf_cte_anu** | [**\NuvemFiscal\Model\CteSefazInfCteAnu**](CteSefazInfCteAnu.md) |  | [optional]
+**inf_cte_comp** | [**\NuvemFiscal\Model\CteSefazInfCteComp[]**](CteSefazInfCteComp.md) |  | [optional]
 **aut_xml** | [**\NuvemFiscal\Model\CteSefazAutXML[]**](CteSefazAutXML.md) |  | [optional]
 **inf_resp_tec** | [**\NuvemFiscal\Model\CteSefazRespTec**](CteSefazRespTec.md) |  | [optional]
 **inf_solic_nff** | [**\NuvemFiscal\Model\CteSefazInfSolicNFF**](CteSefazInfSolicNFF.md) |  | [optional]

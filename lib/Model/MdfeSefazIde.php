@@ -667,7 +667,7 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_mdf
      *
-     * @param string|null $c_mdf Código numérico que compõe a Chave de Acesso.  Código aleatório gerado pelo emitente, com o objetivo de evitar acessos indevidos ao documento.  Geramos automaticamente quando nenhum valor é informado.
+     * @param string|null $c_mdf Código numérico que compõe a Chave de Acesso.  Código aleatório gerado pelo emitente, com o objetivo de evitar acessos indevidos ao documento.    *Geramos automaticamente quando nenhum valor é informado.*
      *
      * @return self
      */
@@ -694,7 +694,7 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_dv
      *
-     * @param int|null $c_dv Digito verificador da chave de acesso do Manifesto.  Informar o dígito  de controle da chave de acesso do MDF-e, que deve ser calculado com a aplicação do algoritmo módulo 11 (base 2,9) da chave de acesso.  Geramos automaticamente quando nenhum valor é informado.
+     * @param int|null $c_dv Digito verificador da chave de acesso do Manifesto.  Informar o dígito  de controle da chave de acesso do MDF-e, que deve ser calculado com a aplicação do algoritmo módulo 11 (base 2,9) da chave de acesso.    *Geramos automaticamente quando nenhum valor é informado.*
      *
      * @return self
      */
