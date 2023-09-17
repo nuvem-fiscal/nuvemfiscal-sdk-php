@@ -99,17 +99,17 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ch_nfse' => false,
-		'ch_nfe' => false,
+        'ch_nfse' => true,
+		'ch_nfe' => true,
 		'nfse_mun' => false,
 		'nfnfs' => false,
-		'n_doc_fisc' => false,
-		'n_doc' => false,
-		'tp_ded_red' => false,
-		'x_desc_out_ded' => false,
-		'dt_emi_doc' => false,
-		'v_dedutivel_redutivel' => false,
-		'v_deducao_reducao' => false,
+		'n_doc_fisc' => true,
+		'n_doc' => true,
+		'tp_ded_red' => true,
+		'x_desc_out_ded' => true,
+		'dt_emi_doc' => true,
+		'v_dedutivel_redutivel' => true,
+		'v_deducao_reducao' => true,
 		'fornec' => false
     ];
 
@@ -398,7 +398,14 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setChNfse($ch_nfse)
     {
         if (is_null($ch_nfse)) {
-            throw new \InvalidArgumentException('non-nullable ch_nfse cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ch_nfse');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ch_nfse', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ch_nfse'] = $ch_nfse;
 
@@ -425,7 +432,14 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setChNfe($ch_nfe)
     {
         if (is_null($ch_nfe)) {
-            throw new \InvalidArgumentException('non-nullable ch_nfe cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ch_nfe');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ch_nfe', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ch_nfe'] = $ch_nfe;
 
@@ -506,7 +520,14 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNDocFisc($n_doc_fisc)
     {
         if (is_null($n_doc_fisc)) {
-            throw new \InvalidArgumentException('non-nullable n_doc_fisc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_doc_fisc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_doc_fisc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_doc_fisc'] = $n_doc_fisc;
 
@@ -533,7 +554,14 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNDoc($n_doc)
     {
         if (is_null($n_doc)) {
-            throw new \InvalidArgumentException('non-nullable n_doc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_doc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_doc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_doc'] = $n_doc;
 
@@ -560,7 +588,14 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpDedRed($tp_ded_red)
     {
         if (is_null($tp_ded_red)) {
-            throw new \InvalidArgumentException('non-nullable tp_ded_red cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_ded_red');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_ded_red', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_ded_red'] = $tp_ded_red;
 
@@ -587,7 +622,14 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXDescOutDed($x_desc_out_ded)
     {
         if (is_null($x_desc_out_ded)) {
-            throw new \InvalidArgumentException('non-nullable x_desc_out_ded cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_desc_out_ded');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_desc_out_ded', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_desc_out_ded'] = $x_desc_out_ded;
 
@@ -614,7 +656,14 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDtEmiDoc($dt_emi_doc)
     {
         if (is_null($dt_emi_doc)) {
-            throw new \InvalidArgumentException('non-nullable dt_emi_doc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dt_emi_doc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dt_emi_doc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dt_emi_doc'] = $dt_emi_doc;
 
@@ -641,7 +690,14 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVDedutivelRedutivel($v_dedutivel_redutivel)
     {
         if (is_null($v_dedutivel_redutivel)) {
-            throw new \InvalidArgumentException('non-nullable v_dedutivel_redutivel cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_dedutivel_redutivel');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_dedutivel_redutivel', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_dedutivel_redutivel'] = $v_dedutivel_redutivel;
 
@@ -668,7 +724,14 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVDeducaoReducao($v_deducao_reducao)
     {
         if (is_null($v_deducao_reducao)) {
-            throw new \InvalidArgumentException('non-nullable v_deducao_reducao cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_deducao_reducao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_deducao_reducao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_deducao_reducao'] = $v_deducao_reducao;
 

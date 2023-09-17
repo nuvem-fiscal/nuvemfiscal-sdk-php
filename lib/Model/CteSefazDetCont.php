@@ -81,7 +81,7 @@ class CteSefazDetCont implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_cont' => false,
+        'n_cont' => true,
 		'lacre' => false,
 		'inf_doc' => false
     ];
@@ -326,7 +326,14 @@ class CteSefazDetCont implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNCont($n_cont)
     {
         if (is_null($n_cont)) {
-            throw new \InvalidArgumentException('non-nullable n_cont cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_cont');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_cont', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_cont'] = $n_cont;
 

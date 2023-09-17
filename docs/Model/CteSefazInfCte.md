@@ -5,7 +5,7 @@
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
 **versao** | **string** | Versão do leiaute.  Ex: \&quot;4.00\&quot;. |
-**id** | **string** | Identificador da tag a ser assinada.  Informar a chave de acesso do CT-e e precedida do literal \&quot;CTe\&quot;. | [optional]
+**id** | **string** | Identificador da tag a ser assinada.  Informar a chave de acesso do CT-e e precedida do literal \&quot;CTe\&quot;.    *Geramos automaticamente quando nenhum valor é informado.* | [optional]
 **ide** | [**\NuvemFiscal\Model\CteSefazIde**](CteSefazIde.md) |  |
 **compl** | [**\NuvemFiscal\Model\CteSefazCompl**](CteSefazCompl.md) |  | [optional]
 **emit** | [**\NuvemFiscal\Model\CteSefazEmit**](CteSefazEmit.md) |  |

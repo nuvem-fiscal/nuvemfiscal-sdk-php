@@ -85,8 +85,8 @@ class TribTotal implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'v_tot_trib' => false,
 		'p_tot_trib' => false,
-		'ind_tot_trib' => false,
-		'p_tot_trib_sn' => false
+		'ind_tot_trib' => true,
+		'p_tot_trib_sn' => true
     ];
 
     /**
@@ -384,7 +384,14 @@ class TribTotal implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIndTotTrib($ind_tot_trib)
     {
         if (is_null($ind_tot_trib)) {
-            throw new \InvalidArgumentException('non-nullable ind_tot_trib cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ind_tot_trib');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_tot_trib', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ind_tot_trib'] = $ind_tot_trib;
 
@@ -411,7 +418,14 @@ class TribTotal implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPTotTribSn($p_tot_trib_sn)
     {
         if (is_null($p_tot_trib_sn)) {
-            throw new \InvalidArgumentException('non-nullable p_tot_trib_sn cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_tot_trib_sn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_tot_trib_sn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_tot_trib_sn'] = $p_tot_trib_sn;
 

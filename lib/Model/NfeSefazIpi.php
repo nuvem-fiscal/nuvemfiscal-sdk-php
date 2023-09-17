@@ -86,10 +86,10 @@ class NfeSefazIpi implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cnpj_prod' => false,
-		'c_selo' => false,
-		'q_selo' => false,
-		'c_enq' => false,
+        'cnpj_prod' => true,
+		'c_selo' => true,
+		'q_selo' => true,
+		'c_enq' => true,
 		'ipi_trib' => false,
 		'ipint' => false
     ];
@@ -346,7 +346,14 @@ class NfeSefazIpi implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCnpjProd($cnpj_prod)
     {
         if (is_null($cnpj_prod)) {
-            throw new \InvalidArgumentException('non-nullable cnpj_prod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnpj_prod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj_prod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnpj_prod'] = $cnpj_prod;
 
@@ -373,7 +380,14 @@ class NfeSefazIpi implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCSelo($c_selo)
     {
         if (is_null($c_selo)) {
-            throw new \InvalidArgumentException('non-nullable c_selo cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_selo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_selo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_selo'] = $c_selo;
 
@@ -400,7 +414,14 @@ class NfeSefazIpi implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQSelo($q_selo)
     {
         if (is_null($q_selo)) {
-            throw new \InvalidArgumentException('non-nullable q_selo cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_selo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_selo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_selo'] = $q_selo;
 
@@ -427,7 +448,14 @@ class NfeSefazIpi implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCEnq($c_enq)
     {
         if (is_null($c_enq)) {
-            throw new \InvalidArgumentException('non-nullable c_enq cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_enq');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_enq', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_enq'] = $c_enq;
 

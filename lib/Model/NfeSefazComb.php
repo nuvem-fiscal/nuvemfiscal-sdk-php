@@ -101,18 +101,18 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'c_prod_anp' => false,
-		'desc_anp' => false,
-		'p_glp' => false,
-		'p_gnn' => false,
-		'p_gni' => false,
-		'v_part' => false,
-		'codif' => false,
-		'q_temp' => false,
-		'uf_cons' => false,
+        'c_prod_anp' => true,
+		'desc_anp' => true,
+		'p_glp' => true,
+		'p_gnn' => true,
+		'p_gni' => true,
+		'v_part' => true,
+		'codif' => true,
+		'q_temp' => true,
+		'uf_cons' => true,
 		'cide' => false,
 		'encerrante' => false,
-		'p_bio' => false,
+		'p_bio' => true,
 		'orig_comb' => false
     ];
 
@@ -402,7 +402,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCProdAnp($c_prod_anp)
     {
         if (is_null($c_prod_anp)) {
-            throw new \InvalidArgumentException('non-nullable c_prod_anp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_prod_anp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_prod_anp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_prod_anp'] = $c_prod_anp;
 
@@ -429,7 +436,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDescAnp($desc_anp)
     {
         if (is_null($desc_anp)) {
-            throw new \InvalidArgumentException('non-nullable desc_anp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'desc_anp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('desc_anp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['desc_anp'] = $desc_anp;
 
@@ -456,7 +470,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPGlp($p_glp)
     {
         if (is_null($p_glp)) {
-            throw new \InvalidArgumentException('non-nullable p_glp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_glp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_glp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_glp'] = $p_glp;
 
@@ -483,7 +504,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPGnn($p_gnn)
     {
         if (is_null($p_gnn)) {
-            throw new \InvalidArgumentException('non-nullable p_gnn cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_gnn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_gnn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_gnn'] = $p_gnn;
 
@@ -510,7 +538,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPGni($p_gni)
     {
         if (is_null($p_gni)) {
-            throw new \InvalidArgumentException('non-nullable p_gni cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_gni');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_gni', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_gni'] = $p_gni;
 
@@ -537,7 +572,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVPart($v_part)
     {
         if (is_null($v_part)) {
-            throw new \InvalidArgumentException('non-nullable v_part cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_part');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_part', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_part'] = $v_part;
 
@@ -564,7 +606,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCodif($codif)
     {
         if (is_null($codif)) {
-            throw new \InvalidArgumentException('non-nullable codif cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'codif');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('codif', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['codif'] = $codif;
 
@@ -591,7 +640,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQTemp($q_temp)
     {
         if (is_null($q_temp)) {
-            throw new \InvalidArgumentException('non-nullable q_temp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_temp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_temp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_temp'] = $q_temp;
 
@@ -618,7 +674,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUfCons($uf_cons)
     {
         if (is_null($uf_cons)) {
-            throw new \InvalidArgumentException('non-nullable uf_cons cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'uf_cons');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uf_cons', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['uf_cons'] = $uf_cons;
 
@@ -699,7 +762,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPBio($p_bio)
     {
         if (is_null($p_bio)) {
-            throw new \InvalidArgumentException('non-nullable p_bio cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_bio');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_bio', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_bio'] = $p_bio;
 

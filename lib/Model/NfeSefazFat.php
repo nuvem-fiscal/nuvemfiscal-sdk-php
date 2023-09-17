@@ -83,10 +83,10 @@ class NfeSefazFat implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_fat' => false,
-		'v_orig' => false,
-		'v_desc' => false,
-		'v_liq' => false
+        'n_fat' => true,
+		'v_orig' => true,
+		'v_desc' => true,
+		'v_liq' => true
     ];
 
     /**
@@ -330,7 +330,14 @@ class NfeSefazFat implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNFat($n_fat)
     {
         if (is_null($n_fat)) {
-            throw new \InvalidArgumentException('non-nullable n_fat cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_fat');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_fat', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_fat'] = $n_fat;
 
@@ -357,7 +364,14 @@ class NfeSefazFat implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVOrig($v_orig)
     {
         if (is_null($v_orig)) {
-            throw new \InvalidArgumentException('non-nullable v_orig cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_orig');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_orig', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_orig'] = $v_orig;
 
@@ -384,7 +398,14 @@ class NfeSefazFat implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVDesc($v_desc)
     {
         if (is_null($v_desc)) {
-            throw new \InvalidArgumentException('non-nullable v_desc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_desc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_desc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_desc'] = $v_desc;
 
@@ -411,7 +432,14 @@ class NfeSefazFat implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVLiq($v_liq)
     {
         if (is_null($v_liq)) {
-            throw new \InvalidArgumentException('non-nullable v_liq cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_liq');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_liq', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_liq'] = $v_liq;
 

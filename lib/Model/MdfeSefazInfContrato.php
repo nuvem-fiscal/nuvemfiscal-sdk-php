@@ -79,8 +79,8 @@ class MdfeSefazInfContrato implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'nro_contrato' => false,
-		'v_contrato_global' => false
+        'nro_contrato' => true,
+		'v_contrato_global' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class MdfeSefazInfContrato implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setNroContrato($nro_contrato)
     {
         if (is_null($nro_contrato)) {
-            throw new \InvalidArgumentException('non-nullable nro_contrato cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'nro_contrato');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('nro_contrato', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['nro_contrato'] = $nro_contrato;
 
@@ -349,7 +356,14 @@ class MdfeSefazInfContrato implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setVContratoGlobal($v_contrato_global)
     {
         if (is_null($v_contrato_global)) {
-            throw new \InvalidArgumentException('non-nullable v_contrato_global cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_contrato_global');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_contrato_global', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_contrato_global'] = $v_contrato_global;
 

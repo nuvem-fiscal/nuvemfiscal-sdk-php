@@ -79,8 +79,8 @@ class CteSefazInfTotAP implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'q_tot_prod' => false,
-		'uni_ap' => false
+        'q_tot_prod' => true,
+		'uni_ap' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class CteSefazInfTotAP implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQTotProd($q_tot_prod)
     {
         if (is_null($q_tot_prod)) {
-            throw new \InvalidArgumentException('non-nullable q_tot_prod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_tot_prod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_tot_prod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_tot_prod'] = $q_tot_prod;
 
@@ -349,7 +356,14 @@ class CteSefazInfTotAP implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUniAp($uni_ap)
     {
         if (is_null($uni_ap)) {
-            throw new \InvalidArgumentException('non-nullable uni_ap cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'uni_ap');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uni_ap', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['uni_ap'] = $uni_ap;
 

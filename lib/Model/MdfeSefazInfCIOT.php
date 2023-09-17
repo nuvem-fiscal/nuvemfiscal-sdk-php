@@ -81,9 +81,9 @@ class MdfeSefazInfCIOT implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ciot' => false,
-		'cpf' => false,
-		'cnpj' => false
+        'ciot' => true,
+		'cpf' => true,
+		'cnpj' => true
     ];
 
     /**
@@ -326,7 +326,14 @@ class MdfeSefazInfCIOT implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCiot($ciot)
     {
         if (is_null($ciot)) {
-            throw new \InvalidArgumentException('non-nullable ciot cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ciot');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ciot', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ciot'] = $ciot;
 
@@ -353,7 +360,14 @@ class MdfeSefazInfCIOT implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCpf($cpf)
     {
         if (is_null($cpf)) {
-            throw new \InvalidArgumentException('non-nullable cpf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cpf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cpf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cpf'] = $cpf;
 
@@ -380,7 +394,14 @@ class MdfeSefazInfCIOT implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCnpj($cnpj)
     {
         if (is_null($cnpj)) {
-            throw new \InvalidArgumentException('non-nullable cnpj cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnpj');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnpj'] = $cnpj;
 

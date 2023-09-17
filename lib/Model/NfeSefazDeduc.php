@@ -79,8 +79,8 @@ class NfeSefazDeduc implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x_ded' => false,
-		'v_ded' => false
+        'x_ded' => true,
+		'v_ded' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class NfeSefazDeduc implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXDed($x_ded)
     {
         if (is_null($x_ded)) {
-            throw new \InvalidArgumentException('non-nullable x_ded cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_ded');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_ded', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_ded'] = $x_ded;
 
@@ -349,7 +356,14 @@ class NfeSefazDeduc implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVDed($v_ded)
     {
         if (is_null($v_ded)) {
-            throw new \InvalidArgumentException('non-nullable v_ded cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_ded');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_ded', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_ded'] = $v_ded;
 

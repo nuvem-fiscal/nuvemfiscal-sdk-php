@@ -81,9 +81,9 @@ class NfeSefazInfProdEmb implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x_emb' => false,
-		'q_vol_emb' => false,
-		'u_emb' => false
+        'x_emb' => true,
+		'q_vol_emb' => true,
+		'u_emb' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class NfeSefazInfProdEmb implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setXEmb($x_emb)
     {
         if (is_null($x_emb)) {
-            throw new \InvalidArgumentException('non-nullable x_emb cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_emb');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_emb', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_emb'] = $x_emb;
 
@@ -359,7 +366,14 @@ class NfeSefazInfProdEmb implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setQVolEmb($q_vol_emb)
     {
         if (is_null($q_vol_emb)) {
-            throw new \InvalidArgumentException('non-nullable q_vol_emb cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_vol_emb');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_vol_emb', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_vol_emb'] = $q_vol_emb;
 
@@ -386,7 +400,14 @@ class NfeSefazInfProdEmb implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setUEmb($u_emb)
     {
         if (is_null($u_emb)) {
-            throw new \InvalidArgumentException('non-nullable u_emb cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'u_emb');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('u_emb', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['u_emb'] = $u_emb;
 

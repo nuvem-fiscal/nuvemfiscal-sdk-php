@@ -81,9 +81,9 @@ class MdfeSefazInfLocalDescarrega implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cep' => false,
-		'latitude' => false,
-		'longitude' => false
+        'cep' => true,
+		'latitude' => true,
+		'longitude' => true
     ];
 
     /**
@@ -323,7 +323,14 @@ class MdfeSefazInfLocalDescarrega implements ModelInterface, ArrayAccess, \JsonS
     public function setCep($cep)
     {
         if (is_null($cep)) {
-            throw new \InvalidArgumentException('non-nullable cep cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cep');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cep', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cep'] = $cep;
 
@@ -350,7 +357,14 @@ class MdfeSefazInfLocalDescarrega implements ModelInterface, ArrayAccess, \JsonS
     public function setLatitude($latitude)
     {
         if (is_null($latitude)) {
-            throw new \InvalidArgumentException('non-nullable latitude cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'latitude');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('latitude', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['latitude'] = $latitude;
 
@@ -377,7 +391,14 @@ class MdfeSefazInfLocalDescarrega implements ModelInterface, ArrayAccess, \JsonS
     public function setLongitude($longitude)
     {
         if (is_null($longitude)) {
-            throw new \InvalidArgumentException('non-nullable longitude cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'longitude');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('longitude', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['longitude'] = $longitude;
 

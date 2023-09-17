@@ -230,6 +230,7 @@ Classe | Método | Endpoint | Descrição
 *NfeApi* | [**listarNfe**](docs/Api/NfeApi.md#listarnfe) | **GET** /nfe | Listar NF-e
 *NfeApi* | [**sincronizarNfe**](docs/Api/NfeApi.md#sincronizarnfe) | **POST** /nfe/{id}/sincronizar | Sincroniza dados na NF-e a partir da SEFAZ
 *NfseApi* | [**baixarPdfNfse**](docs/Api/NfseApi.md#baixarpdfnfse) | **GET** /nfse/{id}/pdf | Baixar PDF do DANFSE
+*NfseApi* | [**baixarXmlCancelamentoNfse**](docs/Api/NfseApi.md#baixarxmlcancelamentonfse) | **GET** /nfse/{Id}/cancelamento/xml | Baixar XML do evento de cancelamento
 *NfseApi* | [**baixarXmlDps**](docs/Api/NfseApi.md#baixarxmldps) | **GET** /nfse/{id}/xml/dps | Baixar XML da DPS
 *NfseApi* | [**baixarXmlNfse**](docs/Api/NfseApi.md#baixarxmlnfse) | **GET** /nfse/{id}/xml | Baixar XML da NFS-e processada
 *NfseApi* | [**cancelarNfse**](docs/Api/NfseApi.md#cancelarnfse) | **POST** /nfse/{id}/cancelamento | Cancelar uma NFS-e autorizada
@@ -662,6 +663,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.16.19`
-    - Versão do package: `2.11.0`
+- Versão da API: `2.17.0`
+    - Versão do package: `2.12.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

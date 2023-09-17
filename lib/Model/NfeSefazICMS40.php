@@ -83,10 +83,10 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'orig' => false,
-		'cst' => false,
-		'v_icms_deson' => false,
-		'mot_des_icms' => false
+        'orig' => true,
+		'cst' => true,
+		'v_icms_deson' => true,
+		'mot_des_icms' => true
     ];
 
     /**
@@ -336,7 +336,14 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrig($orig)
     {
         if (is_null($orig)) {
-            throw new \InvalidArgumentException('non-nullable orig cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'orig');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('orig', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['orig'] = $orig;
 
@@ -363,7 +370,14 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCst($cst)
     {
         if (is_null($cst)) {
-            throw new \InvalidArgumentException('non-nullable cst cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cst');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cst', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cst'] = $cst;
 
@@ -390,7 +404,14 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVIcmsDeson($v_icms_deson)
     {
         if (is_null($v_icms_deson)) {
-            throw new \InvalidArgumentException('non-nullable v_icms_deson cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_icms_deson');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_icms_deson', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_icms_deson'] = $v_icms_deson;
 
@@ -417,7 +438,14 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMotDesIcms($mot_des_icms)
     {
         if (is_null($mot_des_icms)) {
-            throw new \InvalidArgumentException('non-nullable mot_des_icms cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mot_des_icms');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mot_des_icms', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mot_des_icms'] = $mot_des_icms;
 

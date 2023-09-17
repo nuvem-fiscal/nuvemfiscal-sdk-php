@@ -77,7 +77,7 @@ class CteSefazLacUnidCarga implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_lacre' => false
+        'n_lacre' => true
     ];
 
     /**
@@ -312,7 +312,14 @@ class CteSefazLacUnidCarga implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setNLacre($n_lacre)
     {
         if (is_null($n_lacre)) {
-            throw new \InvalidArgumentException('non-nullable n_lacre cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_lacre');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_lacre', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_lacre'] = $n_lacre;
 

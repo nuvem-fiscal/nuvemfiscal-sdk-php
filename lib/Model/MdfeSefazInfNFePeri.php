@@ -87,12 +87,12 @@ class MdfeSefazInfNFePeri implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_onu' => false,
-		'x_nome_ae' => false,
-		'x_cla_risco' => false,
-		'gr_emb' => false,
-		'q_tot_prod' => false,
-		'q_vol_tipo' => false
+        'n_onu' => true,
+		'x_nome_ae' => true,
+		'x_cla_risco' => true,
+		'gr_emb' => true,
+		'q_tot_prod' => true,
+		'q_vol_tipo' => true
     ];
 
     /**
@@ -350,7 +350,14 @@ class MdfeSefazInfNFePeri implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setNOnu($n_onu)
     {
         if (is_null($n_onu)) {
-            throw new \InvalidArgumentException('non-nullable n_onu cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_onu');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_onu', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_onu'] = $n_onu;
 
@@ -377,7 +384,14 @@ class MdfeSefazInfNFePeri implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setXNomeAe($x_nome_ae)
     {
         if (is_null($x_nome_ae)) {
-            throw new \InvalidArgumentException('non-nullable x_nome_ae cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_nome_ae');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_nome_ae', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_nome_ae'] = $x_nome_ae;
 
@@ -404,7 +418,14 @@ class MdfeSefazInfNFePeri implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setXClaRisco($x_cla_risco)
     {
         if (is_null($x_cla_risco)) {
-            throw new \InvalidArgumentException('non-nullable x_cla_risco cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_cla_risco');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_cla_risco', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_cla_risco'] = $x_cla_risco;
 
@@ -431,7 +452,14 @@ class MdfeSefazInfNFePeri implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setGrEmb($gr_emb)
     {
         if (is_null($gr_emb)) {
-            throw new \InvalidArgumentException('non-nullable gr_emb cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'gr_emb');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gr_emb', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['gr_emb'] = $gr_emb;
 
@@ -458,7 +486,14 @@ class MdfeSefazInfNFePeri implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setQTotProd($q_tot_prod)
     {
         if (is_null($q_tot_prod)) {
-            throw new \InvalidArgumentException('non-nullable q_tot_prod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_tot_prod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_tot_prod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_tot_prod'] = $q_tot_prod;
 
@@ -485,7 +520,14 @@ class MdfeSefazInfNFePeri implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setQVolTipo($q_vol_tipo)
     {
         if (is_null($q_vol_tipo)) {
-            throw new \InvalidArgumentException('non-nullable q_vol_tipo cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_vol_tipo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_vol_tipo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_vol_tipo'] = $q_vol_tipo;
 

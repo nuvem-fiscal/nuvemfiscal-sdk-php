@@ -81,9 +81,9 @@ class NfeSefazVeiculo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'placa' => false,
-		'uf' => false,
-		'rntc' => false
+        'placa' => true,
+		'uf' => true,
+		'rntc' => true
     ];
 
     /**
@@ -326,7 +326,14 @@ class NfeSefazVeiculo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPlaca($placa)
     {
         if (is_null($placa)) {
-            throw new \InvalidArgumentException('non-nullable placa cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'placa');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('placa', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['placa'] = $placa;
 
@@ -353,7 +360,14 @@ class NfeSefazVeiculo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUf($uf)
     {
         if (is_null($uf)) {
-            throw new \InvalidArgumentException('non-nullable uf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'uf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['uf'] = $uf;
 
@@ -380,7 +394,14 @@ class NfeSefazVeiculo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRntc($rntc)
     {
         if (is_null($rntc)) {
-            throw new \InvalidArgumentException('non-nullable rntc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rntc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rntc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rntc'] = $rntc;
 

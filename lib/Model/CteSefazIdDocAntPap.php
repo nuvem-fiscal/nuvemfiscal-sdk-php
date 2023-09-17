@@ -85,11 +85,11 @@ class CteSefazIdDocAntPap implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tp_doc' => false,
-		'serie' => false,
-		'subser' => false,
-		'n_doc' => false,
-		'd_emi' => false
+        'tp_doc' => true,
+		'serie' => true,
+		'subser' => true,
+		'n_doc' => true,
+		'd_emi' => true
     ];
 
     /**
@@ -349,7 +349,14 @@ class CteSefazIdDocAntPap implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTpDoc($tp_doc)
     {
         if (is_null($tp_doc)) {
-            throw new \InvalidArgumentException('non-nullable tp_doc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_doc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_doc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_doc'] = $tp_doc;
 
@@ -376,7 +383,14 @@ class CteSefazIdDocAntPap implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setSerie($serie)
     {
         if (is_null($serie)) {
-            throw new \InvalidArgumentException('non-nullable serie cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'serie');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('serie', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['serie'] = $serie;
 
@@ -403,7 +417,14 @@ class CteSefazIdDocAntPap implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setSubser($subser)
     {
         if (is_null($subser)) {
-            throw new \InvalidArgumentException('non-nullable subser cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'subser');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subser', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['subser'] = $subser;
 
@@ -430,7 +451,14 @@ class CteSefazIdDocAntPap implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setNDoc($n_doc)
     {
         if (is_null($n_doc)) {
-            throw new \InvalidArgumentException('non-nullable n_doc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_doc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_doc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_doc'] = $n_doc;
 
@@ -457,7 +485,14 @@ class CteSefazIdDocAntPap implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setDEmi($d_emi)
     {
         if (is_null($d_emi)) {
-            throw new \InvalidArgumentException('non-nullable d_emi cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_emi');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_emi', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_emi'] = $d_emi;
 

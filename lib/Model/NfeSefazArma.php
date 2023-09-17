@@ -83,10 +83,10 @@ class NfeSefazArma implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tp_arma' => false,
-		'n_serie' => false,
-		'n_cano' => false,
-		'descr' => false
+        'tp_arma' => true,
+		'n_serie' => true,
+		'n_cano' => true,
+		'descr' => true
     ];
 
     /**
@@ -342,7 +342,14 @@ class NfeSefazArma implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpArma($tp_arma)
     {
         if (is_null($tp_arma)) {
-            throw new \InvalidArgumentException('non-nullable tp_arma cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_arma');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_arma', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_arma'] = $tp_arma;
 
@@ -369,7 +376,14 @@ class NfeSefazArma implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNSerie($n_serie)
     {
         if (is_null($n_serie)) {
-            throw new \InvalidArgumentException('non-nullable n_serie cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_serie');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_serie', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_serie'] = $n_serie;
 
@@ -396,7 +410,14 @@ class NfeSefazArma implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNCano($n_cano)
     {
         if (is_null($n_cano)) {
-            throw new \InvalidArgumentException('non-nullable n_cano cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_cano');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_cano', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_cano'] = $n_cano;
 
@@ -423,7 +444,14 @@ class NfeSefazArma implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDescr($descr)
     {
         if (is_null($descr)) {
-            throw new \InvalidArgumentException('non-nullable descr cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'descr');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('descr', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['descr'] = $descr;
 

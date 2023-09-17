@@ -89,13 +89,13 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cnpj' => false,
-		'cpf' => false,
-		'x_nome' => false,
-		'ie' => false,
-		'x_ender' => false,
-		'x_mun' => false,
-		'uf' => false
+        'cnpj' => true,
+		'cpf' => true,
+		'x_nome' => true,
+		'ie' => true,
+		'x_ender' => true,
+		'x_mun' => true,
+		'uf' => true
     ];
 
     /**
@@ -351,7 +351,14 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCnpj($cnpj)
     {
         if (is_null($cnpj)) {
-            throw new \InvalidArgumentException('non-nullable cnpj cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnpj');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnpj'] = $cnpj;
 
@@ -378,7 +385,14 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCpf($cpf)
     {
         if (is_null($cpf)) {
-            throw new \InvalidArgumentException('non-nullable cpf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cpf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cpf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cpf'] = $cpf;
 
@@ -405,7 +419,14 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setXNome($x_nome)
     {
         if (is_null($x_nome)) {
-            throw new \InvalidArgumentException('non-nullable x_nome cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_nome');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_nome', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_nome'] = $x_nome;
 
@@ -432,7 +453,14 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setIe($ie)
     {
         if (is_null($ie)) {
-            throw new \InvalidArgumentException('non-nullable ie cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ie');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ie', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ie'] = $ie;
 
@@ -459,7 +487,14 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setXEnder($x_ender)
     {
         if (is_null($x_ender)) {
-            throw new \InvalidArgumentException('non-nullable x_ender cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_ender');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_ender', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_ender'] = $x_ender;
 
@@ -486,7 +521,14 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setXMun($x_mun)
     {
         if (is_null($x_mun)) {
-            throw new \InvalidArgumentException('non-nullable x_mun cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_mun');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_mun', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_mun'] = $x_mun;
 
@@ -513,7 +555,14 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setUf($uf)
     {
         if (is_null($uf)) {
-            throw new \InvalidArgumentException('non-nullable uf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'uf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['uf'] = $uf;
 

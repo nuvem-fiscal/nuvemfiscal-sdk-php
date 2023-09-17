@@ -85,7 +85,7 @@ class CteInfCorrecao implements ModelInterface, ArrayAccess, \JsonSerializable
         'grupo_alterado' => false,
 		'campo_alterado' => false,
 		'valor_alterado' => false,
-		'numero_item_alterado' => false
+		'numero_item_alterado' => true
     ];
 
     /**
@@ -419,7 +419,14 @@ class CteInfCorrecao implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNumeroItemAlterado($numero_item_alterado)
     {
         if (is_null($numero_item_alterado)) {
-            throw new \InvalidArgumentException('non-nullable numero_item_alterado cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'numero_item_alterado');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('numero_item_alterado', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['numero_item_alterado'] = $numero_item_alterado;
 

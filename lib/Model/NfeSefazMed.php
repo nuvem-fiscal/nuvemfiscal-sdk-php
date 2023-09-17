@@ -81,9 +81,9 @@ class NfeSefazMed implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'c_prod_anvisa' => false,
-		'x_motivo_isencao' => false,
-		'v_pmc' => false
+        'c_prod_anvisa' => true,
+		'x_motivo_isencao' => true,
+		'v_pmc' => true
     ];
 
     /**
@@ -329,7 +329,14 @@ class NfeSefazMed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCProdAnvisa($c_prod_anvisa)
     {
         if (is_null($c_prod_anvisa)) {
-            throw new \InvalidArgumentException('non-nullable c_prod_anvisa cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_prod_anvisa');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_prod_anvisa', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_prod_anvisa'] = $c_prod_anvisa;
 
@@ -356,7 +363,14 @@ class NfeSefazMed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXMotivoIsencao($x_motivo_isencao)
     {
         if (is_null($x_motivo_isencao)) {
-            throw new \InvalidArgumentException('non-nullable x_motivo_isencao cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_motivo_isencao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_motivo_isencao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_motivo_isencao'] = $x_motivo_isencao;
 
@@ -383,7 +397,14 @@ class NfeSefazMed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVPmc($v_pmc)
     {
         if (is_null($v_pmc)) {
-            throw new \InvalidArgumentException('non-nullable v_pmc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_pmc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_pmc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_pmc'] = $v_pmc;
 

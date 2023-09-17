@@ -87,12 +87,12 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'chassi' => false,
-		'c_cor' => false,
-		'x_cor' => false,
-		'c_mod' => false,
-		'v_unit' => false,
-		'v_frete' => false
+        'chassi' => true,
+		'c_cor' => true,
+		'x_cor' => true,
+		'c_mod' => true,
+		'v_unit' => true,
+		'v_frete' => true
     ];
 
     /**
@@ -362,7 +362,14 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setChassi($chassi)
     {
         if (is_null($chassi)) {
-            throw new \InvalidArgumentException('non-nullable chassi cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'chassi');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('chassi', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['chassi'] = $chassi;
 
@@ -389,7 +396,14 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCCor($c_cor)
     {
         if (is_null($c_cor)) {
-            throw new \InvalidArgumentException('non-nullable c_cor cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_cor');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_cor', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_cor'] = $c_cor;
 
@@ -416,7 +430,14 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setXCor($x_cor)
     {
         if (is_null($x_cor)) {
-            throw new \InvalidArgumentException('non-nullable x_cor cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_cor');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_cor', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_cor'] = $x_cor;
 
@@ -443,7 +464,14 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCMod($c_mod)
     {
         if (is_null($c_mod)) {
-            throw new \InvalidArgumentException('non-nullable c_mod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_mod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_mod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_mod'] = $c_mod;
 
@@ -470,7 +498,14 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVUnit($v_unit)
     {
         if (is_null($v_unit)) {
-            throw new \InvalidArgumentException('non-nullable v_unit cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_unit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_unit', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_unit'] = $v_unit;
 
@@ -497,7 +532,14 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVFrete($v_frete)
     {
         if (is_null($v_frete)) {
-            throw new \InvalidArgumentException('non-nullable v_frete cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_frete');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_frete', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_frete'] = $v_frete;
 

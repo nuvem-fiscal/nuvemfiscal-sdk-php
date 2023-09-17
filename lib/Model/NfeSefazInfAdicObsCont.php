@@ -79,8 +79,8 @@ class NfeSefazInfAdicObsCont implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x_campo' => false,
-		'x_texto' => false
+        'x_campo' => true,
+		'x_texto' => true
     ];
 
     /**
@@ -316,7 +316,14 @@ class NfeSefazInfAdicObsCont implements ModelInterface, ArrayAccess, \JsonSerial
     public function setXCampo($x_campo)
     {
         if (is_null($x_campo)) {
-            throw new \InvalidArgumentException('non-nullable x_campo cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_campo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_campo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_campo'] = $x_campo;
 
@@ -343,7 +350,14 @@ class NfeSefazInfAdicObsCont implements ModelInterface, ArrayAccess, \JsonSerial
     public function setXTexto($x_texto)
     {
         if (is_null($x_texto)) {
-            throw new \InvalidArgumentException('non-nullable x_texto cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_texto');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_texto', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_texto'] = $x_texto;
 

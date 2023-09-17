@@ -87,7 +87,7 @@ class MdfeSefazRodo implements ModelInterface, ArrayAccess, \JsonSerializable
         'inf_antt' => false,
 		'veic_tracao' => false,
 		'veic_reboque' => false,
-		'cod_ag_porto' => false,
+		'cod_ag_porto' => true,
 		'lac_rodo' => false
     ];
 
@@ -420,7 +420,14 @@ class MdfeSefazRodo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCodAgPorto($cod_ag_porto)
     {
         if (is_null($cod_ag_porto)) {
-            throw new \InvalidArgumentException('non-nullable cod_ag_porto cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cod_ag_porto');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cod_ag_porto', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cod_ag_porto'] = $cod_ag_porto;
 

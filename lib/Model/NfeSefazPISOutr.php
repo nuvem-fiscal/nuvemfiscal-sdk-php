@@ -87,12 +87,12 @@ class NfeSefazPISOutr implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cst' => false,
-		'v_bc' => false,
-		'p_pis' => false,
-		'q_bc_prod' => false,
-		'v_aliq_prod' => false,
-		'v_pis' => false
+        'cst' => true,
+		'v_bc' => true,
+		'p_pis' => true,
+		'q_bc_prod' => true,
+		'v_aliq_prod' => true,
+		'v_pis' => true
     ];
 
     /**
@@ -350,7 +350,14 @@ class NfeSefazPISOutr implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCst($cst)
     {
         if (is_null($cst)) {
-            throw new \InvalidArgumentException('non-nullable cst cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cst');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cst', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cst'] = $cst;
 
@@ -377,7 +384,14 @@ class NfeSefazPISOutr implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVBc($v_bc)
     {
         if (is_null($v_bc)) {
-            throw new \InvalidArgumentException('non-nullable v_bc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_bc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_bc'] = $v_bc;
 
@@ -404,7 +418,14 @@ class NfeSefazPISOutr implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPPis($p_pis)
     {
         if (is_null($p_pis)) {
-            throw new \InvalidArgumentException('non-nullable p_pis cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_pis');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_pis', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_pis'] = $p_pis;
 
@@ -431,7 +452,14 @@ class NfeSefazPISOutr implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQBcProd($q_bc_prod)
     {
         if (is_null($q_bc_prod)) {
-            throw new \InvalidArgumentException('non-nullable q_bc_prod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_bc_prod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_bc_prod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_bc_prod'] = $q_bc_prod;
 
@@ -458,7 +486,14 @@ class NfeSefazPISOutr implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVAliqProd($v_aliq_prod)
     {
         if (is_null($v_aliq_prod)) {
-            throw new \InvalidArgumentException('non-nullable v_aliq_prod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_aliq_prod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_aliq_prod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_aliq_prod'] = $v_aliq_prod;
 
@@ -485,7 +520,14 @@ class NfeSefazPISOutr implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVPis($v_pis)
     {
         if (is_null($v_pis)) {
-            throw new \InvalidArgumentException('non-nullable v_pis cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_pis');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_pis', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_pis'] = $v_pis;
 

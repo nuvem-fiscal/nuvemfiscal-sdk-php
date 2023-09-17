@@ -83,10 +83,10 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tp_integra' => false,
-		'cnpj' => false,
-		't_band' => false,
-		'c_aut' => false
+        'tp_integra' => true,
+		'cnpj' => true,
+		't_band' => true,
+		'c_aut' => true
     ];
 
     /**
@@ -333,7 +333,14 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpIntegra($tp_integra)
     {
         if (is_null($tp_integra)) {
-            throw new \InvalidArgumentException('non-nullable tp_integra cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_integra');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_integra', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_integra'] = $tp_integra;
 
@@ -360,7 +367,14 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCnpj($cnpj)
     {
         if (is_null($cnpj)) {
-            throw new \InvalidArgumentException('non-nullable cnpj cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnpj');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnpj'] = $cnpj;
 
@@ -387,7 +401,14 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTBand($t_band)
     {
         if (is_null($t_band)) {
-            throw new \InvalidArgumentException('non-nullable t_band cannot be null');
+            array_push($this->openAPINullablesSetToNull, 't_band');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('t_band', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['t_band'] = $t_band;
 
@@ -414,7 +435,14 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCAut($c_aut)
     {
         if (is_null($c_aut)) {
-            throw new \InvalidArgumentException('non-nullable c_aut cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_aut');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_aut', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_aut'] = $c_aut;
 

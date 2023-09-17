@@ -89,10 +89,10 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'end_nac' => false,
 		'end_ext' => false,
-		'x_lgr' => false,
-		'nro' => false,
-		'x_cpl' => false,
-		'x_bairro' => false
+		'x_lgr' => true,
+		'nro' => true,
+		'x_cpl' => true,
+		'x_bairro' => true
     ];
 
     /**
@@ -398,7 +398,14 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXLgr($x_lgr)
     {
         if (is_null($x_lgr)) {
-            throw new \InvalidArgumentException('non-nullable x_lgr cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_lgr');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_lgr', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_lgr'] = $x_lgr;
 
@@ -425,7 +432,14 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNro($nro)
     {
         if (is_null($nro)) {
-            throw new \InvalidArgumentException('non-nullable nro cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'nro');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('nro', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['nro'] = $nro;
 
@@ -452,7 +466,14 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXCpl($x_cpl)
     {
         if (is_null($x_cpl)) {
-            throw new \InvalidArgumentException('non-nullable x_cpl cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_cpl');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_cpl', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_cpl'] = $x_cpl;
 
@@ -479,7 +500,14 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXBairro($x_bairro)
     {
         if (is_null($x_bairro)) {
-            throw new \InvalidArgumentException('non-nullable x_bairro cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_bairro');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_bairro', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_bairro'] = $x_bairro;
 

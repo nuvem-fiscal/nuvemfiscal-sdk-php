@@ -79,8 +79,8 @@ class NfeSefazAutXML implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cnpj' => false,
-		'cpf' => false
+        'cnpj' => true,
+		'cpf' => true
     ];
 
     /**
@@ -316,7 +316,14 @@ class NfeSefazAutXML implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCnpj($cnpj)
     {
         if (is_null($cnpj)) {
-            throw new \InvalidArgumentException('non-nullable cnpj cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnpj');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnpj'] = $cnpj;
 
@@ -343,7 +350,14 @@ class NfeSefazAutXML implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCpf($cpf)
     {
         if (is_null($cpf)) {
-            throw new \InvalidArgumentException('non-nullable cpf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cpf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cpf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cpf'] = $cpf;
 

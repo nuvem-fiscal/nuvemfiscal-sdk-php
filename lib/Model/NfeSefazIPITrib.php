@@ -86,12 +86,12 @@ class NfeSefazIPITrib implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cst' => false,
-		'v_bc' => false,
-		'p_ipi' => false,
-		'q_unid' => false,
-		'v_unid' => false,
-		'v_ipi' => false
+        'cst' => true,
+		'v_bc' => true,
+		'p_ipi' => true,
+		'q_unid' => true,
+		'v_unid' => true,
+		'v_ipi' => true
     ];
 
     /**
@@ -349,7 +349,14 @@ class NfeSefazIPITrib implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCst($cst)
     {
         if (is_null($cst)) {
-            throw new \InvalidArgumentException('non-nullable cst cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cst');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cst', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cst'] = $cst;
 
@@ -376,7 +383,14 @@ class NfeSefazIPITrib implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVBc($v_bc)
     {
         if (is_null($v_bc)) {
-            throw new \InvalidArgumentException('non-nullable v_bc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_bc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_bc'] = $v_bc;
 
@@ -403,7 +417,14 @@ class NfeSefazIPITrib implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPIpi($p_ipi)
     {
         if (is_null($p_ipi)) {
-            throw new \InvalidArgumentException('non-nullable p_ipi cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_ipi');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_ipi', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_ipi'] = $p_ipi;
 
@@ -430,7 +451,14 @@ class NfeSefazIPITrib implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQUnid($q_unid)
     {
         if (is_null($q_unid)) {
-            throw new \InvalidArgumentException('non-nullable q_unid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_unid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_unid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_unid'] = $q_unid;
 
@@ -457,7 +485,14 @@ class NfeSefazIPITrib implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVUnid($v_unid)
     {
         if (is_null($v_unid)) {
-            throw new \InvalidArgumentException('non-nullable v_unid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_unid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_unid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_unid'] = $v_unid;
 
@@ -484,7 +519,14 @@ class NfeSefazIPITrib implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVIpi($v_ipi)
     {
         if (is_null($v_ipi)) {
-            throw new \InvalidArgumentException('non-nullable v_ipi cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_ipi');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_ipi', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_ipi'] = $v_ipi;
 

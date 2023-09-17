@@ -81,9 +81,9 @@ class NfeSefazDup implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_dup' => false,
-		'd_venc' => false,
-		'v_dup' => false
+        'n_dup' => true,
+		'd_venc' => true,
+		'v_dup' => true
     ];
 
     /**
@@ -326,7 +326,14 @@ class NfeSefazDup implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNDup($n_dup)
     {
         if (is_null($n_dup)) {
-            throw new \InvalidArgumentException('non-nullable n_dup cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_dup');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_dup', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_dup'] = $n_dup;
 
@@ -353,7 +360,14 @@ class NfeSefazDup implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDVenc($d_venc)
     {
         if (is_null($d_venc)) {
-            throw new \InvalidArgumentException('non-nullable d_venc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_venc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_venc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_venc'] = $d_venc;
 
@@ -380,7 +394,14 @@ class NfeSefazDup implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVDup($v_dup)
     {
         if (is_null($v_dup)) {
-            throw new \InvalidArgumentException('non-nullable v_dup cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_dup');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_dup', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_dup'] = $v_dup;
 

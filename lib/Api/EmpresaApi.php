@@ -6276,7 +6276,7 @@ class EmpresaApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
      * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.    *Utilize o valor sem máscara*. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listarEmpresas'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -6297,7 +6297,7 @@ class EmpresaApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
      * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.    *Utilize o valor sem máscara*. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listarEmpresas'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
@@ -6400,7 +6400,7 @@ class EmpresaApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
      * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.    *Utilize o valor sem máscara*. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listarEmpresas'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6424,7 +6424,7 @@ class EmpresaApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
      * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.    *Utilize o valor sem máscara*. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listarEmpresas'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6477,7 +6477,7 @@ class EmpresaApi
      * @param  int $top Limite no número de objetos a serem retornados pela API, entre 1 e 100. (optional, default to 10)
      * @param  int $skip Quantidade de objetos que serão ignorados antes da lista começar a ser retornada. (optional, default to 0)
      * @param  bool $inlinecount Inclui no JSON de resposta, na propriedade &#x60;@count&#x60;, o número total de registros que o filtro retornaria, independente dos filtros de paginação. (optional, default to false)
-     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (optional)
+     * @param  string $cpf_cnpj Filtrar pelo CPF ou CNPJ da empresa.    *Utilize o valor sem máscara*. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listarEmpresas'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

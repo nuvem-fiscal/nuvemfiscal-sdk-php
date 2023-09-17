@@ -81,9 +81,9 @@ class CteSefazInfQ implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'c_unid' => false,
-		'tp_med' => false,
-		'q_carga' => false
+        'c_unid' => true,
+		'tp_med' => true,
+		'q_carga' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class CteSefazInfQ implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCUnid($c_unid)
     {
         if (is_null($c_unid)) {
-            throw new \InvalidArgumentException('non-nullable c_unid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_unid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_unid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_unid'] = $c_unid;
 
@@ -359,7 +366,14 @@ class CteSefazInfQ implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpMed($tp_med)
     {
         if (is_null($tp_med)) {
-            throw new \InvalidArgumentException('non-nullable tp_med cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_med');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_med', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_med'] = $tp_med;
 
@@ -386,7 +400,14 @@ class CteSefazInfQ implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQCarga($q_carga)
     {
         if (is_null($q_carga)) {
-            throw new \InvalidArgumentException('non-nullable q_carga cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_carga');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_carga', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_carga'] = $q_carga;
 

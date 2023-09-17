@@ -77,7 +77,7 @@ class CteSefazSemHora implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tp_hor' => false
+        'tp_hor' => true
     ];
 
     /**
@@ -312,7 +312,14 @@ class CteSefazSemHora implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpHor($tp_hor)
     {
         if (is_null($tp_hor)) {
-            throw new \InvalidArgumentException('non-nullable tp_hor cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_hor');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_hor', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_hor'] = $tp_hor;
 

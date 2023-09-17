@@ -81,8 +81,8 @@ class InfoObra implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'c_obra' => false,
-		'insc_imob_fisc' => false,
+        'c_obra' => true,
+		'insc_imob_fisc' => true,
 		'end' => false
     ];
 
@@ -323,7 +323,14 @@ class InfoObra implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCObra($c_obra)
     {
         if (is_null($c_obra)) {
-            throw new \InvalidArgumentException('non-nullable c_obra cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_obra');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_obra', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_obra'] = $c_obra;
 
@@ -350,7 +357,14 @@ class InfoObra implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInscImobFisc($insc_imob_fisc)
     {
         if (is_null($insc_imob_fisc)) {
-            throw new \InvalidArgumentException('non-nullable insc_imob_fisc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'insc_imob_fisc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('insc_imob_fisc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['insc_imob_fisc'] = $insc_imob_fisc;
 

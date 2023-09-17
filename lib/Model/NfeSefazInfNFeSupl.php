@@ -79,8 +79,8 @@ class NfeSefazInfNFeSupl implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'qr_code' => false,
-		'url_chave' => false
+        'qr_code' => true,
+		'url_chave' => true
     ];
 
     /**
@@ -316,7 +316,14 @@ class NfeSefazInfNFeSupl implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setQrCode($qr_code)
     {
         if (is_null($qr_code)) {
-            throw new \InvalidArgumentException('non-nullable qr_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'qr_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('qr_code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['qr_code'] = $qr_code;
 
@@ -343,7 +350,14 @@ class NfeSefazInfNFeSupl implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setUrlChave($url_chave)
     {
         if (is_null($url_chave)) {
-            throw new \InvalidArgumentException('non-nullable url_chave cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'url_chave');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('url_chave', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['url_chave'] = $url_chave;
 

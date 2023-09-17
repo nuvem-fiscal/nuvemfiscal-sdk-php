@@ -91,12 +91,12 @@ class CteSefazInfOutros implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tp_doc' => false,
-		'desc_outros' => false,
-		'n_doc' => false,
-		'd_emi' => false,
-		'v_doc_fisc' => false,
-		'd_prev' => false,
+        'tp_doc' => true,
+		'desc_outros' => true,
+		'n_doc' => true,
+		'd_emi' => true,
+		'v_doc_fisc' => true,
+		'd_prev' => true,
 		'inf_unid_carga' => false,
 		'inf_unid_transp' => false
     ];
@@ -361,7 +361,14 @@ class CteSefazInfOutros implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setTpDoc($tp_doc)
     {
         if (is_null($tp_doc)) {
-            throw new \InvalidArgumentException('non-nullable tp_doc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_doc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_doc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_doc'] = $tp_doc;
 
@@ -388,7 +395,14 @@ class CteSefazInfOutros implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setDescOutros($desc_outros)
     {
         if (is_null($desc_outros)) {
-            throw new \InvalidArgumentException('non-nullable desc_outros cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'desc_outros');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('desc_outros', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['desc_outros'] = $desc_outros;
 
@@ -415,7 +429,14 @@ class CteSefazInfOutros implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setNDoc($n_doc)
     {
         if (is_null($n_doc)) {
-            throw new \InvalidArgumentException('non-nullable n_doc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_doc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_doc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_doc'] = $n_doc;
 
@@ -442,7 +463,14 @@ class CteSefazInfOutros implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setDEmi($d_emi)
     {
         if (is_null($d_emi)) {
-            throw new \InvalidArgumentException('non-nullable d_emi cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_emi');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_emi', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_emi'] = $d_emi;
 
@@ -469,7 +497,14 @@ class CteSefazInfOutros implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVDocFisc($v_doc_fisc)
     {
         if (is_null($v_doc_fisc)) {
-            throw new \InvalidArgumentException('non-nullable v_doc_fisc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_doc_fisc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_doc_fisc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_doc_fisc'] = $v_doc_fisc;
 
@@ -496,7 +531,14 @@ class CteSefazInfOutros implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setDPrev($d_prev)
     {
         if (is_null($d_prev)) {
-            throw new \InvalidArgumentException('non-nullable d_prev cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_prev');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_prev', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_prev'] = $d_prev;
 

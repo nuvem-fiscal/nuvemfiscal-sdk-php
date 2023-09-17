@@ -81,9 +81,9 @@ class InfoCompl implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id_doc_tec' => false,
-		'doc_ref' => false,
-		'x_inf_comp' => false
+        'id_doc_tec' => true,
+		'doc_ref' => true,
+		'x_inf_comp' => true
     ];
 
     /**
@@ -323,7 +323,14 @@ class InfoCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIdDocTec($id_doc_tec)
     {
         if (is_null($id_doc_tec)) {
-            throw new \InvalidArgumentException('non-nullable id_doc_tec cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id_doc_tec');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id_doc_tec', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id_doc_tec'] = $id_doc_tec;
 
@@ -350,7 +357,14 @@ class InfoCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDocRef($doc_ref)
     {
         if (is_null($doc_ref)) {
-            throw new \InvalidArgumentException('non-nullable doc_ref cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'doc_ref');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('doc_ref', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['doc_ref'] = $doc_ref;
 
@@ -377,7 +391,14 @@ class InfoCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXInfComp($x_inf_comp)
     {
         if (is_null($x_inf_comp)) {
-            throw new \InvalidArgumentException('non-nullable x_inf_comp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_inf_comp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_inf_comp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_inf_comp'] = $x_inf_comp;
 

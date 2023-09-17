@@ -77,7 +77,7 @@ class CteSefazToma3 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'toma' => false
+        'toma' => true
     ];
 
     /**
@@ -312,7 +312,14 @@ class CteSefazToma3 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setToma($toma)
     {
         if (is_null($toma)) {
-            throw new \InvalidArgumentException('non-nullable toma cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'toma');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('toma', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['toma'] = $toma;
 

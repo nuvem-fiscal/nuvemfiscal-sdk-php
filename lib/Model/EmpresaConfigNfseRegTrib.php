@@ -81,9 +81,9 @@ class EmpresaConfigNfseRegTrib implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'op_simp_nac' => false,
-		'reg_ap_trib_sn' => false,
-		'reg_esp_trib' => false
+        'op_simp_nac' => true,
+		'reg_ap_trib_sn' => true,
+		'reg_esp_trib' => true
     ];
 
     /**
@@ -323,7 +323,14 @@ class EmpresaConfigNfseRegTrib implements ModelInterface, ArrayAccess, \JsonSeri
     public function setOpSimpNac($op_simp_nac)
     {
         if (is_null($op_simp_nac)) {
-            throw new \InvalidArgumentException('non-nullable op_simp_nac cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'op_simp_nac');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('op_simp_nac', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['op_simp_nac'] = $op_simp_nac;
 
@@ -350,7 +357,14 @@ class EmpresaConfigNfseRegTrib implements ModelInterface, ArrayAccess, \JsonSeri
     public function setRegApTribSn($reg_ap_trib_sn)
     {
         if (is_null($reg_ap_trib_sn)) {
-            throw new \InvalidArgumentException('non-nullable reg_ap_trib_sn cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reg_ap_trib_sn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reg_ap_trib_sn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reg_ap_trib_sn'] = $reg_ap_trib_sn;
 
@@ -377,7 +391,14 @@ class EmpresaConfigNfseRegTrib implements ModelInterface, ArrayAccess, \JsonSeri
     public function setRegEspTrib($reg_esp_trib)
     {
         if (is_null($reg_esp_trib)) {
-            throw new \InvalidArgumentException('non-nullable reg_esp_trib cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reg_esp_trib');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reg_esp_trib', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reg_esp_trib'] = $reg_esp_trib;
 

@@ -80,7 +80,7 @@ class NfeSefazPag implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'det_pag' => false,
-		'v_troco' => false
+		'v_troco' => true
     ];
 
     /**
@@ -346,7 +346,14 @@ class NfeSefazPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVTroco($v_troco)
     {
         if (is_null($v_troco)) {
-            throw new \InvalidArgumentException('non-nullable v_troco cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_troco');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_troco', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_troco'] = $v_troco;
 

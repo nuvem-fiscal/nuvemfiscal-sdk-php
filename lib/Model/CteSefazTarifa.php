@@ -81,9 +81,9 @@ class CteSefazTarifa implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cl' => false,
-		'c_tar' => false,
-		'v_tar' => false
+        'cl' => true,
+		'c_tar' => true,
+		'v_tar' => true
     ];
 
     /**
@@ -329,7 +329,14 @@ class CteSefazTarifa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCl($cl)
     {
         if (is_null($cl)) {
-            throw new \InvalidArgumentException('non-nullable cl cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cl');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cl', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cl'] = $cl;
 
@@ -356,7 +363,14 @@ class CteSefazTarifa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCTar($c_tar)
     {
         if (is_null($c_tar)) {
-            throw new \InvalidArgumentException('non-nullable c_tar cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_tar');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_tar', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_tar'] = $c_tar;
 
@@ -383,7 +397,14 @@ class CteSefazTarifa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVTar($v_tar)
     {
         if (is_null($v_tar)) {
-            throw new \InvalidArgumentException('non-nullable v_tar cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_tar');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_tar', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_tar'] = $v_tar;
 

@@ -77,7 +77,7 @@ class CteSefazInfCTeMultimodal implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ch_cte_multimodal' => false
+        'ch_cte_multimodal' => true
     ];
 
     /**
@@ -312,7 +312,14 @@ class CteSefazInfCTeMultimodal implements ModelInterface, ArrayAccess, \JsonSeri
     public function setChCteMultimodal($ch_cte_multimodal)
     {
         if (is_null($ch_cte_multimodal)) {
-            throw new \InvalidArgumentException('non-nullable ch_cte_multimodal cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ch_cte_multimodal');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ch_cte_multimodal', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ch_cte_multimodal'] = $ch_cte_multimodal;
 

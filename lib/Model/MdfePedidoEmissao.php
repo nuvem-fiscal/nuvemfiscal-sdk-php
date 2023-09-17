@@ -85,7 +85,7 @@ class MdfePedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializabl
         'inf_mdfe' => false,
 		'inf_mdfe_supl' => false,
 		'ambiente' => false,
-		'referencia' => false
+		'referencia' => true
     ];
 
     /**
@@ -450,7 +450,14 @@ class MdfePedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setReferencia($referencia)
     {
         if (is_null($referencia)) {
-            throw new \InvalidArgumentException('non-nullable referencia cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'referencia');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('referencia', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['referencia'] = $referencia;
 

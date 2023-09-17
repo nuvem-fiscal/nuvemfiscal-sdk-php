@@ -89,13 +89,13 @@ class CteSefazICMSUFFim implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'v_bcuf_fim' => false,
-		'p_fcpuf_fim' => false,
-		'p_icmsuf_fim' => false,
-		'p_icms_inter' => false,
-		'v_fcpuf_fim' => false,
-		'v_icmsuf_fim' => false,
-		'v_icmsuf_ini' => false
+        'v_bcuf_fim' => true,
+		'p_fcpuf_fim' => true,
+		'p_icmsuf_fim' => true,
+		'p_icms_inter' => true,
+		'v_fcpuf_fim' => true,
+		'v_icmsuf_fim' => true,
+		'v_icmsuf_ini' => true
     ];
 
     /**
@@ -372,7 +372,14 @@ class CteSefazICMSUFFim implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVBcufFim($v_bcuf_fim)
     {
         if (is_null($v_bcuf_fim)) {
-            throw new \InvalidArgumentException('non-nullable v_bcuf_fim cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_bcuf_fim');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bcuf_fim', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_bcuf_fim'] = $v_bcuf_fim;
 
@@ -399,7 +406,14 @@ class CteSefazICMSUFFim implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setPFcpufFim($p_fcpuf_fim)
     {
         if (is_null($p_fcpuf_fim)) {
-            throw new \InvalidArgumentException('non-nullable p_fcpuf_fim cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_fcpuf_fim');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_fcpuf_fim', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_fcpuf_fim'] = $p_fcpuf_fim;
 
@@ -426,7 +440,14 @@ class CteSefazICMSUFFim implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setPIcmsufFim($p_icmsuf_fim)
     {
         if (is_null($p_icmsuf_fim)) {
-            throw new \InvalidArgumentException('non-nullable p_icmsuf_fim cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_icmsuf_fim');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_icmsuf_fim', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_icmsuf_fim'] = $p_icmsuf_fim;
 
@@ -453,7 +474,14 @@ class CteSefazICMSUFFim implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setPIcmsInter($p_icms_inter)
     {
         if (is_null($p_icms_inter)) {
-            throw new \InvalidArgumentException('non-nullable p_icms_inter cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_icms_inter');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_icms_inter', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_icms_inter'] = $p_icms_inter;
 
@@ -480,7 +508,14 @@ class CteSefazICMSUFFim implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVFcpufFim($v_fcpuf_fim)
     {
         if (is_null($v_fcpuf_fim)) {
-            throw new \InvalidArgumentException('non-nullable v_fcpuf_fim cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_fcpuf_fim');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_fcpuf_fim', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_fcpuf_fim'] = $v_fcpuf_fim;
 
@@ -507,7 +542,14 @@ class CteSefazICMSUFFim implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVIcmsufFim($v_icmsuf_fim)
     {
         if (is_null($v_icmsuf_fim)) {
-            throw new \InvalidArgumentException('non-nullable v_icmsuf_fim cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_icmsuf_fim');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_icmsuf_fim', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_icmsuf_fim'] = $v_icmsuf_fim;
 
@@ -534,7 +576,14 @@ class CteSefazICMSUFFim implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVIcmsufIni($v_icmsuf_ini)
     {
         if (is_null($v_icmsuf_ini)) {
-            throw new \InvalidArgumentException('non-nullable v_icmsuf_ini cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_icmsuf_ini');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_icmsuf_ini', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_icmsuf_ini'] = $v_icmsuf_ini;
 

@@ -78,7 +78,7 @@ class NfeSefazImpostoDevol implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'p_devol' => false,
+        'p_devol' => true,
 		'ipi' => false
     ];
 
@@ -321,7 +321,14 @@ class NfeSefazImpostoDevol implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPDevol($p_devol)
     {
         if (is_null($p_devol)) {
-            throw new \InvalidArgumentException('non-nullable p_devol cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_devol');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_devol', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_devol'] = $p_devol;
 

@@ -80,7 +80,7 @@ class MdfePedidoEncerramento implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data_encerramento' => false,
+        'data_encerramento' => true,
 		'uf' => false,
 		'codigo_municipio' => false
     ];
@@ -328,7 +328,14 @@ class MdfePedidoEncerramento implements ModelInterface, ArrayAccess, \JsonSerial
     public function setDataEncerramento($data_encerramento)
     {
         if (is_null($data_encerramento)) {
-            throw new \InvalidArgumentException('non-nullable data_encerramento cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data_encerramento');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_encerramento', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data_encerramento'] = $data_encerramento;
 

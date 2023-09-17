@@ -81,9 +81,9 @@ class MdfeSefazInfPrazo implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_parcela' => false,
-		'd_venc' => false,
-		'v_parcela' => false
+        'n_parcela' => true,
+		'd_venc' => true,
+		'v_parcela' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class MdfeSefazInfPrazo implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setNParcela($n_parcela)
     {
         if (is_null($n_parcela)) {
-            throw new \InvalidArgumentException('non-nullable n_parcela cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_parcela');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_parcela', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_parcela'] = $n_parcela;
 
@@ -359,7 +366,14 @@ class MdfeSefazInfPrazo implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setDVenc($d_venc)
     {
         if (is_null($d_venc)) {
-            throw new \InvalidArgumentException('non-nullable d_venc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_venc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_venc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_venc'] = $d_venc;
 
@@ -386,7 +400,14 @@ class MdfeSefazInfPrazo implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVParcela($v_parcela)
     {
         if (is_null($v_parcela)) {
-            throw new \InvalidArgumentException('non-nullable v_parcela cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_parcela');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_parcela', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_parcela'] = $v_parcela;
 

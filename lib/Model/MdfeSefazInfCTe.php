@@ -87,9 +87,9 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ch_cte' => false,
-		'seg_cod_barra' => false,
-		'ind_reentrega' => false,
+        'ch_cte' => true,
+		'seg_cod_barra' => true,
+		'ind_reentrega' => true,
 		'inf_unid_transp' => false,
 		'peri' => false,
 		'inf_entrega_parcial' => false
@@ -347,7 +347,14 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setChCte($ch_cte)
     {
         if (is_null($ch_cte)) {
-            throw new \InvalidArgumentException('non-nullable ch_cte cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ch_cte');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ch_cte', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ch_cte'] = $ch_cte;
 
@@ -374,7 +381,14 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSegCodBarra($seg_cod_barra)
     {
         if (is_null($seg_cod_barra)) {
-            throw new \InvalidArgumentException('non-nullable seg_cod_barra cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seg_cod_barra');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seg_cod_barra', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seg_cod_barra'] = $seg_cod_barra;
 
@@ -401,7 +415,14 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIndReentrega($ind_reentrega)
     {
         if (is_null($ind_reentrega)) {
-            throw new \InvalidArgumentException('non-nullable ind_reentrega cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ind_reentrega');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_reentrega', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ind_reentrega'] = $ind_reentrega;
 

@@ -79,8 +79,8 @@ class VServPrest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'v_receb' => false,
-		'v_serv' => false
+        'v_receb' => true,
+		'v_serv' => true
     ];
 
     /**
@@ -319,7 +319,14 @@ class VServPrest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVReceb($v_receb)
     {
         if (is_null($v_receb)) {
-            throw new \InvalidArgumentException('non-nullable v_receb cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_receb');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_receb', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_receb'] = $v_receb;
 
@@ -346,7 +353,14 @@ class VServPrest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVServ($v_serv)
     {
         if (is_null($v_serv)) {
-            throw new \InvalidArgumentException('non-nullable v_serv cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_serv');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_serv', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_serv'] = $v_serv;
 

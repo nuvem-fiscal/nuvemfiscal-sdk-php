@@ -77,7 +77,7 @@ class CteSefazInfCteComp implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ch_cte' => false
+        'ch_cte' => true
     ];
 
     /**
@@ -312,7 +312,14 @@ class CteSefazInfCteComp implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setChCte($ch_cte)
     {
         if (is_null($ch_cte)) {
-            throw new \InvalidArgumentException('non-nullable ch_cte cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ch_cte');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ch_cte', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ch_cte'] = $ch_cte;
 

@@ -85,11 +85,11 @@ class CteSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cst' => false,
-		'v_bcst_ret' => false,
-		'v_icmsst_ret' => false,
-		'p_icmsst_ret' => false,
-		'v_cred' => false
+        'cst' => true,
+		'v_bcst_ret' => true,
+		'v_icmsst_ret' => true,
+		'p_icmsst_ret' => true,
+		'v_cred' => true
     ];
 
     /**
@@ -349,7 +349,14 @@ class CteSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCst($cst)
     {
         if (is_null($cst)) {
-            throw new \InvalidArgumentException('non-nullable cst cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cst');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cst', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cst'] = $cst;
 
@@ -376,7 +383,14 @@ class CteSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVBcstRet($v_bcst_ret)
     {
         if (is_null($v_bcst_ret)) {
-            throw new \InvalidArgumentException('non-nullable v_bcst_ret cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_bcst_ret');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bcst_ret', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_bcst_ret'] = $v_bcst_ret;
 
@@ -403,7 +417,14 @@ class CteSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVIcmsstRet($v_icmsst_ret)
     {
         if (is_null($v_icmsst_ret)) {
-            throw new \InvalidArgumentException('non-nullable v_icmsst_ret cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_icmsst_ret');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_icmsst_ret', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_icmsst_ret'] = $v_icmsst_ret;
 
@@ -430,7 +451,14 @@ class CteSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPIcmsstRet($p_icmsst_ret)
     {
         if (is_null($p_icmsst_ret)) {
-            throw new \InvalidArgumentException('non-nullable p_icmsst_ret cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_icmsst_ret');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_icmsst_ret', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_icmsst_ret'] = $p_icmsst_ret;
 
@@ -457,7 +485,14 @@ class CteSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVCred($v_cred)
     {
         if (is_null($v_cred)) {
-            throw new \InvalidArgumentException('non-nullable v_cred cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_cred');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_cred', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_cred'] = $v_cred;
 

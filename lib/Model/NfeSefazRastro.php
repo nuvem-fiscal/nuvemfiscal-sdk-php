@@ -84,11 +84,11 @@ class NfeSefazRastro implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_lote' => false,
-		'q_lote' => false,
-		'd_fab' => false,
-		'd_val' => false,
-		'c_agreg' => false
+        'n_lote' => true,
+		'q_lote' => true,
+		'd_fab' => true,
+		'd_val' => true,
+		'c_agreg' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class NfeSefazRastro implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNLote($n_lote)
     {
         if (is_null($n_lote)) {
-            throw new \InvalidArgumentException('non-nullable n_lote cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_lote');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_lote', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_lote'] = $n_lote;
 
@@ -375,7 +382,14 @@ class NfeSefazRastro implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQLote($q_lote)
     {
         if (is_null($q_lote)) {
-            throw new \InvalidArgumentException('non-nullable q_lote cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_lote');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_lote', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_lote'] = $q_lote;
 
@@ -402,7 +416,14 @@ class NfeSefazRastro implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDFab($d_fab)
     {
         if (is_null($d_fab)) {
-            throw new \InvalidArgumentException('non-nullable d_fab cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_fab');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_fab', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_fab'] = $d_fab;
 
@@ -429,7 +450,14 @@ class NfeSefazRastro implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDVal($d_val)
     {
         if (is_null($d_val)) {
-            throw new \InvalidArgumentException('non-nullable d_val cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_val');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_val', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_val'] = $d_val;
 
@@ -456,7 +484,14 @@ class NfeSefazRastro implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCAgreg($c_agreg)
     {
         if (is_null($c_agreg)) {
-            throw new \InvalidArgumentException('non-nullable c_agreg cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_agreg');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_agreg', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_agreg'] = $c_agreg;
 

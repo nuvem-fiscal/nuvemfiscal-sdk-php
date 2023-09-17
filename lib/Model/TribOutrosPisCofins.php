@@ -89,13 +89,13 @@ class TribOutrosPisCofins implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cst' => false,
-		'v_bc_pis_cofins' => false,
-		'p_aliq_pis' => false,
-		'p_aliq_cofins' => false,
-		'v_pis' => false,
-		'v_cofins' => false,
-		'tp_ret_pis_cofins' => false
+        'cst' => true,
+		'v_bc_pis_cofins' => true,
+		'p_aliq_pis' => true,
+		'p_aliq_cofins' => true,
+		'v_pis' => true,
+		'v_cofins' => true,
+		'tp_ret_pis_cofins' => true
     ];
 
     /**
@@ -354,7 +354,14 @@ class TribOutrosPisCofins implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setCst($cst)
     {
         if (is_null($cst)) {
-            throw new \InvalidArgumentException('non-nullable cst cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cst');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cst', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cst'] = $cst;
 
@@ -381,7 +388,14 @@ class TribOutrosPisCofins implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setVBcPisCofins($v_bc_pis_cofins)
     {
         if (is_null($v_bc_pis_cofins)) {
-            throw new \InvalidArgumentException('non-nullable v_bc_pis_cofins cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_bc_pis_cofins');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bc_pis_cofins', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_bc_pis_cofins'] = $v_bc_pis_cofins;
 
@@ -408,7 +422,14 @@ class TribOutrosPisCofins implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPAliqPis($p_aliq_pis)
     {
         if (is_null($p_aliq_pis)) {
-            throw new \InvalidArgumentException('non-nullable p_aliq_pis cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_aliq_pis');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_aliq_pis', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_aliq_pis'] = $p_aliq_pis;
 
@@ -435,7 +456,14 @@ class TribOutrosPisCofins implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPAliqCofins($p_aliq_cofins)
     {
         if (is_null($p_aliq_cofins)) {
-            throw new \InvalidArgumentException('non-nullable p_aliq_cofins cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_aliq_cofins');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_aliq_cofins', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_aliq_cofins'] = $p_aliq_cofins;
 
@@ -462,7 +490,14 @@ class TribOutrosPisCofins implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setVPis($v_pis)
     {
         if (is_null($v_pis)) {
-            throw new \InvalidArgumentException('non-nullable v_pis cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_pis');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_pis', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_pis'] = $v_pis;
 
@@ -489,7 +524,14 @@ class TribOutrosPisCofins implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setVCofins($v_cofins)
     {
         if (is_null($v_cofins)) {
-            throw new \InvalidArgumentException('non-nullable v_cofins cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_cofins');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_cofins', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_cofins'] = $v_cofins;
 
@@ -516,7 +558,14 @@ class TribOutrosPisCofins implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTpRetPisCofins($tp_ret_pis_cofins)
     {
         if (is_null($tp_ret_pis_cofins)) {
-            throw new \InvalidArgumentException('non-nullable tp_ret_pis_cofins cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_ret_pis_cofins');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_ret_pis_cofins', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_ret_pis_cofins'] = $tp_ret_pis_cofins;
 

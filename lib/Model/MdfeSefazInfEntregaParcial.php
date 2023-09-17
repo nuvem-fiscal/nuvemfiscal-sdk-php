@@ -79,8 +79,8 @@ class MdfeSefazInfEntregaParcial implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'qtd_total' => false,
-		'qtd_parcial' => false
+        'qtd_total' => true,
+		'qtd_parcial' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class MdfeSefazInfEntregaParcial implements ModelInterface, ArrayAccess, \JsonSe
     public function setQtdTotal($qtd_total)
     {
         if (is_null($qtd_total)) {
-            throw new \InvalidArgumentException('non-nullable qtd_total cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'qtd_total');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('qtd_total', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['qtd_total'] = $qtd_total;
 
@@ -349,7 +356,14 @@ class MdfeSefazInfEntregaParcial implements ModelInterface, ArrayAccess, \JsonSe
     public function setQtdParcial($qtd_parcial)
     {
         if (is_null($qtd_parcial)) {
-            throw new \InvalidArgumentException('non-nullable qtd_parcial cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'qtd_parcial');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('qtd_parcial', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['qtd_parcial'] = $qtd_parcial;
 

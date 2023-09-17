@@ -81,9 +81,9 @@ class TribTotalPercent implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'p_tot_trib_fed' => false,
-		'p_tot_trib_est' => false,
-		'p_tot_trib_mun' => false
+        'p_tot_trib_fed' => true,
+		'p_tot_trib_est' => true,
+		'p_tot_trib_mun' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class TribTotalPercent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPTotTribFed($p_tot_trib_fed)
     {
         if (is_null($p_tot_trib_fed)) {
-            throw new \InvalidArgumentException('non-nullable p_tot_trib_fed cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_tot_trib_fed');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_tot_trib_fed', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_tot_trib_fed'] = $p_tot_trib_fed;
 
@@ -359,7 +366,14 @@ class TribTotalPercent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPTotTribEst($p_tot_trib_est)
     {
         if (is_null($p_tot_trib_est)) {
-            throw new \InvalidArgumentException('non-nullable p_tot_trib_est cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_tot_trib_est');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_tot_trib_est', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_tot_trib_est'] = $p_tot_trib_est;
 
@@ -386,7 +400,14 @@ class TribTotalPercent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPTotTribMun($p_tot_trib_mun)
     {
         if (is_null($p_tot_trib_mun)) {
-            throw new \InvalidArgumentException('non-nullable p_tot_trib_mun cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_tot_trib_mun');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_tot_trib_mun', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_tot_trib_mun'] = $p_tot_trib_mun;
 

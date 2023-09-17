@@ -5,7 +5,7 @@
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
 **versao** | **string** | Versão do leiaute (v4.00). |
-**id** | **string** | PL_005d - 11/08/09 - validação do Id. | [optional]
+**id** | **string** | PL_005d - 11/08/09 - validação do Id.    *Geramos automaticamente quando nenhum valor é informado.* | [optional]
 **ide** | [**\NuvemFiscal\Model\NfeSefazIde**](NfeSefazIde.md) |  |
 **emit** | [**\NuvemFiscal\Model\NfeSefazEmit**](NfeSefazEmit.md) |  |
 **avulsa** | [**\NuvemFiscal\Model\NfeSefazAvulsa**](NfeSefazAvulsa.md) |  | [optional]

@@ -79,8 +79,8 @@ class CteSefazICMSSN implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cst' => false,
-		'ind_sn' => false
+        'cst' => true,
+		'ind_sn' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class CteSefazICMSSN implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCst($cst)
     {
         if (is_null($cst)) {
-            throw new \InvalidArgumentException('non-nullable cst cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cst');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cst', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cst'] = $cst;
 
@@ -349,7 +356,14 @@ class CteSefazICMSSN implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIndSn($ind_sn)
     {
         if (is_null($ind_sn)) {
-            throw new \InvalidArgumentException('non-nullable ind_sn cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ind_sn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_sn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ind_sn'] = $ind_sn;
 

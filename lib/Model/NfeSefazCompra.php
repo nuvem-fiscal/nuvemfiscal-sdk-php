@@ -81,9 +81,9 @@ class NfeSefazCompra implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x_n_emp' => false,
-		'x_ped' => false,
-		'x_cont' => false
+        'x_n_emp' => true,
+		'x_ped' => true,
+		'x_cont' => true
     ];
 
     /**
@@ -323,7 +323,14 @@ class NfeSefazCompra implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXNEmp($x_n_emp)
     {
         if (is_null($x_n_emp)) {
-            throw new \InvalidArgumentException('non-nullable x_n_emp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_n_emp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_n_emp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_n_emp'] = $x_n_emp;
 
@@ -350,7 +357,14 @@ class NfeSefazCompra implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXPed($x_ped)
     {
         if (is_null($x_ped)) {
-            throw new \InvalidArgumentException('non-nullable x_ped cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_ped');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_ped', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_ped'] = $x_ped;
 
@@ -377,7 +391,14 @@ class NfeSefazCompra implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXCont($x_cont)
     {
         if (is_null($x_cont)) {
-            throw new \InvalidArgumentException('non-nullable x_cont cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_cont');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_cont', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_cont'] = $x_cont;
 

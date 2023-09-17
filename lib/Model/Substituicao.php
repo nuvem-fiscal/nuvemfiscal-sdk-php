@@ -81,9 +81,9 @@ class Substituicao implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ch_substda' => false,
-		'c_motivo' => false,
-		'x_motivo' => false
+        'ch_substda' => true,
+		'c_motivo' => true,
+		'x_motivo' => true
     ];
 
     /**
@@ -329,7 +329,14 @@ class Substituicao implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setChSubstda($ch_substda)
     {
         if (is_null($ch_substda)) {
-            throw new \InvalidArgumentException('non-nullable ch_substda cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ch_substda');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ch_substda', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ch_substda'] = $ch_substda;
 
@@ -356,7 +363,14 @@ class Substituicao implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCMotivo($c_motivo)
     {
         if (is_null($c_motivo)) {
-            throw new \InvalidArgumentException('non-nullable c_motivo cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_motivo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_motivo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_motivo'] = $c_motivo;
 
@@ -383,7 +397,14 @@ class Substituicao implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXMotivo($x_motivo)
     {
         if (is_null($x_motivo)) {
-            throw new \InvalidArgumentException('non-nullable x_motivo cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_motivo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_motivo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_motivo'] = $x_motivo;
 

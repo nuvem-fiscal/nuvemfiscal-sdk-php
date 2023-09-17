@@ -77,7 +77,7 @@ class CteSefazInfGlobalizado implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x_obs' => false
+        'x_obs' => true
     ];
 
     /**
@@ -312,7 +312,14 @@ class CteSefazInfGlobalizado implements ModelInterface, ArrayAccess, \JsonSerial
     public function setXObs($x_obs)
     {
         if (is_null($x_obs)) {
-            throw new \InvalidArgumentException('non-nullable x_obs cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_obs');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_obs', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_obs'] = $x_obs;
 

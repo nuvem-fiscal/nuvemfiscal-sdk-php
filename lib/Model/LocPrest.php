@@ -79,8 +79,8 @@ class LocPrest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'c_loc_prestacao' => false,
-		'c_pais_prestacao' => false
+        'c_loc_prestacao' => true,
+		'c_pais_prestacao' => true
     ];
 
     /**
@@ -316,7 +316,14 @@ class LocPrest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCLocPrestacao($c_loc_prestacao)
     {
         if (is_null($c_loc_prestacao)) {
-            throw new \InvalidArgumentException('non-nullable c_loc_prestacao cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_loc_prestacao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_loc_prestacao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_loc_prestacao'] = $c_loc_prestacao;
 
@@ -343,7 +350,14 @@ class LocPrest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCPaisPrestacao($c_pais_prestacao)
     {
         if (is_null($c_pais_prestacao)) {
-            throw new \InvalidArgumentException('non-nullable c_pais_prestacao cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_pais_prestacao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_pais_prestacao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_pais_prestacao'] = $c_pais_prestacao;
 

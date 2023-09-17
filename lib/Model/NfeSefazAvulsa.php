@@ -97,17 +97,17 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cnpj' => false,
-		'x_orgao' => false,
-		'matr' => false,
-		'x_agente' => false,
-		'fone' => false,
-		'uf' => false,
-		'n_dar' => false,
-		'd_emi' => false,
-		'v_dar' => false,
-		'rep_emi' => false,
-		'd_pag' => false
+        'cnpj' => true,
+		'x_orgao' => true,
+		'matr' => true,
+		'x_agente' => true,
+		'fone' => true,
+		'uf' => true,
+		'n_dar' => true,
+		'd_emi' => true,
+		'v_dar' => true,
+		'rep_emi' => true,
+		'd_pag' => true
     ];
 
     /**
@@ -397,7 +397,14 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCnpj($cnpj)
     {
         if (is_null($cnpj)) {
-            throw new \InvalidArgumentException('non-nullable cnpj cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnpj');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnpj'] = $cnpj;
 
@@ -424,7 +431,14 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXOrgao($x_orgao)
     {
         if (is_null($x_orgao)) {
-            throw new \InvalidArgumentException('non-nullable x_orgao cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_orgao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_orgao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_orgao'] = $x_orgao;
 
@@ -451,7 +465,14 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMatr($matr)
     {
         if (is_null($matr)) {
-            throw new \InvalidArgumentException('non-nullable matr cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'matr');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('matr', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['matr'] = $matr;
 
@@ -478,7 +499,14 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXAgente($x_agente)
     {
         if (is_null($x_agente)) {
-            throw new \InvalidArgumentException('non-nullable x_agente cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_agente');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_agente', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_agente'] = $x_agente;
 
@@ -505,7 +533,14 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFone($fone)
     {
         if (is_null($fone)) {
-            throw new \InvalidArgumentException('non-nullable fone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fone'] = $fone;
 
@@ -532,7 +567,14 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUf($uf)
     {
         if (is_null($uf)) {
-            throw new \InvalidArgumentException('non-nullable uf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'uf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['uf'] = $uf;
 
@@ -559,7 +601,14 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNDar($n_dar)
     {
         if (is_null($n_dar)) {
-            throw new \InvalidArgumentException('non-nullable n_dar cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_dar');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_dar', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_dar'] = $n_dar;
 
@@ -586,7 +635,14 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDEmi($d_emi)
     {
         if (is_null($d_emi)) {
-            throw new \InvalidArgumentException('non-nullable d_emi cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_emi');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_emi', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_emi'] = $d_emi;
 
@@ -613,7 +669,14 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVDar($v_dar)
     {
         if (is_null($v_dar)) {
-            throw new \InvalidArgumentException('non-nullable v_dar cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_dar');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_dar', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_dar'] = $v_dar;
 
@@ -640,7 +703,14 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRepEmi($rep_emi)
     {
         if (is_null($rep_emi)) {
-            throw new \InvalidArgumentException('non-nullable rep_emi cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rep_emi');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rep_emi', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rep_emi'] = $rep_emi;
 
@@ -667,7 +737,14 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDPag($d_pag)
     {
         if (is_null($d_pag)) {
-            throw new \InvalidArgumentException('non-nullable d_pag cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_pag');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_pag', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_pag'] = $d_pag;
 

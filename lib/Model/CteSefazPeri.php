@@ -81,8 +81,8 @@ class CteSefazPeri implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_onu' => false,
-		'q_tot_emb' => false,
+        'n_onu' => true,
+		'q_tot_emb' => true,
 		'inf_tot_ap' => false
     ];
 
@@ -332,7 +332,14 @@ class CteSefazPeri implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNOnu($n_onu)
     {
         if (is_null($n_onu)) {
-            throw new \InvalidArgumentException('non-nullable n_onu cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_onu');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_onu', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_onu'] = $n_onu;
 
@@ -359,7 +366,14 @@ class CteSefazPeri implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQTotEmb($q_tot_emb)
     {
         if (is_null($q_tot_emb)) {
-            throw new \InvalidArgumentException('non-nullable q_tot_emb cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_tot_emb');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_tot_emb', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_tot_emb'] = $q_tot_emb;
 

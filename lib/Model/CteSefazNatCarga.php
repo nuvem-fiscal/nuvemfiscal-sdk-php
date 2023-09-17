@@ -79,7 +79,7 @@ class CteSefazNatCarga implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x_dime' => false,
+        'x_dime' => true,
 		'c_inf_manu' => false
     ];
 
@@ -316,7 +316,14 @@ class CteSefazNatCarga implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXDime($x_dime)
     {
         if (is_null($x_dime)) {
-            throw new \InvalidArgumentException('non-nullable x_dime cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_dime');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_dime', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_dime'] = $x_dime;
 

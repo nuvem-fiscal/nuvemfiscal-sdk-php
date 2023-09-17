@@ -85,7 +85,7 @@ class MdfeSefazInfANTT implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'rntrc' => false,
+        'rntrc' => true,
 		'inf_ciot' => false,
 		'vale_ped' => false,
 		'inf_contratante' => false,
@@ -337,7 +337,14 @@ class MdfeSefazInfANTT implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRntrc($rntrc)
     {
         if (is_null($rntrc)) {
-            throw new \InvalidArgumentException('non-nullable rntrc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rntrc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rntrc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rntrc'] = $rntrc;
 

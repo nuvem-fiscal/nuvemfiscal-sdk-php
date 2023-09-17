@@ -85,11 +85,11 @@ class CteSefazInfCarga implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'v_carga' => false,
-		'pro_pred' => false,
-		'x_out_cat' => false,
+        'v_carga' => true,
+		'pro_pred' => true,
+		'x_out_cat' => true,
 		'inf_q' => false,
-		'v_carga_averb' => false
+		'v_carga_averb' => true
     ];
 
     /**
@@ -343,7 +343,14 @@ class CteSefazInfCarga implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVCarga($v_carga)
     {
         if (is_null($v_carga)) {
-            throw new \InvalidArgumentException('non-nullable v_carga cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_carga');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_carga', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_carga'] = $v_carga;
 
@@ -370,7 +377,14 @@ class CteSefazInfCarga implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProPred($pro_pred)
     {
         if (is_null($pro_pred)) {
-            throw new \InvalidArgumentException('non-nullable pro_pred cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pro_pred');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pro_pred', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pro_pred'] = $pro_pred;
 
@@ -397,7 +411,14 @@ class CteSefazInfCarga implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXOutCat($x_out_cat)
     {
         if (is_null($x_out_cat)) {
-            throw new \InvalidArgumentException('non-nullable x_out_cat cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_out_cat');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_out_cat', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_out_cat'] = $x_out_cat;
 
@@ -451,7 +472,14 @@ class CteSefazInfCarga implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVCargaAverb($v_carga_averb)
     {
         if (is_null($v_carga_averb)) {
-            throw new \InvalidArgumentException('non-nullable v_carga_averb cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_carga_averb');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_carga_averb', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_carga_averb'] = $v_carga_averb;
 

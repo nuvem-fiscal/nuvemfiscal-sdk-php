@@ -79,8 +79,8 @@ class MdfeSefazCondutor implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x_nome' => false,
-		'cpf' => false
+        'x_nome' => true,
+		'cpf' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class MdfeSefazCondutor implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setXNome($x_nome)
     {
         if (is_null($x_nome)) {
-            throw new \InvalidArgumentException('non-nullable x_nome cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_nome');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_nome', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_nome'] = $x_nome;
 
@@ -349,7 +356,14 @@ class MdfeSefazCondutor implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCpf($cpf)
     {
         if (is_null($cpf)) {
-            throw new \InvalidArgumentException('non-nullable cpf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cpf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cpf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cpf'] = $cpf;
 

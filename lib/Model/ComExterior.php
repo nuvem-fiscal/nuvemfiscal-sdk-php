@@ -95,16 +95,16 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'md_prestacao' => false,
-		'vinc_prest' => false,
-		'tp_moeda' => false,
-		'v_serv_moeda' => false,
-		'mec_af_comex_p' => false,
-		'mec_af_comex_t' => false,
-		'mov_temp_bens' => false,
-		'n_di' => false,
-		'n_re' => false,
-		'mdic' => false
+        'md_prestacao' => true,
+		'vinc_prest' => true,
+		'tp_moeda' => true,
+		'v_serv_moeda' => true,
+		'mec_af_comex_p' => true,
+		'mec_af_comex_t' => true,
+		'mov_temp_bens' => true,
+		'n_di' => true,
+		'n_re' => true,
+		'mdic' => true
     ];
 
     /**
@@ -396,7 +396,14 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMdPrestacao($md_prestacao)
     {
         if (is_null($md_prestacao)) {
-            throw new \InvalidArgumentException('non-nullable md_prestacao cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'md_prestacao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('md_prestacao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['md_prestacao'] = $md_prestacao;
 
@@ -423,7 +430,14 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVincPrest($vinc_prest)
     {
         if (is_null($vinc_prest)) {
-            throw new \InvalidArgumentException('non-nullable vinc_prest cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'vinc_prest');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vinc_prest', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['vinc_prest'] = $vinc_prest;
 
@@ -450,7 +464,14 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpMoeda($tp_moeda)
     {
         if (is_null($tp_moeda)) {
-            throw new \InvalidArgumentException('non-nullable tp_moeda cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_moeda');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_moeda', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_moeda'] = $tp_moeda;
 
@@ -477,7 +498,14 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVServMoeda($v_serv_moeda)
     {
         if (is_null($v_serv_moeda)) {
-            throw new \InvalidArgumentException('non-nullable v_serv_moeda cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_serv_moeda');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_serv_moeda', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_serv_moeda'] = $v_serv_moeda;
 
@@ -504,7 +532,14 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMecAfComexP($mec_af_comex_p)
     {
         if (is_null($mec_af_comex_p)) {
-            throw new \InvalidArgumentException('non-nullable mec_af_comex_p cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mec_af_comex_p');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mec_af_comex_p', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mec_af_comex_p'] = $mec_af_comex_p;
 
@@ -531,7 +566,14 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMecAfComexT($mec_af_comex_t)
     {
         if (is_null($mec_af_comex_t)) {
-            throw new \InvalidArgumentException('non-nullable mec_af_comex_t cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mec_af_comex_t');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mec_af_comex_t', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mec_af_comex_t'] = $mec_af_comex_t;
 
@@ -558,7 +600,14 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMovTempBens($mov_temp_bens)
     {
         if (is_null($mov_temp_bens)) {
-            throw new \InvalidArgumentException('non-nullable mov_temp_bens cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mov_temp_bens');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mov_temp_bens', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mov_temp_bens'] = $mov_temp_bens;
 
@@ -585,7 +634,14 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNDi($n_di)
     {
         if (is_null($n_di)) {
-            throw new \InvalidArgumentException('non-nullable n_di cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_di');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_di', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_di'] = $n_di;
 
@@ -612,7 +668,14 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNRe($n_re)
     {
         if (is_null($n_re)) {
-            throw new \InvalidArgumentException('non-nullable n_re cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_re');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_re', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_re'] = $n_re;
 
@@ -639,7 +702,14 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMdic($mdic)
     {
         if (is_null($mdic)) {
-            throw new \InvalidArgumentException('non-nullable mdic cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mdic');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mdic', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mdic'] = $mdic;
 

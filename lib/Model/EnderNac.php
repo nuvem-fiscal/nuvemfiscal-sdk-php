@@ -79,8 +79,8 @@ class EnderNac implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'c_mun' => false,
-		'cep' => false
+        'c_mun' => true,
+		'cep' => true
     ];
 
     /**
@@ -316,7 +316,14 @@ class EnderNac implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCMun($c_mun)
     {
         if (is_null($c_mun)) {
-            throw new \InvalidArgumentException('non-nullable c_mun cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_mun');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_mun', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_mun'] = $c_mun;
 
@@ -343,7 +350,14 @@ class EnderNac implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCep($cep)
     {
         if (is_null($cep)) {
-            throw new \InvalidArgumentException('non-nullable cep cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cep');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cep', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cep'] = $cep;
 

@@ -79,8 +79,8 @@ class MdfeSefazInfUnidTranspVazia implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id_unid_transp_vazia' => false,
-		'tp_unid_transp_vazia' => false
+        'id_unid_transp_vazia' => true,
+		'tp_unid_transp_vazia' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class MdfeSefazInfUnidTranspVazia implements ModelInterface, ArrayAccess, \JsonS
     public function setIdUnidTranspVazia($id_unid_transp_vazia)
     {
         if (is_null($id_unid_transp_vazia)) {
-            throw new \InvalidArgumentException('non-nullable id_unid_transp_vazia cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id_unid_transp_vazia');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id_unid_transp_vazia', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id_unid_transp_vazia'] = $id_unid_transp_vazia;
 
@@ -349,7 +356,14 @@ class MdfeSefazInfUnidTranspVazia implements ModelInterface, ArrayAccess, \JsonS
     public function setTpUnidTranspVazia($tp_unid_transp_vazia)
     {
         if (is_null($tp_unid_transp_vazia)) {
-            throw new \InvalidArgumentException('non-nullable tp_unid_transp_vazia cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_unid_transp_vazia');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_unid_transp_vazia', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_unid_transp_vazia'] = $tp_unid_transp_vazia;
 

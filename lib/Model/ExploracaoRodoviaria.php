@@ -89,13 +89,13 @@ class ExploracaoRodoviaria implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'categ_veic' => false,
-		'n_eixos' => false,
-		'rodagem' => false,
-		'sentido' => false,
-		'placa' => false,
-		'cod_acesso_ped' => false,
-		'cod_contrato' => false
+        'categ_veic' => true,
+		'n_eixos' => true,
+		'rodagem' => true,
+		'sentido' => true,
+		'placa' => true,
+		'cod_acesso_ped' => true,
+		'cod_contrato' => true
     ];
 
     /**
@@ -372,7 +372,14 @@ class ExploracaoRodoviaria implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setCategVeic($categ_veic)
     {
         if (is_null($categ_veic)) {
-            throw new \InvalidArgumentException('non-nullable categ_veic cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'categ_veic');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('categ_veic', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['categ_veic'] = $categ_veic;
 
@@ -399,7 +406,14 @@ class ExploracaoRodoviaria implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setNEixos($n_eixos)
     {
         if (is_null($n_eixos)) {
-            throw new \InvalidArgumentException('non-nullable n_eixos cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_eixos');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_eixos', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_eixos'] = $n_eixos;
 
@@ -426,7 +440,14 @@ class ExploracaoRodoviaria implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setRodagem($rodagem)
     {
         if (is_null($rodagem)) {
-            throw new \InvalidArgumentException('non-nullable rodagem cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rodagem');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rodagem', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rodagem'] = $rodagem;
 
@@ -453,7 +474,14 @@ class ExploracaoRodoviaria implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setSentido($sentido)
     {
         if (is_null($sentido)) {
-            throw new \InvalidArgumentException('non-nullable sentido cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sentido');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sentido', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sentido'] = $sentido;
 
@@ -480,7 +508,14 @@ class ExploracaoRodoviaria implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPlaca($placa)
     {
         if (is_null($placa)) {
-            throw new \InvalidArgumentException('non-nullable placa cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'placa');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('placa', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['placa'] = $placa;
 
@@ -507,7 +542,14 @@ class ExploracaoRodoviaria implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setCodAcessoPed($cod_acesso_ped)
     {
         if (is_null($cod_acesso_ped)) {
-            throw new \InvalidArgumentException('non-nullable cod_acesso_ped cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cod_acesso_ped');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cod_acesso_ped', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cod_acesso_ped'] = $cod_acesso_ped;
 
@@ -534,7 +576,14 @@ class ExploracaoRodoviaria implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setCodContrato($cod_contrato)
     {
         if (is_null($cod_contrato)) {
-            throw new \InvalidArgumentException('non-nullable cod_contrato cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cod_contrato');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cod_contrato', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cod_contrato'] = $cod_contrato;
 

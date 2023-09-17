@@ -83,10 +83,10 @@ class NfeSefazII implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'v_bc' => false,
-		'v_desp_adu' => false,
-		'v_ii' => false,
-		'v_iof' => false
+        'v_bc' => true,
+		'v_desp_adu' => true,
+		'v_ii' => true,
+		'v_iof' => true
     ];
 
     /**
@@ -342,7 +342,14 @@ class NfeSefazII implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVBc($v_bc)
     {
         if (is_null($v_bc)) {
-            throw new \InvalidArgumentException('non-nullable v_bc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_bc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_bc'] = $v_bc;
 
@@ -369,7 +376,14 @@ class NfeSefazII implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVDespAdu($v_desp_adu)
     {
         if (is_null($v_desp_adu)) {
-            throw new \InvalidArgumentException('non-nullable v_desp_adu cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_desp_adu');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_desp_adu', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_desp_adu'] = $v_desp_adu;
 
@@ -396,7 +410,14 @@ class NfeSefazII implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVIi($v_ii)
     {
         if (is_null($v_ii)) {
-            throw new \InvalidArgumentException('non-nullable v_ii cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_ii');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_ii', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_ii'] = $v_ii;
 
@@ -423,7 +444,14 @@ class NfeSefazII implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVIof($v_iof)
     {
         if (is_null($v_iof)) {
-            throw new \InvalidArgumentException('non-nullable v_iof cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_iof');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_iof', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_iof'] = $v_iof;
 

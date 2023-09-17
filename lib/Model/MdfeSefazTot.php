@@ -87,12 +87,12 @@ class MdfeSefazTot implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'q_cte' => false,
-		'q_nfe' => false,
-		'q_mdfe' => false,
-		'v_carga' => false,
-		'c_unid' => false,
-		'q_carga' => false
+        'q_cte' => true,
+		'q_nfe' => true,
+		'q_mdfe' => true,
+		'v_carga' => true,
+		'c_unid' => true,
+		'q_carga' => true
     ];
 
     /**
@@ -353,7 +353,14 @@ class MdfeSefazTot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQCte($q_cte)
     {
         if (is_null($q_cte)) {
-            throw new \InvalidArgumentException('non-nullable q_cte cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_cte');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_cte', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_cte'] = $q_cte;
 
@@ -380,7 +387,14 @@ class MdfeSefazTot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQNfe($q_nfe)
     {
         if (is_null($q_nfe)) {
-            throw new \InvalidArgumentException('non-nullable q_nfe cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_nfe');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_nfe', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_nfe'] = $q_nfe;
 
@@ -407,7 +421,14 @@ class MdfeSefazTot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQMdfe($q_mdfe)
     {
         if (is_null($q_mdfe)) {
-            throw new \InvalidArgumentException('non-nullable q_mdfe cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_mdfe');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_mdfe', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_mdfe'] = $q_mdfe;
 
@@ -434,7 +455,14 @@ class MdfeSefazTot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVCarga($v_carga)
     {
         if (is_null($v_carga)) {
-            throw new \InvalidArgumentException('non-nullable v_carga cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_carga');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_carga', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_carga'] = $v_carga;
 
@@ -461,7 +489,14 @@ class MdfeSefazTot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCUnid($c_unid)
     {
         if (is_null($c_unid)) {
-            throw new \InvalidArgumentException('non-nullable c_unid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_unid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_unid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_unid'] = $c_unid;
 
@@ -488,7 +523,14 @@ class MdfeSefazTot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQCarga($q_carga)
     {
         if (is_null($q_carga)) {
-            throw new \InvalidArgumentException('non-nullable q_carga cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_carga');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_carga', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_carga'] = $q_carga;
 

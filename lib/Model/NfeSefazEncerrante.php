@@ -85,11 +85,11 @@ class NfeSefazEncerrante implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_bico' => false,
-		'n_bomba' => false,
-		'n_tanque' => false,
-		'v_enc_ini' => false,
-		'v_enc_fin' => false
+        'n_bico' => true,
+		'n_bomba' => true,
+		'n_tanque' => true,
+		'v_enc_ini' => true,
+		'v_enc_fin' => true
     ];
 
     /**
@@ -349,7 +349,14 @@ class NfeSefazEncerrante implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setNBico($n_bico)
     {
         if (is_null($n_bico)) {
-            throw new \InvalidArgumentException('non-nullable n_bico cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_bico');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_bico', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_bico'] = $n_bico;
 
@@ -376,7 +383,14 @@ class NfeSefazEncerrante implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setNBomba($n_bomba)
     {
         if (is_null($n_bomba)) {
-            throw new \InvalidArgumentException('non-nullable n_bomba cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_bomba');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_bomba', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_bomba'] = $n_bomba;
 
@@ -403,7 +417,14 @@ class NfeSefazEncerrante implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setNTanque($n_tanque)
     {
         if (is_null($n_tanque)) {
-            throw new \InvalidArgumentException('non-nullable n_tanque cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_tanque');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_tanque', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_tanque'] = $n_tanque;
 
@@ -430,7 +451,14 @@ class NfeSefazEncerrante implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setVEncIni($v_enc_ini)
     {
         if (is_null($v_enc_ini)) {
-            throw new \InvalidArgumentException('non-nullable v_enc_ini cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_enc_ini');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_enc_ini', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_enc_ini'] = $v_enc_ini;
 
@@ -457,7 +485,14 @@ class NfeSefazEncerrante implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setVEncFin($v_enc_fin)
     {
         if (is_null($v_enc_fin)) {
-            throw new \InvalidArgumentException('non-nullable v_enc_fin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_enc_fin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_enc_fin', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_enc_fin'] = $v_enc_fin;
 

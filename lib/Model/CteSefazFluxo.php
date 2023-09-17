@@ -83,10 +83,10 @@ class CteSefazFluxo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x_orig' => false,
+        'x_orig' => true,
 		'pass' => false,
-		'x_dest' => false,
-		'x_rota' => false
+		'x_dest' => true,
+		'x_rota' => true
     ];
 
     /**
@@ -330,7 +330,14 @@ class CteSefazFluxo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXOrig($x_orig)
     {
         if (is_null($x_orig)) {
-            throw new \InvalidArgumentException('non-nullable x_orig cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_orig');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_orig', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_orig'] = $x_orig;
 
@@ -384,7 +391,14 @@ class CteSefazFluxo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXDest($x_dest)
     {
         if (is_null($x_dest)) {
-            throw new \InvalidArgumentException('non-nullable x_dest cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_dest');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_dest', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_dest'] = $x_dest;
 
@@ -411,7 +425,14 @@ class CteSefazFluxo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXRota($x_rota)
     {
         if (is_null($x_rota)) {
-            throw new \InvalidArgumentException('non-nullable x_rota cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_rota');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_rota', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_rota'] = $x_rota;
 

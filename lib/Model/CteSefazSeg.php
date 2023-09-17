@@ -82,8 +82,8 @@ class CteSefazSeg implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'inf_seg' => false,
-		'n_apol' => false,
-		'n_aver' => false
+		'n_apol' => true,
+		'n_aver' => true
     ];
 
     /**
@@ -359,7 +359,14 @@ class CteSefazSeg implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNApol($n_apol)
     {
         if (is_null($n_apol)) {
-            throw new \InvalidArgumentException('non-nullable n_apol cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_apol');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_apol', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_apol'] = $n_apol;
 
@@ -386,7 +393,14 @@ class CteSefazSeg implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNAver($n_aver)
     {
         if (is_null($n_aver)) {
-            throw new \InvalidArgumentException('non-nullable n_aver cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_aver');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_aver', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_aver'] = $n_aver;
 

@@ -80,7 +80,7 @@ class RpsPedidoEmissaoLote implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ambiente' => false,
+        'ambiente' => true,
 		'referencia' => false,
 		'lista_rps' => false
     ];
@@ -349,10 +349,17 @@ class RpsPedidoEmissaoLote implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setAmbiente($ambiente)
     {
         if (is_null($ambiente)) {
-            throw new \InvalidArgumentException('non-nullable ambiente cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ambiente');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ambiente', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getAmbienteAllowableValues();
-        if (!in_array($ambiente, $allowedValues, true)) {
+        if (!is_null($ambiente) && !in_array($ambiente, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'ambiente', must be one of '%s'",

@@ -79,8 +79,8 @@ class NfeSefazInfIntermed implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cnpj' => false,
-		'id_cad_int_tran' => false
+        'cnpj' => true,
+		'id_cad_int_tran' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class NfeSefazInfIntermed implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setCnpj($cnpj)
     {
         if (is_null($cnpj)) {
-            throw new \InvalidArgumentException('non-nullable cnpj cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnpj');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnpj'] = $cnpj;
 
@@ -349,7 +356,14 @@ class NfeSefazInfIntermed implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setIdCadIntTran($id_cad_int_tran)
     {
         if (is_null($id_cad_int_tran)) {
-            throw new \InvalidArgumentException('non-nullable id_cad_int_tran cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id_cad_int_tran');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id_cad_int_tran', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id_cad_int_tran'] = $id_cad_int_tran;
 

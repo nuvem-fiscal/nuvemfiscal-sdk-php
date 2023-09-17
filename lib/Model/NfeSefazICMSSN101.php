@@ -83,10 +83,10 @@ class NfeSefazICMSSN101 implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'orig' => false,
-		'csosn' => false,
-		'p_cred_sn' => false,
-		'v_cred_icmssn' => false
+        'orig' => true,
+		'csosn' => true,
+		'p_cred_sn' => true,
+		'v_cred_icmssn' => true
     ];
 
     /**
@@ -342,7 +342,14 @@ class NfeSefazICMSSN101 implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setOrig($orig)
     {
         if (is_null($orig)) {
-            throw new \InvalidArgumentException('non-nullable orig cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'orig');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('orig', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['orig'] = $orig;
 
@@ -369,7 +376,14 @@ class NfeSefazICMSSN101 implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCsosn($csosn)
     {
         if (is_null($csosn)) {
-            throw new \InvalidArgumentException('non-nullable csosn cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'csosn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('csosn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['csosn'] = $csosn;
 
@@ -396,7 +410,14 @@ class NfeSefazICMSSN101 implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setPCredSn($p_cred_sn)
     {
         if (is_null($p_cred_sn)) {
-            throw new \InvalidArgumentException('non-nullable p_cred_sn cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_cred_sn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_cred_sn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_cred_sn'] = $p_cred_sn;
 
@@ -423,7 +444,14 @@ class NfeSefazICMSSN101 implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVCredIcmssn($v_cred_icmssn)
     {
         if (is_null($v_cred_icmssn)) {
-            throw new \InvalidArgumentException('non-nullable v_cred_icmssn cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_cred_icmssn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_cred_icmssn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_cred_icmssn'] = $v_cred_icmssn;
 

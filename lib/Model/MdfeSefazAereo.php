@@ -86,12 +86,12 @@ class MdfeSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'nac' => false,
-		'matr' => false,
-		'n_voo' => false,
-		'c_aer_emb' => false,
-		'c_aer_des' => false,
-		'd_voo' => false
+        'nac' => true,
+		'matr' => true,
+		'n_voo' => true,
+		'c_aer_emb' => true,
+		'c_aer_des' => true,
+		'd_voo' => true
     ];
 
     /**
@@ -361,7 +361,14 @@ class MdfeSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNac($nac)
     {
         if (is_null($nac)) {
-            throw new \InvalidArgumentException('non-nullable nac cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'nac');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('nac', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['nac'] = $nac;
 
@@ -388,7 +395,14 @@ class MdfeSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMatr($matr)
     {
         if (is_null($matr)) {
-            throw new \InvalidArgumentException('non-nullable matr cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'matr');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('matr', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['matr'] = $matr;
 
@@ -415,7 +429,14 @@ class MdfeSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNVoo($n_voo)
     {
         if (is_null($n_voo)) {
-            throw new \InvalidArgumentException('non-nullable n_voo cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_voo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_voo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_voo'] = $n_voo;
 
@@ -442,7 +463,14 @@ class MdfeSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCAerEmb($c_aer_emb)
     {
         if (is_null($c_aer_emb)) {
-            throw new \InvalidArgumentException('non-nullable c_aer_emb cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_aer_emb');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_aer_emb', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_aer_emb'] = $c_aer_emb;
 
@@ -469,7 +497,14 @@ class MdfeSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCAerDes($c_aer_des)
     {
         if (is_null($c_aer_des)) {
-            throw new \InvalidArgumentException('non-nullable c_aer_des cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_aer_des');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_aer_des', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_aer_des'] = $c_aer_des;
 
@@ -496,7 +531,14 @@ class MdfeSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDVoo($d_voo)
     {
         if (is_null($d_voo)) {
-            throw new \InvalidArgumentException('non-nullable d_voo cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_voo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_voo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_voo'] = $d_voo;
 

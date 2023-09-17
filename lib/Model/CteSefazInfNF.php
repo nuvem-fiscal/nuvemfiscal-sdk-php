@@ -111,22 +111,22 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_roma' => false,
-		'n_ped' => false,
-		'mod' => false,
-		'serie' => false,
-		'n_doc' => false,
-		'd_emi' => false,
-		'v_bc' => false,
-		'v_icms' => false,
-		'v_bcst' => false,
-		'v_st' => false,
-		'v_prod' => false,
-		'v_nf' => false,
-		'n_cfop' => false,
-		'n_peso' => false,
-		'pin' => false,
-		'd_prev' => false,
+        'n_roma' => true,
+		'n_ped' => true,
+		'mod' => true,
+		'serie' => true,
+		'n_doc' => true,
+		'd_emi' => true,
+		'v_bc' => true,
+		'v_icms' => true,
+		'v_bcst' => true,
+		'v_st' => true,
+		'v_prod' => true,
+		'v_nf' => true,
+		'n_cfop' => true,
+		'n_peso' => true,
+		'pin' => true,
+		'd_prev' => true,
 		'inf_unid_carga' => false,
 		'inf_unid_transp' => false
     ];
@@ -461,7 +461,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNRoma($n_roma)
     {
         if (is_null($n_roma)) {
-            throw new \InvalidArgumentException('non-nullable n_roma cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_roma');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_roma', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_roma'] = $n_roma;
 
@@ -488,7 +495,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNPed($n_ped)
     {
         if (is_null($n_ped)) {
-            throw new \InvalidArgumentException('non-nullable n_ped cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_ped');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_ped', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_ped'] = $n_ped;
 
@@ -515,7 +529,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMod($mod)
     {
         if (is_null($mod)) {
-            throw new \InvalidArgumentException('non-nullable mod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mod'] = $mod;
 
@@ -542,7 +563,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSerie($serie)
     {
         if (is_null($serie)) {
-            throw new \InvalidArgumentException('non-nullable serie cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'serie');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('serie', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['serie'] = $serie;
 
@@ -569,7 +597,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNDoc($n_doc)
     {
         if (is_null($n_doc)) {
-            throw new \InvalidArgumentException('non-nullable n_doc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_doc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_doc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_doc'] = $n_doc;
 
@@ -596,7 +631,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDEmi($d_emi)
     {
         if (is_null($d_emi)) {
-            throw new \InvalidArgumentException('non-nullable d_emi cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_emi');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_emi', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_emi'] = $d_emi;
 
@@ -623,7 +665,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVBc($v_bc)
     {
         if (is_null($v_bc)) {
-            throw new \InvalidArgumentException('non-nullable v_bc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_bc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_bc'] = $v_bc;
 
@@ -650,7 +699,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVIcms($v_icms)
     {
         if (is_null($v_icms)) {
-            throw new \InvalidArgumentException('non-nullable v_icms cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_icms');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_icms', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_icms'] = $v_icms;
 
@@ -677,7 +733,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVBcst($v_bcst)
     {
         if (is_null($v_bcst)) {
-            throw new \InvalidArgumentException('non-nullable v_bcst cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_bcst');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bcst', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_bcst'] = $v_bcst;
 
@@ -704,7 +767,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVSt($v_st)
     {
         if (is_null($v_st)) {
-            throw new \InvalidArgumentException('non-nullable v_st cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_st');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_st', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_st'] = $v_st;
 
@@ -731,7 +801,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVProd($v_prod)
     {
         if (is_null($v_prod)) {
-            throw new \InvalidArgumentException('non-nullable v_prod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_prod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_prod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_prod'] = $v_prod;
 
@@ -758,7 +835,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVNf($v_nf)
     {
         if (is_null($v_nf)) {
-            throw new \InvalidArgumentException('non-nullable v_nf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_nf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_nf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_nf'] = $v_nf;
 
@@ -785,7 +869,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNCfop($n_cfop)
     {
         if (is_null($n_cfop)) {
-            throw new \InvalidArgumentException('non-nullable n_cfop cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_cfop');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_cfop', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_cfop'] = $n_cfop;
 
@@ -812,7 +903,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNPeso($n_peso)
     {
         if (is_null($n_peso)) {
-            throw new \InvalidArgumentException('non-nullable n_peso cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_peso');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_peso', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_peso'] = $n_peso;
 
@@ -839,7 +937,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPin($pin)
     {
         if (is_null($pin)) {
-            throw new \InvalidArgumentException('non-nullable pin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pin', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pin'] = $pin;
 
@@ -866,7 +971,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDPrev($d_prev)
     {
         if (is_null($d_prev)) {
-            throw new \InvalidArgumentException('non-nullable d_prev cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_prev');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_prev', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_prev'] = $d_prev;
 

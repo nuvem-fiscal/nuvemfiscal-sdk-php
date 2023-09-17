@@ -117,8 +117,8 @@ class NfeSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'versao' => false,
-		'id' => false,
+        'versao' => true,
+		'id' => true,
 		'ide' => false,
 		'emit' => false,
 		'avulsa' => false,
@@ -470,7 +470,14 @@ class NfeSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVersao($versao)
     {
         if (is_null($versao)) {
-            throw new \InvalidArgumentException('non-nullable versao cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'versao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('versao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['versao'] = $versao;
 
@@ -490,14 +497,21 @@ class NfeSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id PL_005d - 11/08/09 - validação do Id.
+     * @param string|null $id PL_005d - 11/08/09 - validação do Id.    *Geramos automaticamente quando nenhum valor é informado.*
      *
      * @return self
      */
     public function setId($id)
     {
         if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id'] = $id;
 

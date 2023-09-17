@@ -91,13 +91,13 @@ class NfeSefazTransp implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'mod_frete' => false,
+        'mod_frete' => true,
 		'transporta' => false,
 		'ret_transp' => false,
 		'veic_transp' => false,
 		'reboque' => false,
-		'vagao' => false,
-		'balsa' => false,
+		'vagao' => true,
+		'balsa' => true,
 		'vol' => false
     ];
 
@@ -361,7 +361,14 @@ class NfeSefazTransp implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setModFrete($mod_frete)
     {
         if (is_null($mod_frete)) {
-            throw new \InvalidArgumentException('non-nullable mod_frete cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mod_frete');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mod_frete', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mod_frete'] = $mod_frete;
 
@@ -496,7 +503,14 @@ class NfeSefazTransp implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVagao($vagao)
     {
         if (is_null($vagao)) {
-            throw new \InvalidArgumentException('non-nullable vagao cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'vagao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vagao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['vagao'] = $vagao;
 
@@ -523,7 +537,14 @@ class NfeSefazTransp implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBalsa($balsa)
     {
         if (is_null($balsa)) {
-            throw new \InvalidArgumentException('non-nullable balsa cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'balsa');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('balsa', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['balsa'] = $balsa;
 

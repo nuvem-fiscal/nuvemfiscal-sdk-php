@@ -85,11 +85,11 @@ class CteSefazICMSOutraUF implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cst' => false,
-		'p_red_bc_outra_uf' => false,
-		'v_bc_outra_uf' => false,
-		'p_icms_outra_uf' => false,
-		'v_icms_outra_uf' => false
+        'cst' => true,
+		'p_red_bc_outra_uf' => true,
+		'v_bc_outra_uf' => true,
+		'p_icms_outra_uf' => true,
+		'v_icms_outra_uf' => true
     ];
 
     /**
@@ -349,7 +349,14 @@ class CteSefazICMSOutraUF implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setCst($cst)
     {
         if (is_null($cst)) {
-            throw new \InvalidArgumentException('non-nullable cst cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cst');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cst', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cst'] = $cst;
 
@@ -376,7 +383,14 @@ class CteSefazICMSOutraUF implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPRedBcOutraUf($p_red_bc_outra_uf)
     {
         if (is_null($p_red_bc_outra_uf)) {
-            throw new \InvalidArgumentException('non-nullable p_red_bc_outra_uf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_red_bc_outra_uf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_red_bc_outra_uf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_red_bc_outra_uf'] = $p_red_bc_outra_uf;
 
@@ -403,7 +417,14 @@ class CteSefazICMSOutraUF implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setVBcOutraUf($v_bc_outra_uf)
     {
         if (is_null($v_bc_outra_uf)) {
-            throw new \InvalidArgumentException('non-nullable v_bc_outra_uf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_bc_outra_uf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bc_outra_uf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_bc_outra_uf'] = $v_bc_outra_uf;
 
@@ -430,7 +451,14 @@ class CteSefazICMSOutraUF implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPIcmsOutraUf($p_icms_outra_uf)
     {
         if (is_null($p_icms_outra_uf)) {
-            throw new \InvalidArgumentException('non-nullable p_icms_outra_uf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_icms_outra_uf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_icms_outra_uf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_icms_outra_uf'] = $p_icms_outra_uf;
 
@@ -457,7 +485,14 @@ class CteSefazICMSOutraUF implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setVIcmsOutraUf($v_icms_outra_uf)
     {
         if (is_null($v_icms_outra_uf)) {
-            throw new \InvalidArgumentException('non-nullable v_icms_outra_uf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_icms_outra_uf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_icms_outra_uf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_icms_outra_uf'] = $v_icms_outra_uf;
 

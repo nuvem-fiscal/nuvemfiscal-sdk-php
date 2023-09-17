@@ -81,9 +81,9 @@ class NfeSefazRefECF implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'mod' => false,
-		'n_ecf' => false,
-		'n_coo' => false
+        'mod' => true,
+		'n_ecf' => true,
+		'n_coo' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class NfeSefazRefECF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMod($mod)
     {
         if (is_null($mod)) {
-            throw new \InvalidArgumentException('non-nullable mod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mod'] = $mod;
 
@@ -359,7 +366,14 @@ class NfeSefazRefECF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNEcf($n_ecf)
     {
         if (is_null($n_ecf)) {
-            throw new \InvalidArgumentException('non-nullable n_ecf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_ecf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_ecf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_ecf'] = $n_ecf;
 
@@ -386,7 +400,14 @@ class NfeSefazRefECF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNCoo($n_coo)
     {
         if (is_null($n_coo)) {
-            throw new \InvalidArgumentException('non-nullable n_coo cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_coo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_coo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_coo'] = $n_coo;
 

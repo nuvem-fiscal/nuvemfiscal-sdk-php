@@ -79,8 +79,8 @@ class ExigSuspensa implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tp_susp' => false,
-		'n_processo' => false
+        'tp_susp' => true,
+		'n_processo' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class ExigSuspensa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpSusp($tp_susp)
     {
         if (is_null($tp_susp)) {
-            throw new \InvalidArgumentException('non-nullable tp_susp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_susp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_susp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_susp'] = $tp_susp;
 
@@ -349,7 +356,14 @@ class ExigSuspensa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNProcesso($n_processo)
     {
         if (is_null($n_processo)) {
-            throw new \InvalidArgumentException('non-nullable n_processo cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_processo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_processo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_processo'] = $n_processo;
 

@@ -79,8 +79,8 @@ class VDescCondIncond implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'v_desc_incond' => false,
-		'v_desc_cond' => false
+        'v_desc_incond' => true,
+		'v_desc_cond' => true
     ];
 
     /**
@@ -316,7 +316,14 @@ class VDescCondIncond implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVDescIncond($v_desc_incond)
     {
         if (is_null($v_desc_incond)) {
-            throw new \InvalidArgumentException('non-nullable v_desc_incond cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_desc_incond');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_desc_incond', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_desc_incond'] = $v_desc_incond;
 
@@ -343,7 +350,14 @@ class VDescCondIncond implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVDescCond($v_desc_cond)
     {
         if (is_null($v_desc_cond)) {
-            throw new \InvalidArgumentException('non-nullable v_desc_cond cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_desc_cond');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_desc_cond', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_desc_cond'] = $v_desc_cond;
 

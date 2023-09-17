@@ -85,10 +85,10 @@ class MdfeSefazInfContratante implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x_nome' => false,
-		'cpf' => false,
-		'cnpj' => false,
-		'id_estrangeiro' => false,
+        'x_nome' => true,
+		'cpf' => true,
+		'cnpj' => true,
+		'id_estrangeiro' => true,
 		'inf_contrato' => false
     ];
 
@@ -337,7 +337,14 @@ class MdfeSefazInfContratante implements ModelInterface, ArrayAccess, \JsonSeria
     public function setXNome($x_nome)
     {
         if (is_null($x_nome)) {
-            throw new \InvalidArgumentException('non-nullable x_nome cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_nome');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_nome', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_nome'] = $x_nome;
 
@@ -364,7 +371,14 @@ class MdfeSefazInfContratante implements ModelInterface, ArrayAccess, \JsonSeria
     public function setCpf($cpf)
     {
         if (is_null($cpf)) {
-            throw new \InvalidArgumentException('non-nullable cpf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cpf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cpf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cpf'] = $cpf;
 
@@ -391,7 +405,14 @@ class MdfeSefazInfContratante implements ModelInterface, ArrayAccess, \JsonSeria
     public function setCnpj($cnpj)
     {
         if (is_null($cnpj)) {
-            throw new \InvalidArgumentException('non-nullable cnpj cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnpj');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnpj'] = $cnpj;
 
@@ -418,7 +439,14 @@ class MdfeSefazInfContratante implements ModelInterface, ArrayAccess, \JsonSeria
     public function setIdEstrangeiro($id_estrangeiro)
     {
         if (is_null($id_estrangeiro)) {
-            throw new \InvalidArgumentException('non-nullable id_estrangeiro cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id_estrangeiro');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id_estrangeiro', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id_estrangeiro'] = $id_estrangeiro;
 

@@ -87,12 +87,12 @@ class NfeSefazRetTransp implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'v_serv' => false,
-		'v_bc_ret' => false,
-		'p_icms_ret' => false,
-		'v_icms_ret' => false,
-		'cfop' => false,
-		'c_mun_fg' => false
+        'v_serv' => true,
+		'v_bc_ret' => true,
+		'p_icms_ret' => true,
+		'v_icms_ret' => true,
+		'cfop' => true,
+		'c_mun_fg' => true
     ];
 
     /**
@@ -362,7 +362,14 @@ class NfeSefazRetTransp implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVServ($v_serv)
     {
         if (is_null($v_serv)) {
-            throw new \InvalidArgumentException('non-nullable v_serv cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_serv');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_serv', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_serv'] = $v_serv;
 
@@ -389,7 +396,14 @@ class NfeSefazRetTransp implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVBcRet($v_bc_ret)
     {
         if (is_null($v_bc_ret)) {
-            throw new \InvalidArgumentException('non-nullable v_bc_ret cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_bc_ret');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bc_ret', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_bc_ret'] = $v_bc_ret;
 
@@ -416,7 +430,14 @@ class NfeSefazRetTransp implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setPIcmsRet($p_icms_ret)
     {
         if (is_null($p_icms_ret)) {
-            throw new \InvalidArgumentException('non-nullable p_icms_ret cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_icms_ret');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_icms_ret', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_icms_ret'] = $p_icms_ret;
 
@@ -443,7 +464,14 @@ class NfeSefazRetTransp implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVIcmsRet($v_icms_ret)
     {
         if (is_null($v_icms_ret)) {
-            throw new \InvalidArgumentException('non-nullable v_icms_ret cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_icms_ret');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_icms_ret', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_icms_ret'] = $v_icms_ret;
 
@@ -470,7 +498,14 @@ class NfeSefazRetTransp implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCfop($cfop)
     {
         if (is_null($cfop)) {
-            throw new \InvalidArgumentException('non-nullable cfop cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cfop');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cfop', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cfop'] = $cfop;
 
@@ -497,7 +532,14 @@ class NfeSefazRetTransp implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCMunFg($c_mun_fg)
     {
         if (is_null($c_mun_fg)) {
-            throw new \InvalidArgumentException('non-nullable c_mun_fg cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_mun_fg');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_mun_fg', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_mun_fg'] = $c_mun_fg;
 

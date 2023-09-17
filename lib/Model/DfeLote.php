@@ -94,8 +94,8 @@ class DfeLote implements ModelInterface, ArrayAccess, \JsonSerializable
 		'created_at' => false,
 		'status' => false,
 		'ambiente' => false,
-		'referencia' => false,
-		'id_lote' => false,
+		'referencia' => true,
+		'id_lote' => true,
 		'recibo' => false,
 		'documentos' => false
     ];
@@ -535,7 +535,14 @@ class DfeLote implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReferencia($referencia)
     {
         if (is_null($referencia)) {
-            throw new \InvalidArgumentException('non-nullable referencia cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'referencia');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('referencia', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['referencia'] = $referencia;
 
@@ -562,7 +569,14 @@ class DfeLote implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIdLote($id_lote)
     {
         if (is_null($id_lote)) {
-            throw new \InvalidArgumentException('non-nullable id_lote cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id_lote');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id_lote', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id_lote'] = $id_lote;
 

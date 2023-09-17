@@ -81,9 +81,9 @@ class EnderExtSimples implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'c_end_post' => false,
-		'x_cidade' => false,
-		'x_est_prov_reg' => false
+        'c_end_post' => true,
+		'x_cidade' => true,
+		'x_est_prov_reg' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class EnderExtSimples implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCEndPost($c_end_post)
     {
         if (is_null($c_end_post)) {
-            throw new \InvalidArgumentException('non-nullable c_end_post cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_end_post');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_end_post', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_end_post'] = $c_end_post;
 
@@ -359,7 +366,14 @@ class EnderExtSimples implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXCidade($x_cidade)
     {
         if (is_null($x_cidade)) {
-            throw new \InvalidArgumentException('non-nullable x_cidade cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_cidade');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_cidade', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_cidade'] = $x_cidade;
 
@@ -386,7 +400,14 @@ class EnderExtSimples implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXEstProvReg($x_est_prov_reg)
     {
         if (is_null($x_est_prov_reg)) {
-            throw new \InvalidArgumentException('non-nullable x_est_prov_reg cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_est_prov_reg');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_est_prov_reg', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_est_prov_reg'] = $x_est_prov_reg;
 

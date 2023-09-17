@@ -5,7 +5,7 @@
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
 **versao** | **string** | Versão do leiaute.  Ex: \&quot;3.00\&quot;. |
-**id** | **string** | Identificador da tag a ser assinada.  Informar a chave de acesso do MDF-e e precedida do literal \&quot;MDFe\&quot;. | [optional]
+**id** | **string** | Identificador da tag a ser assinada.  Informar a chave de acesso do MDF-e e precedida do literal \&quot;MDFe\&quot;.    *Geramos automaticamente quando nenhum valor é informado.* | [optional]
 **ide** | [**\NuvemFiscal\Model\MdfeSefazIde**](MdfeSefazIde.md) |  |
 **emit** | [**\NuvemFiscal\Model\MdfeSefazEmit**](MdfeSefazEmit.md) |  |
 **inf_modal** | [**\NuvemFiscal\Model\MdfeSefazInfModal**](MdfeSefazInfModal.md) |  |

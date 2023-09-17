@@ -93,15 +93,15 @@ class CteSefazToma4 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'toma' => false,
-		'cnpj' => false,
-		'cpf' => false,
-		'ie' => false,
-		'x_nome' => false,
-		'x_fant' => false,
-		'fone' => false,
+        'toma' => true,
+		'cnpj' => true,
+		'cpf' => true,
+		'ie' => true,
+		'x_nome' => true,
+		'x_fant' => true,
+		'fone' => true,
 		'ender_toma' => false,
-		'email' => false
+		'email' => true
     ];
 
     /**
@@ -374,7 +374,14 @@ class CteSefazToma4 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setToma($toma)
     {
         if (is_null($toma)) {
-            throw new \InvalidArgumentException('non-nullable toma cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'toma');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('toma', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['toma'] = $toma;
 
@@ -401,7 +408,14 @@ class CteSefazToma4 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCnpj($cnpj)
     {
         if (is_null($cnpj)) {
-            throw new \InvalidArgumentException('non-nullable cnpj cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnpj');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnpj'] = $cnpj;
 
@@ -428,7 +442,14 @@ class CteSefazToma4 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCpf($cpf)
     {
         if (is_null($cpf)) {
-            throw new \InvalidArgumentException('non-nullable cpf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cpf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cpf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cpf'] = $cpf;
 
@@ -455,7 +476,14 @@ class CteSefazToma4 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIe($ie)
     {
         if (is_null($ie)) {
-            throw new \InvalidArgumentException('non-nullable ie cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ie');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ie', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ie'] = $ie;
 
@@ -482,7 +510,14 @@ class CteSefazToma4 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXNome($x_nome)
     {
         if (is_null($x_nome)) {
-            throw new \InvalidArgumentException('non-nullable x_nome cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_nome');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_nome', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_nome'] = $x_nome;
 
@@ -509,7 +544,14 @@ class CteSefazToma4 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXFant($x_fant)
     {
         if (is_null($x_fant)) {
-            throw new \InvalidArgumentException('non-nullable x_fant cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_fant');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_fant', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_fant'] = $x_fant;
 
@@ -536,7 +578,14 @@ class CteSefazToma4 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFone($fone)
     {
         if (is_null($fone)) {
-            throw new \InvalidArgumentException('non-nullable fone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fone'] = $fone;
 
@@ -590,7 +639,14 @@ class CteSefazToma4 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEmail($email)
     {
         if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('email', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['email'] = $email;
 

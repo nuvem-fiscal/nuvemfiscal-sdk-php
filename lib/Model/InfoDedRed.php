@@ -81,8 +81,8 @@ class InfoDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'p_dr' => false,
-		'v_dr' => false,
+        'p_dr' => true,
+		'v_dr' => true,
 		'documentos' => false
     ];
 
@@ -323,7 +323,14 @@ class InfoDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPDr($p_dr)
     {
         if (is_null($p_dr)) {
-            throw new \InvalidArgumentException('non-nullable p_dr cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_dr');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_dr', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_dr'] = $p_dr;
 
@@ -350,7 +357,14 @@ class InfoDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVDr($v_dr)
     {
         if (is_null($v_dr)) {
-            throw new \InvalidArgumentException('non-nullable v_dr cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_dr');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_dr', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_dr'] = $v_dr;
 

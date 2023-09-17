@@ -85,11 +85,11 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_adicao' => false,
-		'n_seq_adic' => false,
-		'c_fabricante' => false,
-		'v_desc_di' => false,
-		'n_draw' => false
+        'n_adicao' => true,
+		'n_seq_adic' => true,
+		'c_fabricante' => true,
+		'v_desc_di' => true,
+		'n_draw' => true
     ];
 
     /**
@@ -343,7 +343,14 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNAdicao($n_adicao)
     {
         if (is_null($n_adicao)) {
-            throw new \InvalidArgumentException('non-nullable n_adicao cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_adicao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_adicao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_adicao'] = $n_adicao;
 
@@ -370,7 +377,14 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNSeqAdic($n_seq_adic)
     {
         if (is_null($n_seq_adic)) {
-            throw new \InvalidArgumentException('non-nullable n_seq_adic cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_seq_adic');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_seq_adic', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_seq_adic'] = $n_seq_adic;
 
@@ -397,7 +411,14 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCFabricante($c_fabricante)
     {
         if (is_null($c_fabricante)) {
-            throw new \InvalidArgumentException('non-nullable c_fabricante cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_fabricante');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_fabricante', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_fabricante'] = $c_fabricante;
 
@@ -424,7 +445,14 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVDescDi($v_desc_di)
     {
         if (is_null($v_desc_di)) {
-            throw new \InvalidArgumentException('non-nullable v_desc_di cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_desc_di');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_desc_di', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_desc_di'] = $v_desc_di;
 
@@ -451,7 +479,14 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNDraw($n_draw)
     {
         if (is_null($n_draw)) {
-            throw new \InvalidArgumentException('non-nullable n_draw cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_draw');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_draw', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_draw'] = $n_draw;
 

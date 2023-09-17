@@ -81,9 +81,9 @@ class DocNFNFS implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_nfs' => false,
-		'mod_nfs' => false,
-		'serie_nfs' => false
+        'n_nfs' => true,
+		'mod_nfs' => true,
+		'serie_nfs' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class DocNFNFS implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNNfs($n_nfs)
     {
         if (is_null($n_nfs)) {
-            throw new \InvalidArgumentException('non-nullable n_nfs cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_nfs');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_nfs', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_nfs'] = $n_nfs;
 
@@ -359,7 +366,14 @@ class DocNFNFS implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setModNfs($mod_nfs)
     {
         if (is_null($mod_nfs)) {
-            throw new \InvalidArgumentException('non-nullable mod_nfs cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mod_nfs');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mod_nfs', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mod_nfs'] = $mod_nfs;
 
@@ -386,7 +400,14 @@ class DocNFNFS implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSerieNfs($serie_nfs)
     {
         if (is_null($serie_nfs)) {
-            throw new \InvalidArgumentException('non-nullable serie_nfs cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'serie_nfs');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('serie_nfs', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['serie_nfs'] = $serie_nfs;
 

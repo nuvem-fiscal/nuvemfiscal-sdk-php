@@ -85,11 +85,11 @@ class MdfeSefazTrem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x_pref' => false,
-		'dh_trem' => false,
-		'x_ori' => false,
-		'x_dest' => false,
-		'q_vag' => false
+        'x_pref' => true,
+		'dh_trem' => true,
+		'x_ori' => true,
+		'x_dest' => true,
+		'q_vag' => true
     ];
 
     /**
@@ -349,7 +349,14 @@ class MdfeSefazTrem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXPref($x_pref)
     {
         if (is_null($x_pref)) {
-            throw new \InvalidArgumentException('non-nullable x_pref cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_pref');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_pref', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_pref'] = $x_pref;
 
@@ -376,7 +383,14 @@ class MdfeSefazTrem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDhTrem($dh_trem)
     {
         if (is_null($dh_trem)) {
-            throw new \InvalidArgumentException('non-nullable dh_trem cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dh_trem');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dh_trem', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dh_trem'] = $dh_trem;
 
@@ -403,7 +417,14 @@ class MdfeSefazTrem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXOri($x_ori)
     {
         if (is_null($x_ori)) {
-            throw new \InvalidArgumentException('non-nullable x_ori cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_ori');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_ori', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_ori'] = $x_ori;
 
@@ -430,7 +451,14 @@ class MdfeSefazTrem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXDest($x_dest)
     {
         if (is_null($x_dest)) {
-            throw new \InvalidArgumentException('non-nullable x_dest cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_dest');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_dest', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_dest'] = $x_dest;
 
@@ -457,7 +485,14 @@ class MdfeSefazTrem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQVag($q_vag)
     {
         if (is_null($q_vag)) {
-            throw new \InvalidArgumentException('non-nullable q_vag cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_vag');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_vag', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_vag'] = $q_vag;
 

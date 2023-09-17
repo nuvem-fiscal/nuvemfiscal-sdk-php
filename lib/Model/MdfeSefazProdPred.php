@@ -85,10 +85,10 @@ class MdfeSefazProdPred implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tp_carga' => false,
-		'x_prod' => false,
-		'c_ean' => false,
-		'ncm' => false,
+        'tp_carga' => true,
+		'x_prod' => true,
+		'c_ean' => true,
+		'ncm' => true,
 		'inf_lotacao' => false
     ];
 
@@ -343,7 +343,14 @@ class MdfeSefazProdPred implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setTpCarga($tp_carga)
     {
         if (is_null($tp_carga)) {
-            throw new \InvalidArgumentException('non-nullable tp_carga cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_carga');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_carga', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_carga'] = $tp_carga;
 
@@ -370,7 +377,14 @@ class MdfeSefazProdPred implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setXProd($x_prod)
     {
         if (is_null($x_prod)) {
-            throw new \InvalidArgumentException('non-nullable x_prod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_prod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_prod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_prod'] = $x_prod;
 
@@ -397,7 +411,14 @@ class MdfeSefazProdPred implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCEan($c_ean)
     {
         if (is_null($c_ean)) {
-            throw new \InvalidArgumentException('non-nullable c_ean cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_ean');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_ean', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_ean'] = $c_ean;
 
@@ -424,7 +445,14 @@ class MdfeSefazProdPred implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setNcm($ncm)
     {
         if (is_null($ncm)) {
-            throw new \InvalidArgumentException('non-nullable ncm cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ncm');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ncm', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ncm'] = $ncm;
 

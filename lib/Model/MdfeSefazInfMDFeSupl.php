@@ -77,7 +77,7 @@ class MdfeSefazInfMDFeSupl implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'qr_cod_mdfe' => false
+        'qr_cod_mdfe' => true
     ];
 
     /**
@@ -309,7 +309,14 @@ class MdfeSefazInfMDFeSupl implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setQrCodMdfe($qr_cod_mdfe)
     {
         if (is_null($qr_cod_mdfe)) {
-            throw new \InvalidArgumentException('non-nullable qr_cod_mdfe cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'qr_cod_mdfe');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('qr_cod_mdfe', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['qr_cod_mdfe'] = $qr_cod_mdfe;
 

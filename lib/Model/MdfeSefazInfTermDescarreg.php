@@ -79,8 +79,8 @@ class MdfeSefazInfTermDescarreg implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'c_term_descarreg' => false,
-		'x_term_descarreg' => false
+        'c_term_descarreg' => true,
+		'x_term_descarreg' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class MdfeSefazInfTermDescarreg implements ModelInterface, ArrayAccess, \JsonSer
     public function setCTermDescarreg($c_term_descarreg)
     {
         if (is_null($c_term_descarreg)) {
-            throw new \InvalidArgumentException('non-nullable c_term_descarreg cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_term_descarreg');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_term_descarreg', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_term_descarreg'] = $c_term_descarreg;
 
@@ -349,7 +356,14 @@ class MdfeSefazInfTermDescarreg implements ModelInterface, ArrayAccess, \JsonSer
     public function setXTermDescarreg($x_term_descarreg)
     {
         if (is_null($x_term_descarreg)) {
-            throw new \InvalidArgumentException('non-nullable x_term_descarreg cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_term_descarreg');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_term_descarreg', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_term_descarreg'] = $x_term_descarreg;
 

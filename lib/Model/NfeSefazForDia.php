@@ -79,8 +79,8 @@ class NfeSefazForDia implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'dia' => false,
-		'qtde' => false
+        'dia' => true,
+		'qtde' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class NfeSefazForDia implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDia($dia)
     {
         if (is_null($dia)) {
-            throw new \InvalidArgumentException('non-nullable dia cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dia');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dia', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dia'] = $dia;
 
@@ -349,7 +356,14 @@ class NfeSefazForDia implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQtde($qtde)
     {
         if (is_null($qtde)) {
-            throw new \InvalidArgumentException('non-nullable qtde cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'qtde');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('qtde', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['qtde'] = $qtde;
 

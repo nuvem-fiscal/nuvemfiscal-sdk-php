@@ -101,18 +101,18 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x_nome' => false,
-		'cpf' => false,
-		'cnpj' => false,
-		'id_estrangeiro' => false,
+        'x_nome' => true,
+		'cpf' => true,
+		'cnpj' => true,
+		'id_estrangeiro' => true,
 		'comp' => false,
-		'v_contrato' => false,
-		'ind_alto_desemp' => false,
-		'ind_pag' => false,
-		'v_adiant' => false,
-		'ind_antecipa_adiant' => false,
+		'v_contrato' => true,
+		'ind_alto_desemp' => true,
+		'ind_pag' => true,
+		'v_adiant' => true,
+		'ind_antecipa_adiant' => true,
 		'inf_prazo' => false,
-		'tp_antecip' => false,
+		'tp_antecip' => true,
 		'inf_banc' => false
     ];
 
@@ -405,7 +405,14 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXNome($x_nome)
     {
         if (is_null($x_nome)) {
-            throw new \InvalidArgumentException('non-nullable x_nome cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_nome');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_nome', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_nome'] = $x_nome;
 
@@ -432,7 +439,14 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCpf($cpf)
     {
         if (is_null($cpf)) {
-            throw new \InvalidArgumentException('non-nullable cpf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cpf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cpf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cpf'] = $cpf;
 
@@ -459,7 +473,14 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCnpj($cnpj)
     {
         if (is_null($cnpj)) {
-            throw new \InvalidArgumentException('non-nullable cnpj cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnpj');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnpj'] = $cnpj;
 
@@ -486,7 +507,14 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIdEstrangeiro($id_estrangeiro)
     {
         if (is_null($id_estrangeiro)) {
-            throw new \InvalidArgumentException('non-nullable id_estrangeiro cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id_estrangeiro');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id_estrangeiro', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id_estrangeiro'] = $id_estrangeiro;
 
@@ -540,7 +568,14 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVContrato($v_contrato)
     {
         if (is_null($v_contrato)) {
-            throw new \InvalidArgumentException('non-nullable v_contrato cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_contrato');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_contrato', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_contrato'] = $v_contrato;
 
@@ -567,7 +602,14 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIndAltoDesemp($ind_alto_desemp)
     {
         if (is_null($ind_alto_desemp)) {
-            throw new \InvalidArgumentException('non-nullable ind_alto_desemp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ind_alto_desemp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_alto_desemp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ind_alto_desemp'] = $ind_alto_desemp;
 
@@ -594,7 +636,14 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIndPag($ind_pag)
     {
         if (is_null($ind_pag)) {
-            throw new \InvalidArgumentException('non-nullable ind_pag cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ind_pag');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_pag', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ind_pag'] = $ind_pag;
 
@@ -621,7 +670,14 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVAdiant($v_adiant)
     {
         if (is_null($v_adiant)) {
-            throw new \InvalidArgumentException('non-nullable v_adiant cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_adiant');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_adiant', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_adiant'] = $v_adiant;
 
@@ -648,7 +704,14 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIndAntecipaAdiant($ind_antecipa_adiant)
     {
         if (is_null($ind_antecipa_adiant)) {
-            throw new \InvalidArgumentException('non-nullable ind_antecipa_adiant cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ind_antecipa_adiant');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_antecipa_adiant', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ind_antecipa_adiant'] = $ind_antecipa_adiant;
 
@@ -702,7 +765,14 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpAntecip($tp_antecip)
     {
         if (is_null($tp_antecip)) {
-            throw new \InvalidArgumentException('non-nullable tp_antecip cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_antecip');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_antecip', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_antecip'] = $tp_antecip;
 

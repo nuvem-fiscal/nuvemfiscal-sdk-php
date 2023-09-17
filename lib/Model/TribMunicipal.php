@@ -91,14 +91,14 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'trib_issqn' => false,
-		'c_loc_incid' => false,
-		'c_pais_result' => false,
+        'trib_issqn' => true,
+		'c_loc_incid' => true,
+		'c_pais_result' => true,
 		'bm' => false,
 		'exig_susp' => false,
-		'tp_imunidade' => false,
-		'p_aliq' => false,
-		'tp_ret_issqn' => false
+		'tp_imunidade' => true,
+		'p_aliq' => true,
+		'tp_ret_issqn' => true
     ];
 
     /**
@@ -361,7 +361,14 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTribIssqn($trib_issqn)
     {
         if (is_null($trib_issqn)) {
-            throw new \InvalidArgumentException('non-nullable trib_issqn cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'trib_issqn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('trib_issqn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['trib_issqn'] = $trib_issqn;
 
@@ -388,7 +395,14 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCLocIncid($c_loc_incid)
     {
         if (is_null($c_loc_incid)) {
-            throw new \InvalidArgumentException('non-nullable c_loc_incid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_loc_incid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_loc_incid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_loc_incid'] = $c_loc_incid;
 
@@ -415,7 +429,14 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCPaisResult($c_pais_result)
     {
         if (is_null($c_pais_result)) {
-            throw new \InvalidArgumentException('non-nullable c_pais_result cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_pais_result');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_pais_result', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_pais_result'] = $c_pais_result;
 
@@ -496,7 +517,14 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpImunidade($tp_imunidade)
     {
         if (is_null($tp_imunidade)) {
-            throw new \InvalidArgumentException('non-nullable tp_imunidade cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_imunidade');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_imunidade', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_imunidade'] = $tp_imunidade;
 
@@ -523,7 +551,14 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPAliq($p_aliq)
     {
         if (is_null($p_aliq)) {
-            throw new \InvalidArgumentException('non-nullable p_aliq cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_aliq');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_aliq', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_aliq'] = $p_aliq;
 
@@ -550,7 +585,14 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpRetIssqn($tp_ret_issqn)
     {
         if (is_null($tp_ret_issqn)) {
-            throw new \InvalidArgumentException('non-nullable tp_ret_issqn cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_ret_issqn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_ret_issqn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_ret_issqn'] = $tp_ret_issqn;
 

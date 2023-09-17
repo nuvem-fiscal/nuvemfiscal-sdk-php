@@ -79,8 +79,8 @@ class CteSefazDetContInfDocInfNFe implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'chave' => false,
-		'unid_rat' => false
+        'chave' => true,
+		'unid_rat' => true
     ];
 
     /**
@@ -319,7 +319,14 @@ class CteSefazDetContInfDocInfNFe implements ModelInterface, ArrayAccess, \JsonS
     public function setChave($chave)
     {
         if (is_null($chave)) {
-            throw new \InvalidArgumentException('non-nullable chave cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'chave');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('chave', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['chave'] = $chave;
 
@@ -346,7 +353,14 @@ class CteSefazDetContInfDocInfNFe implements ModelInterface, ArrayAccess, \JsonS
     public function setUnidRat($unid_rat)
     {
         if (is_null($unid_rat)) {
-            throw new \InvalidArgumentException('non-nullable unid_rat cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unid_rat');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unid_rat', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unid_rat'] = $unid_rat;
 

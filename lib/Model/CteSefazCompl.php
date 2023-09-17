@@ -95,14 +95,14 @@ class CteSefazCompl implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x_carac_ad' => false,
-		'x_carac_ser' => false,
-		'x_emi' => false,
+        'x_carac_ad' => true,
+		'x_carac_ser' => true,
+		'x_emi' => true,
 		'fluxo' => false,
 		'entrega' => false,
-		'orig_calc' => false,
-		'dest_calc' => false,
-		'x_obs' => false,
+		'orig_calc' => true,
+		'dest_calc' => true,
+		'x_obs' => true,
 		'obs_cont' => false,
 		'obs_fisco' => false
     ];
@@ -372,7 +372,14 @@ class CteSefazCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXCaracAd($x_carac_ad)
     {
         if (is_null($x_carac_ad)) {
-            throw new \InvalidArgumentException('non-nullable x_carac_ad cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_carac_ad');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_carac_ad', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_carac_ad'] = $x_carac_ad;
 
@@ -399,7 +406,14 @@ class CteSefazCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXCaracSer($x_carac_ser)
     {
         if (is_null($x_carac_ser)) {
-            throw new \InvalidArgumentException('non-nullable x_carac_ser cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_carac_ser');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_carac_ser', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_carac_ser'] = $x_carac_ser;
 
@@ -426,7 +440,14 @@ class CteSefazCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXEmi($x_emi)
     {
         if (is_null($x_emi)) {
-            throw new \InvalidArgumentException('non-nullable x_emi cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_emi');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_emi', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_emi'] = $x_emi;
 
@@ -507,7 +528,14 @@ class CteSefazCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrigCalc($orig_calc)
     {
         if (is_null($orig_calc)) {
-            throw new \InvalidArgumentException('non-nullable orig_calc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'orig_calc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('orig_calc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['orig_calc'] = $orig_calc;
 
@@ -534,7 +562,14 @@ class CteSefazCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDestCalc($dest_calc)
     {
         if (is_null($dest_calc)) {
-            throw new \InvalidArgumentException('non-nullable dest_calc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dest_calc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dest_calc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dest_calc'] = $dest_calc;
 
@@ -561,7 +596,14 @@ class CteSefazCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXObs($x_obs)
     {
         if (is_null($x_obs)) {
-            throw new \InvalidArgumentException('non-nullable x_obs cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_obs');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_obs', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_obs'] = $x_obs;
 

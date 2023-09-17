@@ -84,7 +84,7 @@ class NfseDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static array $openAPINullables = [
         'provedor' => false,
 		'ambiente' => false,
-		'referencia' => false,
+		'referencia' => true,
 		'inf_dps' => false
     ];
 
@@ -457,7 +457,14 @@ class NfseDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setReferencia($referencia)
     {
         if (is_null($referencia)) {
-            throw new \InvalidArgumentException('non-nullable referencia cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'referencia');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('referencia', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['referencia'] = $referencia;
 

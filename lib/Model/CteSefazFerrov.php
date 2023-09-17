@@ -80,9 +80,9 @@ class CteSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tp_traf' => false,
+        'tp_traf' => true,
 		'traf_mut' => false,
-		'fluxo' => false
+		'fluxo' => true
     ];
 
     /**
@@ -328,7 +328,14 @@ class CteSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpTraf($tp_traf)
     {
         if (is_null($tp_traf)) {
-            throw new \InvalidArgumentException('non-nullable tp_traf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_traf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_traf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_traf'] = $tp_traf;
 
@@ -382,7 +389,14 @@ class CteSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFluxo($fluxo)
     {
         if (is_null($fluxo)) {
-            throw new \InvalidArgumentException('non-nullable fluxo cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fluxo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fluxo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fluxo'] = $fluxo;
 

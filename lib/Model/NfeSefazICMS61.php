@@ -85,11 +85,11 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'orig' => false,
-		'cst' => false,
-		'q_bc_mono_ret' => false,
-		'ad_rem_icms_ret' => false,
-		'v_icms_mono_ret' => false
+        'orig' => true,
+		'cst' => true,
+		'q_bc_mono_ret' => true,
+		'ad_rem_icms_ret' => true,
+		'v_icms_mono_ret' => true
     ];
 
     /**
@@ -349,7 +349,14 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrig($orig)
     {
         if (is_null($orig)) {
-            throw new \InvalidArgumentException('non-nullable orig cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'orig');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('orig', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['orig'] = $orig;
 
@@ -376,7 +383,14 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCst($cst)
     {
         if (is_null($cst)) {
-            throw new \InvalidArgumentException('non-nullable cst cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cst');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cst', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cst'] = $cst;
 
@@ -403,7 +417,14 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQBcMonoRet($q_bc_mono_ret)
     {
         if (is_null($q_bc_mono_ret)) {
-            throw new \InvalidArgumentException('non-nullable q_bc_mono_ret cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_bc_mono_ret');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_bc_mono_ret', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_bc_mono_ret'] = $q_bc_mono_ret;
 
@@ -430,7 +451,14 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAdRemIcmsRet($ad_rem_icms_ret)
     {
         if (is_null($ad_rem_icms_ret)) {
-            throw new \InvalidArgumentException('non-nullable ad_rem_icms_ret cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ad_rem_icms_ret');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ad_rem_icms_ret', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ad_rem_icms_ret'] = $ad_rem_icms_ret;
 
@@ -457,7 +485,14 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVIcmsMonoRet($v_icms_mono_ret)
     {
         if (is_null($v_icms_mono_ret)) {
-            throw new \InvalidArgumentException('non-nullable v_icms_mono_ret cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_icms_mono_ret');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_icms_mono_ret', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_icms_mono_ret'] = $v_icms_mono_ret;
 

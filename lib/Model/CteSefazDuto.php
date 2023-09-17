@@ -80,9 +80,9 @@ class CteSefazDuto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'v_tar' => false,
-		'd_ini' => false,
-		'd_fim' => false
+        'v_tar' => true,
+		'd_ini' => true,
+		'd_fim' => true
     ];
 
     /**
@@ -328,7 +328,14 @@ class CteSefazDuto implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVTar($v_tar)
     {
         if (is_null($v_tar)) {
-            throw new \InvalidArgumentException('non-nullable v_tar cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_tar');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_tar', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_tar'] = $v_tar;
 
@@ -355,7 +362,14 @@ class CteSefazDuto implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDIni($d_ini)
     {
         if (is_null($d_ini)) {
-            throw new \InvalidArgumentException('non-nullable d_ini cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_ini');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_ini', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_ini'] = $d_ini;
 
@@ -382,7 +396,14 @@ class CteSefazDuto implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDFim($d_fim)
     {
         if (is_null($d_fim)) {
-            throw new \InvalidArgumentException('non-nullable d_fim cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_fim');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_fim', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_fim'] = $d_fim;
 

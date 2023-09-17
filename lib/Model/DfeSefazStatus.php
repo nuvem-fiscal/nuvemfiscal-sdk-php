@@ -93,8 +93,8 @@ class DfeSefazStatus implements ModelInterface, ArrayAccess, \JsonSerializable
 		'data_hora_consulta' => false,
 		'codigo_status' => false,
 		'motivo_status' => false,
-		'tempo_medio_resposta' => false,
-		'data_hora_retorno' => false
+		'tempo_medio_resposta' => true,
+		'data_hora_retorno' => true
     ];
 
     /**
@@ -581,7 +581,14 @@ class DfeSefazStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTempoMedioResposta($tempo_medio_resposta)
     {
         if (is_null($tempo_medio_resposta)) {
-            throw new \InvalidArgumentException('non-nullable tempo_medio_resposta cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tempo_medio_resposta');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tempo_medio_resposta', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tempo_medio_resposta'] = $tempo_medio_resposta;
 
@@ -608,7 +615,14 @@ class DfeSefazStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDataHoraRetorno($data_hora_retorno)
     {
         if (is_null($data_hora_retorno)) {
-            throw new \InvalidArgumentException('non-nullable data_hora_retorno cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data_hora_retorno');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_hora_retorno', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data_hora_retorno'] = $data_hora_retorno;
 

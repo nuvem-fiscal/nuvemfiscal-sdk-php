@@ -79,8 +79,8 @@ class MdfeSefazInfEmbComb implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'c_emb_comb' => false,
-		'x_balsa' => false
+        'c_emb_comb' => true,
+		'x_balsa' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class MdfeSefazInfEmbComb implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setCEmbComb($c_emb_comb)
     {
         if (is_null($c_emb_comb)) {
-            throw new \InvalidArgumentException('non-nullable c_emb_comb cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_emb_comb');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_emb_comb', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_emb_comb'] = $c_emb_comb;
 
@@ -349,7 +356,14 @@ class MdfeSefazInfEmbComb implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setXBalsa($x_balsa)
     {
         if (is_null($x_balsa)) {
-            throw new \InvalidArgumentException('non-nullable x_balsa cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_balsa');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_balsa', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_balsa'] = $x_balsa;
 

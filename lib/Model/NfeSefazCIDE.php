@@ -81,9 +81,9 @@ class NfeSefazCIDE implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'q_bc_prod' => false,
-		'v_aliq_prod' => false,
-		'v_cide' => false
+        'q_bc_prod' => true,
+		'v_aliq_prod' => true,
+		'v_cide' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class NfeSefazCIDE implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQBcProd($q_bc_prod)
     {
         if (is_null($q_bc_prod)) {
-            throw new \InvalidArgumentException('non-nullable q_bc_prod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_bc_prod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_bc_prod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_bc_prod'] = $q_bc_prod;
 
@@ -359,7 +366,14 @@ class NfeSefazCIDE implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVAliqProd($v_aliq_prod)
     {
         if (is_null($v_aliq_prod)) {
-            throw new \InvalidArgumentException('non-nullable v_aliq_prod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_aliq_prod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_aliq_prod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_aliq_prod'] = $v_aliq_prod;
 
@@ -386,7 +400,14 @@ class NfeSefazCIDE implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVCide($v_cide)
     {
         if (is_null($v_cide)) {
-            throw new \InvalidArgumentException('non-nullable v_cide cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_cide');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_cide', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_cide'] = $v_cide;
 

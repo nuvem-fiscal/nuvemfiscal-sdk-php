@@ -85,9 +85,9 @@ class CteSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'chave' => false,
-		'pin' => false,
-		'd_prev' => false,
+        'chave' => true,
+		'pin' => true,
+		'd_prev' => true,
 		'inf_unid_carga' => false,
 		'inf_unid_transp' => false
     ];
@@ -340,7 +340,14 @@ class CteSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setChave($chave)
     {
         if (is_null($chave)) {
-            throw new \InvalidArgumentException('non-nullable chave cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'chave');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('chave', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['chave'] = $chave;
 
@@ -367,7 +374,14 @@ class CteSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPin($pin)
     {
         if (is_null($pin)) {
-            throw new \InvalidArgumentException('non-nullable pin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pin', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pin'] = $pin;
 
@@ -394,7 +408,14 @@ class CteSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDPrev($d_prev)
     {
         if (is_null($d_prev)) {
-            throw new \InvalidArgumentException('non-nullable d_prev cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_prev');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_prev', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_prev'] = $d_prev;
 

@@ -81,9 +81,9 @@ class DocOutNFSe implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'c_mun_nfse_mun' => false,
-		'n_nfse_mun' => false,
-		'c_verif_nfse_mun' => false
+        'c_mun_nfse_mun' => true,
+		'n_nfse_mun' => true,
+		'c_verif_nfse_mun' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class DocOutNFSe implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCMunNfseMun($c_mun_nfse_mun)
     {
         if (is_null($c_mun_nfse_mun)) {
-            throw new \InvalidArgumentException('non-nullable c_mun_nfse_mun cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_mun_nfse_mun');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_mun_nfse_mun', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_mun_nfse_mun'] = $c_mun_nfse_mun;
 
@@ -359,7 +366,14 @@ class DocOutNFSe implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNNfseMun($n_nfse_mun)
     {
         if (is_null($n_nfse_mun)) {
-            throw new \InvalidArgumentException('non-nullable n_nfse_mun cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_nfse_mun');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_nfse_mun', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_nfse_mun'] = $n_nfse_mun;
 
@@ -386,7 +400,14 @@ class DocOutNFSe implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCVerifNfseMun($c_verif_nfse_mun)
     {
         if (is_null($c_verif_nfse_mun)) {
-            throw new \InvalidArgumentException('non-nullable c_verif_nfse_mun cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_verif_nfse_mun');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_verif_nfse_mun', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_verif_nfse_mun'] = $c_verif_nfse_mun;
 

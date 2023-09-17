@@ -87,11 +87,11 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ref_nfe' => false,
-		'ref_nfe_sig' => false,
+        'ref_nfe' => true,
+		'ref_nfe_sig' => true,
 		'ref_nf' => false,
 		'ref_nfp' => false,
-		'ref_cte' => false,
+		'ref_cte' => true,
 		'ref_ecf' => false
     ];
 
@@ -344,7 +344,14 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRefNfe($ref_nfe)
     {
         if (is_null($ref_nfe)) {
-            throw new \InvalidArgumentException('non-nullable ref_nfe cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ref_nfe');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ref_nfe', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ref_nfe'] = $ref_nfe;
 
@@ -371,7 +378,14 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRefNfeSig($ref_nfe_sig)
     {
         if (is_null($ref_nfe_sig)) {
-            throw new \InvalidArgumentException('non-nullable ref_nfe_sig cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ref_nfe_sig');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ref_nfe_sig', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ref_nfe_sig'] = $ref_nfe_sig;
 
@@ -452,7 +466,14 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRefCte($ref_cte)
     {
         if (is_null($ref_cte)) {
-            throw new \InvalidArgumentException('non-nullable ref_cte cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ref_cte');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ref_cte', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ref_cte'] = $ref_cte;
 

@@ -77,7 +77,7 @@ class MdfeSefazInfSolicNFF implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x_solic' => false
+        'x_solic' => true
     ];
 
     /**
@@ -312,7 +312,14 @@ class MdfeSefazInfSolicNFF implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setXSolic($x_solic)
     {
         if (is_null($x_solic)) {
-            throw new \InvalidArgumentException('non-nullable x_solic cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_solic');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_solic', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_solic'] = $x_solic;
 

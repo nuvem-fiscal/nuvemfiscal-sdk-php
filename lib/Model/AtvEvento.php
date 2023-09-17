@@ -85,10 +85,10 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'desc' => false,
-		'dt_ini' => false,
-		'dt_fim' => false,
-		'id' => false,
+        'desc' => true,
+		'dt_ini' => true,
+		'dt_fim' => true,
+		'id' => true,
 		'end' => false
     ];
 
@@ -346,7 +346,14 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDesc($desc)
     {
         if (is_null($desc)) {
-            throw new \InvalidArgumentException('non-nullable desc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'desc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('desc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['desc'] = $desc;
 
@@ -373,7 +380,14 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDtIni($dt_ini)
     {
         if (is_null($dt_ini)) {
-            throw new \InvalidArgumentException('non-nullable dt_ini cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dt_ini');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dt_ini', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dt_ini'] = $dt_ini;
 
@@ -400,7 +414,14 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDtFim($dt_fim)
     {
         if (is_null($dt_fim)) {
-            throw new \InvalidArgumentException('non-nullable dt_fim cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dt_fim');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dt_fim', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dt_fim'] = $dt_fim;
 
@@ -427,7 +448,14 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setId($id)
     {
         if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id'] = $id;
 

@@ -80,8 +80,8 @@ class CteSefazMultimodal implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cotm' => false,
-		'ind_negociavel' => false,
+        'cotm' => true,
+		'ind_negociavel' => true,
 		'seg' => false
     ];
 
@@ -328,7 +328,14 @@ class CteSefazMultimodal implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCotm($cotm)
     {
         if (is_null($cotm)) {
-            throw new \InvalidArgumentException('non-nullable cotm cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cotm');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cotm', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cotm'] = $cotm;
 
@@ -355,7 +362,14 @@ class CteSefazMultimodal implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setIndNegociavel($ind_negociavel)
     {
         if (is_null($ind_negociavel)) {
-            throw new \InvalidArgumentException('non-nullable ind_negociavel cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ind_negociavel');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_negociavel', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ind_negociavel'] = $ind_negociavel;
 

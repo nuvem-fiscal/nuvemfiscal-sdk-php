@@ -81,9 +81,9 @@ class NfeSefazProcRef implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_proc' => false,
-		'ind_proc' => false,
-		'tp_ato' => false
+        'n_proc' => true,
+		'ind_proc' => true,
+		'tp_ato' => true
     ];
 
     /**
@@ -329,7 +329,14 @@ class NfeSefazProcRef implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNProc($n_proc)
     {
         if (is_null($n_proc)) {
-            throw new \InvalidArgumentException('non-nullable n_proc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_proc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_proc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_proc'] = $n_proc;
 
@@ -356,7 +363,14 @@ class NfeSefazProcRef implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIndProc($ind_proc)
     {
         if (is_null($ind_proc)) {
-            throw new \InvalidArgumentException('non-nullable ind_proc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ind_proc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_proc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ind_proc'] = $ind_proc;
 
@@ -383,7 +397,14 @@ class NfeSefazProcRef implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpAto($tp_ato)
     {
         if (is_null($tp_ato)) {
-            throw new \InvalidArgumentException('non-nullable tp_ato cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_ato');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_ato', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_ato'] = $tp_ato;
 

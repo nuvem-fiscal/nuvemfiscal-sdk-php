@@ -77,7 +77,7 @@ class CteSefazSemData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tp_per' => false
+        'tp_per' => true
     ];
 
     /**
@@ -312,7 +312,14 @@ class CteSefazSemData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpPer($tp_per)
     {
         if (is_null($tp_per)) {
-            throw new \InvalidArgumentException('non-nullable tp_per cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_per');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_per', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_per'] = $tp_per;
 

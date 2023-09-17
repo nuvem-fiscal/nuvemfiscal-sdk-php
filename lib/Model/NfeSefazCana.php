@@ -95,16 +95,16 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'safra' => false,
-		'ref' => false,
+        'safra' => true,
+		'ref' => true,
 		'for_dia' => false,
-		'q_tot_mes' => false,
-		'q_tot_ant' => false,
-		'q_tot_ger' => false,
+		'q_tot_mes' => true,
+		'q_tot_ant' => true,
+		'q_tot_ger' => true,
 		'deduc' => false,
-		'v_for' => false,
-		'v_tot_ded' => false,
-		'v_liq_for' => false
+		'v_for' => true,
+		'v_tot_ded' => true,
+		'v_liq_for' => true
     ];
 
     /**
@@ -399,7 +399,14 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSafra($safra)
     {
         if (is_null($safra)) {
-            throw new \InvalidArgumentException('non-nullable safra cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'safra');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('safra', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['safra'] = $safra;
 
@@ -426,7 +433,14 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRef($ref)
     {
         if (is_null($ref)) {
-            throw new \InvalidArgumentException('non-nullable ref cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ref');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ref', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ref'] = $ref;
 
@@ -480,7 +494,14 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQTotMes($q_tot_mes)
     {
         if (is_null($q_tot_mes)) {
-            throw new \InvalidArgumentException('non-nullable q_tot_mes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_tot_mes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_tot_mes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_tot_mes'] = $q_tot_mes;
 
@@ -507,7 +528,14 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQTotAnt($q_tot_ant)
     {
         if (is_null($q_tot_ant)) {
-            throw new \InvalidArgumentException('non-nullable q_tot_ant cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_tot_ant');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_tot_ant', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_tot_ant'] = $q_tot_ant;
 
@@ -534,7 +562,14 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQTotGer($q_tot_ger)
     {
         if (is_null($q_tot_ger)) {
-            throw new \InvalidArgumentException('non-nullable q_tot_ger cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_tot_ger');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_tot_ger', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_tot_ger'] = $q_tot_ger;
 
@@ -588,7 +623,14 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVFor($v_for)
     {
         if (is_null($v_for)) {
-            throw new \InvalidArgumentException('non-nullable v_for cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_for');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_for', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_for'] = $v_for;
 
@@ -615,7 +657,14 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVTotDed($v_tot_ded)
     {
         if (is_null($v_tot_ded)) {
-            throw new \InvalidArgumentException('non-nullable v_tot_ded cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_tot_ded');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_tot_ded', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_tot_ded'] = $v_tot_ded;
 
@@ -642,7 +691,14 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVLiqFor($v_liq_for)
     {
         if (is_null($v_liq_for)) {
-            throw new \InvalidArgumentException('non-nullable v_liq_for cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_liq_for');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_liq_for', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_liq_for'] = $v_liq_for;
 

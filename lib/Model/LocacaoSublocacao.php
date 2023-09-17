@@ -83,10 +83,10 @@ class LocacaoSublocacao implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'categ' => false,
-		'objeto' => false,
-		'extensao' => false,
-		'n_postes' => false
+        'categ' => true,
+		'objeto' => true,
+		'extensao' => true,
+		'n_postes' => true
     ];
 
     /**
@@ -342,7 +342,14 @@ class LocacaoSublocacao implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCateg($categ)
     {
         if (is_null($categ)) {
-            throw new \InvalidArgumentException('non-nullable categ cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'categ');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('categ', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['categ'] = $categ;
 
@@ -369,7 +376,14 @@ class LocacaoSublocacao implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setObjeto($objeto)
     {
         if (is_null($objeto)) {
-            throw new \InvalidArgumentException('non-nullable objeto cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'objeto');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('objeto', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['objeto'] = $objeto;
 
@@ -396,7 +410,14 @@ class LocacaoSublocacao implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setExtensao($extensao)
     {
         if (is_null($extensao)) {
-            throw new \InvalidArgumentException('non-nullable extensao cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'extensao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('extensao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['extensao'] = $extensao;
 
@@ -423,7 +444,14 @@ class LocacaoSublocacao implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setNPostes($n_postes)
     {
         if (is_null($n_postes)) {
-            throw new \InvalidArgumentException('non-nullable n_postes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_postes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_postes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_postes'] = $n_postes;
 

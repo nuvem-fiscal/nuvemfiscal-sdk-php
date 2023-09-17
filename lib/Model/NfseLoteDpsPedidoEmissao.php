@@ -83,7 +83,7 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'provedor' => false,
-		'ambiente' => false,
+		'ambiente' => true,
 		'referencia' => false,
 		'documentos' => false
     ];
@@ -417,10 +417,17 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
     public function setAmbiente($ambiente)
     {
         if (is_null($ambiente)) {
-            throw new \InvalidArgumentException('non-nullable ambiente cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ambiente');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ambiente', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getAmbienteAllowableValues();
-        if (!in_array($ambiente, $allowedValues, true)) {
+        if (!is_null($ambiente) && !in_array($ambiente, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'ambiente', must be one of '%s'",

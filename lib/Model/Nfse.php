@@ -106,7 +106,7 @@ class Nfse implements ModelInterface, ArrayAccess, \JsonSerializable
 		'numero' => false,
 		'codigo_verificacao' => false,
 		'link_url' => false,
-		'data_emissao' => false,
+		'data_emissao' => true,
 		'ambiente' => false,
 		'referencia' => false,
 		'dps' => false,
@@ -620,7 +620,14 @@ class Nfse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDataEmissao($data_emissao)
     {
         if (is_null($data_emissao)) {
-            throw new \InvalidArgumentException('non-nullable data_emissao cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data_emissao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_emissao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data_emissao'] = $data_emissao;
 

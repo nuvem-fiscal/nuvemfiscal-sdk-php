@@ -79,7 +79,7 @@ class NfeSefazDetExport implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_draw' => false,
+        'n_draw' => true,
 		'export_ind' => false
     ];
 
@@ -316,7 +316,14 @@ class NfeSefazDetExport implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setNDraw($n_draw)
     {
         if (is_null($n_draw)) {
-            throw new \InvalidArgumentException('non-nullable n_draw cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_draw');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_draw', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_draw'] = $n_draw;
 

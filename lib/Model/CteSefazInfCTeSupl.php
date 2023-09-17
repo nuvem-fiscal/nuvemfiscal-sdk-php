@@ -77,7 +77,7 @@ class CteSefazInfCTeSupl implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'qr_cod_cte' => false
+        'qr_cod_cte' => true
     ];
 
     /**
@@ -309,7 +309,14 @@ class CteSefazInfCTeSupl implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setQrCodCte($qr_cod_cte)
     {
         if (is_null($qr_cod_cte)) {
-            throw new \InvalidArgumentException('non-nullable qr_cod_cte cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'qr_cod_cte');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('qr_cod_cte', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['qr_cod_cte'] = $qr_cod_cte;
 

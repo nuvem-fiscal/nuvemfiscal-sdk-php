@@ -83,10 +83,10 @@ class CteSefazICMS00 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cst' => false,
-		'v_bc' => false,
-		'p_icms' => false,
-		'v_icms' => false
+        'cst' => true,
+		'v_bc' => true,
+		'p_icms' => true,
+		'v_icms' => true
     ];
 
     /**
@@ -342,7 +342,14 @@ class CteSefazICMS00 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCst($cst)
     {
         if (is_null($cst)) {
-            throw new \InvalidArgumentException('non-nullable cst cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cst');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cst', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cst'] = $cst;
 
@@ -369,7 +376,14 @@ class CteSefazICMS00 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVBc($v_bc)
     {
         if (is_null($v_bc)) {
-            throw new \InvalidArgumentException('non-nullable v_bc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_bc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_bc'] = $v_bc;
 
@@ -396,7 +410,14 @@ class CteSefazICMS00 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPIcms($p_icms)
     {
         if (is_null($p_icms)) {
-            throw new \InvalidArgumentException('non-nullable p_icms cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_icms');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_icms', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_icms'] = $p_icms;
 
@@ -423,7 +444,14 @@ class CteSefazICMS00 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVIcms($v_icms)
     {
         if (is_null($v_icms)) {
-            throw new \InvalidArgumentException('non-nullable v_icms cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_icms');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_icms', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_icms'] = $v_icms;
 

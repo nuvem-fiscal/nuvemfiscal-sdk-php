@@ -86,9 +86,9 @@ class CteSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_minu' => false,
-		'n_oca' => false,
-		'd_prev_aereo' => false,
+        'n_minu' => true,
+		'n_oca' => true,
+		'd_prev_aereo' => true,
 		'nat_carga' => false,
 		'tarifa' => false,
 		'peri' => false
@@ -352,7 +352,14 @@ class CteSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNMinu($n_minu)
     {
         if (is_null($n_minu)) {
-            throw new \InvalidArgumentException('non-nullable n_minu cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_minu');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_minu', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_minu'] = $n_minu;
 
@@ -379,7 +386,14 @@ class CteSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNOca($n_oca)
     {
         if (is_null($n_oca)) {
-            throw new \InvalidArgumentException('non-nullable n_oca cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_oca');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_oca', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_oca'] = $n_oca;
 
@@ -406,7 +420,14 @@ class CteSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDPrevAereo($d_prev_aereo)
     {
         if (is_null($d_prev_aereo)) {
-            throw new \InvalidArgumentException('non-nullable d_prev_aereo cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_prev_aereo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_prev_aereo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_prev_aereo'] = $d_prev_aereo;
 

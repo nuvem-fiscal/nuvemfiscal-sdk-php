@@ -102,15 +102,15 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'irin' => false,
-		'tp_emb' => false,
-		'c_embar' => false,
-		'x_embar' => false,
-		'n_viag' => false,
-		'c_prt_emb' => false,
-		'c_prt_dest' => false,
-		'prt_trans' => false,
-		'tp_nav' => false,
+        'irin' => true,
+		'tp_emb' => true,
+		'c_embar' => true,
+		'x_embar' => true,
+		'n_viag' => true,
+		'c_prt_emb' => true,
+		'c_prt_dest' => true,
+		'prt_trans' => true,
+		'tp_nav' => true,
 		'inf_term_carreg' => false,
 		'inf_term_descarreg' => false,
 		'inf_emb_comb' => false,
@@ -420,7 +420,14 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIrin($irin)
     {
         if (is_null($irin)) {
-            throw new \InvalidArgumentException('non-nullable irin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'irin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('irin', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['irin'] = $irin;
 
@@ -447,7 +454,14 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpEmb($tp_emb)
     {
         if (is_null($tp_emb)) {
-            throw new \InvalidArgumentException('non-nullable tp_emb cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_emb');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_emb', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_emb'] = $tp_emb;
 
@@ -474,7 +488,14 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCEmbar($c_embar)
     {
         if (is_null($c_embar)) {
-            throw new \InvalidArgumentException('non-nullable c_embar cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_embar');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_embar', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_embar'] = $c_embar;
 
@@ -501,7 +522,14 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXEmbar($x_embar)
     {
         if (is_null($x_embar)) {
-            throw new \InvalidArgumentException('non-nullable x_embar cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_embar');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_embar', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_embar'] = $x_embar;
 
@@ -528,7 +556,14 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNViag($n_viag)
     {
         if (is_null($n_viag)) {
-            throw new \InvalidArgumentException('non-nullable n_viag cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_viag');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_viag', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_viag'] = $n_viag;
 
@@ -555,7 +590,14 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCPrtEmb($c_prt_emb)
     {
         if (is_null($c_prt_emb)) {
-            throw new \InvalidArgumentException('non-nullable c_prt_emb cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_prt_emb');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_prt_emb', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_prt_emb'] = $c_prt_emb;
 
@@ -582,7 +624,14 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCPrtDest($c_prt_dest)
     {
         if (is_null($c_prt_dest)) {
-            throw new \InvalidArgumentException('non-nullable c_prt_dest cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_prt_dest');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_prt_dest', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_prt_dest'] = $c_prt_dest;
 
@@ -609,7 +658,14 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPrtTrans($prt_trans)
     {
         if (is_null($prt_trans)) {
-            throw new \InvalidArgumentException('non-nullable prt_trans cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prt_trans');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prt_trans', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prt_trans'] = $prt_trans;
 
@@ -636,7 +692,14 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpNav($tp_nav)
     {
         if (is_null($tp_nav)) {
-            throw new \InvalidArgumentException('non-nullable tp_nav cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_nav');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_nav', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_nav'] = $tp_nav;
 

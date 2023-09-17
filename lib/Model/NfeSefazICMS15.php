@@ -95,16 +95,16 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'orig' => false,
-		'cst' => false,
-		'q_bc_mono' => false,
-		'ad_rem_icms' => false,
-		'v_icms_mono' => false,
-		'q_bc_mono_reten' => false,
-		'ad_rem_icms_reten' => false,
-		'v_icms_mono_reten' => false,
-		'p_red_ad_rem' => false,
-		'mot_red_ad_rem' => false
+        'orig' => true,
+		'cst' => true,
+		'q_bc_mono' => true,
+		'ad_rem_icms' => true,
+		'v_icms_mono' => true,
+		'q_bc_mono_reten' => true,
+		'ad_rem_icms_reten' => true,
+		'v_icms_mono_reten' => true,
+		'p_red_ad_rem' => true,
+		'mot_red_ad_rem' => true
     ];
 
     /**
@@ -390,7 +390,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrig($orig)
     {
         if (is_null($orig)) {
-            throw new \InvalidArgumentException('non-nullable orig cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'orig');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('orig', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['orig'] = $orig;
 
@@ -417,7 +424,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCst($cst)
     {
         if (is_null($cst)) {
-            throw new \InvalidArgumentException('non-nullable cst cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cst');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cst', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cst'] = $cst;
 
@@ -444,7 +458,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQBcMono($q_bc_mono)
     {
         if (is_null($q_bc_mono)) {
-            throw new \InvalidArgumentException('non-nullable q_bc_mono cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_bc_mono');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_bc_mono', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_bc_mono'] = $q_bc_mono;
 
@@ -471,7 +492,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAdRemIcms($ad_rem_icms)
     {
         if (is_null($ad_rem_icms)) {
-            throw new \InvalidArgumentException('non-nullable ad_rem_icms cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ad_rem_icms');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ad_rem_icms', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ad_rem_icms'] = $ad_rem_icms;
 
@@ -498,7 +526,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVIcmsMono($v_icms_mono)
     {
         if (is_null($v_icms_mono)) {
-            throw new \InvalidArgumentException('non-nullable v_icms_mono cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_icms_mono');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_icms_mono', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_icms_mono'] = $v_icms_mono;
 
@@ -525,7 +560,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQBcMonoReten($q_bc_mono_reten)
     {
         if (is_null($q_bc_mono_reten)) {
-            throw new \InvalidArgumentException('non-nullable q_bc_mono_reten cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_bc_mono_reten');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_bc_mono_reten', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_bc_mono_reten'] = $q_bc_mono_reten;
 
@@ -552,7 +594,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAdRemIcmsReten($ad_rem_icms_reten)
     {
         if (is_null($ad_rem_icms_reten)) {
-            throw new \InvalidArgumentException('non-nullable ad_rem_icms_reten cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ad_rem_icms_reten');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ad_rem_icms_reten', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ad_rem_icms_reten'] = $ad_rem_icms_reten;
 
@@ -579,7 +628,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVIcmsMonoReten($v_icms_mono_reten)
     {
         if (is_null($v_icms_mono_reten)) {
-            throw new \InvalidArgumentException('non-nullable v_icms_mono_reten cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_icms_mono_reten');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_icms_mono_reten', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_icms_mono_reten'] = $v_icms_mono_reten;
 
@@ -606,7 +662,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPRedAdRem($p_red_ad_rem)
     {
         if (is_null($p_red_ad_rem)) {
-            throw new \InvalidArgumentException('non-nullable p_red_ad_rem cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_red_ad_rem');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_red_ad_rem', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_red_ad_rem'] = $p_red_ad_rem;
 
@@ -633,7 +696,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMotRedAdRem($mot_red_ad_rem)
     {
         if (is_null($mot_red_ad_rem)) {
-            throw new \InvalidArgumentException('non-nullable mot_red_ad_rem cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mot_red_ad_rem');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mot_red_ad_rem', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mot_red_ad_rem'] = $mot_red_ad_rem;
 

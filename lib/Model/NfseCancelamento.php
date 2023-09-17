@@ -90,7 +90,7 @@ class NfseCancelamento implements ModelInterface, ArrayAccess, \JsonSerializable
 		'status' => false,
 		'codigo' => false,
 		'motivo' => false,
-		'data_hora' => false,
+		'data_hora' => true,
 		'mensagens' => false
     ];
 
@@ -491,7 +491,14 @@ class NfseCancelamento implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDataHora($data_hora)
     {
         if (is_null($data_hora)) {
-            throw new \InvalidArgumentException('non-nullable data_hora cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data_hora');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_hora', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data_hora'] = $data_hora;
 

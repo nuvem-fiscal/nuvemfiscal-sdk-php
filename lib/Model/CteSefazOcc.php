@@ -83,9 +83,9 @@ class CteSefazOcc implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'serie' => false,
-		'n_occ' => false,
-		'd_emi' => false,
+        'serie' => true,
+		'n_occ' => true,
+		'd_emi' => true,
 		'emi_occ' => false
     ];
 
@@ -336,7 +336,14 @@ class CteSefazOcc implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSerie($serie)
     {
         if (is_null($serie)) {
-            throw new \InvalidArgumentException('non-nullable serie cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'serie');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('serie', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['serie'] = $serie;
 
@@ -363,7 +370,14 @@ class CteSefazOcc implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNOcc($n_occ)
     {
         if (is_null($n_occ)) {
-            throw new \InvalidArgumentException('non-nullable n_occ cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_occ');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_occ', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_occ'] = $n_occ;
 
@@ -390,7 +404,14 @@ class CteSefazOcc implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDEmi($d_emi)
     {
         if (is_null($d_emi)) {
-            throw new \InvalidArgumentException('non-nullable d_emi cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_emi');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_emi', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_emi'] = $d_emi;
 

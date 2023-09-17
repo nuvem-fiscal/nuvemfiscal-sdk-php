@@ -79,8 +79,8 @@ class NfeSefazICMSSN102 implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'orig' => false,
-		'csosn' => false
+        'orig' => true,
+		'csosn' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class NfeSefazICMSSN102 implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setOrig($orig)
     {
         if (is_null($orig)) {
-            throw new \InvalidArgumentException('non-nullable orig cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'orig');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('orig', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['orig'] = $orig;
 
@@ -349,7 +356,14 @@ class NfeSefazICMSSN102 implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCsosn($csosn)
     {
         if (is_null($csosn)) {
-            throw new \InvalidArgumentException('non-nullable csosn cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'csosn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('csosn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['csosn'] = $csosn;
 

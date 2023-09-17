@@ -79,8 +79,8 @@ class DPS implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'serie' => false,
-		'n_dps' => false
+        'serie' => true,
+		'n_dps' => true
     ];
 
     /**
@@ -316,7 +316,14 @@ class DPS implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSerie($serie)
     {
         if (is_null($serie)) {
-            throw new \InvalidArgumentException('non-nullable serie cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'serie');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('serie', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['serie'] = $serie;
 
@@ -343,7 +350,14 @@ class DPS implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNDps($n_dps)
     {
         if (is_null($n_dps)) {
-            throw new \InvalidArgumentException('non-nullable n_dps cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_dps');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_dps', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_dps'] = $n_dps;
 

@@ -85,10 +85,10 @@ class CteSefazTrafMut implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'resp_fat' => false,
-		'ferr_emi' => false,
-		'v_frete' => false,
-		'ch_cte_ferro_origem' => false,
+        'resp_fat' => true,
+		'ferr_emi' => true,
+		'v_frete' => true,
+		'ch_cte_ferro_origem' => true,
 		'ferro_env' => false
     ];
 
@@ -346,7 +346,14 @@ class CteSefazTrafMut implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRespFat($resp_fat)
     {
         if (is_null($resp_fat)) {
-            throw new \InvalidArgumentException('non-nullable resp_fat cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'resp_fat');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('resp_fat', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['resp_fat'] = $resp_fat;
 
@@ -373,7 +380,14 @@ class CteSefazTrafMut implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFerrEmi($ferr_emi)
     {
         if (is_null($ferr_emi)) {
-            throw new \InvalidArgumentException('non-nullable ferr_emi cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ferr_emi');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ferr_emi', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ferr_emi'] = $ferr_emi;
 
@@ -400,7 +414,14 @@ class CteSefazTrafMut implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVFrete($v_frete)
     {
         if (is_null($v_frete)) {
-            throw new \InvalidArgumentException('non-nullable v_frete cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_frete');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_frete', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_frete'] = $v_frete;
 
@@ -427,7 +448,14 @@ class CteSefazTrafMut implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setChCteFerroOrigem($ch_cte_ferro_origem)
     {
         if (is_null($ch_cte_ferro_origem)) {
-            throw new \InvalidArgumentException('non-nullable ch_cte_ferro_origem cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ch_cte_ferro_origem');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ch_cte_ferro_origem', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ch_cte_ferro_origem'] = $ch_cte_ferro_origem;
 

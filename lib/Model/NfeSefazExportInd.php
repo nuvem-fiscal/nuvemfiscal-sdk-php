@@ -81,9 +81,9 @@ class NfeSefazExportInd implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_re' => false,
-		'ch_nfe' => false,
-		'q_export' => false
+        'n_re' => true,
+		'ch_nfe' => true,
+		'q_export' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class NfeSefazExportInd implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setNRe($n_re)
     {
         if (is_null($n_re)) {
-            throw new \InvalidArgumentException('non-nullable n_re cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_re');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_re', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_re'] = $n_re;
 
@@ -359,7 +366,14 @@ class NfeSefazExportInd implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setChNfe($ch_nfe)
     {
         if (is_null($ch_nfe)) {
-            throw new \InvalidArgumentException('non-nullable ch_nfe cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ch_nfe');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ch_nfe', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ch_nfe'] = $ch_nfe;
 
@@ -386,7 +400,14 @@ class NfeSefazExportInd implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setQExport($q_export)
     {
         if (is_null($q_export)) {
-            throw new \InvalidArgumentException('non-nullable q_export cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_export');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_export', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_export'] = $q_export;
 

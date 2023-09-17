@@ -81,9 +81,9 @@ class NfeSefazOrigComb implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ind_import' => false,
-		'c_uf_orig' => false,
-		'p_orig' => false
+        'ind_import' => true,
+		'c_uf_orig' => true,
+		'p_orig' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class NfeSefazOrigComb implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIndImport($ind_import)
     {
         if (is_null($ind_import)) {
-            throw new \InvalidArgumentException('non-nullable ind_import cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ind_import');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_import', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ind_import'] = $ind_import;
 
@@ -359,7 +366,14 @@ class NfeSefazOrigComb implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCUfOrig($c_uf_orig)
     {
         if (is_null($c_uf_orig)) {
-            throw new \InvalidArgumentException('non-nullable c_uf_orig cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_uf_orig');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_uf_orig', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_uf_orig'] = $c_uf_orig;
 
@@ -386,7 +400,14 @@ class NfeSefazOrigComb implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPOrig($p_orig)
     {
         if (is_null($p_orig)) {
-            throw new \InvalidArgumentException('non-nullable p_orig cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_orig');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_orig', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_orig'] = $p_orig;
 

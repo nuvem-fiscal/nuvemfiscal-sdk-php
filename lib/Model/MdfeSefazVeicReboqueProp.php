@@ -89,13 +89,13 @@ class MdfeSefazVeicReboqueProp implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cpf' => false,
-		'cnpj' => false,
-		'rntrc' => false,
-		'x_nome' => false,
-		'ie' => false,
-		'uf' => false,
-		'tp_prop' => false
+        'cpf' => true,
+		'cnpj' => true,
+		'rntrc' => true,
+		'x_nome' => true,
+		'ie' => true,
+		'uf' => true,
+		'tp_prop' => true
     ];
 
     /**
@@ -360,7 +360,14 @@ class MdfeSefazVeicReboqueProp implements ModelInterface, ArrayAccess, \JsonSeri
     public function setCpf($cpf)
     {
         if (is_null($cpf)) {
-            throw new \InvalidArgumentException('non-nullable cpf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cpf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cpf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cpf'] = $cpf;
 
@@ -387,7 +394,14 @@ class MdfeSefazVeicReboqueProp implements ModelInterface, ArrayAccess, \JsonSeri
     public function setCnpj($cnpj)
     {
         if (is_null($cnpj)) {
-            throw new \InvalidArgumentException('non-nullable cnpj cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnpj');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnpj'] = $cnpj;
 
@@ -414,7 +428,14 @@ class MdfeSefazVeicReboqueProp implements ModelInterface, ArrayAccess, \JsonSeri
     public function setRntrc($rntrc)
     {
         if (is_null($rntrc)) {
-            throw new \InvalidArgumentException('non-nullable rntrc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rntrc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rntrc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rntrc'] = $rntrc;
 
@@ -441,7 +462,14 @@ class MdfeSefazVeicReboqueProp implements ModelInterface, ArrayAccess, \JsonSeri
     public function setXNome($x_nome)
     {
         if (is_null($x_nome)) {
-            throw new \InvalidArgumentException('non-nullable x_nome cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_nome');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_nome', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_nome'] = $x_nome;
 
@@ -468,7 +496,14 @@ class MdfeSefazVeicReboqueProp implements ModelInterface, ArrayAccess, \JsonSeri
     public function setIe($ie)
     {
         if (is_null($ie)) {
-            throw new \InvalidArgumentException('non-nullable ie cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ie');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ie', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ie'] = $ie;
 
@@ -495,7 +530,14 @@ class MdfeSefazVeicReboqueProp implements ModelInterface, ArrayAccess, \JsonSeri
     public function setUf($uf)
     {
         if (is_null($uf)) {
-            throw new \InvalidArgumentException('non-nullable uf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'uf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['uf'] = $uf;
 
@@ -522,7 +564,14 @@ class MdfeSefazVeicReboqueProp implements ModelInterface, ArrayAccess, \JsonSeri
     public function setTpProp($tp_prop)
     {
         if (is_null($tp_prop)) {
-            throw new \InvalidArgumentException('non-nullable tp_prop cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_prop');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_prop', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_prop'] = $tp_prop;
 

@@ -80,7 +80,7 @@ class MdfeSefazValePed implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'disp' => false,
-		'categ_comb_veic' => false
+		'categ_comb_veic' => true
     ];
 
     /**
@@ -346,7 +346,14 @@ class MdfeSefazValePed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCategCombVeic($categ_comb_veic)
     {
         if (is_null($categ_comb_veic)) {
-            throw new \InvalidArgumentException('non-nullable categ_comb_veic cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'categ_comb_veic');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('categ_comb_veic', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['categ_comb_veic'] = $categ_comb_veic;
 

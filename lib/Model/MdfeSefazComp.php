@@ -81,9 +81,9 @@ class MdfeSefazComp implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tp_comp' => false,
-		'v_comp' => false,
-		'x_comp' => false
+        'tp_comp' => true,
+		'v_comp' => true,
+		'x_comp' => true
     ];
 
     /**
@@ -329,7 +329,14 @@ class MdfeSefazComp implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpComp($tp_comp)
     {
         if (is_null($tp_comp)) {
-            throw new \InvalidArgumentException('non-nullable tp_comp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_comp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_comp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_comp'] = $tp_comp;
 
@@ -356,7 +363,14 @@ class MdfeSefazComp implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVComp($v_comp)
     {
         if (is_null($v_comp)) {
-            throw new \InvalidArgumentException('non-nullable v_comp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_comp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_comp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_comp'] = $v_comp;
 
@@ -383,7 +397,14 @@ class MdfeSefazComp implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXComp($x_comp)
     {
         if (is_null($x_comp)) {
-            throw new \InvalidArgumentException('non-nullable x_comp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_comp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_comp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_comp'] = $x_comp;
 

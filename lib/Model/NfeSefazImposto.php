@@ -95,7 +95,7 @@ class NfeSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'v_tot_trib' => false,
+        'v_tot_trib' => true,
 		'icms' => false,
 		'ipi' => false,
 		'ii' => false,
@@ -372,7 +372,14 @@ class NfeSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVTotTrib($v_tot_trib)
     {
         if (is_null($v_tot_trib)) {
-            throw new \InvalidArgumentException('non-nullable v_tot_trib cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_tot_trib');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_tot_trib', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_tot_trib'] = $v_tot_trib;
 

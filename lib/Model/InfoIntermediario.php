@@ -95,16 +95,16 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cnpj' => false,
-		'cpf' => false,
-		'nif' => false,
-		'c_nao_nif' => false,
-		'caepf' => false,
-		'im' => false,
-		'x_nome' => false,
+        'cnpj' => true,
+		'cpf' => true,
+		'nif' => true,
+		'c_nao_nif' => true,
+		'caepf' => true,
+		'im' => true,
+		'x_nome' => true,
 		'end' => false,
-		'fone' => false,
-		'email' => false
+		'fone' => true,
+		'email' => true
     ];
 
     /**
@@ -375,7 +375,14 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCnpj($cnpj)
     {
         if (is_null($cnpj)) {
-            throw new \InvalidArgumentException('non-nullable cnpj cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnpj');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnpj'] = $cnpj;
 
@@ -402,7 +409,14 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCpf($cpf)
     {
         if (is_null($cpf)) {
-            throw new \InvalidArgumentException('non-nullable cpf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cpf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cpf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cpf'] = $cpf;
 
@@ -429,7 +443,14 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setNif($nif)
     {
         if (is_null($nif)) {
-            throw new \InvalidArgumentException('non-nullable nif cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'nif');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('nif', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['nif'] = $nif;
 
@@ -456,7 +477,14 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCNaoNif($c_nao_nif)
     {
         if (is_null($c_nao_nif)) {
-            throw new \InvalidArgumentException('non-nullable c_nao_nif cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_nao_nif');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_nao_nif', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_nao_nif'] = $c_nao_nif;
 
@@ -483,7 +511,14 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCaepf($caepf)
     {
         if (is_null($caepf)) {
-            throw new \InvalidArgumentException('non-nullable caepf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'caepf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('caepf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['caepf'] = $caepf;
 
@@ -510,7 +545,14 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setIm($im)
     {
         if (is_null($im)) {
-            throw new \InvalidArgumentException('non-nullable im cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'im');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('im', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['im'] = $im;
 
@@ -537,7 +579,14 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setXNome($x_nome)
     {
         if (is_null($x_nome)) {
-            throw new \InvalidArgumentException('non-nullable x_nome cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_nome');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_nome', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_nome'] = $x_nome;
 
@@ -591,7 +640,14 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setFone($fone)
     {
         if (is_null($fone)) {
-            throw new \InvalidArgumentException('non-nullable fone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fone'] = $fone;
 
@@ -618,7 +674,14 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setEmail($email)
     {
         if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('email', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['email'] = $email;
 

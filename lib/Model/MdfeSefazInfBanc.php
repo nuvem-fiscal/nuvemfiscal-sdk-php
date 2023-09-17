@@ -83,10 +83,10 @@ class MdfeSefazInfBanc implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cod_banco' => false,
-		'cod_agencia' => false,
-		'cnpjipef' => false,
-		'pix' => false
+        'cod_banco' => true,
+		'cod_agencia' => true,
+		'cnpjipef' => true,
+		'pix' => true
     ];
 
     /**
@@ -330,7 +330,14 @@ class MdfeSefazInfBanc implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCodBanco($cod_banco)
     {
         if (is_null($cod_banco)) {
-            throw new \InvalidArgumentException('non-nullable cod_banco cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cod_banco');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cod_banco', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cod_banco'] = $cod_banco;
 
@@ -357,7 +364,14 @@ class MdfeSefazInfBanc implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCodAgencia($cod_agencia)
     {
         if (is_null($cod_agencia)) {
-            throw new \InvalidArgumentException('non-nullable cod_agencia cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cod_agencia');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cod_agencia', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cod_agencia'] = $cod_agencia;
 
@@ -384,7 +398,14 @@ class MdfeSefazInfBanc implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCnpjipef($cnpjipef)
     {
         if (is_null($cnpjipef)) {
-            throw new \InvalidArgumentException('non-nullable cnpjipef cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnpjipef');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpjipef', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnpjipef'] = $cnpjipef;
 
@@ -411,7 +432,14 @@ class MdfeSefazInfBanc implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPix($pix)
     {
         if (is_null($pix)) {
-            throw new \InvalidArgumentException('non-nullable pix cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pix');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pix', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pix'] = $pix;
 

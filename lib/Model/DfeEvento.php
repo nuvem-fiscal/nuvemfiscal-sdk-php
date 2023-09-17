@@ -109,7 +109,7 @@ class DfeEvento implements ModelInterface, ArrayAccess, \JsonSerializable
 		'chave_acesso' => false,
 		'data_evento' => false,
 		'numero_sequencial' => false,
-		'data_recebimento' => false,
+		'data_recebimento' => true,
 		'codigo_status' => false,
 		'motivo_status' => false,
 		'numero_protocolo' => false,
@@ -660,7 +660,14 @@ class DfeEvento implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDataRecebimento($data_recebimento)
     {
         if (is_null($data_recebimento)) {
-            throw new \InvalidArgumentException('non-nullable data_recebimento cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data_recebimento');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_recebimento', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data_recebimento'] = $data_recebimento;
 

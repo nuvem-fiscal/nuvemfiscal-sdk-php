@@ -85,10 +85,10 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ind_pag' => false,
-		't_pag' => false,
-		'x_pag' => false,
-		'v_pag' => false,
+        'ind_pag' => true,
+		't_pag' => true,
+		'x_pag' => true,
+		'v_pag' => true,
 		'card' => false
     ];
 
@@ -343,7 +343,14 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIndPag($ind_pag)
     {
         if (is_null($ind_pag)) {
-            throw new \InvalidArgumentException('non-nullable ind_pag cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ind_pag');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_pag', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ind_pag'] = $ind_pag;
 
@@ -370,7 +377,14 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTPag($t_pag)
     {
         if (is_null($t_pag)) {
-            throw new \InvalidArgumentException('non-nullable t_pag cannot be null');
+            array_push($this->openAPINullablesSetToNull, 't_pag');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('t_pag', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['t_pag'] = $t_pag;
 
@@ -397,7 +411,14 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXPag($x_pag)
     {
         if (is_null($x_pag)) {
-            throw new \InvalidArgumentException('non-nullable x_pag cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_pag');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_pag', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_pag'] = $x_pag;
 
@@ -424,7 +445,14 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVPag($v_pag)
     {
         if (is_null($v_pag)) {
-            throw new \InvalidArgumentException('non-nullable v_pag cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_pag');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_pag', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_pag'] = $v_pag;
 

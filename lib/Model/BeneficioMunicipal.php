@@ -83,10 +83,10 @@ class BeneficioMunicipal implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tp_bm' => false,
-		'n_bm' => false,
-		'v_red_bcbm' => false,
-		'p_red_bcbm' => false
+        'tp_bm' => true,
+		'n_bm' => true,
+		'v_red_bcbm' => true,
+		'p_red_bcbm' => true
     ];
 
     /**
@@ -336,7 +336,14 @@ class BeneficioMunicipal implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setTpBm($tp_bm)
     {
         if (is_null($tp_bm)) {
-            throw new \InvalidArgumentException('non-nullable tp_bm cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_bm');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_bm', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_bm'] = $tp_bm;
 
@@ -363,7 +370,14 @@ class BeneficioMunicipal implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setNBm($n_bm)
     {
         if (is_null($n_bm)) {
-            throw new \InvalidArgumentException('non-nullable n_bm cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_bm');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_bm', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_bm'] = $n_bm;
 
@@ -390,7 +404,14 @@ class BeneficioMunicipal implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setVRedBcbm($v_red_bcbm)
     {
         if (is_null($v_red_bcbm)) {
-            throw new \InvalidArgumentException('non-nullable v_red_bcbm cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_red_bcbm');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_red_bcbm', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_red_bcbm'] = $v_red_bcbm;
 
@@ -417,7 +438,14 @@ class BeneficioMunicipal implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setPRedBcbm($p_red_bcbm)
     {
         if (is_null($p_red_bcbm)) {
-            throw new \InvalidArgumentException('non-nullable p_red_bcbm cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_red_bcbm');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_red_bcbm', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_red_bcbm'] = $p_red_bcbm;
 

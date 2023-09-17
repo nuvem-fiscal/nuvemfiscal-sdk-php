@@ -85,8 +85,8 @@ class NfeSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'inf_ad_fisco' => false,
-		'inf_cpl' => false,
+        'inf_ad_fisco' => true,
+		'inf_cpl' => true,
 		'obs_cont' => false,
 		'obs_fisco' => false,
 		'proc_ref' => false
@@ -337,7 +337,14 @@ class NfeSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInfAdFisco($inf_ad_fisco)
     {
         if (is_null($inf_ad_fisco)) {
-            throw new \InvalidArgumentException('non-nullable inf_ad_fisco cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inf_ad_fisco');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inf_ad_fisco', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inf_ad_fisco'] = $inf_ad_fisco;
 
@@ -364,7 +371,14 @@ class NfeSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInfCpl($inf_cpl)
     {
         if (is_null($inf_cpl)) {
-            throw new \InvalidArgumentException('non-nullable inf_cpl cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inf_cpl');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inf_cpl', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inf_cpl'] = $inf_cpl;
 

@@ -89,12 +89,12 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'q_vol' => false,
-		'esp' => false,
-		'marca' => false,
-		'n_vol' => false,
-		'peso_l' => false,
-		'peso_b' => false,
+        'q_vol' => true,
+		'esp' => true,
+		'marca' => true,
+		'n_vol' => true,
+		'peso_l' => true,
+		'peso_b' => true,
 		'lacres' => false
     ];
 
@@ -351,7 +351,14 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQVol($q_vol)
     {
         if (is_null($q_vol)) {
-            throw new \InvalidArgumentException('non-nullable q_vol cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_vol');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_vol', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_vol'] = $q_vol;
 
@@ -378,7 +385,14 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEsp($esp)
     {
         if (is_null($esp)) {
-            throw new \InvalidArgumentException('non-nullable esp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'esp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('esp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['esp'] = $esp;
 
@@ -405,7 +419,14 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMarca($marca)
     {
         if (is_null($marca)) {
-            throw new \InvalidArgumentException('non-nullable marca cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marca');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marca', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marca'] = $marca;
 
@@ -432,7 +453,14 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNVol($n_vol)
     {
         if (is_null($n_vol)) {
-            throw new \InvalidArgumentException('non-nullable n_vol cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_vol');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_vol', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_vol'] = $n_vol;
 
@@ -459,7 +487,14 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPesoL($peso_l)
     {
         if (is_null($peso_l)) {
-            throw new \InvalidArgumentException('non-nullable peso_l cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'peso_l');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('peso_l', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['peso_l'] = $peso_l;
 
@@ -486,7 +521,14 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPesoB($peso_b)
     {
         if (is_null($peso_b)) {
-            throw new \InvalidArgumentException('non-nullable peso_b cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'peso_b');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('peso_b', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['peso_b'] = $peso_b;
 

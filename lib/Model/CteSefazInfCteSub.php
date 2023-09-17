@@ -79,8 +79,8 @@ class CteSefazInfCteSub implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ch_cte' => false,
-		'ind_altera_toma' => false
+        'ch_cte' => true,
+		'ind_altera_toma' => true
     ];
 
     /**
@@ -319,7 +319,14 @@ class CteSefazInfCteSub implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setChCte($ch_cte)
     {
         if (is_null($ch_cte)) {
-            throw new \InvalidArgumentException('non-nullable ch_cte cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ch_cte');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ch_cte', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ch_cte'] = $ch_cte;
 
@@ -346,7 +353,14 @@ class CteSefazInfCteSub implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setIndAlteraToma($ind_altera_toma)
     {
         if (is_null($ind_altera_toma)) {
-            throw new \InvalidArgumentException('non-nullable ind_altera_toma cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ind_altera_toma');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_altera_toma', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ind_altera_toma'] = $ind_altera_toma;
 

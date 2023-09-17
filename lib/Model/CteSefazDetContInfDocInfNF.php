@@ -81,9 +81,9 @@ class CteSefazDetContInfDocInfNF implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'serie' => false,
-		'n_doc' => false,
-		'unid_rat' => false
+        'serie' => true,
+		'n_doc' => true,
+		'unid_rat' => true
     ];
 
     /**
@@ -329,7 +329,14 @@ class CteSefazDetContInfDocInfNF implements ModelInterface, ArrayAccess, \JsonSe
     public function setSerie($serie)
     {
         if (is_null($serie)) {
-            throw new \InvalidArgumentException('non-nullable serie cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'serie');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('serie', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['serie'] = $serie;
 
@@ -356,7 +363,14 @@ class CteSefazDetContInfDocInfNF implements ModelInterface, ArrayAccess, \JsonSe
     public function setNDoc($n_doc)
     {
         if (is_null($n_doc)) {
-            throw new \InvalidArgumentException('non-nullable n_doc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_doc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_doc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_doc'] = $n_doc;
 
@@ -383,7 +397,14 @@ class CteSefazDetContInfDocInfNF implements ModelInterface, ArrayAccess, \JsonSe
     public function setUnidRat($unid_rat)
     {
         if (is_null($unid_rat)) {
-            throw new \InvalidArgumentException('non-nullable unid_rat cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unid_rat');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unid_rat', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unid_rat'] = $unid_rat;
 

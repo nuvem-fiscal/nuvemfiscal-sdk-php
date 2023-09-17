@@ -87,11 +87,11 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_item' => false,
+        'n_item' => true,
 		'prod' => false,
 		'imposto' => false,
 		'imposto_devol' => false,
-		'inf_ad_prod' => false,
+		'inf_ad_prod' => true,
 		'obs_item' => false
     ];
 
@@ -353,7 +353,14 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNItem($n_item)
     {
         if (is_null($n_item)) {
-            throw new \InvalidArgumentException('non-nullable n_item cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'n_item');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_item', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['n_item'] = $n_item;
 
@@ -461,7 +468,14 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInfAdProd($inf_ad_prod)
     {
         if (is_null($inf_ad_prod)) {
-            throw new \InvalidArgumentException('non-nullable inf_ad_prod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inf_ad_prod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inf_ad_prod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inf_ad_prod'] = $inf_ad_prod;
 

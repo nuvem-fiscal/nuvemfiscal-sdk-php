@@ -85,8 +85,8 @@ class MdfeSefazInfMunDescarga implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'c_mun_descarga' => false,
-		'x_mun_descarga' => false,
+        'c_mun_descarga' => true,
+		'x_mun_descarga' => true,
 		'inf_cte' => false,
 		'inf_nfe' => false,
 		'inf_mdfe_transp' => false
@@ -343,7 +343,14 @@ class MdfeSefazInfMunDescarga implements ModelInterface, ArrayAccess, \JsonSeria
     public function setCMunDescarga($c_mun_descarga)
     {
         if (is_null($c_mun_descarga)) {
-            throw new \InvalidArgumentException('non-nullable c_mun_descarga cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_mun_descarga');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_mun_descarga', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_mun_descarga'] = $c_mun_descarga;
 
@@ -370,7 +377,14 @@ class MdfeSefazInfMunDescarga implements ModelInterface, ArrayAccess, \JsonSeria
     public function setXMunDescarga($x_mun_descarga)
     {
         if (is_null($x_mun_descarga)) {
-            throw new \InvalidArgumentException('non-nullable x_mun_descarga cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_mun_descarga');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_mun_descarga', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_mun_descarga'] = $x_mun_descarga;
 

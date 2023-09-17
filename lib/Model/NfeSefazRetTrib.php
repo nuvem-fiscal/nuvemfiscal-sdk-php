@@ -89,13 +89,13 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'v_ret_pis' => false,
-		'v_ret_cofins' => false,
-		'v_ret_csll' => false,
-		'v_bcirrf' => false,
-		'v_irrf' => false,
-		'v_bc_ret_prev' => false,
-		'v_ret_prev' => false
+        'v_ret_pis' => true,
+		'v_ret_cofins' => true,
+		'v_ret_csll' => true,
+		'v_bcirrf' => true,
+		'v_irrf' => true,
+		'v_bc_ret_prev' => true,
+		'v_ret_prev' => true
     ];
 
     /**
@@ -351,7 +351,14 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVRetPis($v_ret_pis)
     {
         if (is_null($v_ret_pis)) {
-            throw new \InvalidArgumentException('non-nullable v_ret_pis cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_ret_pis');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_ret_pis', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_ret_pis'] = $v_ret_pis;
 
@@ -378,7 +385,14 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVRetCofins($v_ret_cofins)
     {
         if (is_null($v_ret_cofins)) {
-            throw new \InvalidArgumentException('non-nullable v_ret_cofins cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_ret_cofins');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_ret_cofins', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_ret_cofins'] = $v_ret_cofins;
 
@@ -405,7 +419,14 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVRetCsll($v_ret_csll)
     {
         if (is_null($v_ret_csll)) {
-            throw new \InvalidArgumentException('non-nullable v_ret_csll cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_ret_csll');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_ret_csll', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_ret_csll'] = $v_ret_csll;
 
@@ -432,7 +453,14 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVBcirrf($v_bcirrf)
     {
         if (is_null($v_bcirrf)) {
-            throw new \InvalidArgumentException('non-nullable v_bcirrf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_bcirrf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bcirrf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_bcirrf'] = $v_bcirrf;
 
@@ -459,7 +487,14 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVIrrf($v_irrf)
     {
         if (is_null($v_irrf)) {
-            throw new \InvalidArgumentException('non-nullable v_irrf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_irrf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_irrf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_irrf'] = $v_irrf;
 
@@ -486,7 +521,14 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVBcRetPrev($v_bc_ret_prev)
     {
         if (is_null($v_bc_ret_prev)) {
-            throw new \InvalidArgumentException('non-nullable v_bc_ret_prev cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_bc_ret_prev');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bc_ret_prev', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_bc_ret_prev'] = $v_bc_ret_prev;
 
@@ -513,7 +555,14 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVRetPrev($v_ret_prev)
     {
         if (is_null($v_ret_prev)) {
-            throw new \InvalidArgumentException('non-nullable v_ret_prev cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_ret_prev');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_ret_prev', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_ret_prev'] = $v_ret_prev;
 

@@ -626,7 +626,7 @@ class EmpresaEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cep
      *
-     * @param string $cep CEP.  Utilize o valor sem máscara.
+     * @param string $cep CEP.    *Utilize o valor sem máscara*.
      *
      * @return self
      */

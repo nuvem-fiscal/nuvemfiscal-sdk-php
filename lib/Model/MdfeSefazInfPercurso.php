@@ -77,7 +77,7 @@ class MdfeSefazInfPercurso implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'uf_per' => false
+        'uf_per' => true
     ];
 
     /**
@@ -312,7 +312,14 @@ class MdfeSefazInfPercurso implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setUfPer($uf_per)
     {
         if (is_null($uf_per)) {
-            throw new \InvalidArgumentException('non-nullable uf_per cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'uf_per');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uf_per', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['uf_per'] = $uf_per;
 

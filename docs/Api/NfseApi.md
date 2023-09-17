@@ -5,6 +5,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | Método | Endpoint | Descrição |
 | ------------- | ------------- | ------------- |
 | [**baixarPdfNfse()**](NfseApi.md#baixarPdfNfse) | **GET** /nfse/{id}/pdf | Baixar PDF do DANFSE |
+| [**baixarXmlCancelamentoNfse()**](NfseApi.md#baixarXmlCancelamentoNfse) | **GET** /nfse/{Id}/cancelamento/xml | Baixar XML do evento de cancelamento |
 | [**baixarXmlDps()**](NfseApi.md#baixarXmlDps) | **GET** /nfse/{id}/xml/dps | Baixar XML da DPS |
 | [**baixarXmlNfse()**](NfseApi.md#baixarXmlNfse) | **GET** /nfse/{id}/xml | Baixar XML da NFS-e processada |
 | [**cancelarNfse()**](NfseApi.md#cancelarNfse) | **POST** /nfse/{id}/cancelamento | Cancelar uma NFS-e autorizada |
@@ -69,6 +70,69 @@ try {
 | **id** | **string**| ID único da NFS-e gerado pela Nuvem Fiscal. | |
 | **logotipo** | **bool**| Imprime o documento com logotipo, desde que esteja cadastrado na empresa. | [optional] [default to false] |
 | **mensagem_rodape** | **string**| Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60;    Default: &#x60;\&quot;\&quot;&#x60; | [optional] |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `baixarXmlCancelamentoNfse()`
+
+```php
+baixarXmlCancelamentoNfse($id): \SplFileObject
+```
+
+Baixar XML do evento de cancelamento
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfseApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NFS-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarXmlCancelamentoNfse($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfseApi->baixarXmlCancelamentoNfse: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NFS-e gerado pela Nuvem Fiscal. | |
 
 ### Tipo do retorno
 

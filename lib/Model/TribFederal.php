@@ -84,9 +84,9 @@ class TribFederal implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'piscofins' => false,
-		'v_ret_cp' => false,
-		'v_ret_irrf' => false,
-		'v_ret_csll' => false
+		'v_ret_cp' => true,
+		'v_ret_irrf' => true,
+		'v_ret_csll' => true
     ];
 
     /**
@@ -357,7 +357,14 @@ class TribFederal implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVRetCp($v_ret_cp)
     {
         if (is_null($v_ret_cp)) {
-            throw new \InvalidArgumentException('non-nullable v_ret_cp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_ret_cp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_ret_cp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_ret_cp'] = $v_ret_cp;
 
@@ -384,7 +391,14 @@ class TribFederal implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVRetIrrf($v_ret_irrf)
     {
         if (is_null($v_ret_irrf)) {
-            throw new \InvalidArgumentException('non-nullable v_ret_irrf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_ret_irrf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_ret_irrf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_ret_irrf'] = $v_ret_irrf;
 
@@ -411,7 +425,14 @@ class TribFederal implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVRetCsll($v_ret_csll)
     {
         if (is_null($v_ret_csll)) {
-            throw new \InvalidArgumentException('non-nullable v_ret_csll cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_ret_csll');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_ret_csll', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_ret_csll'] = $v_ret_csll;
 

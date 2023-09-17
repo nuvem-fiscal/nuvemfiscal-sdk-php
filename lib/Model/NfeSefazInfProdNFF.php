@@ -79,8 +79,8 @@ class NfeSefazInfProdNFF implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'c_prod_fisco' => false,
-		'c_oper_nff' => false
+        'c_prod_fisco' => true,
+		'c_oper_nff' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class NfeSefazInfProdNFF implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCProdFisco($c_prod_fisco)
     {
         if (is_null($c_prod_fisco)) {
-            throw new \InvalidArgumentException('non-nullable c_prod_fisco cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_prod_fisco');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_prod_fisco', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_prod_fisco'] = $c_prod_fisco;
 
@@ -349,7 +356,14 @@ class NfeSefazInfProdNFF implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCOperNff($c_oper_nff)
     {
         if (is_null($c_oper_nff)) {
-            throw new \InvalidArgumentException('non-nullable c_oper_nff cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_oper_nff');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_oper_nff', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_oper_nff'] = $c_oper_nff;
 

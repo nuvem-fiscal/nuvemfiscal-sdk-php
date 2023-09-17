@@ -81,9 +81,9 @@ class NfeSefazExporta implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'uf_saida_pais' => false,
-		'x_loc_exporta' => false,
-		'x_loc_despacho' => false
+        'uf_saida_pais' => true,
+		'x_loc_exporta' => true,
+		'x_loc_despacho' => true
     ];
 
     /**
@@ -329,7 +329,14 @@ class NfeSefazExporta implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUfSaidaPais($uf_saida_pais)
     {
         if (is_null($uf_saida_pais)) {
-            throw new \InvalidArgumentException('non-nullable uf_saida_pais cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'uf_saida_pais');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uf_saida_pais', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['uf_saida_pais'] = $uf_saida_pais;
 
@@ -356,7 +363,14 @@ class NfeSefazExporta implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXLocExporta($x_loc_exporta)
     {
         if (is_null($x_loc_exporta)) {
-            throw new \InvalidArgumentException('non-nullable x_loc_exporta cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_loc_exporta');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_loc_exporta', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_loc_exporta'] = $x_loc_exporta;
 
@@ -383,7 +397,14 @@ class NfeSefazExporta implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXLocDespacho($x_loc_despacho)
     {
         if (is_null($x_loc_despacho)) {
-            throw new \InvalidArgumentException('non-nullable x_loc_despacho cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_loc_despacho');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_loc_despacho', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_loc_despacho'] = $x_loc_despacho;
 

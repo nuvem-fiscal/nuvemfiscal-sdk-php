@@ -81,8 +81,8 @@ class CteSefazVPrest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'v_t_prest' => false,
-		'v_rec' => false,
+        'v_t_prest' => true,
+		'v_rec' => true,
 		'comp' => false
     ];
 
@@ -329,7 +329,14 @@ class CteSefazVPrest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVTPrest($v_t_prest)
     {
         if (is_null($v_t_prest)) {
-            throw new \InvalidArgumentException('non-nullable v_t_prest cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_t_prest');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_t_prest', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_t_prest'] = $v_t_prest;
 
@@ -356,7 +363,14 @@ class CteSefazVPrest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVRec($v_rec)
     {
         if (is_null($v_rec)) {
-            throw new \InvalidArgumentException('non-nullable v_rec cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_rec');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_rec', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_rec'] = $v_rec;
 

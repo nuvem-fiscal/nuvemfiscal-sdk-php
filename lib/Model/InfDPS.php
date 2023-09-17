@@ -95,10 +95,10 @@ class InfDPS implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tp_amb' => false,
-		'dh_emi' => false,
-		'ver_aplic' => false,
-		'd_compet' => false,
+        'tp_amb' => true,
+		'dh_emi' => true,
+		'ver_aplic' => true,
+		'd_compet' => true,
 		'subst' => false,
 		'prest' => false,
 		'toma' => false,
@@ -387,7 +387,14 @@ class InfDPS implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpAmb($tp_amb)
     {
         if (is_null($tp_amb)) {
-            throw new \InvalidArgumentException('non-nullable tp_amb cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_amb');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_amb', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_amb'] = $tp_amb;
 
@@ -414,7 +421,14 @@ class InfDPS implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDhEmi($dh_emi)
     {
         if (is_null($dh_emi)) {
-            throw new \InvalidArgumentException('non-nullable dh_emi cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dh_emi');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dh_emi', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dh_emi'] = $dh_emi;
 
@@ -441,7 +455,14 @@ class InfDPS implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVerAplic($ver_aplic)
     {
         if (is_null($ver_aplic)) {
-            throw new \InvalidArgumentException('non-nullable ver_aplic cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ver_aplic');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ver_aplic', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ver_aplic'] = $ver_aplic;
 
@@ -468,7 +489,14 @@ class InfDPS implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDCompet($d_compet)
     {
         if (is_null($d_compet)) {
-            throw new \InvalidArgumentException('non-nullable d_compet cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'd_compet');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_compet', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['d_compet'] = $d_compet;
 

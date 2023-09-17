@@ -82,8 +82,8 @@ class CnpjOpcaoSimei implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'optante' => false,
-		'data_opcao' => false,
-		'data_exclusao' => false
+		'data_opcao' => true,
+		'data_exclusao' => true
     ];
 
     /**
@@ -350,7 +350,14 @@ class CnpjOpcaoSimei implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDataOpcao($data_opcao)
     {
         if (is_null($data_opcao)) {
-            throw new \InvalidArgumentException('non-nullable data_opcao cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data_opcao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_opcao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data_opcao'] = $data_opcao;
 
@@ -377,7 +384,14 @@ class CnpjOpcaoSimei implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDataExclusao($data_exclusao)
     {
         if (is_null($data_exclusao)) {
-            throw new \InvalidArgumentException('non-nullable data_exclusao cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data_exclusao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_exclusao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data_exclusao'] = $data_exclusao;
 

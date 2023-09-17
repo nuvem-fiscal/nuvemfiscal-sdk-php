@@ -79,8 +79,8 @@ class CteSefazComHora implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tp_hor' => false,
-		'h_prog' => false
+        'tp_hor' => true,
+		'h_prog' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class CteSefazComHora implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTpHor($tp_hor)
     {
         if (is_null($tp_hor)) {
-            throw new \InvalidArgumentException('non-nullable tp_hor cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_hor');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_hor', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_hor'] = $tp_hor;
 
@@ -349,7 +356,14 @@ class CteSefazComHora implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHProg($h_prog)
     {
         if (is_null($h_prog)) {
-            throw new \InvalidArgumentException('non-nullable h_prog cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'h_prog');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('h_prog', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['h_prog'] = $h_prog;
 

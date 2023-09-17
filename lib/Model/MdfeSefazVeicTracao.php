@@ -97,17 +97,17 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'c_int' => false,
-		'placa' => false,
-		'renavam' => false,
-		'tara' => false,
-		'cap_kg' => false,
-		'cap_m3' => false,
+        'c_int' => true,
+		'placa' => true,
+		'renavam' => true,
+		'tara' => true,
+		'cap_kg' => true,
+		'cap_m3' => true,
 		'prop' => false,
 		'condutor' => false,
-		'tp_rod' => false,
-		'tp_car' => false,
-		'uf' => false
+		'tp_rod' => true,
+		'tp_car' => true,
+		'uf' => true
     ];
 
     /**
@@ -394,7 +394,14 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setCInt($c_int)
     {
         if (is_null($c_int)) {
-            throw new \InvalidArgumentException('non-nullable c_int cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_int');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_int', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_int'] = $c_int;
 
@@ -421,7 +428,14 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPlaca($placa)
     {
         if (is_null($placa)) {
-            throw new \InvalidArgumentException('non-nullable placa cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'placa');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('placa', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['placa'] = $placa;
 
@@ -448,7 +462,14 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setRenavam($renavam)
     {
         if (is_null($renavam)) {
-            throw new \InvalidArgumentException('non-nullable renavam cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'renavam');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('renavam', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['renavam'] = $renavam;
 
@@ -475,7 +496,14 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTara($tara)
     {
         if (is_null($tara)) {
-            throw new \InvalidArgumentException('non-nullable tara cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tara');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tara', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tara'] = $tara;
 
@@ -502,7 +530,14 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setCapKg($cap_kg)
     {
         if (is_null($cap_kg)) {
-            throw new \InvalidArgumentException('non-nullable cap_kg cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cap_kg');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cap_kg', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cap_kg'] = $cap_kg;
 
@@ -529,7 +564,14 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setCapM3($cap_m3)
     {
         if (is_null($cap_m3)) {
-            throw new \InvalidArgumentException('non-nullable cap_m3 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cap_m3');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cap_m3', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cap_m3'] = $cap_m3;
 
@@ -610,7 +652,14 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTpRod($tp_rod)
     {
         if (is_null($tp_rod)) {
-            throw new \InvalidArgumentException('non-nullable tp_rod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_rod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_rod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_rod'] = $tp_rod;
 
@@ -637,7 +686,14 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTpCar($tp_car)
     {
         if (is_null($tp_car)) {
-            throw new \InvalidArgumentException('non-nullable tp_car cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_car');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_car', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_car'] = $tp_car;
 
@@ -664,7 +720,14 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setUf($uf)
     {
         if (is_null($uf)) {
-            throw new \InvalidArgumentException('non-nullable uf cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'uf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['uf'] = $uf;
 

@@ -85,11 +85,11 @@ class MdfeSefazUnidadeTransp implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tp_unid_transp' => false,
-		'id_unid_transp' => false,
+        'tp_unid_transp' => true,
+		'id_unid_transp' => true,
 		'lac_unid_transp' => false,
 		'inf_unid_carga' => false,
-		'qtd_rat' => false
+		'qtd_rat' => true
     ];
 
     /**
@@ -343,7 +343,14 @@ class MdfeSefazUnidadeTransp implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTpUnidTransp($tp_unid_transp)
     {
         if (is_null($tp_unid_transp)) {
-            throw new \InvalidArgumentException('non-nullable tp_unid_transp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tp_unid_transp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_unid_transp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tp_unid_transp'] = $tp_unid_transp;
 
@@ -370,7 +377,14 @@ class MdfeSefazUnidadeTransp implements ModelInterface, ArrayAccess, \JsonSerial
     public function setIdUnidTransp($id_unid_transp)
     {
         if (is_null($id_unid_transp)) {
-            throw new \InvalidArgumentException('non-nullable id_unid_transp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id_unid_transp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id_unid_transp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id_unid_transp'] = $id_unid_transp;
 
@@ -451,7 +465,14 @@ class MdfeSefazUnidadeTransp implements ModelInterface, ArrayAccess, \JsonSerial
     public function setQtdRat($qtd_rat)
     {
         if (is_null($qtd_rat)) {
-            throw new \InvalidArgumentException('non-nullable qtd_rat cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'qtd_rat');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('qtd_rat', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['qtd_rat'] = $qtd_rat;
 

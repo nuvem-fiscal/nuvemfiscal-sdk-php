@@ -84,8 +84,8 @@ class CteSefazInfCteImp implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPINullables = [
         'icms' => false,
-		'v_tot_trib' => false,
-		'inf_ad_fisco' => false,
+		'v_tot_trib' => true,
+		'inf_ad_fisco' => true,
 		'icmsuf_fim' => false
     ];
 
@@ -360,7 +360,14 @@ class CteSefazInfCteImp implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVTotTrib($v_tot_trib)
     {
         if (is_null($v_tot_trib)) {
-            throw new \InvalidArgumentException('non-nullable v_tot_trib cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_tot_trib');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_tot_trib', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_tot_trib'] = $v_tot_trib;
 
@@ -387,7 +394,14 @@ class CteSefazInfCteImp implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setInfAdFisco($inf_ad_fisco)
     {
         if (is_null($inf_ad_fisco)) {
-            throw new \InvalidArgumentException('non-nullable inf_ad_fisco cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inf_ad_fisco');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inf_ad_fisco', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inf_ad_fisco'] = $inf_ad_fisco;
 

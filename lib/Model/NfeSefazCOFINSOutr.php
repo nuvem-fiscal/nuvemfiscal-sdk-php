@@ -87,12 +87,12 @@ class NfeSefazCOFINSOutr implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cst' => false,
-		'v_bc' => false,
-		'p_cofins' => false,
-		'q_bc_prod' => false,
-		'v_aliq_prod' => false,
-		'v_cofins' => false
+        'cst' => true,
+		'v_bc' => true,
+		'p_cofins' => true,
+		'q_bc_prod' => true,
+		'v_aliq_prod' => true,
+		'v_cofins' => true
     ];
 
     /**
@@ -350,7 +350,14 @@ class NfeSefazCOFINSOutr implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCst($cst)
     {
         if (is_null($cst)) {
-            throw new \InvalidArgumentException('non-nullable cst cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cst');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cst', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cst'] = $cst;
 
@@ -377,7 +384,14 @@ class NfeSefazCOFINSOutr implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setVBc($v_bc)
     {
         if (is_null($v_bc)) {
-            throw new \InvalidArgumentException('non-nullable v_bc cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_bc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_bc'] = $v_bc;
 
@@ -404,7 +418,14 @@ class NfeSefazCOFINSOutr implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setPCofins($p_cofins)
     {
         if (is_null($p_cofins)) {
-            throw new \InvalidArgumentException('non-nullable p_cofins cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'p_cofins');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('p_cofins', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['p_cofins'] = $p_cofins;
 
@@ -431,7 +452,14 @@ class NfeSefazCOFINSOutr implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setQBcProd($q_bc_prod)
     {
         if (is_null($q_bc_prod)) {
-            throw new \InvalidArgumentException('non-nullable q_bc_prod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'q_bc_prod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('q_bc_prod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['q_bc_prod'] = $q_bc_prod;
 
@@ -458,7 +486,14 @@ class NfeSefazCOFINSOutr implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setVAliqProd($v_aliq_prod)
     {
         if (is_null($v_aliq_prod)) {
-            throw new \InvalidArgumentException('non-nullable v_aliq_prod cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_aliq_prod');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_aliq_prod', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_aliq_prod'] = $v_aliq_prod;
 
@@ -485,7 +520,14 @@ class NfeSefazCOFINSOutr implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setVCofins($v_cofins)
     {
         if (is_null($v_cofins)) {
-            throw new \InvalidArgumentException('non-nullable v_cofins cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_cofins');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_cofins', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_cofins'] = $v_cofins;
 

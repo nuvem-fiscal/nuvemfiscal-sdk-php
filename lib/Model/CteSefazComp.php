@@ -79,8 +79,8 @@ class CteSefazComp implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x_nome' => false,
-		'v_comp' => false
+        'x_nome' => true,
+		'v_comp' => true
     ];
 
     /**
@@ -322,7 +322,14 @@ class CteSefazComp implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXNome($x_nome)
     {
         if (is_null($x_nome)) {
-            throw new \InvalidArgumentException('non-nullable x_nome cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_nome');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_nome', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_nome'] = $x_nome;
 
@@ -349,7 +356,14 @@ class CteSefazComp implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVComp($v_comp)
     {
         if (is_null($v_comp)) {
-            throw new \InvalidArgumentException('non-nullable v_comp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'v_comp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_comp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['v_comp'] = $v_comp;
 

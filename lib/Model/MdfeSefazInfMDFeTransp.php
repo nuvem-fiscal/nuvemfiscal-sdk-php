@@ -83,8 +83,8 @@ class MdfeSefazInfMDFeTransp implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ch_mdfe' => false,
-		'ind_reentrega' => false,
+        'ch_mdfe' => true,
+		'ind_reentrega' => true,
 		'inf_unid_transp' => false,
 		'peri' => false
     ];
@@ -333,7 +333,14 @@ class MdfeSefazInfMDFeTransp implements ModelInterface, ArrayAccess, \JsonSerial
     public function setChMdfe($ch_mdfe)
     {
         if (is_null($ch_mdfe)) {
-            throw new \InvalidArgumentException('non-nullable ch_mdfe cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ch_mdfe');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ch_mdfe', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ch_mdfe'] = $ch_mdfe;
 
@@ -360,7 +367,14 @@ class MdfeSefazInfMDFeTransp implements ModelInterface, ArrayAccess, \JsonSerial
     public function setIndReentrega($ind_reentrega)
     {
         if (is_null($ind_reentrega)) {
-            throw new \InvalidArgumentException('non-nullable ind_reentrega cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ind_reentrega');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_reentrega', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ind_reentrega'] = $ind_reentrega;
 

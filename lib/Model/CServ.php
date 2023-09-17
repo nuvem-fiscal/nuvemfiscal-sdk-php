@@ -85,11 +85,11 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'c_trib_nac' => false,
-		'c_trib_mun' => false,
-		'cnae' => false,
-		'x_desc_serv' => false,
-		'c_nbs' => false
+        'c_trib_nac' => true,
+		'c_trib_mun' => true,
+		'cnae' => true,
+		'x_desc_serv' => true,
+		'c_nbs' => true
     ];
 
     /**
@@ -343,7 +343,14 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCTribNac($c_trib_nac)
     {
         if (is_null($c_trib_nac)) {
-            throw new \InvalidArgumentException('non-nullable c_trib_nac cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_trib_nac');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_trib_nac', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_trib_nac'] = $c_trib_nac;
 
@@ -370,7 +377,14 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCTribMun($c_trib_mun)
     {
         if (is_null($c_trib_mun)) {
-            throw new \InvalidArgumentException('non-nullable c_trib_mun cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_trib_mun');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_trib_mun', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_trib_mun'] = $c_trib_mun;
 
@@ -397,7 +411,14 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCnae($cnae)
     {
         if (is_null($cnae)) {
-            throw new \InvalidArgumentException('non-nullable cnae cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnae');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnae', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnae'] = $cnae;
 
@@ -424,7 +445,14 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setXDescServ($x_desc_serv)
     {
         if (is_null($x_desc_serv)) {
-            throw new \InvalidArgumentException('non-nullable x_desc_serv cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_desc_serv');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_desc_serv', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_desc_serv'] = $x_desc_serv;
 
@@ -451,7 +479,14 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCNbs($c_nbs)
     {
         if (is_null($c_nbs)) {
-            throw new \InvalidArgumentException('non-nullable c_nbs cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'c_nbs');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_nbs', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['c_nbs'] = $c_nbs;
 

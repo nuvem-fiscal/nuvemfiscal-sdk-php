@@ -85,7 +85,7 @@ class MdfeSefazInfModal implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'versao_modal' => false,
+        'versao_modal' => true,
 		'aereo' => false,
 		'rodo' => false,
 		'aquav' => false,
@@ -340,7 +340,14 @@ class MdfeSefazInfModal implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVersaoModal($versao_modal)
     {
         if (is_null($versao_modal)) {
-            throw new \InvalidArgumentException('non-nullable versao_modal cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'versao_modal');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('versao_modal', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['versao_modal'] = $versao_modal;
 

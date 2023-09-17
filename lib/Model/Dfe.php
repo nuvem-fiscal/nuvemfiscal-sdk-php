@@ -102,7 +102,7 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
 		'ambiente' => false,
 		'created_at' => false,
 		'status' => false,
-		'referencia' => false,
+		'referencia' => true,
 		'data_emissao' => false,
 		'modelo' => false,
 		'serie' => false,
@@ -571,7 +571,14 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReferencia($referencia)
     {
         if (is_null($referencia)) {
-            throw new \InvalidArgumentException('non-nullable referencia cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'referencia');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('referencia', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['referencia'] = $referencia;
 

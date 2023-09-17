@@ -87,12 +87,12 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cnpj' => false,
-		'x_contato' => false,
-		'email' => false,
-		'fone' => false,
-		'id_csrt' => false,
-		'hash_csrt' => false
+        'cnpj' => true,
+		'x_contato' => true,
+		'email' => true,
+		'fone' => true,
+		'id_csrt' => true,
+		'hash_csrt' => true
     ];
 
     /**
@@ -356,7 +356,14 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCnpj($cnpj)
     {
         if (is_null($cnpj)) {
-            throw new \InvalidArgumentException('non-nullable cnpj cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cnpj');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cnpj'] = $cnpj;
 
@@ -383,7 +390,14 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setXContato($x_contato)
     {
         if (is_null($x_contato)) {
-            throw new \InvalidArgumentException('non-nullable x_contato cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_contato');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_contato', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_contato'] = $x_contato;
 
@@ -410,7 +424,14 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setEmail($email)
     {
         if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('email', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['email'] = $email;
 
@@ -437,7 +458,14 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setFone($fone)
     {
         if (is_null($fone)) {
-            throw new \InvalidArgumentException('non-nullable fone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fone'] = $fone;
 
@@ -464,7 +492,14 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setIdCsrt($id_csrt)
     {
         if (is_null($id_csrt)) {
-            throw new \InvalidArgumentException('non-nullable id_csrt cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id_csrt');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id_csrt', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id_csrt'] = $id_csrt;
 
@@ -491,7 +526,14 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setHashCsrt($hash_csrt)
     {
         if (is_null($hash_csrt)) {
-            throw new \InvalidArgumentException('non-nullable hash_csrt cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'hash_csrt');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('hash_csrt', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['hash_csrt'] = $hash_csrt;
 
