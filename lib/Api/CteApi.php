@@ -91,6 +91,12 @@ class CteApi
         'baixarXmlCte' => [
             'application/json',
         ],
+        'baixarXmlCteConhecimento' => [
+            'application/json',
+        ],
+        'baixarXmlCteProtocolo' => [
+            'application/json',
+        ],
         'baixarXmlEventoCte' => [
             'application/json',
         ],
@@ -119,6 +125,9 @@ class CteApi
             'application/json',
         ],
         'listarCte' => [
+            'application/json',
+        ],
+        'sincronizarCte' => [
             'application/json',
         ],
     ];
@@ -2133,6 +2142,590 @@ class CteApi
 
 
         $resourcePath = '/cte/{id}/xml';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation baixarXmlCteConhecimento
+     *
+     * Baixar XML do CT-e
+     *
+     * @param  string $id ID único da CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlCteConhecimento'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \SplFileObject
+     */
+    public function baixarXmlCteConhecimento($id, string $contentType = self::contentTypes['baixarXmlCteConhecimento'][0])
+    {
+        list($response) = $this->baixarXmlCteConhecimentoWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation baixarXmlCteConhecimentoWithHttpInfo
+     *
+     * Baixar XML do CT-e
+     *
+     * @param  string $id ID único da CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlCteConhecimento'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function baixarXmlCteConhecimentoWithHttpInfo($id, string $contentType = self::contentTypes['baixarXmlCteConhecimento'][0])
+    {
+        $request = $this->baixarXmlCteConhecimentoRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\SplFileObject' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SplFileObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\SplFileObject';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SplFileObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation baixarXmlCteConhecimentoAsync
+     *
+     * Baixar XML do CT-e
+     *
+     * @param  string $id ID único da CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlCteConhecimento'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function baixarXmlCteConhecimentoAsync($id, string $contentType = self::contentTypes['baixarXmlCteConhecimento'][0])
+    {
+        return $this->baixarXmlCteConhecimentoAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation baixarXmlCteConhecimentoAsyncWithHttpInfo
+     *
+     * Baixar XML do CT-e
+     *
+     * @param  string $id ID único da CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlCteConhecimento'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function baixarXmlCteConhecimentoAsyncWithHttpInfo($id, string $contentType = self::contentTypes['baixarXmlCteConhecimento'][0])
+    {
+        $returnType = '\SplFileObject';
+        $request = $this->baixarXmlCteConhecimentoRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'baixarXmlCteConhecimento'
+     *
+     * @param  string $id ID único da CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlCteConhecimento'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function baixarXmlCteConhecimentoRequest($id, string $contentType = self::contentTypes['baixarXmlCteConhecimento'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling baixarXmlCteConhecimento'
+            );
+        }
+
+
+        $resourcePath = '/cte/{id}/xml/conhecimento';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation baixarXmlCteProtocolo
+     *
+     * Baixar XML do Protocolo da SEFAZ
+     *
+     * @param  string $id ID único da CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlCteProtocolo'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \SplFileObject
+     */
+    public function baixarXmlCteProtocolo($id, string $contentType = self::contentTypes['baixarXmlCteProtocolo'][0])
+    {
+        list($response) = $this->baixarXmlCteProtocoloWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation baixarXmlCteProtocoloWithHttpInfo
+     *
+     * Baixar XML do Protocolo da SEFAZ
+     *
+     * @param  string $id ID único da CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlCteProtocolo'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function baixarXmlCteProtocoloWithHttpInfo($id, string $contentType = self::contentTypes['baixarXmlCteProtocolo'][0])
+    {
+        $request = $this->baixarXmlCteProtocoloRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\SplFileObject' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SplFileObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\SplFileObject';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SplFileObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation baixarXmlCteProtocoloAsync
+     *
+     * Baixar XML do Protocolo da SEFAZ
+     *
+     * @param  string $id ID único da CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlCteProtocolo'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function baixarXmlCteProtocoloAsync($id, string $contentType = self::contentTypes['baixarXmlCteProtocolo'][0])
+    {
+        return $this->baixarXmlCteProtocoloAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation baixarXmlCteProtocoloAsyncWithHttpInfo
+     *
+     * Baixar XML do Protocolo da SEFAZ
+     *
+     * @param  string $id ID único da CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlCteProtocolo'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function baixarXmlCteProtocoloAsyncWithHttpInfo($id, string $contentType = self::contentTypes['baixarXmlCteProtocolo'][0])
+    {
+        $returnType = '\SplFileObject';
+        $request = $this->baixarXmlCteProtocoloRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'baixarXmlCteProtocolo'
+     *
+     * @param  string $id ID único da CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlCteProtocolo'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function baixarXmlCteProtocoloRequest($id, string $contentType = self::contentTypes['baixarXmlCteProtocolo'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling baixarXmlCteProtocolo'
+            );
+        }
+
+
+        $resourcePath = '/cte/{id}/xml/protocolo';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5277,6 +5870,298 @@ class CteApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation sincronizarCte
+     *
+     * Sincroniza dados no CT-e a partir da SEFAZ
+     *
+     * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sincronizarCte'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \NuvemFiscal\Model\DfeSincronizacao
+     */
+    public function sincronizarCte($id, string $contentType = self::contentTypes['sincronizarCte'][0])
+    {
+        list($response) = $this->sincronizarCteWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation sincronizarCteWithHttpInfo
+     *
+     * Sincroniza dados no CT-e a partir da SEFAZ
+     *
+     * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sincronizarCte'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \NuvemFiscal\Model\DfeSincronizacao, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function sincronizarCteWithHttpInfo($id, string $contentType = self::contentTypes['sincronizarCte'][0])
+    {
+        $request = $this->sincronizarCteRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\NuvemFiscal\Model\DfeSincronizacao' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\NuvemFiscal\Model\DfeSincronizacao' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\NuvemFiscal\Model\DfeSincronizacao', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\NuvemFiscal\Model\DfeSincronizacao';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\NuvemFiscal\Model\DfeSincronizacao',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation sincronizarCteAsync
+     *
+     * Sincroniza dados no CT-e a partir da SEFAZ
+     *
+     * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sincronizarCte'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sincronizarCteAsync($id, string $contentType = self::contentTypes['sincronizarCte'][0])
+    {
+        return $this->sincronizarCteAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation sincronizarCteAsyncWithHttpInfo
+     *
+     * Sincroniza dados no CT-e a partir da SEFAZ
+     *
+     * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sincronizarCte'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sincronizarCteAsyncWithHttpInfo($id, string $contentType = self::contentTypes['sincronizarCte'][0])
+    {
+        $returnType = '\NuvemFiscal\Model\DfeSincronizacao';
+        $request = $this->sincronizarCteRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'sincronizarCte'
+     *
+     * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sincronizarCte'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function sincronizarCteRequest($id, string $contentType = self::contentTypes['sincronizarCte'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling sincronizarCte'
+            );
+        }
+
+
+        $resourcePath = '/cte/{id}/sincronizar';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

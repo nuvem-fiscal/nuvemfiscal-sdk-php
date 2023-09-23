@@ -94,6 +94,12 @@ class MdfeApi
         'baixarXmlMdfe' => [
             'application/json',
         ],
+        'baixarXmlMdfeManifesto' => [
+            'application/json',
+        ],
+        'baixarXmlMdfeProtocolo' => [
+            'application/json',
+        ],
         'cancelarMdfe' => [
             'application/json',
         ],
@@ -110,6 +116,9 @@ class MdfeApi
             'application/json',
         ],
         'consultarMdfe' => [
+            'application/json',
+        ],
+        'consultarMdfeNaoEncerrados' => [
             'application/json',
         ],
         'consultarStatusSefazMdfe' => [
@@ -134,6 +143,9 @@ class MdfeApi
             'application/json',
         ],
         'listarMdfe' => [
+            'application/json',
+        ],
+        'sincronizarMdfe' => [
             'application/json',
         ],
     ];
@@ -2521,19 +2533,603 @@ class MdfeApi
     }
 
     /**
+     * Operation baixarXmlMdfeManifesto
+     *
+     * Baixar XML do MDF-e
+     *
+     * @param  string $id ID único da MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlMdfeManifesto'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \SplFileObject
+     */
+    public function baixarXmlMdfeManifesto($id, string $contentType = self::contentTypes['baixarXmlMdfeManifesto'][0])
+    {
+        list($response) = $this->baixarXmlMdfeManifestoWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation baixarXmlMdfeManifestoWithHttpInfo
+     *
+     * Baixar XML do MDF-e
+     *
+     * @param  string $id ID único da MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlMdfeManifesto'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function baixarXmlMdfeManifestoWithHttpInfo($id, string $contentType = self::contentTypes['baixarXmlMdfeManifesto'][0])
+    {
+        $request = $this->baixarXmlMdfeManifestoRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\SplFileObject' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SplFileObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\SplFileObject';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SplFileObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation baixarXmlMdfeManifestoAsync
+     *
+     * Baixar XML do MDF-e
+     *
+     * @param  string $id ID único da MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlMdfeManifesto'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function baixarXmlMdfeManifestoAsync($id, string $contentType = self::contentTypes['baixarXmlMdfeManifesto'][0])
+    {
+        return $this->baixarXmlMdfeManifestoAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation baixarXmlMdfeManifestoAsyncWithHttpInfo
+     *
+     * Baixar XML do MDF-e
+     *
+     * @param  string $id ID único da MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlMdfeManifesto'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function baixarXmlMdfeManifestoAsyncWithHttpInfo($id, string $contentType = self::contentTypes['baixarXmlMdfeManifesto'][0])
+    {
+        $returnType = '\SplFileObject';
+        $request = $this->baixarXmlMdfeManifestoRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'baixarXmlMdfeManifesto'
+     *
+     * @param  string $id ID único da MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlMdfeManifesto'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function baixarXmlMdfeManifestoRequest($id, string $contentType = self::contentTypes['baixarXmlMdfeManifesto'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling baixarXmlMdfeManifesto'
+            );
+        }
+
+
+        $resourcePath = '/mdfe/{id}/xml/manifesto';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation baixarXmlMdfeProtocolo
+     *
+     * Baixar XML do Protocolo da SEFAZ
+     *
+     * @param  string $id ID único da MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlMdfeProtocolo'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \SplFileObject
+     */
+    public function baixarXmlMdfeProtocolo($id, string $contentType = self::contentTypes['baixarXmlMdfeProtocolo'][0])
+    {
+        list($response) = $this->baixarXmlMdfeProtocoloWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation baixarXmlMdfeProtocoloWithHttpInfo
+     *
+     * Baixar XML do Protocolo da SEFAZ
+     *
+     * @param  string $id ID único da MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlMdfeProtocolo'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function baixarXmlMdfeProtocoloWithHttpInfo($id, string $contentType = self::contentTypes['baixarXmlMdfeProtocolo'][0])
+    {
+        $request = $this->baixarXmlMdfeProtocoloRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\SplFileObject' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SplFileObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\SplFileObject';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SplFileObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation baixarXmlMdfeProtocoloAsync
+     *
+     * Baixar XML do Protocolo da SEFAZ
+     *
+     * @param  string $id ID único da MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlMdfeProtocolo'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function baixarXmlMdfeProtocoloAsync($id, string $contentType = self::contentTypes['baixarXmlMdfeProtocolo'][0])
+    {
+        return $this->baixarXmlMdfeProtocoloAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation baixarXmlMdfeProtocoloAsyncWithHttpInfo
+     *
+     * Baixar XML do Protocolo da SEFAZ
+     *
+     * @param  string $id ID único da MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlMdfeProtocolo'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function baixarXmlMdfeProtocoloAsyncWithHttpInfo($id, string $contentType = self::contentTypes['baixarXmlMdfeProtocolo'][0])
+    {
+        $returnType = '\SplFileObject';
+        $request = $this->baixarXmlMdfeProtocoloRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'baixarXmlMdfeProtocolo'
+     *
+     * @param  string $id ID único da MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarXmlMdfeProtocolo'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function baixarXmlMdfeProtocoloRequest($id, string $contentType = self::contentTypes['baixarXmlMdfeProtocolo'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling baixarXmlMdfeProtocolo'
+            );
+        }
+
+
+        $resourcePath = '/mdfe/{id}/xml/protocolo';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation cancelarMdfe
      *
      * Cancelar um MDF-e autorizado
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (required)
+     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelarMdfe'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\DfeCancelamento
      */
-    public function cancelarMdfe($id, $body, string $contentType = self::contentTypes['cancelarMdfe'][0])
+    public function cancelarMdfe($id, $body = null, string $contentType = self::contentTypes['cancelarMdfe'][0])
     {
         list($response) = $this->cancelarMdfeWithHttpInfo($id, $body, $contentType);
         return $response;
@@ -2545,14 +3141,14 @@ class MdfeApi
      * Cancelar um MDF-e autorizado
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (required)
+     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelarMdfe'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\DfeCancelamento, HTTP status code, HTTP response headers (array of strings)
      */
-    public function cancelarMdfeWithHttpInfo($id, $body, string $contentType = self::contentTypes['cancelarMdfe'][0])
+    public function cancelarMdfeWithHttpInfo($id, $body = null, string $contentType = self::contentTypes['cancelarMdfe'][0])
     {
         $request = $this->cancelarMdfeRequest($id, $body, $contentType);
 
@@ -2646,13 +3242,13 @@ class MdfeApi
      * Cancelar um MDF-e autorizado
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (required)
+     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelarMdfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cancelarMdfeAsync($id, $body, string $contentType = self::contentTypes['cancelarMdfe'][0])
+    public function cancelarMdfeAsync($id, $body = null, string $contentType = self::contentTypes['cancelarMdfe'][0])
     {
         return $this->cancelarMdfeAsyncWithHttpInfo($id, $body, $contentType)
             ->then(
@@ -2668,13 +3264,13 @@ class MdfeApi
      * Cancelar um MDF-e autorizado
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (required)
+     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelarMdfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cancelarMdfeAsyncWithHttpInfo($id, $body, string $contentType = self::contentTypes['cancelarMdfe'][0])
+    public function cancelarMdfeAsyncWithHttpInfo($id, $body = null, string $contentType = self::contentTypes['cancelarMdfe'][0])
     {
         $returnType = '\NuvemFiscal\Model\DfeCancelamento';
         $request = $this->cancelarMdfeRequest($id, $body, $contentType);
@@ -2719,13 +3315,13 @@ class MdfeApi
      * Create request for operation 'cancelarMdfe'
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (required)
+     * @param  \NuvemFiscal\Model\MdfePedidoCancelamento $body Dados do cancelamento. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelarMdfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function cancelarMdfeRequest($id, $body, string $contentType = self::contentTypes['cancelarMdfe'][0])
+    public function cancelarMdfeRequest($id, $body = null, string $contentType = self::contentTypes['cancelarMdfe'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -2735,12 +3331,6 @@ class MdfeApi
             );
         }
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling cancelarMdfe'
-            );
-        }
 
 
         $resourcePath = '/mdfe/{id}/cancelamento';
@@ -4227,6 +4817,299 @@ class MdfeApi
                 $resourcePath
             );
         }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation consultarMdfeNaoEncerrados
+     *
+     * Consulta MDF-e não encerrados
+     *
+     * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarMdfeNaoEncerrados'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \NuvemFiscal\Model\MdfeNaoEncerrados
+     */
+    public function consultarMdfeNaoEncerrados($cpf_cnpj, string $contentType = self::contentTypes['consultarMdfeNaoEncerrados'][0])
+    {
+        list($response) = $this->consultarMdfeNaoEncerradosWithHttpInfo($cpf_cnpj, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation consultarMdfeNaoEncerradosWithHttpInfo
+     *
+     * Consulta MDF-e não encerrados
+     *
+     * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarMdfeNaoEncerrados'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \NuvemFiscal\Model\MdfeNaoEncerrados, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function consultarMdfeNaoEncerradosWithHttpInfo($cpf_cnpj, string $contentType = self::contentTypes['consultarMdfeNaoEncerrados'][0])
+    {
+        $request = $this->consultarMdfeNaoEncerradosRequest($cpf_cnpj, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\NuvemFiscal\Model\MdfeNaoEncerrados' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\NuvemFiscal\Model\MdfeNaoEncerrados' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\NuvemFiscal\Model\MdfeNaoEncerrados', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\NuvemFiscal\Model\MdfeNaoEncerrados';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\NuvemFiscal\Model\MdfeNaoEncerrados',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation consultarMdfeNaoEncerradosAsync
+     *
+     * Consulta MDF-e não encerrados
+     *
+     * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarMdfeNaoEncerrados'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function consultarMdfeNaoEncerradosAsync($cpf_cnpj, string $contentType = self::contentTypes['consultarMdfeNaoEncerrados'][0])
+    {
+        return $this->consultarMdfeNaoEncerradosAsyncWithHttpInfo($cpf_cnpj, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation consultarMdfeNaoEncerradosAsyncWithHttpInfo
+     *
+     * Consulta MDF-e não encerrados
+     *
+     * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarMdfeNaoEncerrados'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function consultarMdfeNaoEncerradosAsyncWithHttpInfo($cpf_cnpj, string $contentType = self::contentTypes['consultarMdfeNaoEncerrados'][0])
+    {
+        $returnType = '\NuvemFiscal\Model\MdfeNaoEncerrados';
+        $request = $this->consultarMdfeNaoEncerradosRequest($cpf_cnpj, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'consultarMdfeNaoEncerrados'
+     *
+     * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarMdfeNaoEncerrados'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function consultarMdfeNaoEncerradosRequest($cpf_cnpj, string $contentType = self::contentTypes['consultarMdfeNaoEncerrados'][0])
+    {
+
+        // verify the required parameter 'cpf_cnpj' is set
+        if ($cpf_cnpj === null || (is_array($cpf_cnpj) && count($cpf_cnpj) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $cpf_cnpj when calling consultarMdfeNaoEncerrados'
+            );
+        }
+
+
+        $resourcePath = '/mdfe/nao-encerrados';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cpf_cnpj,
+            'cpf_cnpj', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true // required
+        ) ?? []);
+
+
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -6871,6 +7754,298 @@ class MdfeApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation sincronizarMdfe
+     *
+     * Sincroniza dados no MDF-e a partir da SEFAZ
+     *
+     * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sincronizarMdfe'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \NuvemFiscal\Model\DfeSincronizacao
+     */
+    public function sincronizarMdfe($id, string $contentType = self::contentTypes['sincronizarMdfe'][0])
+    {
+        list($response) = $this->sincronizarMdfeWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation sincronizarMdfeWithHttpInfo
+     *
+     * Sincroniza dados no MDF-e a partir da SEFAZ
+     *
+     * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sincronizarMdfe'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \NuvemFiscal\Model\DfeSincronizacao, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function sincronizarMdfeWithHttpInfo($id, string $contentType = self::contentTypes['sincronizarMdfe'][0])
+    {
+        $request = $this->sincronizarMdfeRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\NuvemFiscal\Model\DfeSincronizacao' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\NuvemFiscal\Model\DfeSincronizacao' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\NuvemFiscal\Model\DfeSincronizacao', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\NuvemFiscal\Model\DfeSincronizacao';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\NuvemFiscal\Model\DfeSincronizacao',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation sincronizarMdfeAsync
+     *
+     * Sincroniza dados no MDF-e a partir da SEFAZ
+     *
+     * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sincronizarMdfe'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sincronizarMdfeAsync($id, string $contentType = self::contentTypes['sincronizarMdfe'][0])
+    {
+        return $this->sincronizarMdfeAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation sincronizarMdfeAsyncWithHttpInfo
+     *
+     * Sincroniza dados no MDF-e a partir da SEFAZ
+     *
+     * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sincronizarMdfe'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sincronizarMdfeAsyncWithHttpInfo($id, string $contentType = self::contentTypes['sincronizarMdfe'][0])
+    {
+        $returnType = '\NuvemFiscal\Model\DfeSincronizacao';
+        $request = $this->sincronizarMdfeRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'sincronizarMdfe'
+     *
+     * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sincronizarMdfe'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function sincronizarMdfeRequest($id, string $contentType = self::contentTypes['sincronizarMdfe'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling sincronizarMdfe'
+            );
+        }
+
+
+        $resourcePath = '/mdfe/{id}/sincronizar';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

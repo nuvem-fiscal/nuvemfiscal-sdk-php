@@ -11,6 +11,8 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**baixarXmlCancelamentoCte()**](CteApi.md#baixarXmlCancelamentoCte) | **GET** /cte/{id}/cancelamento/xml | Baixar XML do cancelamento |
 | [**baixarXmlCartaCorrecaoCte()**](CteApi.md#baixarXmlCartaCorrecaoCte) | **GET** /cte/{id}/carta-correcao/xml | Baixar XML da carta de correção |
 | [**baixarXmlCte()**](CteApi.md#baixarXmlCte) | **GET** /cte/{id}/xml | Baixar XML do CT-e processado |
+| [**baixarXmlCteConhecimento()**](CteApi.md#baixarXmlCteConhecimento) | **GET** /cte/{id}/xml/conhecimento | Baixar XML do CT-e |
+| [**baixarXmlCteProtocolo()**](CteApi.md#baixarXmlCteProtocolo) | **GET** /cte/{id}/xml/protocolo | Baixar XML do Protocolo da SEFAZ |
 | [**baixarXmlEventoCte()**](CteApi.md#baixarXmlEventoCte) | **GET** /cte/eventos/{id}/xml | Baixar XML do evento |
 | [**cancelarCte()**](CteApi.md#cancelarCte) | **POST** /cte/{id}/cancelamento | Cancelar um CT-e autorizado |
 | [**consultarCancelamentoCte()**](CteApi.md#consultarCancelamentoCte) | **GET** /cte/{id}/cancelamento | Consultar o cancelamento do CT-e |
@@ -21,6 +23,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**criarCartaCorrecaoCte()**](CteApi.md#criarCartaCorrecaoCte) | **POST** /cte/{id}/carta-correcao | Solicitar correção do CT-e |
 | [**emitirCte()**](CteApi.md#emitirCte) | **POST** /cte | Emitir CT-e |
 | [**listarCte()**](CteApi.md#listarCte) | **GET** /cte | Listar CT-e |
+| [**sincronizarCte()**](CteApi.md#sincronizarCte) | **POST** /cte/{id}/sincronizar | Sincroniza dados no CT-e a partir da SEFAZ |
 
 
 ## `baixarPdfCancelamentoCte()`
@@ -446,6 +449,132 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único do CT-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `baixarXmlCteConhecimento()`
+
+```php
+baixarXmlCteConhecimento($id): \SplFileObject
+```
+
+Baixar XML do CT-e
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\CteApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da CT-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarXmlCteConhecimento($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CteApi->baixarXmlCteConhecimento: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da CT-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `baixarXmlCteProtocolo()`
+
+```php
+baixarXmlCteProtocolo($id): \SplFileObject
+```
+
+Baixar XML do Protocolo da SEFAZ
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\CteApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da CT-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarXmlCteProtocolo($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CteApi->baixarXmlCteProtocolo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da CT-e gerado pela Nuvem Fiscal. | |
 
 ### Tipo do retorno
 
@@ -1106,6 +1235,71 @@ try {
 ### Tipo do retorno
 
 [**\NuvemFiscal\Model\DfeListagem**](../Model/DfeListagem.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `sincronizarCte()`
+
+```php
+sincronizarCte($id): \NuvemFiscal\Model\DfeSincronizacao
+```
+
+Sincroniza dados no CT-e a partir da SEFAZ
+
+Realiza a sincronização dos dados a partir da consulta da situação atual da CT-e na Base de Dados do Portal da Secretaria de Fazenda Estadual.    **Cenários de uso**:  * Sincronizar um CT-e que se encontra com o status `erro` na Nuvem Fiscal, mas está autorizado na SEFAZ (útil em casos de erros de transmissão com a SEFAZ, como instabilidades e timeouts).  * Sincronizar um CT-e que se encontra com o status `autorizado`na Nuvem Fiscal, mas está cancelado na SEFAZ.  * Sincronizar todos os eventos de Cancelamento e Carta de Correção de um CT-e que porventura não tenham sido feitos a partir da Nuvem Fiscal.
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\CteApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único do CT-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->sincronizarCte($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CteApi->sincronizarCte: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único do CT-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\DfeSincronizacao**](../Model/DfeSincronizacao.md)
 
 ### Autorização
 

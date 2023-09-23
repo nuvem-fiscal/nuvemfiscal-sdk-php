@@ -12,12 +12,15 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**baixarXmlEncerramentoMdfe()**](MdfeApi.md#baixarXmlEncerramentoMdfe) | **GET** /mdfe/{id}/encerramento/xml | Baixar XML do encerramento |
 | [**baixarXmlEventoMdfe()**](MdfeApi.md#baixarXmlEventoMdfe) | **GET** /mdfe/eventos/{id}/xml | Baixar XML do evento |
 | [**baixarXmlMdfe()**](MdfeApi.md#baixarXmlMdfe) | **GET** /mdfe/{id}/xml | Baixar XML do MDF-e processado |
+| [**baixarXmlMdfeManifesto()**](MdfeApi.md#baixarXmlMdfeManifesto) | **GET** /mdfe/{id}/xml/manifesto | Baixar XML do MDF-e |
+| [**baixarXmlMdfeProtocolo()**](MdfeApi.md#baixarXmlMdfeProtocolo) | **GET** /mdfe/{id}/xml/protocolo | Baixar XML do Protocolo da SEFAZ |
 | [**cancelarMdfe()**](MdfeApi.md#cancelarMdfe) | **POST** /mdfe/{id}/cancelamento | Cancelar um MDF-e autorizado |
 | [**consultarCancelamentoMdfe()**](MdfeApi.md#consultarCancelamentoMdfe) | **GET** /mdfe/{id}/cancelamento | Consultar o cancelamento do MDF-e |
 | [**consultarEncerramentoMdfe()**](MdfeApi.md#consultarEncerramentoMdfe) | **GET** /mdfe/{id}/encerramento | Consultar encerramento do MDF-e |
 | [**consultarEventoMdfe()**](MdfeApi.md#consultarEventoMdfe) | **GET** /mdfe/eventos/{id} | Consultar evento do MDF-e |
 | [**consultarLoteMdfe()**](MdfeApi.md#consultarLoteMdfe) | **GET** /mdfe/lotes/{id} | Consultar lote de MDF-e |
 | [**consultarMdfe()**](MdfeApi.md#consultarMdfe) | **GET** /mdfe/{id} | Consultar manifesto |
+| [**consultarMdfeNaoEncerrados()**](MdfeApi.md#consultarMdfeNaoEncerrados) | **GET** /mdfe/nao-encerrados | Consulta MDF-e não encerrados |
 | [**consultarStatusSefazMdfe()**](MdfeApi.md#consultarStatusSefazMdfe) | **GET** /mdfe/sefaz/status | Consulta do Status do Serviço na SEFAZ Autorizadora |
 | [**emitirLoteMdfe()**](MdfeApi.md#emitirLoteMdfe) | **POST** /mdfe/lotes | Emitir lote de MDF-e |
 | [**emitirMdfe()**](MdfeApi.md#emitirMdfe) | **POST** /mdfe | Emitir MDF-e |
@@ -26,6 +29,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**incluirDfeMdfe()**](MdfeApi.md#incluirDfeMdfe) | **POST** /mdfe/{id}/inclusao-dfe | Incluir um DF-e em um MDF-e autorizado |
 | [**listarLotesMdfe()**](MdfeApi.md#listarLotesMdfe) | **GET** /mdfe/lotes | Listar lotes de MDF-e |
 | [**listarMdfe()**](MdfeApi.md#listarMdfe) | **GET** /mdfe | Listar MDF-e |
+| [**sincronizarMdfe()**](MdfeApi.md#sincronizarMdfe) | **POST** /mdfe/{id}/sincronizar | Sincroniza dados no MDF-e a partir da SEFAZ |
 
 
 ## `baixarPdfCancelamentoMdfe()`
@@ -532,6 +536,132 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
+## `baixarXmlMdfeManifesto()`
+
+```php
+baixarXmlMdfeManifesto($id): \SplFileObject
+```
+
+Baixar XML do MDF-e
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\MdfeApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da MDF-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarXmlMdfeManifesto($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MdfeApi->baixarXmlMdfeManifesto: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da MDF-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `baixarXmlMdfeProtocolo()`
+
+```php
+baixarXmlMdfeProtocolo($id): \SplFileObject
+```
+
+Baixar XML do Protocolo da SEFAZ
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\MdfeApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da MDF-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->baixarXmlMdfeProtocolo($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MdfeApi->baixarXmlMdfeProtocolo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da MDF-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
 ## `cancelarMdfe()`
 
 ```php
@@ -578,7 +708,7 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único do MDF-e gerado pela Nuvem Fiscal. | |
-| **body** | [**\NuvemFiscal\Model\MdfePedidoCancelamento**](../Model/MdfePedidoCancelamento.md)| Dados do cancelamento. | |
+| **body** | [**\NuvemFiscal\Model\MdfePedidoCancelamento**](../Model/MdfePedidoCancelamento.md)| Dados do cancelamento. | [optional] |
 
 ### Tipo do retorno
 
@@ -902,6 +1032,69 @@ try {
 ### Tipo do retorno
 
 [**\NuvemFiscal\Model\Dfe**](../Model/Dfe.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `consultarMdfeNaoEncerrados()`
+
+```php
+consultarMdfeNaoEncerrados($cpf_cnpj): \NuvemFiscal\Model\MdfeNaoEncerrados
+```
+
+Consulta MDF-e não encerrados
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\MdfeApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF/CNPJ do emitente.  Utilize o valor sem máscara.
+
+try {
+    $result = $apiInstance->consultarMdfeNaoEncerrados($cpf_cnpj);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MdfeApi->consultarMdfeNaoEncerrados: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **cpf_cnpj** | **string**| CPF/CNPJ do emitente.  Utilize o valor sem máscara. | |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\MdfeNaoEncerrados**](../Model/MdfeNaoEncerrados.md)
 
 ### Autorização
 
@@ -1442,6 +1635,71 @@ try {
 ### Tipo do retorno
 
 [**\NuvemFiscal\Model\DfeListagem**](../Model/DfeListagem.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `sincronizarMdfe()`
+
+```php
+sincronizarMdfe($id): \NuvemFiscal\Model\DfeSincronizacao
+```
+
+Sincroniza dados no MDF-e a partir da SEFAZ
+
+Realiza a sincronização dos dados a partir da consulta da situação atual da MDF-e na Base de Dados do Portal da Secretaria de Fazenda Estadual.    **Cenários de uso**:  * Sincronizar um manifesto que se encontra com o status `erro` na Nuvem Fiscal, mas está autorizado na SEFAZ (útil em casos de erros de transmissão com a SEFAZ, como instabilidades e timeouts).  * Sincronizar um manifesto que se encontra com o status `autorizado`na Nuvem Fiscal, mas está cancelado ou encerrado na SEFAZ.  * Sincronizar todos os eventos de Cancelamento, Encerramento, Inclusão de condutor e Inclusão de DF-e de um manifesto que porventura não tenham sido feitos a partir da Nuvem Fiscal.
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\MdfeApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único do MDF-e gerado pela Nuvem Fiscal.
+
+try {
+    $result = $apiInstance->sincronizarMdfe($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MdfeApi->sincronizarMdfe: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único do MDF-e gerado pela Nuvem Fiscal. | |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\DfeSincronizacao**](../Model/DfeSincronizacao.md)
 
 ### Autorização
 

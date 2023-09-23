@@ -122,6 +122,8 @@ Classe | Método | Endpoint | Descrição
 *CteApi* | [**baixarXmlCancelamentoCte**](docs/Api/CteApi.md#baixarxmlcancelamentocte) | **GET** /cte/{id}/cancelamento/xml | Baixar XML do cancelamento
 *CteApi* | [**baixarXmlCartaCorrecaoCte**](docs/Api/CteApi.md#baixarxmlcartacorrecaocte) | **GET** /cte/{id}/carta-correcao/xml | Baixar XML da carta de correção
 *CteApi* | [**baixarXmlCte**](docs/Api/CteApi.md#baixarxmlcte) | **GET** /cte/{id}/xml | Baixar XML do CT-e processado
+*CteApi* | [**baixarXmlCteConhecimento**](docs/Api/CteApi.md#baixarxmlcteconhecimento) | **GET** /cte/{id}/xml/conhecimento | Baixar XML do CT-e
+*CteApi* | [**baixarXmlCteProtocolo**](docs/Api/CteApi.md#baixarxmlcteprotocolo) | **GET** /cte/{id}/xml/protocolo | Baixar XML do Protocolo da SEFAZ
 *CteApi* | [**baixarXmlEventoCte**](docs/Api/CteApi.md#baixarxmleventocte) | **GET** /cte/eventos/{id}/xml | Baixar XML do evento
 *CteApi* | [**cancelarCte**](docs/Api/CteApi.md#cancelarcte) | **POST** /cte/{id}/cancelamento | Cancelar um CT-e autorizado
 *CteApi* | [**consultarCancelamentoCte**](docs/Api/CteApi.md#consultarcancelamentocte) | **GET** /cte/{id}/cancelamento | Consultar o cancelamento do CT-e
@@ -132,6 +134,7 @@ Classe | Método | Endpoint | Descrição
 *CteApi* | [**criarCartaCorrecaoCte**](docs/Api/CteApi.md#criarcartacorrecaocte) | **POST** /cte/{id}/carta-correcao | Solicitar correção do CT-e
 *CteApi* | [**emitirCte**](docs/Api/CteApi.md#emitircte) | **POST** /cte | Emitir CT-e
 *CteApi* | [**listarCte**](docs/Api/CteApi.md#listarcte) | **GET** /cte | Listar CT-e
+*CteApi* | [**sincronizarCte**](docs/Api/CteApi.md#sincronizarcte) | **POST** /cte/{id}/sincronizar | Sincroniza dados no CT-e a partir da SEFAZ
 *EmpresaApi* | [**alterarConfigCte**](docs/Api/EmpresaApi.md#alterarconfigcte) | **PUT** /empresas/{cpf_cnpj}/cte | Alterar configuração de CT-e
 *EmpresaApi* | [**alterarConfigMdfe**](docs/Api/EmpresaApi.md#alterarconfigmdfe) | **PUT** /empresas/{cpf_cnpj}/mdfe | Alterar configuração de MDF-e
 *EmpresaApi* | [**alterarConfigNfce**](docs/Api/EmpresaApi.md#alterarconfignfce) | **PUT** /empresas/{cpf_cnpj}/nfce | Alterar configuração de NFC-e
@@ -162,12 +165,15 @@ Classe | Método | Endpoint | Descrição
 *MdfeApi* | [**baixarXmlEncerramentoMdfe**](docs/Api/MdfeApi.md#baixarxmlencerramentomdfe) | **GET** /mdfe/{id}/encerramento/xml | Baixar XML do encerramento
 *MdfeApi* | [**baixarXmlEventoMdfe**](docs/Api/MdfeApi.md#baixarxmleventomdfe) | **GET** /mdfe/eventos/{id}/xml | Baixar XML do evento
 *MdfeApi* | [**baixarXmlMdfe**](docs/Api/MdfeApi.md#baixarxmlmdfe) | **GET** /mdfe/{id}/xml | Baixar XML do MDF-e processado
+*MdfeApi* | [**baixarXmlMdfeManifesto**](docs/Api/MdfeApi.md#baixarxmlmdfemanifesto) | **GET** /mdfe/{id}/xml/manifesto | Baixar XML do MDF-e
+*MdfeApi* | [**baixarXmlMdfeProtocolo**](docs/Api/MdfeApi.md#baixarxmlmdfeprotocolo) | **GET** /mdfe/{id}/xml/protocolo | Baixar XML do Protocolo da SEFAZ
 *MdfeApi* | [**cancelarMdfe**](docs/Api/MdfeApi.md#cancelarmdfe) | **POST** /mdfe/{id}/cancelamento | Cancelar um MDF-e autorizado
 *MdfeApi* | [**consultarCancelamentoMdfe**](docs/Api/MdfeApi.md#consultarcancelamentomdfe) | **GET** /mdfe/{id}/cancelamento | Consultar o cancelamento do MDF-e
 *MdfeApi* | [**consultarEncerramentoMdfe**](docs/Api/MdfeApi.md#consultarencerramentomdfe) | **GET** /mdfe/{id}/encerramento | Consultar encerramento do MDF-e
 *MdfeApi* | [**consultarEventoMdfe**](docs/Api/MdfeApi.md#consultareventomdfe) | **GET** /mdfe/eventos/{id} | Consultar evento do MDF-e
 *MdfeApi* | [**consultarLoteMdfe**](docs/Api/MdfeApi.md#consultarlotemdfe) | **GET** /mdfe/lotes/{id} | Consultar lote de MDF-e
 *MdfeApi* | [**consultarMdfe**](docs/Api/MdfeApi.md#consultarmdfe) | **GET** /mdfe/{id} | Consultar manifesto
+*MdfeApi* | [**consultarMdfeNaoEncerrados**](docs/Api/MdfeApi.md#consultarmdfenaoencerrados) | **GET** /mdfe/nao-encerrados | Consulta MDF-e não encerrados
 *MdfeApi* | [**consultarStatusSefazMdfe**](docs/Api/MdfeApi.md#consultarstatussefazmdfe) | **GET** /mdfe/sefaz/status | Consulta do Status do Serviço na SEFAZ Autorizadora
 *MdfeApi* | [**emitirLoteMdfe**](docs/Api/MdfeApi.md#emitirlotemdfe) | **POST** /mdfe/lotes | Emitir lote de MDF-e
 *MdfeApi* | [**emitirMdfe**](docs/Api/MdfeApi.md#emitirmdfe) | **POST** /mdfe | Emitir MDF-e
@@ -176,6 +182,7 @@ Classe | Método | Endpoint | Descrição
 *MdfeApi* | [**incluirDfeMdfe**](docs/Api/MdfeApi.md#incluirdfemdfe) | **POST** /mdfe/{id}/inclusao-dfe | Incluir um DF-e em um MDF-e autorizado
 *MdfeApi* | [**listarLotesMdfe**](docs/Api/MdfeApi.md#listarlotesmdfe) | **GET** /mdfe/lotes | Listar lotes de MDF-e
 *MdfeApi* | [**listarMdfe**](docs/Api/MdfeApi.md#listarmdfe) | **GET** /mdfe | Listar MDF-e
+*MdfeApi* | [**sincronizarMdfe**](docs/Api/MdfeApi.md#sincronizarmdfe) | **POST** /mdfe/{id}/sincronizar | Sincroniza dados no MDF-e a partir da SEFAZ
 *NfceApi* | [**baixarEscPosNfce**](docs/Api/NfceApi.md#baixarescposnfce) | **GET** /nfce/{id}/escpos | Comandos ESC/POS para impressão do DANFCE
 *NfceApi* | [**baixarPdfCancelamentoNfce**](docs/Api/NfceApi.md#baixarpdfcancelamentonfce) | **GET** /nfce/{id}/cancelamento/pdf | Baixar PDF do cancelamento
 *NfceApi* | [**baixarPdfEventoNfce**](docs/Api/NfceApi.md#baixarpdfeventonfce) | **GET** /nfce/eventos/{id}/pdf | Baixar PDF do evento
@@ -424,6 +431,8 @@ Classe | Método | Endpoint | Descrição
 - [MdfeEncerramento](docs/Model/MdfeEncerramento.md)
 - [MdfeInclusaoCondutor](docs/Model/MdfeInclusaoCondutor.md)
 - [MdfeInclusaoDfe](docs/Model/MdfeInclusaoDfe.md)
+- [MdfeNaoEncerrado](docs/Model/MdfeNaoEncerrado.md)
+- [MdfeNaoEncerrados](docs/Model/MdfeNaoEncerrados.md)
 - [MdfePedidoCancelamento](docs/Model/MdfePedidoCancelamento.md)
 - [MdfePedidoEmissao](docs/Model/MdfePedidoEmissao.md)
 - [MdfePedidoEmissaoLote](docs/Model/MdfePedidoEmissaoLote.md)
@@ -663,6 +672,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.17.0`
-    - Versão do package: `2.12.0`
+- Versão da API: `2.18.2`
+    - Versão do package: `2.13.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
