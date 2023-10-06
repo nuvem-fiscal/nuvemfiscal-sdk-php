@@ -283,6 +283,14 @@ class MdfePedidoInclusaoCondutor implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['nome_condutor'] === null) {
             $invalidProperties[] = "'nome_condutor' can't be null";
         }
+        if ((mb_strlen($this->container['nome_condutor']) > 60)) {
+            $invalidProperties[] = "invalid value for 'nome_condutor', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['nome_condutor']) < 2)) {
+            $invalidProperties[] = "invalid value for 'nome_condutor', the character length must be bigger than or equal to 2.";
+        }
+
         if ($this->container['cpf_condutor'] === null) {
             $invalidProperties[] = "'cpf_condutor' can't be null";
         }
@@ -323,6 +331,13 @@ class MdfePedidoInclusaoCondutor implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($nome_condutor)) {
             throw new \InvalidArgumentException('non-nullable nome_condutor cannot be null');
         }
+        if ((mb_strlen($nome_condutor) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $nome_condutor when calling MdfePedidoInclusaoCondutor., must be smaller than or equal to 60.');
+        }
+        if ((mb_strlen($nome_condutor) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $nome_condutor when calling MdfePedidoInclusaoCondutor., must be bigger than or equal to 2.');
+        }
+
         $this->container['nome_condutor'] = $nome_condutor;
 
         return $this;

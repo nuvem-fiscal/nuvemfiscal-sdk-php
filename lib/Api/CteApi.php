@@ -4583,15 +4583,16 @@ class CteApi
      * Consulta do Status do Serviço na SEFAZ Autorizadora
      *
      * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
+     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis:  * NF-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVAN&#x60;, &#x60;SVRS&#x60;, &#x60;SVCAN&#x60;, &#x60;SVCRS&#x60;, &#x60;AN&#x60;;  * NFC-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;CE&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;;  * MDF-e: &#x60;SVRS&#x60;;  * CT-e: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarStatusSefazCte'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\DfeSefazStatus
      */
-    public function consultarStatusSefazCte($cpf_cnpj, string $contentType = self::contentTypes['consultarStatusSefazCte'][0])
+    public function consultarStatusSefazCte($cpf_cnpj, $autorizador = null, string $contentType = self::contentTypes['consultarStatusSefazCte'][0])
     {
-        list($response) = $this->consultarStatusSefazCteWithHttpInfo($cpf_cnpj, $contentType);
+        list($response) = $this->consultarStatusSefazCteWithHttpInfo($cpf_cnpj, $autorizador, $contentType);
         return $response;
     }
 
@@ -4601,15 +4602,16 @@ class CteApi
      * Consulta do Status do Serviço na SEFAZ Autorizadora
      *
      * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
+     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis:  * NF-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVAN&#x60;, &#x60;SVRS&#x60;, &#x60;SVCAN&#x60;, &#x60;SVCRS&#x60;, &#x60;AN&#x60;;  * NFC-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;CE&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;;  * MDF-e: &#x60;SVRS&#x60;;  * CT-e: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarStatusSefazCte'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\DfeSefazStatus, HTTP status code, HTTP response headers (array of strings)
      */
-    public function consultarStatusSefazCteWithHttpInfo($cpf_cnpj, string $contentType = self::contentTypes['consultarStatusSefazCte'][0])
+    public function consultarStatusSefazCteWithHttpInfo($cpf_cnpj, $autorizador = null, string $contentType = self::contentTypes['consultarStatusSefazCte'][0])
     {
-        $request = $this->consultarStatusSefazCteRequest($cpf_cnpj, $contentType);
+        $request = $this->consultarStatusSefazCteRequest($cpf_cnpj, $autorizador, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4701,14 +4703,15 @@ class CteApi
      * Consulta do Status do Serviço na SEFAZ Autorizadora
      *
      * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
+     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis:  * NF-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVAN&#x60;, &#x60;SVRS&#x60;, &#x60;SVCAN&#x60;, &#x60;SVCRS&#x60;, &#x60;AN&#x60;;  * NFC-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;CE&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;;  * MDF-e: &#x60;SVRS&#x60;;  * CT-e: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarStatusSefazCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function consultarStatusSefazCteAsync($cpf_cnpj, string $contentType = self::contentTypes['consultarStatusSefazCte'][0])
+    public function consultarStatusSefazCteAsync($cpf_cnpj, $autorizador = null, string $contentType = self::contentTypes['consultarStatusSefazCte'][0])
     {
-        return $this->consultarStatusSefazCteAsyncWithHttpInfo($cpf_cnpj, $contentType)
+        return $this->consultarStatusSefazCteAsyncWithHttpInfo($cpf_cnpj, $autorizador, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4722,15 +4725,16 @@ class CteApi
      * Consulta do Status do Serviço na SEFAZ Autorizadora
      *
      * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
+     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis:  * NF-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVAN&#x60;, &#x60;SVRS&#x60;, &#x60;SVCAN&#x60;, &#x60;SVCRS&#x60;, &#x60;AN&#x60;;  * NFC-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;CE&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;;  * MDF-e: &#x60;SVRS&#x60;;  * CT-e: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarStatusSefazCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function consultarStatusSefazCteAsyncWithHttpInfo($cpf_cnpj, string $contentType = self::contentTypes['consultarStatusSefazCte'][0])
+    public function consultarStatusSefazCteAsyncWithHttpInfo($cpf_cnpj, $autorizador = null, string $contentType = self::contentTypes['consultarStatusSefazCte'][0])
     {
         $returnType = '\NuvemFiscal\Model\DfeSefazStatus';
-        $request = $this->consultarStatusSefazCteRequest($cpf_cnpj, $contentType);
+        $request = $this->consultarStatusSefazCteRequest($cpf_cnpj, $autorizador, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4772,12 +4776,13 @@ class CteApi
      * Create request for operation 'consultarStatusSefazCte'
      *
      * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
+     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis:  * NF-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVAN&#x60;, &#x60;SVRS&#x60;, &#x60;SVCAN&#x60;, &#x60;SVCRS&#x60;, &#x60;AN&#x60;;  * NFC-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;CE&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;;  * MDF-e: &#x60;SVRS&#x60;;  * CT-e: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarStatusSefazCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function consultarStatusSefazCteRequest($cpf_cnpj, string $contentType = self::contentTypes['consultarStatusSefazCte'][0])
+    public function consultarStatusSefazCteRequest($cpf_cnpj, $autorizador = null, string $contentType = self::contentTypes['consultarStatusSefazCte'][0])
     {
 
         // verify the required parameter 'cpf_cnpj' is set
@@ -4786,6 +4791,7 @@ class CteApi
                 'Missing the required parameter $cpf_cnpj when calling consultarStatusSefazCte'
             );
         }
+
 
 
         $resourcePath = '/cte/sefaz/status';
@@ -4803,6 +4809,15 @@ class CteApi
             '', // style
             false, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $autorizador,
+            'autorizador', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
         ) ?? []);
 
 

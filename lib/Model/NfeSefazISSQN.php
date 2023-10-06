@@ -397,6 +397,22 @@ class NfeSefazISSQN implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['ind_iss'] === null) {
             $invalidProperties[] = "'ind_iss' can't be null";
         }
+        if (!is_null($this->container['c_servico']) && (mb_strlen($this->container['c_servico']) > 20)) {
+            $invalidProperties[] = "invalid value for 'c_servico', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['c_servico']) && (mb_strlen($this->container['c_servico']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_servico', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['n_processo']) && (mb_strlen($this->container['n_processo']) > 30)) {
+            $invalidProperties[] = "invalid value for 'n_processo', the character length must be smaller than or equal to 30.";
+        }
+
+        if (!is_null($this->container['n_processo']) && (mb_strlen($this->container['n_processo']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_processo', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['ind_incentivo'] === null) {
             $invalidProperties[] = "'ind_incentivo' can't be null";
         }
@@ -818,6 +834,13 @@ class NfeSefazISSQN implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_servico) && (mb_strlen($c_servico) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $c_servico when calling NfeSefazISSQN., must be smaller than or equal to 20.');
+        }
+        if (!is_null($c_servico) && (mb_strlen($c_servico) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_servico when calling NfeSefazISSQN., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_servico'] = $c_servico;
 
         return $this;
@@ -920,6 +943,13 @@ class NfeSefazISSQN implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_processo) && (mb_strlen($n_processo) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $n_processo when calling NfeSefazISSQN., must be smaller than or equal to 30.');
+        }
+        if (!is_null($n_processo) && (mb_strlen($n_processo) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_processo when calling NfeSefazISSQN., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_processo'] = $n_processo;
 
         return $this;

@@ -330,15 +330,55 @@ class MdfeSefazVeicReboque implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['c_int']) && (mb_strlen($this->container['c_int']) > 10)) {
+            $invalidProperties[] = "invalid value for 'c_int', the character length must be smaller than or equal to 10.";
+        }
+
+        if (!is_null($this->container['c_int']) && (mb_strlen($this->container['c_int']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_int', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['placa'] === null) {
             $invalidProperties[] = "'placa' can't be null";
         }
+        if (!is_null($this->container['renavam']) && (mb_strlen($this->container['renavam']) > 11)) {
+            $invalidProperties[] = "invalid value for 'renavam', the character length must be smaller than or equal to 11.";
+        }
+
+        if (!is_null($this->container['renavam']) && (mb_strlen($this->container['renavam']) < 9)) {
+            $invalidProperties[] = "invalid value for 'renavam', the character length must be bigger than or equal to 9.";
+        }
+
         if ($this->container['tara'] === null) {
             $invalidProperties[] = "'tara' can't be null";
         }
+        if (($this->container['tara'] > 999999)) {
+            $invalidProperties[] = "invalid value for 'tara', must be smaller than or equal to 999999.";
+        }
+
+        if (($this->container['tara'] < 0)) {
+            $invalidProperties[] = "invalid value for 'tara', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['cap_kg'] === null) {
             $invalidProperties[] = "'cap_kg' can't be null";
         }
+        if (($this->container['cap_kg'] > 999999)) {
+            $invalidProperties[] = "invalid value for 'cap_kg', must be smaller than or equal to 999999.";
+        }
+
+        if (($this->container['cap_kg'] < 0)) {
+            $invalidProperties[] = "invalid value for 'cap_kg', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['cap_m3']) && ($this->container['cap_m3'] > 999)) {
+            $invalidProperties[] = "invalid value for 'cap_m3', must be smaller than or equal to 999.";
+        }
+
+        if (!is_null($this->container['cap_m3']) && ($this->container['cap_m3'] < 0)) {
+            $invalidProperties[] = "invalid value for 'cap_m3', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['tp_car'] === null) {
             $invalidProperties[] = "'tp_car' can't be null";
         }
@@ -386,6 +426,13 @@ class MdfeSefazVeicReboque implements ModelInterface, ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_int) && (mb_strlen($c_int) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $c_int when calling MdfeSefazVeicReboque., must be smaller than or equal to 10.');
+        }
+        if (!is_null($c_int) && (mb_strlen($c_int) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_int when calling MdfeSefazVeicReboque., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_int'] = $c_int;
 
         return $this;
@@ -454,6 +501,13 @@ class MdfeSefazVeicReboque implements ModelInterface, ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($renavam) && (mb_strlen($renavam) > 11)) {
+            throw new \InvalidArgumentException('invalid length for $renavam when calling MdfeSefazVeicReboque., must be smaller than or equal to 11.');
+        }
+        if (!is_null($renavam) && (mb_strlen($renavam) < 9)) {
+            throw new \InvalidArgumentException('invalid length for $renavam when calling MdfeSefazVeicReboque., must be bigger than or equal to 9.');
+        }
+
         $this->container['renavam'] = $renavam;
 
         return $this;
@@ -488,6 +542,14 @@ class MdfeSefazVeicReboque implements ModelInterface, ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($tara) && ($tara > 999999)) {
+            throw new \InvalidArgumentException('invalid value for $tara when calling MdfeSefazVeicReboque., must be smaller than or equal to 999999.');
+        }
+        if (!is_null($tara) && ($tara < 0)) {
+            throw new \InvalidArgumentException('invalid value for $tara when calling MdfeSefazVeicReboque., must be bigger than or equal to 0.');
+        }
+
         $this->container['tara'] = $tara;
 
         return $this;
@@ -522,6 +584,14 @@ class MdfeSefazVeicReboque implements ModelInterface, ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($cap_kg) && ($cap_kg > 999999)) {
+            throw new \InvalidArgumentException('invalid value for $cap_kg when calling MdfeSefazVeicReboque., must be smaller than or equal to 999999.');
+        }
+        if (!is_null($cap_kg) && ($cap_kg < 0)) {
+            throw new \InvalidArgumentException('invalid value for $cap_kg when calling MdfeSefazVeicReboque., must be bigger than or equal to 0.');
+        }
+
         $this->container['cap_kg'] = $cap_kg;
 
         return $this;
@@ -556,6 +626,14 @@ class MdfeSefazVeicReboque implements ModelInterface, ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($cap_m3) && ($cap_m3 > 999)) {
+            throw new \InvalidArgumentException('invalid value for $cap_m3 when calling MdfeSefazVeicReboque., must be smaller than or equal to 999.');
+        }
+        if (!is_null($cap_m3) && ($cap_m3 < 0)) {
+            throw new \InvalidArgumentException('invalid value for $cap_m3 when calling MdfeSefazVeicReboque., must be bigger than or equal to 0.');
+        }
+
         $this->container['cap_m3'] = $cap_m3;
 
         return $this;

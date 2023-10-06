@@ -322,12 +322,36 @@ class MdfeSefazVag implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['peso_r'] === null) {
             $invalidProperties[] = "'peso_r' can't be null";
         }
+        if (!is_null($this->container['tp_vag']) && (mb_strlen($this->container['tp_vag']) > 3)) {
+            $invalidProperties[] = "invalid value for 'tp_vag', the character length must be smaller than or equal to 3.";
+        }
+
         if ($this->container['serie'] === null) {
             $invalidProperties[] = "'serie' can't be null";
         }
+        if ((mb_strlen($this->container['serie']) > 3)) {
+            $invalidProperties[] = "invalid value for 'serie', the character length must be smaller than or equal to 3.";
+        }
+
         if ($this->container['n_vag'] === null) {
             $invalidProperties[] = "'n_vag' can't be null";
         }
+        if (($this->container['n_vag'] > 99999999)) {
+            $invalidProperties[] = "invalid value for 'n_vag', must be smaller than or equal to 99999999.";
+        }
+
+        if (($this->container['n_vag'] < 1)) {
+            $invalidProperties[] = "invalid value for 'n_vag', must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['n_seq']) && ($this->container['n_seq'] > 999)) {
+            $invalidProperties[] = "invalid value for 'n_seq', must be smaller than or equal to 999.";
+        }
+
+        if (!is_null($this->container['n_seq']) && ($this->container['n_seq'] < 1)) {
+            $invalidProperties[] = "invalid value for 'n_seq', must be bigger than or equal to 1.";
+        }
+
         if ($this->container['tu'] === null) {
             $invalidProperties[] = "'tu' can't be null";
         }
@@ -443,6 +467,10 @@ class MdfeSefazVag implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($tp_vag) && (mb_strlen($tp_vag) > 3)) {
+            throw new \InvalidArgumentException('invalid length for $tp_vag when calling MdfeSefazVag., must be smaller than or equal to 3.');
+        }
+
         $this->container['tp_vag'] = $tp_vag;
 
         return $this;
@@ -477,6 +505,10 @@ class MdfeSefazVag implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($serie) && (mb_strlen($serie) > 3)) {
+            throw new \InvalidArgumentException('invalid length for $serie when calling MdfeSefazVag., must be smaller than or equal to 3.');
+        }
+
         $this->container['serie'] = $serie;
 
         return $this;
@@ -511,6 +543,14 @@ class MdfeSefazVag implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_vag) && ($n_vag > 99999999)) {
+            throw new \InvalidArgumentException('invalid value for $n_vag when calling MdfeSefazVag., must be smaller than or equal to 99999999.');
+        }
+        if (!is_null($n_vag) && ($n_vag < 1)) {
+            throw new \InvalidArgumentException('invalid value for $n_vag when calling MdfeSefazVag., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_vag'] = $n_vag;
 
         return $this;
@@ -545,6 +585,14 @@ class MdfeSefazVag implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_seq) && ($n_seq > 999)) {
+            throw new \InvalidArgumentException('invalid value for $n_seq when calling MdfeSefazVag., must be smaller than or equal to 999.');
+        }
+        if (!is_null($n_seq) && ($n_seq < 1)) {
+            throw new \InvalidArgumentException('invalid value for $n_seq when calling MdfeSefazVag., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_seq'] = $n_seq;
 
         return $this;

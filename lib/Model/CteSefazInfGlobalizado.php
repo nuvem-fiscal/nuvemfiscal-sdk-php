@@ -277,6 +277,14 @@ class CteSefazInfGlobalizado implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['x_obs'] === null) {
             $invalidProperties[] = "'x_obs' can't be null";
         }
+        if ((mb_strlen($this->container['x_obs']) > 256)) {
+            $invalidProperties[] = "invalid value for 'x_obs', the character length must be smaller than or equal to 256.";
+        }
+
+        if ((mb_strlen($this->container['x_obs']) < 15)) {
+            $invalidProperties[] = "invalid value for 'x_obs', the character length must be bigger than or equal to 15.";
+        }
+
         return $invalidProperties;
     }
 
@@ -321,6 +329,13 @@ class CteSefazInfGlobalizado implements ModelInterface, ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_obs) && (mb_strlen($x_obs) > 256)) {
+            throw new \InvalidArgumentException('invalid length for $x_obs when calling CteSefazInfGlobalizado., must be smaller than or equal to 256.');
+        }
+        if (!is_null($x_obs) && (mb_strlen($x_obs) < 15)) {
+            throw new \InvalidArgumentException('invalid length for $x_obs when calling CteSefazInfGlobalizado., must be bigger than or equal to 15.');
+        }
+
         $this->container['x_obs'] = $x_obs;
 
         return $this;

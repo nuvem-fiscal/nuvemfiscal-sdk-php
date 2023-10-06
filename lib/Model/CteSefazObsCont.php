@@ -284,9 +284,25 @@ class CteSefazObsCont implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['x_campo'] === null) {
             $invalidProperties[] = "'x_campo' can't be null";
         }
+        if ((mb_strlen($this->container['x_campo']) > 20)) {
+            $invalidProperties[] = "invalid value for 'x_campo', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['x_campo']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_campo', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['x_texto'] === null) {
             $invalidProperties[] = "'x_texto' can't be null";
         }
+        if ((mb_strlen($this->container['x_texto']) > 160)) {
+            $invalidProperties[] = "invalid value for 'x_texto', the character length must be smaller than or equal to 160.";
+        }
+
+        if ((mb_strlen($this->container['x_texto']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_texto', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -331,6 +347,13 @@ class CteSefazObsCont implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_campo) && (mb_strlen($x_campo) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $x_campo when calling CteSefazObsCont., must be smaller than or equal to 20.');
+        }
+        if (!is_null($x_campo) && (mb_strlen($x_campo) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_campo when calling CteSefazObsCont., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_campo'] = $x_campo;
 
         return $this;
@@ -365,6 +388,13 @@ class CteSefazObsCont implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_texto) && (mb_strlen($x_texto) > 160)) {
+            throw new \InvalidArgumentException('invalid length for $x_texto when calling CteSefazObsCont., must be smaller than or equal to 160.');
+        }
+        if (!is_null($x_texto) && (mb_strlen($x_texto) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_texto when calling CteSefazObsCont., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_texto'] = $x_texto;
 
         return $this;

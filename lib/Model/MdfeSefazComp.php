@@ -294,6 +294,14 @@ class MdfeSefazComp implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_comp'] === null) {
             $invalidProperties[] = "'v_comp' can't be null";
         }
+        if (!is_null($this->container['x_comp']) && (mb_strlen($this->container['x_comp']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_comp', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_comp']) && (mb_strlen($this->container['x_comp']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_comp', the character length must be bigger than or equal to 2.";
+        }
+
         return $invalidProperties;
     }
 
@@ -406,6 +414,13 @@ class MdfeSefazComp implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_comp) && (mb_strlen($x_comp) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_comp when calling MdfeSefazComp., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_comp) && (mb_strlen($x_comp) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_comp when calling MdfeSefazComp., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_comp'] = $x_comp;
 
         return $this;

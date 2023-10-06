@@ -309,6 +309,18 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['ref_nfe']) && (mb_strlen($this->container['ref_nfe']) > 44)) {
+            $invalidProperties[] = "invalid value for 'ref_nfe', the character length must be smaller than or equal to 44.";
+        }
+
+        if (!is_null($this->container['ref_nfe_sig']) && (mb_strlen($this->container['ref_nfe_sig']) > 44)) {
+            $invalidProperties[] = "invalid value for 'ref_nfe_sig', the character length must be smaller than or equal to 44.";
+        }
+
+        if (!is_null($this->container['ref_cte']) && (mb_strlen($this->container['ref_cte']) > 44)) {
+            $invalidProperties[] = "invalid value for 'ref_cte', the character length must be smaller than or equal to 44.";
+        }
+
         return $invalidProperties;
     }
 
@@ -353,6 +365,10 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ref_nfe) && (mb_strlen($ref_nfe) > 44)) {
+            throw new \InvalidArgumentException('invalid length for $ref_nfe when calling NfeSefazNFref., must be smaller than or equal to 44.');
+        }
+
         $this->container['ref_nfe'] = $ref_nfe;
 
         return $this;
@@ -387,6 +403,10 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ref_nfe_sig) && (mb_strlen($ref_nfe_sig) > 44)) {
+            throw new \InvalidArgumentException('invalid length for $ref_nfe_sig when calling NfeSefazNFref., must be smaller than or equal to 44.');
+        }
+
         $this->container['ref_nfe_sig'] = $ref_nfe_sig;
 
         return $this;
@@ -475,6 +495,10 @@ class NfeSefazNFref implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ref_cte) && (mb_strlen($ref_cte) > 44)) {
+            throw new \InvalidArgumentException('invalid length for $ref_cte when calling NfeSefazNFref., must be smaller than or equal to 44.');
+        }
+
         $this->container['ref_cte'] = $ref_cte;
 
         return $this;

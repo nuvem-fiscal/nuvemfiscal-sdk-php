@@ -339,9 +339,25 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cpf_cnpj'] === null) {
             $invalidProperties[] = "'cpf_cnpj' can't be null";
         }
+        if (!is_null($this->container['inscricao_estadual']) && (mb_strlen($this->container['inscricao_estadual']) > 50)) {
+            $invalidProperties[] = "invalid value for 'inscricao_estadual', the character length must be smaller than or equal to 50.";
+        }
+
+        if (!is_null($this->container['inscricao_municipal']) && (mb_strlen($this->container['inscricao_municipal']) > 50)) {
+            $invalidProperties[] = "invalid value for 'inscricao_municipal', the character length must be smaller than or equal to 50.";
+        }
+
         if ($this->container['nome_razao_social'] === null) {
             $invalidProperties[] = "'nome_razao_social' can't be null";
         }
+        if ((mb_strlen($this->container['nome_razao_social']) > 500)) {
+            $invalidProperties[] = "invalid value for 'nome_razao_social', the character length must be smaller than or equal to 500.";
+        }
+
+        if (!is_null($this->container['nome_fantasia']) && (mb_strlen($this->container['nome_fantasia']) > 500)) {
+            $invalidProperties[] = "invalid value for 'nome_fantasia', the character length must be smaller than or equal to 500.";
+        }
+
         if ($this->container['email'] === null) {
             $invalidProperties[] = "'email' can't be null";
         }
@@ -466,6 +482,10 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($inscricao_estadual)) {
             throw new \InvalidArgumentException('non-nullable inscricao_estadual cannot be null');
         }
+        if ((mb_strlen($inscricao_estadual) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $inscricao_estadual when calling Empresa., must be smaller than or equal to 50.');
+        }
+
         $this->container['inscricao_estadual'] = $inscricao_estadual;
 
         return $this;
@@ -493,6 +513,10 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($inscricao_municipal)) {
             throw new \InvalidArgumentException('non-nullable inscricao_municipal cannot be null');
         }
+        if ((mb_strlen($inscricao_municipal) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $inscricao_municipal when calling Empresa., must be smaller than or equal to 50.');
+        }
+
         $this->container['inscricao_municipal'] = $inscricao_municipal;
 
         return $this;
@@ -520,6 +544,10 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($nome_razao_social)) {
             throw new \InvalidArgumentException('non-nullable nome_razao_social cannot be null');
         }
+        if ((mb_strlen($nome_razao_social) > 500)) {
+            throw new \InvalidArgumentException('invalid length for $nome_razao_social when calling Empresa., must be smaller than or equal to 500.');
+        }
+
         $this->container['nome_razao_social'] = $nome_razao_social;
 
         return $this;
@@ -547,6 +575,10 @@ class Empresa implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($nome_fantasia)) {
             throw new \InvalidArgumentException('non-nullable nome_fantasia cannot be null');
         }
+        if ((mb_strlen($nome_fantasia) > 500)) {
+            throw new \InvalidArgumentException('invalid length for $nome_fantasia when calling Empresa., must be smaller than or equal to 500.');
+        }
+
         $this->container['nome_fantasia'] = $nome_fantasia;
 
         return $this;

@@ -340,18 +340,42 @@ class EmpresaEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['logradouro'] === null) {
             $invalidProperties[] = "'logradouro' can't be null";
         }
+        if ((mb_strlen($this->container['logradouro']) > 255)) {
+            $invalidProperties[] = "invalid value for 'logradouro', the character length must be smaller than or equal to 255.";
+        }
+
         if ($this->container['numero'] === null) {
             $invalidProperties[] = "'numero' can't be null";
         }
+        if ((mb_strlen($this->container['numero']) > 255)) {
+            $invalidProperties[] = "invalid value for 'numero', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['complemento']) && (mb_strlen($this->container['complemento']) > 500)) {
+            $invalidProperties[] = "invalid value for 'complemento', the character length must be smaller than or equal to 500.";
+        }
+
         if ($this->container['bairro'] === null) {
             $invalidProperties[] = "'bairro' can't be null";
         }
+        if ((mb_strlen($this->container['bairro']) > 255)) {
+            $invalidProperties[] = "invalid value for 'bairro', the character length must be smaller than or equal to 255.";
+        }
+
         if ($this->container['codigo_municipio'] === null) {
             $invalidProperties[] = "'codigo_municipio' can't be null";
         }
+        if (!is_null($this->container['cidade']) && (mb_strlen($this->container['cidade']) > 255)) {
+            $invalidProperties[] = "invalid value for 'cidade', the character length must be smaller than or equal to 255.";
+        }
+
         if ($this->container['uf'] === null) {
             $invalidProperties[] = "'uf' can't be null";
         }
+        if (!is_null($this->container['pais']) && (mb_strlen($this->container['pais']) > 255)) {
+            $invalidProperties[] = "invalid value for 'pais', the character length must be smaller than or equal to 255.";
+        }
+
         if ($this->container['cep'] === null) {
             $invalidProperties[] = "'cep' can't be null";
         }
@@ -392,6 +416,10 @@ class EmpresaEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($logradouro)) {
             throw new \InvalidArgumentException('non-nullable logradouro cannot be null');
         }
+        if ((mb_strlen($logradouro) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $logradouro when calling EmpresaEndereco., must be smaller than or equal to 255.');
+        }
+
         $this->container['logradouro'] = $logradouro;
 
         return $this;
@@ -419,6 +447,10 @@ class EmpresaEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($numero)) {
             throw new \InvalidArgumentException('non-nullable numero cannot be null');
         }
+        if ((mb_strlen($numero) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $numero when calling EmpresaEndereco., must be smaller than or equal to 255.');
+        }
+
         $this->container['numero'] = $numero;
 
         return $this;
@@ -446,6 +478,10 @@ class EmpresaEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($complemento)) {
             throw new \InvalidArgumentException('non-nullable complemento cannot be null');
         }
+        if ((mb_strlen($complemento) > 500)) {
+            throw new \InvalidArgumentException('invalid length for $complemento when calling EmpresaEndereco., must be smaller than or equal to 500.');
+        }
+
         $this->container['complemento'] = $complemento;
 
         return $this;
@@ -473,6 +509,10 @@ class EmpresaEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($bairro)) {
             throw new \InvalidArgumentException('non-nullable bairro cannot be null');
         }
+        if ((mb_strlen($bairro) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $bairro when calling EmpresaEndereco., must be smaller than or equal to 255.');
+        }
+
         $this->container['bairro'] = $bairro;
 
         return $this;
@@ -527,6 +567,10 @@ class EmpresaEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($cidade)) {
             throw new \InvalidArgumentException('non-nullable cidade cannot be null');
         }
+        if ((mb_strlen($cidade) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $cidade when calling EmpresaEndereco., must be smaller than or equal to 255.');
+        }
+
         $this->container['cidade'] = $cidade;
 
         return $this;
@@ -608,6 +652,10 @@ class EmpresaEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($pais)) {
             throw new \InvalidArgumentException('non-nullable pais cannot be null');
         }
+        if ((mb_strlen($pais) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $pais when calling EmpresaEndereco., must be smaller than or equal to 255.');
+        }
+
         $this->container['pais'] = $pais;
 
         return $this;

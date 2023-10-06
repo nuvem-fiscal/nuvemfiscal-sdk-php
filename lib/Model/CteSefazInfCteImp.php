@@ -298,6 +298,14 @@ class CteSefazInfCteImp implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['icms'] === null) {
             $invalidProperties[] = "'icms' can't be null";
         }
+        if (!is_null($this->container['inf_ad_fisco']) && (mb_strlen($this->container['inf_ad_fisco']) > 2000)) {
+            $invalidProperties[] = "invalid value for 'inf_ad_fisco', the character length must be smaller than or equal to 2000.";
+        }
+
+        if (!is_null($this->container['inf_ad_fisco']) && (mb_strlen($this->container['inf_ad_fisco']) < 1)) {
+            $invalidProperties[] = "invalid value for 'inf_ad_fisco', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -403,6 +411,13 @@ class CteSefazInfCteImp implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($inf_ad_fisco) && (mb_strlen($inf_ad_fisco) > 2000)) {
+            throw new \InvalidArgumentException('invalid length for $inf_ad_fisco when calling CteSefazInfCteImp., must be smaller than or equal to 2000.');
+        }
+        if (!is_null($inf_ad_fisco) && (mb_strlen($inf_ad_fisco) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $inf_ad_fisco when calling CteSefazInfCteImp., must be bigger than or equal to 1.');
+        }
+
         $this->container['inf_ad_fisco'] = $inf_ad_fisco;
 
         return $this;

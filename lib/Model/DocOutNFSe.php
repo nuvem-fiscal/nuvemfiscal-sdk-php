@@ -297,6 +297,14 @@ class DocOutNFSe implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['c_verif_nfse_mun'] === null) {
             $invalidProperties[] = "'c_verif_nfse_mun' can't be null";
         }
+        if ((mb_strlen($this->container['c_verif_nfse_mun']) > 9)) {
+            $invalidProperties[] = "invalid value for 'c_verif_nfse_mun', the character length must be smaller than or equal to 9.";
+        }
+
+        if ((mb_strlen($this->container['c_verif_nfse_mun']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_verif_nfse_mun', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -409,6 +417,13 @@ class DocOutNFSe implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_verif_nfse_mun) && (mb_strlen($c_verif_nfse_mun) > 9)) {
+            throw new \InvalidArgumentException('invalid length for $c_verif_nfse_mun when calling DocOutNFSe., must be smaller than or equal to 9.');
+        }
+        if (!is_null($c_verif_nfse_mun) && (mb_strlen($c_verif_nfse_mun) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_verif_nfse_mun when calling DocOutNFSe., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_verif_nfse_mun'] = $c_verif_nfse_mun;
 
         return $this;

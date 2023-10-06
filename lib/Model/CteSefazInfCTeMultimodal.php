@@ -277,6 +277,10 @@ class CteSefazInfCTeMultimodal implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['ch_cte_multimodal'] === null) {
             $invalidProperties[] = "'ch_cte_multimodal' can't be null";
         }
+        if ((mb_strlen($this->container['ch_cte_multimodal']) > 44)) {
+            $invalidProperties[] = "invalid value for 'ch_cte_multimodal', the character length must be smaller than or equal to 44.";
+        }
+
         return $invalidProperties;
     }
 
@@ -321,6 +325,10 @@ class CteSefazInfCTeMultimodal implements ModelInterface, ArrayAccess, \JsonSeri
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ch_cte_multimodal) && (mb_strlen($ch_cte_multimodal) > 44)) {
+            throw new \InvalidArgumentException('invalid length for $ch_cte_multimodal when calling CteSefazInfCTeMultimodal., must be smaller than or equal to 44.');
+        }
+
         $this->container['ch_cte_multimodal'] = $ch_cte_multimodal;
 
         return $this;

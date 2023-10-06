@@ -393,15 +393,47 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['n_roma']) && (mb_strlen($this->container['n_roma']) > 20)) {
+            $invalidProperties[] = "invalid value for 'n_roma', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['n_roma']) && (mb_strlen($this->container['n_roma']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_roma', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['n_ped']) && (mb_strlen($this->container['n_ped']) > 20)) {
+            $invalidProperties[] = "invalid value for 'n_ped', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['n_ped']) && (mb_strlen($this->container['n_ped']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_ped', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['mod'] === null) {
             $invalidProperties[] = "'mod' can't be null";
         }
         if ($this->container['serie'] === null) {
             $invalidProperties[] = "'serie' can't be null";
         }
+        if ((mb_strlen($this->container['serie']) > 3)) {
+            $invalidProperties[] = "invalid value for 'serie', the character length must be smaller than or equal to 3.";
+        }
+
+        if ((mb_strlen($this->container['serie']) < 1)) {
+            $invalidProperties[] = "invalid value for 'serie', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['n_doc'] === null) {
             $invalidProperties[] = "'n_doc' can't be null";
         }
+        if ((mb_strlen($this->container['n_doc']) > 20)) {
+            $invalidProperties[] = "invalid value for 'n_doc', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['n_doc']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_doc', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['d_emi'] === null) {
             $invalidProperties[] = "'d_emi' can't be null";
         }
@@ -426,6 +458,14 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['n_cfop'] === null) {
             $invalidProperties[] = "'n_cfop' can't be null";
         }
+        if (!is_null($this->container['pin']) && (mb_strlen($this->container['pin']) > 9)) {
+            $invalidProperties[] = "invalid value for 'pin', the character length must be smaller than or equal to 9.";
+        }
+
+        if (!is_null($this->container['pin']) && (mb_strlen($this->container['pin']) < 2)) {
+            $invalidProperties[] = "invalid value for 'pin', the character length must be bigger than or equal to 2.";
+        }
+
         return $invalidProperties;
     }
 
@@ -470,6 +510,13 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_roma) && (mb_strlen($n_roma) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $n_roma when calling CteSefazInfNF., must be smaller than or equal to 20.');
+        }
+        if (!is_null($n_roma) && (mb_strlen($n_roma) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_roma when calling CteSefazInfNF., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_roma'] = $n_roma;
 
         return $this;
@@ -504,6 +551,13 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_ped) && (mb_strlen($n_ped) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $n_ped when calling CteSefazInfNF., must be smaller than or equal to 20.');
+        }
+        if (!is_null($n_ped) && (mb_strlen($n_ped) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_ped when calling CteSefazInfNF., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_ped'] = $n_ped;
 
         return $this;
@@ -572,6 +626,13 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($serie) && (mb_strlen($serie) > 3)) {
+            throw new \InvalidArgumentException('invalid length for $serie when calling CteSefazInfNF., must be smaller than or equal to 3.');
+        }
+        if (!is_null($serie) && (mb_strlen($serie) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $serie when calling CteSefazInfNF., must be bigger than or equal to 1.');
+        }
+
         $this->container['serie'] = $serie;
 
         return $this;
@@ -606,6 +667,13 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_doc) && (mb_strlen($n_doc) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $n_doc when calling CteSefazInfNF., must be smaller than or equal to 20.');
+        }
+        if (!is_null($n_doc) && (mb_strlen($n_doc) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_doc when calling CteSefazInfNF., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_doc'] = $n_doc;
 
         return $this;
@@ -946,6 +1014,13 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($pin) && (mb_strlen($pin) > 9)) {
+            throw new \InvalidArgumentException('invalid length for $pin when calling CteSefazInfNF., must be smaller than or equal to 9.');
+        }
+        if (!is_null($pin) && (mb_strlen($pin) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $pin when calling CteSefazInfNF., must be bigger than or equal to 2.');
+        }
+
         $this->container['pin'] = $pin;
 
         return $this;

@@ -347,21 +347,65 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cnpj'] === null) {
             $invalidProperties[] = "'cnpj' can't be null";
         }
+        if ((mb_strlen($this->container['cnpj']) > 14)) {
+            $invalidProperties[] = "invalid value for 'cnpj', the character length must be smaller than or equal to 14.";
+        }
+
         if ($this->container['x_orgao'] === null) {
             $invalidProperties[] = "'x_orgao' can't be null";
         }
+        if ((mb_strlen($this->container['x_orgao']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_orgao', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_orgao']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_orgao', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['matr'] === null) {
             $invalidProperties[] = "'matr' can't be null";
         }
+        if ((mb_strlen($this->container['matr']) > 60)) {
+            $invalidProperties[] = "invalid value for 'matr', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['matr']) < 1)) {
+            $invalidProperties[] = "invalid value for 'matr', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['x_agente'] === null) {
             $invalidProperties[] = "'x_agente' can't be null";
         }
+        if ((mb_strlen($this->container['x_agente']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_agente', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_agente']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_agente', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['uf'] === null) {
             $invalidProperties[] = "'uf' can't be null";
         }
+        if (!is_null($this->container['n_dar']) && (mb_strlen($this->container['n_dar']) > 60)) {
+            $invalidProperties[] = "invalid value for 'n_dar', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['n_dar']) && (mb_strlen($this->container['n_dar']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_dar', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['rep_emi'] === null) {
             $invalidProperties[] = "'rep_emi' can't be null";
         }
+        if ((mb_strlen($this->container['rep_emi']) > 60)) {
+            $invalidProperties[] = "invalid value for 'rep_emi', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['rep_emi']) < 1)) {
+            $invalidProperties[] = "invalid value for 'rep_emi', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -406,6 +450,10 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cnpj) && (mb_strlen($cnpj) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $cnpj when calling NfeSefazAvulsa., must be smaller than or equal to 14.');
+        }
+
         $this->container['cnpj'] = $cnpj;
 
         return $this;
@@ -440,6 +488,13 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_orgao) && (mb_strlen($x_orgao) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_orgao when calling NfeSefazAvulsa., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_orgao) && (mb_strlen($x_orgao) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_orgao when calling NfeSefazAvulsa., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_orgao'] = $x_orgao;
 
         return $this;
@@ -474,6 +529,13 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($matr) && (mb_strlen($matr) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $matr when calling NfeSefazAvulsa., must be smaller than or equal to 60.');
+        }
+        if (!is_null($matr) && (mb_strlen($matr) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $matr when calling NfeSefazAvulsa., must be bigger than or equal to 1.');
+        }
+
         $this->container['matr'] = $matr;
 
         return $this;
@@ -508,6 +570,13 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_agente) && (mb_strlen($x_agente) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_agente when calling NfeSefazAvulsa., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_agente) && (mb_strlen($x_agente) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_agente when calling NfeSefazAvulsa., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_agente'] = $x_agente;
 
         return $this;
@@ -610,6 +679,13 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_dar) && (mb_strlen($n_dar) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $n_dar when calling NfeSefazAvulsa., must be smaller than or equal to 60.');
+        }
+        if (!is_null($n_dar) && (mb_strlen($n_dar) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_dar when calling NfeSefazAvulsa., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_dar'] = $n_dar;
 
         return $this;
@@ -712,6 +788,13 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($rep_emi) && (mb_strlen($rep_emi) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $rep_emi when calling NfeSefazAvulsa., must be smaller than or equal to 60.');
+        }
+        if (!is_null($rep_emi) && (mb_strlen($rep_emi) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $rep_emi when calling NfeSefazAvulsa., must be bigger than or equal to 1.');
+        }
+
         $this->container['rep_emi'] = $rep_emi;
 
         return $this;

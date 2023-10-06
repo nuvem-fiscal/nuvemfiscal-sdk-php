@@ -298,6 +298,10 @@ class MdfeSefazInfMDFeTransp implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['ch_mdfe'] === null) {
             $invalidProperties[] = "'ch_mdfe' can't be null";
         }
+        if ((mb_strlen($this->container['ch_mdfe']) > 44)) {
+            $invalidProperties[] = "invalid value for 'ch_mdfe', the character length must be smaller than or equal to 44.";
+        }
+
         return $invalidProperties;
     }
 
@@ -342,6 +346,10 @@ class MdfeSefazInfMDFeTransp implements ModelInterface, ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ch_mdfe) && (mb_strlen($ch_mdfe) > 44)) {
+            throw new \InvalidArgumentException('invalid length for $ch_mdfe when calling MdfeSefazInfMDFeTransp., must be smaller than or equal to 44.');
+        }
+
         $this->container['ch_mdfe'] = $ch_mdfe;
 
         return $this;

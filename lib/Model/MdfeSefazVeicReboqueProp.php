@@ -322,6 +322,14 @@ class MdfeSefazVeicReboqueProp implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['x_nome'] === null) {
             $invalidProperties[] = "'x_nome' can't be null";
         }
+        if ((mb_strlen($this->container['x_nome']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_nome']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['tp_prop'] === null) {
             $invalidProperties[] = "'tp_prop' can't be null";
         }
@@ -471,6 +479,13 @@ class MdfeSefazVeicReboqueProp implements ModelInterface, ArrayAccess, \JsonSeri
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling MdfeSefazVeicReboqueProp., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling MdfeSefazVeicReboqueProp., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_nome'] = $x_nome;
 
         return $this;

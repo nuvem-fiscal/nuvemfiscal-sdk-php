@@ -295,6 +295,30 @@ class CteSefazFluxo implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['x_orig']) && (mb_strlen($this->container['x_orig']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_orig', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_orig']) && (mb_strlen($this->container['x_orig']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_orig', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['x_dest']) && (mb_strlen($this->container['x_dest']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_dest', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_dest']) && (mb_strlen($this->container['x_dest']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_dest', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['x_rota']) && (mb_strlen($this->container['x_rota']) > 10)) {
+            $invalidProperties[] = "invalid value for 'x_rota', the character length must be smaller than or equal to 10.";
+        }
+
+        if (!is_null($this->container['x_rota']) && (mb_strlen($this->container['x_rota']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_rota', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -339,6 +363,13 @@ class CteSefazFluxo implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_orig) && (mb_strlen($x_orig) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_orig when calling CteSefazFluxo., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_orig) && (mb_strlen($x_orig) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_orig when calling CteSefazFluxo., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_orig'] = $x_orig;
 
         return $this;
@@ -400,6 +431,13 @@ class CteSefazFluxo implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_dest) && (mb_strlen($x_dest) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_dest when calling CteSefazFluxo., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_dest) && (mb_strlen($x_dest) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_dest when calling CteSefazFluxo., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_dest'] = $x_dest;
 
         return $this;
@@ -434,6 +472,13 @@ class CteSefazFluxo implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_rota) && (mb_strlen($x_rota) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $x_rota when calling CteSefazFluxo., must be smaller than or equal to 10.');
+        }
+        if (!is_null($x_rota) && (mb_strlen($x_rota) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_rota when calling CteSefazFluxo., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_rota'] = $x_rota;
 
         return $this;

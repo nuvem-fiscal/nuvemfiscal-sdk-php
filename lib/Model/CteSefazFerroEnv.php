@@ -305,9 +305,29 @@ class CteSefazFerroEnv implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cnpj'] === null) {
             $invalidProperties[] = "'cnpj' can't be null";
         }
+        if (!is_null($this->container['c_int']) && (mb_strlen($this->container['c_int']) > 10)) {
+            $invalidProperties[] = "invalid value for 'c_int', the character length must be smaller than or equal to 10.";
+        }
+
+        if (!is_null($this->container['c_int']) && (mb_strlen($this->container['c_int']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_int', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['ie']) && (mb_strlen($this->container['ie']) > 14)) {
+            $invalidProperties[] = "invalid value for 'ie', the character length must be smaller than or equal to 14.";
+        }
+
         if ($this->container['x_nome'] === null) {
             $invalidProperties[] = "'x_nome' can't be null";
         }
+        if ((mb_strlen($this->container['x_nome']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_nome']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be bigger than or equal to 2.";
+        }
+
         if ($this->container['ender_ferro'] === null) {
             $invalidProperties[] = "'ender_ferro' can't be null";
         }
@@ -389,6 +409,13 @@ class CteSefazFerroEnv implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_int) && (mb_strlen($c_int) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $c_int when calling CteSefazFerroEnv., must be smaller than or equal to 10.');
+        }
+        if (!is_null($c_int) && (mb_strlen($c_int) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_int when calling CteSefazFerroEnv., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_int'] = $c_int;
 
         return $this;
@@ -423,6 +450,10 @@ class CteSefazFerroEnv implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ie) && (mb_strlen($ie) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $ie when calling CteSefazFerroEnv., must be smaller than or equal to 14.');
+        }
+
         $this->container['ie'] = $ie;
 
         return $this;
@@ -457,6 +488,13 @@ class CteSefazFerroEnv implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling CteSefazFerroEnv., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling CteSefazFerroEnv., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_nome'] = $x_nome;
 
         return $this;

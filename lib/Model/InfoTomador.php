@@ -337,9 +337,53 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['cnpj']) && (mb_strlen($this->container['cnpj']) > 14)) {
+            $invalidProperties[] = "invalid value for 'cnpj', the character length must be smaller than or equal to 14.";
+        }
+
+        if (!is_null($this->container['cpf']) && (mb_strlen($this->container['cpf']) > 11)) {
+            $invalidProperties[] = "invalid value for 'cpf', the character length must be smaller than or equal to 11.";
+        }
+
+        if (!is_null($this->container['nif']) && (mb_strlen($this->container['nif']) > 40)) {
+            $invalidProperties[] = "invalid value for 'nif', the character length must be smaller than or equal to 40.";
+        }
+
+        if (!is_null($this->container['nif']) && (mb_strlen($this->container['nif']) < 1)) {
+            $invalidProperties[] = "invalid value for 'nif', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['caepf']) && (mb_strlen($this->container['caepf']) > 14)) {
+            $invalidProperties[] = "invalid value for 'caepf', the character length must be smaller than or equal to 14.";
+        }
+
+        if (!is_null($this->container['im']) && (mb_strlen($this->container['im']) > 15)) {
+            $invalidProperties[] = "invalid value for 'im', the character length must be smaller than or equal to 15.";
+        }
+
+        if (!is_null($this->container['im']) && (mb_strlen($this->container['im']) < 1)) {
+            $invalidProperties[] = "invalid value for 'im', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['x_nome'] === null) {
             $invalidProperties[] = "'x_nome' can't be null";
         }
+        if ((mb_strlen($this->container['x_nome']) > 300)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be smaller than or equal to 300.";
+        }
+
+        if ((mb_strlen($this->container['x_nome']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['email']) && (mb_strlen($this->container['email']) > 80)) {
+            $invalidProperties[] = "invalid value for 'email', the character length must be smaller than or equal to 80.";
+        }
+
+        if (!is_null($this->container['email']) && (mb_strlen($this->container['email']) < 1)) {
+            $invalidProperties[] = "invalid value for 'email', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -384,6 +428,10 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cnpj) && (mb_strlen($cnpj) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $cnpj when calling InfoTomador., must be smaller than or equal to 14.');
+        }
+
         $this->container['cnpj'] = $cnpj;
 
         return $this;
@@ -418,6 +466,10 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cpf) && (mb_strlen($cpf) > 11)) {
+            throw new \InvalidArgumentException('invalid length for $cpf when calling InfoTomador., must be smaller than or equal to 11.');
+        }
+
         $this->container['cpf'] = $cpf;
 
         return $this;
@@ -452,6 +504,13 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($nif) && (mb_strlen($nif) > 40)) {
+            throw new \InvalidArgumentException('invalid length for $nif when calling InfoTomador., must be smaller than or equal to 40.');
+        }
+        if (!is_null($nif) && (mb_strlen($nif) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $nif when calling InfoTomador., must be bigger than or equal to 1.');
+        }
+
         $this->container['nif'] = $nif;
 
         return $this;
@@ -520,6 +579,10 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($caepf) && (mb_strlen($caepf) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $caepf when calling InfoTomador., must be smaller than or equal to 14.');
+        }
+
         $this->container['caepf'] = $caepf;
 
         return $this;
@@ -554,6 +617,13 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($im) && (mb_strlen($im) > 15)) {
+            throw new \InvalidArgumentException('invalid length for $im when calling InfoTomador., must be smaller than or equal to 15.');
+        }
+        if (!is_null($im) && (mb_strlen($im) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $im when calling InfoTomador., must be bigger than or equal to 1.');
+        }
+
         $this->container['im'] = $im;
 
         return $this;
@@ -588,6 +658,13 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) > 300)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling InfoTomador., must be smaller than or equal to 300.');
+        }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling InfoTomador., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_nome'] = $x_nome;
 
         return $this;
@@ -683,6 +760,13 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($email) && (mb_strlen($email) > 80)) {
+            throw new \InvalidArgumentException('invalid length for $email when calling InfoTomador., must be smaller than or equal to 80.');
+        }
+        if (!is_null($email) && (mb_strlen($email) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $email when calling InfoTomador., must be bigger than or equal to 1.');
+        }
+
         $this->container['email'] = $email;
 
         return $this;

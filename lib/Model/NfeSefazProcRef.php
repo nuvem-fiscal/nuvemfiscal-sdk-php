@@ -291,6 +291,14 @@ class NfeSefazProcRef implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['n_proc'] === null) {
             $invalidProperties[] = "'n_proc' can't be null";
         }
+        if ((mb_strlen($this->container['n_proc']) > 60)) {
+            $invalidProperties[] = "invalid value for 'n_proc', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['n_proc']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_proc', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['ind_proc'] === null) {
             $invalidProperties[] = "'ind_proc' can't be null";
         }
@@ -338,6 +346,13 @@ class NfeSefazProcRef implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_proc) && (mb_strlen($n_proc) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $n_proc when calling NfeSefazProcRef., must be smaller than or equal to 60.');
+        }
+        if (!is_null($n_proc) && (mb_strlen($n_proc) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_proc when calling NfeSefazProcRef., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_proc'] = $n_proc;
 
         return $this;

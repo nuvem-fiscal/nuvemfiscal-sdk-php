@@ -301,12 +301,36 @@ class EnderExt implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['c_end_post'] === null) {
             $invalidProperties[] = "'c_end_post' can't be null";
         }
+        if ((mb_strlen($this->container['c_end_post']) > 11)) {
+            $invalidProperties[] = "invalid value for 'c_end_post', the character length must be smaller than or equal to 11.";
+        }
+
+        if ((mb_strlen($this->container['c_end_post']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_end_post', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['x_cidade'] === null) {
             $invalidProperties[] = "'x_cidade' can't be null";
         }
+        if ((mb_strlen($this->container['x_cidade']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_cidade', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_cidade']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_cidade', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['x_est_prov_reg'] === null) {
             $invalidProperties[] = "'x_est_prov_reg' can't be null";
         }
+        if ((mb_strlen($this->container['x_est_prov_reg']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_est_prov_reg', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_est_prov_reg']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_est_prov_reg', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -385,6 +409,13 @@ class EnderExt implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_end_post) && (mb_strlen($c_end_post) > 11)) {
+            throw new \InvalidArgumentException('invalid length for $c_end_post when calling EnderExt., must be smaller than or equal to 11.');
+        }
+        if (!is_null($c_end_post) && (mb_strlen($c_end_post) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_end_post when calling EnderExt., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_end_post'] = $c_end_post;
 
         return $this;
@@ -419,6 +450,13 @@ class EnderExt implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_cidade) && (mb_strlen($x_cidade) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_cidade when calling EnderExt., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_cidade) && (mb_strlen($x_cidade) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_cidade when calling EnderExt., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_cidade'] = $x_cidade;
 
         return $this;
@@ -453,6 +491,13 @@ class EnderExt implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_est_prov_reg) && (mb_strlen($x_est_prov_reg) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_est_prov_reg when calling EnderExt., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_est_prov_reg) && (mb_strlen($x_est_prov_reg) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_est_prov_reg when calling EnderExt., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_est_prov_reg'] = $x_est_prov_reg;
 
         return $this;

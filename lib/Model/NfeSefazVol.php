@@ -316,6 +316,30 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['esp']) && (mb_strlen($this->container['esp']) > 60)) {
+            $invalidProperties[] = "invalid value for 'esp', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['esp']) && (mb_strlen($this->container['esp']) < 1)) {
+            $invalidProperties[] = "invalid value for 'esp', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['marca']) && (mb_strlen($this->container['marca']) > 60)) {
+            $invalidProperties[] = "invalid value for 'marca', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['marca']) && (mb_strlen($this->container['marca']) < 1)) {
+            $invalidProperties[] = "invalid value for 'marca', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['n_vol']) && (mb_strlen($this->container['n_vol']) > 60)) {
+            $invalidProperties[] = "invalid value for 'n_vol', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['n_vol']) && (mb_strlen($this->container['n_vol']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_vol', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -394,6 +418,13 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($esp) && (mb_strlen($esp) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $esp when calling NfeSefazVol., must be smaller than or equal to 60.');
+        }
+        if (!is_null($esp) && (mb_strlen($esp) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $esp when calling NfeSefazVol., must be bigger than or equal to 1.');
+        }
+
         $this->container['esp'] = $esp;
 
         return $this;
@@ -428,6 +459,13 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($marca) && (mb_strlen($marca) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $marca when calling NfeSefazVol., must be smaller than or equal to 60.');
+        }
+        if (!is_null($marca) && (mb_strlen($marca) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $marca when calling NfeSefazVol., must be bigger than or equal to 1.');
+        }
+
         $this->container['marca'] = $marca;
 
         return $this;
@@ -462,6 +500,13 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_vol) && (mb_strlen($n_vol) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $n_vol when calling NfeSefazVol., must be smaller than or equal to 60.');
+        }
+        if (!is_null($n_vol) && (mb_strlen($n_vol) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_vol when calling NfeSefazVol., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_vol'] = $n_vol;
 
         return $this;

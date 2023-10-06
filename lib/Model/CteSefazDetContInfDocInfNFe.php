@@ -284,6 +284,10 @@ class CteSefazDetContInfDocInfNFe implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['chave'] === null) {
             $invalidProperties[] = "'chave' can't be null";
         }
+        if ((mb_strlen($this->container['chave']) > 44)) {
+            $invalidProperties[] = "invalid value for 'chave', the character length must be smaller than or equal to 44.";
+        }
+
         return $invalidProperties;
     }
 
@@ -328,6 +332,10 @@ class CteSefazDetContInfDocInfNFe implements ModelInterface, ArrayAccess, \JsonS
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($chave) && (mb_strlen($chave) > 44)) {
+            throw new \InvalidArgumentException('invalid length for $chave when calling CteSefazDetContInfDocInfNFe., must be smaller than or equal to 44.');
+        }
+
         $this->container['chave'] = $chave;
 
         return $this;

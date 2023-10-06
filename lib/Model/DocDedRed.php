@@ -351,9 +351,41 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['ch_nfse']) && (mb_strlen($this->container['ch_nfse']) > 50)) {
+            $invalidProperties[] = "invalid value for 'ch_nfse', the character length must be smaller than or equal to 50.";
+        }
+
+        if (!is_null($this->container['ch_nfe']) && (mb_strlen($this->container['ch_nfe']) > 44)) {
+            $invalidProperties[] = "invalid value for 'ch_nfe', the character length must be smaller than or equal to 44.";
+        }
+
+        if (!is_null($this->container['n_doc_fisc']) && (mb_strlen($this->container['n_doc_fisc']) > 255)) {
+            $invalidProperties[] = "invalid value for 'n_doc_fisc', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['n_doc_fisc']) && (mb_strlen($this->container['n_doc_fisc']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_doc_fisc', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['n_doc']) && (mb_strlen($this->container['n_doc']) > 255)) {
+            $invalidProperties[] = "invalid value for 'n_doc', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['n_doc']) && (mb_strlen($this->container['n_doc']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_doc', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['tp_ded_red'] === null) {
             $invalidProperties[] = "'tp_ded_red' can't be null";
         }
+        if (!is_null($this->container['x_desc_out_ded']) && (mb_strlen($this->container['x_desc_out_ded']) > 150)) {
+            $invalidProperties[] = "invalid value for 'x_desc_out_ded', the character length must be smaller than or equal to 150.";
+        }
+
+        if (!is_null($this->container['x_desc_out_ded']) && (mb_strlen($this->container['x_desc_out_ded']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_desc_out_ded', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['dt_emi_doc'] === null) {
             $invalidProperties[] = "'dt_emi_doc' can't be null";
         }
@@ -407,6 +439,10 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ch_nfse) && (mb_strlen($ch_nfse) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $ch_nfse when calling DocDedRed., must be smaller than or equal to 50.');
+        }
+
         $this->container['ch_nfse'] = $ch_nfse;
 
         return $this;
@@ -441,6 +477,10 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ch_nfe) && (mb_strlen($ch_nfe) > 44)) {
+            throw new \InvalidArgumentException('invalid length for $ch_nfe when calling DocDedRed., must be smaller than or equal to 44.');
+        }
+
         $this->container['ch_nfe'] = $ch_nfe;
 
         return $this;
@@ -529,6 +569,13 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_doc_fisc) && (mb_strlen($n_doc_fisc) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $n_doc_fisc when calling DocDedRed., must be smaller than or equal to 255.');
+        }
+        if (!is_null($n_doc_fisc) && (mb_strlen($n_doc_fisc) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_doc_fisc when calling DocDedRed., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_doc_fisc'] = $n_doc_fisc;
 
         return $this;
@@ -563,6 +610,13 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_doc) && (mb_strlen($n_doc) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $n_doc when calling DocDedRed., must be smaller than or equal to 255.');
+        }
+        if (!is_null($n_doc) && (mb_strlen($n_doc) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_doc when calling DocDedRed., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_doc'] = $n_doc;
 
         return $this;
@@ -631,6 +685,13 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_desc_out_ded) && (mb_strlen($x_desc_out_ded) > 150)) {
+            throw new \InvalidArgumentException('invalid length for $x_desc_out_ded when calling DocDedRed., must be smaller than or equal to 150.');
+        }
+        if (!is_null($x_desc_out_ded) && (mb_strlen($x_desc_out_ded) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_desc_out_ded when calling DocDedRed., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_desc_out_ded'] = $x_desc_out_ded;
 
         return $this;

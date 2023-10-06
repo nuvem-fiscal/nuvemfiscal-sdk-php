@@ -277,6 +277,14 @@ class CteSefazBalsa implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['x_balsa'] === null) {
             $invalidProperties[] = "'x_balsa' can't be null";
         }
+        if ((mb_strlen($this->container['x_balsa']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_balsa', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_balsa']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_balsa', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -321,6 +329,13 @@ class CteSefazBalsa implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_balsa) && (mb_strlen($x_balsa) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_balsa when calling CteSefazBalsa., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_balsa) && (mb_strlen($x_balsa) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_balsa when calling CteSefazBalsa., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_balsa'] = $x_balsa;
 
         return $this;

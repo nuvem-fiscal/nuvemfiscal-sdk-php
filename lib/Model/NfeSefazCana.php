@@ -340,6 +340,14 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['safra'] === null) {
             $invalidProperties[] = "'safra' can't be null";
         }
+        if ((mb_strlen($this->container['safra']) > 9)) {
+            $invalidProperties[] = "invalid value for 'safra', the character length must be smaller than or equal to 9.";
+        }
+
+        if ((mb_strlen($this->container['safra']) < 4)) {
+            $invalidProperties[] = "invalid value for 'safra', the character length must be bigger than or equal to 4.";
+        }
+
         if ($this->container['ref'] === null) {
             $invalidProperties[] = "'ref' can't be null";
         }
@@ -408,6 +416,13 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($safra) && (mb_strlen($safra) > 9)) {
+            throw new \InvalidArgumentException('invalid length for $safra when calling NfeSefazCana., must be smaller than or equal to 9.');
+        }
+        if (!is_null($safra) && (mb_strlen($safra) < 4)) {
+            throw new \InvalidArgumentException('invalid length for $safra when calling NfeSefazCana., must be bigger than or equal to 4.');
+        }
+
         $this->container['safra'] = $safra;
 
         return $this;

@@ -297,12 +297,36 @@ class CteInfCorrecao implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['grupo_alterado'] === null) {
             $invalidProperties[] = "'grupo_alterado' can't be null";
         }
+        if ((mb_strlen($this->container['grupo_alterado']) > 20)) {
+            $invalidProperties[] = "invalid value for 'grupo_alterado', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['grupo_alterado']) < 1)) {
+            $invalidProperties[] = "invalid value for 'grupo_alterado', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['campo_alterado'] === null) {
             $invalidProperties[] = "'campo_alterado' can't be null";
         }
+        if ((mb_strlen($this->container['campo_alterado']) > 20)) {
+            $invalidProperties[] = "invalid value for 'campo_alterado', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['campo_alterado']) < 1)) {
+            $invalidProperties[] = "invalid value for 'campo_alterado', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['valor_alterado'] === null) {
             $invalidProperties[] = "'valor_alterado' can't be null";
         }
+        if ((mb_strlen($this->container['valor_alterado']) > 500)) {
+            $invalidProperties[] = "invalid value for 'valor_alterado', the character length must be smaller than or equal to 500.";
+        }
+
+        if ((mb_strlen($this->container['valor_alterado']) < 1)) {
+            $invalidProperties[] = "invalid value for 'valor_alterado', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -340,6 +364,13 @@ class CteInfCorrecao implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($grupo_alterado)) {
             throw new \InvalidArgumentException('non-nullable grupo_alterado cannot be null');
         }
+        if ((mb_strlen($grupo_alterado) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $grupo_alterado when calling CteInfCorrecao., must be smaller than or equal to 20.');
+        }
+        if ((mb_strlen($grupo_alterado) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $grupo_alterado when calling CteInfCorrecao., must be bigger than or equal to 1.');
+        }
+
         $this->container['grupo_alterado'] = $grupo_alterado;
 
         return $this;
@@ -367,6 +398,13 @@ class CteInfCorrecao implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($campo_alterado)) {
             throw new \InvalidArgumentException('non-nullable campo_alterado cannot be null');
         }
+        if ((mb_strlen($campo_alterado) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $campo_alterado when calling CteInfCorrecao., must be smaller than or equal to 20.');
+        }
+        if ((mb_strlen($campo_alterado) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $campo_alterado when calling CteInfCorrecao., must be bigger than or equal to 1.');
+        }
+
         $this->container['campo_alterado'] = $campo_alterado;
 
         return $this;
@@ -394,6 +432,13 @@ class CteInfCorrecao implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($valor_alterado)) {
             throw new \InvalidArgumentException('non-nullable valor_alterado cannot be null');
         }
+        if ((mb_strlen($valor_alterado) > 500)) {
+            throw new \InvalidArgumentException('invalid length for $valor_alterado when calling CteInfCorrecao., must be smaller than or equal to 500.');
+        }
+        if ((mb_strlen($valor_alterado) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $valor_alterado when calling CteInfCorrecao., must be bigger than or equal to 1.');
+        }
+
         $this->container['valor_alterado'] = $valor_alterado;
 
         return $this;

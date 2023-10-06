@@ -308,6 +308,14 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['x_desc_serv'] === null) {
             $invalidProperties[] = "'x_desc_serv' can't be null";
         }
+        if ((mb_strlen($this->container['x_desc_serv']) > 2000)) {
+            $invalidProperties[] = "invalid value for 'x_desc_serv', the character length must be smaller than or equal to 2000.";
+        }
+
+        if ((mb_strlen($this->container['x_desc_serv']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_desc_serv', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -454,6 +462,13 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_desc_serv) && (mb_strlen($x_desc_serv) > 2000)) {
+            throw new \InvalidArgumentException('invalid length for $x_desc_serv when calling CServ., must be smaller than or equal to 2000.');
+        }
+        if (!is_null($x_desc_serv) && (mb_strlen($x_desc_serv) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_desc_serv when calling CServ., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_desc_serv'] = $x_desc_serv;
 
         return $this;

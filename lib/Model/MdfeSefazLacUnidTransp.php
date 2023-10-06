@@ -277,6 +277,14 @@ class MdfeSefazLacUnidTransp implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['n_lacre'] === null) {
             $invalidProperties[] = "'n_lacre' can't be null";
         }
+        if ((mb_strlen($this->container['n_lacre']) > 20)) {
+            $invalidProperties[] = "invalid value for 'n_lacre', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['n_lacre']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_lacre', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -321,6 +329,13 @@ class MdfeSefazLacUnidTransp implements ModelInterface, ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_lacre) && (mb_strlen($n_lacre) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $n_lacre when calling MdfeSefazLacUnidTransp., must be smaller than or equal to 20.');
+        }
+        if (!is_null($n_lacre) && (mb_strlen($n_lacre) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_lacre when calling MdfeSefazLacUnidTransp., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_lacre'] = $n_lacre;
 
         return $this;

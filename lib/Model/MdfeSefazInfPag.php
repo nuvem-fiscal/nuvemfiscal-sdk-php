@@ -358,6 +358,22 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['x_nome']) && (mb_strlen($this->container['x_nome']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_nome']) && (mb_strlen($this->container['x_nome']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be bigger than or equal to 2.";
+        }
+
+        if (!is_null($this->container['id_estrangeiro']) && (mb_strlen($this->container['id_estrangeiro']) > 20)) {
+            $invalidProperties[] = "invalid value for 'id_estrangeiro', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['id_estrangeiro']) && (mb_strlen($this->container['id_estrangeiro']) < 2)) {
+            $invalidProperties[] = "invalid value for 'id_estrangeiro', the character length must be bigger than or equal to 2.";
+        }
+
         if ($this->container['comp'] === null) {
             $invalidProperties[] = "'comp' can't be null";
         }
@@ -414,6 +430,13 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling MdfeSefazInfPag., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling MdfeSefazInfPag., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_nome'] = $x_nome;
 
         return $this;
@@ -516,6 +539,13 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($id_estrangeiro) && (mb_strlen($id_estrangeiro) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $id_estrangeiro when calling MdfeSefazInfPag., must be smaller than or equal to 20.');
+        }
+        if (!is_null($id_estrangeiro) && (mb_strlen($id_estrangeiro) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $id_estrangeiro when calling MdfeSefazInfPag., must be bigger than or equal to 2.');
+        }
+
         $this->container['id_estrangeiro'] = $id_estrangeiro;
 
         return $this;

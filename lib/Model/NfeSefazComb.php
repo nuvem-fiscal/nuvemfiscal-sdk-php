@@ -361,9 +361,25 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['c_prod_anp'] === null) {
             $invalidProperties[] = "'c_prod_anp' can't be null";
         }
+        if (($this->container['c_prod_anp'] > 999999999)) {
+            $invalidProperties[] = "invalid value for 'c_prod_anp', must be smaller than or equal to 999999999.";
+        }
+
+        if (($this->container['c_prod_anp'] < 0)) {
+            $invalidProperties[] = "invalid value for 'c_prod_anp', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['desc_anp'] === null) {
             $invalidProperties[] = "'desc_anp' can't be null";
         }
+        if ((mb_strlen($this->container['desc_anp']) > 95)) {
+            $invalidProperties[] = "invalid value for 'desc_anp', the character length must be smaller than or equal to 95.";
+        }
+
+        if ((mb_strlen($this->container['desc_anp']) < 2)) {
+            $invalidProperties[] = "invalid value for 'desc_anp', the character length must be bigger than or equal to 2.";
+        }
+
         if ($this->container['uf_cons'] === null) {
             $invalidProperties[] = "'uf_cons' can't be null";
         }
@@ -411,6 +427,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($c_prod_anp) && ($c_prod_anp > 999999999)) {
+            throw new \InvalidArgumentException('invalid value for $c_prod_anp when calling NfeSefazComb., must be smaller than or equal to 999999999.');
+        }
+        if (!is_null($c_prod_anp) && ($c_prod_anp < 0)) {
+            throw new \InvalidArgumentException('invalid value for $c_prod_anp when calling NfeSefazComb., must be bigger than or equal to 0.');
+        }
+
         $this->container['c_prod_anp'] = $c_prod_anp;
 
         return $this;
@@ -445,6 +469,13 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($desc_anp) && (mb_strlen($desc_anp) > 95)) {
+            throw new \InvalidArgumentException('invalid length for $desc_anp when calling NfeSefazComb., must be smaller than or equal to 95.');
+        }
+        if (!is_null($desc_anp) && (mb_strlen($desc_anp) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $desc_anp when calling NfeSefazComb., must be bigger than or equal to 2.');
+        }
+
         $this->container['desc_anp'] = $desc_anp;
 
         return $this;

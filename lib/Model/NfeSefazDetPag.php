@@ -305,6 +305,14 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['t_pag'] === null) {
             $invalidProperties[] = "'t_pag' can't be null";
         }
+        if (!is_null($this->container['x_pag']) && (mb_strlen($this->container['x_pag']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_pag', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_pag']) && (mb_strlen($this->container['x_pag']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_pag', the character length must be bigger than or equal to 2.";
+        }
+
         if ($this->container['v_pag'] === null) {
             $invalidProperties[] = "'v_pag' can't be null";
         }
@@ -420,6 +428,13 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_pag) && (mb_strlen($x_pag) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_pag when calling NfeSefazDetPag., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_pag) && (mb_strlen($x_pag) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_pag when calling NfeSefazDetPag., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_pag'] = $x_pag;
 
         return $this;

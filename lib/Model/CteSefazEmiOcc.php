@@ -304,9 +304,21 @@ class CteSefazEmiOcc implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cnpj'] === null) {
             $invalidProperties[] = "'cnpj' can't be null";
         }
+        if (!is_null($this->container['c_int']) && (mb_strlen($this->container['c_int']) > 10)) {
+            $invalidProperties[] = "invalid value for 'c_int', the character length must be smaller than or equal to 10.";
+        }
+
+        if (!is_null($this->container['c_int']) && (mb_strlen($this->container['c_int']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_int', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['ie'] === null) {
             $invalidProperties[] = "'ie' can't be null";
         }
+        if ((mb_strlen($this->container['ie']) > 14)) {
+            $invalidProperties[] = "invalid value for 'ie', the character length must be smaller than or equal to 14.";
+        }
+
         if ($this->container['uf'] === null) {
             $invalidProperties[] = "'uf' can't be null";
         }
@@ -388,6 +400,13 @@ class CteSefazEmiOcc implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_int) && (mb_strlen($c_int) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $c_int when calling CteSefazEmiOcc., must be smaller than or equal to 10.');
+        }
+        if (!is_null($c_int) && (mb_strlen($c_int) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_int when calling CteSefazEmiOcc., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_int'] = $c_int;
 
         return $this;
@@ -422,6 +441,10 @@ class CteSefazEmiOcc implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ie) && (mb_strlen($ie) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $ie when calling CteSefazEmiOcc., must be smaller than or equal to 14.');
+        }
+
         $this->container['ie'] = $ie;
 
         return $this;

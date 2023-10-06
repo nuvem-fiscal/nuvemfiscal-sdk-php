@@ -291,9 +291,25 @@ class CteSefazDetContInfDocInfNF implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['serie'] === null) {
             $invalidProperties[] = "'serie' can't be null";
         }
+        if ((mb_strlen($this->container['serie']) > 3)) {
+            $invalidProperties[] = "invalid value for 'serie', the character length must be smaller than or equal to 3.";
+        }
+
+        if ((mb_strlen($this->container['serie']) < 1)) {
+            $invalidProperties[] = "invalid value for 'serie', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['n_doc'] === null) {
             $invalidProperties[] = "'n_doc' can't be null";
         }
+        if ((mb_strlen($this->container['n_doc']) > 20)) {
+            $invalidProperties[] = "invalid value for 'n_doc', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['n_doc']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_doc', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -338,6 +354,13 @@ class CteSefazDetContInfDocInfNF implements ModelInterface, ArrayAccess, \JsonSe
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($serie) && (mb_strlen($serie) > 3)) {
+            throw new \InvalidArgumentException('invalid length for $serie when calling CteSefazDetContInfDocInfNF., must be smaller than or equal to 3.');
+        }
+        if (!is_null($serie) && (mb_strlen($serie) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $serie when calling CteSefazDetContInfDocInfNF., must be bigger than or equal to 1.');
+        }
+
         $this->container['serie'] = $serie;
 
         return $this;
@@ -372,6 +395,13 @@ class CteSefazDetContInfDocInfNF implements ModelInterface, ArrayAccess, \JsonSe
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_doc) && (mb_strlen($n_doc) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $n_doc when calling CteSefazDetContInfDocInfNF., must be smaller than or equal to 20.');
+        }
+        if (!is_null($n_doc) && (mb_strlen($n_doc) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_doc when calling CteSefazDetContInfDocInfNF., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_doc'] = $n_doc;
 
         return $this;

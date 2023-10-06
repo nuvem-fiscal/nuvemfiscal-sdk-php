@@ -291,6 +291,18 @@ class CteSefazTarifa implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cl'] === null) {
             $invalidProperties[] = "'cl' can't be null";
         }
+        if ((mb_strlen($this->container['cl']) > 1)) {
+            $invalidProperties[] = "invalid value for 'cl', the character length must be smaller than or equal to 1.";
+        }
+
+        if (!is_null($this->container['c_tar']) && (mb_strlen($this->container['c_tar']) > 4)) {
+            $invalidProperties[] = "invalid value for 'c_tar', the character length must be smaller than or equal to 4.";
+        }
+
+        if (!is_null($this->container['c_tar']) && (mb_strlen($this->container['c_tar']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_tar', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['v_tar'] === null) {
             $invalidProperties[] = "'v_tar' can't be null";
         }
@@ -338,6 +350,10 @@ class CteSefazTarifa implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cl) && (mb_strlen($cl) > 1)) {
+            throw new \InvalidArgumentException('invalid length for $cl when calling CteSefazTarifa., must be smaller than or equal to 1.');
+        }
+
         $this->container['cl'] = $cl;
 
         return $this;
@@ -372,6 +388,13 @@ class CteSefazTarifa implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_tar) && (mb_strlen($c_tar) > 4)) {
+            throw new \InvalidArgumentException('invalid length for $c_tar when calling CteSefazTarifa., must be smaller than or equal to 4.');
+        }
+        if (!is_null($c_tar) && (mb_strlen($c_tar) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_tar when calling CteSefazTarifa., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_tar'] = $c_tar;
 
         return $this;

@@ -301,6 +301,14 @@ class CteSefazUnidCarga implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['id_unid_carga'] === null) {
             $invalidProperties[] = "'id_unid_carga' can't be null";
         }
+        if ((mb_strlen($this->container['id_unid_carga']) > 20)) {
+            $invalidProperties[] = "invalid value for 'id_unid_carga', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['id_unid_carga']) < 1)) {
+            $invalidProperties[] = "invalid value for 'id_unid_carga', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -379,6 +387,13 @@ class CteSefazUnidCarga implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($id_unid_carga) && (mb_strlen($id_unid_carga) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $id_unid_carga when calling CteSefazUnidCarga., must be smaller than or equal to 20.');
+        }
+        if (!is_null($id_unid_carga) && (mb_strlen($id_unid_carga) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $id_unid_carga when calling CteSefazUnidCarga., must be bigger than or equal to 1.');
+        }
+
         $this->container['id_unid_carga'] = $id_unid_carga;
 
         return $this;

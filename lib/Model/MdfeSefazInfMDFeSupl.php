@@ -274,6 +274,14 @@ class MdfeSefazInfMDFeSupl implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['qr_cod_mdfe']) && (mb_strlen($this->container['qr_cod_mdfe']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'qr_cod_mdfe', the character length must be smaller than or equal to 1000.";
+        }
+
+        if (!is_null($this->container['qr_cod_mdfe']) && (mb_strlen($this->container['qr_cod_mdfe']) < 50)) {
+            $invalidProperties[] = "invalid value for 'qr_cod_mdfe', the character length must be bigger than or equal to 50.";
+        }
+
         return $invalidProperties;
     }
 
@@ -318,6 +326,13 @@ class MdfeSefazInfMDFeSupl implements ModelInterface, ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($qr_cod_mdfe) && (mb_strlen($qr_cod_mdfe) > 1000)) {
+            throw new \InvalidArgumentException('invalid length for $qr_cod_mdfe when calling MdfeSefazInfMDFeSupl., must be smaller than or equal to 1000.');
+        }
+        if (!is_null($qr_cod_mdfe) && (mb_strlen($qr_cod_mdfe) < 50)) {
+            throw new \InvalidArgumentException('invalid length for $qr_cod_mdfe when calling MdfeSefazInfMDFeSupl., must be bigger than or equal to 50.');
+        }
+
         $this->container['qr_cod_mdfe'] = $qr_cod_mdfe;
 
         return $this;

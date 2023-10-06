@@ -305,15 +305,47 @@ class MdfeSefazTrem implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['x_pref'] === null) {
             $invalidProperties[] = "'x_pref' can't be null";
         }
+        if ((mb_strlen($this->container['x_pref']) > 10)) {
+            $invalidProperties[] = "invalid value for 'x_pref', the character length must be smaller than or equal to 10.";
+        }
+
+        if ((mb_strlen($this->container['x_pref']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_pref', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['x_ori'] === null) {
             $invalidProperties[] = "'x_ori' can't be null";
         }
+        if ((mb_strlen($this->container['x_ori']) > 3)) {
+            $invalidProperties[] = "invalid value for 'x_ori', the character length must be smaller than or equal to 3.";
+        }
+
+        if ((mb_strlen($this->container['x_ori']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_ori', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['x_dest'] === null) {
             $invalidProperties[] = "'x_dest' can't be null";
         }
+        if ((mb_strlen($this->container['x_dest']) > 3)) {
+            $invalidProperties[] = "invalid value for 'x_dest', the character length must be smaller than or equal to 3.";
+        }
+
+        if ((mb_strlen($this->container['x_dest']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_dest', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['q_vag'] === null) {
             $invalidProperties[] = "'q_vag' can't be null";
         }
+        if (($this->container['q_vag'] > 999)) {
+            $invalidProperties[] = "invalid value for 'q_vag', must be smaller than or equal to 999.";
+        }
+
+        if (($this->container['q_vag'] < 1)) {
+            $invalidProperties[] = "invalid value for 'q_vag', must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -358,6 +390,13 @@ class MdfeSefazTrem implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_pref) && (mb_strlen($x_pref) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $x_pref when calling MdfeSefazTrem., must be smaller than or equal to 10.');
+        }
+        if (!is_null($x_pref) && (mb_strlen($x_pref) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_pref when calling MdfeSefazTrem., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_pref'] = $x_pref;
 
         return $this;
@@ -426,6 +465,13 @@ class MdfeSefazTrem implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_ori) && (mb_strlen($x_ori) > 3)) {
+            throw new \InvalidArgumentException('invalid length for $x_ori when calling MdfeSefazTrem., must be smaller than or equal to 3.');
+        }
+        if (!is_null($x_ori) && (mb_strlen($x_ori) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_ori when calling MdfeSefazTrem., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_ori'] = $x_ori;
 
         return $this;
@@ -460,6 +506,13 @@ class MdfeSefazTrem implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_dest) && (mb_strlen($x_dest) > 3)) {
+            throw new \InvalidArgumentException('invalid length for $x_dest when calling MdfeSefazTrem., must be smaller than or equal to 3.');
+        }
+        if (!is_null($x_dest) && (mb_strlen($x_dest) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_dest when calling MdfeSefazTrem., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_dest'] = $x_dest;
 
         return $this;
@@ -494,6 +547,14 @@ class MdfeSefazTrem implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_vag) && ($q_vag > 999)) {
+            throw new \InvalidArgumentException('invalid value for $q_vag when calling MdfeSefazTrem., must be smaller than or equal to 999.');
+        }
+        if (!is_null($q_vag) && ($q_vag < 1)) {
+            throw new \InvalidArgumentException('invalid value for $q_vag when calling MdfeSefazTrem., must be bigger than or equal to 1.');
+        }
+
         $this->container['q_vag'] = $q_vag;
 
         return $this;

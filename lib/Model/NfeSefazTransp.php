@@ -326,6 +326,22 @@ class NfeSefazTransp implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['mod_frete'] === null) {
             $invalidProperties[] = "'mod_frete' can't be null";
         }
+        if (!is_null($this->container['vagao']) && (mb_strlen($this->container['vagao']) > 20)) {
+            $invalidProperties[] = "invalid value for 'vagao', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['vagao']) && (mb_strlen($this->container['vagao']) < 1)) {
+            $invalidProperties[] = "invalid value for 'vagao', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['balsa']) && (mb_strlen($this->container['balsa']) > 20)) {
+            $invalidProperties[] = "invalid value for 'balsa', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['balsa']) && (mb_strlen($this->container['balsa']) < 1)) {
+            $invalidProperties[] = "invalid value for 'balsa', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -512,6 +528,13 @@ class NfeSefazTransp implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($vagao) && (mb_strlen($vagao) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $vagao when calling NfeSefazTransp., must be smaller than or equal to 20.');
+        }
+        if (!is_null($vagao) && (mb_strlen($vagao) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $vagao when calling NfeSefazTransp., must be bigger than or equal to 1.');
+        }
+
         $this->container['vagao'] = $vagao;
 
         return $this;
@@ -546,6 +569,13 @@ class NfeSefazTransp implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($balsa) && (mb_strlen($balsa) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $balsa when calling NfeSefazTransp., must be smaller than or equal to 20.');
+        }
+        if (!is_null($balsa) && (mb_strlen($balsa) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $balsa when calling NfeSefazTransp., must be bigger than or equal to 1.');
+        }
+
         $this->container['balsa'] = $balsa;
 
         return $this;

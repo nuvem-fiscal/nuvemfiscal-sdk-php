@@ -326,9 +326,25 @@ class CteSefazDest implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['x_nome'] === null) {
             $invalidProperties[] = "'x_nome' can't be null";
         }
+        if ((mb_strlen($this->container['x_nome']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_nome']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be bigger than or equal to 2.";
+        }
+
         if ($this->container['ender_dest'] === null) {
             $invalidProperties[] = "'ender_dest' can't be null";
         }
+        if (!is_null($this->container['email']) && (mb_strlen($this->container['email']) > 60)) {
+            $invalidProperties[] = "invalid value for 'email', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['email']) && (mb_strlen($this->container['email']) < 1)) {
+            $invalidProperties[] = "invalid value for 'email', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -475,6 +491,13 @@ class CteSefazDest implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling CteSefazDest., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling CteSefazDest., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_nome'] = $x_nome;
 
         return $this;
@@ -604,6 +627,13 @@ class CteSefazDest implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($email) && (mb_strlen($email) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $email when calling CteSefazDest., must be smaller than or equal to 60.');
+        }
+        if (!is_null($email) && (mb_strlen($email) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $email when calling CteSefazDest., must be bigger than or equal to 1.');
+        }
+
         $this->container['email'] = $email;
 
         return $this;

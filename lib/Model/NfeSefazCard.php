@@ -298,6 +298,18 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['tp_integra'] === null) {
             $invalidProperties[] = "'tp_integra' can't be null";
         }
+        if (!is_null($this->container['cnpj']) && (mb_strlen($this->container['cnpj']) > 14)) {
+            $invalidProperties[] = "invalid value for 'cnpj', the character length must be smaller than or equal to 14.";
+        }
+
+        if (!is_null($this->container['c_aut']) && (mb_strlen($this->container['c_aut']) > 20)) {
+            $invalidProperties[] = "invalid value for 'c_aut', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['c_aut']) && (mb_strlen($this->container['c_aut']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_aut', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -376,6 +388,10 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cnpj) && (mb_strlen($cnpj) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $cnpj when calling NfeSefazCard., must be smaller than or equal to 14.');
+        }
+
         $this->container['cnpj'] = $cnpj;
 
         return $this;
@@ -444,6 +460,13 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_aut) && (mb_strlen($c_aut) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $c_aut when calling NfeSefazCard., must be smaller than or equal to 20.');
+        }
+        if (!is_null($c_aut) && (mb_strlen($c_aut) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_aut when calling NfeSefazCard., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_aut'] = $c_aut;
 
         return $this;

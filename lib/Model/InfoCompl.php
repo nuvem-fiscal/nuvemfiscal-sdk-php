@@ -288,6 +288,30 @@ class InfoCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['id_doc_tec']) && (mb_strlen($this->container['id_doc_tec']) > 40)) {
+            $invalidProperties[] = "invalid value for 'id_doc_tec', the character length must be smaller than or equal to 40.";
+        }
+
+        if (!is_null($this->container['id_doc_tec']) && (mb_strlen($this->container['id_doc_tec']) < 1)) {
+            $invalidProperties[] = "invalid value for 'id_doc_tec', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['doc_ref']) && (mb_strlen($this->container['doc_ref']) > 255)) {
+            $invalidProperties[] = "invalid value for 'doc_ref', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['doc_ref']) && (mb_strlen($this->container['doc_ref']) < 1)) {
+            $invalidProperties[] = "invalid value for 'doc_ref', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['x_inf_comp']) && (mb_strlen($this->container['x_inf_comp']) > 2000)) {
+            $invalidProperties[] = "invalid value for 'x_inf_comp', the character length must be smaller than or equal to 2000.";
+        }
+
+        if (!is_null($this->container['x_inf_comp']) && (mb_strlen($this->container['x_inf_comp']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_inf_comp', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -332,6 +356,13 @@ class InfoCompl implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($id_doc_tec) && (mb_strlen($id_doc_tec) > 40)) {
+            throw new \InvalidArgumentException('invalid length for $id_doc_tec when calling InfoCompl., must be smaller than or equal to 40.');
+        }
+        if (!is_null($id_doc_tec) && (mb_strlen($id_doc_tec) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $id_doc_tec when calling InfoCompl., must be bigger than or equal to 1.');
+        }
+
         $this->container['id_doc_tec'] = $id_doc_tec;
 
         return $this;
@@ -366,6 +397,13 @@ class InfoCompl implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($doc_ref) && (mb_strlen($doc_ref) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $doc_ref when calling InfoCompl., must be smaller than or equal to 255.');
+        }
+        if (!is_null($doc_ref) && (mb_strlen($doc_ref) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $doc_ref when calling InfoCompl., must be bigger than or equal to 1.');
+        }
+
         $this->container['doc_ref'] = $doc_ref;
 
         return $this;
@@ -400,6 +438,13 @@ class InfoCompl implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_inf_comp) && (mb_strlen($x_inf_comp) > 2000)) {
+            throw new \InvalidArgumentException('invalid length for $x_inf_comp when calling InfoCompl., must be smaller than or equal to 2000.');
+        }
+        if (!is_null($x_inf_comp) && (mb_strlen($x_inf_comp) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_inf_comp when calling InfoCompl., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_inf_comp'] = $x_inf_comp;
 
         return $this;

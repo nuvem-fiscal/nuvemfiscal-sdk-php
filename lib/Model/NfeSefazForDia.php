@@ -284,6 +284,14 @@ class NfeSefazForDia implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['dia'] === null) {
             $invalidProperties[] = "'dia' can't be null";
         }
+        if (($this->container['dia'] > 31)) {
+            $invalidProperties[] = "invalid value for 'dia', must be smaller than or equal to 31.";
+        }
+
+        if (($this->container['dia'] < 1)) {
+            $invalidProperties[] = "invalid value for 'dia', must be bigger than or equal to 1.";
+        }
+
         if ($this->container['qtde'] === null) {
             $invalidProperties[] = "'qtde' can't be null";
         }
@@ -331,6 +339,14 @@ class NfeSefazForDia implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($dia) && ($dia > 31)) {
+            throw new \InvalidArgumentException('invalid value for $dia when calling NfeSefazForDia., must be smaller than or equal to 31.');
+        }
+        if (!is_null($dia) && ($dia < 1)) {
+            throw new \InvalidArgumentException('invalid value for $dia when calling NfeSefazForDia., must be bigger than or equal to 1.');
+        }
+
         $this->container['dia'] = $dia;
 
         return $this;

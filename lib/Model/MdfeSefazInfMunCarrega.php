@@ -287,6 +287,14 @@ class MdfeSefazInfMunCarrega implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['x_mun_carrega'] === null) {
             $invalidProperties[] = "'x_mun_carrega' can't be null";
         }
+        if ((mb_strlen($this->container['x_mun_carrega']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_mun_carrega', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_mun_carrega']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_mun_carrega', the character length must be bigger than or equal to 2.";
+        }
+
         return $invalidProperties;
     }
 
@@ -365,6 +373,13 @@ class MdfeSefazInfMunCarrega implements ModelInterface, ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_mun_carrega) && (mb_strlen($x_mun_carrega) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_mun_carrega when calling MdfeSefazInfMunCarrega., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_mun_carrega) && (mb_strlen($x_mun_carrega) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_mun_carrega when calling MdfeSefazInfMunCarrega., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_mun_carrega'] = $x_mun_carrega;
 
         return $this;

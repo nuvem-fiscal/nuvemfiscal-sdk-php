@@ -284,6 +284,14 @@ class MdfeSefazCondutor implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['x_nome'] === null) {
             $invalidProperties[] = "'x_nome' can't be null";
         }
+        if ((mb_strlen($this->container['x_nome']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_nome']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be bigger than or equal to 2.";
+        }
+
         if ($this->container['cpf'] === null) {
             $invalidProperties[] = "'cpf' can't be null";
         }
@@ -331,6 +339,13 @@ class MdfeSefazCondutor implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling MdfeSefazCondutor., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling MdfeSefazCondutor., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_nome'] = $x_nome;
 
         return $this;

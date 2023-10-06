@@ -295,6 +295,30 @@ class MdfeSefazInfBanc implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['cod_banco']) && (mb_strlen($this->container['cod_banco']) > 5)) {
+            $invalidProperties[] = "invalid value for 'cod_banco', the character length must be smaller than or equal to 5.";
+        }
+
+        if (!is_null($this->container['cod_banco']) && (mb_strlen($this->container['cod_banco']) < 3)) {
+            $invalidProperties[] = "invalid value for 'cod_banco', the character length must be bigger than or equal to 3.";
+        }
+
+        if (!is_null($this->container['cod_agencia']) && (mb_strlen($this->container['cod_agencia']) > 10)) {
+            $invalidProperties[] = "invalid value for 'cod_agencia', the character length must be smaller than or equal to 10.";
+        }
+
+        if (!is_null($this->container['cod_agencia']) && (mb_strlen($this->container['cod_agencia']) < 1)) {
+            $invalidProperties[] = "invalid value for 'cod_agencia', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['pix']) && (mb_strlen($this->container['pix']) > 60)) {
+            $invalidProperties[] = "invalid value for 'pix', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['pix']) && (mb_strlen($this->container['pix']) < 2)) {
+            $invalidProperties[] = "invalid value for 'pix', the character length must be bigger than or equal to 2.";
+        }
+
         return $invalidProperties;
     }
 
@@ -339,6 +363,13 @@ class MdfeSefazInfBanc implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cod_banco) && (mb_strlen($cod_banco) > 5)) {
+            throw new \InvalidArgumentException('invalid length for $cod_banco when calling MdfeSefazInfBanc., must be smaller than or equal to 5.');
+        }
+        if (!is_null($cod_banco) && (mb_strlen($cod_banco) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $cod_banco when calling MdfeSefazInfBanc., must be bigger than or equal to 3.');
+        }
+
         $this->container['cod_banco'] = $cod_banco;
 
         return $this;
@@ -373,6 +404,13 @@ class MdfeSefazInfBanc implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cod_agencia) && (mb_strlen($cod_agencia) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $cod_agencia when calling MdfeSefazInfBanc., must be smaller than or equal to 10.');
+        }
+        if (!is_null($cod_agencia) && (mb_strlen($cod_agencia) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $cod_agencia when calling MdfeSefazInfBanc., must be bigger than or equal to 1.');
+        }
+
         $this->container['cod_agencia'] = $cod_agencia;
 
         return $this;
@@ -441,6 +479,13 @@ class MdfeSefazInfBanc implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($pix) && (mb_strlen($pix) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $pix when calling MdfeSefazInfBanc., must be smaller than or equal to 60.');
+        }
+        if (!is_null($pix) && (mb_strlen($pix) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $pix when calling MdfeSefazInfBanc., must be bigger than or equal to 2.');
+        }
+
         $this->container['pix'] = $pix;
 
         return $this;

@@ -305,6 +305,22 @@ class CteSefazInfCarga implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['pro_pred'] === null) {
             $invalidProperties[] = "'pro_pred' can't be null";
         }
+        if ((mb_strlen($this->container['pro_pred']) > 60)) {
+            $invalidProperties[] = "invalid value for 'pro_pred', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['pro_pred']) < 1)) {
+            $invalidProperties[] = "invalid value for 'pro_pred', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['x_out_cat']) && (mb_strlen($this->container['x_out_cat']) > 30)) {
+            $invalidProperties[] = "invalid value for 'x_out_cat', the character length must be smaller than or equal to 30.";
+        }
+
+        if (!is_null($this->container['x_out_cat']) && (mb_strlen($this->container['x_out_cat']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_out_cat', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['inf_q'] === null) {
             $invalidProperties[] = "'inf_q' can't be null";
         }
@@ -386,6 +402,13 @@ class CteSefazInfCarga implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($pro_pred) && (mb_strlen($pro_pred) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $pro_pred when calling CteSefazInfCarga., must be smaller than or equal to 60.');
+        }
+        if (!is_null($pro_pred) && (mb_strlen($pro_pred) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $pro_pred when calling CteSefazInfCarga., must be bigger than or equal to 1.');
+        }
+
         $this->container['pro_pred'] = $pro_pred;
 
         return $this;
@@ -420,6 +443,13 @@ class CteSefazInfCarga implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_out_cat) && (mb_strlen($x_out_cat) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $x_out_cat when calling CteSefazInfCarga., must be smaller than or equal to 30.');
+        }
+        if (!is_null($x_out_cat) && (mb_strlen($x_out_cat) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_out_cat when calling CteSefazInfCarga., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_out_cat'] = $x_out_cat;
 
         return $this;

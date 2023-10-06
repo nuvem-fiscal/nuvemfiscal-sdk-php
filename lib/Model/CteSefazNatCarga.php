@@ -281,6 +281,14 @@ class CteSefazNatCarga implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['x_dime']) && (mb_strlen($this->container['x_dime']) > 14)) {
+            $invalidProperties[] = "invalid value for 'x_dime', the character length must be smaller than or equal to 14.";
+        }
+
+        if (!is_null($this->container['x_dime']) && (mb_strlen($this->container['x_dime']) < 5)) {
+            $invalidProperties[] = "invalid value for 'x_dime', the character length must be bigger than or equal to 5.";
+        }
+
         return $invalidProperties;
     }
 
@@ -325,6 +333,13 @@ class CteSefazNatCarga implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_dime) && (mb_strlen($x_dime) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $x_dime when calling CteSefazNatCarga., must be smaller than or equal to 14.');
+        }
+        if (!is_null($x_dime) && (mb_strlen($x_dime) < 5)) {
+            throw new \InvalidArgumentException('invalid length for $x_dime when calling CteSefazNatCarga., must be bigger than or equal to 5.');
+        }
+
         $this->container['x_dime'] = $x_dime;
 
         return $this;

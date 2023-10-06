@@ -346,6 +346,10 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['tp_moeda'] === null) {
             $invalidProperties[] = "'tp_moeda' can't be null";
         }
+        if ((mb_strlen($this->container['tp_moeda']) > 3)) {
+            $invalidProperties[] = "invalid value for 'tp_moeda', the character length must be smaller than or equal to 3.";
+        }
+
         if ($this->container['v_serv_moeda'] === null) {
             $invalidProperties[] = "'v_serv_moeda' can't be null";
         }
@@ -358,6 +362,22 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['mov_temp_bens'] === null) {
             $invalidProperties[] = "'mov_temp_bens' can't be null";
         }
+        if (!is_null($this->container['n_di']) && (mb_strlen($this->container['n_di']) > 12)) {
+            $invalidProperties[] = "invalid value for 'n_di', the character length must be smaller than or equal to 12.";
+        }
+
+        if (!is_null($this->container['n_di']) && (mb_strlen($this->container['n_di']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_di', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['n_re']) && (mb_strlen($this->container['n_re']) > 12)) {
+            $invalidProperties[] = "invalid value for 'n_re', the character length must be smaller than or equal to 12.";
+        }
+
+        if (!is_null($this->container['n_re']) && (mb_strlen($this->container['n_re']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_re', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['mdic'] === null) {
             $invalidProperties[] = "'mdic' can't be null";
         }
@@ -473,6 +493,10 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($tp_moeda) && (mb_strlen($tp_moeda) > 3)) {
+            throw new \InvalidArgumentException('invalid length for $tp_moeda when calling ComExterior., must be smaller than or equal to 3.');
+        }
+
         $this->container['tp_moeda'] = $tp_moeda;
 
         return $this;
@@ -643,6 +667,13 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_di) && (mb_strlen($n_di) > 12)) {
+            throw new \InvalidArgumentException('invalid length for $n_di when calling ComExterior., must be smaller than or equal to 12.');
+        }
+        if (!is_null($n_di) && (mb_strlen($n_di) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_di when calling ComExterior., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_di'] = $n_di;
 
         return $this;
@@ -677,6 +708,13 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_re) && (mb_strlen($n_re) > 12)) {
+            throw new \InvalidArgumentException('invalid length for $n_re when calling ComExterior., must be smaller than or equal to 12.');
+        }
+        if (!is_null($n_re) && (mb_strlen($n_re) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_re when calling ComExterior., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_re'] = $n_re;
 
         return $this;

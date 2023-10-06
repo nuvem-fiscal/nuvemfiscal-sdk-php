@@ -284,9 +284,21 @@ class NfeSefazInfIntermed implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['cnpj'] === null) {
             $invalidProperties[] = "'cnpj' can't be null";
         }
+        if ((mb_strlen($this->container['cnpj']) > 14)) {
+            $invalidProperties[] = "invalid value for 'cnpj', the character length must be smaller than or equal to 14.";
+        }
+
         if ($this->container['id_cad_int_tran'] === null) {
             $invalidProperties[] = "'id_cad_int_tran' can't be null";
         }
+        if ((mb_strlen($this->container['id_cad_int_tran']) > 60)) {
+            $invalidProperties[] = "invalid value for 'id_cad_int_tran', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['id_cad_int_tran']) < 2)) {
+            $invalidProperties[] = "invalid value for 'id_cad_int_tran', the character length must be bigger than or equal to 2.";
+        }
+
         return $invalidProperties;
     }
 
@@ -331,6 +343,10 @@ class NfeSefazInfIntermed implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cnpj) && (mb_strlen($cnpj) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $cnpj when calling NfeSefazInfIntermed., must be smaller than or equal to 14.');
+        }
+
         $this->container['cnpj'] = $cnpj;
 
         return $this;
@@ -365,6 +381,13 @@ class NfeSefazInfIntermed implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($id_cad_int_tran) && (mb_strlen($id_cad_int_tran) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $id_cad_int_tran when calling NfeSefazInfIntermed., must be smaller than or equal to 60.');
+        }
+        if (!is_null($id_cad_int_tran) && (mb_strlen($id_cad_int_tran) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $id_cad_int_tran when calling NfeSefazInfIntermed., must be bigger than or equal to 2.');
+        }
+
         $this->container['id_cad_int_tran'] = $id_cad_int_tran;
 
         return $this;

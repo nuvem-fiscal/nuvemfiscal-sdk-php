@@ -294,9 +294,25 @@ class NfeSefazRefECF implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['n_ecf'] === null) {
             $invalidProperties[] = "'n_ecf' can't be null";
         }
+        if (($this->container['n_ecf'] > 999)) {
+            $invalidProperties[] = "invalid value for 'n_ecf', must be smaller than or equal to 999.";
+        }
+
+        if (($this->container['n_ecf'] < 0)) {
+            $invalidProperties[] = "invalid value for 'n_ecf', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['n_coo'] === null) {
             $invalidProperties[] = "'n_coo' can't be null";
         }
+        if (($this->container['n_coo'] > 999999)) {
+            $invalidProperties[] = "invalid value for 'n_coo', must be smaller than or equal to 999999.";
+        }
+
+        if (($this->container['n_coo'] < 0)) {
+            $invalidProperties[] = "invalid value for 'n_coo', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -375,6 +391,14 @@ class NfeSefazRefECF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_ecf) && ($n_ecf > 999)) {
+            throw new \InvalidArgumentException('invalid value for $n_ecf when calling NfeSefazRefECF., must be smaller than or equal to 999.');
+        }
+        if (!is_null($n_ecf) && ($n_ecf < 0)) {
+            throw new \InvalidArgumentException('invalid value for $n_ecf when calling NfeSefazRefECF., must be bigger than or equal to 0.');
+        }
+
         $this->container['n_ecf'] = $n_ecf;
 
         return $this;
@@ -409,6 +433,14 @@ class NfeSefazRefECF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_coo) && ($n_coo > 999999)) {
+            throw new \InvalidArgumentException('invalid value for $n_coo when calling NfeSefazRefECF., must be smaller than or equal to 999999.');
+        }
+        if (!is_null($n_coo) && ($n_coo < 0)) {
+            throw new \InvalidArgumentException('invalid value for $n_coo when calling NfeSefazRefECF., must be bigger than or equal to 0.');
+        }
+
         $this->container['n_coo'] = $n_coo;
 
         return $this;

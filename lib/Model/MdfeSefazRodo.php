@@ -304,6 +304,14 @@ class MdfeSefazRodo implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['veic_tracao'] === null) {
             $invalidProperties[] = "'veic_tracao' can't be null";
         }
+        if (!is_null($this->container['cod_ag_porto']) && (mb_strlen($this->container['cod_ag_porto']) > 16)) {
+            $invalidProperties[] = "invalid value for 'cod_ag_porto', the character length must be smaller than or equal to 16.";
+        }
+
+        if (!is_null($this->container['cod_ag_porto']) && (mb_strlen($this->container['cod_ag_porto']) < 0)) {
+            $invalidProperties[] = "invalid value for 'cod_ag_porto', the character length must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -429,6 +437,13 @@ class MdfeSefazRodo implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cod_ag_porto) && (mb_strlen($cod_ag_porto) > 16)) {
+            throw new \InvalidArgumentException('invalid length for $cod_ag_porto when calling MdfeSefazRodo., must be smaller than or equal to 16.');
+        }
+        if (!is_null($cod_ag_porto) && (mb_strlen($cod_ag_porto) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $cod_ag_porto when calling MdfeSefazRodo., must be bigger than or equal to 0.');
+        }
+
         $this->container['cod_ag_porto'] = $cod_ag_porto;
 
         return $this;

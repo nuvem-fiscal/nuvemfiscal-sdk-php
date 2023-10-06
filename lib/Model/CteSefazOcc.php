@@ -295,9 +295,25 @@ class CteSefazOcc implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['serie']) && (mb_strlen($this->container['serie']) > 3)) {
+            $invalidProperties[] = "invalid value for 'serie', the character length must be smaller than or equal to 3.";
+        }
+
+        if (!is_null($this->container['serie']) && (mb_strlen($this->container['serie']) < 1)) {
+            $invalidProperties[] = "invalid value for 'serie', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['n_occ'] === null) {
             $invalidProperties[] = "'n_occ' can't be null";
         }
+        if (($this->container['n_occ'] > 999999)) {
+            $invalidProperties[] = "invalid value for 'n_occ', must be smaller than or equal to 999999.";
+        }
+
+        if (($this->container['n_occ'] < 1)) {
+            $invalidProperties[] = "invalid value for 'n_occ', must be bigger than or equal to 1.";
+        }
+
         if ($this->container['d_emi'] === null) {
             $invalidProperties[] = "'d_emi' can't be null";
         }
@@ -345,6 +361,13 @@ class CteSefazOcc implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($serie) && (mb_strlen($serie) > 3)) {
+            throw new \InvalidArgumentException('invalid length for $serie when calling CteSefazOcc., must be smaller than or equal to 3.');
+        }
+        if (!is_null($serie) && (mb_strlen($serie) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $serie when calling CteSefazOcc., must be bigger than or equal to 1.');
+        }
+
         $this->container['serie'] = $serie;
 
         return $this;
@@ -379,6 +402,14 @@ class CteSefazOcc implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_occ) && ($n_occ > 999999)) {
+            throw new \InvalidArgumentException('invalid value for $n_occ when calling CteSefazOcc., must be smaller than or equal to 999999.');
+        }
+        if (!is_null($n_occ) && ($n_occ < 1)) {
+            throw new \InvalidArgumentException('invalid value for $n_occ when calling CteSefazOcc., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_occ'] = $n_occ;
 
         return $this;

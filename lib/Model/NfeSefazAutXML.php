@@ -281,6 +281,14 @@ class NfeSefazAutXML implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['cnpj']) && (mb_strlen($this->container['cnpj']) > 14)) {
+            $invalidProperties[] = "invalid value for 'cnpj', the character length must be smaller than or equal to 14.";
+        }
+
+        if (!is_null($this->container['cpf']) && (mb_strlen($this->container['cpf']) > 11)) {
+            $invalidProperties[] = "invalid value for 'cpf', the character length must be smaller than or equal to 11.";
+        }
+
         return $invalidProperties;
     }
 
@@ -325,6 +333,10 @@ class NfeSefazAutXML implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cnpj) && (mb_strlen($cnpj) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $cnpj when calling NfeSefazAutXML., must be smaller than or equal to 14.');
+        }
+
         $this->container['cnpj'] = $cnpj;
 
         return $this;
@@ -359,6 +371,10 @@ class NfeSefazAutXML implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cpf) && (mb_strlen($cpf) > 11)) {
+            throw new \InvalidArgumentException('invalid length for $cpf when calling NfeSefazAutXML., must be smaller than or equal to 11.');
+        }
+
         $this->container['cpf'] = $cpf;
 
         return $this;

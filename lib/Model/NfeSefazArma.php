@@ -301,12 +301,36 @@ class NfeSefazArma implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['n_serie'] === null) {
             $invalidProperties[] = "'n_serie' can't be null";
         }
+        if ((mb_strlen($this->container['n_serie']) > 15)) {
+            $invalidProperties[] = "invalid value for 'n_serie', the character length must be smaller than or equal to 15.";
+        }
+
+        if ((mb_strlen($this->container['n_serie']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_serie', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['n_cano'] === null) {
             $invalidProperties[] = "'n_cano' can't be null";
         }
+        if ((mb_strlen($this->container['n_cano']) > 15)) {
+            $invalidProperties[] = "invalid value for 'n_cano', the character length must be smaller than or equal to 15.";
+        }
+
+        if ((mb_strlen($this->container['n_cano']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_cano', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['descr'] === null) {
             $invalidProperties[] = "'descr' can't be null";
         }
+        if ((mb_strlen($this->container['descr']) > 256)) {
+            $invalidProperties[] = "invalid value for 'descr', the character length must be smaller than or equal to 256.";
+        }
+
+        if ((mb_strlen($this->container['descr']) < 1)) {
+            $invalidProperties[] = "invalid value for 'descr', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -385,6 +409,13 @@ class NfeSefazArma implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_serie) && (mb_strlen($n_serie) > 15)) {
+            throw new \InvalidArgumentException('invalid length for $n_serie when calling NfeSefazArma., must be smaller than or equal to 15.');
+        }
+        if (!is_null($n_serie) && (mb_strlen($n_serie) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_serie when calling NfeSefazArma., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_serie'] = $n_serie;
 
         return $this;
@@ -419,6 +450,13 @@ class NfeSefazArma implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_cano) && (mb_strlen($n_cano) > 15)) {
+            throw new \InvalidArgumentException('invalid length for $n_cano when calling NfeSefazArma., must be smaller than or equal to 15.');
+        }
+        if (!is_null($n_cano) && (mb_strlen($n_cano) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_cano when calling NfeSefazArma., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_cano'] = $n_cano;
 
         return $this;
@@ -453,6 +491,13 @@ class NfeSefazArma implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($descr) && (mb_strlen($descr) > 256)) {
+            throw new \InvalidArgumentException('invalid length for $descr when calling NfeSefazArma., must be smaller than or equal to 256.');
+        }
+        if (!is_null($descr) && (mb_strlen($descr) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $descr when calling NfeSefazArma., must be bigger than or equal to 1.');
+        }
+
         $this->container['descr'] = $descr;
 
         return $this;

@@ -312,6 +312,10 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['ch_cte'] === null) {
             $invalidProperties[] = "'ch_cte' can't be null";
         }
+        if ((mb_strlen($this->container['ch_cte']) > 44)) {
+            $invalidProperties[] = "invalid value for 'ch_cte', the character length must be smaller than or equal to 44.";
+        }
+
         return $invalidProperties;
     }
 
@@ -356,6 +360,10 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ch_cte) && (mb_strlen($ch_cte) > 44)) {
+            throw new \InvalidArgumentException('invalid length for $ch_cte when calling MdfeSefazInfCTe., must be smaller than or equal to 44.');
+        }
+
         $this->container['ch_cte'] = $ch_cte;
 
         return $this;

@@ -286,6 +286,10 @@ class EmpresaConfigNfceSefaz implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['csc'] === null) {
             $invalidProperties[] = "'csc' can't be null";
         }
+        if ((mb_strlen($this->container['csc']) > 50)) {
+            $invalidProperties[] = "invalid value for 'csc', the character length must be smaller than or equal to 50.";
+        }
+
         return $invalidProperties;
     }
 
@@ -350,6 +354,10 @@ class EmpresaConfigNfceSefaz implements ModelInterface, ArrayAccess, \JsonSerial
         if (is_null($csc)) {
             throw new \InvalidArgumentException('non-nullable csc cannot be null');
         }
+        if ((mb_strlen($csc) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $csc when calling EmpresaConfigNfceSefaz., must be smaller than or equal to 50.');
+        }
+
         $this->container['csc'] = $csc;
 
         return $this;

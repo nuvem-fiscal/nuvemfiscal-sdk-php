@@ -329,18 +329,46 @@ class NfeSefazRefNFP implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['aamm'] === null) {
             $invalidProperties[] = "'aamm' can't be null";
         }
+        if (!is_null($this->container['cnpj']) && (mb_strlen($this->container['cnpj']) > 14)) {
+            $invalidProperties[] = "invalid value for 'cnpj', the character length must be smaller than or equal to 14.";
+        }
+
+        if (!is_null($this->container['cpf']) && (mb_strlen($this->container['cpf']) > 11)) {
+            $invalidProperties[] = "invalid value for 'cpf', the character length must be smaller than or equal to 11.";
+        }
+
         if ($this->container['ie'] === null) {
             $invalidProperties[] = "'ie' can't be null";
         }
+        if ((mb_strlen($this->container['ie']) > 14)) {
+            $invalidProperties[] = "invalid value for 'ie', the character length must be smaller than or equal to 14.";
+        }
+
         if ($this->container['mod'] === null) {
             $invalidProperties[] = "'mod' can't be null";
         }
         if ($this->container['serie'] === null) {
             $invalidProperties[] = "'serie' can't be null";
         }
+        if (($this->container['serie'] > 999)) {
+            $invalidProperties[] = "invalid value for 'serie', must be smaller than or equal to 999.";
+        }
+
+        if (($this->container['serie'] < 0)) {
+            $invalidProperties[] = "invalid value for 'serie', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['n_nf'] === null) {
             $invalidProperties[] = "'n_nf' can't be null";
         }
+        if (($this->container['n_nf'] > 999999999)) {
+            $invalidProperties[] = "invalid value for 'n_nf', must be smaller than or equal to 999999999.";
+        }
+
+        if (($this->container['n_nf'] < 1)) {
+            $invalidProperties[] = "invalid value for 'n_nf', must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -453,6 +481,10 @@ class NfeSefazRefNFP implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cnpj) && (mb_strlen($cnpj) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $cnpj when calling NfeSefazRefNFP., must be smaller than or equal to 14.');
+        }
+
         $this->container['cnpj'] = $cnpj;
 
         return $this;
@@ -487,6 +519,10 @@ class NfeSefazRefNFP implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cpf) && (mb_strlen($cpf) > 11)) {
+            throw new \InvalidArgumentException('invalid length for $cpf when calling NfeSefazRefNFP., must be smaller than or equal to 11.');
+        }
+
         $this->container['cpf'] = $cpf;
 
         return $this;
@@ -521,6 +557,10 @@ class NfeSefazRefNFP implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ie) && (mb_strlen($ie) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $ie when calling NfeSefazRefNFP., must be smaller than or equal to 14.');
+        }
+
         $this->container['ie'] = $ie;
 
         return $this;
@@ -589,6 +629,14 @@ class NfeSefazRefNFP implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($serie) && ($serie > 999)) {
+            throw new \InvalidArgumentException('invalid value for $serie when calling NfeSefazRefNFP., must be smaller than or equal to 999.');
+        }
+        if (!is_null($serie) && ($serie < 0)) {
+            throw new \InvalidArgumentException('invalid value for $serie when calling NfeSefazRefNFP., must be bigger than or equal to 0.');
+        }
+
         $this->container['serie'] = $serie;
 
         return $this;
@@ -623,6 +671,14 @@ class NfeSefazRefNFP implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_nf) && ($n_nf > 999999999)) {
+            throw new \InvalidArgumentException('invalid value for $n_nf when calling NfeSefazRefNFP., must be smaller than or equal to 999999999.');
+        }
+        if (!is_null($n_nf) && ($n_nf < 1)) {
+            throw new \InvalidArgumentException('invalid value for $n_nf when calling NfeSefazRefNFP., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_nf'] = $n_nf;
 
         return $this;

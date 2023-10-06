@@ -288,6 +288,22 @@ class InfoObra implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['c_obra']) && (mb_strlen($this->container['c_obra']) > 30)) {
+            $invalidProperties[] = "invalid value for 'c_obra', the character length must be smaller than or equal to 30.";
+        }
+
+        if (!is_null($this->container['c_obra']) && (mb_strlen($this->container['c_obra']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_obra', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['insc_imob_fisc']) && (mb_strlen($this->container['insc_imob_fisc']) > 30)) {
+            $invalidProperties[] = "invalid value for 'insc_imob_fisc', the character length must be smaller than or equal to 30.";
+        }
+
+        if (!is_null($this->container['insc_imob_fisc']) && (mb_strlen($this->container['insc_imob_fisc']) < 1)) {
+            $invalidProperties[] = "invalid value for 'insc_imob_fisc', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -332,6 +348,13 @@ class InfoObra implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_obra) && (mb_strlen($c_obra) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $c_obra when calling InfoObra., must be smaller than or equal to 30.');
+        }
+        if (!is_null($c_obra) && (mb_strlen($c_obra) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_obra when calling InfoObra., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_obra'] = $c_obra;
 
         return $this;
@@ -366,6 +389,13 @@ class InfoObra implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($insc_imob_fisc) && (mb_strlen($insc_imob_fisc) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $insc_imob_fisc when calling InfoObra., must be smaller than or equal to 30.');
+        }
+        if (!is_null($insc_imob_fisc) && (mb_strlen($insc_imob_fisc) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $insc_imob_fisc when calling InfoObra., must be bigger than or equal to 1.');
+        }
+
         $this->container['insc_imob_fisc'] = $insc_imob_fisc;
 
         return $this;

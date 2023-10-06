@@ -291,9 +291,21 @@ class Substituicao implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['ch_substda'] === null) {
             $invalidProperties[] = "'ch_substda' can't be null";
         }
+        if ((mb_strlen($this->container['ch_substda']) > 50)) {
+            $invalidProperties[] = "invalid value for 'ch_substda', the character length must be smaller than or equal to 50.";
+        }
+
         if ($this->container['c_motivo'] === null) {
             $invalidProperties[] = "'c_motivo' can't be null";
         }
+        if (!is_null($this->container['x_motivo']) && (mb_strlen($this->container['x_motivo']) > 255)) {
+            $invalidProperties[] = "invalid value for 'x_motivo', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['x_motivo']) && (mb_strlen($this->container['x_motivo']) < 15)) {
+            $invalidProperties[] = "invalid value for 'x_motivo', the character length must be bigger than or equal to 15.";
+        }
+
         return $invalidProperties;
     }
 
@@ -338,6 +350,10 @@ class Substituicao implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ch_substda) && (mb_strlen($ch_substda) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $ch_substda when calling Substituicao., must be smaller than or equal to 50.');
+        }
+
         $this->container['ch_substda'] = $ch_substda;
 
         return $this;
@@ -406,6 +422,13 @@ class Substituicao implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_motivo) && (mb_strlen($x_motivo) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $x_motivo when calling Substituicao., must be smaller than or equal to 255.');
+        }
+        if (!is_null($x_motivo) && (mb_strlen($x_motivo) < 15)) {
+            throw new \InvalidArgumentException('invalid length for $x_motivo when calling Substituicao., must be bigger than or equal to 15.');
+        }
+
         $this->container['x_motivo'] = $x_motivo;
 
         return $this;

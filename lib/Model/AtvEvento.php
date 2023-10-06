@@ -305,12 +305,28 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['desc'] === null) {
             $invalidProperties[] = "'desc' can't be null";
         }
+        if ((mb_strlen($this->container['desc']) > 255)) {
+            $invalidProperties[] = "invalid value for 'desc', the character length must be smaller than or equal to 255.";
+        }
+
+        if ((mb_strlen($this->container['desc']) < 1)) {
+            $invalidProperties[] = "invalid value for 'desc', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['dt_ini'] === null) {
             $invalidProperties[] = "'dt_ini' can't be null";
         }
         if ($this->container['dt_fim'] === null) {
             $invalidProperties[] = "'dt_fim' can't be null";
         }
+        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) > 30)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 30.";
+        }
+
+        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -355,6 +371,13 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($desc) && (mb_strlen($desc) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $desc when calling AtvEvento., must be smaller than or equal to 255.');
+        }
+        if (!is_null($desc) && (mb_strlen($desc) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $desc when calling AtvEvento., must be bigger than or equal to 1.');
+        }
+
         $this->container['desc'] = $desc;
 
         return $this;
@@ -457,6 +480,13 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($id) && (mb_strlen($id) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling AtvEvento., must be smaller than or equal to 30.');
+        }
+        if (!is_null($id) && (mb_strlen($id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling AtvEvento., must be bigger than or equal to 1.');
+        }
+
         $this->container['id'] = $id;
 
         return $this;

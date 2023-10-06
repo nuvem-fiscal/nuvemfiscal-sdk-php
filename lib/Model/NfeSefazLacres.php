@@ -276,6 +276,14 @@ class NfeSefazLacres implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['n_lacre'] === null) {
             $invalidProperties[] = "'n_lacre' can't be null";
         }
+        if ((mb_strlen($this->container['n_lacre']) > 60)) {
+            $invalidProperties[] = "invalid value for 'n_lacre', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['n_lacre']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_lacre', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -320,6 +328,13 @@ class NfeSefazLacres implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_lacre) && (mb_strlen($n_lacre) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $n_lacre when calling NfeSefazLacres., must be smaller than or equal to 60.');
+        }
+        if (!is_null($n_lacre) && (mb_strlen($n_lacre) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_lacre when calling NfeSefazLacres., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_lacre'] = $n_lacre;
 
         return $this;

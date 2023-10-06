@@ -351,15 +351,47 @@ class DfePedidoInutilizacao implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['serie'] === null) {
             $invalidProperties[] = "'serie' can't be null";
         }
+        if (($this->container['serie'] > 999)) {
+            $invalidProperties[] = "invalid value for 'serie', must be smaller than or equal to 999.";
+        }
+
+        if (($this->container['serie'] < 0)) {
+            $invalidProperties[] = "invalid value for 'serie', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['numero_inicial'] === null) {
             $invalidProperties[] = "'numero_inicial' can't be null";
         }
+        if (($this->container['numero_inicial'] > 999999999)) {
+            $invalidProperties[] = "invalid value for 'numero_inicial', must be smaller than or equal to 999999999.";
+        }
+
+        if (($this->container['numero_inicial'] < 0)) {
+            $invalidProperties[] = "invalid value for 'numero_inicial', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['numero_final'] === null) {
             $invalidProperties[] = "'numero_final' can't be null";
         }
+        if (($this->container['numero_final'] > 999999999)) {
+            $invalidProperties[] = "invalid value for 'numero_final', must be smaller than or equal to 999999999.";
+        }
+
+        if (($this->container['numero_final'] < 0)) {
+            $invalidProperties[] = "invalid value for 'numero_final', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['justificativa'] === null) {
             $invalidProperties[] = "'justificativa' can't be null";
         }
+        if ((mb_strlen($this->container['justificativa']) > 255)) {
+            $invalidProperties[] = "invalid value for 'justificativa', the character length must be smaller than or equal to 255.";
+        }
+
+        if ((mb_strlen($this->container['justificativa']) < 15)) {
+            $invalidProperties[] = "invalid value for 'justificativa', the character length must be bigger than or equal to 15.";
+        }
+
         return $invalidProperties;
     }
 
@@ -488,6 +520,14 @@ class DfePedidoInutilizacao implements ModelInterface, ArrayAccess, \JsonSeriali
         if (is_null($serie)) {
             throw new \InvalidArgumentException('non-nullable serie cannot be null');
         }
+
+        if (($serie > 999)) {
+            throw new \InvalidArgumentException('invalid value for $serie when calling DfePedidoInutilizacao., must be smaller than or equal to 999.');
+        }
+        if (($serie < 0)) {
+            throw new \InvalidArgumentException('invalid value for $serie when calling DfePedidoInutilizacao., must be bigger than or equal to 0.');
+        }
+
         $this->container['serie'] = $serie;
 
         return $this;
@@ -515,6 +555,14 @@ class DfePedidoInutilizacao implements ModelInterface, ArrayAccess, \JsonSeriali
         if (is_null($numero_inicial)) {
             throw new \InvalidArgumentException('non-nullable numero_inicial cannot be null');
         }
+
+        if (($numero_inicial > 999999999)) {
+            throw new \InvalidArgumentException('invalid value for $numero_inicial when calling DfePedidoInutilizacao., must be smaller than or equal to 999999999.');
+        }
+        if (($numero_inicial < 0)) {
+            throw new \InvalidArgumentException('invalid value for $numero_inicial when calling DfePedidoInutilizacao., must be bigger than or equal to 0.');
+        }
+
         $this->container['numero_inicial'] = $numero_inicial;
 
         return $this;
@@ -542,6 +590,14 @@ class DfePedidoInutilizacao implements ModelInterface, ArrayAccess, \JsonSeriali
         if (is_null($numero_final)) {
             throw new \InvalidArgumentException('non-nullable numero_final cannot be null');
         }
+
+        if (($numero_final > 999999999)) {
+            throw new \InvalidArgumentException('invalid value for $numero_final when calling DfePedidoInutilizacao., must be smaller than or equal to 999999999.');
+        }
+        if (($numero_final < 0)) {
+            throw new \InvalidArgumentException('invalid value for $numero_final when calling DfePedidoInutilizacao., must be bigger than or equal to 0.');
+        }
+
         $this->container['numero_final'] = $numero_final;
 
         return $this;
@@ -569,6 +625,13 @@ class DfePedidoInutilizacao implements ModelInterface, ArrayAccess, \JsonSeriali
         if (is_null($justificativa)) {
             throw new \InvalidArgumentException('non-nullable justificativa cannot be null');
         }
+        if ((mb_strlen($justificativa) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $justificativa when calling DfePedidoInutilizacao., must be smaller than or equal to 255.');
+        }
+        if ((mb_strlen($justificativa) < 15)) {
+            throw new \InvalidArgumentException('invalid length for $justificativa when calling DfePedidoInutilizacao., must be bigger than or equal to 15.');
+        }
+
         $this->container['justificativa'] = $justificativa;
 
         return $this;

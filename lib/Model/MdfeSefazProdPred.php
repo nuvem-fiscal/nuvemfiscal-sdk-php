@@ -308,6 +308,14 @@ class MdfeSefazProdPred implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['x_prod'] === null) {
             $invalidProperties[] = "'x_prod' can't be null";
         }
+        if ((mb_strlen($this->container['x_prod']) > 120)) {
+            $invalidProperties[] = "invalid value for 'x_prod', the character length must be smaller than or equal to 120.";
+        }
+
+        if ((mb_strlen($this->container['x_prod']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_prod', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -386,6 +394,13 @@ class MdfeSefazProdPred implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_prod) && (mb_strlen($x_prod) > 120)) {
+            throw new \InvalidArgumentException('invalid length for $x_prod when calling MdfeSefazProdPred., must be smaller than or equal to 120.');
+        }
+        if (!is_null($x_prod) && (mb_strlen($x_prod) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_prod when calling MdfeSefazProdPred., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_prod'] = $x_prod;
 
         return $this;

@@ -305,6 +305,18 @@ class CteSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['chave'] === null) {
             $invalidProperties[] = "'chave' can't be null";
         }
+        if ((mb_strlen($this->container['chave']) > 44)) {
+            $invalidProperties[] = "invalid value for 'chave', the character length must be smaller than or equal to 44.";
+        }
+
+        if (!is_null($this->container['pin']) && (mb_strlen($this->container['pin']) > 9)) {
+            $invalidProperties[] = "invalid value for 'pin', the character length must be smaller than or equal to 9.";
+        }
+
+        if (!is_null($this->container['pin']) && (mb_strlen($this->container['pin']) < 2)) {
+            $invalidProperties[] = "invalid value for 'pin', the character length must be bigger than or equal to 2.";
+        }
+
         return $invalidProperties;
     }
 
@@ -349,6 +361,10 @@ class CteSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($chave) && (mb_strlen($chave) > 44)) {
+            throw new \InvalidArgumentException('invalid length for $chave when calling CteSefazInfNFe., must be smaller than or equal to 44.');
+        }
+
         $this->container['chave'] = $chave;
 
         return $this;
@@ -383,6 +399,13 @@ class CteSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($pin) && (mb_strlen($pin) > 9)) {
+            throw new \InvalidArgumentException('invalid length for $pin when calling CteSefazInfNFe., must be smaller than or equal to 9.');
+        }
+        if (!is_null($pin) && (mb_strlen($pin) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $pin when calling CteSefazInfNFe., must be bigger than or equal to 2.');
+        }
+
         $this->container['pin'] = $pin;
 
         return $this;

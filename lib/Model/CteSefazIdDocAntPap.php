@@ -308,9 +308,33 @@ class CteSefazIdDocAntPap implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['serie'] === null) {
             $invalidProperties[] = "'serie' can't be null";
         }
+        if ((mb_strlen($this->container['serie']) > 3)) {
+            $invalidProperties[] = "invalid value for 'serie', the character length must be smaller than or equal to 3.";
+        }
+
+        if ((mb_strlen($this->container['serie']) < 1)) {
+            $invalidProperties[] = "invalid value for 'serie', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['subser']) && (mb_strlen($this->container['subser']) > 2)) {
+            $invalidProperties[] = "invalid value for 'subser', the character length must be smaller than or equal to 2.";
+        }
+
+        if (!is_null($this->container['subser']) && (mb_strlen($this->container['subser']) < 1)) {
+            $invalidProperties[] = "invalid value for 'subser', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['n_doc'] === null) {
             $invalidProperties[] = "'n_doc' can't be null";
         }
+        if ((mb_strlen($this->container['n_doc']) > 30)) {
+            $invalidProperties[] = "invalid value for 'n_doc', the character length must be smaller than or equal to 30.";
+        }
+
+        if ((mb_strlen($this->container['n_doc']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_doc', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['d_emi'] === null) {
             $invalidProperties[] = "'d_emi' can't be null";
         }
@@ -392,6 +416,13 @@ class CteSefazIdDocAntPap implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($serie) && (mb_strlen($serie) > 3)) {
+            throw new \InvalidArgumentException('invalid length for $serie when calling CteSefazIdDocAntPap., must be smaller than or equal to 3.');
+        }
+        if (!is_null($serie) && (mb_strlen($serie) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $serie when calling CteSefazIdDocAntPap., must be bigger than or equal to 1.');
+        }
+
         $this->container['serie'] = $serie;
 
         return $this;
@@ -426,6 +457,13 @@ class CteSefazIdDocAntPap implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($subser) && (mb_strlen($subser) > 2)) {
+            throw new \InvalidArgumentException('invalid length for $subser when calling CteSefazIdDocAntPap., must be smaller than or equal to 2.');
+        }
+        if (!is_null($subser) && (mb_strlen($subser) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $subser when calling CteSefazIdDocAntPap., must be bigger than or equal to 1.');
+        }
+
         $this->container['subser'] = $subser;
 
         return $this;
@@ -460,6 +498,13 @@ class CteSefazIdDocAntPap implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_doc) && (mb_strlen($n_doc) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $n_doc when calling CteSefazIdDocAntPap., must be smaller than or equal to 30.');
+        }
+        if (!is_null($n_doc) && (mb_strlen($n_doc) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_doc when calling CteSefazIdDocAntPap., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_doc'] = $n_doc;
 
         return $this;

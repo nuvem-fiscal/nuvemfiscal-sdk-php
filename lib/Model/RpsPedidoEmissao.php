@@ -345,6 +345,10 @@ class RpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['servicos'] === null) {
             $invalidProperties[] = "'servicos' can't be null";
         }
+        if (!is_null($this->container['outras_informacoes']) && (mb_strlen($this->container['outras_informacoes']) > 255)) {
+            $invalidProperties[] = "invalid value for 'outras_informacoes', the character length must be smaller than or equal to 255.";
+        }
+
         return $invalidProperties;
     }
 
@@ -625,6 +629,10 @@ class RpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($outras_informacoes)) {
             throw new \InvalidArgumentException('non-nullable outras_informacoes cannot be null');
         }
+        if ((mb_strlen($outras_informacoes) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $outras_informacoes when calling RpsPedidoEmissao., must be smaller than or equal to 255.');
+        }
+
         $this->container['outras_informacoes'] = $outras_informacoes;
 
         return $this;

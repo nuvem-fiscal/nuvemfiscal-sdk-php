@@ -284,9 +284,25 @@ class MdfeSefazInfTermDescarreg implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['c_term_descarreg'] === null) {
             $invalidProperties[] = "'c_term_descarreg' can't be null";
         }
+        if ((mb_strlen($this->container['c_term_descarreg']) > 8)) {
+            $invalidProperties[] = "invalid value for 'c_term_descarreg', the character length must be smaller than or equal to 8.";
+        }
+
+        if ((mb_strlen($this->container['c_term_descarreg']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_term_descarreg', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['x_term_descarreg'] === null) {
             $invalidProperties[] = "'x_term_descarreg' can't be null";
         }
+        if ((mb_strlen($this->container['x_term_descarreg']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_term_descarreg', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_term_descarreg']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_term_descarreg', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -331,6 +347,13 @@ class MdfeSefazInfTermDescarreg implements ModelInterface, ArrayAccess, \JsonSer
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_term_descarreg) && (mb_strlen($c_term_descarreg) > 8)) {
+            throw new \InvalidArgumentException('invalid length for $c_term_descarreg when calling MdfeSefazInfTermDescarreg., must be smaller than or equal to 8.');
+        }
+        if (!is_null($c_term_descarreg) && (mb_strlen($c_term_descarreg) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_term_descarreg when calling MdfeSefazInfTermDescarreg., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_term_descarreg'] = $c_term_descarreg;
 
         return $this;
@@ -365,6 +388,13 @@ class MdfeSefazInfTermDescarreg implements ModelInterface, ArrayAccess, \JsonSer
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_term_descarreg) && (mb_strlen($x_term_descarreg) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_term_descarreg when calling MdfeSefazInfTermDescarreg., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_term_descarreg) && (mb_strlen($x_term_descarreg) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_term_descarreg when calling MdfeSefazInfTermDescarreg., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_term_descarreg'] = $x_term_descarreg;
 
         return $this;

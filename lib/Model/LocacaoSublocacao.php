@@ -304,9 +304,25 @@ class LocacaoSublocacao implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['extensao'] === null) {
             $invalidProperties[] = "'extensao' can't be null";
         }
+        if ((mb_strlen($this->container['extensao']) > 5)) {
+            $invalidProperties[] = "invalid value for 'extensao', the character length must be smaller than or equal to 5.";
+        }
+
+        if ((mb_strlen($this->container['extensao']) < 1)) {
+            $invalidProperties[] = "invalid value for 'extensao', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['n_postes'] === null) {
             $invalidProperties[] = "'n_postes' can't be null";
         }
+        if ((mb_strlen($this->container['n_postes']) > 6)) {
+            $invalidProperties[] = "invalid value for 'n_postes', the character length must be smaller than or equal to 6.";
+        }
+
+        if ((mb_strlen($this->container['n_postes']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_postes', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -419,6 +435,13 @@ class LocacaoSublocacao implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($extensao) && (mb_strlen($extensao) > 5)) {
+            throw new \InvalidArgumentException('invalid length for $extensao when calling LocacaoSublocacao., must be smaller than or equal to 5.');
+        }
+        if (!is_null($extensao) && (mb_strlen($extensao) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $extensao when calling LocacaoSublocacao., must be bigger than or equal to 1.');
+        }
+
         $this->container['extensao'] = $extensao;
 
         return $this;
@@ -453,6 +476,13 @@ class LocacaoSublocacao implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_postes) && (mb_strlen($n_postes) > 6)) {
+            throw new \InvalidArgumentException('invalid length for $n_postes when calling LocacaoSublocacao., must be smaller than or equal to 6.');
+        }
+        if (!is_null($n_postes) && (mb_strlen($n_postes) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_postes when calling LocacaoSublocacao., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_postes'] = $n_postes;
 
         return $this;

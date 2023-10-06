@@ -298,6 +298,14 @@ class MdfeSefazSeg implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['inf_resp'] === null) {
             $invalidProperties[] = "'inf_resp' can't be null";
         }
+        if (!is_null($this->container['n_apol']) && (mb_strlen($this->container['n_apol']) > 20)) {
+            $invalidProperties[] = "invalid value for 'n_apol', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['n_apol']) && (mb_strlen($this->container['n_apol']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_apol', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -396,6 +404,13 @@ class MdfeSefazSeg implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_apol) && (mb_strlen($n_apol) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $n_apol when calling MdfeSefazSeg., must be smaller than or equal to 20.');
+        }
+        if (!is_null($n_apol) && (mb_strlen($n_apol) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_apol when calling MdfeSefazSeg., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_apol'] = $n_apol;
 
         return $this;

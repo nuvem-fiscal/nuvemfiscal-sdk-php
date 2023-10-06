@@ -293,6 +293,14 @@ class CteSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['fluxo'] === null) {
             $invalidProperties[] = "'fluxo' can't be null";
         }
+        if ((mb_strlen($this->container['fluxo']) > 10)) {
+            $invalidProperties[] = "invalid value for 'fluxo', the character length must be smaller than or equal to 10.";
+        }
+
+        if ((mb_strlen($this->container['fluxo']) < 1)) {
+            $invalidProperties[] = "invalid value for 'fluxo', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -398,6 +406,13 @@ class CteSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($fluxo) && (mb_strlen($fluxo) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $fluxo when calling CteSefazFerrov., must be smaller than or equal to 10.');
+        }
+        if (!is_null($fluxo) && (mb_strlen($fluxo) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $fluxo when calling CteSefazFerrov., must be bigger than or equal to 1.');
+        }
+
         $this->container['fluxo'] = $fluxo;
 
         return $this;

@@ -308,6 +308,14 @@ class CteSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['n_minu']) && ($this->container['n_minu'] > 999999999)) {
+            $invalidProperties[] = "invalid value for 'n_minu', must be smaller than or equal to 999999999.";
+        }
+
+        if (!is_null($this->container['n_minu']) && ($this->container['n_minu'] < 0)) {
+            $invalidProperties[] = "invalid value for 'n_minu', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['d_prev_aereo'] === null) {
             $invalidProperties[] = "'d_prev_aereo' can't be null";
         }
@@ -361,6 +369,14 @@ class CteSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_minu) && ($n_minu > 999999999)) {
+            throw new \InvalidArgumentException('invalid value for $n_minu when calling CteSefazAereo., must be smaller than or equal to 999999999.');
+        }
+        if (!is_null($n_minu) && ($n_minu < 0)) {
+            throw new \InvalidArgumentException('invalid value for $n_minu when calling CteSefazAereo., must be bigger than or equal to 0.');
+        }
+
         $this->container['n_minu'] = $n_minu;
 
         return $this;

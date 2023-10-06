@@ -291,12 +291,28 @@ class NfeSefazInfProdEmb implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['x_emb'] === null) {
             $invalidProperties[] = "'x_emb' can't be null";
         }
+        if ((mb_strlen($this->container['x_emb']) > 8)) {
+            $invalidProperties[] = "invalid value for 'x_emb', the character length must be smaller than or equal to 8.";
+        }
+
+        if ((mb_strlen($this->container['x_emb']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_emb', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['q_vol_emb'] === null) {
             $invalidProperties[] = "'q_vol_emb' can't be null";
         }
         if ($this->container['u_emb'] === null) {
             $invalidProperties[] = "'u_emb' can't be null";
         }
+        if ((mb_strlen($this->container['u_emb']) > 8)) {
+            $invalidProperties[] = "invalid value for 'u_emb', the character length must be smaller than or equal to 8.";
+        }
+
+        if ((mb_strlen($this->container['u_emb']) < 1)) {
+            $invalidProperties[] = "invalid value for 'u_emb', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -341,6 +357,13 @@ class NfeSefazInfProdEmb implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_emb) && (mb_strlen($x_emb) > 8)) {
+            throw new \InvalidArgumentException('invalid length for $x_emb when calling NfeSefazInfProdEmb., must be smaller than or equal to 8.');
+        }
+        if (!is_null($x_emb) && (mb_strlen($x_emb) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_emb when calling NfeSefazInfProdEmb., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_emb'] = $x_emb;
 
         return $this;
@@ -409,6 +432,13 @@ class NfeSefazInfProdEmb implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($u_emb) && (mb_strlen($u_emb) > 8)) {
+            throw new \InvalidArgumentException('invalid length for $u_emb when calling NfeSefazInfProdEmb., must be smaller than or equal to 8.');
+        }
+        if (!is_null($u_emb) && (mb_strlen($u_emb) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $u_emb when calling NfeSefazInfProdEmb., must be bigger than or equal to 1.');
+        }
+
         $this->container['u_emb'] = $u_emb;
 
         return $this;

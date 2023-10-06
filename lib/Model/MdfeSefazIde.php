@@ -423,9 +423,33 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['serie'] === null) {
             $invalidProperties[] = "'serie' can't be null";
         }
+        if (($this->container['serie'] > 999)) {
+            $invalidProperties[] = "invalid value for 'serie', must be smaller than or equal to 999.";
+        }
+
+        if (($this->container['serie'] < 0)) {
+            $invalidProperties[] = "invalid value for 'serie', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['n_mdf'] === null) {
             $invalidProperties[] = "'n_mdf' can't be null";
         }
+        if (($this->container['n_mdf'] > 999999999)) {
+            $invalidProperties[] = "invalid value for 'n_mdf', must be smaller than or equal to 999999999.";
+        }
+
+        if (($this->container['n_mdf'] < 1)) {
+            $invalidProperties[] = "invalid value for 'n_mdf', must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['c_dv']) && ($this->container['c_dv'] > 9)) {
+            $invalidProperties[] = "invalid value for 'c_dv', must be smaller than or equal to 9.";
+        }
+
+        if (!is_null($this->container['c_dv']) && ($this->container['c_dv'] < 0)) {
+            $invalidProperties[] = "invalid value for 'c_dv', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['modal'] === null) {
             $invalidProperties[] = "'modal' can't be null";
         }
@@ -441,6 +465,14 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['ver_proc'] === null) {
             $invalidProperties[] = "'ver_proc' can't be null";
         }
+        if ((mb_strlen($this->container['ver_proc']) > 20)) {
+            $invalidProperties[] = "invalid value for 'ver_proc', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['ver_proc']) < 1)) {
+            $invalidProperties[] = "invalid value for 'ver_proc', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['uf_ini'] === null) {
             $invalidProperties[] = "'uf_ini' can't be null";
         }
@@ -664,6 +696,14 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($serie) && ($serie > 999)) {
+            throw new \InvalidArgumentException('invalid value for $serie when calling MdfeSefazIde., must be smaller than or equal to 999.');
+        }
+        if (!is_null($serie) && ($serie < 0)) {
+            throw new \InvalidArgumentException('invalid value for $serie when calling MdfeSefazIde., must be bigger than or equal to 0.');
+        }
+
         $this->container['serie'] = $serie;
 
         return $this;
@@ -698,6 +738,14 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_mdf) && ($n_mdf > 999999999)) {
+            throw new \InvalidArgumentException('invalid value for $n_mdf when calling MdfeSefazIde., must be smaller than or equal to 999999999.');
+        }
+        if (!is_null($n_mdf) && ($n_mdf < 1)) {
+            throw new \InvalidArgumentException('invalid value for $n_mdf when calling MdfeSefazIde., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_mdf'] = $n_mdf;
 
         return $this;
@@ -766,6 +814,14 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($c_dv) && ($c_dv > 9)) {
+            throw new \InvalidArgumentException('invalid value for $c_dv when calling MdfeSefazIde., must be smaller than or equal to 9.');
+        }
+        if (!is_null($c_dv) && ($c_dv < 0)) {
+            throw new \InvalidArgumentException('invalid value for $c_dv when calling MdfeSefazIde., must be bigger than or equal to 0.');
+        }
+
         $this->container['c_dv'] = $c_dv;
 
         return $this;
@@ -936,6 +992,13 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ver_proc) && (mb_strlen($ver_proc) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $ver_proc when calling MdfeSefazIde., must be smaller than or equal to 20.');
+        }
+        if (!is_null($ver_proc) && (mb_strlen($ver_proc) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $ver_proc when calling MdfeSefazIde., must be bigger than or equal to 1.');
+        }
+
         $this->container['ver_proc'] = $ver_proc;
 
         return $this;

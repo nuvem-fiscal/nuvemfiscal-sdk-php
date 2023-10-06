@@ -291,6 +291,14 @@ class NfeSefazVeiculo implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['placa'] === null) {
             $invalidProperties[] = "'placa' can't be null";
         }
+        if (!is_null($this->container['rntc']) && (mb_strlen($this->container['rntc']) > 20)) {
+            $invalidProperties[] = "invalid value for 'rntc', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['rntc']) && (mb_strlen($this->container['rntc']) < 1)) {
+            $invalidProperties[] = "invalid value for 'rntc', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -403,6 +411,13 @@ class NfeSefazVeiculo implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($rntc) && (mb_strlen($rntc) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $rntc when calling NfeSefazVeiculo., must be smaller than or equal to 20.');
+        }
+        if (!is_null($rntc) && (mb_strlen($rntc) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $rntc when calling NfeSefazVeiculo., must be bigger than or equal to 1.');
+        }
+
         $this->container['rntc'] = $rntc;
 
         return $this;

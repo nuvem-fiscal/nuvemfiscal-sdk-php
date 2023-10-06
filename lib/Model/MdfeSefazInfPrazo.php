@@ -291,6 +291,14 @@ class MdfeSefazInfPrazo implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['n_parcela'] === null) {
             $invalidProperties[] = "'n_parcela' can't be null";
         }
+        if (($this->container['n_parcela'] > 999)) {
+            $invalidProperties[] = "invalid value for 'n_parcela', must be smaller than or equal to 999.";
+        }
+
+        if (($this->container['n_parcela'] < 0)) {
+            $invalidProperties[] = "invalid value for 'n_parcela', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['d_venc'] === null) {
             $invalidProperties[] = "'d_venc' can't be null";
         }
@@ -341,6 +349,14 @@ class MdfeSefazInfPrazo implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_parcela) && ($n_parcela > 999)) {
+            throw new \InvalidArgumentException('invalid value for $n_parcela when calling MdfeSefazInfPrazo., must be smaller than or equal to 999.');
+        }
+        if (!is_null($n_parcela) && ($n_parcela < 0)) {
+            throw new \InvalidArgumentException('invalid value for $n_parcela when calling MdfeSefazInfPrazo., must be bigger than or equal to 0.');
+        }
+
         $this->container['n_parcela'] = $n_parcela;
 
         return $this;

@@ -312,15 +312,43 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['chassi'] === null) {
             $invalidProperties[] = "'chassi' can't be null";
         }
+        if ((mb_strlen($this->container['chassi']) > 17)) {
+            $invalidProperties[] = "invalid value for 'chassi', the character length must be smaller than or equal to 17.";
+        }
+
         if ($this->container['c_cor'] === null) {
             $invalidProperties[] = "'c_cor' can't be null";
         }
+        if ((mb_strlen($this->container['c_cor']) > 4)) {
+            $invalidProperties[] = "invalid value for 'c_cor', the character length must be smaller than or equal to 4.";
+        }
+
+        if ((mb_strlen($this->container['c_cor']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_cor', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['x_cor'] === null) {
             $invalidProperties[] = "'x_cor' can't be null";
         }
+        if ((mb_strlen($this->container['x_cor']) > 40)) {
+            $invalidProperties[] = "invalid value for 'x_cor', the character length must be smaller than or equal to 40.";
+        }
+
+        if ((mb_strlen($this->container['x_cor']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_cor', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['c_mod'] === null) {
             $invalidProperties[] = "'c_mod' can't be null";
         }
+        if ((mb_strlen($this->container['c_mod']) > 6)) {
+            $invalidProperties[] = "invalid value for 'c_mod', the character length must be smaller than or equal to 6.";
+        }
+
+        if ((mb_strlen($this->container['c_mod']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_mod', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['v_unit'] === null) {
             $invalidProperties[] = "'v_unit' can't be null";
         }
@@ -371,6 +399,10 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($chassi) && (mb_strlen($chassi) > 17)) {
+            throw new \InvalidArgumentException('invalid length for $chassi when calling CteSefazVeicNovos., must be smaller than or equal to 17.');
+        }
+
         $this->container['chassi'] = $chassi;
 
         return $this;
@@ -405,6 +437,13 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_cor) && (mb_strlen($c_cor) > 4)) {
+            throw new \InvalidArgumentException('invalid length for $c_cor when calling CteSefazVeicNovos., must be smaller than or equal to 4.');
+        }
+        if (!is_null($c_cor) && (mb_strlen($c_cor) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_cor when calling CteSefazVeicNovos., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_cor'] = $c_cor;
 
         return $this;
@@ -439,6 +478,13 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_cor) && (mb_strlen($x_cor) > 40)) {
+            throw new \InvalidArgumentException('invalid length for $x_cor when calling CteSefazVeicNovos., must be smaller than or equal to 40.');
+        }
+        if (!is_null($x_cor) && (mb_strlen($x_cor) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_cor when calling CteSefazVeicNovos., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_cor'] = $x_cor;
 
         return $this;
@@ -473,6 +519,13 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_mod) && (mb_strlen($c_mod) > 6)) {
+            throw new \InvalidArgumentException('invalid length for $c_mod when calling CteSefazVeicNovos., must be smaller than or equal to 6.');
+        }
+        if (!is_null($c_mod) && (mb_strlen($c_mod) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_mod when calling CteSefazVeicNovos., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_mod'] = $c_mod;
 
         return $this;

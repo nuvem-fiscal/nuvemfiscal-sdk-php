@@ -326,6 +326,22 @@ class CteSefazInfOutros implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['tp_doc'] === null) {
             $invalidProperties[] = "'tp_doc' can't be null";
         }
+        if (!is_null($this->container['desc_outros']) && (mb_strlen($this->container['desc_outros']) > 100)) {
+            $invalidProperties[] = "invalid value for 'desc_outros', the character length must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['desc_outros']) && (mb_strlen($this->container['desc_outros']) < 1)) {
+            $invalidProperties[] = "invalid value for 'desc_outros', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['n_doc']) && (mb_strlen($this->container['n_doc']) > 20)) {
+            $invalidProperties[] = "invalid value for 'n_doc', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['n_doc']) && (mb_strlen($this->container['n_doc']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_doc', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -404,6 +420,13 @@ class CteSefazInfOutros implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($desc_outros) && (mb_strlen($desc_outros) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $desc_outros when calling CteSefazInfOutros., must be smaller than or equal to 100.');
+        }
+        if (!is_null($desc_outros) && (mb_strlen($desc_outros) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $desc_outros when calling CteSefazInfOutros., must be bigger than or equal to 1.');
+        }
+
         $this->container['desc_outros'] = $desc_outros;
 
         return $this;
@@ -438,6 +461,13 @@ class CteSefazInfOutros implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_doc) && (mb_strlen($n_doc) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $n_doc when calling CteSefazInfOutros., must be smaller than or equal to 20.');
+        }
+        if (!is_null($n_doc) && (mb_strlen($n_doc) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_doc when calling CteSefazInfOutros., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_doc'] = $n_doc;
 
         return $this;

@@ -312,15 +312,47 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['cnpj'] === null) {
             $invalidProperties[] = "'cnpj' can't be null";
         }
+        if ((mb_strlen($this->container['cnpj']) > 14)) {
+            $invalidProperties[] = "invalid value for 'cnpj', the character length must be smaller than or equal to 14.";
+        }
+
         if ($this->container['x_contato'] === null) {
             $invalidProperties[] = "'x_contato' can't be null";
         }
+        if ((mb_strlen($this->container['x_contato']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_contato', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_contato']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_contato', the character length must be bigger than or equal to 2.";
+        }
+
         if ($this->container['email'] === null) {
             $invalidProperties[] = "'email' can't be null";
         }
+        if ((mb_strlen($this->container['email']) > 60)) {
+            $invalidProperties[] = "invalid value for 'email', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['email']) < 6)) {
+            $invalidProperties[] = "invalid value for 'email', the character length must be bigger than or equal to 6.";
+        }
+
         if ($this->container['fone'] === null) {
             $invalidProperties[] = "'fone' can't be null";
         }
+        if (!is_null($this->container['id_csrt']) && ($this->container['id_csrt'] > 99)) {
+            $invalidProperties[] = "invalid value for 'id_csrt', must be smaller than or equal to 99.";
+        }
+
+        if (!is_null($this->container['id_csrt']) && ($this->container['id_csrt'] < 0)) {
+            $invalidProperties[] = "invalid value for 'id_csrt', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['hash_csrt']) && (mb_strlen($this->container['hash_csrt']) > 20)) {
+            $invalidProperties[] = "invalid value for 'hash_csrt', the character length must be smaller than or equal to 20.";
+        }
+
         return $invalidProperties;
     }
 
@@ -365,6 +397,10 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cnpj) && (mb_strlen($cnpj) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $cnpj when calling NfeSefazInfRespTec., must be smaller than or equal to 14.');
+        }
+
         $this->container['cnpj'] = $cnpj;
 
         return $this;
@@ -399,6 +435,13 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_contato) && (mb_strlen($x_contato) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_contato when calling NfeSefazInfRespTec., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_contato) && (mb_strlen($x_contato) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_contato when calling NfeSefazInfRespTec., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_contato'] = $x_contato;
 
         return $this;
@@ -433,6 +476,13 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($email) && (mb_strlen($email) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $email when calling NfeSefazInfRespTec., must be smaller than or equal to 60.');
+        }
+        if (!is_null($email) && (mb_strlen($email) < 6)) {
+            throw new \InvalidArgumentException('invalid length for $email when calling NfeSefazInfRespTec., must be bigger than or equal to 6.');
+        }
+
         $this->container['email'] = $email;
 
         return $this;
@@ -501,6 +551,14 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($id_csrt) && ($id_csrt > 99)) {
+            throw new \InvalidArgumentException('invalid value for $id_csrt when calling NfeSefazInfRespTec., must be smaller than or equal to 99.');
+        }
+        if (!is_null($id_csrt) && ($id_csrt < 0)) {
+            throw new \InvalidArgumentException('invalid value for $id_csrt when calling NfeSefazInfRespTec., must be bigger than or equal to 0.');
+        }
+
         $this->container['id_csrt'] = $id_csrt;
 
         return $this;
@@ -535,6 +593,10 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($hash_csrt) && (mb_strlen($hash_csrt) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $hash_csrt when calling NfeSefazInfRespTec., must be smaller than or equal to 20.');
+        }
+
         $this->container['hash_csrt'] = $hash_csrt;
 
         return $this;

@@ -188,6 +188,8 @@ Classe | Método | Endpoint | Descrição
 *NfceApi* | [**baixarPdfEventoNfce**](docs/Api/NfceApi.md#baixarpdfeventonfce) | **GET** /nfce/eventos/{id}/pdf | Baixar PDF do evento
 *NfceApi* | [**baixarPdfInutilizacaoNfce**](docs/Api/NfceApi.md#baixarpdfinutilizacaonfce) | **GET** /nfce/inutilizacoes/{id}/pdf | Baixar PDF da inutilização
 *NfceApi* | [**baixarPdfNfce**](docs/Api/NfceApi.md#baixarpdfnfce) | **GET** /nfce/{id}/pdf | Baixar PDF do DANFCE
+*NfceApi* | [**baixarPreviaPdfNfce**](docs/Api/NfceApi.md#baixarpreviapdfnfce) | **POST** /nfce/previa/pdf | Prévia do PDF do DANFCE
+*NfceApi* | [**baixarPreviaXmlNfce**](docs/Api/NfceApi.md#baixarpreviaxmlnfce) | **POST** /nfce/previa/xml | Prévia do XML da NFC-e
 *NfceApi* | [**baixarXmlCancelamentoNfce**](docs/Api/NfceApi.md#baixarxmlcancelamentonfce) | **GET** /nfce/{id}/cancelamento/xml | Baixar XML do cancelamento
 *NfceApi* | [**baixarXmlEventoNfce**](docs/Api/NfceApi.md#baixarxmleventonfce) | **GET** /nfce/eventos/{id}/xml | Baixar XML do evento
 *NfceApi* | [**baixarXmlInutilizacaoNfce**](docs/Api/NfceApi.md#baixarxmlinutilizacaonfce) | **GET** /nfce/inutilizacoes/{id}/xml | Baixar XML da inutilização
@@ -213,6 +215,8 @@ Classe | Método | Endpoint | Descrição
 *NfeApi* | [**baixarPdfEventoNfe**](docs/Api/NfeApi.md#baixarpdfeventonfe) | **GET** /nfe/eventos/{id}/pdf | Baixar PDF do evento
 *NfeApi* | [**baixarPdfInutilizacaoNfe**](docs/Api/NfeApi.md#baixarpdfinutilizacaonfe) | **GET** /nfe/inutilizacoes/{id}/pdf | Baixar PDF da inutilização
 *NfeApi* | [**baixarPdfNfe**](docs/Api/NfeApi.md#baixarpdfnfe) | **GET** /nfe/{id}/pdf | Baixar PDF do DANFE
+*NfeApi* | [**baixarPreviaPdfNfe**](docs/Api/NfeApi.md#baixarpreviapdfnfe) | **POST** /nfe/previa/pdf | Prévia do PDF do DANFE
+*NfeApi* | [**baixarPreviaXmlNfe**](docs/Api/NfeApi.md#baixarpreviaxmlnfe) | **POST** /nfe/previa/xml | Prévia do XML da NF-e
 *NfeApi* | [**baixarXmlCancelamentoNfe**](docs/Api/NfeApi.md#baixarxmlcancelamentonfe) | **GET** /nfe/{id}/cancelamento/xml | Baixar XML do cancelamento
 *NfeApi* | [**baixarXmlCartaCorrecaoNfe**](docs/Api/NfeApi.md#baixarxmlcartacorrecaonfe) | **GET** /nfe/{id}/carta-correcao/xml | Baixar XML da carta de correção
 *NfeApi* | [**baixarXmlEventoNfe**](docs/Api/NfeApi.md#baixarxmleventonfe) | **GET** /nfe/eventos/{id}/xml | Baixar XML do evento
@@ -672,6 +676,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.18.2`
-    - Versão do package: `2.13.0`
+- Versão da API: `2.19.11`
+    - Versão do package: `2.14.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

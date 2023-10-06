@@ -295,6 +295,14 @@ class CteSefazFat implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['n_fat']) && (mb_strlen($this->container['n_fat']) > 60)) {
+            $invalidProperties[] = "invalid value for 'n_fat', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['n_fat']) && (mb_strlen($this->container['n_fat']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_fat', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -339,6 +347,13 @@ class CteSefazFat implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_fat) && (mb_strlen($n_fat) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $n_fat when calling CteSefazFat., must be smaller than or equal to 60.');
+        }
+        if (!is_null($n_fat) && (mb_strlen($n_fat) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_fat when calling CteSefazFat., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_fat'] = $n_fat;
 
         return $this;

@@ -323,6 +323,22 @@ class CteSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['x_nome']) && (mb_strlen($this->container['x_nome']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_nome']) && (mb_strlen($this->container['x_nome']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be bigger than or equal to 2.";
+        }
+
+        if (!is_null($this->container['x_fant']) && (mb_strlen($this->container['x_fant']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_fant', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_fant']) && (mb_strlen($this->container['x_fant']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_fant', the character length must be bigger than or equal to 2.";
+        }
+
         return $invalidProperties;
     }
 
@@ -503,6 +519,13 @@ class CteSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling CteSefazEmit., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling CteSefazEmit., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_nome'] = $x_nome;
 
         return $this;
@@ -537,6 +560,13 @@ class CteSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_fant) && (mb_strlen($x_fant) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_fant when calling CteSefazEmit., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_fant) && (mb_strlen($x_fant) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_fant when calling CteSefazEmit., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_fant'] = $x_fant;
 
         return $this;

@@ -312,9 +312,49 @@ class MdfeSefazInfNFePeri implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['n_onu'] === null) {
             $invalidProperties[] = "'n_onu' can't be null";
         }
+        if (!is_null($this->container['x_nome_ae']) && (mb_strlen($this->container['x_nome_ae']) > 150)) {
+            $invalidProperties[] = "invalid value for 'x_nome_ae', the character length must be smaller than or equal to 150.";
+        }
+
+        if (!is_null($this->container['x_nome_ae']) && (mb_strlen($this->container['x_nome_ae']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_nome_ae', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['x_cla_risco']) && (mb_strlen($this->container['x_cla_risco']) > 40)) {
+            $invalidProperties[] = "invalid value for 'x_cla_risco', the character length must be smaller than or equal to 40.";
+        }
+
+        if (!is_null($this->container['x_cla_risco']) && (mb_strlen($this->container['x_cla_risco']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_cla_risco', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['gr_emb']) && (mb_strlen($this->container['gr_emb']) > 6)) {
+            $invalidProperties[] = "invalid value for 'gr_emb', the character length must be smaller than or equal to 6.";
+        }
+
+        if (!is_null($this->container['gr_emb']) && (mb_strlen($this->container['gr_emb']) < 1)) {
+            $invalidProperties[] = "invalid value for 'gr_emb', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['q_tot_prod'] === null) {
             $invalidProperties[] = "'q_tot_prod' can't be null";
         }
+        if ((mb_strlen($this->container['q_tot_prod']) > 20)) {
+            $invalidProperties[] = "invalid value for 'q_tot_prod', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['q_tot_prod']) < 1)) {
+            $invalidProperties[] = "invalid value for 'q_tot_prod', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['q_vol_tipo']) && (mb_strlen($this->container['q_vol_tipo']) > 60)) {
+            $invalidProperties[] = "invalid value for 'q_vol_tipo', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['q_vol_tipo']) && (mb_strlen($this->container['q_vol_tipo']) < 1)) {
+            $invalidProperties[] = "invalid value for 'q_vol_tipo', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -393,6 +433,13 @@ class MdfeSefazInfNFePeri implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_nome_ae) && (mb_strlen($x_nome_ae) > 150)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome_ae when calling MdfeSefazInfNFePeri., must be smaller than or equal to 150.');
+        }
+        if (!is_null($x_nome_ae) && (mb_strlen($x_nome_ae) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome_ae when calling MdfeSefazInfNFePeri., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_nome_ae'] = $x_nome_ae;
 
         return $this;
@@ -427,6 +474,13 @@ class MdfeSefazInfNFePeri implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_cla_risco) && (mb_strlen($x_cla_risco) > 40)) {
+            throw new \InvalidArgumentException('invalid length for $x_cla_risco when calling MdfeSefazInfNFePeri., must be smaller than or equal to 40.');
+        }
+        if (!is_null($x_cla_risco) && (mb_strlen($x_cla_risco) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_cla_risco when calling MdfeSefazInfNFePeri., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_cla_risco'] = $x_cla_risco;
 
         return $this;
@@ -461,6 +515,13 @@ class MdfeSefazInfNFePeri implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($gr_emb) && (mb_strlen($gr_emb) > 6)) {
+            throw new \InvalidArgumentException('invalid length for $gr_emb when calling MdfeSefazInfNFePeri., must be smaller than or equal to 6.');
+        }
+        if (!is_null($gr_emb) && (mb_strlen($gr_emb) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $gr_emb when calling MdfeSefazInfNFePeri., must be bigger than or equal to 1.');
+        }
+
         $this->container['gr_emb'] = $gr_emb;
 
         return $this;
@@ -495,6 +556,13 @@ class MdfeSefazInfNFePeri implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($q_tot_prod) && (mb_strlen($q_tot_prod) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $q_tot_prod when calling MdfeSefazInfNFePeri., must be smaller than or equal to 20.');
+        }
+        if (!is_null($q_tot_prod) && (mb_strlen($q_tot_prod) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $q_tot_prod when calling MdfeSefazInfNFePeri., must be bigger than or equal to 1.');
+        }
+
         $this->container['q_tot_prod'] = $q_tot_prod;
 
         return $this;
@@ -529,6 +597,13 @@ class MdfeSefazInfNFePeri implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($q_vol_tipo) && (mb_strlen($q_vol_tipo) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $q_vol_tipo when calling MdfeSefazInfNFePeri., must be smaller than or equal to 60.');
+        }
+        if (!is_null($q_vol_tipo) && (mb_strlen($q_vol_tipo) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $q_vol_tipo when calling MdfeSefazInfNFePeri., must be bigger than or equal to 1.');
+        }
+
         $this->container['q_vol_tipo'] = $q_vol_tipo;
 
         return $this;

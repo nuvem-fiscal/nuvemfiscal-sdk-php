@@ -284,9 +284,25 @@ class MdfeSefazInfEmbComb implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['c_emb_comb'] === null) {
             $invalidProperties[] = "'c_emb_comb' can't be null";
         }
+        if ((mb_strlen($this->container['c_emb_comb']) > 10)) {
+            $invalidProperties[] = "invalid value for 'c_emb_comb', the character length must be smaller than or equal to 10.";
+        }
+
+        if ((mb_strlen($this->container['c_emb_comb']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_emb_comb', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['x_balsa'] === null) {
             $invalidProperties[] = "'x_balsa' can't be null";
         }
+        if ((mb_strlen($this->container['x_balsa']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_balsa', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_balsa']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_balsa', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -331,6 +347,13 @@ class MdfeSefazInfEmbComb implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_emb_comb) && (mb_strlen($c_emb_comb) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $c_emb_comb when calling MdfeSefazInfEmbComb., must be smaller than or equal to 10.');
+        }
+        if (!is_null($c_emb_comb) && (mb_strlen($c_emb_comb) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_emb_comb when calling MdfeSefazInfEmbComb., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_emb_comb'] = $c_emb_comb;
 
         return $this;
@@ -365,6 +388,13 @@ class MdfeSefazInfEmbComb implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_balsa) && (mb_strlen($x_balsa) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_balsa when calling MdfeSefazInfEmbComb., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_balsa) && (mb_strlen($x_balsa) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_balsa when calling MdfeSefazInfEmbComb., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_balsa'] = $x_balsa;
 
         return $this;

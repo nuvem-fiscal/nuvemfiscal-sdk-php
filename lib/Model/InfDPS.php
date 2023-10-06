@@ -340,6 +340,14 @@ class InfDPS implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['dh_emi'] === null) {
             $invalidProperties[] = "'dh_emi' can't be null";
         }
+        if (!is_null($this->container['ver_aplic']) && (mb_strlen($this->container['ver_aplic']) > 20)) {
+            $invalidProperties[] = "invalid value for 'ver_aplic', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['ver_aplic']) && (mb_strlen($this->container['ver_aplic']) < 1)) {
+            $invalidProperties[] = "invalid value for 'ver_aplic', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['d_compet'] === null) {
             $invalidProperties[] = "'d_compet' can't be null";
         }
@@ -464,6 +472,13 @@ class InfDPS implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ver_aplic) && (mb_strlen($ver_aplic) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $ver_aplic when calling InfDPS., must be smaller than or equal to 20.');
+        }
+        if (!is_null($ver_aplic) && (mb_strlen($ver_aplic) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $ver_aplic when calling InfDPS., must be bigger than or equal to 1.');
+        }
+
         $this->container['ver_aplic'] = $ver_aplic;
 
         return $this;

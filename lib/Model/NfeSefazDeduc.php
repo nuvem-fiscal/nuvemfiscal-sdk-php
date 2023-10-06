@@ -284,6 +284,14 @@ class NfeSefazDeduc implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['x_ded'] === null) {
             $invalidProperties[] = "'x_ded' can't be null";
         }
+        if ((mb_strlen($this->container['x_ded']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_ded', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_ded']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_ded', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['v_ded'] === null) {
             $invalidProperties[] = "'v_ded' can't be null";
         }
@@ -331,6 +339,13 @@ class NfeSefazDeduc implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_ded) && (mb_strlen($x_ded) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_ded when calling NfeSefazDeduc., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_ded) && (mb_strlen($x_ded) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_ded when calling NfeSefazDeduc., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_ded'] = $x_ded;
 
         return $this;

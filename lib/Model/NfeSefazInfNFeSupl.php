@@ -281,6 +281,22 @@ class NfeSefazInfNFeSupl implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['qr_code']) && (mb_strlen($this->container['qr_code']) > 600)) {
+            $invalidProperties[] = "invalid value for 'qr_code', the character length must be smaller than or equal to 600.";
+        }
+
+        if (!is_null($this->container['qr_code']) && (mb_strlen($this->container['qr_code']) < 100)) {
+            $invalidProperties[] = "invalid value for 'qr_code', the character length must be bigger than or equal to 100.";
+        }
+
+        if (!is_null($this->container['url_chave']) && (mb_strlen($this->container['url_chave']) > 85)) {
+            $invalidProperties[] = "invalid value for 'url_chave', the character length must be smaller than or equal to 85.";
+        }
+
+        if (!is_null($this->container['url_chave']) && (mb_strlen($this->container['url_chave']) < 21)) {
+            $invalidProperties[] = "invalid value for 'url_chave', the character length must be bigger than or equal to 21.";
+        }
+
         return $invalidProperties;
     }
 
@@ -325,6 +341,13 @@ class NfeSefazInfNFeSupl implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($qr_code) && (mb_strlen($qr_code) > 600)) {
+            throw new \InvalidArgumentException('invalid length for $qr_code when calling NfeSefazInfNFeSupl., must be smaller than or equal to 600.');
+        }
+        if (!is_null($qr_code) && (mb_strlen($qr_code) < 100)) {
+            throw new \InvalidArgumentException('invalid length for $qr_code when calling NfeSefazInfNFeSupl., must be bigger than or equal to 100.');
+        }
+
         $this->container['qr_code'] = $qr_code;
 
         return $this;
@@ -359,6 +382,13 @@ class NfeSefazInfNFeSupl implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($url_chave) && (mb_strlen($url_chave) > 85)) {
+            throw new \InvalidArgumentException('invalid length for $url_chave when calling NfeSefazInfNFeSupl., must be smaller than or equal to 85.');
+        }
+        if (!is_null($url_chave) && (mb_strlen($url_chave) < 21)) {
+            throw new \InvalidArgumentException('invalid length for $url_chave when calling NfeSefazInfNFeSupl., must be bigger than or equal to 21.');
+        }
+
         $this->container['url_chave'] = $url_chave;
 
         return $this;

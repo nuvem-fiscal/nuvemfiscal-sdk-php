@@ -288,6 +288,30 @@ class NfeSefazCompra implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['x_n_emp']) && (mb_strlen($this->container['x_n_emp']) > 22)) {
+            $invalidProperties[] = "invalid value for 'x_n_emp', the character length must be smaller than or equal to 22.";
+        }
+
+        if (!is_null($this->container['x_n_emp']) && (mb_strlen($this->container['x_n_emp']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_n_emp', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['x_ped']) && (mb_strlen($this->container['x_ped']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_ped', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_ped']) && (mb_strlen($this->container['x_ped']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_ped', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['x_cont']) && (mb_strlen($this->container['x_cont']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_cont', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_cont']) && (mb_strlen($this->container['x_cont']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_cont', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -332,6 +356,13 @@ class NfeSefazCompra implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_n_emp) && (mb_strlen($x_n_emp) > 22)) {
+            throw new \InvalidArgumentException('invalid length for $x_n_emp when calling NfeSefazCompra., must be smaller than or equal to 22.');
+        }
+        if (!is_null($x_n_emp) && (mb_strlen($x_n_emp) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_n_emp when calling NfeSefazCompra., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_n_emp'] = $x_n_emp;
 
         return $this;
@@ -366,6 +397,13 @@ class NfeSefazCompra implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_ped) && (mb_strlen($x_ped) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_ped when calling NfeSefazCompra., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_ped) && (mb_strlen($x_ped) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_ped when calling NfeSefazCompra., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_ped'] = $x_ped;
 
         return $this;
@@ -400,6 +438,13 @@ class NfeSefazCompra implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_cont) && (mb_strlen($x_cont) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_cont when calling NfeSefazCompra., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_cont) && (mb_strlen($x_cont) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_cont when calling NfeSefazCompra., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_cont'] = $x_cont;
 
         return $this;

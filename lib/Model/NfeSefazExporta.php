@@ -294,6 +294,22 @@ class NfeSefazExporta implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['x_loc_exporta'] === null) {
             $invalidProperties[] = "'x_loc_exporta' can't be null";
         }
+        if ((mb_strlen($this->container['x_loc_exporta']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_loc_exporta', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_loc_exporta']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_loc_exporta', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['x_loc_despacho']) && (mb_strlen($this->container['x_loc_despacho']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_loc_despacho', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_loc_despacho']) && (mb_strlen($this->container['x_loc_despacho']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_loc_despacho', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -372,6 +388,13 @@ class NfeSefazExporta implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_loc_exporta) && (mb_strlen($x_loc_exporta) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_loc_exporta when calling NfeSefazExporta., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_loc_exporta) && (mb_strlen($x_loc_exporta) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_loc_exporta when calling NfeSefazExporta., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_loc_exporta'] = $x_loc_exporta;
 
         return $this;
@@ -406,6 +429,13 @@ class NfeSefazExporta implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_loc_despacho) && (mb_strlen($x_loc_despacho) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_loc_despacho when calling NfeSefazExporta., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_loc_despacho) && (mb_strlen($x_loc_despacho) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_loc_despacho when calling NfeSefazExporta., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_loc_despacho'] = $x_loc_despacho;
 
         return $this;

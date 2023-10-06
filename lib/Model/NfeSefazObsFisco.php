@@ -281,6 +281,22 @@ class NfeSefazObsFisco implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['x_campo']) && (mb_strlen($this->container['x_campo']) > 20)) {
+            $invalidProperties[] = "invalid value for 'x_campo', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['x_campo']) && (mb_strlen($this->container['x_campo']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_campo', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['x_texto']) && (mb_strlen($this->container['x_texto']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_texto', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_texto']) && (mb_strlen($this->container['x_texto']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_texto', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -325,6 +341,13 @@ class NfeSefazObsFisco implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_campo) && (mb_strlen($x_campo) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $x_campo when calling NfeSefazObsFisco., must be smaller than or equal to 20.');
+        }
+        if (!is_null($x_campo) && (mb_strlen($x_campo) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_campo when calling NfeSefazObsFisco., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_campo'] = $x_campo;
 
         return $this;
@@ -359,6 +382,13 @@ class NfeSefazObsFisco implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_texto) && (mb_strlen($x_texto) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_texto when calling NfeSefazObsFisco., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_texto) && (mb_strlen($x_texto) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_texto when calling NfeSefazObsFisco., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_texto'] = $x_texto;
 
         return $this;

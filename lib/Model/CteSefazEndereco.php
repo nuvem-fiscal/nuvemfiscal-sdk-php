@@ -340,21 +340,69 @@ class CteSefazEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['x_lgr'] === null) {
             $invalidProperties[] = "'x_lgr' can't be null";
         }
+        if ((mb_strlen($this->container['x_lgr']) > 255)) {
+            $invalidProperties[] = "invalid value for 'x_lgr', the character length must be smaller than or equal to 255.";
+        }
+
+        if ((mb_strlen($this->container['x_lgr']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_lgr', the character length must be bigger than or equal to 2.";
+        }
+
         if ($this->container['nro'] === null) {
             $invalidProperties[] = "'nro' can't be null";
         }
+        if ((mb_strlen($this->container['nro']) > 60)) {
+            $invalidProperties[] = "invalid value for 'nro', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['nro']) < 1)) {
+            $invalidProperties[] = "invalid value for 'nro', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['x_cpl']) && (mb_strlen($this->container['x_cpl']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_cpl', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_cpl']) && (mb_strlen($this->container['x_cpl']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_cpl', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['x_bairro'] === null) {
             $invalidProperties[] = "'x_bairro' can't be null";
         }
+        if ((mb_strlen($this->container['x_bairro']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_bairro', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_bairro']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_bairro', the character length must be bigger than or equal to 2.";
+        }
+
         if ($this->container['c_mun'] === null) {
             $invalidProperties[] = "'c_mun' can't be null";
         }
         if ($this->container['x_mun'] === null) {
             $invalidProperties[] = "'x_mun' can't be null";
         }
+        if ((mb_strlen($this->container['x_mun']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_mun', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_mun']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_mun', the character length must be bigger than or equal to 2.";
+        }
+
         if ($this->container['uf'] === null) {
             $invalidProperties[] = "'uf' can't be null";
         }
+        if (!is_null($this->container['x_pais']) && (mb_strlen($this->container['x_pais']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_pais', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_pais']) && (mb_strlen($this->container['x_pais']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_pais', the character length must be bigger than or equal to 2.";
+        }
+
         return $invalidProperties;
     }
 
@@ -399,6 +447,13 @@ class CteSefazEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_lgr) && (mb_strlen($x_lgr) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $x_lgr when calling CteSefazEndereco., must be smaller than or equal to 255.');
+        }
+        if (!is_null($x_lgr) && (mb_strlen($x_lgr) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_lgr when calling CteSefazEndereco., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_lgr'] = $x_lgr;
 
         return $this;
@@ -433,6 +488,13 @@ class CteSefazEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($nro) && (mb_strlen($nro) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $nro when calling CteSefazEndereco., must be smaller than or equal to 60.');
+        }
+        if (!is_null($nro) && (mb_strlen($nro) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $nro when calling CteSefazEndereco., must be bigger than or equal to 1.');
+        }
+
         $this->container['nro'] = $nro;
 
         return $this;
@@ -467,6 +529,13 @@ class CteSefazEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_cpl) && (mb_strlen($x_cpl) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_cpl when calling CteSefazEndereco., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_cpl) && (mb_strlen($x_cpl) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_cpl when calling CteSefazEndereco., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_cpl'] = $x_cpl;
 
         return $this;
@@ -501,6 +570,13 @@ class CteSefazEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_bairro) && (mb_strlen($x_bairro) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_bairro when calling CteSefazEndereco., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_bairro) && (mb_strlen($x_bairro) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_bairro when calling CteSefazEndereco., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_bairro'] = $x_bairro;
 
         return $this;
@@ -569,6 +645,13 @@ class CteSefazEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_mun) && (mb_strlen($x_mun) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_mun when calling CteSefazEndereco., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_mun) && (mb_strlen($x_mun) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_mun when calling CteSefazEndereco., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_mun'] = $x_mun;
 
         return $this;
@@ -705,6 +788,13 @@ class CteSefazEndereco implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_pais) && (mb_strlen($x_pais) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_pais when calling CteSefazEndereco., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_pais) && (mb_strlen($x_pais) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_pais when calling CteSefazEndereco., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_pais'] = $x_pais;
 
         return $this;

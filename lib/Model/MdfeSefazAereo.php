@@ -311,18 +311,58 @@ class MdfeSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['nac'] === null) {
             $invalidProperties[] = "'nac' can't be null";
         }
+        if ((mb_strlen($this->container['nac']) > 4)) {
+            $invalidProperties[] = "invalid value for 'nac', the character length must be smaller than or equal to 4.";
+        }
+
+        if ((mb_strlen($this->container['nac']) < 1)) {
+            $invalidProperties[] = "invalid value for 'nac', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['matr'] === null) {
             $invalidProperties[] = "'matr' can't be null";
         }
+        if ((mb_strlen($this->container['matr']) > 6)) {
+            $invalidProperties[] = "invalid value for 'matr', the character length must be smaller than or equal to 6.";
+        }
+
+        if ((mb_strlen($this->container['matr']) < 1)) {
+            $invalidProperties[] = "invalid value for 'matr', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['n_voo'] === null) {
             $invalidProperties[] = "'n_voo' can't be null";
         }
+        if ((mb_strlen($this->container['n_voo']) > 9)) {
+            $invalidProperties[] = "invalid value for 'n_voo', the character length must be smaller than or equal to 9.";
+        }
+
+        if ((mb_strlen($this->container['n_voo']) < 5)) {
+            $invalidProperties[] = "invalid value for 'n_voo', the character length must be bigger than or equal to 5.";
+        }
+
         if ($this->container['c_aer_emb'] === null) {
             $invalidProperties[] = "'c_aer_emb' can't be null";
         }
+        if ((mb_strlen($this->container['c_aer_emb']) > 4)) {
+            $invalidProperties[] = "invalid value for 'c_aer_emb', the character length must be smaller than or equal to 4.";
+        }
+
+        if ((mb_strlen($this->container['c_aer_emb']) < 3)) {
+            $invalidProperties[] = "invalid value for 'c_aer_emb', the character length must be bigger than or equal to 3.";
+        }
+
         if ($this->container['c_aer_des'] === null) {
             $invalidProperties[] = "'c_aer_des' can't be null";
         }
+        if ((mb_strlen($this->container['c_aer_des']) > 4)) {
+            $invalidProperties[] = "invalid value for 'c_aer_des', the character length must be smaller than or equal to 4.";
+        }
+
+        if ((mb_strlen($this->container['c_aer_des']) < 3)) {
+            $invalidProperties[] = "invalid value for 'c_aer_des', the character length must be bigger than or equal to 3.";
+        }
+
         if ($this->container['d_voo'] === null) {
             $invalidProperties[] = "'d_voo' can't be null";
         }
@@ -370,6 +410,13 @@ class MdfeSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($nac) && (mb_strlen($nac) > 4)) {
+            throw new \InvalidArgumentException('invalid length for $nac when calling MdfeSefazAereo., must be smaller than or equal to 4.');
+        }
+        if (!is_null($nac) && (mb_strlen($nac) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $nac when calling MdfeSefazAereo., must be bigger than or equal to 1.');
+        }
+
         $this->container['nac'] = $nac;
 
         return $this;
@@ -404,6 +451,13 @@ class MdfeSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($matr) && (mb_strlen($matr) > 6)) {
+            throw new \InvalidArgumentException('invalid length for $matr when calling MdfeSefazAereo., must be smaller than or equal to 6.');
+        }
+        if (!is_null($matr) && (mb_strlen($matr) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $matr when calling MdfeSefazAereo., must be bigger than or equal to 1.');
+        }
+
         $this->container['matr'] = $matr;
 
         return $this;
@@ -438,6 +492,13 @@ class MdfeSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_voo) && (mb_strlen($n_voo) > 9)) {
+            throw new \InvalidArgumentException('invalid length for $n_voo when calling MdfeSefazAereo., must be smaller than or equal to 9.');
+        }
+        if (!is_null($n_voo) && (mb_strlen($n_voo) < 5)) {
+            throw new \InvalidArgumentException('invalid length for $n_voo when calling MdfeSefazAereo., must be bigger than or equal to 5.');
+        }
+
         $this->container['n_voo'] = $n_voo;
 
         return $this;
@@ -472,6 +533,13 @@ class MdfeSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_aer_emb) && (mb_strlen($c_aer_emb) > 4)) {
+            throw new \InvalidArgumentException('invalid length for $c_aer_emb when calling MdfeSefazAereo., must be smaller than or equal to 4.');
+        }
+        if (!is_null($c_aer_emb) && (mb_strlen($c_aer_emb) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $c_aer_emb when calling MdfeSefazAereo., must be bigger than or equal to 3.');
+        }
+
         $this->container['c_aer_emb'] = $c_aer_emb;
 
         return $this;
@@ -506,6 +574,13 @@ class MdfeSefazAereo implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_aer_des) && (mb_strlen($c_aer_des) > 4)) {
+            throw new \InvalidArgumentException('invalid length for $c_aer_des when calling MdfeSefazAereo., must be smaller than or equal to 4.');
+        }
+        if (!is_null($c_aer_des) && (mb_strlen($c_aer_des) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $c_aer_des when calling MdfeSefazAereo., must be bigger than or equal to 3.');
+        }
+
         $this->container['c_aer_des'] = $c_aer_des;
 
         return $this;

@@ -294,6 +294,14 @@ class CteSefazPeri implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['q_tot_emb'] === null) {
             $invalidProperties[] = "'q_tot_emb' can't be null";
         }
+        if ((mb_strlen($this->container['q_tot_emb']) > 20)) {
+            $invalidProperties[] = "invalid value for 'q_tot_emb', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['q_tot_emb']) < 1)) {
+            $invalidProperties[] = "invalid value for 'q_tot_emb', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['inf_tot_ap'] === null) {
             $invalidProperties[] = "'inf_tot_ap' can't be null";
         }
@@ -375,6 +383,13 @@ class CteSefazPeri implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($q_tot_emb) && (mb_strlen($q_tot_emb) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $q_tot_emb when calling CteSefazPeri., must be smaller than or equal to 20.');
+        }
+        if (!is_null($q_tot_emb) && (mb_strlen($q_tot_emb) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $q_tot_emb when calling CteSefazPeri., must be bigger than or equal to 1.');
+        }
+
         $this->container['q_tot_emb'] = $q_tot_emb;
 
         return $this;

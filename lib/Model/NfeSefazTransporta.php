@@ -316,6 +316,42 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['cnpj']) && (mb_strlen($this->container['cnpj']) > 14)) {
+            $invalidProperties[] = "invalid value for 'cnpj', the character length must be smaller than or equal to 14.";
+        }
+
+        if (!is_null($this->container['cpf']) && (mb_strlen($this->container['cpf']) > 11)) {
+            $invalidProperties[] = "invalid value for 'cpf', the character length must be smaller than or equal to 11.";
+        }
+
+        if (!is_null($this->container['x_nome']) && (mb_strlen($this->container['x_nome']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_nome']) && (mb_strlen($this->container['x_nome']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be bigger than or equal to 2.";
+        }
+
+        if (!is_null($this->container['ie']) && (mb_strlen($this->container['ie']) > 14)) {
+            $invalidProperties[] = "invalid value for 'ie', the character length must be smaller than or equal to 14.";
+        }
+
+        if (!is_null($this->container['x_ender']) && (mb_strlen($this->container['x_ender']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_ender', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_ender']) && (mb_strlen($this->container['x_ender']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_ender', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['x_mun']) && (mb_strlen($this->container['x_mun']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_mun', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_mun']) && (mb_strlen($this->container['x_mun']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_mun', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -360,6 +396,10 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cnpj) && (mb_strlen($cnpj) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $cnpj when calling NfeSefazTransporta., must be smaller than or equal to 14.');
+        }
+
         $this->container['cnpj'] = $cnpj;
 
         return $this;
@@ -394,6 +434,10 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cpf) && (mb_strlen($cpf) > 11)) {
+            throw new \InvalidArgumentException('invalid length for $cpf when calling NfeSefazTransporta., must be smaller than or equal to 11.');
+        }
+
         $this->container['cpf'] = $cpf;
 
         return $this;
@@ -428,6 +472,13 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling NfeSefazTransporta., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling NfeSefazTransporta., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_nome'] = $x_nome;
 
         return $this;
@@ -462,6 +513,10 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ie) && (mb_strlen($ie) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $ie when calling NfeSefazTransporta., must be smaller than or equal to 14.');
+        }
+
         $this->container['ie'] = $ie;
 
         return $this;
@@ -496,6 +551,13 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_ender) && (mb_strlen($x_ender) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_ender when calling NfeSefazTransporta., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_ender) && (mb_strlen($x_ender) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_ender when calling NfeSefazTransporta., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_ender'] = $x_ender;
 
         return $this;
@@ -530,6 +592,13 @@ class NfeSefazTransporta implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_mun) && (mb_strlen($x_mun) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_mun when calling NfeSefazTransporta., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_mun) && (mb_strlen($x_mun) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_mun when calling NfeSefazTransporta., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_mun'] = $x_mun;
 
         return $this;

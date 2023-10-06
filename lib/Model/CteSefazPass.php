@@ -273,6 +273,14 @@ class CteSefazPass implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['x_pass']) && (mb_strlen($this->container['x_pass']) > 15)) {
+            $invalidProperties[] = "invalid value for 'x_pass', the character length must be smaller than or equal to 15.";
+        }
+
+        if (!is_null($this->container['x_pass']) && (mb_strlen($this->container['x_pass']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_pass', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -317,6 +325,13 @@ class CteSefazPass implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_pass) && (mb_strlen($x_pass) > 15)) {
+            throw new \InvalidArgumentException('invalid length for $x_pass when calling CteSefazPass., must be smaller than or equal to 15.');
+        }
+        if (!is_null($x_pass) && (mb_strlen($x_pass) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_pass when calling CteSefazPass., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_pass'] = $x_pass;
 
         return $this;

@@ -367,24 +367,72 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['irin'] === null) {
             $invalidProperties[] = "'irin' can't be null";
         }
+        if ((mb_strlen($this->container['irin']) > 10)) {
+            $invalidProperties[] = "invalid value for 'irin', the character length must be smaller than or equal to 10.";
+        }
+
+        if ((mb_strlen($this->container['irin']) < 1)) {
+            $invalidProperties[] = "invalid value for 'irin', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['tp_emb'] === null) {
             $invalidProperties[] = "'tp_emb' can't be null";
         }
         if ($this->container['c_embar'] === null) {
             $invalidProperties[] = "'c_embar' can't be null";
         }
+        if ((mb_strlen($this->container['c_embar']) > 10)) {
+            $invalidProperties[] = "invalid value for 'c_embar', the character length must be smaller than or equal to 10.";
+        }
+
+        if ((mb_strlen($this->container['c_embar']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_embar', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['x_embar'] === null) {
             $invalidProperties[] = "'x_embar' can't be null";
         }
+        if ((mb_strlen($this->container['x_embar']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_embar', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_embar']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_embar', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['n_viag'] === null) {
             $invalidProperties[] = "'n_viag' can't be null";
         }
         if ($this->container['c_prt_emb'] === null) {
             $invalidProperties[] = "'c_prt_emb' can't be null";
         }
+        if ((mb_strlen($this->container['c_prt_emb']) > 5)) {
+            $invalidProperties[] = "invalid value for 'c_prt_emb', the character length must be smaller than or equal to 5.";
+        }
+
+        if ((mb_strlen($this->container['c_prt_emb']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_prt_emb', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['c_prt_dest'] === null) {
             $invalidProperties[] = "'c_prt_dest' can't be null";
         }
+        if ((mb_strlen($this->container['c_prt_dest']) > 5)) {
+            $invalidProperties[] = "invalid value for 'c_prt_dest', the character length must be smaller than or equal to 5.";
+        }
+
+        if ((mb_strlen($this->container['c_prt_dest']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_prt_dest', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['prt_trans']) && (mb_strlen($this->container['prt_trans']) > 60)) {
+            $invalidProperties[] = "invalid value for 'prt_trans', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['prt_trans']) && (mb_strlen($this->container['prt_trans']) < 1)) {
+            $invalidProperties[] = "invalid value for 'prt_trans', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -429,6 +477,13 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($irin) && (mb_strlen($irin) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $irin when calling MdfeSefazAquav., must be smaller than or equal to 10.');
+        }
+        if (!is_null($irin) && (mb_strlen($irin) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $irin when calling MdfeSefazAquav., must be bigger than or equal to 1.');
+        }
+
         $this->container['irin'] = $irin;
 
         return $this;
@@ -497,6 +552,13 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_embar) && (mb_strlen($c_embar) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $c_embar when calling MdfeSefazAquav., must be smaller than or equal to 10.');
+        }
+        if (!is_null($c_embar) && (mb_strlen($c_embar) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_embar when calling MdfeSefazAquav., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_embar'] = $c_embar;
 
         return $this;
@@ -531,6 +593,13 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_embar) && (mb_strlen($x_embar) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_embar when calling MdfeSefazAquav., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_embar) && (mb_strlen($x_embar) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_embar when calling MdfeSefazAquav., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_embar'] = $x_embar;
 
         return $this;
@@ -599,6 +668,13 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_prt_emb) && (mb_strlen($c_prt_emb) > 5)) {
+            throw new \InvalidArgumentException('invalid length for $c_prt_emb when calling MdfeSefazAquav., must be smaller than or equal to 5.');
+        }
+        if (!is_null($c_prt_emb) && (mb_strlen($c_prt_emb) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_prt_emb when calling MdfeSefazAquav., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_prt_emb'] = $c_prt_emb;
 
         return $this;
@@ -633,6 +709,13 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_prt_dest) && (mb_strlen($c_prt_dest) > 5)) {
+            throw new \InvalidArgumentException('invalid length for $c_prt_dest when calling MdfeSefazAquav., must be smaller than or equal to 5.');
+        }
+        if (!is_null($c_prt_dest) && (mb_strlen($c_prt_dest) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_prt_dest when calling MdfeSefazAquav., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_prt_dest'] = $c_prt_dest;
 
         return $this;
@@ -667,6 +750,13 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($prt_trans) && (mb_strlen($prt_trans) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $prt_trans when calling MdfeSefazAquav., must be smaller than or equal to 60.');
+        }
+        if (!is_null($prt_trans) && (mb_strlen($prt_trans) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $prt_trans when calling MdfeSefazAquav., must be bigger than or equal to 1.');
+        }
+
         $this->container['prt_trans'] = $prt_trans;
 
         return $this;

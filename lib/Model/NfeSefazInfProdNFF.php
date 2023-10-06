@@ -284,6 +284,10 @@ class NfeSefazInfProdNFF implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['c_prod_fisco'] === null) {
             $invalidProperties[] = "'c_prod_fisco' can't be null";
         }
+        if ((mb_strlen($this->container['c_prod_fisco']) > 14)) {
+            $invalidProperties[] = "invalid value for 'c_prod_fisco', the character length must be smaller than or equal to 14.";
+        }
+
         if ($this->container['c_oper_nff'] === null) {
             $invalidProperties[] = "'c_oper_nff' can't be null";
         }
@@ -331,6 +335,10 @@ class NfeSefazInfProdNFF implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_prod_fisco) && (mb_strlen($c_prod_fisco) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $c_prod_fisco when calling NfeSefazInfProdNFF., must be smaller than or equal to 14.');
+        }
+
         $this->container['c_prod_fisco'] = $c_prod_fisco;
 
         return $this;

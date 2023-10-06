@@ -291,12 +291,28 @@ class DocNFNFS implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['n_nfs'] === null) {
             $invalidProperties[] = "'n_nfs' can't be null";
         }
+        if (($this->container['n_nfs'] > 9999999)) {
+            $invalidProperties[] = "invalid value for 'n_nfs', must be smaller than or equal to 9999999.";
+        }
+
+        if (($this->container['n_nfs'] < 0)) {
+            $invalidProperties[] = "invalid value for 'n_nfs', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['mod_nfs'] === null) {
             $invalidProperties[] = "'mod_nfs' can't be null";
         }
         if ($this->container['serie_nfs'] === null) {
             $invalidProperties[] = "'serie_nfs' can't be null";
         }
+        if ((mb_strlen($this->container['serie_nfs']) > 15)) {
+            $invalidProperties[] = "invalid value for 'serie_nfs', the character length must be smaller than or equal to 15.";
+        }
+
+        if ((mb_strlen($this->container['serie_nfs']) < 1)) {
+            $invalidProperties[] = "invalid value for 'serie_nfs', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -341,6 +357,14 @@ class DocNFNFS implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_nfs) && ($n_nfs > 9999999)) {
+            throw new \InvalidArgumentException('invalid value for $n_nfs when calling DocNFNFS., must be smaller than or equal to 9999999.');
+        }
+        if (!is_null($n_nfs) && ($n_nfs < 0)) {
+            throw new \InvalidArgumentException('invalid value for $n_nfs when calling DocNFNFS., must be bigger than or equal to 0.');
+        }
+
         $this->container['n_nfs'] = $n_nfs;
 
         return $this;
@@ -409,6 +433,13 @@ class DocNFNFS implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($serie_nfs) && (mb_strlen($serie_nfs) > 15)) {
+            throw new \InvalidArgumentException('invalid length for $serie_nfs when calling DocNFNFS., must be smaller than or equal to 15.');
+        }
+        if (!is_null($serie_nfs) && (mb_strlen($serie_nfs) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $serie_nfs when calling DocNFNFS., must be bigger than or equal to 1.');
+        }
+
         $this->container['serie_nfs'] = $serie_nfs;
 
         return $this;

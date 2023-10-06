@@ -336,6 +336,18 @@ class RpsDadosTomadorEndereco implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['complemento']) && (mb_strlen($this->container['complemento']) > 500)) {
+            $invalidProperties[] = "invalid value for 'complemento', the character length must be smaller than or equal to 500.";
+        }
+
+        if (!is_null($this->container['cidade']) && (mb_strlen($this->container['cidade']) > 255)) {
+            $invalidProperties[] = "invalid value for 'cidade', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['pais']) && (mb_strlen($this->container['pais']) > 255)) {
+            $invalidProperties[] = "invalid value for 'pais', the character length must be smaller than or equal to 255.";
+        }
+
         return $invalidProperties;
     }
 
@@ -427,6 +439,10 @@ class RpsDadosTomadorEndereco implements ModelInterface, ArrayAccess, \JsonSeria
         if (is_null($complemento)) {
             throw new \InvalidArgumentException('non-nullable complemento cannot be null');
         }
+        if ((mb_strlen($complemento) > 500)) {
+            throw new \InvalidArgumentException('invalid length for $complemento when calling RpsDadosTomadorEndereco., must be smaller than or equal to 500.');
+        }
+
         $this->container['complemento'] = $complemento;
 
         return $this;
@@ -508,6 +524,10 @@ class RpsDadosTomadorEndereco implements ModelInterface, ArrayAccess, \JsonSeria
         if (is_null($cidade)) {
             throw new \InvalidArgumentException('non-nullable cidade cannot be null');
         }
+        if ((mb_strlen($cidade) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $cidade when calling RpsDadosTomadorEndereco., must be smaller than or equal to 255.');
+        }
+
         $this->container['cidade'] = $cidade;
 
         return $this;
@@ -589,6 +609,10 @@ class RpsDadosTomadorEndereco implements ModelInterface, ArrayAccess, \JsonSeria
         if (is_null($pais)) {
             throw new \InvalidArgumentException('non-nullable pais cannot be null');
         }
+        if ((mb_strlen($pais) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $pais when calling RpsDadosTomadorEndereco., must be smaller than or equal to 255.');
+        }
+
         $this->container['pais'] = $pais;
 
         return $this;

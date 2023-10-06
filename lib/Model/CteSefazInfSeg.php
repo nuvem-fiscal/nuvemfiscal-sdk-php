@@ -284,6 +284,14 @@ class CteSefazInfSeg implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['x_seg'] === null) {
             $invalidProperties[] = "'x_seg' can't be null";
         }
+        if ((mb_strlen($this->container['x_seg']) > 30)) {
+            $invalidProperties[] = "invalid value for 'x_seg', the character length must be smaller than or equal to 30.";
+        }
+
+        if ((mb_strlen($this->container['x_seg']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_seg', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['cnpj'] === null) {
             $invalidProperties[] = "'cnpj' can't be null";
         }
@@ -331,6 +339,13 @@ class CteSefazInfSeg implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_seg) && (mb_strlen($x_seg) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $x_seg when calling CteSefazInfSeg., must be smaller than or equal to 30.');
+        }
+        if (!is_null($x_seg) && (mb_strlen($x_seg) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_seg when calling CteSefazInfSeg., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_seg'] = $x_seg;
 
         return $this;

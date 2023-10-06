@@ -304,6 +304,14 @@ class NfeSefazRastro implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['n_lote'] === null) {
             $invalidProperties[] = "'n_lote' can't be null";
         }
+        if ((mb_strlen($this->container['n_lote']) > 20)) {
+            $invalidProperties[] = "invalid value for 'n_lote', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['n_lote']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_lote', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['q_lote'] === null) {
             $invalidProperties[] = "'q_lote' can't be null";
         }
@@ -313,6 +321,14 @@ class NfeSefazRastro implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['d_val'] === null) {
             $invalidProperties[] = "'d_val' can't be null";
         }
+        if (!is_null($this->container['c_agreg']) && (mb_strlen($this->container['c_agreg']) > 20)) {
+            $invalidProperties[] = "invalid value for 'c_agreg', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['c_agreg']) && (mb_strlen($this->container['c_agreg']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_agreg', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -357,6 +373,13 @@ class NfeSefazRastro implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_lote) && (mb_strlen($n_lote) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $n_lote when calling NfeSefazRastro., must be smaller than or equal to 20.');
+        }
+        if (!is_null($n_lote) && (mb_strlen($n_lote) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_lote when calling NfeSefazRastro., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_lote'] = $n_lote;
 
         return $this;
@@ -493,6 +516,13 @@ class NfeSefazRastro implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_agreg) && (mb_strlen($c_agreg) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $c_agreg when calling NfeSefazRastro., must be smaller than or equal to 20.');
+        }
+        if (!is_null($c_agreg) && (mb_strlen($c_agreg) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_agreg when calling NfeSefazRastro., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_agreg'] = $c_agreg;
 
         return $this;

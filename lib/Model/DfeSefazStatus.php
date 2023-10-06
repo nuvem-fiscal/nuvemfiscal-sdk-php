@@ -265,6 +265,7 @@ class DfeSefazStatus implements ModelInterface, ArrayAccess, \JsonSerializable
 
     public const AUTORIZADOR_AM = 'AM';
     public const AUTORIZADOR_BA = 'BA';
+    public const AUTORIZADOR_CE = 'CE';
     public const AUTORIZADOR_GO = 'GO';
     public const AUTORIZADOR_MG = 'MG';
     public const AUTORIZADOR_MS = 'MS';
@@ -275,10 +276,11 @@ class DfeSefazStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     public const AUTORIZADOR_SP = 'SP';
     public const AUTORIZADOR_SVAN = 'SVAN';
     public const AUTORIZADOR_SVRS = 'SVRS';
-    public const AUTORIZADOR_SVC_AN = 'SVC-AN';
-    public const AUTORIZADOR_SVC_RS = 'SVC-RS';
+    public const AUTORIZADOR_SVCAN = 'SVCAN';
+    public const AUTORIZADOR_SVCRS = 'SVCRS';
     public const AUTORIZADOR_AN = 'AN';
     public const AUTORIZADOR_SVSP = 'SVSP';
+    public const AUTORIZADOR_SVCSP = 'SVCSP';
     public const AMBIENTE_HOMOLOGACAO = 'homologacao';
     public const AMBIENTE_PRODUCAO = 'producao';
 
@@ -292,6 +294,7 @@ class DfeSefazStatus implements ModelInterface, ArrayAccess, \JsonSerializable
         return [
             self::AUTORIZADOR_AM,
             self::AUTORIZADOR_BA,
+            self::AUTORIZADOR_CE,
             self::AUTORIZADOR_GO,
             self::AUTORIZADOR_MG,
             self::AUTORIZADOR_MS,
@@ -302,10 +305,11 @@ class DfeSefazStatus implements ModelInterface, ArrayAccess, \JsonSerializable
             self::AUTORIZADOR_SP,
             self::AUTORIZADOR_SVAN,
             self::AUTORIZADOR_SVRS,
-            self::AUTORIZADOR_SVC_AN,
-            self::AUTORIZADOR_SVC_RS,
+            self::AUTORIZADOR_SVCAN,
+            self::AUTORIZADOR_SVCRS,
             self::AUTORIZADOR_AN,
             self::AUTORIZADOR_SVSP,
+            self::AUTORIZADOR_SVCSP,
         ];
     }
 

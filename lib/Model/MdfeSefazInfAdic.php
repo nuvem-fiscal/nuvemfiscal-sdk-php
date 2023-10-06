@@ -281,6 +281,22 @@ class MdfeSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['inf_ad_fisco']) && (mb_strlen($this->container['inf_ad_fisco']) > 2000)) {
+            $invalidProperties[] = "invalid value for 'inf_ad_fisco', the character length must be smaller than or equal to 2000.";
+        }
+
+        if (!is_null($this->container['inf_ad_fisco']) && (mb_strlen($this->container['inf_ad_fisco']) < 1)) {
+            $invalidProperties[] = "invalid value for 'inf_ad_fisco', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['inf_cpl']) && (mb_strlen($this->container['inf_cpl']) > 5000)) {
+            $invalidProperties[] = "invalid value for 'inf_cpl', the character length must be smaller than or equal to 5000.";
+        }
+
+        if (!is_null($this->container['inf_cpl']) && (mb_strlen($this->container['inf_cpl']) < 1)) {
+            $invalidProperties[] = "invalid value for 'inf_cpl', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -325,6 +341,13 @@ class MdfeSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($inf_ad_fisco) && (mb_strlen($inf_ad_fisco) > 2000)) {
+            throw new \InvalidArgumentException('invalid length for $inf_ad_fisco when calling MdfeSefazInfAdic., must be smaller than or equal to 2000.');
+        }
+        if (!is_null($inf_ad_fisco) && (mb_strlen($inf_ad_fisco) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $inf_ad_fisco when calling MdfeSefazInfAdic., must be bigger than or equal to 1.');
+        }
+
         $this->container['inf_ad_fisco'] = $inf_ad_fisco;
 
         return $this;
@@ -359,6 +382,13 @@ class MdfeSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($inf_cpl) && (mb_strlen($inf_cpl) > 5000)) {
+            throw new \InvalidArgumentException('invalid length for $inf_cpl when calling MdfeSefazInfAdic., must be smaller than or equal to 5000.');
+        }
+        if (!is_null($inf_cpl) && (mb_strlen($inf_cpl) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $inf_cpl when calling MdfeSefazInfAdic., must be bigger than or equal to 1.');
+        }
+
         $this->container['inf_cpl'] = $inf_cpl;
 
         return $this;

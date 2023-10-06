@@ -291,6 +291,14 @@ class NfeSefazMed implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['c_prod_anvisa'] === null) {
             $invalidProperties[] = "'c_prod_anvisa' can't be null";
         }
+        if (!is_null($this->container['x_motivo_isencao']) && (mb_strlen($this->container['x_motivo_isencao']) > 255)) {
+            $invalidProperties[] = "invalid value for 'x_motivo_isencao', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['x_motivo_isencao']) && (mb_strlen($this->container['x_motivo_isencao']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_motivo_isencao', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['v_pmc'] === null) {
             $invalidProperties[] = "'v_pmc' can't be null";
         }
@@ -372,6 +380,13 @@ class NfeSefazMed implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_motivo_isencao) && (mb_strlen($x_motivo_isencao) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $x_motivo_isencao when calling NfeSefazMed., must be smaller than or equal to 255.');
+        }
+        if (!is_null($x_motivo_isencao) && (mb_strlen($x_motivo_isencao) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_motivo_isencao when calling NfeSefazMed., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_motivo_isencao'] = $x_motivo_isencao;
 
         return $this;

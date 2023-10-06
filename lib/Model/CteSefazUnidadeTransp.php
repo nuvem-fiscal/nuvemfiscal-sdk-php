@@ -308,6 +308,14 @@ class CteSefazUnidadeTransp implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['id_unid_transp'] === null) {
             $invalidProperties[] = "'id_unid_transp' can't be null";
         }
+        if ((mb_strlen($this->container['id_unid_transp']) > 20)) {
+            $invalidProperties[] = "invalid value for 'id_unid_transp', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['id_unid_transp']) < 1)) {
+            $invalidProperties[] = "invalid value for 'id_unid_transp', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -386,6 +394,13 @@ class CteSefazUnidadeTransp implements ModelInterface, ArrayAccess, \JsonSeriali
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($id_unid_transp) && (mb_strlen($id_unid_transp) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $id_unid_transp when calling CteSefazUnidadeTransp., must be smaller than or equal to 20.');
+        }
+        if (!is_null($id_unid_transp) && (mb_strlen($id_unid_transp) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $id_unid_transp when calling CteSefazUnidadeTransp., must be bigger than or equal to 1.');
+        }
+
         $this->container['id_unid_transp'] = $id_unid_transp;
 
         return $this;

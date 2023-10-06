@@ -337,6 +337,46 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['cnpj']) && (mb_strlen($this->container['cnpj']) > 14)) {
+            $invalidProperties[] = "invalid value for 'cnpj', the character length must be smaller than or equal to 14.";
+        }
+
+        if (!is_null($this->container['cpf']) && (mb_strlen($this->container['cpf']) > 11)) {
+            $invalidProperties[] = "invalid value for 'cpf', the character length must be smaller than or equal to 11.";
+        }
+
+        if (!is_null($this->container['x_nome']) && (mb_strlen($this->container['x_nome']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_nome']) && (mb_strlen($this->container['x_nome']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be bigger than or equal to 2.";
+        }
+
+        if (!is_null($this->container['x_fant']) && (mb_strlen($this->container['x_fant']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_fant', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['x_fant']) && (mb_strlen($this->container['x_fant']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_fant', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['ie']) && (mb_strlen($this->container['ie']) > 14)) {
+            $invalidProperties[] = "invalid value for 'ie', the character length must be smaller than or equal to 14.";
+        }
+
+        if (!is_null($this->container['iest']) && (mb_strlen($this->container['iest']) > 14)) {
+            $invalidProperties[] = "invalid value for 'iest', the character length must be smaller than or equal to 14.";
+        }
+
+        if (!is_null($this->container['im']) && (mb_strlen($this->container['im']) > 15)) {
+            $invalidProperties[] = "invalid value for 'im', the character length must be smaller than or equal to 15.";
+        }
+
+        if (!is_null($this->container['im']) && (mb_strlen($this->container['im']) < 1)) {
+            $invalidProperties[] = "invalid value for 'im', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -381,6 +421,10 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cnpj) && (mb_strlen($cnpj) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $cnpj when calling NfeSefazEmit., must be smaller than or equal to 14.');
+        }
+
         $this->container['cnpj'] = $cnpj;
 
         return $this;
@@ -415,6 +459,10 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cpf) && (mb_strlen($cpf) > 11)) {
+            throw new \InvalidArgumentException('invalid length for $cpf when calling NfeSefazEmit., must be smaller than or equal to 11.');
+        }
+
         $this->container['cpf'] = $cpf;
 
         return $this;
@@ -449,6 +497,13 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling NfeSefazEmit., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling NfeSefazEmit., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_nome'] = $x_nome;
 
         return $this;
@@ -483,6 +538,13 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_fant) && (mb_strlen($x_fant) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_fant when calling NfeSefazEmit., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_fant) && (mb_strlen($x_fant) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_fant when calling NfeSefazEmit., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_fant'] = $x_fant;
 
         return $this;
@@ -544,6 +606,10 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($ie) && (mb_strlen($ie) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $ie when calling NfeSefazEmit., must be smaller than or equal to 14.');
+        }
+
         $this->container['ie'] = $ie;
 
         return $this;
@@ -578,6 +644,10 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($iest) && (mb_strlen($iest) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $iest when calling NfeSefazEmit., must be smaller than or equal to 14.');
+        }
+
         $this->container['iest'] = $iest;
 
         return $this;
@@ -612,6 +682,13 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($im) && (mb_strlen($im) > 15)) {
+            throw new \InvalidArgumentException('invalid length for $im when calling NfeSefazEmit., must be smaller than or equal to 15.');
+        }
+        if (!is_null($im) && (mb_strlen($im) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $im when calling NfeSefazEmit., must be bigger than or equal to 1.');
+        }
+
         $this->container['im'] = $im;
 
         return $this;

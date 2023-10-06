@@ -288,6 +288,14 @@ class NfeSefazDup implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['n_dup']) && (mb_strlen($this->container['n_dup']) > 60)) {
+            $invalidProperties[] = "invalid value for 'n_dup', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['n_dup']) && (mb_strlen($this->container['n_dup']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_dup', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['v_dup'] === null) {
             $invalidProperties[] = "'v_dup' can't be null";
         }
@@ -335,6 +343,13 @@ class NfeSefazDup implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_dup) && (mb_strlen($n_dup) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $n_dup when calling NfeSefazDup., must be smaller than or equal to 60.');
+        }
+        if (!is_null($n_dup) && (mb_strlen($n_dup) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_dup when calling NfeSefazDup., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_dup'] = $n_dup;
 
         return $this;

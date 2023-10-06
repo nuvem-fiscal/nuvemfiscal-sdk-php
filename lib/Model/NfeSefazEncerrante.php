@@ -305,9 +305,33 @@ class NfeSefazEncerrante implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['n_bico'] === null) {
             $invalidProperties[] = "'n_bico' can't be null";
         }
+        if (($this->container['n_bico'] > 999)) {
+            $invalidProperties[] = "invalid value for 'n_bico', must be smaller than or equal to 999.";
+        }
+
+        if (($this->container['n_bico'] < 0)) {
+            $invalidProperties[] = "invalid value for 'n_bico', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['n_bomba']) && ($this->container['n_bomba'] > 999)) {
+            $invalidProperties[] = "invalid value for 'n_bomba', must be smaller than or equal to 999.";
+        }
+
+        if (!is_null($this->container['n_bomba']) && ($this->container['n_bomba'] < 0)) {
+            $invalidProperties[] = "invalid value for 'n_bomba', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['n_tanque'] === null) {
             $invalidProperties[] = "'n_tanque' can't be null";
         }
+        if (($this->container['n_tanque'] > 999)) {
+            $invalidProperties[] = "invalid value for 'n_tanque', must be smaller than or equal to 999.";
+        }
+
+        if (($this->container['n_tanque'] < 0)) {
+            $invalidProperties[] = "invalid value for 'n_tanque', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_enc_ini'] === null) {
             $invalidProperties[] = "'v_enc_ini' can't be null";
         }
@@ -358,6 +382,14 @@ class NfeSefazEncerrante implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_bico) && ($n_bico > 999)) {
+            throw new \InvalidArgumentException('invalid value for $n_bico when calling NfeSefazEncerrante., must be smaller than or equal to 999.');
+        }
+        if (!is_null($n_bico) && ($n_bico < 0)) {
+            throw new \InvalidArgumentException('invalid value for $n_bico when calling NfeSefazEncerrante., must be bigger than or equal to 0.');
+        }
+
         $this->container['n_bico'] = $n_bico;
 
         return $this;
@@ -392,6 +424,14 @@ class NfeSefazEncerrante implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_bomba) && ($n_bomba > 999)) {
+            throw new \InvalidArgumentException('invalid value for $n_bomba when calling NfeSefazEncerrante., must be smaller than or equal to 999.');
+        }
+        if (!is_null($n_bomba) && ($n_bomba < 0)) {
+            throw new \InvalidArgumentException('invalid value for $n_bomba when calling NfeSefazEncerrante., must be bigger than or equal to 0.');
+        }
+
         $this->container['n_bomba'] = $n_bomba;
 
         return $this;
@@ -426,6 +466,14 @@ class NfeSefazEncerrante implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_tanque) && ($n_tanque > 999)) {
+            throw new \InvalidArgumentException('invalid value for $n_tanque when calling NfeSefazEncerrante., must be smaller than or equal to 999.');
+        }
+        if (!is_null($n_tanque) && ($n_tanque < 0)) {
+            throw new \InvalidArgumentException('invalid value for $n_tanque when calling NfeSefazEncerrante., must be bigger than or equal to 0.');
+        }
+
         $this->container['n_tanque'] = $n_tanque;
 
         return $this;

@@ -312,12 +312,28 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['n_item'] === null) {
             $invalidProperties[] = "'n_item' can't be null";
         }
+        if (($this->container['n_item'] > 990)) {
+            $invalidProperties[] = "invalid value for 'n_item', must be smaller than or equal to 990.";
+        }
+
+        if (($this->container['n_item'] < 1)) {
+            $invalidProperties[] = "invalid value for 'n_item', must be bigger than or equal to 1.";
+        }
+
         if ($this->container['prod'] === null) {
             $invalidProperties[] = "'prod' can't be null";
         }
         if ($this->container['imposto'] === null) {
             $invalidProperties[] = "'imposto' can't be null";
         }
+        if (!is_null($this->container['inf_ad_prod']) && (mb_strlen($this->container['inf_ad_prod']) > 500)) {
+            $invalidProperties[] = "invalid value for 'inf_ad_prod', the character length must be smaller than or equal to 500.";
+        }
+
+        if (!is_null($this->container['inf_ad_prod']) && (mb_strlen($this->container['inf_ad_prod']) < 1)) {
+            $invalidProperties[] = "invalid value for 'inf_ad_prod', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -362,6 +378,14 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_item) && ($n_item > 990)) {
+            throw new \InvalidArgumentException('invalid value for $n_item when calling NfeSefazDet., must be smaller than or equal to 990.');
+        }
+        if (!is_null($n_item) && ($n_item < 1)) {
+            throw new \InvalidArgumentException('invalid value for $n_item when calling NfeSefazDet., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_item'] = $n_item;
 
         return $this;
@@ -477,6 +501,13 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($inf_ad_prod) && (mb_strlen($inf_ad_prod) > 500)) {
+            throw new \InvalidArgumentException('invalid length for $inf_ad_prod when calling NfeSefazDet., must be smaller than or equal to 500.');
+        }
+        if (!is_null($inf_ad_prod) && (mb_strlen($inf_ad_prod) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $inf_ad_prod when calling NfeSefazDet., must be bigger than or equal to 1.');
+        }
+
         $this->container['inf_ad_prod'] = $inf_ad_prod;
 
         return $this;

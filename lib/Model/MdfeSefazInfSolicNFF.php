@@ -277,6 +277,14 @@ class MdfeSefazInfSolicNFF implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['x_solic'] === null) {
             $invalidProperties[] = "'x_solic' can't be null";
         }
+        if ((mb_strlen($this->container['x_solic']) > 2000)) {
+            $invalidProperties[] = "invalid value for 'x_solic', the character length must be smaller than or equal to 2000.";
+        }
+
+        if ((mb_strlen($this->container['x_solic']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_solic', the character length must be bigger than or equal to 2.";
+        }
+
         return $invalidProperties;
     }
 
@@ -321,6 +329,13 @@ class MdfeSefazInfSolicNFF implements ModelInterface, ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_solic) && (mb_strlen($x_solic) > 2000)) {
+            throw new \InvalidArgumentException('invalid length for $x_solic when calling MdfeSefazInfSolicNFF., must be smaller than or equal to 2000.');
+        }
+        if (!is_null($x_solic) && (mb_strlen($x_solic) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_solic when calling MdfeSefazInfSolicNFF., must be bigger than or equal to 2.');
+        }
+
         $this->container['x_solic'] = $x_solic;
 
         return $this;

@@ -291,6 +291,14 @@ class CteSefazDetCont implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['n_cont'] === null) {
             $invalidProperties[] = "'n_cont' can't be null";
         }
+        if ((mb_strlen($this->container['n_cont']) > 20)) {
+            $invalidProperties[] = "invalid value for 'n_cont', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['n_cont']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_cont', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -335,6 +343,13 @@ class CteSefazDetCont implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_cont) && (mb_strlen($n_cont) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $n_cont when calling CteSefazDetCont., must be smaller than or equal to 20.');
+        }
+        if (!is_null($n_cont) && (mb_strlen($n_cont) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_cont when calling CteSefazDetCont., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_cont'] = $n_cont;
 
         return $this;

@@ -338,12 +338,28 @@ class CteSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['x_navio'] === null) {
             $invalidProperties[] = "'x_navio' can't be null";
         }
+        if ((mb_strlen($this->container['x_navio']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_navio', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_navio']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_navio', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['direc'] === null) {
             $invalidProperties[] = "'direc' can't be null";
         }
         if ($this->container['irin'] === null) {
             $invalidProperties[] = "'irin' can't be null";
         }
+        if ((mb_strlen($this->container['irin']) > 10)) {
+            $invalidProperties[] = "invalid value for 'irin', the character length must be smaller than or equal to 10.";
+        }
+
+        if ((mb_strlen($this->container['irin']) < 1)) {
+            $invalidProperties[] = "invalid value for 'irin', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -456,6 +472,13 @@ class CteSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($x_navio) && (mb_strlen($x_navio) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_navio when calling CteSefazAquav., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_navio) && (mb_strlen($x_navio) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_navio when calling CteSefazAquav., must be bigger than or equal to 1.');
+        }
+
         $this->container['x_navio'] = $x_navio;
 
         return $this;
@@ -585,6 +608,13 @@ class CteSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($irin) && (mb_strlen($irin) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $irin when calling CteSefazAquav., must be smaller than or equal to 10.');
+        }
+        if (!is_null($irin) && (mb_strlen($irin) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $irin when calling CteSefazAquav., must be bigger than or equal to 1.');
+        }
+
         $this->container['irin'] = $irin;
 
         return $this;

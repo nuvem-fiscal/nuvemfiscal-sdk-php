@@ -302,12 +302,44 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['n_adicao']) && ($this->container['n_adicao'] > 999)) {
+            $invalidProperties[] = "invalid value for 'n_adicao', must be smaller than or equal to 999.";
+        }
+
+        if (!is_null($this->container['n_adicao']) && ($this->container['n_adicao'] < 1)) {
+            $invalidProperties[] = "invalid value for 'n_adicao', must be bigger than or equal to 1.";
+        }
+
         if ($this->container['n_seq_adic'] === null) {
             $invalidProperties[] = "'n_seq_adic' can't be null";
         }
+        if (($this->container['n_seq_adic'] > 99999)) {
+            $invalidProperties[] = "invalid value for 'n_seq_adic', must be smaller than or equal to 99999.";
+        }
+
+        if (($this->container['n_seq_adic'] < 1)) {
+            $invalidProperties[] = "invalid value for 'n_seq_adic', must be bigger than or equal to 1.";
+        }
+
         if ($this->container['c_fabricante'] === null) {
             $invalidProperties[] = "'c_fabricante' can't be null";
         }
+        if ((mb_strlen($this->container['c_fabricante']) > 60)) {
+            $invalidProperties[] = "invalid value for 'c_fabricante', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['c_fabricante']) < 1)) {
+            $invalidProperties[] = "invalid value for 'c_fabricante', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['n_draw']) && (mb_strlen($this->container['n_draw']) > 20)) {
+            $invalidProperties[] = "invalid value for 'n_draw', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['n_draw']) && (mb_strlen($this->container['n_draw']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_draw', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -352,6 +384,14 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_adicao) && ($n_adicao > 999)) {
+            throw new \InvalidArgumentException('invalid value for $n_adicao when calling NfeSefazAdi., must be smaller than or equal to 999.');
+        }
+        if (!is_null($n_adicao) && ($n_adicao < 1)) {
+            throw new \InvalidArgumentException('invalid value for $n_adicao when calling NfeSefazAdi., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_adicao'] = $n_adicao;
 
         return $this;
@@ -386,6 +426,14 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_seq_adic) && ($n_seq_adic > 99999)) {
+            throw new \InvalidArgumentException('invalid value for $n_seq_adic when calling NfeSefazAdi., must be smaller than or equal to 99999.');
+        }
+        if (!is_null($n_seq_adic) && ($n_seq_adic < 1)) {
+            throw new \InvalidArgumentException('invalid value for $n_seq_adic when calling NfeSefazAdi., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_seq_adic'] = $n_seq_adic;
 
         return $this;
@@ -420,6 +468,13 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($c_fabricante) && (mb_strlen($c_fabricante) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $c_fabricante when calling NfeSefazAdi., must be smaller than or equal to 60.');
+        }
+        if (!is_null($c_fabricante) && (mb_strlen($c_fabricante) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $c_fabricante when calling NfeSefazAdi., must be bigger than or equal to 1.');
+        }
+
         $this->container['c_fabricante'] = $c_fabricante;
 
         return $this;
@@ -488,6 +543,13 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_draw) && (mb_strlen($n_draw) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $n_draw when calling NfeSefazAdi., must be smaller than or equal to 20.');
+        }
+        if (!is_null($n_draw) && (mb_strlen($n_draw) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_draw when calling NfeSefazAdi., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_draw'] = $n_draw;
 
         return $this;

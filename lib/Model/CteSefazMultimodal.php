@@ -290,6 +290,14 @@ class CteSefazMultimodal implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['cotm'] === null) {
             $invalidProperties[] = "'cotm' can't be null";
         }
+        if ((mb_strlen($this->container['cotm']) > 20)) {
+            $invalidProperties[] = "invalid value for 'cotm', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['cotm']) < 1)) {
+            $invalidProperties[] = "invalid value for 'cotm', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['ind_negociavel'] === null) {
             $invalidProperties[] = "'ind_negociavel' can't be null";
         }
@@ -337,6 +345,13 @@ class CteSefazMultimodal implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($cotm) && (mb_strlen($cotm) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $cotm when calling CteSefazMultimodal., must be smaller than or equal to 20.');
+        }
+        if (!is_null($cotm) && (mb_strlen($cotm) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $cotm when calling CteSefazMultimodal., must be bigger than or equal to 1.');
+        }
+
         $this->container['cotm'] = $cotm;
 
         return $this;

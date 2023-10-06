@@ -284,6 +284,14 @@ class MdfeSefazInfContrato implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['nro_contrato'] === null) {
             $invalidProperties[] = "'nro_contrato' can't be null";
         }
+        if ((mb_strlen($this->container['nro_contrato']) > 20)) {
+            $invalidProperties[] = "invalid value for 'nro_contrato', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['nro_contrato']) < 2)) {
+            $invalidProperties[] = "invalid value for 'nro_contrato', the character length must be bigger than or equal to 2.";
+        }
+
         if ($this->container['v_contrato_global'] === null) {
             $invalidProperties[] = "'v_contrato_global' can't be null";
         }
@@ -331,6 +339,13 @@ class MdfeSefazInfContrato implements ModelInterface, ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($nro_contrato) && (mb_strlen($nro_contrato) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $nro_contrato when calling MdfeSefazInfContrato., must be smaller than or equal to 20.');
+        }
+        if (!is_null($nro_contrato) && (mb_strlen($nro_contrato) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $nro_contrato when calling MdfeSefazInfContrato., must be bigger than or equal to 2.');
+        }
+
         $this->container['nro_contrato'] = $nro_contrato;
 
         return $this;

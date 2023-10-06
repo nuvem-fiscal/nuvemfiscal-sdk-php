@@ -281,6 +281,14 @@ class NfeSefazDetExport implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['n_draw']) && (mb_strlen($this->container['n_draw']) > 20)) {
+            $invalidProperties[] = "invalid value for 'n_draw', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['n_draw']) && (mb_strlen($this->container['n_draw']) < 1)) {
+            $invalidProperties[] = "invalid value for 'n_draw', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -325,6 +333,13 @@ class NfeSefazDetExport implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($n_draw) && (mb_strlen($n_draw) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $n_draw when calling NfeSefazDetExport., must be smaller than or equal to 20.');
+        }
+        if (!is_null($n_draw) && (mb_strlen($n_draw) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $n_draw when calling NfeSefazDetExport., must be bigger than or equal to 1.');
+        }
+
         $this->container['n_draw'] = $n_draw;
 
         return $this;

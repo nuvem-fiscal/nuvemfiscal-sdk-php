@@ -284,6 +284,14 @@ class MdfeSefazInfUnidCargaVazia implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['id_unid_carga_vazia'] === null) {
             $invalidProperties[] = "'id_unid_carga_vazia' can't be null";
         }
+        if ((mb_strlen($this->container['id_unid_carga_vazia']) > 20)) {
+            $invalidProperties[] = "invalid value for 'id_unid_carga_vazia', the character length must be smaller than or equal to 20.";
+        }
+
+        if ((mb_strlen($this->container['id_unid_carga_vazia']) < 1)) {
+            $invalidProperties[] = "invalid value for 'id_unid_carga_vazia', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['tp_unid_carga_vazia'] === null) {
             $invalidProperties[] = "'tp_unid_carga_vazia' can't be null";
         }
@@ -331,6 +339,13 @@ class MdfeSefazInfUnidCargaVazia implements ModelInterface, ArrayAccess, \JsonSe
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!is_null($id_unid_carga_vazia) && (mb_strlen($id_unid_carga_vazia) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $id_unid_carga_vazia when calling MdfeSefazInfUnidCargaVazia., must be smaller than or equal to 20.');
+        }
+        if (!is_null($id_unid_carga_vazia) && (mb_strlen($id_unid_carga_vazia) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $id_unid_carga_vazia when calling MdfeSefazInfUnidCargaVazia., must be bigger than or equal to 1.');
+        }
+
         $this->container['id_unid_carga_vazia'] = $id_unid_carga_vazia;
 
         return $this;
