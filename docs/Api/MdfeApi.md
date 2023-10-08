@@ -224,7 +224,7 @@ try {
 ## `baixarPdfMdfe()`
 
 ```php
-baixarPdfMdfe($id): \SplFileObject
+baixarPdfMdfe($id, $logotipo): \SplFileObject
 ```
 
 Baixar PDF do DAMDFE
@@ -252,9 +252,10 @@ $apiInstance = new NuvemFiscal\Api\MdfeApi(
     $config
 );
 $id = 'id_example'; // string | ID único do MDF-e gerado pela Nuvem Fiscal.
+$logotipo = false; // bool | Imprime o documento com logotipo, desde que esteja cadastrado na empresa.
 
 try {
-    $result = $apiInstance->baixarPdfMdfe($id);
+    $result = $apiInstance->baixarPdfMdfe($id, $logotipo);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MdfeApi->baixarPdfMdfe: ', $e->getMessage(), PHP_EOL;
@@ -266,6 +267,7 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único do MDF-e gerado pela Nuvem Fiscal. | |
+| **logotipo** | **bool**| Imprime o documento com logotipo, desde que esteja cadastrado na empresa. | [optional] [default to false] |
 
 ### Tipo do retorno
 

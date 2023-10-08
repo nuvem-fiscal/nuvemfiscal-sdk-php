@@ -1078,15 +1078,16 @@ class MdfeApi
      * Baixar PDF do DAMDFE
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfMdfe'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SplFileObject
      */
-    public function baixarPdfMdfe($id, string $contentType = self::contentTypes['baixarPdfMdfe'][0])
+    public function baixarPdfMdfe($id, $logotipo = false, string $contentType = self::contentTypes['baixarPdfMdfe'][0])
     {
-        list($response) = $this->baixarPdfMdfeWithHttpInfo($id, $contentType);
+        list($response) = $this->baixarPdfMdfeWithHttpInfo($id, $logotipo, $contentType);
         return $response;
     }
 
@@ -1096,15 +1097,16 @@ class MdfeApi
      * Baixar PDF do DAMDFE
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfMdfe'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function baixarPdfMdfeWithHttpInfo($id, string $contentType = self::contentTypes['baixarPdfMdfe'][0])
+    public function baixarPdfMdfeWithHttpInfo($id, $logotipo = false, string $contentType = self::contentTypes['baixarPdfMdfe'][0])
     {
-        $request = $this->baixarPdfMdfeRequest($id, $contentType);
+        $request = $this->baixarPdfMdfeRequest($id, $logotipo, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1196,14 +1198,15 @@ class MdfeApi
      * Baixar PDF do DAMDFE
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfMdfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPdfMdfeAsync($id, string $contentType = self::contentTypes['baixarPdfMdfe'][0])
+    public function baixarPdfMdfeAsync($id, $logotipo = false, string $contentType = self::contentTypes['baixarPdfMdfe'][0])
     {
-        return $this->baixarPdfMdfeAsyncWithHttpInfo($id, $contentType)
+        return $this->baixarPdfMdfeAsyncWithHttpInfo($id, $logotipo, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1217,15 +1220,16 @@ class MdfeApi
      * Baixar PDF do DAMDFE
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfMdfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPdfMdfeAsyncWithHttpInfo($id, string $contentType = self::contentTypes['baixarPdfMdfe'][0])
+    public function baixarPdfMdfeAsyncWithHttpInfo($id, $logotipo = false, string $contentType = self::contentTypes['baixarPdfMdfe'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->baixarPdfMdfeRequest($id, $contentType);
+        $request = $this->baixarPdfMdfeRequest($id, $logotipo, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1267,12 +1271,13 @@ class MdfeApi
      * Create request for operation 'baixarPdfMdfe'
      *
      * @param  string $id ID único do MDF-e gerado pela Nuvem Fiscal. (required)
+     * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfMdfe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function baixarPdfMdfeRequest($id, string $contentType = self::contentTypes['baixarPdfMdfe'][0])
+    public function baixarPdfMdfeRequest($id, $logotipo = false, string $contentType = self::contentTypes['baixarPdfMdfe'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -1283,6 +1288,7 @@ class MdfeApi
         }
 
 
+
         $resourcePath = '/mdfe/{id}/pdf';
         $formParams = [];
         $queryParams = [];
@@ -1290,6 +1296,15 @@ class MdfeApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $logotipo,
+            'logotipo', // param base name
+            'boolean', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
 
 
         // path params

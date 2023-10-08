@@ -768,15 +768,16 @@ class CteApi
      * Baixar PDF do DACTE
      *
      * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfCte'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SplFileObject
      */
-    public function baixarPdfCte($id, string $contentType = self::contentTypes['baixarPdfCte'][0])
+    public function baixarPdfCte($id, $logotipo = false, string $contentType = self::contentTypes['baixarPdfCte'][0])
     {
-        list($response) = $this->baixarPdfCteWithHttpInfo($id, $contentType);
+        list($response) = $this->baixarPdfCteWithHttpInfo($id, $logotipo, $contentType);
         return $response;
     }
 
@@ -786,15 +787,16 @@ class CteApi
      * Baixar PDF do DACTE
      *
      * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfCte'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function baixarPdfCteWithHttpInfo($id, string $contentType = self::contentTypes['baixarPdfCte'][0])
+    public function baixarPdfCteWithHttpInfo($id, $logotipo = false, string $contentType = self::contentTypes['baixarPdfCte'][0])
     {
-        $request = $this->baixarPdfCteRequest($id, $contentType);
+        $request = $this->baixarPdfCteRequest($id, $logotipo, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -886,14 +888,15 @@ class CteApi
      * Baixar PDF do DACTE
      *
      * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPdfCteAsync($id, string $contentType = self::contentTypes['baixarPdfCte'][0])
+    public function baixarPdfCteAsync($id, $logotipo = false, string $contentType = self::contentTypes['baixarPdfCte'][0])
     {
-        return $this->baixarPdfCteAsyncWithHttpInfo($id, $contentType)
+        return $this->baixarPdfCteAsyncWithHttpInfo($id, $logotipo, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -907,15 +910,16 @@ class CteApi
      * Baixar PDF do DACTE
      *
      * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPdfCteAsyncWithHttpInfo($id, string $contentType = self::contentTypes['baixarPdfCte'][0])
+    public function baixarPdfCteAsyncWithHttpInfo($id, $logotipo = false, string $contentType = self::contentTypes['baixarPdfCte'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->baixarPdfCteRequest($id, $contentType);
+        $request = $this->baixarPdfCteRequest($id, $logotipo, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -957,12 +961,13 @@ class CteApi
      * Create request for operation 'baixarPdfCte'
      *
      * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
+     * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function baixarPdfCteRequest($id, string $contentType = self::contentTypes['baixarPdfCte'][0])
+    public function baixarPdfCteRequest($id, $logotipo = false, string $contentType = self::contentTypes['baixarPdfCte'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -973,6 +978,7 @@ class CteApi
         }
 
 
+
         $resourcePath = '/cte/{id}/pdf';
         $formParams = [];
         $queryParams = [];
@@ -980,6 +986,15 @@ class CteApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $logotipo,
+            'logotipo', // param base name
+            'boolean', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
 
 
         // path params

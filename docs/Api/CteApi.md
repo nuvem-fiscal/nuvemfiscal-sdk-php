@@ -155,7 +155,7 @@ try {
 ## `baixarPdfCte()`
 
 ```php
-baixarPdfCte($id): \SplFileObject
+baixarPdfCte($id, $logotipo): \SplFileObject
 ```
 
 Baixar PDF do DACTE
@@ -183,9 +183,10 @@ $apiInstance = new NuvemFiscal\Api\CteApi(
     $config
 );
 $id = 'id_example'; // string | ID único do CT-e gerado pela Nuvem Fiscal.
+$logotipo = false; // bool | Imprime o documento com logotipo, desde que esteja cadastrado na empresa.
 
 try {
-    $result = $apiInstance->baixarPdfCte($id);
+    $result = $apiInstance->baixarPdfCte($id, $logotipo);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CteApi->baixarPdfCte: ', $e->getMessage(), PHP_EOL;
@@ -197,6 +198,7 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único do CT-e gerado pela Nuvem Fiscal. | |
+| **logotipo** | **bool**| Imprime o documento com logotipo, desde que esteja cadastrado na empresa. | [optional] [default to false] |
 
 ### Tipo do retorno
 
