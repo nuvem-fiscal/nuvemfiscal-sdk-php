@@ -64,6 +64,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
         'exig_susp' => '\NuvemFiscal\Model\ExigSuspensa',
         'tp_imunidade' => 'int',
         'p_aliq' => 'float',
+        'v_issqn' => 'float',
         'tp_ret_issqn' => 'int'
     ];
 
@@ -82,6 +83,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
         'exig_susp' => null,
         'tp_imunidade' => null,
         'p_aliq' => null,
+        'v_issqn' => null,
         'tp_ret_issqn' => null
     ];
 
@@ -98,6 +100,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
 		'exig_susp' => false,
 		'tp_imunidade' => true,
 		'p_aliq' => true,
+		'v_issqn' => true,
 		'tp_ret_issqn' => true
     ];
 
@@ -194,6 +197,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
         'exig_susp' => 'exigSusp',
         'tp_imunidade' => 'tpImunidade',
         'p_aliq' => 'pAliq',
+        'v_issqn' => 'vISSQN',
         'tp_ret_issqn' => 'tpRetISSQN'
     ];
 
@@ -210,6 +214,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
         'exig_susp' => 'setExigSusp',
         'tp_imunidade' => 'setTpImunidade',
         'p_aliq' => 'setPAliq',
+        'v_issqn' => 'setVIssqn',
         'tp_ret_issqn' => 'setTpRetIssqn'
     ];
 
@@ -226,6 +231,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
         'exig_susp' => 'getExigSusp',
         'tp_imunidade' => 'getTpImunidade',
         'p_aliq' => 'getPAliq',
+        'v_issqn' => 'getVIssqn',
         'tp_ret_issqn' => 'getTpRetIssqn'
     ];
 
@@ -293,6 +299,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('exig_susp', $data ?? [], null);
         $this->setIfExists('tp_imunidade', $data ?? [], null);
         $this->setIfExists('p_aliq', $data ?? [], null);
+        $this->setIfExists('v_issqn', $data ?? [], null);
         $this->setIfExists('tp_ret_issqn', $data ?? [], null);
     }
 
@@ -561,6 +568,40 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['p_aliq'] = $p_aliq;
+
+        return $this;
+    }
+
+    /**
+     * Gets v_issqn
+     *
+     * @return float|null
+     */
+    public function getVIssqn()
+    {
+        return $this->container['v_issqn'];
+    }
+
+    /**
+     * Sets v_issqn
+     *
+     * @param float|null $v_issqn Valor do ISSQN (R$).    Caso você não informe esse campo, vamos calcular automaticamente.    Para emissões pelo Sistema Nacional NFS-e, essa propriedade é ignorada e o valor do ISSQN é determinado automaticamente pela SEFIN nacional.
+     *
+     * @return self
+     */
+    public function setVIssqn($v_issqn)
+    {
+        if (is_null($v_issqn)) {
+            array_push($this->openAPINullablesSetToNull, 'v_issqn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_issqn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['v_issqn'] = $v_issqn;
 
         return $this;
     }

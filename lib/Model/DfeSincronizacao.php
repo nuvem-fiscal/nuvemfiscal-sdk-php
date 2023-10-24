@@ -253,6 +253,7 @@ class DfeSincronizacao implements ModelInterface, ArrayAccess, \JsonSerializable
 
     public const STATUS_PENDENTE = 'pendente';
     public const STATUS_SINCRONIZADO = 'sincronizado';
+    public const STATUS_ERRO = 'erro';
 
     /**
      * Gets allowable values of the enum
@@ -264,6 +265,7 @@ class DfeSincronizacao implements ModelInterface, ArrayAccess, \JsonSerializable
         return [
             self::STATUS_PENDENTE,
             self::STATUS_SINCRONIZADO,
+            self::STATUS_ERRO,
         ];
     }
 
