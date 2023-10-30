@@ -51,14 +51,11 @@ $token = get_oauth2_token(
     'https://auth.nuvemfiscal.com.br/oauth/token', 
     $_ENV['NUVEMFISCAL_CLIENTID'],
     $_ENV['NUVEMFISCAL_CLIENTSECRET'],
-    'cep cnpj nfse' // defina o scope a ser usado
+    'cep cnpj' // defina o scope a ser usado
 );
 
 // Configurar access token OAuth2 para autorização: oauth2
 $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken($token->access_token);
-
-// Enviar boolean parâmetros como "false" e "true"
-$config->setBooleanFormatForQueryString(Configuration::BOOLEAN_FORMAT_STRING);
 
 $apiInstance = new NuvemFiscal\Api\CepApi(
     // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
@@ -679,6 +676,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.21.0`
-    - Versão do package: `2.21.0`
+- Versão da API: `2.22.3`
+    - Versão do package: `2.22.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

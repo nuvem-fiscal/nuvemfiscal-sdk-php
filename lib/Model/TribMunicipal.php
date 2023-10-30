@@ -63,9 +63,11 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
         'bm' => '\NuvemFiscal\Model\BeneficioMunicipal',
         'exig_susp' => '\NuvemFiscal\Model\ExigSuspensa',
         'tp_imunidade' => 'int',
+        'v_bc' => 'float',
         'p_aliq' => 'float',
         'v_issqn' => 'float',
-        'tp_ret_issqn' => 'int'
+        'tp_ret_issqn' => 'int',
+        'v_liq' => 'float'
     ];
 
     /**
@@ -82,9 +84,11 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
         'bm' => null,
         'exig_susp' => null,
         'tp_imunidade' => null,
+        'v_bc' => null,
         'p_aliq' => null,
         'v_issqn' => null,
-        'tp_ret_issqn' => null
+        'tp_ret_issqn' => null,
+        'v_liq' => null
     ];
 
     /**
@@ -99,9 +103,11 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
 		'bm' => false,
 		'exig_susp' => false,
 		'tp_imunidade' => true,
+		'v_bc' => true,
 		'p_aliq' => true,
 		'v_issqn' => true,
-		'tp_ret_issqn' => true
+		'tp_ret_issqn' => true,
+		'v_liq' => true
     ];
 
     /**
@@ -196,9 +202,11 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
         'bm' => 'BM',
         'exig_susp' => 'exigSusp',
         'tp_imunidade' => 'tpImunidade',
+        'v_bc' => 'vBC',
         'p_aliq' => 'pAliq',
         'v_issqn' => 'vISSQN',
-        'tp_ret_issqn' => 'tpRetISSQN'
+        'tp_ret_issqn' => 'tpRetISSQN',
+        'v_liq' => 'vLiq'
     ];
 
     /**
@@ -213,9 +221,11 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
         'bm' => 'setBm',
         'exig_susp' => 'setExigSusp',
         'tp_imunidade' => 'setTpImunidade',
+        'v_bc' => 'setVBc',
         'p_aliq' => 'setPAliq',
         'v_issqn' => 'setVIssqn',
-        'tp_ret_issqn' => 'setTpRetIssqn'
+        'tp_ret_issqn' => 'setTpRetIssqn',
+        'v_liq' => 'setVLiq'
     ];
 
     /**
@@ -230,9 +240,11 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
         'bm' => 'getBm',
         'exig_susp' => 'getExigSusp',
         'tp_imunidade' => 'getTpImunidade',
+        'v_bc' => 'getVBc',
         'p_aliq' => 'getPAliq',
         'v_issqn' => 'getVIssqn',
-        'tp_ret_issqn' => 'getTpRetIssqn'
+        'tp_ret_issqn' => 'getTpRetIssqn',
+        'v_liq' => 'getVLiq'
     ];
 
     /**
@@ -298,9 +310,11 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('bm', $data ?? [], null);
         $this->setIfExists('exig_susp', $data ?? [], null);
         $this->setIfExists('tp_imunidade', $data ?? [], null);
+        $this->setIfExists('v_bc', $data ?? [], null);
         $this->setIfExists('p_aliq', $data ?? [], null);
         $this->setIfExists('v_issqn', $data ?? [], null);
         $this->setIfExists('tp_ret_issqn', $data ?? [], null);
+        $this->setIfExists('v_liq', $data ?? [], null);
     }
 
     /**
@@ -539,6 +553,40 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets v_bc
+     *
+     * @return float|null
+     */
+    public function getVBc()
+    {
+        return $this->container['v_bc'];
+    }
+
+    /**
+     * Sets v_bc
+     *
+     * @param float|null $v_bc Valor da Base de Cálculo do ISSQN (R$).    Caso você não informe esse campo, vamos calculá-lo automaticamente.    **Atenção**: Para emissões pelo Sistema Nacional NFS-e, esse campo é ignorado e o valor é determinado automaticamente pela SEFIN nacional.
+     *
+     * @return self
+     */
+    public function setVBc($v_bc)
+    {
+        if (is_null($v_bc)) {
+            array_push($this->openAPINullablesSetToNull, 'v_bc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_bc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['v_bc'] = $v_bc;
+
+        return $this;
+    }
+
+    /**
      * Gets p_aliq
      *
      * @return float|null
@@ -551,7 +599,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets p_aliq
      *
-     * @param float|null $p_aliq Valor da alíquota (%%) do serviço prestado relativo ao município sujeito ativo (município de incidência) do ISSQN.  Se o município de incidência pertence ao Sistema Nacional NFS-e a alíquota estará parametrizada e, portanto, será fornecida pelo sistema.  Se o município de incidência não pertence ao Sistema Nacional NFS-e a alíquota não estará parametrizada e, por isso, deverá ser fornecida pelo emitente.
+     * @param float|null $p_aliq Valor da alíquota (%%) do serviço prestado relativo ao município sujeito ativo (município de incidência) do ISSQN.    **Observações**:  * Se o município de incidência pertence ao Sistema Nacional NFS-e a alíquota estará parametrizada e, portanto, será fornecida pelo sistema.  * Se o município de incidência não pertence ao Sistema Nacional NFS-e a alíquota não estará parametrizada e, por isso, deverá ser fornecida pelo emitente.
      *
      * @return self
      */
@@ -585,7 +633,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets v_issqn
      *
-     * @param float|null $v_issqn Valor do ISSQN (R$).    Caso você não informe esse campo, vamos calcular automaticamente.    Para emissões pelo Sistema Nacional NFS-e, essa propriedade é ignorada e o valor do ISSQN é determinado automaticamente pela SEFIN nacional.
+     * @param float|null $v_issqn Valor do ISSQN (R$).    Caso você não informe esse campo, vamos calculá-lo automaticamente.    **Atenção**: Para emissões pelo Sistema Nacional NFS-e, esse campo é ignorado e o valor é determinado automaticamente pela SEFIN nacional.
      *
      * @return self
      */
@@ -636,6 +684,40 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['tp_ret_issqn'] = $tp_ret_issqn;
+
+        return $this;
+    }
+
+    /**
+     * Gets v_liq
+     *
+     * @return float|null
+     */
+    public function getVLiq()
+    {
+        return $this->container['v_liq'];
+    }
+
+    /**
+     * Sets v_liq
+     *
+     * @param float|null $v_liq Valor Líquido (R$).    Caso você não informe esse campo, vamos calculá-lo automaticamente.    **Atenção**: Para emissões pelo Sistema Nacional NFS-e, esse campo é ignorado e o valor é determinado automaticamente pela SEFIN nacional.
+     *
+     * @return self
+     */
+    public function setVLiq($v_liq)
+    {
+        if (is_null($v_liq)) {
+            array_push($this->openAPINullablesSetToNull, 'v_liq');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_liq', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['v_liq'] = $v_liq;
 
         return $this;
     }
