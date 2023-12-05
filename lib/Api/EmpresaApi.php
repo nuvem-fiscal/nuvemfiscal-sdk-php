@@ -5495,7 +5495,7 @@ class EmpresaApi
         $headers = $this->headerSelector->selectHeaders(
             [],
             $contentType,
-            $multipart
+            false,
         );
 
         // for model (json/xml)
