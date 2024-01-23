@@ -49,8 +49,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Obter token a partir das credenciais
 $token = get_oauth2_token(
     'https://auth.nuvemfiscal.com.br/oauth/token', 
-    $_ENV['NUVEMFISCAL_CLIENTID'],
-    $_ENV['NUVEMFISCAL_CLIENTSECRET'],
+    getenv('NUVEMFISCAL_CLIENTID'),
+    getenv('NUVEMFISCAL_CLIENTSECRET'),
     'cep cnpj' // defina o scope a ser usado
 );
 
