@@ -85,10 +85,16 @@ class NfseApi
         'cancelarNfse' => [
             'application/json',
         ],
+        'cidadesAtendidas' => [
+            'application/json',
+        ],
         'consultarCancelamentoNfse' => [
             'application/json',
         ],
         'consultarLoteNfse' => [
+            'application/json',
+        ],
+        'consultarMetadados' => [
             'application/json',
         ],
         'consultarNfse' => [
@@ -1787,6 +1793,302 @@ class NfseApi
     }
 
     /**
+     * Operation cidadesAtendidas
+     *
+     * Cidades atendidas
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cidadesAtendidas'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \NuvemFiscal\Model\NfseCidadesAtendidas
+     */
+    public function cidadesAtendidas(string $contentType = self::contentTypes['cidadesAtendidas'][0])
+    {
+        list($response) = $this->cidadesAtendidasWithHttpInfo($contentType);
+        return $response;
+    }
+
+    /**
+     * Operation cidadesAtendidasWithHttpInfo
+     *
+     * Cidades atendidas
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cidadesAtendidas'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \NuvemFiscal\Model\NfseCidadesAtendidas, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function cidadesAtendidasWithHttpInfo(string $contentType = self::contentTypes['cidadesAtendidas'][0])
+    {
+        $request = $this->cidadesAtendidasRequest($contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\NuvemFiscal\Model\NfseCidadesAtendidas' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\NuvemFiscal\Model\NfseCidadesAtendidas' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\NuvemFiscal\Model\NfseCidadesAtendidas', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\NuvemFiscal\Model\NfseCidadesAtendidas';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\NuvemFiscal\Model\NfseCidadesAtendidas',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation cidadesAtendidasAsync
+     *
+     * Cidades atendidas
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cidadesAtendidas'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cidadesAtendidasAsync(string $contentType = self::contentTypes['cidadesAtendidas'][0])
+    {
+        return $this->cidadesAtendidasAsyncWithHttpInfo($contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation cidadesAtendidasAsyncWithHttpInfo
+     *
+     * Cidades atendidas
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cidadesAtendidas'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cidadesAtendidasAsyncWithHttpInfo(string $contentType = self::contentTypes['cidadesAtendidas'][0])
+    {
+        $returnType = '\NuvemFiscal\Model\NfseCidadesAtendidas';
+        $request = $this->cidadesAtendidasRequest($contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'cidadesAtendidas'
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cidadesAtendidas'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function cidadesAtendidasRequest(string $contentType = self::contentTypes['cidadesAtendidas'][0])
+    {
+
+
+        $resourcePath = '/nfse/cidades';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation consultarCancelamentoNfse
      *
      * Consultar o cancelamento da NFS-e
@@ -2351,6 +2653,322 @@ class NfseApi
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
                 ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation consultarMetadados
+     *
+     * Consultar metadados
+     *
+     * @param  string $codigo_ibge Código IBGE do município. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarMetadados'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \NuvemFiscal\Model\NfseCidadeMetadados
+     */
+    public function consultarMetadados($codigo_ibge, string $contentType = self::contentTypes['consultarMetadados'][0])
+    {
+        list($response) = $this->consultarMetadadosWithHttpInfo($codigo_ibge, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation consultarMetadadosWithHttpInfo
+     *
+     * Consultar metadados
+     *
+     * @param  string $codigo_ibge Código IBGE do município. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarMetadados'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \NuvemFiscal\Model\NfseCidadeMetadados, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function consultarMetadadosWithHttpInfo($codigo_ibge, string $contentType = self::contentTypes['consultarMetadados'][0])
+    {
+        $request = $this->consultarMetadadosRequest($codigo_ibge, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\NuvemFiscal\Model\NfseCidadeMetadados' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\NuvemFiscal\Model\NfseCidadeMetadados' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\NuvemFiscal\Model\NfseCidadeMetadados', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\NuvemFiscal\Model\NfseCidadeMetadados';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\NuvemFiscal\Model\NfseCidadeMetadados',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation consultarMetadadosAsync
+     *
+     * Consultar metadados
+     *
+     * @param  string $codigo_ibge Código IBGE do município. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarMetadados'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function consultarMetadadosAsync($codigo_ibge, string $contentType = self::contentTypes['consultarMetadados'][0])
+    {
+        return $this->consultarMetadadosAsyncWithHttpInfo($codigo_ibge, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation consultarMetadadosAsyncWithHttpInfo
+     *
+     * Consultar metadados
+     *
+     * @param  string $codigo_ibge Código IBGE do município. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarMetadados'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function consultarMetadadosAsyncWithHttpInfo($codigo_ibge, string $contentType = self::contentTypes['consultarMetadados'][0])
+    {
+        $returnType = '\NuvemFiscal\Model\NfseCidadeMetadados';
+        $request = $this->consultarMetadadosRequest($codigo_ibge, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'consultarMetadados'
+     *
+     * @param  string $codigo_ibge Código IBGE do município. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarMetadados'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function consultarMetadadosRequest($codigo_ibge, string $contentType = self::contentTypes['consultarMetadados'][0])
+    {
+
+        // verify the required parameter 'codigo_ibge' is set
+        if ($codigo_ibge === null || (is_array($codigo_ibge) && count($codigo_ibge) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $codigo_ibge when calling consultarMetadados'
+            );
+        }
+
+
+        $resourcePath = '/nfse/cidades/{codigo_ibge}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($codigo_ibge !== null) {
+            $resourcePath = str_replace(
+                '{' . 'codigo_ibge' . '}',
+                ObjectSerializer::toPathValue($codigo_ibge),
                 $resourcePath
             );
         }

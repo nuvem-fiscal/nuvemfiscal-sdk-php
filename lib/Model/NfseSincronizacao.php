@@ -56,7 +56,8 @@ class NfseSincronizacao implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string'
+        'status' => 'string',
+        'mensagens' => '\NuvemFiscal\Model\NfseMensagemRetorno[]'
     ];
 
     /**
@@ -67,7 +68,8 @@ class NfseSincronizacao implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null
+        'status' => null,
+        'mensagens' => null
     ];
 
     /**
@@ -76,7 +78,8 @@ class NfseSincronizacao implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false
+        'status' => false,
+        'mensagens' => false
     ];
 
     /**
@@ -165,7 +168,8 @@ class NfseSincronizacao implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status'
+        'status' => 'status',
+        'mensagens' => 'mensagens'
     ];
 
     /**
@@ -174,7 +178,8 @@ class NfseSincronizacao implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'mensagens' => 'setMensagens'
     ];
 
     /**
@@ -183,7 +188,8 @@ class NfseSincronizacao implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'mensagens' => 'getMensagens'
     ];
 
     /**
@@ -229,6 +235,7 @@ class NfseSincronizacao implements ModelInterface, ArrayAccess, \JsonSerializabl
 
     public const STATUS_PENDENTE = 'pendente';
     public const STATUS_SINCRONIZADO = 'sincronizado';
+    public const STATUS_ERRO = 'erro';
 
     /**
      * Gets allowable values of the enum
@@ -240,6 +247,7 @@ class NfseSincronizacao implements ModelInterface, ArrayAccess, \JsonSerializabl
         return [
             self::STATUS_PENDENTE,
             self::STATUS_SINCRONIZADO,
+            self::STATUS_ERRO,
         ];
     }
 
@@ -259,6 +267,7 @@ class NfseSincronizacao implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function __construct(array $data = null)
     {
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('mensagens', $data ?? [], null);
     }
 
     /**
@@ -345,6 +354,33 @@ class NfseSincronizacao implements ModelInterface, ArrayAccess, \JsonSerializabl
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets mensagens
+     *
+     * @return \NuvemFiscal\Model\NfseMensagemRetorno[]|null
+     */
+    public function getMensagens()
+    {
+        return $this->container['mensagens'];
+    }
+
+    /**
+     * Sets mensagens
+     *
+     * @param \NuvemFiscal\Model\NfseMensagemRetorno[]|null $mensagens mensagens
+     *
+     * @return self
+     */
+    public function setMensagens($mensagens)
+    {
+        if (is_null($mensagens)) {
+            throw new \InvalidArgumentException('non-nullable mensagens cannot be null');
+        }
+        $this->container['mensagens'] = $mensagens;
 
         return $this;
     }

@@ -366,8 +366,8 @@ class DfePedidoInutilizacao implements ModelInterface, ArrayAccess, \JsonSeriali
             $invalidProperties[] = "invalid value for 'numero_inicial', must be smaller than or equal to 999999999.";
         }
 
-        if (($this->container['numero_inicial'] < 0)) {
-            $invalidProperties[] = "invalid value for 'numero_inicial', must be bigger than or equal to 0.";
+        if (($this->container['numero_inicial'] < 1)) {
+            $invalidProperties[] = "invalid value for 'numero_inicial', must be bigger than or equal to 1.";
         }
 
         if ($this->container['numero_final'] === null) {
@@ -377,8 +377,8 @@ class DfePedidoInutilizacao implements ModelInterface, ArrayAccess, \JsonSeriali
             $invalidProperties[] = "invalid value for 'numero_final', must be smaller than or equal to 999999999.";
         }
 
-        if (($this->container['numero_final'] < 0)) {
-            $invalidProperties[] = "invalid value for 'numero_final', must be bigger than or equal to 0.";
+        if (($this->container['numero_final'] < 1)) {
+            $invalidProperties[] = "invalid value for 'numero_final', must be bigger than or equal to 1.";
         }
 
         if ($this->container['justificativa'] === null) {
@@ -559,8 +559,8 @@ class DfePedidoInutilizacao implements ModelInterface, ArrayAccess, \JsonSeriali
         if (($numero_inicial > 999999999)) {
             throw new \InvalidArgumentException('invalid value for $numero_inicial when calling DfePedidoInutilizacao., must be smaller than or equal to 999999999.');
         }
-        if (($numero_inicial < 0)) {
-            throw new \InvalidArgumentException('invalid value for $numero_inicial when calling DfePedidoInutilizacao., must be bigger than or equal to 0.');
+        if (($numero_inicial < 1)) {
+            throw new \InvalidArgumentException('invalid value for $numero_inicial when calling DfePedidoInutilizacao., must be bigger than or equal to 1.');
         }
 
         $this->container['numero_inicial'] = $numero_inicial;
@@ -594,8 +594,8 @@ class DfePedidoInutilizacao implements ModelInterface, ArrayAccess, \JsonSeriali
         if (($numero_final > 999999999)) {
             throw new \InvalidArgumentException('invalid value for $numero_final when calling DfePedidoInutilizacao., must be smaller than or equal to 999999999.');
         }
-        if (($numero_final < 0)) {
-            throw new \InvalidArgumentException('invalid value for $numero_final when calling DfePedidoInutilizacao., must be bigger than or equal to 0.');
+        if (($numero_final < 1)) {
+            throw new \InvalidArgumentException('invalid value for $numero_final when calling DfePedidoInutilizacao., must be bigger than or equal to 1.');
         }
 
         $this->container['numero_final'] = $numero_final;

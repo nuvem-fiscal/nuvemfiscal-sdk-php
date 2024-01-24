@@ -375,7 +375,7 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets trib_issqn
      *
-     * @param int $trib_issqn Tributação do ISSQN sobre o serviço prestado:  * 1 - Operação tributável  * 2 - Exportação de serviço  * 3 - Não Incidência  * 4 - Imunidade
+     * @param int $trib_issqn Tributação do ISSQN sobre o serviço prestado:  * 1 - Operação tributável  * 2 - Imunidade  * 3 - Exportação de serviço  * 4 - Não Incidência
      *
      * @return self
      */

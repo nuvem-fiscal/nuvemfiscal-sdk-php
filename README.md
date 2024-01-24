@@ -245,8 +245,10 @@ Classe | Método | Endpoint | Descrição
 *NfseApi* | [**baixarXmlDps**](docs/Api/NfseApi.md#baixarxmldps) | **GET** /nfse/{id}/xml/dps | Baixar XML da DPS
 *NfseApi* | [**baixarXmlNfse**](docs/Api/NfseApi.md#baixarxmlnfse) | **GET** /nfse/{id}/xml | Baixar XML da NFS-e processada
 *NfseApi* | [**cancelarNfse**](docs/Api/NfseApi.md#cancelarnfse) | **POST** /nfse/{id}/cancelamento | Cancelar uma NFS-e autorizada
+*NfseApi* | [**cidadesAtendidas**](docs/Api/NfseApi.md#cidadesatendidas) | **GET** /nfse/cidades | Cidades atendidas
 *NfseApi* | [**consultarCancelamentoNfse**](docs/Api/NfseApi.md#consultarcancelamentonfse) | **GET** /nfse/{id}/cancelamento | Consultar o cancelamento da NFS-e
 *NfseApi* | [**consultarLoteNfse**](docs/Api/NfseApi.md#consultarlotenfse) | **GET** /nfse/lotes/{id} | Consultar lote de NFS-e
+*NfseApi* | [**consultarMetadados**](docs/Api/NfseApi.md#consultarmetadados) | **GET** /nfse/cidades/{codigo_ibge} | Consultar metadados
 *NfseApi* | [**consultarNfse**](docs/Api/NfseApi.md#consultarnfse) | **GET** /nfse/{id} | Consultar NFS-e
 *NfseApi* | [**emitirLoteNfse**](docs/Api/NfseApi.md#emitirlotenfse) | **POST** /nfse/lotes | Emitir lote de NFS-e
 *NfseApi* | [**emitirLoteNfseDps**](docs/Api/NfseApi.md#emitirlotenfsedps) | **POST** /nfse/dps/lotes | Emitir lote de NFS-e
@@ -614,6 +616,8 @@ Classe | Método | Endpoint | Descrição
 - [NfeSefazVol](docs/Model/NfeSefazVol.md)
 - [Nfse](docs/Model/Nfse.md)
 - [NfseCancelamento](docs/Model/NfseCancelamento.md)
+- [NfseCidadeMetadados](docs/Model/NfseCidadeMetadados.md)
+- [NfseCidadesAtendidas](docs/Model/NfseCidadesAtendidas.md)
 - [NfseDpsPedidoEmissao](docs/Model/NfseDpsPedidoEmissao.md)
 - [NfseListagem](docs/Model/NfseListagem.md)
 - [NfseLoteDpsPedidoEmissao](docs/Model/NfseLoteDpsPedidoEmissao.md)
@@ -676,6 +680,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.22.3`
-    - Versão do package: `2.22.0`
+- Versão da API: `2.26.10`
+    - Versão do package: `2.23.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

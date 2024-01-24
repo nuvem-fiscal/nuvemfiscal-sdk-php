@@ -57,9 +57,11 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'x_nome' => 'string',
         'desc' => 'string',
         'dt_ini' => '\DateTime',
         'dt_fim' => '\DateTime',
+        'id_atv_evt' => 'string',
         'id' => 'string',
         'end' => '\NuvemFiscal\Model\EnderecoSimples'
     ];
@@ -72,9 +74,11 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'x_nome' => null,
         'desc' => null,
         'dt_ini' => 'date',
         'dt_fim' => 'date',
+        'id_atv_evt' => null,
         'id' => null,
         'end' => null
     ];
@@ -85,9 +89,11 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'x_nome' => true,
         'desc' => true,
         'dt_ini' => true,
         'dt_fim' => true,
+        'id_atv_evt' => true,
         'id' => true,
         'end' => false
     ];
@@ -178,9 +184,11 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'x_nome' => 'xNome',
         'desc' => 'desc',
         'dt_ini' => 'dtIni',
         'dt_fim' => 'dtFim',
+        'id_atv_evt' => 'idAtvEvt',
         'id' => 'id',
         'end' => 'end'
     ];
@@ -191,9 +199,11 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'x_nome' => 'setXNome',
         'desc' => 'setDesc',
         'dt_ini' => 'setDtIni',
         'dt_fim' => 'setDtFim',
+        'id_atv_evt' => 'setIdAtvEvt',
         'id' => 'setId',
         'end' => 'setEnd'
     ];
@@ -204,9 +214,11 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'x_nome' => 'getXNome',
         'desc' => 'getDesc',
         'dt_ini' => 'getDtIni',
         'dt_fim' => 'getDtFim',
+        'id_atv_evt' => 'getIdAtvEvt',
         'id' => 'getId',
         'end' => 'getEnd'
     ];
@@ -268,9 +280,11 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('x_nome', $data ?? [], null);
         $this->setIfExists('desc', $data ?? [], null);
         $this->setIfExists('dt_ini', $data ?? [], null);
         $this->setIfExists('dt_fim', $data ?? [], null);
+        $this->setIfExists('id_atv_evt', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('end', $data ?? [], null);
     }
@@ -302,14 +316,19 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['desc'] === null) {
-            $invalidProperties[] = "'desc' can't be null";
+        if (!is_null($this->container['x_nome']) && (mb_strlen($this->container['x_nome']) > 255)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be smaller than or equal to 255.";
         }
-        if ((mb_strlen($this->container['desc']) > 255)) {
+
+        if (!is_null($this->container['x_nome']) && (mb_strlen($this->container['x_nome']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['desc']) && (mb_strlen($this->container['desc']) > 255)) {
             $invalidProperties[] = "invalid value for 'desc', the character length must be smaller than or equal to 255.";
         }
 
-        if ((mb_strlen($this->container['desc']) < 1)) {
+        if (!is_null($this->container['desc']) && (mb_strlen($this->container['desc']) < 1)) {
             $invalidProperties[] = "invalid value for 'desc', the character length must be bigger than or equal to 1.";
         }
 
@@ -319,6 +338,14 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['dt_fim'] === null) {
             $invalidProperties[] = "'dt_fim' can't be null";
         }
+        if (!is_null($this->container['id_atv_evt']) && (mb_strlen($this->container['id_atv_evt']) > 30)) {
+            $invalidProperties[] = "invalid value for 'id_atv_evt', the character length must be smaller than or equal to 30.";
+        }
+
+        if (!is_null($this->container['id_atv_evt']) && (mb_strlen($this->container['id_atv_evt']) < 1)) {
+            $invalidProperties[] = "invalid value for 'id_atv_evt', the character length must be bigger than or equal to 1.";
+        }
+
         if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) > 30)) {
             $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 30.";
         }
@@ -343,9 +370,50 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets x_nome
+     *
+     * @return string|null
+     */
+    public function getXNome()
+    {
+        return $this->container['x_nome'];
+    }
+
+    /**
+     * Sets x_nome
+     *
+     * @param string|null $x_nome Nome do evento Artístico, Cultural, Esportivo, etc.
+     *
+     * @return self
+     */
+    public function setXNome($x_nome)
+    {
+        if (is_null($x_nome)) {
+            array_push($this->openAPINullablesSetToNull, 'x_nome');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_nome', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling AtvEvento., must be smaller than or equal to 255.');
+        }
+        if (!is_null($x_nome) && (mb_strlen($x_nome) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling AtvEvento., must be bigger than or equal to 1.');
+        }
+
+        $this->container['x_nome'] = $x_nome;
+
+        return $this;
+    }
+
+    /**
      * Gets desc
      *
-     * @return string
+     * @return string|null
      */
     public function getDesc()
     {
@@ -355,7 +423,7 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets desc
      *
-     * @param string $desc Descrição do evento Artístico, Cultural, Esportivo, etc.
+     * @param string|null $desc `Deprecated`    **Propriedade depreciada**.    *Utilize `xNome`*.
      *
      * @return self
      */
@@ -452,6 +520,47 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets id_atv_evt
+     *
+     * @return string|null
+     */
+    public function getIdAtvEvt()
+    {
+        return $this->container['id_atv_evt'];
+    }
+
+    /**
+     * Sets id_atv_evt
+     *
+     * @param string|null $id_atv_evt Identificação da Atividade de Evento (código identificador de evento determinado pela Administração Tributária Municipal).
+     *
+     * @return self
+     */
+    public function setIdAtvEvt($id_atv_evt)
+    {
+        if (is_null($id_atv_evt)) {
+            array_push($this->openAPINullablesSetToNull, 'id_atv_evt');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id_atv_evt', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($id_atv_evt) && (mb_strlen($id_atv_evt) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $id_atv_evt when calling AtvEvento., must be smaller than or equal to 30.');
+        }
+        if (!is_null($id_atv_evt) && (mb_strlen($id_atv_evt) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $id_atv_evt when calling AtvEvento., must be bigger than or equal to 1.');
+        }
+
+        $this->container['id_atv_evt'] = $id_atv_evt;
+
+        return $this;
+    }
+
+    /**
      * Gets id
      *
      * @return string|null
@@ -464,7 +573,7 @@ class AtvEvento implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id Identificação da Atividade de Evento (código identificador de evento determinado pela Administração Tributária Municipal).
+     * @param string|null $id `Deprecated`    **Propriedade depreciada**.    *Utilize `idAtvEvt`*.
      *
      * @return self
      */

@@ -3359,14 +3359,14 @@ class CteApi
      * Cancelar um CT-e autorizado
      *
      * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\CtePedidoCancelamento $body body (required)
+     * @param  \NuvemFiscal\Model\CtePedidoCancelamento $body body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelarCte'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \NuvemFiscal\Model\DfeCancelamento
      */
-    public function cancelarCte($id, $body, string $contentType = self::contentTypes['cancelarCte'][0])
+    public function cancelarCte($id, $body = null, string $contentType = self::contentTypes['cancelarCte'][0])
     {
         list($response) = $this->cancelarCteWithHttpInfo($id, $body, $contentType);
         return $response;
@@ -3378,14 +3378,14 @@ class CteApi
      * Cancelar um CT-e autorizado
      *
      * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\CtePedidoCancelamento $body (required)
+     * @param  \NuvemFiscal\Model\CtePedidoCancelamento $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelarCte'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \NuvemFiscal\Model\DfeCancelamento, HTTP status code, HTTP response headers (array of strings)
      */
-    public function cancelarCteWithHttpInfo($id, $body, string $contentType = self::contentTypes['cancelarCte'][0])
+    public function cancelarCteWithHttpInfo($id, $body = null, string $contentType = self::contentTypes['cancelarCte'][0])
     {
         $request = $this->cancelarCteRequest($id, $body, $contentType);
 
@@ -3503,13 +3503,13 @@ class CteApi
      * Cancelar um CT-e autorizado
      *
      * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\CtePedidoCancelamento $body (required)
+     * @param  \NuvemFiscal\Model\CtePedidoCancelamento $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelarCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cancelarCteAsync($id, $body, string $contentType = self::contentTypes['cancelarCte'][0])
+    public function cancelarCteAsync($id, $body = null, string $contentType = self::contentTypes['cancelarCte'][0])
     {
         return $this->cancelarCteAsyncWithHttpInfo($id, $body, $contentType)
             ->then(
@@ -3525,13 +3525,13 @@ class CteApi
      * Cancelar um CT-e autorizado
      *
      * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\CtePedidoCancelamento $body (required)
+     * @param  \NuvemFiscal\Model\CtePedidoCancelamento $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelarCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cancelarCteAsyncWithHttpInfo($id, $body, string $contentType = self::contentTypes['cancelarCte'][0])
+    public function cancelarCteAsyncWithHttpInfo($id, $body = null, string $contentType = self::contentTypes['cancelarCte'][0])
     {
         $returnType = '\NuvemFiscal\Model\DfeCancelamento';
         $request = $this->cancelarCteRequest($id, $body, $contentType);
@@ -3576,13 +3576,13 @@ class CteApi
      * Create request for operation 'cancelarCte'
      *
      * @param  string $id ID único do CT-e gerado pela Nuvem Fiscal. (required)
-     * @param  \NuvemFiscal\Model\CtePedidoCancelamento $body (required)
+     * @param  \NuvemFiscal\Model\CtePedidoCancelamento $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelarCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function cancelarCteRequest($id, $body, string $contentType = self::contentTypes['cancelarCte'][0])
+    public function cancelarCteRequest($id, $body = null, string $contentType = self::contentTypes['cancelarCte'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -3592,12 +3592,6 @@ class CteApi
             );
         }
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling cancelarCte'
-            );
-        }
 
 
         $resourcePath = '/cte/{id}/cancelamento';
@@ -4958,7 +4952,7 @@ class CteApi
      * Consulta do Status do Serviço na SEFAZ Autorizadora
      *
      * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis:  * NF-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVAN&#x60;, &#x60;SVRS&#x60;, &#x60;SVCAN&#x60;, &#x60;SVCRS&#x60;, &#x60;AN&#x60;;  * NFC-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;CE&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;;  * MDF-e: &#x60;SVRS&#x60;;  * CT-e: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
+     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarStatusSefazCte'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4977,7 +4971,7 @@ class CteApi
      * Consulta do Status do Serviço na SEFAZ Autorizadora
      *
      * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis:  * NF-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVAN&#x60;, &#x60;SVRS&#x60;, &#x60;SVCAN&#x60;, &#x60;SVCRS&#x60;, &#x60;AN&#x60;;  * NFC-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;CE&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;;  * MDF-e: &#x60;SVRS&#x60;;  * CT-e: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
+     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarStatusSefazCte'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5102,7 +5096,7 @@ class CteApi
      * Consulta do Status do Serviço na SEFAZ Autorizadora
      *
      * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis:  * NF-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVAN&#x60;, &#x60;SVRS&#x60;, &#x60;SVCAN&#x60;, &#x60;SVCRS&#x60;, &#x60;AN&#x60;;  * NFC-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;CE&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;;  * MDF-e: &#x60;SVRS&#x60;;  * CT-e: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
+     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarStatusSefazCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5124,7 +5118,7 @@ class CteApi
      * Consulta do Status do Serviço na SEFAZ Autorizadora
      *
      * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis:  * NF-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVAN&#x60;, &#x60;SVRS&#x60;, &#x60;SVCAN&#x60;, &#x60;SVCRS&#x60;, &#x60;AN&#x60;;  * NFC-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;CE&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;;  * MDF-e: &#x60;SVRS&#x60;;  * CT-e: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
+     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarStatusSefazCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5175,7 +5169,7 @@ class CteApi
      * Create request for operation 'consultarStatusSefazCte'
      *
      * @param  string $cpf_cnpj CPF/CNPJ do emitente.  Utilize o valor sem máscara. (required)
-     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis:  * NF-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVAN&#x60;, &#x60;SVRS&#x60;, &#x60;SVCAN&#x60;, &#x60;SVCRS&#x60;, &#x60;AN&#x60;;  * NFC-e: &#x60;AM&#x60;, &#x60;BA&#x60;, &#x60;CE&#x60;, &#x60;GO&#x60;, &#x60;MG&#x60;, &#x60;MS&#x60;, &#x60;MT&#x60;, &#x60;PE&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;;  * MDF-e: &#x60;SVRS&#x60;;  * CT-e: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
+     * @param  string $autorizador Ambiente Autorizador.    Autorizadores disponíveis: &#x60;MT&#x60;, &#x60;MS&#x60;, &#x60;MG&#x60;, &#x60;PR&#x60;, &#x60;RS&#x60;, &#x60;SP&#x60;, &#x60;SVRS&#x60;, &#x60;SVSP&#x60;, &#x60;AN&#x60;.    *Caso não seja informado, será utilizado o ambiente autorizador da UF do emitente.* (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarStatusSefazCte'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

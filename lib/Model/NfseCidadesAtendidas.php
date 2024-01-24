@@ -1,6 +1,6 @@
 <?php
 /**
- * CteSefazICMS45
+ * NfseCidadesAtendidas
  *
  * PHP version 7.4
  *
@@ -31,16 +31,15 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * CteSefazICMS45 Class Doc Comment
+ * NfseCidadesAtendidas Class Doc Comment
  *
  * @category Class
- * @description ICMS  Isento, não Tributado ou diferido.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
+class NfseCidadesAtendidas implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +48,7 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CteSefazICMS45';
+    protected static $openAPIModelName = 'NfseCidadesAtendidas';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +56,8 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'cst' => 'string',
-        'v_icms_deson' => 'float',
-        'c_benef' => 'string'
+        'at_count' => 'int',
+        'data' => 'string[]'
     ];
 
     /**
@@ -70,9 +68,8 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'cst' => null,
-        'v_icms_deson' => null,
-        'c_benef' => null
+        'at_count' => null,
+        'data' => null
     ];
 
     /**
@@ -81,9 +78,8 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cst' => true,
-        'v_icms_deson' => true,
-        'c_benef' => true
+        'at_count' => false,
+        'data' => false
     ];
 
     /**
@@ -172,9 +168,8 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'cst' => 'CST',
-        'v_icms_deson' => 'vICMSDeson',
-        'c_benef' => 'cBenef'
+        'at_count' => '@count',
+        'data' => 'data'
     ];
 
     /**
@@ -183,9 +178,8 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'cst' => 'setCst',
-        'v_icms_deson' => 'setVIcmsDeson',
-        'c_benef' => 'setCBenef'
+        'at_count' => 'setAtCount',
+        'data' => 'setData'
     ];
 
     /**
@@ -194,9 +188,8 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'cst' => 'getCst',
-        'v_icms_deson' => 'getVIcmsDeson',
-        'c_benef' => 'getCBenef'
+        'at_count' => 'getAtCount',
+        'data' => 'getData'
     ];
 
     /**
@@ -256,9 +249,8 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('cst', $data ?? [], null);
-        $this->setIfExists('v_icms_deson', $data ?? [], null);
-        $this->setIfExists('c_benef', $data ?? [], null);
+        $this->setIfExists('at_count', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -288,13 +280,6 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['cst'] === null) {
-            $invalidProperties[] = "'cst' can't be null";
-        }
-        if (!is_null($this->container['c_benef']) && (mb_strlen($this->container['c_benef']) > 10)) {
-            $invalidProperties[] = "invalid value for 'c_benef', the character length must be smaller than or equal to 10.";
-        }
-
         return $invalidProperties;
     }
 
@@ -311,107 +296,55 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets cst
+     * Gets at_count
      *
-     * @return string
+     * @return int|null
      */
-    public function getCst()
+    public function getAtCount()
     {
-        return $this->container['cst'];
+        return $this->container['at_count'];
     }
 
     /**
-     * Sets cst
+     * Sets at_count
      *
-     * @param string $cst Classificação Tributária do Serviço.  Preencher com:  * 40 - ICMS isenção  * 41 - ICMS não tributada  * 51 - ICMS diferido
+     * @param int|null $at_count Quantidade de cidades atendidas pela Nuvem Fiscal.
      *
      * @return self
      */
-    public function setCst($cst)
+    public function setAtCount($at_count)
     {
-        if (is_null($cst)) {
-            array_push($this->openAPINullablesSetToNull, 'cst');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cst', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($at_count)) {
+            throw new \InvalidArgumentException('non-nullable at_count cannot be null');
         }
-        $this->container['cst'] = $cst;
+        $this->container['at_count'] = $at_count;
 
         return $this;
     }
 
     /**
-     * Gets v_icms_deson
+     * Gets data
      *
-     * @return float|null
+     * @return string[]|null
      */
-    public function getVIcmsDeson()
+    public function getData()
     {
-        return $this->container['v_icms_deson'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets v_icms_deson
+     * Sets data
      *
-     * @param float|null $v_icms_deson Valor do ICMS de desoneração.
+     * @param string[]|null $data Lista com os códigos IBGE das cidades atendidas pela Nuvem Fiscal.
      *
      * @return self
      */
-    public function setVIcmsDeson($v_icms_deson)
+    public function setData($data)
     {
-        if (is_null($v_icms_deson)) {
-            array_push($this->openAPINullablesSetToNull, 'v_icms_deson');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('v_icms_deson', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['v_icms_deson'] = $v_icms_deson;
-
-        return $this;
-    }
-
-    /**
-     * Gets c_benef
-     *
-     * @return string|null
-     */
-    public function getCBenef()
-    {
-        return $this->container['c_benef'];
-    }
-
-    /**
-     * Sets c_benef
-     *
-     * @param string|null $c_benef Código de Benefício Fiscal na UF.  Código de Benefício Fiscal utilizado pela UF.
-     *
-     * @return self
-     */
-    public function setCBenef($c_benef)
-    {
-        if (is_null($c_benef)) {
-            array_push($this->openAPINullablesSetToNull, 'c_benef');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('c_benef', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        if (!is_null($c_benef) && (mb_strlen($c_benef) > 10)) {
-            throw new \InvalidArgumentException('invalid length for $c_benef when calling CteSefazICMS45., must be smaller than or equal to 10.');
-        }
-
-        $this->container['c_benef'] = $c_benef;
+        $this->container['data'] = $data;
 
         return $this;
     }

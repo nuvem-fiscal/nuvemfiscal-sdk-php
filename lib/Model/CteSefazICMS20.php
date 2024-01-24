@@ -61,7 +61,9 @@ class CteSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         'p_red_bc' => 'float',
         'v_bc' => 'float',
         'p_icms' => 'float',
-        'v_icms' => 'float'
+        'v_icms' => 'float',
+        'v_icms_deson' => 'float',
+        'c_benef' => 'string'
     ];
 
     /**
@@ -76,7 +78,9 @@ class CteSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         'p_red_bc' => null,
         'v_bc' => null,
         'p_icms' => null,
-        'v_icms' => null
+        'v_icms' => null,
+        'v_icms_deson' => null,
+        'c_benef' => null
     ];
 
     /**
@@ -89,7 +93,9 @@ class CteSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         'p_red_bc' => true,
         'v_bc' => true,
         'p_icms' => true,
-        'v_icms' => true
+        'v_icms' => true,
+        'v_icms_deson' => true,
+        'c_benef' => true
     ];
 
     /**
@@ -182,7 +188,9 @@ class CteSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         'p_red_bc' => 'pRedBC',
         'v_bc' => 'vBC',
         'p_icms' => 'pICMS',
-        'v_icms' => 'vICMS'
+        'v_icms' => 'vICMS',
+        'v_icms_deson' => 'vICMSDeson',
+        'c_benef' => 'cBenef'
     ];
 
     /**
@@ -195,7 +203,9 @@ class CteSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         'p_red_bc' => 'setPRedBc',
         'v_bc' => 'setVBc',
         'p_icms' => 'setPIcms',
-        'v_icms' => 'setVIcms'
+        'v_icms' => 'setVIcms',
+        'v_icms_deson' => 'setVIcmsDeson',
+        'c_benef' => 'setCBenef'
     ];
 
     /**
@@ -208,7 +218,9 @@ class CteSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         'p_red_bc' => 'getPRedBc',
         'v_bc' => 'getVBc',
         'p_icms' => 'getPIcms',
-        'v_icms' => 'getVIcms'
+        'v_icms' => 'getVIcms',
+        'v_icms_deson' => 'getVIcmsDeson',
+        'c_benef' => 'getCBenef'
     ];
 
     /**
@@ -273,6 +285,8 @@ class CteSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('v_bc', $data ?? [], null);
         $this->setIfExists('p_icms', $data ?? [], null);
         $this->setIfExists('v_icms', $data ?? [], null);
+        $this->setIfExists('v_icms_deson', $data ?? [], null);
+        $this->setIfExists('c_benef', $data ?? [], null);
     }
 
     /**
@@ -317,6 +331,10 @@ class CteSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_icms'] === null) {
             $invalidProperties[] = "'v_icms' can't be null";
         }
+        if (!is_null($this->container['c_benef']) && (mb_strlen($this->container['c_benef']) > 10)) {
+            $invalidProperties[] = "invalid value for 'c_benef', the character length must be smaller than or equal to 10.";
+        }
+
         return $invalidProperties;
     }
 
@@ -498,6 +516,78 @@ class CteSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['v_icms'] = $v_icms;
+
+        return $this;
+    }
+
+    /**
+     * Gets v_icms_deson
+     *
+     * @return float|null
+     */
+    public function getVIcmsDeson()
+    {
+        return $this->container['v_icms_deson'];
+    }
+
+    /**
+     * Sets v_icms_deson
+     *
+     * @param float|null $v_icms_deson Valor do ICMS de desoneração.
+     *
+     * @return self
+     */
+    public function setVIcmsDeson($v_icms_deson)
+    {
+        if (is_null($v_icms_deson)) {
+            array_push($this->openAPINullablesSetToNull, 'v_icms_deson');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_icms_deson', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['v_icms_deson'] = $v_icms_deson;
+
+        return $this;
+    }
+
+    /**
+     * Gets c_benef
+     *
+     * @return string|null
+     */
+    public function getCBenef()
+    {
+        return $this->container['c_benef'];
+    }
+
+    /**
+     * Sets c_benef
+     *
+     * @param string|null $c_benef Código de Benefício Fiscal na UF.  Código de Benefício Fiscal utilizado pela UF.
+     *
+     * @return self
+     */
+    public function setCBenef($c_benef)
+    {
+        if (is_null($c_benef)) {
+            array_push($this->openAPINullablesSetToNull, 'c_benef');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_benef', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($c_benef) && (mb_strlen($c_benef) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $c_benef when calling CteSefazICMS20., must be smaller than or equal to 10.');
+        }
+
+        $this->container['c_benef'] = $c_benef;
 
         return $this;
     }

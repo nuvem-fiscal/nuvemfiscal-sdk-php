@@ -9,8 +9,10 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**baixarXmlDps()**](NfseApi.md#baixarXmlDps) | **GET** /nfse/{id}/xml/dps | Baixar XML da DPS |
 | [**baixarXmlNfse()**](NfseApi.md#baixarXmlNfse) | **GET** /nfse/{id}/xml | Baixar XML da NFS-e processada |
 | [**cancelarNfse()**](NfseApi.md#cancelarNfse) | **POST** /nfse/{id}/cancelamento | Cancelar uma NFS-e autorizada |
+| [**cidadesAtendidas()**](NfseApi.md#cidadesAtendidas) | **GET** /nfse/cidades | Cidades atendidas |
 | [**consultarCancelamentoNfse()**](NfseApi.md#consultarCancelamentoNfse) | **GET** /nfse/{id}/cancelamento | Consultar o cancelamento da NFS-e |
 | [**consultarLoteNfse()**](NfseApi.md#consultarLoteNfse) | **GET** /nfse/lotes/{id} | Consultar lote de NFS-e |
+| [**consultarMetadados()**](NfseApi.md#consultarMetadados) | **GET** /nfse/cidades/{codigo_ibge} | Consultar metadados |
 | [**consultarNfse()**](NfseApi.md#consultarNfse) | **GET** /nfse/{id} | Consultar NFS-e |
 | [**emitirLoteNfse()**](NfseApi.md#emitirLoteNfse) | **POST** /nfse/lotes | Emitir lote de NFS-e |
 | [**emitirLoteNfseDps()**](NfseApi.md#emitirLoteNfseDps) | **POST** /nfse/dps/lotes | Emitir lote de NFS-e |
@@ -342,6 +344,68 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
+## `cidadesAtendidas()`
+
+```php
+cidadesAtendidas(): \NuvemFiscal\Model\NfseCidadesAtendidas
+```
+
+Cidades atendidas
+
+Fornece uma relação completa de todos os municípios atendidos pela Nuvem Fiscal.
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfseApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->cidadesAtendidas();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfseApi->cidadesAtendidas: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+Este endpoint não usa parâmetros.
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\NfseCidadesAtendidas**](../Model/NfseCidadesAtendidas.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
 ## `consultarCancelamentoNfse()`
 
 ```php
@@ -456,6 +520,71 @@ try {
 ### Tipo do retorno
 
 [**\NuvemFiscal\Model\RpsLote**](../Model/RpsLote.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `consultarMetadados()`
+
+```php
+consultarMetadados($codigo_ibge): \NuvemFiscal\Model\NfseCidadeMetadados
+```
+
+Consultar metadados
+
+Consulta a disponibilidade de emissão e alguns metadados de um município.
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfseApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$codigo_ibge = 'codigo_ibge_example'; // string | Código IBGE do município.
+
+try {
+    $result = $apiInstance->consultarMetadados($codigo_ibge);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfseApi->consultarMetadados: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **codigo_ibge** | **string**| Código IBGE do município. | |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\NfseCidadeMetadados**](../Model/NfseCidadeMetadados.md)
 
 ### Autorização
 

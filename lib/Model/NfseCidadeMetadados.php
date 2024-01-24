@@ -1,6 +1,6 @@
 <?php
 /**
- * CteSefazICMS45
+ * NfseCidadeMetadados
  *
  * PHP version 7.4
  *
@@ -31,16 +31,15 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * CteSefazICMS45 Class Doc Comment
+ * NfseCidadeMetadados Class Doc Comment
  *
  * @category Class
- * @description ICMS  Isento, não Tributado ou diferido.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
+class NfseCidadeMetadados implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +48,7 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CteSefazICMS45';
+    protected static $openAPIModelName = 'NfseCidadeMetadados';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +56,12 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'cst' => 'string',
-        'v_icms_deson' => 'float',
-        'c_benef' => 'string'
+        'codigo_ibge' => 'string',
+        'uf' => 'string',
+        'municipio' => 'string',
+        'provedor' => 'string',
+        'ambientes' => 'string[]',
+        'credenciais' => 'string[]'
     ];
 
     /**
@@ -70,9 +72,12 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'cst' => null,
-        'v_icms_deson' => null,
-        'c_benef' => null
+        'codigo_ibge' => null,
+        'uf' => null,
+        'municipio' => null,
+        'provedor' => null,
+        'ambientes' => null,
+        'credenciais' => null
     ];
 
     /**
@@ -81,9 +86,12 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cst' => true,
-        'v_icms_deson' => true,
-        'c_benef' => true
+        'codigo_ibge' => false,
+        'uf' => false,
+        'municipio' => false,
+        'provedor' => false,
+        'ambientes' => false,
+        'credenciais' => false
     ];
 
     /**
@@ -172,9 +180,12 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'cst' => 'CST',
-        'v_icms_deson' => 'vICMSDeson',
-        'c_benef' => 'cBenef'
+        'codigo_ibge' => 'codigo_ibge',
+        'uf' => 'uf',
+        'municipio' => 'municipio',
+        'provedor' => 'provedor',
+        'ambientes' => 'ambientes',
+        'credenciais' => 'credenciais'
     ];
 
     /**
@@ -183,9 +194,12 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'cst' => 'setCst',
-        'v_icms_deson' => 'setVIcmsDeson',
-        'c_benef' => 'setCBenef'
+        'codigo_ibge' => 'setCodigoIbge',
+        'uf' => 'setUf',
+        'municipio' => 'setMunicipio',
+        'provedor' => 'setProvedor',
+        'ambientes' => 'setAmbientes',
+        'credenciais' => 'setCredenciais'
     ];
 
     /**
@@ -194,9 +208,12 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'cst' => 'getCst',
-        'v_icms_deson' => 'getVIcmsDeson',
-        'c_benef' => 'getCBenef'
+        'codigo_ibge' => 'getCodigoIbge',
+        'uf' => 'getUf',
+        'municipio' => 'getMunicipio',
+        'provedor' => 'getProvedor',
+        'ambientes' => 'getAmbientes',
+        'credenciais' => 'getCredenciais'
     ];
 
     /**
@@ -240,6 +257,38 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const AMBIENTES_HOMOLOGACAO = 'homologacao';
+    public const AMBIENTES_PRODUCAO = 'producao';
+    public const CREDENCIAIS_CERTIFICADO = 'certificado';
+    public const CREDENCIAIS_LOGIN_SENHA = 'login_senha';
+    public const CREDENCIAIS_TOKEN = 'token';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAmbientesAllowableValues()
+    {
+        return [
+            self::AMBIENTES_HOMOLOGACAO,
+            self::AMBIENTES_PRODUCAO,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCredenciaisAllowableValues()
+    {
+        return [
+            self::CREDENCIAIS_CERTIFICADO,
+            self::CREDENCIAIS_LOGIN_SENHA,
+            self::CREDENCIAIS_TOKEN,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -256,9 +305,12 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('cst', $data ?? [], null);
-        $this->setIfExists('v_icms_deson', $data ?? [], null);
-        $this->setIfExists('c_benef', $data ?? [], null);
+        $this->setIfExists('codigo_ibge', $data ?? [], null);
+        $this->setIfExists('uf', $data ?? [], null);
+        $this->setIfExists('municipio', $data ?? [], null);
+        $this->setIfExists('provedor', $data ?? [], null);
+        $this->setIfExists('ambientes', $data ?? [], null);
+        $this->setIfExists('credenciais', $data ?? [], null);
     }
 
     /**
@@ -288,13 +340,6 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['cst'] === null) {
-            $invalidProperties[] = "'cst' can't be null";
-        }
-        if (!is_null($this->container['c_benef']) && (mb_strlen($this->container['c_benef']) > 10)) {
-            $invalidProperties[] = "invalid value for 'c_benef', the character length must be smaller than or equal to 10.";
-        }
-
         return $invalidProperties;
     }
 
@@ -311,107 +356,181 @@ class CteSefazICMS45 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets cst
-     *
-     * @return string
-     */
-    public function getCst()
-    {
-        return $this->container['cst'];
-    }
-
-    /**
-     * Sets cst
-     *
-     * @param string $cst Classificação Tributária do Serviço.  Preencher com:  * 40 - ICMS isenção  * 41 - ICMS não tributada  * 51 - ICMS diferido
-     *
-     * @return self
-     */
-    public function setCst($cst)
-    {
-        if (is_null($cst)) {
-            array_push($this->openAPINullablesSetToNull, 'cst');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cst', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['cst'] = $cst;
-
-        return $this;
-    }
-
-    /**
-     * Gets v_icms_deson
-     *
-     * @return float|null
-     */
-    public function getVIcmsDeson()
-    {
-        return $this->container['v_icms_deson'];
-    }
-
-    /**
-     * Sets v_icms_deson
-     *
-     * @param float|null $v_icms_deson Valor do ICMS de desoneração.
-     *
-     * @return self
-     */
-    public function setVIcmsDeson($v_icms_deson)
-    {
-        if (is_null($v_icms_deson)) {
-            array_push($this->openAPINullablesSetToNull, 'v_icms_deson');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('v_icms_deson', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['v_icms_deson'] = $v_icms_deson;
-
-        return $this;
-    }
-
-    /**
-     * Gets c_benef
+     * Gets codigo_ibge
      *
      * @return string|null
      */
-    public function getCBenef()
+    public function getCodigoIbge()
     {
-        return $this->container['c_benef'];
+        return $this->container['codigo_ibge'];
     }
 
     /**
-     * Sets c_benef
+     * Sets codigo_ibge
      *
-     * @param string|null $c_benef Código de Benefício Fiscal na UF.  Código de Benefício Fiscal utilizado pela UF.
+     * @param string|null $codigo_ibge Código IBGE do município.
      *
      * @return self
      */
-    public function setCBenef($c_benef)
+    public function setCodigoIbge($codigo_ibge)
     {
-        if (is_null($c_benef)) {
-            array_push($this->openAPINullablesSetToNull, 'c_benef');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('c_benef', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($codigo_ibge)) {
+            throw new \InvalidArgumentException('non-nullable codigo_ibge cannot be null');
         }
-        if (!is_null($c_benef) && (mb_strlen($c_benef) > 10)) {
-            throw new \InvalidArgumentException('invalid length for $c_benef when calling CteSefazICMS45., must be smaller than or equal to 10.');
-        }
+        $this->container['codigo_ibge'] = $codigo_ibge;
 
-        $this->container['c_benef'] = $c_benef;
+        return $this;
+    }
+
+    /**
+     * Gets uf
+     *
+     * @return string|null
+     */
+    public function getUf()
+    {
+        return $this->container['uf'];
+    }
+
+    /**
+     * Sets uf
+     *
+     * @param string|null $uf UF do município.
+     *
+     * @return self
+     */
+    public function setUf($uf)
+    {
+        if (is_null($uf)) {
+            throw new \InvalidArgumentException('non-nullable uf cannot be null');
+        }
+        $this->container['uf'] = $uf;
+
+        return $this;
+    }
+
+    /**
+     * Gets municipio
+     *
+     * @return string|null
+     */
+    public function getMunicipio()
+    {
+        return $this->container['municipio'];
+    }
+
+    /**
+     * Sets municipio
+     *
+     * @param string|null $municipio Nome do município.
+     *
+     * @return self
+     */
+    public function setMunicipio($municipio)
+    {
+        if (is_null($municipio)) {
+            throw new \InvalidArgumentException('non-nullable municipio cannot be null');
+        }
+        $this->container['municipio'] = $municipio;
+
+        return $this;
+    }
+
+    /**
+     * Gets provedor
+     *
+     * @return string|null
+     */
+    public function getProvedor()
+    {
+        return $this->container['provedor'];
+    }
+
+    /**
+     * Sets provedor
+     *
+     * @param string|null $provedor Provedor do município.
+     *
+     * @return self
+     */
+    public function setProvedor($provedor)
+    {
+        if (is_null($provedor)) {
+            throw new \InvalidArgumentException('non-nullable provedor cannot be null');
+        }
+        $this->container['provedor'] = $provedor;
+
+        return $this;
+    }
+
+    /**
+     * Gets ambientes
+     *
+     * @return string[]|null
+     */
+    public function getAmbientes()
+    {
+        return $this->container['ambientes'];
+    }
+
+    /**
+     * Sets ambientes
+     *
+     * @param string[]|null $ambientes Ambientes disponíveis no provedor.
+     *
+     * @return self
+     */
+    public function setAmbientes($ambientes)
+    {
+        if (is_null($ambientes)) {
+            throw new \InvalidArgumentException('non-nullable ambientes cannot be null');
+        }
+        $allowedValues = $this->getAmbientesAllowableValues();
+        if (array_diff($ambientes, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'ambientes', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['ambientes'] = $ambientes;
+
+        return $this;
+    }
+
+    /**
+     * Gets credenciais
+     *
+     * @return string[]|null
+     */
+    public function getCredenciais()
+    {
+        return $this->container['credenciais'];
+    }
+
+    /**
+     * Sets credenciais
+     *
+     * @param string[]|null $credenciais Credenciais requeridas para autenticação no provedor.
+     *
+     * @return self
+     */
+    public function setCredenciais($credenciais)
+    {
+        if (is_null($credenciais)) {
+            throw new \InvalidArgumentException('non-nullable credenciais cannot be null');
+        }
+        $allowedValues = $this->getCredenciaisAllowableValues();
+        if (array_diff($credenciais, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'credenciais', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['credenciais'] = $credenciais;
 
         return $this;
     }
