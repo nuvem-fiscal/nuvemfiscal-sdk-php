@@ -7,6 +7,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**alterarConfigCte()**](EmpresaApi.md#alterarConfigCte) | **PUT** /empresas/{cpf_cnpj}/cte | Alterar configuração de CT-e |
 | [**alterarConfigMdfe()**](EmpresaApi.md#alterarConfigMdfe) | **PUT** /empresas/{cpf_cnpj}/mdfe | Alterar configuração de MDF-e |
 | [**alterarConfigNfce()**](EmpresaApi.md#alterarConfigNfce) | **PUT** /empresas/{cpf_cnpj}/nfce | Alterar configuração de NFC-e |
+| [**alterarConfigNfcom()**](EmpresaApi.md#alterarConfigNfcom) | **PUT** /empresas/{cpf_cnpj}/nfcom | Alterar configuração de NFCom |
 | [**alterarConfigNfe()**](EmpresaApi.md#alterarConfigNfe) | **PUT** /empresas/{cpf_cnpj}/nfe | Alterar configuração de NF-e |
 | [**alterarConfigNfse()**](EmpresaApi.md#alterarConfigNfse) | **PUT** /empresas/{cpf_cnpj}/nfse | Alterar configuração de NFS-e |
 | [**atualizarEmpresa()**](EmpresaApi.md#atualizarEmpresa) | **PUT** /empresas/{cpf_cnpj} | Alterar empresa |
@@ -16,6 +17,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**consultarConfigCte()**](EmpresaApi.md#consultarConfigCte) | **GET** /empresas/{cpf_cnpj}/cte | Consultar configuração de CT-e |
 | [**consultarConfigMdfe()**](EmpresaApi.md#consultarConfigMdfe) | **GET** /empresas/{cpf_cnpj}/mdfe | Consultar configuração de MDF-e |
 | [**consultarConfigNfce()**](EmpresaApi.md#consultarConfigNfce) | **GET** /empresas/{cpf_cnpj}/nfce | Consultar configuração de NFC-e |
+| [**consultarConfigNfcom()**](EmpresaApi.md#consultarConfigNfcom) | **GET** /empresas/{cpf_cnpj}/nfcom | Consultar configuração de NFCom |
 | [**consultarConfigNfe()**](EmpresaApi.md#consultarConfigNfe) | **GET** /empresas/{cpf_cnpj}/nfe | Consultar configuração de NF-e |
 | [**consultarConfigNfse()**](EmpresaApi.md#consultarConfigNfse) | **GET** /empresas/{cpf_cnpj}/nfse | Consultar configuração de NFS-e |
 | [**consultarEmpresa()**](EmpresaApi.md#consultarEmpresa) | **GET** /empresas/{cpf_cnpj} | Consultar empresa |
@@ -209,6 +211,71 @@ try {
 ### Tipo do retorno
 
 [**\NuvemFiscal\Model\EmpresaConfigNfce**](../Model/EmpresaConfigNfce.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `alterarConfigNfcom()`
+
+```php
+alterarConfigNfcom($cpf_cnpj, $body): \NuvemFiscal\Model\EmpresaConfigNfcom
+```
+
+Alterar configuração de NFCom
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\EmpresaApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
+$body = new \NuvemFiscal\Model\EmpresaConfigNfcom(); // \NuvemFiscal\Model\EmpresaConfigNfcom
+
+try {
+    $result = $apiInstance->alterarConfigNfcom($cpf_cnpj, $body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmpresaApi->alterarConfigNfcom: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
+| **body** | [**\NuvemFiscal\Model\EmpresaConfigNfcom**](../Model/EmpresaConfigNfcom.md)|  | |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\EmpresaConfigNfcom**](../Model/EmpresaConfigNfcom.md)
 
 ### Autorização
 
@@ -788,6 +855,69 @@ try {
 ### Tipo do retorno
 
 [**\NuvemFiscal\Model\EmpresaConfigNfce**](../Model/EmpresaConfigNfce.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `consultarConfigNfcom()`
+
+```php
+consultarConfigNfcom($cpf_cnpj): \NuvemFiscal\Model\EmpresaConfigNfcom
+```
+
+Consultar configuração de NFCom
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\EmpresaApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.  Utilize o valor sem máscara.
+
+try {
+    $result = $apiInstance->consultarConfigNfcom($cpf_cnpj);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmpresaApi->consultarConfigNfcom: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.  Utilize o valor sem máscara. | |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\EmpresaConfigNfcom**](../Model/EmpresaConfigNfcom.md)
 
 ### Autorização
 
