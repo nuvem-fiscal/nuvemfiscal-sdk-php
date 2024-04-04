@@ -349,8 +349,8 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
             $invalidProperties[] = "invalid value for 'id_csrt', must be bigger than or equal to 0.";
         }
 
-        if (!is_null($this->container['hash_csrt']) && (mb_strlen($this->container['hash_csrt']) > 20)) {
-            $invalidProperties[] = "invalid value for 'hash_csrt', the character length must be smaller than or equal to 20.";
+        if (!is_null($this->container['hash_csrt']) && (mb_strlen($this->container['hash_csrt']) > 28)) {
+            $invalidProperties[] = "invalid value for 'hash_csrt', the character length must be smaller than or equal to 28.";
         }
 
         return $invalidProperties;
@@ -593,8 +593,8 @@ class NfeSefazInfRespTec implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($hash_csrt) && (mb_strlen($hash_csrt) > 20)) {
-            throw new \InvalidArgumentException('invalid length for $hash_csrt when calling NfeSefazInfRespTec., must be smaller than or equal to 20.');
+        if (!is_null($hash_csrt) && (mb_strlen($hash_csrt) > 28)) {
+            throw new \InvalidArgumentException('invalid length for $hash_csrt when calling NfeSefazInfRespTec., must be smaller than or equal to 28.');
         }
 
         $this->container['hash_csrt'] = $hash_csrt;

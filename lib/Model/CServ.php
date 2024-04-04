@@ -446,7 +446,7 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_desc_serv
      *
-     * @param string $x_desc_serv Descrição completa do serviço prestado.
+     * @param string $x_desc_serv Descrição completa do serviço prestado.    Os caracteres acentuados poderão ser alterados para caracteres sem acentuação.
      *
      * @return self
      */

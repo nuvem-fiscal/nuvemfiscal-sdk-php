@@ -66,6 +66,7 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_afrmm' => 'float',
         'tp_intermedio' => 'int',
         'cnpj' => 'string',
+        'cpf' => 'string',
         'uf_terceiro' => 'string',
         'c_exportador' => 'string',
         'adi' => '\NuvemFiscal\Model\NfeSefazAdi[]'
@@ -88,6 +89,7 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_afrmm' => null,
         'tp_intermedio' => null,
         'cnpj' => null,
+        'cpf' => null,
         'uf_terceiro' => null,
         'c_exportador' => null,
         'adi' => null
@@ -108,6 +110,7 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_afrmm' => true,
         'tp_intermedio' => true,
         'cnpj' => true,
+        'cpf' => true,
         'uf_terceiro' => true,
         'c_exportador' => true,
         'adi' => false
@@ -208,6 +211,7 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_afrmm' => 'vAFRMM',
         'tp_intermedio' => 'tpIntermedio',
         'cnpj' => 'CNPJ',
+        'cpf' => 'CPF',
         'uf_terceiro' => 'UFTerceiro',
         'c_exportador' => 'cExportador',
         'adi' => 'adi'
@@ -228,6 +232,7 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_afrmm' => 'setVAfrmm',
         'tp_intermedio' => 'setTpIntermedio',
         'cnpj' => 'setCnpj',
+        'cpf' => 'setCpf',
         'uf_terceiro' => 'setUfTerceiro',
         'c_exportador' => 'setCExportador',
         'adi' => 'setAdi'
@@ -248,6 +253,7 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_afrmm' => 'getVAfrmm',
         'tp_intermedio' => 'getTpIntermedio',
         'cnpj' => 'getCnpj',
+        'cpf' => 'getCpf',
         'uf_terceiro' => 'getUfTerceiro',
         'c_exportador' => 'getCExportador',
         'adi' => 'getAdi'
@@ -319,6 +325,7 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('v_afrmm', $data ?? [], null);
         $this->setIfExists('tp_intermedio', $data ?? [], null);
         $this->setIfExists('cnpj', $data ?? [], null);
+        $this->setIfExists('cpf', $data ?? [], null);
         $this->setIfExists('uf_terceiro', $data ?? [], null);
         $this->setIfExists('c_exportador', $data ?? [], null);
         $this->setIfExists('adi', $data ?? [], null);
@@ -392,6 +399,10 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'cnpj', the character length must be smaller than or equal to 14.";
         }
 
+        if (!is_null($this->container['cpf']) && (mb_strlen($this->container['cpf']) > 11)) {
+            $invalidProperties[] = "invalid value for 'cpf', the character length must be smaller than or equal to 11.";
+        }
+
         if ($this->container['c_exportador'] === null) {
             $invalidProperties[] = "'c_exportador' can't be null";
         }
@@ -434,7 +445,7 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets n_di
      *
-     * @param string $n_di Numero do Documento de Importação DI/DSI/DA/DRI-E (DI/DSI/DA/DRI-E) (NT2011/004).
+     * @param string $n_di Número do Documento de Importação (DI, DSI, DIRE, DUImp) (NT2011/004).
      *
      * @return self
      */
@@ -618,7 +629,7 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_via_transp
      *
-     * @param int $tp_via_transp Via de transporte internacional informada na DI  * 1 - Maritima  * 2 - Fluvial  * 3 - Lacustre  * 4 - Aerea  * 5 - Postal  * 6 - Ferroviaria  * 7 - Rodoviaria  * 8 - Conduto  * 9 - Meios Proprios  * 10 - Entrada/Saida Ficta  * 11 - Courier  * 12 - Em maos  * 13 - Por reboque
+     * @param int $tp_via_transp Via de transporte internacional informada na DI ou na Declaração Única de Importação (DUImp):  * 1 - Maritima  * 2 - Fluvial  * 3 - Lacustre  * 4 - Aerea  * 5 - Postal  * 6 - Ferroviaria  * 7 - Rodoviaria  * 8 - Conduto  * 9 - Meios Proprios  * 10 - Entrada/Saida Ficta  * 11 - Courier  * 12 - Em maos  * 13 - Por reboque
      *
      * @return self
      */
@@ -741,6 +752,44 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['cnpj'] = $cnpj;
+
+        return $this;
+    }
+
+    /**
+     * Gets cpf
+     *
+     * @return string|null
+     */
+    public function getCpf()
+    {
+        return $this->container['cpf'];
+    }
+
+    /**
+     * Sets cpf
+     *
+     * @param string|null $cpf CPF do adquirente ou do encomendante.
+     *
+     * @return self
+     */
+    public function setCpf($cpf)
+    {
+        if (is_null($cpf)) {
+            array_push($this->openAPINullablesSetToNull, 'cpf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cpf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($cpf) && (mb_strlen($cpf) > 11)) {
+            throw new \InvalidArgumentException('invalid length for $cpf when calling NfeSefazDI., must be smaller than or equal to 11.');
+        }
+
+        $this->container['cpf'] = $cpf;
 
         return $this;
     }

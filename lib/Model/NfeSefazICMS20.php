@@ -68,7 +68,8 @@ class NfeSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         'p_fcp' => 'float',
         'v_fcp' => 'float',
         'v_icms_deson' => 'float',
-        'mot_des_icms' => 'int'
+        'mot_des_icms' => 'int',
+        'ind_deduz_deson' => 'int'
     ];
 
     /**
@@ -90,7 +91,8 @@ class NfeSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         'p_fcp' => null,
         'v_fcp' => null,
         'v_icms_deson' => null,
-        'mot_des_icms' => null
+        'mot_des_icms' => null,
+        'ind_deduz_deson' => null
     ];
 
     /**
@@ -110,7 +112,8 @@ class NfeSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         'p_fcp' => true,
         'v_fcp' => true,
         'v_icms_deson' => true,
-        'mot_des_icms' => true
+        'mot_des_icms' => true,
+        'ind_deduz_deson' => true
     ];
 
     /**
@@ -210,7 +213,8 @@ class NfeSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         'p_fcp' => 'pFCP',
         'v_fcp' => 'vFCP',
         'v_icms_deson' => 'vICMSDeson',
-        'mot_des_icms' => 'motDesICMS'
+        'mot_des_icms' => 'motDesICMS',
+        'ind_deduz_deson' => 'indDeduzDeson'
     ];
 
     /**
@@ -230,7 +234,8 @@ class NfeSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         'p_fcp' => 'setPFcp',
         'v_fcp' => 'setVFcp',
         'v_icms_deson' => 'setVIcmsDeson',
-        'mot_des_icms' => 'setMotDesIcms'
+        'mot_des_icms' => 'setMotDesIcms',
+        'ind_deduz_deson' => 'setIndDeduzDeson'
     ];
 
     /**
@@ -250,7 +255,8 @@ class NfeSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         'p_fcp' => 'getPFcp',
         'v_fcp' => 'getVFcp',
         'v_icms_deson' => 'getVIcmsDeson',
-        'mot_des_icms' => 'getMotDesIcms'
+        'mot_des_icms' => 'getMotDesIcms',
+        'ind_deduz_deson' => 'getIndDeduzDeson'
     ];
 
     /**
@@ -322,6 +328,7 @@ class NfeSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('v_fcp', $data ?? [], null);
         $this->setIfExists('v_icms_deson', $data ?? [], null);
         $this->setIfExists('mot_des_icms', $data ?? [], null);
+        $this->setIfExists('ind_deduz_deson', $data ?? [], null);
     }
 
     /**
@@ -791,6 +798,40 @@ class NfeSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['mot_des_icms'] = $mot_des_icms;
+
+        return $this;
+    }
+
+    /**
+     * Gets ind_deduz_deson
+     *
+     * @return int|null
+     */
+    public function getIndDeduzDeson()
+    {
+        return $this->container['ind_deduz_deson'];
+    }
+
+    /**
+     * Sets ind_deduz_deson
+     *
+     * @param int|null $ind_deduz_deson Indica se o valor do ICMS desonerado (vICMSDeson) deduz do valor do item (vProd):  * 0 - Valor do ICMS desonerado (vICMSDeson) não deduz do valor do item (vProd) / total da NF-e  * 1 - Valor do ICMS desonerado (vICMSDeson) deduz do valor do item (vProd) / total da NF-e
+     *
+     * @return self
+     */
+    public function setIndDeduzDeson($ind_deduz_deson)
+    {
+        if (is_null($ind_deduz_deson)) {
+            array_push($this->openAPINullablesSetToNull, 'ind_deduz_deson');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_deduz_deson', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ind_deduz_deson'] = $ind_deduz_deson;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * NfeSefazICMS40
+ * NfeSefazGCred
  *
  * PHP version 7.4
  *
@@ -31,16 +31,16 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * NfeSefazICMS40 Class Doc Comment
+ * NfeSefazGCred Class Doc Comment
  *
  * @category Class
- * @description Tributação pelo ICMS  * 40 - Isenta  * 41 - Não tributada  * 50 - Suspensão
+ * @description Grupo de informações sobre o CréditoPresumido.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
+class NfeSefazGCred implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'NfeSefazICMS40';
+    protected static $openAPIModelName = 'NfeSefazGCred';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,9 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'orig' => 'int',
-        'cst' => 'string',
-        'v_icms_deson' => 'float',
-        'mot_des_icms' => 'int',
-        'ind_deduz_deson' => 'int'
+        'c_cred_presumido' => 'string',
+        'p_cred_presumido' => 'float',
+        'v_cred_presumido' => 'float'
     ];
 
     /**
@@ -72,11 +70,9 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'orig' => null,
-        'cst' => null,
-        'v_icms_deson' => null,
-        'mot_des_icms' => null,
-        'ind_deduz_deson' => null
+        'c_cred_presumido' => null,
+        'p_cred_presumido' => null,
+        'v_cred_presumido' => null
     ];
 
     /**
@@ -85,11 +81,9 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'orig' => true,
-        'cst' => true,
-        'v_icms_deson' => true,
-        'mot_des_icms' => true,
-        'ind_deduz_deson' => true
+        'c_cred_presumido' => true,
+        'p_cred_presumido' => true,
+        'v_cred_presumido' => true
     ];
 
     /**
@@ -178,11 +172,9 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'orig' => 'orig',
-        'cst' => 'CST',
-        'v_icms_deson' => 'vICMSDeson',
-        'mot_des_icms' => 'motDesICMS',
-        'ind_deduz_deson' => 'indDeduzDeson'
+        'c_cred_presumido' => 'cCredPresumido',
+        'p_cred_presumido' => 'pCredPresumido',
+        'v_cred_presumido' => 'vCredPresumido'
     ];
 
     /**
@@ -191,11 +183,9 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'orig' => 'setOrig',
-        'cst' => 'setCst',
-        'v_icms_deson' => 'setVIcmsDeson',
-        'mot_des_icms' => 'setMotDesIcms',
-        'ind_deduz_deson' => 'setIndDeduzDeson'
+        'c_cred_presumido' => 'setCCredPresumido',
+        'p_cred_presumido' => 'setPCredPresumido',
+        'v_cred_presumido' => 'setVCredPresumido'
     ];
 
     /**
@@ -204,11 +194,9 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'orig' => 'getOrig',
-        'cst' => 'getCst',
-        'v_icms_deson' => 'getVIcmsDeson',
-        'mot_des_icms' => 'getMotDesIcms',
-        'ind_deduz_deson' => 'getIndDeduzDeson'
+        'c_cred_presumido' => 'getCCredPresumido',
+        'p_cred_presumido' => 'getPCredPresumido',
+        'v_cred_presumido' => 'getVCredPresumido'
     ];
 
     /**
@@ -268,11 +256,9 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('orig', $data ?? [], null);
-        $this->setIfExists('cst', $data ?? [], null);
-        $this->setIfExists('v_icms_deson', $data ?? [], null);
-        $this->setIfExists('mot_des_icms', $data ?? [], null);
-        $this->setIfExists('ind_deduz_deson', $data ?? [], null);
+        $this->setIfExists('c_cred_presumido', $data ?? [], null);
+        $this->setIfExists('p_cred_presumido', $data ?? [], null);
+        $this->setIfExists('v_cred_presumido', $data ?? [], null);
     }
 
     /**
@@ -302,11 +288,14 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['orig'] === null) {
-            $invalidProperties[] = "'orig' can't be null";
+        if ($this->container['c_cred_presumido'] === null) {
+            $invalidProperties[] = "'c_cred_presumido' can't be null";
         }
-        if ($this->container['cst'] === null) {
-            $invalidProperties[] = "'cst' can't be null";
+        if ($this->container['p_cred_presumido'] === null) {
+            $invalidProperties[] = "'p_cred_presumido' can't be null";
+        }
+        if ($this->container['v_cred_presumido'] === null) {
+            $invalidProperties[] = "'v_cred_presumido' can't be null";
         }
         return $invalidProperties;
     }
@@ -324,171 +313,103 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets orig
-     *
-     * @return int
-     */
-    public function getOrig()
-    {
-        return $this->container['orig'];
-    }
-
-    /**
-     * Sets orig
-     *
-     * @param int $orig Origem da mercadoria:  * 0 - Nacional, exceto as indicadas nos códigos 3, 4, 5 e 8;  * 1 - Estrangeira - Importação direta, exceto a indicada no código 6;  * 2 - Estrangeira - Adquirida no mercado interno, exceto a indicada no código 7;  * 3 - Nacional, mercadoria ou bem com Conteúdo de Importação superior a 40%% e inferior ou igual a 70%%;  * 4 - Nacional, cuja produção tenha sido feita em conformidade com os processos produtivos básicos de que tratam as legislações citadas nos Ajustes;  * 5 - Nacional, mercadoria ou bem com Conteúdo de Importação inferior ou igual a 40%%;  * 6 - Estrangeira - Importação direta, sem similar nacional, constante em lista da CAMEX e gás natural;  * 7 - Estrangeira - Adquirida no mercado interno, sem similar nacional, constante lista CAMEX e gás natural;  * 8 - Nacional, mercadoria ou bem com Conteúdo de Importação superior a 70%%.
-     *
-     * @return self
-     */
-    public function setOrig($orig)
-    {
-        if (is_null($orig)) {
-            array_push($this->openAPINullablesSetToNull, 'orig');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('orig', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['orig'] = $orig;
-
-        return $this;
-    }
-
-    /**
-     * Gets cst
+     * Gets c_cred_presumido
      *
      * @return string
      */
-    public function getCst()
+    public function getCCredPresumido()
     {
-        return $this->container['cst'];
+        return $this->container['c_cred_presumido'];
     }
 
     /**
-     * Sets cst
+     * Sets c_cred_presumido
      *
-     * @param string $cst Tributação pelo ICMS  * 40 - Isenta  * 41 - Não tributada  * 50 - Suspensão  * 51 - Diferimento
+     * @param string $c_cred_presumido Código de Benefício Fiscal de Crédito Presumido na UF aplicado ao item.
      *
      * @return self
      */
-    public function setCst($cst)
+    public function setCCredPresumido($c_cred_presumido)
     {
-        if (is_null($cst)) {
-            array_push($this->openAPINullablesSetToNull, 'cst');
+        if (is_null($c_cred_presumido)) {
+            array_push($this->openAPINullablesSetToNull, 'c_cred_presumido');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cst', $nullablesSetToNull);
+            $index = array_search('c_cred_presumido', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['cst'] = $cst;
+        $this->container['c_cred_presumido'] = $c_cred_presumido;
 
         return $this;
     }
 
     /**
-     * Gets v_icms_deson
+     * Gets p_cred_presumido
      *
-     * @return float|null
+     * @return float
      */
-    public function getVIcmsDeson()
+    public function getPCredPresumido()
     {
-        return $this->container['v_icms_deson'];
+        return $this->container['p_cred_presumido'];
     }
 
     /**
-     * Sets v_icms_deson
+     * Sets p_cred_presumido
      *
-     * @param float|null $v_icms_deson O valor do ICMS será informado apenas nas operações com veículos beneficiados com a desoneração condicional do ICMS.
+     * @param float $p_cred_presumido Percentual do Crédito Presumido.
      *
      * @return self
      */
-    public function setVIcmsDeson($v_icms_deson)
+    public function setPCredPresumido($p_cred_presumido)
     {
-        if (is_null($v_icms_deson)) {
-            array_push($this->openAPINullablesSetToNull, 'v_icms_deson');
+        if (is_null($p_cred_presumido)) {
+            array_push($this->openAPINullablesSetToNull, 'p_cred_presumido');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('v_icms_deson', $nullablesSetToNull);
+            $index = array_search('p_cred_presumido', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['v_icms_deson'] = $v_icms_deson;
+        $this->container['p_cred_presumido'] = $p_cred_presumido;
 
         return $this;
     }
 
     /**
-     * Gets mot_des_icms
+     * Gets v_cred_presumido
      *
-     * @return int|null
+     * @return float
      */
-    public function getMotDesIcms()
+    public function getVCredPresumido()
     {
-        return $this->container['mot_des_icms'];
+        return $this->container['v_cred_presumido'];
     }
 
     /**
-     * Sets mot_des_icms
+     * Sets v_cred_presumido
      *
-     * @param int|null $mot_des_icms Este campo será preenchido quando o campo anterior estiver preenchido.  Informar o motivo da desoneração:  * 1 - Táxi  * 3 - Produtor Agropecuário  * 4 - Frotista/Locadora  * 5 - Diplomático/Consular  * 6 - Utilitários e Motocicletas da Amazônia Ocidental e Áreas de Livre Comércio (Resolução 714/88 e 790/94 - CONTRAN e suas alterações)  * 7 - SUFRAMA  * 8 - Venda a órgão Público  * 9 - Outros  * 10 - Deficiente Condutor  * 11 - Deficiente não condutor  * 16 - Olimpíadas Rio 2016  * 90 - Solicitado pelo Fisco
+     * @param float $v_cred_presumido Valor do Crédito Presumido.
      *
      * @return self
      */
-    public function setMotDesIcms($mot_des_icms)
+    public function setVCredPresumido($v_cred_presumido)
     {
-        if (is_null($mot_des_icms)) {
-            array_push($this->openAPINullablesSetToNull, 'mot_des_icms');
+        if (is_null($v_cred_presumido)) {
+            array_push($this->openAPINullablesSetToNull, 'v_cred_presumido');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('mot_des_icms', $nullablesSetToNull);
+            $index = array_search('v_cred_presumido', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['mot_des_icms'] = $mot_des_icms;
-
-        return $this;
-    }
-
-    /**
-     * Gets ind_deduz_deson
-     *
-     * @return int|null
-     */
-    public function getIndDeduzDeson()
-    {
-        return $this->container['ind_deduz_deson'];
-    }
-
-    /**
-     * Sets ind_deduz_deson
-     *
-     * @param int|null $ind_deduz_deson Indica se o valor do ICMS desonerado (vICMSDeson) deduz do valor do item (vProd):  * 0 - Valor do ICMS desonerado (vICMSDeson) não deduz do valor do item (vProd) / total da NF-e  * 1 - Valor do ICMS desonerado (vICMSDeson) deduz do valor do item (vProd) / total da NF-e
-     *
-     * @return self
-     */
-    public function setIndDeduzDeson($ind_deduz_deson)
-    {
-        if (is_null($ind_deduz_deson)) {
-            array_push($this->openAPINullablesSetToNull, 'ind_deduz_deson');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ind_deduz_deson', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['ind_deduz_deson'] = $ind_deduz_deson;
+        $this->container['v_cred_presumido'] = $v_cred_presumido;
 
         return $this;
     }

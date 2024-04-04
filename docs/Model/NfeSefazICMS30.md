@@ -17,5 +17,6 @@ Nome | Tipo | Descrição | Comentários
 **v_fcpst** | **float** | Valor do FCP retido por substituição tributária. | [optional]
 **v_icms_deson** | **float** | Valor do ICMS de desoneração. | [optional]
 **mot_des_icms** | **int** | Motivo da desoneração do ICMS:6-Utilitários Motocicleta AÁrea Livre  * 7 - SUFRAMA  * 9 - Outros | [optional]
+**ind_deduz_deson** | **int** | Indica se o valor do ICMS desonerado (vICMSDeson) deduz do valor do item (vProd):  * 0 - Valor do ICMS desonerado (vICMSDeson) não deduz do valor do item (vProd) / total da NF-e  * 1 - Valor do ICMS desonerado (vICMSDeson) deduz do valor do item (vProd) / total da NF-e | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

@@ -61,6 +61,9 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
         't_pag' => 'string',
         'x_pag' => 'string',
         'v_pag' => 'float',
+        'd_pag' => '\DateTime',
+        'cnpj_pag' => 'string',
+        'uf_pag' => 'string',
         'card' => '\NuvemFiscal\Model\NfeSefazCard'
     ];
 
@@ -76,6 +79,9 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
         't_pag' => null,
         'x_pag' => null,
         'v_pag' => null,
+        'd_pag' => 'date',
+        'cnpj_pag' => null,
+        'uf_pag' => null,
         'card' => null
     ];
 
@@ -89,6 +95,9 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
         't_pag' => true,
         'x_pag' => true,
         'v_pag' => true,
+        'd_pag' => true,
+        'cnpj_pag' => true,
+        'uf_pag' => true,
         'card' => false
     ];
 
@@ -182,6 +191,9 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
         't_pag' => 'tPag',
         'x_pag' => 'xPag',
         'v_pag' => 'vPag',
+        'd_pag' => 'dPag',
+        'cnpj_pag' => 'CNPJPag',
+        'uf_pag' => 'UFPag',
         'card' => 'card'
     ];
 
@@ -195,6 +207,9 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
         't_pag' => 'setTPag',
         'x_pag' => 'setXPag',
         'v_pag' => 'setVPag',
+        'd_pag' => 'setDPag',
+        'cnpj_pag' => 'setCnpjPag',
+        'uf_pag' => 'setUfPag',
         'card' => 'setCard'
     ];
 
@@ -208,6 +223,9 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
         't_pag' => 'getTPag',
         'x_pag' => 'getXPag',
         'v_pag' => 'getVPag',
+        'd_pag' => 'getDPag',
+        'cnpj_pag' => 'getCnpjPag',
+        'uf_pag' => 'getUfPag',
         'card' => 'getCard'
     ];
 
@@ -272,6 +290,9 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('t_pag', $data ?? [], null);
         $this->setIfExists('x_pag', $data ?? [], null);
         $this->setIfExists('v_pag', $data ?? [], null);
+        $this->setIfExists('d_pag', $data ?? [], null);
+        $this->setIfExists('cnpj_pag', $data ?? [], null);
+        $this->setIfExists('uf_pag', $data ?? [], null);
         $this->setIfExists('card', $data ?? [], null);
     }
 
@@ -316,6 +337,10 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_pag'] === null) {
             $invalidProperties[] = "'v_pag' can't be null";
         }
+        if (!is_null($this->container['cnpj_pag']) && (mb_strlen($this->container['cnpj_pag']) > 14)) {
+            $invalidProperties[] = "invalid value for 'cnpj_pag', the character length must be smaller than or equal to 14.";
+        }
+
         return $invalidProperties;
     }
 
@@ -470,6 +495,112 @@ class NfeSefazDetPag implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['v_pag'] = $v_pag;
+
+        return $this;
+    }
+
+    /**
+     * Gets d_pag
+     *
+     * @return \DateTime|null
+     */
+    public function getDPag()
+    {
+        return $this->container['d_pag'];
+    }
+
+    /**
+     * Sets d_pag
+     *
+     * @param \DateTime|null $d_pag Data do Pagamento.
+     *
+     * @return self
+     */
+    public function setDPag($d_pag)
+    {
+        if (is_null($d_pag)) {
+            array_push($this->openAPINullablesSetToNull, 'd_pag');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('d_pag', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['d_pag'] = $d_pag;
+
+        return $this;
+    }
+
+    /**
+     * Gets cnpj_pag
+     *
+     * @return string|null
+     */
+    public function getCnpjPag()
+    {
+        return $this->container['cnpj_pag'];
+    }
+
+    /**
+     * Sets cnpj_pag
+     *
+     * @param string|null $cnpj_pag CNPJ transacional do pagamento - Preencher informando o CNPJ do estabelecimento onde o pagamento foi processado/transacionado/recebido quando a emissão do documento fiscal ocorrer em estabelecimento distinto.
+     *
+     * @return self
+     */
+    public function setCnpjPag($cnpj_pag)
+    {
+        if (is_null($cnpj_pag)) {
+            array_push($this->openAPINullablesSetToNull, 'cnpj_pag');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj_pag', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($cnpj_pag) && (mb_strlen($cnpj_pag) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $cnpj_pag when calling NfeSefazDetPag., must be smaller than or equal to 14.');
+        }
+
+        $this->container['cnpj_pag'] = $cnpj_pag;
+
+        return $this;
+    }
+
+    /**
+     * Gets uf_pag
+     *
+     * @return string|null
+     */
+    public function getUfPag()
+    {
+        return $this->container['uf_pag'];
+    }
+
+    /**
+     * Sets uf_pag
+     *
+     * @param string|null $uf_pag UF do CNPJ do estabelecimento onde o pagamento foi processado/transacionado/recebido.
+     *
+     * @return self
+     */
+    public function setUfPag($uf_pag)
+    {
+        if (is_null($uf_pag)) {
+            array_push($this->openAPINullablesSetToNull, 'uf_pag');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uf_pag', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['uf_pag'] = $uf_pag;
 
         return $this;
     }

@@ -410,7 +410,7 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets n_seq_adic
      *
-     * @param int $n_seq_adic Número seqüencial do item dentro da Adição.
+     * @param int $n_seq_adic Número seqüencial do item.
      *
      * @return self
      */
@@ -493,7 +493,7 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets v_desc_di
      *
-     * @param float|null $v_desc_di Valor do desconto do item da DI - adição.
+     * @param float|null $v_desc_di Valor do desconto do item.
      *
      * @return self
      */

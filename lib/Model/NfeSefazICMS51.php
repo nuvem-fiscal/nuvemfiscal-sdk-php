@@ -34,7 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazICMS51 Class Doc Comment
  *
  * @category Class
- * @description Tributção pelo ICMS  * 51 - Diferimento  A exigência do preenchimento das informações do ICMS diferido fica à critério de cada UF.
+ * @description Tributção pelo ICMS 51 - Diferimento. A exigência do preenchimento das informações do ICMS diferido fica à critério de cada UF.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -61,6 +61,7 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
         'cst' => 'string',
         'mod_bc' => 'int',
         'p_red_bc' => 'float',
+        'c_benef_rbc' => 'string',
         'v_bc' => 'float',
         'p_icms' => 'float',
         'v_icmsop' => 'float',
@@ -87,6 +88,7 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
         'cst' => null,
         'mod_bc' => null,
         'p_red_bc' => null,
+        'c_benef_rbc' => null,
         'v_bc' => null,
         'p_icms' => null,
         'v_icmsop' => null,
@@ -111,6 +113,7 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
         'cst' => true,
         'mod_bc' => true,
         'p_red_bc' => true,
+        'c_benef_rbc' => true,
         'v_bc' => true,
         'p_icms' => true,
         'v_icmsop' => true,
@@ -215,6 +218,7 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
         'cst' => 'CST',
         'mod_bc' => 'modBC',
         'p_red_bc' => 'pRedBC',
+        'c_benef_rbc' => 'cBenefRBC',
         'v_bc' => 'vBC',
         'p_icms' => 'pICMS',
         'v_icmsop' => 'vICMSOp',
@@ -239,6 +243,7 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
         'cst' => 'setCst',
         'mod_bc' => 'setModBc',
         'p_red_bc' => 'setPRedBc',
+        'c_benef_rbc' => 'setCBenefRbc',
         'v_bc' => 'setVBc',
         'p_icms' => 'setPIcms',
         'v_icmsop' => 'setVIcmsop',
@@ -263,6 +268,7 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
         'cst' => 'getCst',
         'mod_bc' => 'getModBc',
         'p_red_bc' => 'getPRedBc',
+        'c_benef_rbc' => 'getCBenefRbc',
         'v_bc' => 'getVBc',
         'p_icms' => 'getPIcms',
         'v_icmsop' => 'getVIcmsop',
@@ -338,6 +344,7 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('cst', $data ?? [], null);
         $this->setIfExists('mod_bc', $data ?? [], null);
         $this->setIfExists('p_red_bc', $data ?? [], null);
+        $this->setIfExists('c_benef_rbc', $data ?? [], null);
         $this->setIfExists('v_bc', $data ?? [], null);
         $this->setIfExists('p_icms', $data ?? [], null);
         $this->setIfExists('v_icmsop', $data ?? [], null);
@@ -532,6 +539,40 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['p_red_bc'] = $p_red_bc;
+
+        return $this;
+    }
+
+    /**
+     * Gets c_benef_rbc
+     *
+     * @return string|null
+     */
+    public function getCBenefRbc()
+    {
+        return $this->container['c_benef_rbc'];
+    }
+
+    /**
+     * Sets c_benef_rbc
+     *
+     * @param string|null $c_benef_rbc Código de Benefício Fiscal na UF aplicado ao item quando houver RBC.
+     *
+     * @return self
+     */
+    public function setCBenefRbc($c_benef_rbc)
+    {
+        if (is_null($c_benef_rbc)) {
+            array_push($this->openAPINullablesSetToNull, 'c_benef_rbc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_benef_rbc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['c_benef_rbc'] = $c_benef_rbc;
 
         return $this;
     }

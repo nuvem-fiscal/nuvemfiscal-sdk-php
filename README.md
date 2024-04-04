@@ -594,6 +594,7 @@ Classe | Método | Endpoint | Descrição
 - [NfeSefazExporta](docs/Model/NfeSefazExporta.md)
 - [NfeSefazFat](docs/Model/NfeSefazFat.md)
 - [NfeSefazForDia](docs/Model/NfeSefazForDia.md)
+- [NfeSefazGCred](docs/Model/NfeSefazGCred.md)
 - [NfeSefazICMS](docs/Model/NfeSefazICMS.md)
 - [NfeSefazICMS00](docs/Model/NfeSefazICMS00.md)
 - [NfeSefazICMS02](docs/Model/NfeSefazICMS02.md)
@@ -733,6 +734,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.27.1`
-    - Versão do package: `2.24.0`
+- Versão da API: `2.28.0`
+    - Versão do package: `2.25.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

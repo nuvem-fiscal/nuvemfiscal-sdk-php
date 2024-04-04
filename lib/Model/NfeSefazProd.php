@@ -67,6 +67,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         'ind_escala' => 'string',
         'cnpj_fab' => 'string',
         'c_benef' => 'string',
+        'g_cred' => '\NuvemFiscal\Model\NfeSefazGCred[]',
         'extipi' => 'string',
         'cfop' => 'string',
         'u_com' => 'string',
@@ -116,6 +117,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         'ind_escala' => null,
         'cnpj_fab' => null,
         'c_benef' => null,
+        'g_cred' => null,
         'extipi' => null,
         'cfop' => null,
         'u_com' => null,
@@ -163,6 +165,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         'ind_escala' => true,
         'cnpj_fab' => true,
         'c_benef' => true,
+        'g_cred' => false,
         'extipi' => true,
         'cfop' => true,
         'u_com' => true,
@@ -290,6 +293,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         'ind_escala' => 'indEscala',
         'cnpj_fab' => 'CNPJFab',
         'c_benef' => 'cBenef',
+        'g_cred' => 'gCred',
         'extipi' => 'EXTIPI',
         'cfop' => 'CFOP',
         'u_com' => 'uCom',
@@ -337,6 +341,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         'ind_escala' => 'setIndEscala',
         'cnpj_fab' => 'setCnpjFab',
         'c_benef' => 'setCBenef',
+        'g_cred' => 'setGCred',
         'extipi' => 'setExtipi',
         'cfop' => 'setCfop',
         'u_com' => 'setUCom',
@@ -384,6 +389,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         'ind_escala' => 'getIndEscala',
         'cnpj_fab' => 'getCnpjFab',
         'c_benef' => 'getCBenef',
+        'g_cred' => 'getGCred',
         'extipi' => 'getExtipi',
         'cfop' => 'getCfop',
         'u_com' => 'getUCom',
@@ -482,6 +488,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('ind_escala', $data ?? [], null);
         $this->setIfExists('cnpj_fab', $data ?? [], null);
         $this->setIfExists('c_benef', $data ?? [], null);
+        $this->setIfExists('g_cred', $data ?? [], null);
         $this->setIfExists('extipi', $data ?? [], null);
         $this->setIfExists('cfop', $data ?? [], null);
         $this->setIfExists('u_com', $data ?? [], null);
@@ -1023,6 +1030,33 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['c_benef'] = $c_benef;
+
+        return $this;
+    }
+
+    /**
+     * Gets g_cred
+     *
+     * @return \NuvemFiscal\Model\NfeSefazGCred[]|null
+     */
+    public function getGCred()
+    {
+        return $this->container['g_cred'];
+    }
+
+    /**
+     * Sets g_cred
+     *
+     * @param \NuvemFiscal\Model\NfeSefazGCred[]|null $g_cred g_cred
+     *
+     * @return self
+     */
+    public function setGCred($g_cred)
+    {
+        if (is_null($g_cred)) {
+            throw new \InvalidArgumentException('non-nullable g_cred cannot be null');
+        }
+        $this->container['g_cred'] = $g_cred;
 
         return $this;
     }

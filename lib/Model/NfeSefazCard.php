@@ -34,7 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazCard Class Doc Comment
  *
  * @category Class
- * @description Grupo de Cartões.
+ * @description Grupo de Cartões, PIX, Boletos e outros Pagamentos Eletrônicos.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,7 +60,9 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
         'tp_integra' => 'int',
         'cnpj' => 'string',
         't_band' => 'string',
-        'c_aut' => 'string'
+        'c_aut' => 'string',
+        'cnpj_receb' => 'string',
+        'id_term_pag' => 'string'
     ];
 
     /**
@@ -74,7 +76,9 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
         'tp_integra' => null,
         'cnpj' => null,
         't_band' => null,
-        'c_aut' => null
+        'c_aut' => null,
+        'cnpj_receb' => null,
+        'id_term_pag' => null
     ];
 
     /**
@@ -86,7 +90,9 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
         'tp_integra' => true,
         'cnpj' => true,
         't_band' => true,
-        'c_aut' => true
+        'c_aut' => true,
+        'cnpj_receb' => true,
+        'id_term_pag' => true
     ];
 
     /**
@@ -178,7 +184,9 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
         'tp_integra' => 'tpIntegra',
         'cnpj' => 'CNPJ',
         't_band' => 'tBand',
-        'c_aut' => 'cAut'
+        'c_aut' => 'cAut',
+        'cnpj_receb' => 'CNPJReceb',
+        'id_term_pag' => 'idTermPag'
     ];
 
     /**
@@ -190,7 +198,9 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
         'tp_integra' => 'setTpIntegra',
         'cnpj' => 'setCnpj',
         't_band' => 'setTBand',
-        'c_aut' => 'setCAut'
+        'c_aut' => 'setCAut',
+        'cnpj_receb' => 'setCnpjReceb',
+        'id_term_pag' => 'setIdTermPag'
     ];
 
     /**
@@ -202,7 +212,9 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
         'tp_integra' => 'getTpIntegra',
         'cnpj' => 'getCnpj',
         't_band' => 'getTBand',
-        'c_aut' => 'getCAut'
+        'c_aut' => 'getCAut',
+        'cnpj_receb' => 'getCnpjReceb',
+        'id_term_pag' => 'getIdTermPag'
     ];
 
     /**
@@ -266,6 +278,8 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('cnpj', $data ?? [], null);
         $this->setIfExists('t_band', $data ?? [], null);
         $this->setIfExists('c_aut', $data ?? [], null);
+        $this->setIfExists('cnpj_receb', $data ?? [], null);
+        $this->setIfExists('id_term_pag', $data ?? [], null);
     }
 
     /**
@@ -302,12 +316,24 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'cnpj', the character length must be smaller than or equal to 14.";
         }
 
-        if (!is_null($this->container['c_aut']) && (mb_strlen($this->container['c_aut']) > 20)) {
-            $invalidProperties[] = "invalid value for 'c_aut', the character length must be smaller than or equal to 20.";
+        if (!is_null($this->container['c_aut']) && (mb_strlen($this->container['c_aut']) > 128)) {
+            $invalidProperties[] = "invalid value for 'c_aut', the character length must be smaller than or equal to 128.";
         }
 
         if (!is_null($this->container['c_aut']) && (mb_strlen($this->container['c_aut']) < 1)) {
             $invalidProperties[] = "invalid value for 'c_aut', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['cnpj_receb']) && (mb_strlen($this->container['cnpj_receb']) > 14)) {
+            $invalidProperties[] = "invalid value for 'cnpj_receb', the character length must be smaller than or equal to 14.";
+        }
+
+        if (!is_null($this->container['id_term_pag']) && (mb_strlen($this->container['id_term_pag']) > 40)) {
+            $invalidProperties[] = "invalid value for 'id_term_pag', the character length must be smaller than or equal to 40.";
+        }
+
+        if (!is_null($this->container['id_term_pag']) && (mb_strlen($this->container['id_term_pag']) < 1)) {
+            $invalidProperties[] = "invalid value for 'id_term_pag', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -338,7 +364,7 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_integra
      *
-     * @param int $tp_integra Tipo de Integração do processo de pagamento com o sistema de automação da empresa/  * 1 - Pagamento integrado com o sistema de automação da empresa Ex. equipamento TEF , Comercio Eletronico  * 2 - Pagamento não integrado com o sistema de automação da empresa Ex: equipamento POS
+     * @param int $tp_integra Tipo de Integração do processo de pagamento com o sistema de automação da empresa:  * 1 - Pagamento integrado com o sistema de automação da empresa (Ex.: equipamento TEF, Comércio Eletrônico, POS Integrado)  * 2 - Pagamento não integrado com o sistema de automação da empresa (Ex.: equipamento POS Simples)
      *
      * @return self
      */
@@ -444,7 +470,7 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_aut
      *
-     * @param string|null $c_aut Número de autorização da operação cartão de crédito/débito.
+     * @param string|null $c_aut Número de autorização da operação com cartões, PIX, boletos e outros pagamentos eletrônicos.
      *
      * @return self
      */
@@ -460,14 +486,93 @@ class NfeSefazCard implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($c_aut) && (mb_strlen($c_aut) > 20)) {
-            throw new \InvalidArgumentException('invalid length for $c_aut when calling NfeSefazCard., must be smaller than or equal to 20.');
+        if (!is_null($c_aut) && (mb_strlen($c_aut) > 128)) {
+            throw new \InvalidArgumentException('invalid length for $c_aut when calling NfeSefazCard., must be smaller than or equal to 128.');
         }
         if (!is_null($c_aut) && (mb_strlen($c_aut) < 1)) {
             throw new \InvalidArgumentException('invalid length for $c_aut when calling NfeSefazCard., must be bigger than or equal to 1.');
         }
 
         $this->container['c_aut'] = $c_aut;
+
+        return $this;
+    }
+
+    /**
+     * Gets cnpj_receb
+     *
+     * @return string|null
+     */
+    public function getCnpjReceb()
+    {
+        return $this->container['cnpj_receb'];
+    }
+
+    /**
+     * Sets cnpj_receb
+     *
+     * @param string|null $cnpj_receb CNPJ do beneficiário do pagamento.
+     *
+     * @return self
+     */
+    public function setCnpjReceb($cnpj_receb)
+    {
+        if (is_null($cnpj_receb)) {
+            array_push($this->openAPINullablesSetToNull, 'cnpj_receb');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cnpj_receb', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($cnpj_receb) && (mb_strlen($cnpj_receb) > 14)) {
+            throw new \InvalidArgumentException('invalid length for $cnpj_receb when calling NfeSefazCard., must be smaller than or equal to 14.');
+        }
+
+        $this->container['cnpj_receb'] = $cnpj_receb;
+
+        return $this;
+    }
+
+    /**
+     * Gets id_term_pag
+     *
+     * @return string|null
+     */
+    public function getIdTermPag()
+    {
+        return $this->container['id_term_pag'];
+    }
+
+    /**
+     * Sets id_term_pag
+     *
+     * @param string|null $id_term_pag Identificador do terminal de pagamento.
+     *
+     * @return self
+     */
+    public function setIdTermPag($id_term_pag)
+    {
+        if (is_null($id_term_pag)) {
+            array_push($this->openAPINullablesSetToNull, 'id_term_pag');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id_term_pag', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($id_term_pag) && (mb_strlen($id_term_pag) > 40)) {
+            throw new \InvalidArgumentException('invalid length for $id_term_pag when calling NfeSefazCard., must be smaller than or equal to 40.');
+        }
+        if (!is_null($id_term_pag) && (mb_strlen($id_term_pag) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $id_term_pag when calling NfeSefazCard., must be bigger than or equal to 1.');
+        }
+
+        $this->container['id_term_pag'] = $id_term_pag;
 
         return $this;
     }

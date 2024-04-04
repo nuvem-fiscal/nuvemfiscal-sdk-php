@@ -8,6 +8,7 @@ Nome | Tipo | Descrição | Comentários
 **cst** | **string** | Tributção pelo ICMS  * 20 - Com redução de base de cálculo |
 **mod_bc** | **int** | Modalidade de determinação da BC do ICMS:  * 0 - Margem Valor Agregado (%%)  * 1 - Pauta (valor)  * 2 - Preço Tabelado Máximo (valor)  * 3 - Valor da Operação | [optional]
 **p_red_bc** | **float** | Percentual de redução da BC. | [optional]
+**c_benef_rbc** | **string** | Código de Benefício Fiscal na UF aplicado ao item quando houver RBC. | [optional]
 **v_bc** | **float** | Valor da BC do ICMS. | [optional]
 **p_icms** | **float** | Alíquota do imposto. | [optional]
 **v_icmsop** | **float** | Valor do ICMS da Operação. | [optional]
