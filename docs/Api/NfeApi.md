@@ -291,7 +291,7 @@ try {
 ## `baixarPdfNfe()`
 
 ```php
-baixarPdfNfe($id, $logotipo, $mensagem_rodape, $canhoto): \SplFileObject
+baixarPdfNfe($id, $logotipo, $nome_fantasia, $formato, $mensagem_rodape, $canhoto): \SplFileObject
 ```
 
 Baixar PDF do DANFE
@@ -320,11 +320,13 @@ $apiInstance = new NuvemFiscal\Api\NfeApi(
 );
 $id = 'id_example'; // string | ID único da NF-e gerado pela Nuvem Fiscal.
 $logotipo = false; // bool | Imprime o documento com logotipo, desde que esteja cadastrado na empresa.
+$nome_fantasia = false; // bool | Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota.
+$formato = 'padrao'; // string | Formato de impressão do DANFE.    Valores disponíveis:  - `padrao`: será utilizado o formato definido no XML da NF-e (tag \"tpImp\");  - `retrato`: tamanho A4 em modo retrato;  - `paisagem`: tamanho A4 em modo paisagem;  - `simplificado`: formato simplificado utilizado nas operações realizadas fora do estabelecimento (Anexo II do MOC, item 3.11);  - `etiqueta`: formato simplificado utilizado nas operações em comércio eletrônico (Anexo II do MOC, item 3.12 e NT 2020.004).
 $mensagem_rodape = 'mensagem_rodape_example'; // string | Imprime mensagem no rodapé do documento.    O caractere `|` (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * `\"esquerda\"`  * `\"esquerda|centro\"`  * `\"esquerda|centro|direita\"`  * `\"|centro\"`, `\"|centro|\"`  * `\"|centro|direita\"`  * `\"||direita\"`  * `\"esquerda||direita\"`
 $canhoto = true; // bool | Imprime o documento com o bloco de canhoto.
 
 try {
-    $result = $apiInstance->baixarPdfNfe($id, $logotipo, $mensagem_rodape, $canhoto);
+    $result = $apiInstance->baixarPdfNfe($id, $logotipo, $nome_fantasia, $formato, $mensagem_rodape, $canhoto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfeApi->baixarPdfNfe: ', $e->getMessage(), PHP_EOL;
@@ -337,6 +339,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID único da NF-e gerado pela Nuvem Fiscal. | |
 | **logotipo** | **bool**| Imprime o documento com logotipo, desde que esteja cadastrado na empresa. | [optional] [default to false] |
+| **nome_fantasia** | **bool**| Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. | [optional] [default to false] |
+| **formato** | **string**| Formato de impressão do DANFE.    Valores disponíveis:  - &#x60;padrao&#x60;: será utilizado o formato definido no XML da NF-e (tag \&quot;tpImp\&quot;);  - &#x60;retrato&#x60;: tamanho A4 em modo retrato;  - &#x60;paisagem&#x60;: tamanho A4 em modo paisagem;  - &#x60;simplificado&#x60;: formato simplificado utilizado nas operações realizadas fora do estabelecimento (Anexo II do MOC, item 3.11);  - &#x60;etiqueta&#x60;: formato simplificado utilizado nas operações em comércio eletrônico (Anexo II do MOC, item 3.12 e NT 2020.004). | [optional] [default to &#39;padrao&#39;] |
 | **mensagem_rodape** | **string**| Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; | [optional] |
 | **canhoto** | **bool**| Imprime o documento com o bloco de canhoto. | [optional] [default to true] |
 
@@ -360,12 +364,12 @@ try {
 ## `baixarPreviaPdfNfe()`
 
 ```php
-baixarPreviaPdfNfe($body, $logotipo, $mensagem_rodape, $canhoto): \SplFileObject
+baixarPreviaPdfNfe($body, $logotipo, $nome_fantasia, $formato, $mensagem_rodape, $canhoto): \SplFileObject
 ```
 
 Prévia do PDF do DANFE
 
-Através desse endpoint, é possível enviar os dados de uma NF-e e gerar uma prévia do DANFE.    Os dados de entrada são os mesmos do endpoint de emissão de NF-e (`POST /nfe`).
+Através desse endpoint, é possível enviar os dados de uma NF-e e gerar uma prévia do DANFE.    Os dados de entrada são os mesmos do endpoint de emissão de NF-e (`POST /nfe`).    **Atenção**: O DANFE gerado por este endpoint é apenas para fins de visualização e não possui valor fiscal. Para a emissão de uma NF-e com valor fiscal, utilize o processo de emissão padrão descrito na documentação.
 
 ### Exemplo
 
@@ -391,11 +395,13 @@ $apiInstance = new NuvemFiscal\Api\NfeApi(
 );
 $body = new \NuvemFiscal\Model\NfePedidoEmissao(); // \NuvemFiscal\Model\NfePedidoEmissao
 $logotipo = false; // bool | Imprime o documento com logotipo, desde que esteja cadastrado na empresa.
+$nome_fantasia = false; // bool | Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota.
+$formato = 'padrao'; // string | Formato de impressão do DANFE.    Valores disponíveis:  - `padrao`: será utilizado o formato definido no XML da NF-e (tag \"tpImp\");  - `retrato`: tamanho A4 em modo retrato;  - `paisagem`: tamanho A4 em modo paisagem;  - `simplificado`: formato simplificado utilizado nas operações realizadas fora do estabelecimento (Anexo II do MOC, item 3.11);  - `etiqueta`: formato simplificado utilizado nas operações em comércio eletrônico (Anexo II do MOC, item 3.12 e NT 2020.004).
 $mensagem_rodape = 'mensagem_rodape_example'; // string | Imprime mensagem no rodapé do documento.    O caractere `|` (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * `\"esquerda\"`  * `\"esquerda|centro\"`  * `\"esquerda|centro|direita\"`  * `\"|centro\"`, `\"|centro|\"`  * `\"|centro|direita\"`  * `\"||direita\"`  * `\"esquerda||direita\"`
 $canhoto = true; // bool | Imprime o documento com o bloco de canhoto.
 
 try {
-    $result = $apiInstance->baixarPreviaPdfNfe($body, $logotipo, $mensagem_rodape, $canhoto);
+    $result = $apiInstance->baixarPreviaPdfNfe($body, $logotipo, $nome_fantasia, $formato, $mensagem_rodape, $canhoto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfeApi->baixarPreviaPdfNfe: ', $e->getMessage(), PHP_EOL;
@@ -408,6 +414,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **body** | [**\NuvemFiscal\Model\NfePedidoEmissao**](../Model/NfePedidoEmissao.md)|  | |
 | **logotipo** | **bool**| Imprime o documento com logotipo, desde que esteja cadastrado na empresa. | [optional] [default to false] |
+| **nome_fantasia** | **bool**| Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. | [optional] [default to false] |
+| **formato** | **string**| Formato de impressão do DANFE.    Valores disponíveis:  - &#x60;padrao&#x60;: será utilizado o formato definido no XML da NF-e (tag \&quot;tpImp\&quot;);  - &#x60;retrato&#x60;: tamanho A4 em modo retrato;  - &#x60;paisagem&#x60;: tamanho A4 em modo paisagem;  - &#x60;simplificado&#x60;: formato simplificado utilizado nas operações realizadas fora do estabelecimento (Anexo II do MOC, item 3.11);  - &#x60;etiqueta&#x60;: formato simplificado utilizado nas operações em comércio eletrônico (Anexo II do MOC, item 3.12 e NT 2020.004). | [optional] [default to &#39;padrao&#39;] |
 | **mensagem_rodape** | **string**| Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; | [optional] |
 | **canhoto** | **bool**| Imprime o documento com o bloco de canhoto. | [optional] [default to true] |
 
@@ -436,7 +444,7 @@ baixarPreviaXmlNfe($body): \SplFileObject
 
 Prévia do XML da NF-e
 
-Através desse endpoint, é possível enviar os dados de uma NF-e e gerar uma prévia do XML, sem a assinatura digital.    Os dados de entrada são os mesmos do endpoint de emissão de NF-e (`POST /nfe`).
+Através desse endpoint, é possível enviar os dados de uma NF-e e gerar uma prévia do XML, sem a assinatura digital.    Os dados de entrada são os mesmos do endpoint de emissão de NF-e (`POST /nfe`).    **Atenção**: O XML gerado por este endpoint é apenas para fins de visualização e não possui valor fiscal. Para a emissão de uma NF-e com valor fiscal, utilize o processo de emissão padrão descrito na documentação.
 
 ### Exemplo
 

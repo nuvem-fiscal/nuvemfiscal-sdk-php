@@ -1479,6 +1479,8 @@ class NfeApi
      *
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
+     * @param  string $formato Formato de impressão do DANFE.    Valores disponíveis:  - &#x60;padrao&#x60;: será utilizado o formato definido no XML da NF-e (tag \&quot;tpImp\&quot;);  - &#x60;retrato&#x60;: tamanho A4 em modo retrato;  - &#x60;paisagem&#x60;: tamanho A4 em modo paisagem;  - &#x60;simplificado&#x60;: formato simplificado utilizado nas operações realizadas fora do estabelecimento (Anexo II do MOC, item 3.11);  - &#x60;etiqueta&#x60;: formato simplificado utilizado nas operações em comércio eletrônico (Anexo II do MOC, item 3.12 e NT 2020.004). (optional, default to 'padrao')
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfe'] to see the possible values for this operation
@@ -1487,9 +1489,9 @@ class NfeApi
      * @throws \InvalidArgumentException
      * @return \SplFileObject
      */
-    public function baixarPdfNfe($id, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
+    public function baixarPdfNfe($id, $logotipo = false, $nome_fantasia = false, $formato = 'padrao', $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
     {
-        list($response) = $this->baixarPdfNfeWithHttpInfo($id, $logotipo, $mensagem_rodape, $canhoto, $contentType);
+        list($response) = $this->baixarPdfNfeWithHttpInfo($id, $logotipo, $nome_fantasia, $formato, $mensagem_rodape, $canhoto, $contentType);
         return $response;
     }
 
@@ -1500,6 +1502,8 @@ class NfeApi
      *
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
+     * @param  string $formato Formato de impressão do DANFE.    Valores disponíveis:  - &#x60;padrao&#x60;: será utilizado o formato definido no XML da NF-e (tag \&quot;tpImp\&quot;);  - &#x60;retrato&#x60;: tamanho A4 em modo retrato;  - &#x60;paisagem&#x60;: tamanho A4 em modo paisagem;  - &#x60;simplificado&#x60;: formato simplificado utilizado nas operações realizadas fora do estabelecimento (Anexo II do MOC, item 3.11);  - &#x60;etiqueta&#x60;: formato simplificado utilizado nas operações em comércio eletrônico (Anexo II do MOC, item 3.12 e NT 2020.004). (optional, default to 'padrao')
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfe'] to see the possible values for this operation
@@ -1508,9 +1512,9 @@ class NfeApi
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function baixarPdfNfeWithHttpInfo($id, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
+    public function baixarPdfNfeWithHttpInfo($id, $logotipo = false, $nome_fantasia = false, $formato = 'padrao', $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
     {
-        $request = $this->baixarPdfNfeRequest($id, $logotipo, $mensagem_rodape, $canhoto, $contentType);
+        $request = $this->baixarPdfNfeRequest($id, $logotipo, $nome_fantasia, $formato, $mensagem_rodape, $canhoto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1627,6 +1631,8 @@ class NfeApi
      *
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
+     * @param  string $formato Formato de impressão do DANFE.    Valores disponíveis:  - &#x60;padrao&#x60;: será utilizado o formato definido no XML da NF-e (tag \&quot;tpImp\&quot;);  - &#x60;retrato&#x60;: tamanho A4 em modo retrato;  - &#x60;paisagem&#x60;: tamanho A4 em modo paisagem;  - &#x60;simplificado&#x60;: formato simplificado utilizado nas operações realizadas fora do estabelecimento (Anexo II do MOC, item 3.11);  - &#x60;etiqueta&#x60;: formato simplificado utilizado nas operações em comércio eletrônico (Anexo II do MOC, item 3.12 e NT 2020.004). (optional, default to 'padrao')
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfe'] to see the possible values for this operation
@@ -1634,9 +1640,9 @@ class NfeApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPdfNfeAsync($id, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
+    public function baixarPdfNfeAsync($id, $logotipo = false, $nome_fantasia = false, $formato = 'padrao', $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
     {
-        return $this->baixarPdfNfeAsyncWithHttpInfo($id, $logotipo, $mensagem_rodape, $canhoto, $contentType)
+        return $this->baixarPdfNfeAsyncWithHttpInfo($id, $logotipo, $nome_fantasia, $formato, $mensagem_rodape, $canhoto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1651,6 +1657,8 @@ class NfeApi
      *
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
+     * @param  string $formato Formato de impressão do DANFE.    Valores disponíveis:  - &#x60;padrao&#x60;: será utilizado o formato definido no XML da NF-e (tag \&quot;tpImp\&quot;);  - &#x60;retrato&#x60;: tamanho A4 em modo retrato;  - &#x60;paisagem&#x60;: tamanho A4 em modo paisagem;  - &#x60;simplificado&#x60;: formato simplificado utilizado nas operações realizadas fora do estabelecimento (Anexo II do MOC, item 3.11);  - &#x60;etiqueta&#x60;: formato simplificado utilizado nas operações em comércio eletrônico (Anexo II do MOC, item 3.12 e NT 2020.004). (optional, default to 'padrao')
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfe'] to see the possible values for this operation
@@ -1658,10 +1666,10 @@ class NfeApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPdfNfeAsyncWithHttpInfo($id, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
+    public function baixarPdfNfeAsyncWithHttpInfo($id, $logotipo = false, $nome_fantasia = false, $formato = 'padrao', $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->baixarPdfNfeRequest($id, $logotipo, $mensagem_rodape, $canhoto, $contentType);
+        $request = $this->baixarPdfNfeRequest($id, $logotipo, $nome_fantasia, $formato, $mensagem_rodape, $canhoto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1704,6 +1712,8 @@ class NfeApi
      *
      * @param  string $id ID único da NF-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
+     * @param  string $formato Formato de impressão do DANFE.    Valores disponíveis:  - &#x60;padrao&#x60;: será utilizado o formato definido no XML da NF-e (tag \&quot;tpImp\&quot;);  - &#x60;retrato&#x60;: tamanho A4 em modo retrato;  - &#x60;paisagem&#x60;: tamanho A4 em modo paisagem;  - &#x60;simplificado&#x60;: formato simplificado utilizado nas operações realizadas fora do estabelecimento (Anexo II do MOC, item 3.11);  - &#x60;etiqueta&#x60;: formato simplificado utilizado nas operações em comércio eletrônico (Anexo II do MOC, item 3.12 e NT 2020.004). (optional, default to 'padrao')
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfe'] to see the possible values for this operation
@@ -1711,7 +1721,7 @@ class NfeApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function baixarPdfNfeRequest($id, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
+    public function baixarPdfNfeRequest($id, $logotipo = false, $nome_fantasia = false, $formato = 'padrao', $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPdfNfe'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -1720,6 +1730,8 @@ class NfeApi
                 'Missing the required parameter $id when calling baixarPdfNfe'
             );
         }
+
+
 
 
 
@@ -1737,6 +1749,24 @@ class NfeApi
             $logotipo,
             'logotipo', // param base name
             'boolean', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $nome_fantasia,
+            'nome_fantasia', // param base name
+            'boolean', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $formato,
+            'formato', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -1840,6 +1870,8 @@ class NfeApi
      *
      * @param  \NuvemFiscal\Model\NfePedidoEmissao $body body (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
+     * @param  string $formato Formato de impressão do DANFE.    Valores disponíveis:  - &#x60;padrao&#x60;: será utilizado o formato definido no XML da NF-e (tag \&quot;tpImp\&quot;);  - &#x60;retrato&#x60;: tamanho A4 em modo retrato;  - &#x60;paisagem&#x60;: tamanho A4 em modo paisagem;  - &#x60;simplificado&#x60;: formato simplificado utilizado nas operações realizadas fora do estabelecimento (Anexo II do MOC, item 3.11);  - &#x60;etiqueta&#x60;: formato simplificado utilizado nas operações em comércio eletrônico (Anexo II do MOC, item 3.12 e NT 2020.004). (optional, default to 'padrao')
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfe'] to see the possible values for this operation
@@ -1848,9 +1880,9 @@ class NfeApi
      * @throws \InvalidArgumentException
      * @return \SplFileObject
      */
-    public function baixarPreviaPdfNfe($body, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPreviaPdfNfe'][0])
+    public function baixarPreviaPdfNfe($body, $logotipo = false, $nome_fantasia = false, $formato = 'padrao', $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPreviaPdfNfe'][0])
     {
-        list($response) = $this->baixarPreviaPdfNfeWithHttpInfo($body, $logotipo, $mensagem_rodape, $canhoto, $contentType);
+        list($response) = $this->baixarPreviaPdfNfeWithHttpInfo($body, $logotipo, $nome_fantasia, $formato, $mensagem_rodape, $canhoto, $contentType);
         return $response;
     }
 
@@ -1861,6 +1893,8 @@ class NfeApi
      *
      * @param  \NuvemFiscal\Model\NfePedidoEmissao $body (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
+     * @param  string $formato Formato de impressão do DANFE.    Valores disponíveis:  - &#x60;padrao&#x60;: será utilizado o formato definido no XML da NF-e (tag \&quot;tpImp\&quot;);  - &#x60;retrato&#x60;: tamanho A4 em modo retrato;  - &#x60;paisagem&#x60;: tamanho A4 em modo paisagem;  - &#x60;simplificado&#x60;: formato simplificado utilizado nas operações realizadas fora do estabelecimento (Anexo II do MOC, item 3.11);  - &#x60;etiqueta&#x60;: formato simplificado utilizado nas operações em comércio eletrônico (Anexo II do MOC, item 3.12 e NT 2020.004). (optional, default to 'padrao')
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfe'] to see the possible values for this operation
@@ -1869,9 +1903,9 @@ class NfeApi
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function baixarPreviaPdfNfeWithHttpInfo($body, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPreviaPdfNfe'][0])
+    public function baixarPreviaPdfNfeWithHttpInfo($body, $logotipo = false, $nome_fantasia = false, $formato = 'padrao', $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPreviaPdfNfe'][0])
     {
-        $request = $this->baixarPreviaPdfNfeRequest($body, $logotipo, $mensagem_rodape, $canhoto, $contentType);
+        $request = $this->baixarPreviaPdfNfeRequest($body, $logotipo, $nome_fantasia, $formato, $mensagem_rodape, $canhoto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1988,6 +2022,8 @@ class NfeApi
      *
      * @param  \NuvemFiscal\Model\NfePedidoEmissao $body (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
+     * @param  string $formato Formato de impressão do DANFE.    Valores disponíveis:  - &#x60;padrao&#x60;: será utilizado o formato definido no XML da NF-e (tag \&quot;tpImp\&quot;);  - &#x60;retrato&#x60;: tamanho A4 em modo retrato;  - &#x60;paisagem&#x60;: tamanho A4 em modo paisagem;  - &#x60;simplificado&#x60;: formato simplificado utilizado nas operações realizadas fora do estabelecimento (Anexo II do MOC, item 3.11);  - &#x60;etiqueta&#x60;: formato simplificado utilizado nas operações em comércio eletrônico (Anexo II do MOC, item 3.12 e NT 2020.004). (optional, default to 'padrao')
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfe'] to see the possible values for this operation
@@ -1995,9 +2031,9 @@ class NfeApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPreviaPdfNfeAsync($body, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPreviaPdfNfe'][0])
+    public function baixarPreviaPdfNfeAsync($body, $logotipo = false, $nome_fantasia = false, $formato = 'padrao', $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPreviaPdfNfe'][0])
     {
-        return $this->baixarPreviaPdfNfeAsyncWithHttpInfo($body, $logotipo, $mensagem_rodape, $canhoto, $contentType)
+        return $this->baixarPreviaPdfNfeAsyncWithHttpInfo($body, $logotipo, $nome_fantasia, $formato, $mensagem_rodape, $canhoto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2012,6 +2048,8 @@ class NfeApi
      *
      * @param  \NuvemFiscal\Model\NfePedidoEmissao $body (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
+     * @param  string $formato Formato de impressão do DANFE.    Valores disponíveis:  - &#x60;padrao&#x60;: será utilizado o formato definido no XML da NF-e (tag \&quot;tpImp\&quot;);  - &#x60;retrato&#x60;: tamanho A4 em modo retrato;  - &#x60;paisagem&#x60;: tamanho A4 em modo paisagem;  - &#x60;simplificado&#x60;: formato simplificado utilizado nas operações realizadas fora do estabelecimento (Anexo II do MOC, item 3.11);  - &#x60;etiqueta&#x60;: formato simplificado utilizado nas operações em comércio eletrônico (Anexo II do MOC, item 3.12 e NT 2020.004). (optional, default to 'padrao')
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfe'] to see the possible values for this operation
@@ -2019,10 +2057,10 @@ class NfeApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPreviaPdfNfeAsyncWithHttpInfo($body, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPreviaPdfNfe'][0])
+    public function baixarPreviaPdfNfeAsyncWithHttpInfo($body, $logotipo = false, $nome_fantasia = false, $formato = 'padrao', $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPreviaPdfNfe'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->baixarPreviaPdfNfeRequest($body, $logotipo, $mensagem_rodape, $canhoto, $contentType);
+        $request = $this->baixarPreviaPdfNfeRequest($body, $logotipo, $nome_fantasia, $formato, $mensagem_rodape, $canhoto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2065,6 +2103,8 @@ class NfeApi
      *
      * @param  \NuvemFiscal\Model\NfePedidoEmissao $body (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
+     * @param  string $formato Formato de impressão do DANFE.    Valores disponíveis:  - &#x60;padrao&#x60;: será utilizado o formato definido no XML da NF-e (tag \&quot;tpImp\&quot;);  - &#x60;retrato&#x60;: tamanho A4 em modo retrato;  - &#x60;paisagem&#x60;: tamanho A4 em modo paisagem;  - &#x60;simplificado&#x60;: formato simplificado utilizado nas operações realizadas fora do estabelecimento (Anexo II do MOC, item 3.11);  - &#x60;etiqueta&#x60;: formato simplificado utilizado nas operações em comércio eletrônico (Anexo II do MOC, item 3.12 e NT 2020.004). (optional, default to 'padrao')
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $canhoto Imprime o documento com o bloco de canhoto. (optional, default to true)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfe'] to see the possible values for this operation
@@ -2072,7 +2112,7 @@ class NfeApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function baixarPreviaPdfNfeRequest($body, $logotipo = false, $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPreviaPdfNfe'][0])
+    public function baixarPreviaPdfNfeRequest($body, $logotipo = false, $nome_fantasia = false, $formato = 'padrao', $mensagem_rodape = null, $canhoto = true, string $contentType = self::contentTypes['baixarPreviaPdfNfe'][0])
     {
 
         // verify the required parameter 'body' is set
@@ -2081,6 +2121,8 @@ class NfeApi
                 'Missing the required parameter $body when calling baixarPreviaPdfNfe'
             );
         }
+
+
 
 
 
@@ -2098,6 +2140,24 @@ class NfeApi
             $logotipo,
             'logotipo', // param base name
             'boolean', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $nome_fantasia,
+            'nome_fantasia', // param base name
+            'boolean', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $formato,
+            'formato', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required

@@ -734,6 +734,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.28.0`
-    - Versão do package: `2.25.0`
+- Versão da API: `2.30.15`
+    - Versão do package: `2.26.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

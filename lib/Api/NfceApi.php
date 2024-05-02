@@ -1515,18 +1515,20 @@ class NfceApi
      *
      * @param  string $id ID único da NFC-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
-     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e. (optional, default to false)
+     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
+     * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfce'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \SplFileObject
      */
-    public function baixarPdfNfce($id, $logotipo = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, string $contentType = self::contentTypes['baixarPdfNfce'][0])
+    public function baixarPdfNfce($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPdfNfce'][0])
     {
-        list($response) = $this->baixarPdfNfceWithHttpInfo($id, $logotipo, $mensagem_rodape, $resumido, $qrcode_lateral, $contentType);
+        list($response) = $this->baixarPdfNfceWithHttpInfo($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType);
         return $response;
     }
 
@@ -1537,18 +1539,20 @@ class NfceApi
      *
      * @param  string $id ID único da NFC-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
-     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e. (optional, default to false)
+     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
+     * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfce'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function baixarPdfNfceWithHttpInfo($id, $logotipo = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, string $contentType = self::contentTypes['baixarPdfNfce'][0])
+    public function baixarPdfNfceWithHttpInfo($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPdfNfce'][0])
     {
-        $request = $this->baixarPdfNfceRequest($id, $logotipo, $mensagem_rodape, $resumido, $qrcode_lateral, $contentType);
+        $request = $this->baixarPdfNfceRequest($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1665,17 +1669,19 @@ class NfceApi
      *
      * @param  string $id ID único da NFC-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
-     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e. (optional, default to false)
+     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
+     * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPdfNfceAsync($id, $logotipo = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, string $contentType = self::contentTypes['baixarPdfNfce'][0])
+    public function baixarPdfNfceAsync($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPdfNfce'][0])
     {
-        return $this->baixarPdfNfceAsyncWithHttpInfo($id, $logotipo, $mensagem_rodape, $resumido, $qrcode_lateral, $contentType)
+        return $this->baixarPdfNfceAsyncWithHttpInfo($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1690,18 +1696,20 @@ class NfceApi
      *
      * @param  string $id ID único da NFC-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
-     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e. (optional, default to false)
+     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
+     * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPdfNfceAsyncWithHttpInfo($id, $logotipo = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, string $contentType = self::contentTypes['baixarPdfNfce'][0])
+    public function baixarPdfNfceAsyncWithHttpInfo($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPdfNfce'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->baixarPdfNfceRequest($id, $logotipo, $mensagem_rodape, $resumido, $qrcode_lateral, $contentType);
+        $request = $this->baixarPdfNfceRequest($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1744,15 +1752,17 @@ class NfceApi
      *
      * @param  string $id ID único da NFC-e gerado pela Nuvem Fiscal. (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
-     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e. (optional, default to false)
+     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
+     * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function baixarPdfNfceRequest($id, $logotipo = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, string $contentType = self::contentTypes['baixarPdfNfce'][0])
+    public function baixarPdfNfceRequest($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPdfNfce'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -1761,6 +1771,8 @@ class NfceApi
                 'Missing the required parameter $id when calling baixarPdfNfce'
             );
         }
+
+
 
 
 
@@ -1778,6 +1790,15 @@ class NfceApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $logotipo,
             'logotipo', // param base name
+            'boolean', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $nome_fantasia,
+            'nome_fantasia', // param base name
             'boolean', // openApiType
             '', // style
             false, // explode
@@ -1806,6 +1827,15 @@ class NfceApi
             $qrcode_lateral,
             'qrcode_lateral', // param base name
             'boolean', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $largura,
+            'largura', // param base name
+            'integer', // openApiType
             '', // style
             false, // explode
             false // required
@@ -1891,18 +1921,20 @@ class NfceApi
      *
      * @param  \NuvemFiscal\Model\NfePedidoEmissao $body body (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
-     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e. (optional, default to false)
+     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
+     * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfce'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \SplFileObject
      */
-    public function baixarPreviaPdfNfce($body, $logotipo = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
+    public function baixarPreviaPdfNfce($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
     {
-        list($response) = $this->baixarPreviaPdfNfceWithHttpInfo($body, $logotipo, $mensagem_rodape, $resumido, $qrcode_lateral, $contentType);
+        list($response) = $this->baixarPreviaPdfNfceWithHttpInfo($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType);
         return $response;
     }
 
@@ -1913,18 +1945,20 @@ class NfceApi
      *
      * @param  \NuvemFiscal\Model\NfePedidoEmissao $body (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
-     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e. (optional, default to false)
+     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
+     * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfce'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function baixarPreviaPdfNfceWithHttpInfo($body, $logotipo = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
+    public function baixarPreviaPdfNfceWithHttpInfo($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
     {
-        $request = $this->baixarPreviaPdfNfceRequest($body, $logotipo, $mensagem_rodape, $resumido, $qrcode_lateral, $contentType);
+        $request = $this->baixarPreviaPdfNfceRequest($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2041,17 +2075,19 @@ class NfceApi
      *
      * @param  \NuvemFiscal\Model\NfePedidoEmissao $body (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
-     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e. (optional, default to false)
+     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
+     * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPreviaPdfNfceAsync($body, $logotipo = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
+    public function baixarPreviaPdfNfceAsync($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
     {
-        return $this->baixarPreviaPdfNfceAsyncWithHttpInfo($body, $logotipo, $mensagem_rodape, $resumido, $qrcode_lateral, $contentType)
+        return $this->baixarPreviaPdfNfceAsyncWithHttpInfo($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2066,18 +2102,20 @@ class NfceApi
      *
      * @param  \NuvemFiscal\Model\NfePedidoEmissao $body (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
-     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e. (optional, default to false)
+     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
+     * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPreviaPdfNfceAsyncWithHttpInfo($body, $logotipo = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
+    public function baixarPreviaPdfNfceAsyncWithHttpInfo($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->baixarPreviaPdfNfceRequest($body, $logotipo, $mensagem_rodape, $resumido, $qrcode_lateral, $contentType);
+        $request = $this->baixarPreviaPdfNfceRequest($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2120,15 +2158,17 @@ class NfceApi
      *
      * @param  \NuvemFiscal\Model\NfePedidoEmissao $body (required)
      * @param  bool $logotipo Imprime o documento com logotipo, desde que esteja cadastrado na empresa. (optional, default to false)
+     * @param  bool $nome_fantasia Exibe o nome fantasia do emitente, desde que esteja presente no XML da nota. (optional, default to false)
      * @param  string $mensagem_rodape Imprime mensagem no rodapé do documento.    O caractere &#x60;|&#x60; (pipe) poderá ser utilizado para definir a quantidade e o alinhamento das mensagens.    **Exemplos de Uso:**  * &#x60;\&quot;esquerda\&quot;&#x60;  * &#x60;\&quot;esquerda|centro\&quot;&#x60;  * &#x60;\&quot;esquerda|centro|direita\&quot;&#x60;  * &#x60;\&quot;|centro\&quot;&#x60;, &#x60;\&quot;|centro|\&quot;&#x60;  * &#x60;\&quot;|centro|direita\&quot;&#x60;  * &#x60;\&quot;||direita\&quot;&#x60;  * &#x60;\&quot;esquerda||direita\&quot;&#x60; (optional)
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
-     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e. (optional, default to false)
+     * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
+     * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function baixarPreviaPdfNfceRequest($body, $logotipo = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
+    public function baixarPreviaPdfNfceRequest($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
     {
 
         // verify the required parameter 'body' is set
@@ -2137,6 +2177,8 @@ class NfceApi
                 'Missing the required parameter $body when calling baixarPreviaPdfNfce'
             );
         }
+
+
 
 
 
@@ -2154,6 +2196,15 @@ class NfceApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $logotipo,
             'logotipo', // param base name
+            'boolean', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $nome_fantasia,
+            'nome_fantasia', // param base name
             'boolean', // openApiType
             '', // style
             false, // explode
@@ -2182,6 +2233,15 @@ class NfceApi
             $qrcode_lateral,
             'qrcode_lateral', // param base name
             'boolean', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $largura,
+            'largura', // param base name
+            'integer', // openApiType
             '', // style
             false, // explode
             false // required
