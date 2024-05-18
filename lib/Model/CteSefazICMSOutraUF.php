@@ -319,15 +319,35 @@ class CteSefazICMSOutraUF implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['cst'] === null) {
             $invalidProperties[] = "'cst' can't be null";
         }
+        if (!is_null($this->container['p_red_bc_outra_uf']) && ($this->container['p_red_bc_outra_uf'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'p_red_bc_outra_uf', must be bigger than 0.";
+        }
+
         if ($this->container['v_bc_outra_uf'] === null) {
             $invalidProperties[] = "'v_bc_outra_uf' can't be null";
         }
+        if (($this->container['v_bc_outra_uf'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc_outra_uf', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['p_icms_outra_uf'] === null) {
             $invalidProperties[] = "'p_icms_outra_uf' can't be null";
         }
+        if (($this->container['p_icms_outra_uf'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_icms_outra_uf', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_icms_outra_uf'] === null) {
             $invalidProperties[] = "'v_icms_outra_uf' can't be null";
         }
+        if (($this->container['v_icms_outra_uf'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_outra_uf', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_icms_deson']) && ($this->container['v_icms_deson'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_deson', must be bigger than or equal to 0.";
+        }
+
         if (!is_null($this->container['c_benef']) && (mb_strlen($this->container['c_benef']) > 10)) {
             $invalidProperties[] = "invalid value for 'c_benef', the character length must be smaller than or equal to 10.";
         }
@@ -410,6 +430,11 @@ class CteSefazICMSOutraUF implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_red_bc_outra_uf) && ($p_red_bc_outra_uf <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_red_bc_outra_uf when calling CteSefazICMSOutraUF., must be bigger than 0.');
+        }
+
         $this->container['p_red_bc_outra_uf'] = $p_red_bc_outra_uf;
 
         return $this;
@@ -444,6 +469,11 @@ class CteSefazICMSOutraUF implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc_outra_uf) && ($v_bc_outra_uf < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc_outra_uf when calling CteSefazICMSOutraUF., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc_outra_uf'] = $v_bc_outra_uf;
 
         return $this;
@@ -478,6 +508,11 @@ class CteSefazICMSOutraUF implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_icms_outra_uf) && ($p_icms_outra_uf < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_icms_outra_uf when calling CteSefazICMSOutraUF., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_icms_outra_uf'] = $p_icms_outra_uf;
 
         return $this;
@@ -512,6 +547,11 @@ class CteSefazICMSOutraUF implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_outra_uf) && ($v_icms_outra_uf < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_outra_uf when calling CteSefazICMSOutraUF., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_outra_uf'] = $v_icms_outra_uf;
 
         return $this;
@@ -546,6 +586,11 @@ class CteSefazICMSOutraUF implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_deson) && ($v_icms_deson < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_deson when calling CteSefazICMSOutraUF., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_deson'] = $v_icms_deson;
 
         return $this;

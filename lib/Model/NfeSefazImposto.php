@@ -337,6 +337,10 @@ class NfeSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['v_tot_trib']) && ($this->container['v_tot_trib'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_tot_trib', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -381,6 +385,11 @@ class NfeSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_tot_trib) && ($v_tot_trib < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_tot_trib when calling NfeSefazImposto., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_tot_trib'] = $v_tot_trib;
 
         return $this;

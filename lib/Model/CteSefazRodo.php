@@ -283,6 +283,10 @@ class CteSefazRodo implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['rntrc'] === null) {
             $invalidProperties[] = "'rntrc' can't be null";
         }
+        if (!is_null($this->container['occ']) && (count($this->container['occ']) > 10)) {
+            $invalidProperties[] = "invalid value for 'occ', number of items must be less than or equal to 10.";
+        }
+
         return $invalidProperties;
     }
 
@@ -353,6 +357,10 @@ class CteSefazRodo implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($occ)) {
             throw new \InvalidArgumentException('non-nullable occ cannot be null');
+        }
+
+        if ((count($occ) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $occ when calling CteSefazRodo., number of items must be less than or equal to 10.');
         }
         $this->container['occ'] = $occ;
 

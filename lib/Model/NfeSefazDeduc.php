@@ -295,6 +295,10 @@ class NfeSefazDeduc implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_ded'] === null) {
             $invalidProperties[] = "'v_ded' can't be null";
         }
+        if (($this->container['v_ded'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_ded', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -380,6 +384,11 @@ class NfeSefazDeduc implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_ded) && ($v_ded < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_ded when calling NfeSefazDeduc., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_ded'] = $v_ded;
 
         return $this;

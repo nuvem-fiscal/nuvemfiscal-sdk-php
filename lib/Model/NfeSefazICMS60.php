@@ -364,6 +364,50 @@ class NfeSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cst'] === null) {
             $invalidProperties[] = "'cst' can't be null";
         }
+        if (!is_null($this->container['v_bcst_ret']) && ($this->container['v_bcst_ret'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bcst_ret', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_st']) && ($this->container['p_st'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_st', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_icms_substituto']) && ($this->container['v_icms_substituto'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_substituto', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_icmsst_ret']) && ($this->container['v_icmsst_ret'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icmsst_ret', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_bcfcpst_ret']) && ($this->container['v_bcfcpst_ret'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bcfcpst_ret', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_fcpst_ret']) && ($this->container['p_fcpst_ret'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_fcpst_ret', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_fcpst_ret']) && ($this->container['v_fcpst_ret'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_fcpst_ret', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_red_bc_efet']) && ($this->container['p_red_bc_efet'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_red_bc_efet', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_bc_efet']) && ($this->container['v_bc_efet'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc_efet', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_icms_efet']) && ($this->container['p_icms_efet'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_icms_efet', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_icms_efet']) && ($this->container['v_icms_efet'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_efet', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -476,6 +520,11 @@ class NfeSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bcst_ret) && ($v_bcst_ret < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bcst_ret when calling NfeSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bcst_ret'] = $v_bcst_ret;
 
         return $this;
@@ -510,6 +559,11 @@ class NfeSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_st) && ($p_st < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_st when calling NfeSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_st'] = $p_st;
 
         return $this;
@@ -544,6 +598,11 @@ class NfeSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_substituto) && ($v_icms_substituto < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_substituto when calling NfeSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_substituto'] = $v_icms_substituto;
 
         return $this;
@@ -578,6 +637,11 @@ class NfeSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icmsst_ret) && ($v_icmsst_ret < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icmsst_ret when calling NfeSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icmsst_ret'] = $v_icmsst_ret;
 
         return $this;
@@ -612,6 +676,11 @@ class NfeSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bcfcpst_ret) && ($v_bcfcpst_ret < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bcfcpst_ret when calling NfeSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bcfcpst_ret'] = $v_bcfcpst_ret;
 
         return $this;
@@ -646,6 +715,11 @@ class NfeSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_fcpst_ret) && ($p_fcpst_ret < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_fcpst_ret when calling NfeSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_fcpst_ret'] = $p_fcpst_ret;
 
         return $this;
@@ -680,6 +754,11 @@ class NfeSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_fcpst_ret) && ($v_fcpst_ret < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_fcpst_ret when calling NfeSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_fcpst_ret'] = $v_fcpst_ret;
 
         return $this;
@@ -714,6 +793,11 @@ class NfeSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_red_bc_efet) && ($p_red_bc_efet < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_red_bc_efet when calling NfeSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_red_bc_efet'] = $p_red_bc_efet;
 
         return $this;
@@ -748,6 +832,11 @@ class NfeSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc_efet) && ($v_bc_efet < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc_efet when calling NfeSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc_efet'] = $v_bc_efet;
 
         return $this;
@@ -782,6 +871,11 @@ class NfeSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_icms_efet) && ($p_icms_efet < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_icms_efet when calling NfeSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_icms_efet'] = $p_icms_efet;
 
         return $this;
@@ -816,6 +910,11 @@ class NfeSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_efet) && ($v_icms_efet < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_efet when calling NfeSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_efet'] = $v_icms_efet;
 
         return $this;

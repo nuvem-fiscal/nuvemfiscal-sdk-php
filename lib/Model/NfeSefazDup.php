@@ -299,6 +299,10 @@ class NfeSefazDup implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_dup'] === null) {
             $invalidProperties[] = "'v_dup' can't be null";
         }
+        if (($this->container['v_dup'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_dup', must be bigger than 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -418,6 +422,11 @@ class NfeSefazDup implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_dup) && ($v_dup <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_dup when calling NfeSefazDup., must be bigger than 0.');
+        }
+
         $this->container['v_dup'] = $v_dup;
 
         return $this;

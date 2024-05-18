@@ -311,6 +311,10 @@ class CteSefazTrafMut implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_frete'] === null) {
             $invalidProperties[] = "'v_frete' can't be null";
         }
+        if (($this->container['v_frete'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_frete', must be bigger than or equal to 0.";
+        }
+
         if (!is_null($this->container['ch_cte_ferro_origem']) && (mb_strlen($this->container['ch_cte_ferro_origem']) > 44)) {
             $invalidProperties[] = "invalid value for 'ch_cte_ferro_origem', the character length must be smaller than or equal to 44.";
         }
@@ -427,6 +431,11 @@ class CteSefazTrafMut implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_frete) && ($v_frete < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_frete when calling CteSefazTrafMut., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_frete'] = $v_frete;
 
         return $this;

@@ -392,6 +392,62 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cst'] === null) {
             $invalidProperties[] = "'cst' can't be null";
         }
+        if (!is_null($this->container['p_red_bc']) && ($this->container['p_red_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_red_bc', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_bc']) && ($this->container['v_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_icms']) && ($this->container['p_icms'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_icms', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_icmsop']) && ($this->container['v_icmsop'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icmsop', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_dif']) && ($this->container['p_dif'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'p_dif', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['p_dif']) && ($this->container['p_dif'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_dif', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_icms_dif']) && ($this->container['v_icms_dif'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_dif', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_icms']) && ($this->container['v_icms'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_bcfcp']) && ($this->container['v_bcfcp'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bcfcp', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_fcp']) && ($this->container['p_fcp'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_fcp', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_fcp']) && ($this->container['v_fcp'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_fcp', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_fcp_dif']) && ($this->container['p_fcp_dif'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_fcp_dif', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_fcp_dif']) && ($this->container['v_fcp_dif'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_fcp_dif', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_fcp_efet']) && ($this->container['v_fcp_efet'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_fcp_efet', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -538,6 +594,11 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_red_bc) && ($p_red_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_red_bc when calling NfeSefazICMS51., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_red_bc'] = $p_red_bc;
 
         return $this;
@@ -606,6 +667,11 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc) && ($v_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc when calling NfeSefazICMS51., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc'] = $v_bc;
 
         return $this;
@@ -640,6 +706,11 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_icms) && ($p_icms < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_icms when calling NfeSefazICMS51., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_icms'] = $p_icms;
 
         return $this;
@@ -674,6 +745,11 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icmsop) && ($v_icmsop < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icmsop when calling NfeSefazICMS51., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icmsop'] = $v_icmsop;
 
         return $this;
@@ -708,6 +784,14 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_dif) && ($p_dif > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $p_dif when calling NfeSefazICMS51., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($p_dif) && ($p_dif < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_dif when calling NfeSefazICMS51., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_dif'] = $p_dif;
 
         return $this;
@@ -742,6 +826,11 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_dif) && ($v_icms_dif < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_dif when calling NfeSefazICMS51., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_dif'] = $v_icms_dif;
 
         return $this;
@@ -776,6 +865,11 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms) && ($v_icms < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms when calling NfeSefazICMS51., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms'] = $v_icms;
 
         return $this;
@@ -810,6 +904,11 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bcfcp) && ($v_bcfcp < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bcfcp when calling NfeSefazICMS51., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bcfcp'] = $v_bcfcp;
 
         return $this;
@@ -844,6 +943,11 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_fcp) && ($p_fcp < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_fcp when calling NfeSefazICMS51., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_fcp'] = $p_fcp;
 
         return $this;
@@ -878,6 +982,11 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_fcp) && ($v_fcp < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_fcp when calling NfeSefazICMS51., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_fcp'] = $v_fcp;
 
         return $this;
@@ -912,6 +1021,11 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_fcp_dif) && ($p_fcp_dif < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_fcp_dif when calling NfeSefazICMS51., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_fcp_dif'] = $p_fcp_dif;
 
         return $this;
@@ -946,6 +1060,11 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_fcp_dif) && ($v_fcp_dif < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_fcp_dif when calling NfeSefazICMS51., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_fcp_dif'] = $v_fcp_dif;
 
         return $this;
@@ -980,6 +1099,11 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_fcp_efet) && ($v_fcp_efet < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_fcp_efet when calling NfeSefazICMS51., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_fcp_efet'] = $v_fcp_efet;
 
         return $this;

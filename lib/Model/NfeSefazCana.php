@@ -354,24 +354,60 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['for_dia'] === null) {
             $invalidProperties[] = "'for_dia' can't be null";
         }
+        if ((count($this->container['for_dia']) > 31)) {
+            $invalidProperties[] = "invalid value for 'for_dia', number of items must be less than or equal to 31.";
+        }
+
+        if ((count($this->container['for_dia']) < 1)) {
+            $invalidProperties[] = "invalid value for 'for_dia', number of items must be greater than or equal to 1.";
+        }
+
         if ($this->container['q_tot_mes'] === null) {
             $invalidProperties[] = "'q_tot_mes' can't be null";
         }
+        if (($this->container['q_tot_mes'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_tot_mes', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['q_tot_ant'] === null) {
             $invalidProperties[] = "'q_tot_ant' can't be null";
         }
+        if (($this->container['q_tot_ant'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_tot_ant', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['q_tot_ger'] === null) {
             $invalidProperties[] = "'q_tot_ger' can't be null";
         }
+        if (($this->container['q_tot_ger'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_tot_ger', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['deduc']) && (count($this->container['deduc']) > 10)) {
+            $invalidProperties[] = "invalid value for 'deduc', number of items must be less than or equal to 10.";
+        }
+
         if ($this->container['v_for'] === null) {
             $invalidProperties[] = "'v_for' can't be null";
         }
+        if (($this->container['v_for'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_for', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_tot_ded'] === null) {
             $invalidProperties[] = "'v_tot_ded' can't be null";
         }
+        if (($this->container['v_tot_ded'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_tot_ded', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_liq_for'] === null) {
             $invalidProperties[] = "'v_liq_for' can't be null";
         }
+        if (($this->container['v_liq_for'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_liq_for', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -484,6 +520,13 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($for_dia)) {
             throw new \InvalidArgumentException('non-nullable for_dia cannot be null');
         }
+
+        if ((count($for_dia) > 31)) {
+            throw new \InvalidArgumentException('invalid value for $for_dia when calling NfeSefazCana., number of items must be less than or equal to 31.');
+        }
+        if ((count($for_dia) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $for_dia when calling NfeSefazCana., number of items must be greater than or equal to 1.');
+        }
         $this->container['for_dia'] = $for_dia;
 
         return $this;
@@ -518,6 +561,11 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_tot_mes) && ($q_tot_mes < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_tot_mes when calling NfeSefazCana., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_tot_mes'] = $q_tot_mes;
 
         return $this;
@@ -552,6 +600,11 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_tot_ant) && ($q_tot_ant < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_tot_ant when calling NfeSefazCana., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_tot_ant'] = $q_tot_ant;
 
         return $this;
@@ -586,6 +639,11 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_tot_ger) && ($q_tot_ger < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_tot_ger when calling NfeSefazCana., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_tot_ger'] = $q_tot_ger;
 
         return $this;
@@ -612,6 +670,10 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($deduc)) {
             throw new \InvalidArgumentException('non-nullable deduc cannot be null');
+        }
+
+        if ((count($deduc) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $deduc when calling NfeSefazCana., number of items must be less than or equal to 10.');
         }
         $this->container['deduc'] = $deduc;
 
@@ -647,6 +709,11 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_for) && ($v_for < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_for when calling NfeSefazCana., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_for'] = $v_for;
 
         return $this;
@@ -681,6 +748,11 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_tot_ded) && ($v_tot_ded < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_tot_ded when calling NfeSefazCana., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_tot_ded'] = $v_tot_ded;
 
         return $this;
@@ -715,6 +787,11 @@ class NfeSefazCana implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_liq_for) && ($v_liq_for < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_liq_for when calling NfeSefazCana., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_liq_for'] = $v_liq_for;
 
         return $this;

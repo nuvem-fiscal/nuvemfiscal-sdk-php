@@ -482,6 +482,18 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['inf_mun_carrega'] === null) {
             $invalidProperties[] = "'inf_mun_carrega' can't be null";
         }
+        if ((count($this->container['inf_mun_carrega']) > 50)) {
+            $invalidProperties[] = "invalid value for 'inf_mun_carrega', number of items must be less than or equal to 50.";
+        }
+
+        if ((count($this->container['inf_mun_carrega']) < 1)) {
+            $invalidProperties[] = "invalid value for 'inf_mun_carrega', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['inf_percurso']) && (count($this->container['inf_percurso']) > 25)) {
+            $invalidProperties[] = "invalid value for 'inf_percurso', number of items must be less than or equal to 25.";
+        }
+
         return $invalidProperties;
     }
 
@@ -1094,6 +1106,13 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($inf_mun_carrega)) {
             throw new \InvalidArgumentException('non-nullable inf_mun_carrega cannot be null');
         }
+
+        if ((count($inf_mun_carrega) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $inf_mun_carrega when calling MdfeSefazIde., number of items must be less than or equal to 50.');
+        }
+        if ((count($inf_mun_carrega) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $inf_mun_carrega when calling MdfeSefazIde., number of items must be greater than or equal to 1.');
+        }
         $this->container['inf_mun_carrega'] = $inf_mun_carrega;
 
         return $this;
@@ -1120,6 +1139,10 @@ class MdfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($inf_percurso)) {
             throw new \InvalidArgumentException('non-nullable inf_percurso cannot be null');
+        }
+
+        if ((count($inf_percurso) > 25)) {
+            throw new \InvalidArgumentException('invalid value for $inf_percurso when calling MdfeSefazIde., number of items must be less than or equal to 25.');
         }
         $this->container['inf_percurso'] = $inf_percurso;
 

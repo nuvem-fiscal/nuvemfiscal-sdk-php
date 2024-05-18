@@ -295,6 +295,10 @@ class CteSefazComp implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_comp'] === null) {
             $invalidProperties[] = "'v_comp' can't be null";
         }
+        if (($this->container['v_comp'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_comp', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -380,6 +384,11 @@ class CteSefazComp implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_comp) && ($v_comp < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_comp when calling CteSefazComp., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_comp'] = $v_comp;
 
         return $this;

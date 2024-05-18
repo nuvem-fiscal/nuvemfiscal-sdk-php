@@ -397,9 +397,21 @@ class NfcomSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['q_faturada'] === null) {
             $invalidProperties[] = "'q_faturada' can't be null";
         }
+        if (($this->container['q_faturada'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_faturada', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_item'] === null) {
             $invalidProperties[] = "'v_item' can't be null";
         }
+        if (!is_null($this->container['v_desc']) && ($this->container['v_desc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_desc', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_outro']) && ($this->container['v_outro'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_outro', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_prod'] === null) {
             $invalidProperties[] = "'v_prod' can't be null";
         }
@@ -672,6 +684,11 @@ class NfcomSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_faturada) && ($q_faturada < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_faturada when calling NfcomSefazProd., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_faturada'] = $q_faturada;
 
         return $this;
@@ -740,6 +757,11 @@ class NfcomSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_desc) && ($v_desc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_desc when calling NfcomSefazProd., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_desc'] = $v_desc;
 
         return $this;
@@ -774,6 +796,11 @@ class NfcomSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_outro) && ($v_outro < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_outro when calling NfcomSefazProd., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_outro'] = $v_outro;
 
         return $this;

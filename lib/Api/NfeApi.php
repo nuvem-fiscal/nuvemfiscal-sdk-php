@@ -1734,7 +1734,10 @@ class NfeApi
 
 
 
-
+        if ($mensagem_rodape !== null && strlen($mensagem_rodape) > 120) {
+            throw new \InvalidArgumentException('invalid length for "$mensagem_rodape" when calling NfeApi.baixarPdfNfe, must be smaller than or equal to 120.');
+        }
+        
 
 
         $resourcePath = '/nfe/{id}/pdf';
@@ -2125,7 +2128,10 @@ class NfeApi
 
 
 
-
+        if ($mensagem_rodape !== null && strlen($mensagem_rodape) > 120) {
+            throw new \InvalidArgumentException('invalid length for "$mensagem_rodape" when calling NfeApi.baixarPreviaPdfNfe, must be smaller than or equal to 120.');
+        }
+        
 
 
         $resourcePath = '/nfe/previa/pdf';

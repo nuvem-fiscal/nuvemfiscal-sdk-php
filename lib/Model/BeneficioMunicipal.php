@@ -301,6 +301,14 @@ class BeneficioMunicipal implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['n_bm'] === null) {
             $invalidProperties[] = "'n_bm' can't be null";
         }
+        if (!is_null($this->container['v_red_bcbm']) && ($this->container['v_red_bcbm'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_red_bcbm', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_red_bcbm']) && ($this->container['p_red_bcbm'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_red_bcbm', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -413,6 +421,11 @@ class BeneficioMunicipal implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_red_bcbm) && ($v_red_bcbm < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_red_bcbm when calling BeneficioMunicipal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_red_bcbm'] = $v_red_bcbm;
 
         return $this;
@@ -447,6 +460,11 @@ class BeneficioMunicipal implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_red_bcbm) && ($p_red_bcbm < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_red_bcbm when calling BeneficioMunicipal., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_red_bcbm'] = $p_red_bcbm;
 
         return $this;

@@ -332,6 +332,10 @@ class Rps implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['servicos'] === null) {
             $invalidProperties[] = "'servicos' can't be null";
         }
+        if ((count($this->container['servicos']) < 1)) {
+            $invalidProperties[] = "invalid value for 'servicos', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -557,6 +561,11 @@ class Rps implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($servicos)) {
             throw new \InvalidArgumentException('non-nullable servicos cannot be null');
+        }
+
+
+        if ((count($servicos) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $servicos when calling Rps., number of items must be greater than or equal to 1.');
         }
         $this->container['servicos'] = $servicos;
 

@@ -276,6 +276,10 @@ class CtePedidoCartaCorrecao implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['correcoes'] === null) {
             $invalidProperties[] = "'correcoes' can't be null";
         }
+        if ((count($this->container['correcoes']) < 1)) {
+            $invalidProperties[] = "invalid value for 'correcoes', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -312,6 +316,11 @@ class CtePedidoCartaCorrecao implements ModelInterface, ArrayAccess, \JsonSerial
     {
         if (is_null($correcoes)) {
             throw new \InvalidArgumentException('non-nullable correcoes cannot be null');
+        }
+
+
+        if ((count($correcoes) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $correcoes when calling CtePedidoCartaCorrecao., number of items must be greater than or equal to 1.');
         }
         $this->container['correcoes'] = $correcoes;
 

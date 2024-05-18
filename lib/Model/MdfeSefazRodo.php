@@ -304,6 +304,10 @@ class MdfeSefazRodo implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['veic_tracao'] === null) {
             $invalidProperties[] = "'veic_tracao' can't be null";
         }
+        if (!is_null($this->container['veic_reboque']) && (count($this->container['veic_reboque']) > 3)) {
+            $invalidProperties[] = "invalid value for 'veic_reboque', number of items must be less than or equal to 3.";
+        }
+
         if (!is_null($this->container['cod_ag_porto']) && (mb_strlen($this->container['cod_ag_porto']) > 16)) {
             $invalidProperties[] = "invalid value for 'cod_ag_porto', the character length must be smaller than or equal to 16.";
         }
@@ -402,6 +406,10 @@ class MdfeSefazRodo implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($veic_reboque)) {
             throw new \InvalidArgumentException('non-nullable veic_reboque cannot be null');
+        }
+
+        if ((count($veic_reboque) > 3)) {
+            throw new \InvalidArgumentException('invalid value for $veic_reboque when calling MdfeSefazRodo., number of items must be less than or equal to 3.');
         }
         $this->container['veic_reboque'] = $veic_reboque;
 

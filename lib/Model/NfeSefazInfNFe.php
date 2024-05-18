@@ -423,9 +423,21 @@ class NfeSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['emit'] === null) {
             $invalidProperties[] = "'emit' can't be null";
         }
+        if (!is_null($this->container['aut_xml']) && (count($this->container['aut_xml']) > 10)) {
+            $invalidProperties[] = "invalid value for 'aut_xml', number of items must be less than or equal to 10.";
+        }
+
         if ($this->container['det'] === null) {
             $invalidProperties[] = "'det' can't be null";
         }
+        if ((count($this->container['det']) > 990)) {
+            $invalidProperties[] = "invalid value for 'det', number of items must be less than or equal to 990.";
+        }
+
+        if ((count($this->container['det']) < 1)) {
+            $invalidProperties[] = "invalid value for 'det', number of items must be greater than or equal to 1.";
+        }
+
         if ($this->container['total'] === null) {
             $invalidProperties[] = "'total' can't be null";
         }
@@ -702,6 +714,10 @@ class NfeSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($aut_xml)) {
             throw new \InvalidArgumentException('non-nullable aut_xml cannot be null');
         }
+
+        if ((count($aut_xml) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $aut_xml when calling NfeSefazInfNFe., number of items must be less than or equal to 10.');
+        }
         $this->container['aut_xml'] = $aut_xml;
 
         return $this;
@@ -728,6 +744,13 @@ class NfeSefazInfNFe implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($det)) {
             throw new \InvalidArgumentException('non-nullable det cannot be null');
+        }
+
+        if ((count($det) > 990)) {
+            throw new \InvalidArgumentException('invalid value for $det when calling NfeSefazInfNFe., number of items must be less than or equal to 990.');
+        }
+        if ((count($det) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $det when calling NfeSefazInfNFe., number of items must be greater than or equal to 1.');
         }
         $this->container['det'] = $det;
 

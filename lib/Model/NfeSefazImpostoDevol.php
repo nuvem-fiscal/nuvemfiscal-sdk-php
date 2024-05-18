@@ -283,6 +283,14 @@ class NfeSefazImpostoDevol implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['p_devol'] === null) {
             $invalidProperties[] = "'p_devol' can't be null";
         }
+        if (($this->container['p_devol'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'p_devol', must be smaller than or equal to 1E+2.";
+        }
+
+        if (($this->container['p_devol'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_devol', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['ipi'] === null) {
             $invalidProperties[] = "'ipi' can't be null";
         }
@@ -330,6 +338,14 @@ class NfeSefazImpostoDevol implements ModelInterface, ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_devol) && ($p_devol > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $p_devol when calling NfeSefazImpostoDevol., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($p_devol) && ($p_devol < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_devol when calling NfeSefazImpostoDevol., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_devol'] = $p_devol;
 
         return $this;

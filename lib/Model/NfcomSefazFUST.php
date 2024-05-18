@@ -291,12 +291,24 @@ class NfcomSefazFUST implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_bc'] === null) {
             $invalidProperties[] = "'v_bc' can't be null";
         }
+        if (($this->container['v_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['p_fust'] === null) {
             $invalidProperties[] = "'p_fust' can't be null";
         }
+        if (($this->container['p_fust'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_fust', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_fust'] === null) {
             $invalidProperties[] = "'v_fust' can't be null";
         }
+        if (($this->container['v_fust'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_fust', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -341,6 +353,11 @@ class NfcomSefazFUST implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc) && ($v_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc when calling NfcomSefazFUST., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc'] = $v_bc;
 
         return $this;
@@ -375,6 +392,11 @@ class NfcomSefazFUST implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_fust) && ($p_fust < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_fust when calling NfcomSefazFUST., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_fust'] = $p_fust;
 
         return $this;
@@ -409,6 +431,11 @@ class NfcomSefazFUST implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_fust) && ($v_fust < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_fust when calling NfcomSefazFUST., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_fust'] = $v_fust;
 
         return $this;

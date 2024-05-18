@@ -295,6 +295,18 @@ class TribFederal implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['v_ret_cp']) && ($this->container['v_ret_cp'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_ret_cp', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_ret_irrf']) && ($this->container['v_ret_irrf'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_ret_irrf', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_ret_csll']) && ($this->container['v_ret_csll'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_ret_csll', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -366,6 +378,11 @@ class TribFederal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_ret_cp) && ($v_ret_cp < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_ret_cp when calling TribFederal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_ret_cp'] = $v_ret_cp;
 
         return $this;
@@ -400,6 +417,11 @@ class TribFederal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_ret_irrf) && ($v_ret_irrf < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_ret_irrf when calling TribFederal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_ret_irrf'] = $v_ret_irrf;
 
         return $this;
@@ -434,6 +456,11 @@ class TribFederal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_ret_csll) && ($v_ret_csll < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_ret_csll when calling TribFederal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_ret_csll'] = $v_ret_csll;
 
         return $this;

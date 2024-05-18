@@ -333,21 +333,57 @@ class NfeSefazICMSUFDest implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['v_bcuf_dest'] === null) {
             $invalidProperties[] = "'v_bcuf_dest' can't be null";
         }
+        if (($this->container['v_bcuf_dest'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bcuf_dest', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_bcfcpuf_dest']) && ($this->container['v_bcfcpuf_dest'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bcfcpuf_dest', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_fcpuf_dest']) && ($this->container['p_fcpuf_dest'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_fcpuf_dest', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['p_icmsuf_dest'] === null) {
             $invalidProperties[] = "'p_icmsuf_dest' can't be null";
         }
+        if (($this->container['p_icmsuf_dest'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_icmsuf_dest', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['p_icms_inter'] === null) {
             $invalidProperties[] = "'p_icms_inter' can't be null";
         }
+        if (($this->container['p_icms_inter'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_icms_inter', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['p_icms_inter_part'] === null) {
             $invalidProperties[] = "'p_icms_inter_part' can't be null";
         }
+        if (($this->container['p_icms_inter_part'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_icms_inter_part', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_fcpuf_dest']) && ($this->container['v_fcpuf_dest'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_fcpuf_dest', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_icmsuf_dest'] === null) {
             $invalidProperties[] = "'v_icmsuf_dest' can't be null";
         }
+        if (($this->container['v_icmsuf_dest'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icmsuf_dest', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_icmsuf_remet'] === null) {
             $invalidProperties[] = "'v_icmsuf_remet' can't be null";
         }
+        if (($this->container['v_icmsuf_remet'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icmsuf_remet', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -392,6 +428,11 @@ class NfeSefazICMSUFDest implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bcuf_dest) && ($v_bcuf_dest < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bcuf_dest when calling NfeSefazICMSUFDest., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bcuf_dest'] = $v_bcuf_dest;
 
         return $this;
@@ -426,6 +467,11 @@ class NfeSefazICMSUFDest implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bcfcpuf_dest) && ($v_bcfcpuf_dest < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bcfcpuf_dest when calling NfeSefazICMSUFDest., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bcfcpuf_dest'] = $v_bcfcpuf_dest;
 
         return $this;
@@ -460,6 +506,11 @@ class NfeSefazICMSUFDest implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_fcpuf_dest) && ($p_fcpuf_dest < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_fcpuf_dest when calling NfeSefazICMSUFDest., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_fcpuf_dest'] = $p_fcpuf_dest;
 
         return $this;
@@ -494,6 +545,11 @@ class NfeSefazICMSUFDest implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_icmsuf_dest) && ($p_icmsuf_dest < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_icmsuf_dest when calling NfeSefazICMSUFDest., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_icmsuf_dest'] = $p_icmsuf_dest;
 
         return $this;
@@ -528,6 +584,11 @@ class NfeSefazICMSUFDest implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_icms_inter) && ($p_icms_inter < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_icms_inter when calling NfeSefazICMSUFDest., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_icms_inter'] = $p_icms_inter;
 
         return $this;
@@ -562,6 +623,11 @@ class NfeSefazICMSUFDest implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_icms_inter_part) && ($p_icms_inter_part < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_icms_inter_part when calling NfeSefazICMSUFDest., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_icms_inter_part'] = $p_icms_inter_part;
 
         return $this;
@@ -596,6 +662,11 @@ class NfeSefazICMSUFDest implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_fcpuf_dest) && ($v_fcpuf_dest < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_fcpuf_dest when calling NfeSefazICMSUFDest., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_fcpuf_dest'] = $v_fcpuf_dest;
 
         return $this;
@@ -630,6 +701,11 @@ class NfeSefazICMSUFDest implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icmsuf_dest) && ($v_icmsuf_dest < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icmsuf_dest when calling NfeSefazICMSUFDest., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icmsuf_dest'] = $v_icmsuf_dest;
 
         return $this;
@@ -664,6 +740,11 @@ class NfeSefazICMSUFDest implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icmsuf_remet) && ($v_icmsuf_remet < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icmsuf_remet when calling NfeSefazICMSUFDest., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icmsuf_remet'] = $v_icmsuf_remet;
 
         return $this;

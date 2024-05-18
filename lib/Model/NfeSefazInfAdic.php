@@ -318,6 +318,18 @@ class NfeSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'inf_cpl', the character length must be bigger than or equal to 1.";
         }
 
+        if (!is_null($this->container['obs_cont']) && (count($this->container['obs_cont']) > 10)) {
+            $invalidProperties[] = "invalid value for 'obs_cont', number of items must be less than or equal to 10.";
+        }
+
+        if (!is_null($this->container['obs_fisco']) && (count($this->container['obs_fisco']) > 10)) {
+            $invalidProperties[] = "invalid value for 'obs_fisco', number of items must be less than or equal to 10.";
+        }
+
+        if (!is_null($this->container['proc_ref']) && (count($this->container['proc_ref']) > 100)) {
+            $invalidProperties[] = "invalid value for 'proc_ref', number of items must be less than or equal to 100.";
+        }
+
         return $invalidProperties;
     }
 
@@ -437,6 +449,10 @@ class NfeSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($obs_cont)) {
             throw new \InvalidArgumentException('non-nullable obs_cont cannot be null');
         }
+
+        if ((count($obs_cont) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $obs_cont when calling NfeSefazInfAdic., number of items must be less than or equal to 10.');
+        }
         $this->container['obs_cont'] = $obs_cont;
 
         return $this;
@@ -464,6 +480,10 @@ class NfeSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($obs_fisco)) {
             throw new \InvalidArgumentException('non-nullable obs_fisco cannot be null');
         }
+
+        if ((count($obs_fisco) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $obs_fisco when calling NfeSefazInfAdic., number of items must be less than or equal to 10.');
+        }
         $this->container['obs_fisco'] = $obs_fisco;
 
         return $this;
@@ -490,6 +510,10 @@ class NfeSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($proc_ref)) {
             throw new \InvalidArgumentException('non-nullable proc_ref cannot be null');
+        }
+
+        if ((count($proc_ref) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $proc_ref when calling NfeSefazInfAdic., number of items must be less than or equal to 100.');
         }
         $this->container['proc_ref'] = $proc_ref;
 

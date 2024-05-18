@@ -291,6 +291,10 @@ class NfcomSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cst'] === null) {
             $invalidProperties[] = "'cst' can't be null";
         }
+        if (!is_null($this->container['v_icms_deson']) && ($this->container['v_icms_deson'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_deson', must be bigger than or equal to 0.";
+        }
+
         if (!is_null($this->container['c_benef']) && (mb_strlen($this->container['c_benef']) > 10)) {
             $invalidProperties[] = "invalid value for 'c_benef', the character length must be smaller than or equal to 10.";
         }
@@ -373,6 +377,11 @@ class NfcomSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_deson) && ($v_icms_deson < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_deson when calling NfcomSefazICMS40., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_deson'] = $v_icms_deson;
 
         return $this;

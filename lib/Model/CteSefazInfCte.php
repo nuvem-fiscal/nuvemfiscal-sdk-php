@@ -394,6 +394,14 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['imp'] === null) {
             $invalidProperties[] = "'imp' can't be null";
         }
+        if (!is_null($this->container['inf_cte_comp']) && (count($this->container['inf_cte_comp']) > 10)) {
+            $invalidProperties[] = "invalid value for 'inf_cte_comp', number of items must be less than or equal to 10.";
+        }
+
+        if (!is_null($this->container['aut_xml']) && (count($this->container['aut_xml']) > 10)) {
+            $invalidProperties[] = "invalid value for 'aut_xml', number of items must be less than or equal to 10.";
+        }
+
         return $invalidProperties;
     }
 
@@ -769,6 +777,10 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($inf_cte_comp)) {
             throw new \InvalidArgumentException('non-nullable inf_cte_comp cannot be null');
         }
+
+        if ((count($inf_cte_comp) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $inf_cte_comp when calling CteSefazInfCte., number of items must be less than or equal to 10.');
+        }
         $this->container['inf_cte_comp'] = $inf_cte_comp;
 
         return $this;
@@ -795,6 +807,10 @@ class CteSefazInfCte implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($aut_xml)) {
             throw new \InvalidArgumentException('non-nullable aut_xml cannot be null');
+        }
+
+        if ((count($aut_xml) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $aut_xml when calling CteSefazInfCte., number of items must be less than or equal to 10.');
         }
         $this->container['aut_xml'] = $aut_xml;
 

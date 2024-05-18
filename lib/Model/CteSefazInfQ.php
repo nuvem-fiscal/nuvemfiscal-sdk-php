@@ -305,6 +305,10 @@ class CteSefazInfQ implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['q_carga'] === null) {
             $invalidProperties[] = "'q_carga' can't be null";
         }
+        if (($this->container['q_carga'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_carga', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -424,6 +428,11 @@ class CteSefazInfQ implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_carga) && ($q_carga < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_carga when calling CteSefazInfQ., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_carga'] = $q_carga;
 
         return $this;

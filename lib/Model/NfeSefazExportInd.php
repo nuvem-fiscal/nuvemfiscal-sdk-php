@@ -301,6 +301,10 @@ class NfeSefazExportInd implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['q_export'] === null) {
             $invalidProperties[] = "'q_export' can't be null";
         }
+        if (($this->container['q_export'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_export', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -417,6 +421,11 @@ class NfeSefazExportInd implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_export) && ($q_export < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_export when calling NfeSefazExportInd., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_export'] = $q_export;
 
         return $this;

@@ -312,9 +312,29 @@ class NfeSefazPISOutr implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cst'] === null) {
             $invalidProperties[] = "'cst' can't be null";
         }
+        if (!is_null($this->container['v_bc']) && ($this->container['v_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_pis']) && ($this->container['p_pis'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_pis', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['q_bc_prod']) && ($this->container['q_bc_prod'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_bc_prod', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_aliq_prod']) && ($this->container['v_aliq_prod'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_aliq_prod', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_pis'] === null) {
             $invalidProperties[] = "'v_pis' can't be null";
         }
+        if (($this->container['v_pis'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_pis', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -393,6 +413,11 @@ class NfeSefazPISOutr implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc) && ($v_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc when calling NfeSefazPISOutr., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc'] = $v_bc;
 
         return $this;
@@ -427,6 +452,11 @@ class NfeSefazPISOutr implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_pis) && ($p_pis < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_pis when calling NfeSefazPISOutr., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_pis'] = $p_pis;
 
         return $this;
@@ -461,6 +491,11 @@ class NfeSefazPISOutr implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_bc_prod) && ($q_bc_prod < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_bc_prod when calling NfeSefazPISOutr., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_bc_prod'] = $q_bc_prod;
 
         return $this;
@@ -495,6 +530,11 @@ class NfeSefazPISOutr implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_aliq_prod) && ($v_aliq_prod < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_aliq_prod when calling NfeSefazPISOutr., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_aliq_prod'] = $v_aliq_prod;
 
         return $this;
@@ -529,6 +569,11 @@ class NfeSefazPISOutr implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_pis) && ($v_pis < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_pis when calling NfeSefazPISOutr., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_pis'] = $v_pis;
 
         return $this;

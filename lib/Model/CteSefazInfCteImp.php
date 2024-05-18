@@ -298,6 +298,10 @@ class CteSefazInfCteImp implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['icms'] === null) {
             $invalidProperties[] = "'icms' can't be null";
         }
+        if (!is_null($this->container['v_tot_trib']) && ($this->container['v_tot_trib'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_tot_trib', must be bigger than or equal to 0.";
+        }
+
         if (!is_null($this->container['inf_ad_fisco']) && (mb_strlen($this->container['inf_ad_fisco']) > 2000)) {
             $invalidProperties[] = "invalid value for 'inf_ad_fisco', the character length must be smaller than or equal to 2000.";
         }
@@ -377,6 +381,11 @@ class CteSefazInfCteImp implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_tot_trib) && ($v_tot_trib < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_tot_trib when calling CteSefazInfCteImp., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_tot_trib'] = $v_tot_trib;
 
         return $this;

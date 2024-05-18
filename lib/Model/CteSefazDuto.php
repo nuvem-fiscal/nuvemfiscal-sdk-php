@@ -287,6 +287,10 @@ class CteSefazDuto implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['v_tar']) && ($this->container['v_tar'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_tar', must be bigger than 0.";
+        }
+
         if ($this->container['d_ini'] === null) {
             $invalidProperties[] = "'d_ini' can't be null";
         }
@@ -337,6 +341,11 @@ class CteSefazDuto implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_tar) && ($v_tar <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_tar when calling CteSefazDuto., must be bigger than 0.');
+        }
+
         $this->container['v_tar'] = $v_tar;
 
         return $this;

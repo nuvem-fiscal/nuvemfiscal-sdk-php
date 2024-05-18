@@ -392,6 +392,10 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['tp_via_transp'] === null) {
             $invalidProperties[] = "'tp_via_transp' can't be null";
         }
+        if (!is_null($this->container['v_afrmm']) && ($this->container['v_afrmm'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_afrmm', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['tp_intermedio'] === null) {
             $invalidProperties[] = "'tp_intermedio' can't be null";
         }
@@ -417,6 +421,14 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['adi'] === null) {
             $invalidProperties[] = "'adi' can't be null";
         }
+        if ((count($this->container['adi']) > 999)) {
+            $invalidProperties[] = "invalid value for 'adi', number of items must be less than or equal to 999.";
+        }
+
+        if ((count($this->container['adi']) < 1)) {
+            $invalidProperties[] = "invalid value for 'adi', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -679,6 +691,11 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_afrmm) && ($v_afrmm < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_afrmm when calling NfeSefazDI., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_afrmm'] = $v_afrmm;
 
         return $this;
@@ -890,6 +907,13 @@ class NfeSefazDI implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($adi)) {
             throw new \InvalidArgumentException('non-nullable adi cannot be null');
+        }
+
+        if ((count($adi) > 999)) {
+            throw new \InvalidArgumentException('invalid value for $adi when calling NfeSefazDI., number of items must be less than or equal to 999.');
+        }
+        if ((count($adi) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $adi when calling NfeSefazDI., number of items must be greater than or equal to 1.');
         }
         $this->container['adi'] = $adi;
 

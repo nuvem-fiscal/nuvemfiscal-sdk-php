@@ -343,6 +343,42 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cst'] === null) {
             $invalidProperties[] = "'cst' can't be null";
         }
+        if (!is_null($this->container['q_bc_mono']) && ($this->container['q_bc_mono'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_bc_mono', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['ad_rem_icms']) && ($this->container['ad_rem_icms'] < 0)) {
+            $invalidProperties[] = "invalid value for 'ad_rem_icms', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_icms_mono_op']) && ($this->container['v_icms_mono_op'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_mono_op', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_dif']) && ($this->container['p_dif'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'p_dif', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['p_dif']) && ($this->container['p_dif'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_dif', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_icms_mono_dif']) && ($this->container['v_icms_mono_dif'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_mono_dif', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_icms_mono']) && ($this->container['v_icms_mono'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_mono', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['q_bc_mono_dif']) && ($this->container['q_bc_mono_dif'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_bc_mono_dif', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['ad_rem_icms_dif']) && ($this->container['ad_rem_icms_dif'] < 0)) {
+            $invalidProperties[] = "invalid value for 'ad_rem_icms_dif', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -455,6 +491,11 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_bc_mono) && ($q_bc_mono < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_bc_mono when calling NfeSefazICMS53., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_bc_mono'] = $q_bc_mono;
 
         return $this;
@@ -489,6 +530,11 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($ad_rem_icms) && ($ad_rem_icms < 0)) {
+            throw new \InvalidArgumentException('invalid value for $ad_rem_icms when calling NfeSefazICMS53., must be bigger than or equal to 0.');
+        }
+
         $this->container['ad_rem_icms'] = $ad_rem_icms;
 
         return $this;
@@ -523,6 +569,11 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_mono_op) && ($v_icms_mono_op < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_mono_op when calling NfeSefazICMS53., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_mono_op'] = $v_icms_mono_op;
 
         return $this;
@@ -557,6 +608,14 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_dif) && ($p_dif > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $p_dif when calling NfeSefazICMS53., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($p_dif) && ($p_dif < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_dif when calling NfeSefazICMS53., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_dif'] = $p_dif;
 
         return $this;
@@ -591,6 +650,11 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_mono_dif) && ($v_icms_mono_dif < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_mono_dif when calling NfeSefazICMS53., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_mono_dif'] = $v_icms_mono_dif;
 
         return $this;
@@ -625,6 +689,11 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_mono) && ($v_icms_mono < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_mono when calling NfeSefazICMS53., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_mono'] = $v_icms_mono;
 
         return $this;
@@ -659,6 +728,11 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_bc_mono_dif) && ($q_bc_mono_dif < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_bc_mono_dif when calling NfeSefazICMS53., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_bc_mono_dif'] = $q_bc_mono_dif;
 
         return $this;
@@ -693,6 +767,11 @@ class NfeSefazICMS53 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($ad_rem_icms_dif) && ($ad_rem_icms_dif < 0)) {
+            throw new \InvalidArgumentException('invalid value for $ad_rem_icms_dif when calling NfeSefazICMS53., must be bigger than or equal to 0.');
+        }
+
         $this->container['ad_rem_icms_dif'] = $ad_rem_icms_dif;
 
         return $this;

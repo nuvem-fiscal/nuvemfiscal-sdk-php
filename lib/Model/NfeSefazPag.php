@@ -284,6 +284,18 @@ class NfeSefazPag implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['det_pag'] === null) {
             $invalidProperties[] = "'det_pag' can't be null";
         }
+        if ((count($this->container['det_pag']) > 100)) {
+            $invalidProperties[] = "invalid value for 'det_pag', number of items must be less than or equal to 100.";
+        }
+
+        if ((count($this->container['det_pag']) < 1)) {
+            $invalidProperties[] = "invalid value for 'det_pag', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['v_troco']) && ($this->container['v_troco'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_troco', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -321,6 +333,13 @@ class NfeSefazPag implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($det_pag)) {
             throw new \InvalidArgumentException('non-nullable det_pag cannot be null');
         }
+
+        if ((count($det_pag) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $det_pag when calling NfeSefazPag., number of items must be less than or equal to 100.');
+        }
+        if ((count($det_pag) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $det_pag when calling NfeSefazPag., number of items must be greater than or equal to 1.');
+        }
         $this->container['det_pag'] = $det_pag;
 
         return $this;
@@ -355,6 +374,11 @@ class NfeSefazPag implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_troco) && ($v_troco < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_troco when calling NfeSefazPag., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_troco'] = $v_troco;
 
         return $this;

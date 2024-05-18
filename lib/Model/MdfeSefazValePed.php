@@ -284,6 +284,10 @@ class MdfeSefazValePed implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['disp'] === null) {
             $invalidProperties[] = "'disp' can't be null";
         }
+        if ((count($this->container['disp']) < 1)) {
+            $invalidProperties[] = "invalid value for 'disp', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -320,6 +324,11 @@ class MdfeSefazValePed implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($disp)) {
             throw new \InvalidArgumentException('non-nullable disp cannot be null');
+        }
+
+
+        if ((count($disp) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $disp when calling MdfeSefazValePed., number of items must be greater than or equal to 1.');
         }
         $this->container['disp'] = $disp;
 

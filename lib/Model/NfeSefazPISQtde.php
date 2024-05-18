@@ -301,12 +301,24 @@ class NfeSefazPISQtde implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['q_bc_prod'] === null) {
             $invalidProperties[] = "'q_bc_prod' can't be null";
         }
+        if (($this->container['q_bc_prod'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_bc_prod', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_aliq_prod'] === null) {
             $invalidProperties[] = "'v_aliq_prod' can't be null";
         }
+        if (($this->container['v_aliq_prod'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_aliq_prod', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_pis'] === null) {
             $invalidProperties[] = "'v_pis' can't be null";
         }
+        if (($this->container['v_pis'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_pis', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -385,6 +397,11 @@ class NfeSefazPISQtde implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_bc_prod) && ($q_bc_prod < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_bc_prod when calling NfeSefazPISQtde., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_bc_prod'] = $q_bc_prod;
 
         return $this;
@@ -419,6 +436,11 @@ class NfeSefazPISQtde implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_aliq_prod) && ($v_aliq_prod < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_aliq_prod when calling NfeSefazPISQtde., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_aliq_prod'] = $v_aliq_prod;
 
         return $this;
@@ -453,6 +475,11 @@ class NfeSefazPISQtde implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_pis) && ($v_pis < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_pis when calling NfeSefazPISQtde., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_pis'] = $v_pis;
 
         return $this;

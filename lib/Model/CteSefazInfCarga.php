@@ -302,6 +302,10 @@ class CteSefazInfCarga implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['v_carga']) && ($this->container['v_carga'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_carga', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['pro_pred'] === null) {
             $invalidProperties[] = "'pro_pred' can't be null";
         }
@@ -324,6 +328,14 @@ class CteSefazInfCarga implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['inf_q'] === null) {
             $invalidProperties[] = "'inf_q' can't be null";
         }
+        if ((count($this->container['inf_q']) < 1)) {
+            $invalidProperties[] = "invalid value for 'inf_q', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['v_carga_averb']) && ($this->container['v_carga_averb'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_carga_averb', must be bigger than 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -368,6 +380,11 @@ class CteSefazInfCarga implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_carga) && ($v_carga < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_carga when calling CteSefazInfCarga., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_carga'] = $v_carga;
 
         return $this;
@@ -477,6 +494,11 @@ class CteSefazInfCarga implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($inf_q)) {
             throw new \InvalidArgumentException('non-nullable inf_q cannot be null');
         }
+
+
+        if ((count($inf_q) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $inf_q when calling CteSefazInfCarga., number of items must be greater than or equal to 1.');
+        }
         $this->container['inf_q'] = $inf_q;
 
         return $this;
@@ -511,6 +533,11 @@ class CteSefazInfCarga implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_carga_averb) && ($v_carga_averb <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_carga_averb when calling CteSefazInfCarga., must be bigger than 0.');
+        }
+
         $this->container['v_carga_averb'] = $v_carga_averb;
 
         return $this;

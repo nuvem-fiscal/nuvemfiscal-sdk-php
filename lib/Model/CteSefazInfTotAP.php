@@ -284,6 +284,10 @@ class CteSefazInfTotAP implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['q_tot_prod'] === null) {
             $invalidProperties[] = "'q_tot_prod' can't be null";
         }
+        if (($this->container['q_tot_prod'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_tot_prod', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['uni_ap'] === null) {
             $invalidProperties[] = "'uni_ap' can't be null";
         }
@@ -331,6 +335,11 @@ class CteSefazInfTotAP implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_tot_prod) && ($q_tot_prod < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_tot_prod when calling CteSefazInfTotAP., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_tot_prod'] = $q_tot_prod;
 
         return $this;

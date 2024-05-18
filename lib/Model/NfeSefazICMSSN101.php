@@ -304,9 +304,17 @@ class NfeSefazICMSSN101 implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['p_cred_sn'] === null) {
             $invalidProperties[] = "'p_cred_sn' can't be null";
         }
+        if (($this->container['p_cred_sn'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_cred_sn', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_cred_icmssn'] === null) {
             $invalidProperties[] = "'v_cred_icmssn' can't be null";
         }
+        if (($this->container['v_cred_icmssn'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_cred_icmssn', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -419,6 +427,11 @@ class NfeSefazICMSSN101 implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_cred_sn) && ($p_cred_sn < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_cred_sn when calling NfeSefazICMSSN101., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_cred_sn'] = $p_cred_sn;
 
         return $this;
@@ -453,6 +466,11 @@ class NfeSefazICMSSN101 implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_cred_icmssn) && ($v_cred_icmssn < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_cred_icmssn when calling NfeSefazICMSSN101., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_cred_icmssn'] = $v_cred_icmssn;
 
         return $this;

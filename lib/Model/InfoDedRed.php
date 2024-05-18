@@ -288,6 +288,14 @@ class InfoDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['p_dr']) && ($this->container['p_dr'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_dr', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_dr']) && ($this->container['v_dr'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_dr', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -332,6 +340,11 @@ class InfoDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_dr) && ($p_dr < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_dr when calling InfoDedRed., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_dr'] = $p_dr;
 
         return $this;
@@ -366,6 +379,11 @@ class InfoDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_dr) && ($v_dr < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_dr when calling InfoDedRed., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_dr'] = $v_dr;
 
         return $this;

@@ -281,6 +281,10 @@ class NfeSefazCobr implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['dup']) && (count($this->container['dup']) > 120)) {
+            $invalidProperties[] = "invalid value for 'dup', number of items must be less than or equal to 120.";
+        }
+
         return $invalidProperties;
     }
 
@@ -344,6 +348,10 @@ class NfeSefazCobr implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($dup)) {
             throw new \InvalidArgumentException('non-nullable dup cannot be null');
+        }
+
+        if ((count($dup) > 120)) {
+            throw new \InvalidArgumentException('invalid value for $dup when calling NfeSefazCobr., number of items must be less than or equal to 120.');
         }
         $this->container['dup'] = $dup;
 

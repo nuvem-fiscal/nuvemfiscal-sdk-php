@@ -383,6 +383,10 @@ class MdfeSefazInfMDFe implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['tot'] === null) {
             $invalidProperties[] = "'tot' can't be null";
         }
+        if (!is_null($this->container['aut_xml']) && (count($this->container['aut_xml']) > 10)) {
+            $invalidProperties[] = "invalid value for 'aut_xml', number of items must be less than or equal to 10.";
+        }
+
         return $invalidProperties;
     }
 
@@ -703,6 +707,10 @@ class MdfeSefazInfMDFe implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($aut_xml)) {
             throw new \InvalidArgumentException('non-nullable aut_xml cannot be null');
+        }
+
+        if ((count($aut_xml) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $aut_xml when calling MdfeSefazInfMDFe., number of items must be less than or equal to 10.');
         }
         $this->container['aut_xml'] = $aut_xml;
 

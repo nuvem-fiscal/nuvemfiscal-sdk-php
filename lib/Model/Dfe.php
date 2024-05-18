@@ -65,6 +65,7 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
         'modelo' => 'int',
         'serie' => 'int',
         'numero' => 'int',
+        'tipo_emissao' => 'int',
         'valor_total' => 'float',
         'chave' => 'string',
         'autorizacao' => '\NuvemFiscal\Model\DfeAutorizacao'
@@ -87,6 +88,7 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
         'modelo' => null,
         'serie' => null,
         'numero' => null,
+        'tipo_emissao' => null,
         'valor_total' => null,
         'chave' => null,
         'autorizacao' => null
@@ -107,6 +109,7 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
         'modelo' => false,
         'serie' => false,
         'numero' => false,
+        'tipo_emissao' => false,
         'valor_total' => false,
         'chave' => false,
         'autorizacao' => false
@@ -207,6 +210,7 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
         'modelo' => 'modelo',
         'serie' => 'serie',
         'numero' => 'numero',
+        'tipo_emissao' => 'tipo_emissao',
         'valor_total' => 'valor_total',
         'chave' => 'chave',
         'autorizacao' => 'autorizacao'
@@ -227,6 +231,7 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
         'modelo' => 'setModelo',
         'serie' => 'setSerie',
         'numero' => 'setNumero',
+        'tipo_emissao' => 'setTipoEmissao',
         'valor_total' => 'setValorTotal',
         'chave' => 'setChave',
         'autorizacao' => 'setAutorizacao'
@@ -247,6 +252,7 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
         'modelo' => 'getModelo',
         'serie' => 'getSerie',
         'numero' => 'getNumero',
+        'tipo_emissao' => 'getTipoEmissao',
         'valor_total' => 'getValorTotal',
         'chave' => 'getChave',
         'autorizacao' => 'getAutorizacao'
@@ -358,6 +364,7 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('modelo', $data ?? [], null);
         $this->setIfExists('serie', $data ?? [], null);
         $this->setIfExists('numero', $data ?? [], null);
+        $this->setIfExists('tipo_emissao', $data ?? [], null);
         $this->setIfExists('valor_total', $data ?? [], null);
         $this->setIfExists('chave', $data ?? [], null);
         $this->setIfExists('autorizacao', $data ?? [], null);
@@ -689,6 +696,33 @@ class Dfe implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable numero cannot be null');
         }
         $this->container['numero'] = $numero;
+
+        return $this;
+    }
+
+    /**
+     * Gets tipo_emissao
+     *
+     * @return int|null
+     */
+    public function getTipoEmissao()
+    {
+        return $this->container['tipo_emissao'];
+    }
+
+    /**
+     * Sets tipo_emissao
+     *
+     * @param int|null $tipo_emissao tipo_emissao
+     *
+     * @return self
+     */
+    public function setTipoEmissao($tipo_emissao)
+    {
+        if (is_null($tipo_emissao)) {
+            throw new \InvalidArgumentException('non-nullable tipo_emissao cannot be null');
+        }
+        $this->container['tipo_emissao'] = $tipo_emissao;
 
         return $this;
     }

@@ -295,6 +295,10 @@ class TribTotal implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['p_tot_trib_sn']) && ($this->container['p_tot_trib_sn'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_tot_trib_sn', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -427,6 +431,11 @@ class TribTotal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_tot_trib_sn) && ($p_tot_trib_sn < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_tot_trib_sn when calling TribTotal., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_tot_trib_sn'] = $p_tot_trib_sn;
 
         return $this;

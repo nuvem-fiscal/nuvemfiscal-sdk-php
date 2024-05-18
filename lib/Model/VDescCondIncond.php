@@ -281,6 +281,14 @@ class VDescCondIncond implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['v_desc_incond']) && ($this->container['v_desc_incond'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_desc_incond', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_desc_cond']) && ($this->container['v_desc_cond'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_desc_cond', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -325,6 +333,11 @@ class VDescCondIncond implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_desc_incond) && ($v_desc_incond < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_desc_incond when calling VDescCondIncond., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_desc_incond'] = $v_desc_incond;
 
         return $this;
@@ -359,6 +372,11 @@ class VDescCondIncond implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_desc_cond) && ($v_desc_cond < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_desc_cond when calling VDescCondIncond., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_desc_cond'] = $v_desc_cond;
 
         return $this;

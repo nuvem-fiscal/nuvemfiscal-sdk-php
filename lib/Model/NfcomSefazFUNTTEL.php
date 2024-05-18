@@ -291,12 +291,24 @@ class NfcomSefazFUNTTEL implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['v_bc'] === null) {
             $invalidProperties[] = "'v_bc' can't be null";
         }
+        if (($this->container['v_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['p_funttel'] === null) {
             $invalidProperties[] = "'p_funttel' can't be null";
         }
+        if (($this->container['p_funttel'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_funttel', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_funttel'] === null) {
             $invalidProperties[] = "'v_funttel' can't be null";
         }
+        if (($this->container['v_funttel'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_funttel', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -341,6 +353,11 @@ class NfcomSefazFUNTTEL implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc) && ($v_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc when calling NfcomSefazFUNTTEL., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc'] = $v_bc;
 
         return $this;
@@ -375,6 +392,11 @@ class NfcomSefazFUNTTEL implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_funttel) && ($p_funttel < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_funttel when calling NfcomSefazFUNTTEL., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_funttel'] = $p_funttel;
 
         return $this;
@@ -409,6 +431,11 @@ class NfcomSefazFUNTTEL implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_funttel) && ($v_funttel < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_funttel when calling NfcomSefazFUNTTEL., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_funttel'] = $v_funttel;
 
         return $this;

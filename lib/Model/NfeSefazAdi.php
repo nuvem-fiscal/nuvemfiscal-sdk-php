@@ -332,6 +332,10 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'c_fabricante', the character length must be bigger than or equal to 1.";
         }
 
+        if (!is_null($this->container['v_desc_di']) && ($this->container['v_desc_di'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_desc_di', must be bigger than 0.";
+        }
+
         if (!is_null($this->container['n_draw']) && (mb_strlen($this->container['n_draw']) > 20)) {
             $invalidProperties[] = "invalid value for 'n_draw', the character length must be smaller than or equal to 20.";
         }
@@ -509,6 +513,11 @@ class NfeSefazAdi implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_desc_di) && ($v_desc_di <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_desc_di when calling NfeSefazAdi., must be bigger than 0.');
+        }
+
         $this->container['v_desc_di'] = $v_desc_di;
 
         return $this;

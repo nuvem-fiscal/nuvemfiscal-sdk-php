@@ -295,6 +295,10 @@ class MdfeSefazInfContrato implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['v_contrato_global'] === null) {
             $invalidProperties[] = "'v_contrato_global' can't be null";
         }
+        if (($this->container['v_contrato_global'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_contrato_global', must be bigger than 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -380,6 +384,11 @@ class MdfeSefazInfContrato implements ModelInterface, ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_contrato_global) && ($v_contrato_global <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_contrato_global when calling MdfeSefazInfContrato., must be bigger than 0.');
+        }
+
         $this->container['v_contrato_global'] = $v_contrato_global;
 
         return $this;

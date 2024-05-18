@@ -414,7 +414,10 @@ class NfseApi
         }
 
 
-
+        if ($mensagem_rodape !== null && strlen($mensagem_rodape) > 120) {
+            throw new \InvalidArgumentException('invalid length for "$mensagem_rodape" when calling NfseApi.baixarPdfNfse, must be smaller than or equal to 120.');
+        }
+        
 
         $resourcePath = '/nfse/{id}/pdf';
         $formParams = [];

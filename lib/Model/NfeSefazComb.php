@@ -380,9 +380,53 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'desc_anp', the character length must be bigger than or equal to 2.";
         }
 
+        if (!is_null($this->container['p_glp']) && ($this->container['p_glp'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'p_glp', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['p_glp']) && ($this->container['p_glp'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_glp', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_gnn']) && ($this->container['p_gnn'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'p_gnn', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['p_gnn']) && ($this->container['p_gnn'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_gnn', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_gni']) && ($this->container['p_gni'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'p_gni', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['p_gni']) && ($this->container['p_gni'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_gni', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_part']) && ($this->container['v_part'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_part', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['q_temp']) && ($this->container['q_temp'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_temp', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['uf_cons'] === null) {
             $invalidProperties[] = "'uf_cons' can't be null";
         }
+        if (!is_null($this->container['p_bio']) && ($this->container['p_bio'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'p_bio', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['p_bio']) && ($this->container['p_bio'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'p_bio', must be bigger than 0.";
+        }
+
+        if (!is_null($this->container['orig_comb']) && (count($this->container['orig_comb']) > 30)) {
+            $invalidProperties[] = "invalid value for 'orig_comb', number of items must be less than or equal to 30.";
+        }
+
         return $invalidProperties;
     }
 
@@ -510,6 +554,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_glp) && ($p_glp > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $p_glp when calling NfeSefazComb., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($p_glp) && ($p_glp < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_glp when calling NfeSefazComb., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_glp'] = $p_glp;
 
         return $this;
@@ -544,6 +596,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_gnn) && ($p_gnn > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $p_gnn when calling NfeSefazComb., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($p_gnn) && ($p_gnn < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_gnn when calling NfeSefazComb., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_gnn'] = $p_gnn;
 
         return $this;
@@ -578,6 +638,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_gni) && ($p_gni > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $p_gni when calling NfeSefazComb., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($p_gni) && ($p_gni < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_gni when calling NfeSefazComb., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_gni'] = $p_gni;
 
         return $this;
@@ -612,6 +680,11 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_part) && ($v_part < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_part when calling NfeSefazComb., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_part'] = $v_part;
 
         return $this;
@@ -680,6 +753,11 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_temp) && ($q_temp < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_temp when calling NfeSefazComb., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_temp'] = $q_temp;
 
         return $this;
@@ -802,6 +880,14 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_bio) && ($p_bio > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $p_bio when calling NfeSefazComb., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($p_bio) && ($p_bio <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_bio when calling NfeSefazComb., must be bigger than 0.');
+        }
+
         $this->container['p_bio'] = $p_bio;
 
         return $this;
@@ -828,6 +914,10 @@ class NfeSefazComb implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($orig_comb)) {
             throw new \InvalidArgumentException('non-nullable orig_comb cannot be null');
+        }
+
+        if ((count($orig_comb) > 30)) {
+            throw new \InvalidArgumentException('invalid value for $orig_comb when calling NfeSefazComb., number of items must be less than or equal to 30.');
         }
         $this->container['orig_comb'] = $orig_comb;
 

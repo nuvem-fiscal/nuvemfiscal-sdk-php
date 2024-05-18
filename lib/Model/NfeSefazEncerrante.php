@@ -335,9 +335,17 @@ class NfeSefazEncerrante implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['v_enc_ini'] === null) {
             $invalidProperties[] = "'v_enc_ini' can't be null";
         }
+        if (($this->container['v_enc_ini'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_enc_ini', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_enc_fin'] === null) {
             $invalidProperties[] = "'v_enc_fin' can't be null";
         }
+        if (($this->container['v_enc_fin'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_enc_fin', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -508,6 +516,11 @@ class NfeSefazEncerrante implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_enc_ini) && ($v_enc_ini < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_enc_ini when calling NfeSefazEncerrante., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_enc_ini'] = $v_enc_ini;
 
         return $this;
@@ -542,6 +555,11 @@ class NfeSefazEncerrante implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_enc_fin) && ($v_enc_fin < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_enc_fin when calling NfeSefazEncerrante., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_enc_fin'] = $v_enc_fin;
 
         return $this;

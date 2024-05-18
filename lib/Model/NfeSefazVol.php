@@ -340,6 +340,18 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'n_vol', the character length must be bigger than or equal to 1.";
         }
 
+        if (!is_null($this->container['peso_l']) && ($this->container['peso_l'] < 0)) {
+            $invalidProperties[] = "invalid value for 'peso_l', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['peso_b']) && ($this->container['peso_b'] < 0)) {
+            $invalidProperties[] = "invalid value for 'peso_b', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['lacres']) && (count($this->container['lacres']) > 5000)) {
+            $invalidProperties[] = "invalid value for 'lacres', number of items must be less than or equal to 5000.";
+        }
+
         return $invalidProperties;
     }
 
@@ -541,6 +553,11 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($peso_l) && ($peso_l < 0)) {
+            throw new \InvalidArgumentException('invalid value for $peso_l when calling NfeSefazVol., must be bigger than or equal to 0.');
+        }
+
         $this->container['peso_l'] = $peso_l;
 
         return $this;
@@ -575,6 +592,11 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($peso_b) && ($peso_b < 0)) {
+            throw new \InvalidArgumentException('invalid value for $peso_b when calling NfeSefazVol., must be bigger than or equal to 0.');
+        }
+
         $this->container['peso_b'] = $peso_b;
 
         return $this;
@@ -601,6 +623,10 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($lacres)) {
             throw new \InvalidArgumentException('non-nullable lacres cannot be null');
+        }
+
+        if ((count($lacres) > 5000)) {
+            throw new \InvalidArgumentException('invalid value for $lacres when calling NfeSefazVol., number of items must be less than or equal to 5000.');
         }
         $this->container['lacres'] = $lacres;
 

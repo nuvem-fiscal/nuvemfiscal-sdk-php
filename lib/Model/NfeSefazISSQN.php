@@ -382,18 +382,50 @@ class NfeSefazISSQN implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_bc'] === null) {
             $invalidProperties[] = "'v_bc' can't be null";
         }
+        if (($this->container['v_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_aliq'] === null) {
             $invalidProperties[] = "'v_aliq' can't be null";
         }
+        if (($this->container['v_aliq'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_aliq', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_issqn'] === null) {
             $invalidProperties[] = "'v_issqn' can't be null";
         }
+        if (($this->container['v_issqn'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_issqn', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['c_mun_fg'] === null) {
             $invalidProperties[] = "'c_mun_fg' can't be null";
         }
         if ($this->container['c_list_serv'] === null) {
             $invalidProperties[] = "'c_list_serv' can't be null";
         }
+        if (!is_null($this->container['v_deducao']) && ($this->container['v_deducao'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_deducao', must be bigger than 0.";
+        }
+
+        if (!is_null($this->container['v_outro']) && ($this->container['v_outro'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_outro', must be bigger than 0.";
+        }
+
+        if (!is_null($this->container['v_desc_incond']) && ($this->container['v_desc_incond'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_desc_incond', must be bigger than 0.";
+        }
+
+        if (!is_null($this->container['v_desc_cond']) && ($this->container['v_desc_cond'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_desc_cond', must be bigger than 0.";
+        }
+
+        if (!is_null($this->container['v_iss_ret']) && ($this->container['v_iss_ret'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_iss_ret', must be bigger than 0.";
+        }
+
         if ($this->container['ind_iss'] === null) {
             $invalidProperties[] = "'ind_iss' can't be null";
         }
@@ -460,6 +492,11 @@ class NfeSefazISSQN implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc) && ($v_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc when calling NfeSefazISSQN., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc'] = $v_bc;
 
         return $this;
@@ -494,6 +531,11 @@ class NfeSefazISSQN implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_aliq) && ($v_aliq < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_aliq when calling NfeSefazISSQN., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_aliq'] = $v_aliq;
 
         return $this;
@@ -528,6 +570,11 @@ class NfeSefazISSQN implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_issqn) && ($v_issqn < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_issqn when calling NfeSefazISSQN., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_issqn'] = $v_issqn;
 
         return $this;
@@ -630,6 +677,11 @@ class NfeSefazISSQN implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_deducao) && ($v_deducao <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_deducao when calling NfeSefazISSQN., must be bigger than 0.');
+        }
+
         $this->container['v_deducao'] = $v_deducao;
 
         return $this;
@@ -664,6 +716,11 @@ class NfeSefazISSQN implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_outro) && ($v_outro <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_outro when calling NfeSefazISSQN., must be bigger than 0.');
+        }
+
         $this->container['v_outro'] = $v_outro;
 
         return $this;
@@ -698,6 +755,11 @@ class NfeSefazISSQN implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_desc_incond) && ($v_desc_incond <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_desc_incond when calling NfeSefazISSQN., must be bigger than 0.');
+        }
+
         $this->container['v_desc_incond'] = $v_desc_incond;
 
         return $this;
@@ -732,6 +794,11 @@ class NfeSefazISSQN implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_desc_cond) && ($v_desc_cond <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_desc_cond when calling NfeSefazISSQN., must be bigger than 0.');
+        }
+
         $this->container['v_desc_cond'] = $v_desc_cond;
 
         return $this;
@@ -766,6 +833,11 @@ class NfeSefazISSQN implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_iss_ret) && ($v_iss_ret <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_iss_ret when calling NfeSefazISSQN., must be bigger than 0.');
+        }
+
         $this->container['v_iss_ret'] = $v_iss_ret;
 
         return $this;

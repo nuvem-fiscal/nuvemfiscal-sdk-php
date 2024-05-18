@@ -392,9 +392,17 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_dedutivel_redutivel'] === null) {
             $invalidProperties[] = "'v_dedutivel_redutivel' can't be null";
         }
+        if (($this->container['v_dedutivel_redutivel'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_dedutivel_redutivel', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_deducao_reducao'] === null) {
             $invalidProperties[] = "'v_deducao_reducao' can't be null";
         }
+        if (($this->container['v_deducao_reducao'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_deducao_reducao', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -760,6 +768,11 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_dedutivel_redutivel) && ($v_dedutivel_redutivel < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_dedutivel_redutivel when calling DocDedRed., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_dedutivel_redutivel'] = $v_dedutivel_redutivel;
 
         return $this;
@@ -794,6 +807,11 @@ class DocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_deducao_reducao) && ($v_deducao_reducao < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_deducao_reducao when calling DocDedRed., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_deducao_reducao'] = $v_deducao_reducao;
 
         return $this;

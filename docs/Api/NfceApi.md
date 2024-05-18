@@ -296,7 +296,7 @@ try {
 ## `baixarPdfNfce()`
 
 ```php
-baixarPdfNfce($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura): \SplFileObject
+baixarPdfNfce($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $margem): \SplFileObject
 ```
 
 Baixar PDF do DANFCE
@@ -330,9 +330,10 @@ $mensagem_rodape = 'mensagem_rodape_example'; // string | Imprime mensagem no ro
 $resumido = false; // bool | Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite.
 $qrcode_lateral = false; // bool | Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*.
 $largura = 80; // int | Largura do DANFE NFC-e (em milímetros).
+$margem = '2'; // string | Define as margens do DANFE NFC-e (em milímetros).    Essa propriedade pode ser especificada usando um, dois, três ou quatro valores (separados por vírgulas). Cada valor deve ser um número entre `0` e `9`.  * Quando **um** valor é especificado, a mesma margem é aplicada para **todos os quatro lados**.  * Quando **dois** valores são especificados, a primeira margem é aplicada aos **lados esquerdo e direito**, e a segunda aos **lados superior e inferior**.  * Quando **três** valores são especificados, a primeira margem é aplicada ao **lado esquerdo**, a segunda aos **lados superior e inferior**, e a terceira ao **lado direito**.  * Quando **quatro** valores são especificados, as margens são aplicadas aos lados **esquerdo**, **superior**, **direito** e **inferior**, nesta ordem (sentido horário).    **Exemplos de uso**:  * `margem=1`    - Margem esquerda: 1mm    - Margem superior: 1mm    - Margem direita: 1mm    - Margem inferior: 1mm  * `margem=1,2`    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 1mm    - Margem inferior: 2mm  * `margem=1,2,3`    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 2mm  * `margem=1,2,3,4`    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 4mm
 
 try {
-    $result = $apiInstance->baixarPdfNfce($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura);
+    $result = $apiInstance->baixarPdfNfce($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $margem);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfceApi->baixarPdfNfce: ', $e->getMessage(), PHP_EOL;
@@ -350,6 +351,7 @@ try {
 | **resumido** | **bool**| Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. | [optional] [default to false] |
 | **qrcode_lateral** | **bool**| Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. | [optional] [default to false] |
 | **largura** | **int**| Largura do DANFE NFC-e (em milímetros). | [optional] [default to 80] |
+| **margem** | **string**| Define as margens do DANFE NFC-e (em milímetros).    Essa propriedade pode ser especificada usando um, dois, três ou quatro valores (separados por vírgulas). Cada valor deve ser um número entre &#x60;0&#x60; e &#x60;9&#x60;.  * Quando **um** valor é especificado, a mesma margem é aplicada para **todos os quatro lados**.  * Quando **dois** valores são especificados, a primeira margem é aplicada aos **lados esquerdo e direito**, e a segunda aos **lados superior e inferior**.  * Quando **três** valores são especificados, a primeira margem é aplicada ao **lado esquerdo**, a segunda aos **lados superior e inferior**, e a terceira ao **lado direito**.  * Quando **quatro** valores são especificados, as margens são aplicadas aos lados **esquerdo**, **superior**, **direito** e **inferior**, nesta ordem (sentido horário).    **Exemplos de uso**:  * &#x60;margem&#x3D;1&#x60;    - Margem esquerda: 1mm    - Margem superior: 1mm    - Margem direita: 1mm    - Margem inferior: 1mm  * &#x60;margem&#x3D;1,2&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 1mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3,4&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 4mm | [optional] [default to &#39;2&#39;] |
 
 ### Tipo do retorno
 
@@ -371,7 +373,7 @@ try {
 ## `baixarPreviaPdfNfce()`
 
 ```php
-baixarPreviaPdfNfce($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura): \SplFileObject
+baixarPreviaPdfNfce($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $margem): \SplFileObject
 ```
 
 Prévia do PDF do DANFCE
@@ -407,9 +409,10 @@ $mensagem_rodape = 'mensagem_rodape_example'; // string | Imprime mensagem no ro
 $resumido = false; // bool | Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite.
 $qrcode_lateral = false; // bool | Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*.
 $largura = 80; // int | Largura do DANFE NFC-e (em milímetros).
+$margem = '2'; // string | Define as margens do DANFE NFC-e (em milímetros).    Essa propriedade pode ser especificada usando um, dois, três ou quatro valores (separados por vírgulas). Cada valor deve ser um número entre `0` e `9`.  * Quando **um** valor é especificado, a mesma margem é aplicada para **todos os quatro lados**.  * Quando **dois** valores são especificados, a primeira margem é aplicada aos **lados esquerdo e direito**, e a segunda aos **lados superior e inferior**.  * Quando **três** valores são especificados, a primeira margem é aplicada ao **lado esquerdo**, a segunda aos **lados superior e inferior**, e a terceira ao **lado direito**.  * Quando **quatro** valores são especificados, as margens são aplicadas aos lados **esquerdo**, **superior**, **direito** e **inferior**, nesta ordem (sentido horário).    **Exemplos de uso**:  * `margem=1`    - Margem esquerda: 1mm    - Margem superior: 1mm    - Margem direita: 1mm    - Margem inferior: 1mm  * `margem=1,2`    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 1mm    - Margem inferior: 2mm  * `margem=1,2,3`    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 2mm  * `margem=1,2,3,4`    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 4mm
 
 try {
-    $result = $apiInstance->baixarPreviaPdfNfce($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura);
+    $result = $apiInstance->baixarPreviaPdfNfce($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $margem);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NfceApi->baixarPreviaPdfNfce: ', $e->getMessage(), PHP_EOL;
@@ -427,6 +430,7 @@ try {
 | **resumido** | **bool**| Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. | [optional] [default to false] |
 | **qrcode_lateral** | **bool**| Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. | [optional] [default to false] |
 | **largura** | **int**| Largura do DANFE NFC-e (em milímetros). | [optional] [default to 80] |
+| **margem** | **string**| Define as margens do DANFE NFC-e (em milímetros).    Essa propriedade pode ser especificada usando um, dois, três ou quatro valores (separados por vírgulas). Cada valor deve ser um número entre &#x60;0&#x60; e &#x60;9&#x60;.  * Quando **um** valor é especificado, a mesma margem é aplicada para **todos os quatro lados**.  * Quando **dois** valores são especificados, a primeira margem é aplicada aos **lados esquerdo e direito**, e a segunda aos **lados superior e inferior**.  * Quando **três** valores são especificados, a primeira margem é aplicada ao **lado esquerdo**, a segunda aos **lados superior e inferior**, e a terceira ao **lado direito**.  * Quando **quatro** valores são especificados, as margens são aplicadas aos lados **esquerdo**, **superior**, **direito** e **inferior**, nesta ordem (sentido horário).    **Exemplos de uso**:  * &#x60;margem&#x3D;1&#x60;    - Margem esquerda: 1mm    - Margem superior: 1mm    - Margem direita: 1mm    - Margem inferior: 1mm  * &#x60;margem&#x3D;1,2&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 1mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3,4&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 4mm | [optional] [default to &#39;2&#39;] |
 
 ### Tipo do retorno
 

@@ -345,6 +345,10 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
             );
         }
 
+        if (!is_null($this->container['documentos']) && (count($this->container['documentos']) > 50)) {
+            $invalidProperties[] = "invalid value for 'documentos', number of items must be less than or equal to 50.";
+        }
+
         return $invalidProperties;
     }
 
@@ -489,6 +493,10 @@ class NfseLoteDpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSeri
     {
         if (is_null($documentos)) {
             throw new \InvalidArgumentException('non-nullable documentos cannot be null');
+        }
+
+        if ((count($documentos) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $documentos when calling NfseLoteDpsPedidoEmissao., number of items must be less than or equal to 50.');
         }
         $this->container['documentos'] = $documentos;
 

@@ -377,12 +377,24 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['comp'] === null) {
             $invalidProperties[] = "'comp' can't be null";
         }
+        if ((count($this->container['comp']) < 1)) {
+            $invalidProperties[] = "invalid value for 'comp', number of items must be greater than or equal to 1.";
+        }
+
         if ($this->container['v_contrato'] === null) {
             $invalidProperties[] = "'v_contrato' can't be null";
         }
+        if (($this->container['v_contrato'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_contrato', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['ind_pag'] === null) {
             $invalidProperties[] = "'ind_pag' can't be null";
         }
+        if (!is_null($this->container['v_adiant']) && ($this->container['v_adiant'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_adiant', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['inf_banc'] === null) {
             $invalidProperties[] = "'inf_banc' can't be null";
         }
@@ -573,6 +585,11 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($comp)) {
             throw new \InvalidArgumentException('non-nullable comp cannot be null');
         }
+
+
+        if ((count($comp) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $comp when calling MdfeSefazInfPag., number of items must be greater than or equal to 1.');
+        }
         $this->container['comp'] = $comp;
 
         return $this;
@@ -607,6 +624,11 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_contrato) && ($v_contrato < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_contrato when calling MdfeSefazInfPag., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_contrato'] = $v_contrato;
 
         return $this;
@@ -709,6 +731,11 @@ class MdfeSefazInfPag implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_adiant) && ($v_adiant < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_adiant when calling MdfeSefazInfPag., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_adiant'] = $v_adiant;
 
         return $this;

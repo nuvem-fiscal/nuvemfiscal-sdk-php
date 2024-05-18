@@ -308,6 +308,10 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cst'] === null) {
             $invalidProperties[] = "'cst' can't be null";
         }
+        if (!is_null($this->container['v_icms_deson']) && ($this->container['v_icms_deson'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_deson', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -420,6 +424,11 @@ class NfeSefazICMS40 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_deson) && ($v_icms_deson < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_deson when calling NfeSefazICMS40., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_deson'] = $v_icms_deson;
 
         return $this;

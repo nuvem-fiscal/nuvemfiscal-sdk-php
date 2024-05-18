@@ -291,9 +291,17 @@ class CteSefazVPrest implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_t_prest'] === null) {
             $invalidProperties[] = "'v_t_prest' can't be null";
         }
+        if (($this->container['v_t_prest'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_t_prest', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_rec'] === null) {
             $invalidProperties[] = "'v_rec' can't be null";
         }
+        if (($this->container['v_rec'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_rec', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -338,6 +346,11 @@ class CteSefazVPrest implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_t_prest) && ($v_t_prest < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_t_prest when calling CteSefazVPrest., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_t_prest'] = $v_t_prest;
 
         return $this;
@@ -372,6 +385,11 @@ class CteSefazVPrest implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_rec) && ($v_rec < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_rec when calling CteSefazVPrest., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_rec'] = $v_rec;
 
         return $this;

@@ -303,6 +303,18 @@ class NfeSefazFat implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'n_fat', the character length must be bigger than or equal to 1.";
         }
 
+        if (!is_null($this->container['v_orig']) && ($this->container['v_orig'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_orig', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_desc']) && ($this->container['v_desc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_desc', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_liq']) && ($this->container['v_liq'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_liq', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -388,6 +400,11 @@ class NfeSefazFat implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_orig) && ($v_orig < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_orig when calling NfeSefazFat., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_orig'] = $v_orig;
 
         return $this;
@@ -422,6 +439,11 @@ class NfeSefazFat implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_desc) && ($v_desc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_desc when calling NfeSefazFat., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_desc'] = $v_desc;
 
         return $this;
@@ -456,6 +478,11 @@ class NfeSefazFat implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_liq) && ($v_liq < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_liq when calling NfeSefazFat., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_liq'] = $v_liq;
 
         return $this;

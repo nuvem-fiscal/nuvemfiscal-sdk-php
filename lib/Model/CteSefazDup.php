@@ -296,6 +296,10 @@ class CteSefazDup implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'n_dup', the character length must be bigger than or equal to 1.";
         }
 
+        if (!is_null($this->container['v_dup']) && ($this->container['v_dup'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_dup', must be bigger than 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -415,6 +419,11 @@ class CteSefazDup implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_dup) && ($v_dup <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_dup when calling CteSefazDup., must be bigger than 0.');
+        }
+
         $this->container['v_dup'] = $v_dup;
 
         return $this;

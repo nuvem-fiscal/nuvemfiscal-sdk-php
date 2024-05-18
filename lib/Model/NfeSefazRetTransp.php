@@ -312,15 +312,31 @@ class NfeSefazRetTransp implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['v_serv'] === null) {
             $invalidProperties[] = "'v_serv' can't be null";
         }
+        if (($this->container['v_serv'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_serv', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_bc_ret'] === null) {
             $invalidProperties[] = "'v_bc_ret' can't be null";
         }
+        if (($this->container['v_bc_ret'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc_ret', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['p_icms_ret'] === null) {
             $invalidProperties[] = "'p_icms_ret' can't be null";
         }
+        if (($this->container['p_icms_ret'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_icms_ret', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_icms_ret'] === null) {
             $invalidProperties[] = "'v_icms_ret' can't be null";
         }
+        if (($this->container['v_icms_ret'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_ret', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['cfop'] === null) {
             $invalidProperties[] = "'cfop' can't be null";
         }
@@ -371,6 +387,11 @@ class NfeSefazRetTransp implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_serv) && ($v_serv < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_serv when calling NfeSefazRetTransp., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_serv'] = $v_serv;
 
         return $this;
@@ -405,6 +426,11 @@ class NfeSefazRetTransp implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc_ret) && ($v_bc_ret < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc_ret when calling NfeSefazRetTransp., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc_ret'] = $v_bc_ret;
 
         return $this;
@@ -439,6 +465,11 @@ class NfeSefazRetTransp implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_icms_ret) && ($p_icms_ret < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_icms_ret when calling NfeSefazRetTransp., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_icms_ret'] = $p_icms_ret;
 
         return $this;
@@ -473,6 +504,11 @@ class NfeSefazRetTransp implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_ret) && ($v_icms_ret < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_ret when calling NfeSefazRetTransp., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_ret'] = $v_icms_ret;
 
         return $this;

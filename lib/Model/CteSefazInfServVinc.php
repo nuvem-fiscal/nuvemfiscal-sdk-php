@@ -277,6 +277,10 @@ class CteSefazInfServVinc implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['inf_cte_multimodal'] === null) {
             $invalidProperties[] = "'inf_cte_multimodal' can't be null";
         }
+        if ((count($this->container['inf_cte_multimodal']) < 1)) {
+            $invalidProperties[] = "invalid value for 'inf_cte_multimodal', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -313,6 +317,11 @@ class CteSefazInfServVinc implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         if (is_null($inf_cte_multimodal)) {
             throw new \InvalidArgumentException('non-nullable inf_cte_multimodal cannot be null');
+        }
+
+
+        if ((count($inf_cte_multimodal) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $inf_cte_multimodal when calling CteSefazInfServVinc., number of items must be greater than or equal to 1.');
         }
         $this->container['inf_cte_multimodal'] = $inf_cte_multimodal;
 

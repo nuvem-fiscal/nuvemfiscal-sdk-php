@@ -312,9 +312,29 @@ class NfeSefazCOFINSOutr implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['cst'] === null) {
             $invalidProperties[] = "'cst' can't be null";
         }
+        if (!is_null($this->container['v_bc']) && ($this->container['v_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_cofins']) && ($this->container['p_cofins'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_cofins', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['q_bc_prod']) && ($this->container['q_bc_prod'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_bc_prod', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_aliq_prod']) && ($this->container['v_aliq_prod'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_aliq_prod', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_cofins'] === null) {
             $invalidProperties[] = "'v_cofins' can't be null";
         }
+        if (($this->container['v_cofins'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_cofins', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -393,6 +413,11 @@ class NfeSefazCOFINSOutr implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc) && ($v_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc when calling NfeSefazCOFINSOutr., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc'] = $v_bc;
 
         return $this;
@@ -427,6 +452,11 @@ class NfeSefazCOFINSOutr implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_cofins) && ($p_cofins < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_cofins when calling NfeSefazCOFINSOutr., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_cofins'] = $p_cofins;
 
         return $this;
@@ -461,6 +491,11 @@ class NfeSefazCOFINSOutr implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_bc_prod) && ($q_bc_prod < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_bc_prod when calling NfeSefazCOFINSOutr., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_bc_prod'] = $q_bc_prod;
 
         return $this;
@@ -495,6 +530,11 @@ class NfeSefazCOFINSOutr implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_aliq_prod) && ($v_aliq_prod < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_aliq_prod when calling NfeSefazCOFINSOutr., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_aliq_prod'] = $v_aliq_prod;
 
         return $this;
@@ -529,6 +569,11 @@ class NfeSefazCOFINSOutr implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_cofins) && ($v_cofins < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_cofins when calling NfeSefazCOFINSOutr., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_cofins'] = $v_cofins;
 
         return $this;

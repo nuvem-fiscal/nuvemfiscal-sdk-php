@@ -297,6 +297,14 @@ class NfeSefazOrigComb implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['p_orig'] === null) {
             $invalidProperties[] = "'p_orig' can't be null";
         }
+        if (($this->container['p_orig'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'p_orig', must be smaller than or equal to 1E+2.";
+        }
+
+        if (($this->container['p_orig'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'p_orig', must be bigger than 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -409,6 +417,14 @@ class NfeSefazOrigComb implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_orig) && ($p_orig > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $p_orig when calling NfeSefazOrigComb., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($p_orig) && ($p_orig <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_orig when calling NfeSefazOrigComb., must be bigger than 0.');
+        }
+
         $this->container['p_orig'] = $p_orig;
 
         return $this;

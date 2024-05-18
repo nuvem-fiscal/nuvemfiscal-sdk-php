@@ -314,6 +314,10 @@ class RpsPedidoEmissaoLote implements ModelInterface, ArrayAccess, \JsonSerializ
             );
         }
 
+        if (!is_null($this->container['lista_rps']) && (count($this->container['lista_rps']) > 50)) {
+            $invalidProperties[] = "invalid value for 'lista_rps', number of items must be less than or equal to 50.";
+        }
+
         return $invalidProperties;
     }
 
@@ -421,6 +425,10 @@ class RpsPedidoEmissaoLote implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         if (is_null($lista_rps)) {
             throw new \InvalidArgumentException('non-nullable lista_rps cannot be null');
+        }
+
+        if ((count($lista_rps) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $lista_rps when calling RpsPedidoEmissaoLote., number of items must be less than or equal to 50.');
         }
         $this->container['lista_rps'] = $lista_rps;
 

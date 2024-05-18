@@ -352,9 +352,17 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['v_unit'] === null) {
             $invalidProperties[] = "'v_unit' can't be null";
         }
+        if (($this->container['v_unit'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_unit', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_frete'] === null) {
             $invalidProperties[] = "'v_frete' can't be null";
         }
+        if (($this->container['v_frete'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_frete', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -560,6 +568,11 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_unit) && ($v_unit < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_unit when calling CteSefazVeicNovos., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_unit'] = $v_unit;
 
         return $this;
@@ -594,6 +607,11 @@ class CteSefazVeicNovos implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_frete) && ($v_frete < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_frete when calling CteSefazVeicNovos., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_frete'] = $v_frete;
 
         return $this;

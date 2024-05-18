@@ -289,6 +289,10 @@ class NfcomSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializabl
             $invalidProperties[] = "invalid value for 'inf_ad_fisco', the character length must be bigger than or equal to 1.";
         }
 
+        if (!is_null($this->container['inf_cpl']) && (count($this->container['inf_cpl']) > 5)) {
+            $invalidProperties[] = "invalid value for 'inf_cpl', number of items must be less than or equal to 5.";
+        }
+
         return $invalidProperties;
     }
 
@@ -366,6 +370,10 @@ class NfcomSefazInfAdic implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         if (is_null($inf_cpl)) {
             throw new \InvalidArgumentException('non-nullable inf_cpl cannot be null');
+        }
+
+        if ((count($inf_cpl) > 5)) {
+            throw new \InvalidArgumentException('invalid value for $inf_cpl when calling NfcomSefazInfAdic., number of items must be less than or equal to 5.');
         }
         $this->container['inf_cpl'] = $inf_cpl;
 

@@ -343,18 +343,50 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cst'] === null) {
             $invalidProperties[] = "'cst' can't be null";
         }
+        if (!is_null($this->container['q_bc_mono']) && ($this->container['q_bc_mono'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_bc_mono', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['ad_rem_icms'] === null) {
             $invalidProperties[] = "'ad_rem_icms' can't be null";
         }
+        if (($this->container['ad_rem_icms'] < 0)) {
+            $invalidProperties[] = "invalid value for 'ad_rem_icms', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_icms_mono'] === null) {
             $invalidProperties[] = "'v_icms_mono' can't be null";
         }
+        if (($this->container['v_icms_mono'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_mono', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['q_bc_mono_reten']) && ($this->container['q_bc_mono_reten'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_bc_mono_reten', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['ad_rem_icms_reten'] === null) {
             $invalidProperties[] = "'ad_rem_icms_reten' can't be null";
         }
+        if (($this->container['ad_rem_icms_reten'] < 0)) {
+            $invalidProperties[] = "invalid value for 'ad_rem_icms_reten', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_icms_mono_reten'] === null) {
             $invalidProperties[] = "'v_icms_mono_reten' can't be null";
         }
+        if (($this->container['v_icms_mono_reten'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_mono_reten', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_red_ad_rem']) && ($this->container['p_red_ad_rem'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'p_red_ad_rem', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['p_red_ad_rem']) && ($this->container['p_red_ad_rem'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_red_ad_rem', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -467,6 +499,11 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_bc_mono) && ($q_bc_mono < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_bc_mono when calling NfeSefazICMS15., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_bc_mono'] = $q_bc_mono;
 
         return $this;
@@ -501,6 +538,11 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($ad_rem_icms) && ($ad_rem_icms < 0)) {
+            throw new \InvalidArgumentException('invalid value for $ad_rem_icms when calling NfeSefazICMS15., must be bigger than or equal to 0.');
+        }
+
         $this->container['ad_rem_icms'] = $ad_rem_icms;
 
         return $this;
@@ -535,6 +577,11 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_mono) && ($v_icms_mono < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_mono when calling NfeSefazICMS15., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_mono'] = $v_icms_mono;
 
         return $this;
@@ -569,6 +616,11 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_bc_mono_reten) && ($q_bc_mono_reten < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_bc_mono_reten when calling NfeSefazICMS15., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_bc_mono_reten'] = $q_bc_mono_reten;
 
         return $this;
@@ -603,6 +655,11 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($ad_rem_icms_reten) && ($ad_rem_icms_reten < 0)) {
+            throw new \InvalidArgumentException('invalid value for $ad_rem_icms_reten when calling NfeSefazICMS15., must be bigger than or equal to 0.');
+        }
+
         $this->container['ad_rem_icms_reten'] = $ad_rem_icms_reten;
 
         return $this;
@@ -637,6 +694,11 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_mono_reten) && ($v_icms_mono_reten < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_mono_reten when calling NfeSefazICMS15., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_mono_reten'] = $v_icms_mono_reten;
 
         return $this;
@@ -671,6 +733,14 @@ class NfeSefazICMS15 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_red_ad_rem) && ($p_red_ad_rem > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $p_red_ad_rem when calling NfeSefazICMS15., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($p_red_ad_rem) && ($p_red_ad_rem < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_red_ad_rem when calling NfeSefazICMS15., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_red_ad_rem'] = $p_red_ad_rem;
 
         return $this;

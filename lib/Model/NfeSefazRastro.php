@@ -315,6 +315,10 @@ class NfeSefazRastro implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['q_lote'] === null) {
             $invalidProperties[] = "'q_lote' can't be null";
         }
+        if (($this->container['q_lote'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_lote', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['d_fab'] === null) {
             $invalidProperties[] = "'d_fab' can't be null";
         }
@@ -414,6 +418,11 @@ class NfeSefazRastro implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_lote) && ($q_lote < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_lote when calling NfeSefazRastro., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_lote'] = $q_lote;
 
         return $this;

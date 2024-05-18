@@ -308,12 +308,24 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cst'] === null) {
             $invalidProperties[] = "'cst' can't be null";
         }
+        if (!is_null($this->container['q_bc_mono_ret']) && ($this->container['q_bc_mono_ret'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_bc_mono_ret', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['ad_rem_icms_ret'] === null) {
             $invalidProperties[] = "'ad_rem_icms_ret' can't be null";
         }
+        if (($this->container['ad_rem_icms_ret'] < 0)) {
+            $invalidProperties[] = "invalid value for 'ad_rem_icms_ret', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_icms_mono_ret'] === null) {
             $invalidProperties[] = "'v_icms_mono_ret' can't be null";
         }
+        if (($this->container['v_icms_mono_ret'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_mono_ret', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -426,6 +438,11 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_bc_mono_ret) && ($q_bc_mono_ret < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_bc_mono_ret when calling NfeSefazICMS61., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_bc_mono_ret'] = $q_bc_mono_ret;
 
         return $this;
@@ -460,6 +477,11 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($ad_rem_icms_ret) && ($ad_rem_icms_ret < 0)) {
+            throw new \InvalidArgumentException('invalid value for $ad_rem_icms_ret when calling NfeSefazICMS61., must be bigger than or equal to 0.');
+        }
+
         $this->container['ad_rem_icms_ret'] = $ad_rem_icms_ret;
 
         return $this;
@@ -494,6 +516,11 @@ class NfeSefazICMS61 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_mono_ret) && ($v_icms_mono_ret < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_mono_ret when calling NfeSefazICMS61., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_mono_ret'] = $v_icms_mono_ret;
 
         return $this;

@@ -385,6 +385,14 @@ class CteSefazCompl implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'x_obs', the character length must be bigger than or equal to 1.";
         }
 
+        if (!is_null($this->container['obs_cont']) && (count($this->container['obs_cont']) > 10)) {
+            $invalidProperties[] = "invalid value for 'obs_cont', number of items must be less than or equal to 10.";
+        }
+
+        if (!is_null($this->container['obs_fisco']) && (count($this->container['obs_fisco']) > 10)) {
+            $invalidProperties[] = "invalid value for 'obs_fisco', number of items must be less than or equal to 10.";
+        }
+
         return $invalidProperties;
     }
 
@@ -722,6 +730,10 @@ class CteSefazCompl implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($obs_cont)) {
             throw new \InvalidArgumentException('non-nullable obs_cont cannot be null');
         }
+
+        if ((count($obs_cont) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $obs_cont when calling CteSefazCompl., number of items must be less than or equal to 10.');
+        }
         $this->container['obs_cont'] = $obs_cont;
 
         return $this;
@@ -748,6 +760,10 @@ class CteSefazCompl implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($obs_fisco)) {
             throw new \InvalidArgumentException('non-nullable obs_fisco cannot be null');
+        }
+
+        if ((count($obs_fisco) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $obs_fisco when calling CteSefazCompl., number of items must be less than or equal to 10.');
         }
         $this->container['obs_fisco'] = $obs_fisco;
 

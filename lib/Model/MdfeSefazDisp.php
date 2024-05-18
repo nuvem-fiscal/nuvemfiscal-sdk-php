@@ -315,6 +315,10 @@ class MdfeSefazDisp implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_vale_ped'] === null) {
             $invalidProperties[] = "'v_vale_ped' can't be null";
         }
+        if (($this->container['v_vale_ped'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_vale_ped', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -495,6 +499,11 @@ class MdfeSefazDisp implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_vale_ped) && ($v_vale_ped < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_vale_ped when calling MdfeSefazDisp., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_vale_ped'] = $v_vale_ped;
 
         return $this;

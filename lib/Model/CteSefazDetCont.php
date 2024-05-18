@@ -299,6 +299,10 @@ class CteSefazDetCont implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'n_cont', the character length must be bigger than or equal to 1.";
         }
 
+        if (!is_null($this->container['lacre']) && (count($this->container['lacre']) > 3)) {
+            $invalidProperties[] = "invalid value for 'lacre', number of items must be less than or equal to 3.";
+        }
+
         return $invalidProperties;
     }
 
@@ -376,6 +380,10 @@ class CteSefazDetCont implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($lacre)) {
             throw new \InvalidArgumentException('non-nullable lacre cannot be null');
+        }
+
+        if ((count($lacre) > 3)) {
+            throw new \InvalidArgumentException('invalid value for $lacre when calling CteSefazDetCont., number of items must be less than or equal to 3.');
         }
         $this->container['lacre'] = $lacre;
 

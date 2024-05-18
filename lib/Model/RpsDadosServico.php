@@ -377,6 +377,10 @@ class RpsDadosServico implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['discriminacao'] === null) {
             $invalidProperties[] = "'discriminacao' can't be null";
         }
+        if (!is_null($this->container['quantidade']) && ($this->container['quantidade'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'quantidade', must be bigger than 0.";
+        }
+
         if ($this->container['valores'] === null) {
             $invalidProperties[] = "'valores' can't be null";
         }
@@ -768,6 +772,11 @@ class RpsDadosServico implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($quantidade)) {
             throw new \InvalidArgumentException('non-nullable quantidade cannot be null');
         }
+
+        if (($quantidade <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $quantidade when calling RpsDadosServico., must be bigger than 0.');
+        }
+
         $this->container['quantidade'] = $quantidade;
 
         return $this;

@@ -364,12 +364,56 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['q_faturada'] === null) {
             $invalidProperties[] = "'q_faturada' can't be null";
         }
+        if (($this->container['q_faturada'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_faturada', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_prod'] === null) {
             $invalidProperties[] = "'v_prod' can't be null";
         }
+        if (!is_null($this->container['v_desc']) && ($this->container['v_desc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_desc', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_outro']) && ($this->container['v_outro'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_outro', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_bc']) && ($this->container['v_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_icms']) && ($this->container['p_icms'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_icms', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_icms']) && ($this->container['v_icms'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_pis']) && ($this->container['v_pis'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_pis', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_cofins']) && ($this->container['v_cofins'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_cofins', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_fcp']) && ($this->container['v_fcp'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_fcp', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['g_proc'] === null) {
             $invalidProperties[] = "'g_proc' can't be null";
         }
+        if ((count($this->container['g_proc']) > 10)) {
+            $invalidProperties[] = "invalid value for 'g_proc', number of items must be less than or equal to 10.";
+        }
+
+        if ((count($this->container['g_proc']) < 1)) {
+            $invalidProperties[] = "invalid value for 'g_proc', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -448,6 +492,11 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_faturada) && ($q_faturada < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_faturada when calling NfcomSefazGProcRef., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_faturada'] = $q_faturada;
 
         return $this;
@@ -516,6 +565,11 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_desc) && ($v_desc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_desc when calling NfcomSefazGProcRef., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_desc'] = $v_desc;
 
         return $this;
@@ -550,6 +604,11 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_outro) && ($v_outro < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_outro when calling NfcomSefazGProcRef., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_outro'] = $v_outro;
 
         return $this;
@@ -618,6 +677,11 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc) && ($v_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc when calling NfcomSefazGProcRef., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc'] = $v_bc;
 
         return $this;
@@ -652,6 +716,11 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_icms) && ($p_icms < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_icms when calling NfcomSefazGProcRef., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_icms'] = $p_icms;
 
         return $this;
@@ -686,6 +755,11 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms) && ($v_icms < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms when calling NfcomSefazGProcRef., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms'] = $v_icms;
 
         return $this;
@@ -720,6 +794,11 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_pis) && ($v_pis < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_pis when calling NfcomSefazGProcRef., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_pis'] = $v_pis;
 
         return $this;
@@ -754,6 +833,11 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_cofins) && ($v_cofins < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_cofins when calling NfcomSefazGProcRef., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_cofins'] = $v_cofins;
 
         return $this;
@@ -788,6 +872,11 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_fcp) && ($v_fcp < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_fcp when calling NfcomSefazGProcRef., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_fcp'] = $v_fcp;
 
         return $this;
@@ -814,6 +903,13 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         if (is_null($g_proc)) {
             throw new \InvalidArgumentException('non-nullable g_proc cannot be null');
+        }
+
+        if ((count($g_proc) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $g_proc when calling NfcomSefazGProcRef., number of items must be less than or equal to 10.');
+        }
+        if ((count($g_proc) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $g_proc when calling NfcomSefazGProcRef., number of items must be greater than or equal to 1.');
         }
         $this->container['g_proc'] = $g_proc;
 

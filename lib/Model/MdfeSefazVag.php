@@ -319,9 +319,17 @@ class MdfeSefazVag implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['peso_bc'] === null) {
             $invalidProperties[] = "'peso_bc' can't be null";
         }
+        if (($this->container['peso_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'peso_bc', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['peso_r'] === null) {
             $invalidProperties[] = "'peso_r' can't be null";
         }
+        if (($this->container['peso_r'] < 0)) {
+            $invalidProperties[] = "invalid value for 'peso_r', must be bigger than or equal to 0.";
+        }
+
         if (!is_null($this->container['tp_vag']) && (mb_strlen($this->container['tp_vag']) > 3)) {
             $invalidProperties[] = "invalid value for 'tp_vag', the character length must be smaller than or equal to 3.";
         }
@@ -399,6 +407,11 @@ class MdfeSefazVag implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($peso_bc) && ($peso_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $peso_bc when calling MdfeSefazVag., must be bigger than or equal to 0.');
+        }
+
         $this->container['peso_bc'] = $peso_bc;
 
         return $this;
@@ -433,6 +446,11 @@ class MdfeSefazVag implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($peso_r) && ($peso_r < 0)) {
+            throw new \InvalidArgumentException('invalid value for $peso_r when calling MdfeSefazVag., must be bigger than or equal to 0.');
+        }
+
         $this->container['peso_r'] = $peso_r;
 
         return $this;

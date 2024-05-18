@@ -395,6 +395,10 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'n_dar', the character length must be bigger than or equal to 1.";
         }
 
+        if (!is_null($this->container['v_dar']) && ($this->container['v_dar'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_dar', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['rep_emi'] === null) {
             $invalidProperties[] = "'rep_emi' can't be null";
         }
@@ -754,6 +758,11 @@ class NfeSefazAvulsa implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_dar) && ($v_dar < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_dar when calling NfeSefazAvulsa., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_dar'] = $v_dar;
 
         return $this;

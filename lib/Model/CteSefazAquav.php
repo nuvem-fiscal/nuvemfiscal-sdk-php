@@ -332,9 +332,17 @@ class CteSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_prest'] === null) {
             $invalidProperties[] = "'v_prest' can't be null";
         }
+        if (($this->container['v_prest'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_prest', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_afrmm'] === null) {
             $invalidProperties[] = "'v_afrmm' can't be null";
         }
+        if (($this->container['v_afrmm'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_afrmm', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['x_navio'] === null) {
             $invalidProperties[] = "'x_navio' can't be null";
         }
@@ -344,6 +352,10 @@ class CteSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if ((mb_strlen($this->container['x_navio']) < 1)) {
             $invalidProperties[] = "invalid value for 'x_navio', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['balsa']) && (count($this->container['balsa']) > 3)) {
+            $invalidProperties[] = "invalid value for 'balsa', number of items must be less than or equal to 3.";
         }
 
         if ($this->container['direc'] === null) {
@@ -404,6 +416,11 @@ class CteSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_prest) && ($v_prest < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_prest when calling CteSefazAquav., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_prest'] = $v_prest;
 
         return $this;
@@ -438,6 +455,11 @@ class CteSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_afrmm) && ($v_afrmm < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_afrmm when calling CteSefazAquav., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_afrmm'] = $v_afrmm;
 
         return $this;
@@ -505,6 +527,10 @@ class CteSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($balsa)) {
             throw new \InvalidArgumentException('non-nullable balsa cannot be null');
+        }
+
+        if ((count($balsa) > 3)) {
+            throw new \InvalidArgumentException('invalid value for $balsa when calling CteSefazAquav., number of items must be less than or equal to 3.');
         }
         $this->container['balsa'] = $balsa;
 

@@ -326,6 +326,10 @@ class NfeSefazTransp implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['mod_frete'] === null) {
             $invalidProperties[] = "'mod_frete' can't be null";
         }
+        if (!is_null($this->container['reboque']) && (count($this->container['reboque']) > 5)) {
+            $invalidProperties[] = "invalid value for 'reboque', number of items must be less than or equal to 5.";
+        }
+
         if (!is_null($this->container['vagao']) && (mb_strlen($this->container['vagao']) > 20)) {
             $invalidProperties[] = "invalid value for 'vagao', the character length must be smaller than or equal to 20.";
         }
@@ -340,6 +344,10 @@ class NfeSefazTransp implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['balsa']) && (mb_strlen($this->container['balsa']) < 1)) {
             $invalidProperties[] = "invalid value for 'balsa', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['vol']) && (count($this->container['vol']) > 5000)) {
+            $invalidProperties[] = "invalid value for 'vol', number of items must be less than or equal to 5000.";
         }
 
         return $invalidProperties;
@@ -494,6 +502,10 @@ class NfeSefazTransp implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($reboque)) {
             throw new \InvalidArgumentException('non-nullable reboque cannot be null');
         }
+
+        if ((count($reboque) > 5)) {
+            throw new \InvalidArgumentException('invalid value for $reboque when calling NfeSefazTransp., number of items must be less than or equal to 5.');
+        }
         $this->container['reboque'] = $reboque;
 
         return $this;
@@ -602,6 +614,10 @@ class NfeSefazTransp implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($vol)) {
             throw new \InvalidArgumentException('non-nullable vol cannot be null');
+        }
+
+        if ((count($vol) > 5000)) {
+            throw new \InvalidArgumentException('invalid value for $vol when calling NfeSefazTransp., number of items must be less than or equal to 5000.');
         }
         $this->container['vol'] = $vol;
 

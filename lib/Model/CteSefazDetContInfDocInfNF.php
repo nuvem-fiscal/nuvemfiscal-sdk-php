@@ -310,6 +310,10 @@ class CteSefazDetContInfDocInfNF implements ModelInterface, ArrayAccess, \JsonSe
             $invalidProperties[] = "invalid value for 'n_doc', the character length must be bigger than or equal to 1.";
         }
 
+        if (!is_null($this->container['unid_rat']) && ($this->container['unid_rat'] < 0)) {
+            $invalidProperties[] = "invalid value for 'unid_rat', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -436,6 +440,11 @@ class CteSefazDetContInfDocInfNF implements ModelInterface, ArrayAccess, \JsonSe
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($unid_rat) && ($unid_rat < 0)) {
+            throw new \InvalidArgumentException('invalid value for $unid_rat when calling CteSefazDetContInfDocInfNF., must be bigger than or equal to 0.');
+        }
+
         $this->container['unid_rat'] = $unid_rat;
 
         return $this;

@@ -440,24 +440,52 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_bc'] === null) {
             $invalidProperties[] = "'v_bc' can't be null";
         }
+        if (($this->container['v_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_icms'] === null) {
             $invalidProperties[] = "'v_icms' can't be null";
         }
+        if (($this->container['v_icms'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_bcst'] === null) {
             $invalidProperties[] = "'v_bcst' can't be null";
         }
+        if (($this->container['v_bcst'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bcst', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_st'] === null) {
             $invalidProperties[] = "'v_st' can't be null";
         }
+        if (($this->container['v_st'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_st', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_prod'] === null) {
             $invalidProperties[] = "'v_prod' can't be null";
         }
+        if (($this->container['v_prod'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_prod', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_nf'] === null) {
             $invalidProperties[] = "'v_nf' can't be null";
         }
+        if (($this->container['v_nf'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_nf', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['n_cfop'] === null) {
             $invalidProperties[] = "'n_cfop' can't be null";
         }
+        if (!is_null($this->container['n_peso']) && ($this->container['n_peso'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'n_peso', must be bigger than 0.";
+        }
+
         if (!is_null($this->container['pin']) && (mb_strlen($this->container['pin']) > 9)) {
             $invalidProperties[] = "invalid value for 'pin', the character length must be smaller than or equal to 9.";
         }
@@ -742,6 +770,11 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc) && ($v_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc when calling CteSefazInfNF., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc'] = $v_bc;
 
         return $this;
@@ -776,6 +809,11 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms) && ($v_icms < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms when calling CteSefazInfNF., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms'] = $v_icms;
 
         return $this;
@@ -810,6 +848,11 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bcst) && ($v_bcst < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bcst when calling CteSefazInfNF., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bcst'] = $v_bcst;
 
         return $this;
@@ -844,6 +887,11 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_st) && ($v_st < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_st when calling CteSefazInfNF., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_st'] = $v_st;
 
         return $this;
@@ -878,6 +926,11 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_prod) && ($v_prod < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_prod when calling CteSefazInfNF., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_prod'] = $v_prod;
 
         return $this;
@@ -912,6 +965,11 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_nf) && ($v_nf < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_nf when calling CteSefazInfNF., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_nf'] = $v_nf;
 
         return $this;
@@ -980,6 +1038,11 @@ class CteSefazInfNF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($n_peso) && ($n_peso <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $n_peso when calling CteSefazInfNF., must be bigger than 0.');
+        }
+
         $this->container['n_peso'] = $n_peso;
 
         return $this;

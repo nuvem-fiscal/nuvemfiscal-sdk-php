@@ -319,6 +319,26 @@ class TribOutrosPisCofins implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['cst'] === null) {
             $invalidProperties[] = "'cst' can't be null";
         }
+        if (!is_null($this->container['v_bc_pis_cofins']) && ($this->container['v_bc_pis_cofins'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc_pis_cofins', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_aliq_pis']) && ($this->container['p_aliq_pis'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_aliq_pis', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_aliq_cofins']) && ($this->container['p_aliq_cofins'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_aliq_cofins', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_pis']) && ($this->container['v_pis'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_pis', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_cofins']) && ($this->container['v_cofins'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_cofins', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -397,6 +417,11 @@ class TribOutrosPisCofins implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc_pis_cofins) && ($v_bc_pis_cofins < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc_pis_cofins when calling TribOutrosPisCofins., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc_pis_cofins'] = $v_bc_pis_cofins;
 
         return $this;
@@ -431,6 +456,11 @@ class TribOutrosPisCofins implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_aliq_pis) && ($p_aliq_pis < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_aliq_pis when calling TribOutrosPisCofins., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_aliq_pis'] = $p_aliq_pis;
 
         return $this;
@@ -465,6 +495,11 @@ class TribOutrosPisCofins implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_aliq_cofins) && ($p_aliq_cofins < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_aliq_cofins when calling TribOutrosPisCofins., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_aliq_cofins'] = $p_aliq_cofins;
 
         return $this;
@@ -499,6 +534,11 @@ class TribOutrosPisCofins implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_pis) && ($v_pis < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_pis when calling TribOutrosPisCofins., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_pis'] = $v_pis;
 
         return $this;
@@ -533,6 +573,11 @@ class TribOutrosPisCofins implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_cofins) && ($v_cofins < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_cofins when calling TribOutrosPisCofins., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_cofins'] = $v_cofins;
 
         return $this;

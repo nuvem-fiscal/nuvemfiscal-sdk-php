@@ -353,6 +353,10 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_serv_moeda'] === null) {
             $invalidProperties[] = "'v_serv_moeda' can't be null";
         }
+        if (($this->container['v_serv_moeda'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_serv_moeda', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['mec_af_comex_p'] === null) {
             $invalidProperties[] = "'mec_af_comex_p' can't be null";
         }
@@ -531,6 +535,11 @@ class ComExterior implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_serv_moeda) && ($v_serv_moeda < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_serv_moeda when calling ComExterior., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_serv_moeda'] = $v_serv_moeda;
 
         return $this;

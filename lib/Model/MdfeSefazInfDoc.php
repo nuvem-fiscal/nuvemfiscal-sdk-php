@@ -277,6 +277,14 @@ class MdfeSefazInfDoc implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['inf_mun_descarga'] === null) {
             $invalidProperties[] = "'inf_mun_descarga' can't be null";
         }
+        if ((count($this->container['inf_mun_descarga']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'inf_mun_descarga', number of items must be less than or equal to 1000.";
+        }
+
+        if ((count($this->container['inf_mun_descarga']) < 1)) {
+            $invalidProperties[] = "invalid value for 'inf_mun_descarga', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -313,6 +321,13 @@ class MdfeSefazInfDoc implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($inf_mun_descarga)) {
             throw new \InvalidArgumentException('non-nullable inf_mun_descarga cannot be null');
+        }
+
+        if ((count($inf_mun_descarga) > 1000)) {
+            throw new \InvalidArgumentException('invalid value for $inf_mun_descarga when calling MdfeSefazInfDoc., number of items must be less than or equal to 1000.');
+        }
+        if ((count($inf_mun_descarga) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $inf_mun_descarga when calling MdfeSefazInfDoc., number of items must be greater than or equal to 1.');
         }
         $this->container['inf_mun_descarga'] = $inf_mun_descarga;
 

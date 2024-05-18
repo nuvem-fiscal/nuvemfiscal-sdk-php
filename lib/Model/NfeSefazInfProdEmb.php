@@ -302,6 +302,10 @@ class NfeSefazInfProdEmb implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['q_vol_emb'] === null) {
             $invalidProperties[] = "'q_vol_emb' can't be null";
         }
+        if (($this->container['q_vol_emb'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_vol_emb', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['u_emb'] === null) {
             $invalidProperties[] = "'u_emb' can't be null";
         }
@@ -398,6 +402,11 @@ class NfeSefazInfProdEmb implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_vol_emb) && ($q_vol_emb < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_vol_emb when calling NfeSefazInfProdEmb., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_vol_emb'] = $q_vol_emb;
 
         return $this;

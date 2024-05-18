@@ -301,12 +301,24 @@ class NfeSefazCOFINSAliq implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['v_bc'] === null) {
             $invalidProperties[] = "'v_bc' can't be null";
         }
+        if (($this->container['v_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['p_cofins'] === null) {
             $invalidProperties[] = "'p_cofins' can't be null";
         }
+        if (($this->container['p_cofins'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_cofins', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_cofins'] === null) {
             $invalidProperties[] = "'v_cofins' can't be null";
         }
+        if (($this->container['v_cofins'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_cofins', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -385,6 +397,11 @@ class NfeSefazCOFINSAliq implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc) && ($v_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc when calling NfeSefazCOFINSAliq., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc'] = $v_bc;
 
         return $this;
@@ -419,6 +436,11 @@ class NfeSefazCOFINSAliq implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_cofins) && ($p_cofins < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_cofins when calling NfeSefazCOFINSAliq., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_cofins'] = $p_cofins;
 
         return $this;
@@ -453,6 +475,11 @@ class NfeSefazCOFINSAliq implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_cofins) && ($v_cofins < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_cofins when calling NfeSefazCOFINSAliq., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_cofins'] = $v_cofins;
 
         return $this;

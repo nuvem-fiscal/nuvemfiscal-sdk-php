@@ -312,6 +312,14 @@ class NfePedidoEmissaoLote implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['documentos'] === null) {
             $invalidProperties[] = "'documentos' can't be null";
         }
+        if ((count($this->container['documentos']) > 50)) {
+            $invalidProperties[] = "invalid value for 'documentos', number of items must be less than or equal to 50.";
+        }
+
+        if ((count($this->container['documentos']) < 1)) {
+            $invalidProperties[] = "invalid value for 'documentos', number of items must be greater than or equal to 1.";
+        }
+
         if ($this->container['ambiente'] === null) {
             $invalidProperties[] = "'ambiente' can't be null";
         }
@@ -363,6 +371,13 @@ class NfePedidoEmissaoLote implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         if (is_null($documentos)) {
             throw new \InvalidArgumentException('non-nullable documentos cannot be null');
+        }
+
+        if ((count($documentos) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $documentos when calling NfePedidoEmissaoLote., number of items must be less than or equal to 50.');
+        }
+        if ((count($documentos) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $documentos when calling NfePedidoEmissaoLote., number of items must be greater than or equal to 1.');
         }
         $this->container['documentos'] = $documentos;
 

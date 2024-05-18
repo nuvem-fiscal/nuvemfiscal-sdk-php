@@ -305,18 +305,38 @@ class NfcomSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['v_ret_pis'] === null) {
             $invalidProperties[] = "'v_ret_pis' can't be null";
         }
+        if (($this->container['v_ret_pis'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_ret_pis', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_ret_cofins'] === null) {
             $invalidProperties[] = "'v_ret_cofins' can't be null";
         }
+        if (($this->container['v_ret_cofins'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_ret_cofins', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_ret_csll'] === null) {
             $invalidProperties[] = "'v_ret_csll' can't be null";
         }
+        if (($this->container['v_ret_csll'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_ret_csll', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_bcirrf'] === null) {
             $invalidProperties[] = "'v_bcirrf' can't be null";
         }
+        if (($this->container['v_bcirrf'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bcirrf', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_irrf'] === null) {
             $invalidProperties[] = "'v_irrf' can't be null";
         }
+        if (($this->container['v_irrf'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_irrf', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -361,6 +381,11 @@ class NfcomSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_ret_pis) && ($v_ret_pis < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_ret_pis when calling NfcomSefazRetTrib., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_ret_pis'] = $v_ret_pis;
 
         return $this;
@@ -395,6 +420,11 @@ class NfcomSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_ret_cofins) && ($v_ret_cofins < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_ret_cofins when calling NfcomSefazRetTrib., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_ret_cofins'] = $v_ret_cofins;
 
         return $this;
@@ -429,6 +459,11 @@ class NfcomSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_ret_csll) && ($v_ret_csll < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_ret_csll when calling NfcomSefazRetTrib., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_ret_csll'] = $v_ret_csll;
 
         return $this;
@@ -463,6 +498,11 @@ class NfcomSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bcirrf) && ($v_bcirrf < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bcirrf when calling NfcomSefazRetTrib., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bcirrf'] = $v_bcirrf;
 
         return $this;
@@ -497,6 +537,11 @@ class NfcomSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_irrf) && ($v_irrf < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_irrf when calling NfcomSefazRetTrib., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_irrf'] = $v_irrf;
 
         return $this;

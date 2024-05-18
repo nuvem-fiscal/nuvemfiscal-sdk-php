@@ -295,6 +295,10 @@ class NfeSefazForDia implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['qtde'] === null) {
             $invalidProperties[] = "'qtde' can't be null";
         }
+        if (($this->container['qtde'] < 0)) {
+            $invalidProperties[] = "invalid value for 'qtde', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -381,6 +385,11 @@ class NfeSefazForDia implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($qtde) && ($qtde < 0)) {
+            throw new \InvalidArgumentException('invalid value for $qtde when calling NfeSefazForDia., must be bigger than or equal to 0.');
+        }
+
         $this->container['qtde'] = $qtde;
 
         return $this;

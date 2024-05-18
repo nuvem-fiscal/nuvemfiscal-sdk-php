@@ -340,33 +340,65 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_prod'] === null) {
             $invalidProperties[] = "'v_prod' can't be null";
         }
+        if (($this->container['v_prod'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_prod', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['icms_tot'] === null) {
             $invalidProperties[] = "'icms_tot' can't be null";
         }
         if ($this->container['v_cofins'] === null) {
             $invalidProperties[] = "'v_cofins' can't be null";
         }
+        if (($this->container['v_cofins'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_cofins', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_pis'] === null) {
             $invalidProperties[] = "'v_pis' can't be null";
         }
+        if (($this->container['v_pis'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_pis', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_funttel'] === null) {
             $invalidProperties[] = "'v_funttel' can't be null";
         }
+        if (($this->container['v_funttel'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_funttel', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_fust'] === null) {
             $invalidProperties[] = "'v_fust' can't be null";
         }
+        if (($this->container['v_fust'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_fust', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_ret_trib_tot'] === null) {
             $invalidProperties[] = "'v_ret_trib_tot' can't be null";
         }
         if ($this->container['v_desc'] === null) {
             $invalidProperties[] = "'v_desc' can't be null";
         }
+        if (($this->container['v_desc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_desc', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_outro'] === null) {
             $invalidProperties[] = "'v_outro' can't be null";
         }
+        if (($this->container['v_outro'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_outro', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_nf'] === null) {
             $invalidProperties[] = "'v_nf' can't be null";
         }
+        if (($this->container['v_nf'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_nf', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -411,6 +443,11 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_prod) && ($v_prod < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_prod when calling NfcomSefazTotal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_prod'] = $v_prod;
 
         return $this;
@@ -472,6 +509,11 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_cofins) && ($v_cofins < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_cofins when calling NfcomSefazTotal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_cofins'] = $v_cofins;
 
         return $this;
@@ -506,6 +548,11 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_pis) && ($v_pis < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_pis when calling NfcomSefazTotal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_pis'] = $v_pis;
 
         return $this;
@@ -540,6 +587,11 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_funttel) && ($v_funttel < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_funttel when calling NfcomSefazTotal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_funttel'] = $v_funttel;
 
         return $this;
@@ -574,6 +626,11 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_fust) && ($v_fust < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_fust when calling NfcomSefazTotal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_fust'] = $v_fust;
 
         return $this;
@@ -635,6 +692,11 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_desc) && ($v_desc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_desc when calling NfcomSefazTotal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_desc'] = $v_desc;
 
         return $this;
@@ -669,6 +731,11 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_outro) && ($v_outro < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_outro when calling NfcomSefazTotal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_outro'] = $v_outro;
 
         return $this;
@@ -703,6 +770,11 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_nf) && ($v_nf < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_nf when calling NfcomSefazTotal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_nf'] = $v_nf;
 
         return $this;

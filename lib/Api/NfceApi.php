@@ -448,7 +448,13 @@ class NfceApi
             );
         }
 
-
+        if ($modelo !== null && $modelo > 13) {
+            throw new \InvalidArgumentException('invalid value for "$modelo" when calling NfceApi.baixarEscPosNfce, must be smaller than or equal to 13.');
+        }
+        if ($modelo !== null && $modelo < 0) {
+            throw new \InvalidArgumentException('invalid value for "$modelo" when calling NfceApi.baixarEscPosNfce, must be bigger than or equal to 0.');
+        }
+        
 
 
 
@@ -1520,15 +1526,16 @@ class NfceApi
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
      * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
      * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
+     * @param  string $margem Define as margens do DANFE NFC-e (em milímetros).    Essa propriedade pode ser especificada usando um, dois, três ou quatro valores (separados por vírgulas). Cada valor deve ser um número entre &#x60;0&#x60; e &#x60;9&#x60;.  * Quando **um** valor é especificado, a mesma margem é aplicada para **todos os quatro lados**.  * Quando **dois** valores são especificados, a primeira margem é aplicada aos **lados esquerdo e direito**, e a segunda aos **lados superior e inferior**.  * Quando **três** valores são especificados, a primeira margem é aplicada ao **lado esquerdo**, a segunda aos **lados superior e inferior**, e a terceira ao **lado direito**.  * Quando **quatro** valores são especificados, as margens são aplicadas aos lados **esquerdo**, **superior**, **direito** e **inferior**, nesta ordem (sentido horário).    **Exemplos de uso**:  * &#x60;margem&#x3D;1&#x60;    - Margem esquerda: 1mm    - Margem superior: 1mm    - Margem direita: 1mm    - Margem inferior: 1mm  * &#x60;margem&#x3D;1,2&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 1mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3,4&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 4mm (optional, default to '2')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfce'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \SplFileObject
      */
-    public function baixarPdfNfce($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPdfNfce'][0])
+    public function baixarPdfNfce($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, $margem = '2', string $contentType = self::contentTypes['baixarPdfNfce'][0])
     {
-        list($response) = $this->baixarPdfNfceWithHttpInfo($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType);
+        list($response) = $this->baixarPdfNfceWithHttpInfo($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $margem, $contentType);
         return $response;
     }
 
@@ -1544,15 +1551,16 @@ class NfceApi
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
      * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
      * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
+     * @param  string $margem Define as margens do DANFE NFC-e (em milímetros).    Essa propriedade pode ser especificada usando um, dois, três ou quatro valores (separados por vírgulas). Cada valor deve ser um número entre &#x60;0&#x60; e &#x60;9&#x60;.  * Quando **um** valor é especificado, a mesma margem é aplicada para **todos os quatro lados**.  * Quando **dois** valores são especificados, a primeira margem é aplicada aos **lados esquerdo e direito**, e a segunda aos **lados superior e inferior**.  * Quando **três** valores são especificados, a primeira margem é aplicada ao **lado esquerdo**, a segunda aos **lados superior e inferior**, e a terceira ao **lado direito**.  * Quando **quatro** valores são especificados, as margens são aplicadas aos lados **esquerdo**, **superior**, **direito** e **inferior**, nesta ordem (sentido horário).    **Exemplos de uso**:  * &#x60;margem&#x3D;1&#x60;    - Margem esquerda: 1mm    - Margem superior: 1mm    - Margem direita: 1mm    - Margem inferior: 1mm  * &#x60;margem&#x3D;1,2&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 1mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3,4&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 4mm (optional, default to '2')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfce'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function baixarPdfNfceWithHttpInfo($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPdfNfce'][0])
+    public function baixarPdfNfceWithHttpInfo($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, $margem = '2', string $contentType = self::contentTypes['baixarPdfNfce'][0])
     {
-        $request = $this->baixarPdfNfceRequest($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType);
+        $request = $this->baixarPdfNfceRequest($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $margem, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1674,14 +1682,15 @@ class NfceApi
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
      * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
      * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
+     * @param  string $margem Define as margens do DANFE NFC-e (em milímetros).    Essa propriedade pode ser especificada usando um, dois, três ou quatro valores (separados por vírgulas). Cada valor deve ser um número entre &#x60;0&#x60; e &#x60;9&#x60;.  * Quando **um** valor é especificado, a mesma margem é aplicada para **todos os quatro lados**.  * Quando **dois** valores são especificados, a primeira margem é aplicada aos **lados esquerdo e direito**, e a segunda aos **lados superior e inferior**.  * Quando **três** valores são especificados, a primeira margem é aplicada ao **lado esquerdo**, a segunda aos **lados superior e inferior**, e a terceira ao **lado direito**.  * Quando **quatro** valores são especificados, as margens são aplicadas aos lados **esquerdo**, **superior**, **direito** e **inferior**, nesta ordem (sentido horário).    **Exemplos de uso**:  * &#x60;margem&#x3D;1&#x60;    - Margem esquerda: 1mm    - Margem superior: 1mm    - Margem direita: 1mm    - Margem inferior: 1mm  * &#x60;margem&#x3D;1,2&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 1mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3,4&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 4mm (optional, default to '2')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPdfNfceAsync($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPdfNfce'][0])
+    public function baixarPdfNfceAsync($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, $margem = '2', string $contentType = self::contentTypes['baixarPdfNfce'][0])
     {
-        return $this->baixarPdfNfceAsyncWithHttpInfo($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType)
+        return $this->baixarPdfNfceAsyncWithHttpInfo($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $margem, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1701,15 +1710,16 @@ class NfceApi
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
      * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
      * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
+     * @param  string $margem Define as margens do DANFE NFC-e (em milímetros).    Essa propriedade pode ser especificada usando um, dois, três ou quatro valores (separados por vírgulas). Cada valor deve ser um número entre &#x60;0&#x60; e &#x60;9&#x60;.  * Quando **um** valor é especificado, a mesma margem é aplicada para **todos os quatro lados**.  * Quando **dois** valores são especificados, a primeira margem é aplicada aos **lados esquerdo e direito**, e a segunda aos **lados superior e inferior**.  * Quando **três** valores são especificados, a primeira margem é aplicada ao **lado esquerdo**, a segunda aos **lados superior e inferior**, e a terceira ao **lado direito**.  * Quando **quatro** valores são especificados, as margens são aplicadas aos lados **esquerdo**, **superior**, **direito** e **inferior**, nesta ordem (sentido horário).    **Exemplos de uso**:  * &#x60;margem&#x3D;1&#x60;    - Margem esquerda: 1mm    - Margem superior: 1mm    - Margem direita: 1mm    - Margem inferior: 1mm  * &#x60;margem&#x3D;1,2&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 1mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3,4&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 4mm (optional, default to '2')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPdfNfceAsyncWithHttpInfo($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPdfNfce'][0])
+    public function baixarPdfNfceAsyncWithHttpInfo($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, $margem = '2', string $contentType = self::contentTypes['baixarPdfNfce'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->baixarPdfNfceRequest($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType);
+        $request = $this->baixarPdfNfceRequest($id, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $margem, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1757,12 +1767,13 @@ class NfceApi
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
      * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
      * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
+     * @param  string $margem Define as margens do DANFE NFC-e (em milímetros).    Essa propriedade pode ser especificada usando um, dois, três ou quatro valores (separados por vírgulas). Cada valor deve ser um número entre &#x60;0&#x60; e &#x60;9&#x60;.  * Quando **um** valor é especificado, a mesma margem é aplicada para **todos os quatro lados**.  * Quando **dois** valores são especificados, a primeira margem é aplicada aos **lados esquerdo e direito**, e a segunda aos **lados superior e inferior**.  * Quando **três** valores são especificados, a primeira margem é aplicada ao **lado esquerdo**, a segunda aos **lados superior e inferior**, e a terceira ao **lado direito**.  * Quando **quatro** valores são especificados, as margens são aplicadas aos lados **esquerdo**, **superior**, **direito** e **inferior**, nesta ordem (sentido horário).    **Exemplos de uso**:  * &#x60;margem&#x3D;1&#x60;    - Margem esquerda: 1mm    - Margem superior: 1mm    - Margem direita: 1mm    - Margem inferior: 1mm  * &#x60;margem&#x3D;1,2&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 1mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3,4&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 4mm (optional, default to '2')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPdfNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function baixarPdfNfceRequest($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPdfNfce'][0])
+    public function baixarPdfNfceRequest($id, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, $margem = '2', string $contentType = self::contentTypes['baixarPdfNfce'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -1774,9 +1785,19 @@ class NfceApi
 
 
 
+        if ($mensagem_rodape !== null && strlen($mensagem_rodape) > 120) {
+            throw new \InvalidArgumentException('invalid length for "$mensagem_rodape" when calling NfceApi.baixarPdfNfce, must be smaller than or equal to 120.');
+        }
+        
 
 
-
+        if ($largura !== null && $largura > 80) {
+            throw new \InvalidArgumentException('invalid value for "$largura" when calling NfceApi.baixarPdfNfce, must be smaller than or equal to 80.');
+        }
+        if ($largura !== null && $largura < 40) {
+            throw new \InvalidArgumentException('invalid value for "$largura" when calling NfceApi.baixarPdfNfce, must be bigger than or equal to 40.');
+        }
+        
 
 
         $resourcePath = '/nfce/{id}/pdf';
@@ -1836,6 +1857,15 @@ class NfceApi
             $largura,
             'largura', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $margem,
+            'margem', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -1926,15 +1956,16 @@ class NfceApi
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
      * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
      * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
+     * @param  string $margem Define as margens do DANFE NFC-e (em milímetros).    Essa propriedade pode ser especificada usando um, dois, três ou quatro valores (separados por vírgulas). Cada valor deve ser um número entre &#x60;0&#x60; e &#x60;9&#x60;.  * Quando **um** valor é especificado, a mesma margem é aplicada para **todos os quatro lados**.  * Quando **dois** valores são especificados, a primeira margem é aplicada aos **lados esquerdo e direito**, e a segunda aos **lados superior e inferior**.  * Quando **três** valores são especificados, a primeira margem é aplicada ao **lado esquerdo**, a segunda aos **lados superior e inferior**, e a terceira ao **lado direito**.  * Quando **quatro** valores são especificados, as margens são aplicadas aos lados **esquerdo**, **superior**, **direito** e **inferior**, nesta ordem (sentido horário).    **Exemplos de uso**:  * &#x60;margem&#x3D;1&#x60;    - Margem esquerda: 1mm    - Margem superior: 1mm    - Margem direita: 1mm    - Margem inferior: 1mm  * &#x60;margem&#x3D;1,2&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 1mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3,4&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 4mm (optional, default to '2')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfce'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \SplFileObject
      */
-    public function baixarPreviaPdfNfce($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
+    public function baixarPreviaPdfNfce($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, $margem = '2', string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
     {
-        list($response) = $this->baixarPreviaPdfNfceWithHttpInfo($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType);
+        list($response) = $this->baixarPreviaPdfNfceWithHttpInfo($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $margem, $contentType);
         return $response;
     }
 
@@ -1950,15 +1981,16 @@ class NfceApi
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
      * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
      * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
+     * @param  string $margem Define as margens do DANFE NFC-e (em milímetros).    Essa propriedade pode ser especificada usando um, dois, três ou quatro valores (separados por vírgulas). Cada valor deve ser um número entre &#x60;0&#x60; e &#x60;9&#x60;.  * Quando **um** valor é especificado, a mesma margem é aplicada para **todos os quatro lados**.  * Quando **dois** valores são especificados, a primeira margem é aplicada aos **lados esquerdo e direito**, e a segunda aos **lados superior e inferior**.  * Quando **três** valores são especificados, a primeira margem é aplicada ao **lado esquerdo**, a segunda aos **lados superior e inferior**, e a terceira ao **lado direito**.  * Quando **quatro** valores são especificados, as margens são aplicadas aos lados **esquerdo**, **superior**, **direito** e **inferior**, nesta ordem (sentido horário).    **Exemplos de uso**:  * &#x60;margem&#x3D;1&#x60;    - Margem esquerda: 1mm    - Margem superior: 1mm    - Margem direita: 1mm    - Margem inferior: 1mm  * &#x60;margem&#x3D;1,2&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 1mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3,4&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 4mm (optional, default to '2')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfce'] to see the possible values for this operation
      *
      * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function baixarPreviaPdfNfceWithHttpInfo($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
+    public function baixarPreviaPdfNfceWithHttpInfo($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, $margem = '2', string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
     {
-        $request = $this->baixarPreviaPdfNfceRequest($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType);
+        $request = $this->baixarPreviaPdfNfceRequest($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $margem, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2080,14 +2112,15 @@ class NfceApi
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
      * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
      * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
+     * @param  string $margem Define as margens do DANFE NFC-e (em milímetros).    Essa propriedade pode ser especificada usando um, dois, três ou quatro valores (separados por vírgulas). Cada valor deve ser um número entre &#x60;0&#x60; e &#x60;9&#x60;.  * Quando **um** valor é especificado, a mesma margem é aplicada para **todos os quatro lados**.  * Quando **dois** valores são especificados, a primeira margem é aplicada aos **lados esquerdo e direito**, e a segunda aos **lados superior e inferior**.  * Quando **três** valores são especificados, a primeira margem é aplicada ao **lado esquerdo**, a segunda aos **lados superior e inferior**, e a terceira ao **lado direito**.  * Quando **quatro** valores são especificados, as margens são aplicadas aos lados **esquerdo**, **superior**, **direito** e **inferior**, nesta ordem (sentido horário).    **Exemplos de uso**:  * &#x60;margem&#x3D;1&#x60;    - Margem esquerda: 1mm    - Margem superior: 1mm    - Margem direita: 1mm    - Margem inferior: 1mm  * &#x60;margem&#x3D;1,2&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 1mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3,4&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 4mm (optional, default to '2')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPreviaPdfNfceAsync($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
+    public function baixarPreviaPdfNfceAsync($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, $margem = '2', string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
     {
-        return $this->baixarPreviaPdfNfceAsyncWithHttpInfo($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType)
+        return $this->baixarPreviaPdfNfceAsyncWithHttpInfo($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $margem, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2107,15 +2140,16 @@ class NfceApi
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
      * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
      * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
+     * @param  string $margem Define as margens do DANFE NFC-e (em milímetros).    Essa propriedade pode ser especificada usando um, dois, três ou quatro valores (separados por vírgulas). Cada valor deve ser um número entre &#x60;0&#x60; e &#x60;9&#x60;.  * Quando **um** valor é especificado, a mesma margem é aplicada para **todos os quatro lados**.  * Quando **dois** valores são especificados, a primeira margem é aplicada aos **lados esquerdo e direito**, e a segunda aos **lados superior e inferior**.  * Quando **três** valores são especificados, a primeira margem é aplicada ao **lado esquerdo**, a segunda aos **lados superior e inferior**, e a terceira ao **lado direito**.  * Quando **quatro** valores são especificados, as margens são aplicadas aos lados **esquerdo**, **superior**, **direito** e **inferior**, nesta ordem (sentido horário).    **Exemplos de uso**:  * &#x60;margem&#x3D;1&#x60;    - Margem esquerda: 1mm    - Margem superior: 1mm    - Margem direita: 1mm    - Margem inferior: 1mm  * &#x60;margem&#x3D;1,2&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 1mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3,4&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 4mm (optional, default to '2')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function baixarPreviaPdfNfceAsyncWithHttpInfo($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
+    public function baixarPreviaPdfNfceAsyncWithHttpInfo($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, $margem = '2', string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->baixarPreviaPdfNfceRequest($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $contentType);
+        $request = $this->baixarPreviaPdfNfceRequest($body, $logotipo, $nome_fantasia, $mensagem_rodape, $resumido, $qrcode_lateral, $largura, $margem, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2163,12 +2197,13 @@ class NfceApi
      * @param  bool $resumido Poderá ser impresso apenas o DANFE NFC-e resumido ou ecológico, sem o detalhamento dos itens da venda, desde que a Unidade Federada permita esta opção em sua legislação e o consumidor assim o solicite. (optional, default to false)
      * @param  bool $qrcode_lateral Imprime o QRCode na lateral do DANFE NFC-e.    *Disponível apenas para DANFE com 80 milímetros de largura*. (optional, default to false)
      * @param  int $largura Largura do DANFE NFC-e (em milímetros). (optional, default to 80)
+     * @param  string $margem Define as margens do DANFE NFC-e (em milímetros).    Essa propriedade pode ser especificada usando um, dois, três ou quatro valores (separados por vírgulas). Cada valor deve ser um número entre &#x60;0&#x60; e &#x60;9&#x60;.  * Quando **um** valor é especificado, a mesma margem é aplicada para **todos os quatro lados**.  * Quando **dois** valores são especificados, a primeira margem é aplicada aos **lados esquerdo e direito**, e a segunda aos **lados superior e inferior**.  * Quando **três** valores são especificados, a primeira margem é aplicada ao **lado esquerdo**, a segunda aos **lados superior e inferior**, e a terceira ao **lado direito**.  * Quando **quatro** valores são especificados, as margens são aplicadas aos lados **esquerdo**, **superior**, **direito** e **inferior**, nesta ordem (sentido horário).    **Exemplos de uso**:  * &#x60;margem&#x3D;1&#x60;    - Margem esquerda: 1mm    - Margem superior: 1mm    - Margem direita: 1mm    - Margem inferior: 1mm  * &#x60;margem&#x3D;1,2&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 1mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 2mm  * &#x60;margem&#x3D;1,2,3,4&#x60;    - Margem esquerda: 1mm    - Margem superior: 2mm    - Margem direita: 3mm    - Margem inferior: 4mm (optional, default to '2')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['baixarPreviaPdfNfce'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function baixarPreviaPdfNfceRequest($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
+    public function baixarPreviaPdfNfceRequest($body, $logotipo = false, $nome_fantasia = false, $mensagem_rodape = null, $resumido = false, $qrcode_lateral = false, $largura = 80, $margem = '2', string $contentType = self::contentTypes['baixarPreviaPdfNfce'][0])
     {
 
         // verify the required parameter 'body' is set
@@ -2180,9 +2215,19 @@ class NfceApi
 
 
 
+        if ($mensagem_rodape !== null && strlen($mensagem_rodape) > 120) {
+            throw new \InvalidArgumentException('invalid length for "$mensagem_rodape" when calling NfceApi.baixarPreviaPdfNfce, must be smaller than or equal to 120.');
+        }
+        
 
 
-
+        if ($largura !== null && $largura > 80) {
+            throw new \InvalidArgumentException('invalid value for "$largura" when calling NfceApi.baixarPreviaPdfNfce, must be smaller than or equal to 80.');
+        }
+        if ($largura !== null && $largura < 40) {
+            throw new \InvalidArgumentException('invalid value for "$largura" when calling NfceApi.baixarPreviaPdfNfce, must be bigger than or equal to 40.');
+        }
+        
 
 
         $resourcePath = '/nfce/previa/pdf';
@@ -2242,6 +2287,15 @@ class NfceApi
             $largura,
             'largura', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $margem,
+            'margem', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required

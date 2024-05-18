@@ -277,6 +277,10 @@ class NfeSefazImpostoDevolIPI implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['v_ipi_devol'] === null) {
             $invalidProperties[] = "'v_ipi_devol' can't be null";
         }
+        if (($this->container['v_ipi_devol'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_ipi_devol', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -321,6 +325,11 @@ class NfeSefazImpostoDevolIPI implements ModelInterface, ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_ipi_devol) && ($v_ipi_devol < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_ipi_devol when calling NfeSefazImpostoDevolIPI., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_ipi_devol'] = $v_ipi_devol;
 
         return $this;

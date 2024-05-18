@@ -306,6 +306,10 @@ class CteSefazTarifa implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_tar'] === null) {
             $invalidProperties[] = "'v_tar' can't be null";
         }
+        if (($this->container['v_tar'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_tar', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -429,6 +433,11 @@ class CteSefazTarifa implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_tar) && ($v_tar < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_tar when calling CteSefazTarifa., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_tar'] = $v_tar;
 
         return $this;

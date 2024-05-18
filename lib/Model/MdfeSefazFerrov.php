@@ -286,6 +286,10 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['vag'] === null) {
             $invalidProperties[] = "'vag' can't be null";
         }
+        if ((count($this->container['vag']) < 1)) {
+            $invalidProperties[] = "invalid value for 'vag', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -349,6 +353,11 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($vag)) {
             throw new \InvalidArgumentException('non-nullable vag cannot be null');
+        }
+
+
+        if ((count($vag) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $vag when calling MdfeSefazFerrov., number of items must be greater than or equal to 1.');
         }
         $this->container['vag'] = $vag;
 

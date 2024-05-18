@@ -393,6 +393,14 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['condutor'] === null) {
             $invalidProperties[] = "'condutor' can't be null";
         }
+        if ((count($this->container['condutor']) > 10)) {
+            $invalidProperties[] = "invalid value for 'condutor', number of items must be less than or equal to 10.";
+        }
+
+        if ((count($this->container['condutor']) < 1)) {
+            $invalidProperties[] = "invalid value for 'condutor', number of items must be greater than or equal to 1.";
+        }
+
         if ($this->container['tp_rod'] === null) {
             $invalidProperties[] = "'tp_rod' can't be null";
         }
@@ -704,6 +712,13 @@ class MdfeSefazVeicTracao implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         if (is_null($condutor)) {
             throw new \InvalidArgumentException('non-nullable condutor cannot be null');
+        }
+
+        if ((count($condutor) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $condutor when calling MdfeSefazVeicTracao., number of items must be less than or equal to 10.');
+        }
+        if ((count($condutor) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $condutor when calling MdfeSefazVeicTracao., number of items must be greater than or equal to 1.');
         }
         $this->container['condutor'] = $condutor;
 

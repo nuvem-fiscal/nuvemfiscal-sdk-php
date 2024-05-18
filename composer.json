@@ -1,6 +1,6 @@
 {
     "name": "nuvem-fiscal/nuvemfiscal-sdk-php",
-    "version": "2.26.0",
+    "version": "2.28.0",
     "description": "API para automação comercial e documentos fiscais.",
     "keywords": [
         "openapitools",

@@ -316,6 +316,18 @@ class MdfeSefazInfMunDescarga implements ModelInterface, ArrayAccess, \JsonSeria
             $invalidProperties[] = "invalid value for 'x_mun_descarga', the character length must be bigger than or equal to 2.";
         }
 
+        if (!is_null($this->container['inf_cte']) && (count($this->container['inf_cte']) > 10000)) {
+            $invalidProperties[] = "invalid value for 'inf_cte', number of items must be less than or equal to 10000.";
+        }
+
+        if (!is_null($this->container['inf_nfe']) && (count($this->container['inf_nfe']) > 10000)) {
+            $invalidProperties[] = "invalid value for 'inf_nfe', number of items must be less than or equal to 10000.";
+        }
+
+        if (!is_null($this->container['inf_mdfe_transp']) && (count($this->container['inf_mdfe_transp']) > 10000)) {
+            $invalidProperties[] = "invalid value for 'inf_mdfe_transp', number of items must be less than or equal to 10000.";
+        }
+
         return $invalidProperties;
     }
 
@@ -428,6 +440,10 @@ class MdfeSefazInfMunDescarga implements ModelInterface, ArrayAccess, \JsonSeria
         if (is_null($inf_cte)) {
             throw new \InvalidArgumentException('non-nullable inf_cte cannot be null');
         }
+
+        if ((count($inf_cte) > 10000)) {
+            throw new \InvalidArgumentException('invalid value for $inf_cte when calling MdfeSefazInfMunDescarga., number of items must be less than or equal to 10000.');
+        }
         $this->container['inf_cte'] = $inf_cte;
 
         return $this;
@@ -455,6 +471,10 @@ class MdfeSefazInfMunDescarga implements ModelInterface, ArrayAccess, \JsonSeria
         if (is_null($inf_nfe)) {
             throw new \InvalidArgumentException('non-nullable inf_nfe cannot be null');
         }
+
+        if ((count($inf_nfe) > 10000)) {
+            throw new \InvalidArgumentException('invalid value for $inf_nfe when calling MdfeSefazInfMunDescarga., number of items must be less than or equal to 10000.');
+        }
         $this->container['inf_nfe'] = $inf_nfe;
 
         return $this;
@@ -481,6 +501,10 @@ class MdfeSefazInfMunDescarga implements ModelInterface, ArrayAccess, \JsonSeria
     {
         if (is_null($inf_mdfe_transp)) {
             throw new \InvalidArgumentException('non-nullable inf_mdfe_transp cannot be null');
+        }
+
+        if ((count($inf_mdfe_transp) > 10000)) {
+            throw new \InvalidArgumentException('invalid value for $inf_mdfe_transp when calling MdfeSefazInfMunDescarga., number of items must be less than or equal to 10000.');
         }
         $this->container['inf_mdfe_transp'] = $inf_mdfe_transp;
 

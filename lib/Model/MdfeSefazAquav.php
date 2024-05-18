@@ -433,6 +433,18 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'prt_trans', the character length must be bigger than or equal to 1.";
         }
 
+        if (!is_null($this->container['inf_term_carreg']) && (count($this->container['inf_term_carreg']) > 5)) {
+            $invalidProperties[] = "invalid value for 'inf_term_carreg', number of items must be less than or equal to 5.";
+        }
+
+        if (!is_null($this->container['inf_term_descarreg']) && (count($this->container['inf_term_descarreg']) > 5)) {
+            $invalidProperties[] = "invalid value for 'inf_term_descarreg', number of items must be less than or equal to 5.";
+        }
+
+        if (!is_null($this->container['inf_emb_comb']) && (count($this->container['inf_emb_comb']) > 30)) {
+            $invalidProperties[] = "invalid value for 'inf_emb_comb', number of items must be less than or equal to 30.";
+        }
+
         return $invalidProperties;
     }
 
@@ -818,6 +830,10 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($inf_term_carreg)) {
             throw new \InvalidArgumentException('non-nullable inf_term_carreg cannot be null');
         }
+
+        if ((count($inf_term_carreg) > 5)) {
+            throw new \InvalidArgumentException('invalid value for $inf_term_carreg when calling MdfeSefazAquav., number of items must be less than or equal to 5.');
+        }
         $this->container['inf_term_carreg'] = $inf_term_carreg;
 
         return $this;
@@ -845,6 +861,10 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($inf_term_descarreg)) {
             throw new \InvalidArgumentException('non-nullable inf_term_descarreg cannot be null');
         }
+
+        if ((count($inf_term_descarreg) > 5)) {
+            throw new \InvalidArgumentException('invalid value for $inf_term_descarreg when calling MdfeSefazAquav., number of items must be less than or equal to 5.');
+        }
         $this->container['inf_term_descarreg'] = $inf_term_descarreg;
 
         return $this;
@@ -871,6 +891,10 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($inf_emb_comb)) {
             throw new \InvalidArgumentException('non-nullable inf_emb_comb cannot be null');
+        }
+
+        if ((count($inf_emb_comb) > 30)) {
+            throw new \InvalidArgumentException('invalid value for $inf_emb_comb when calling MdfeSefazAquav., number of items must be less than or equal to 30.');
         }
         $this->container['inf_emb_comb'] = $inf_emb_comb;
 

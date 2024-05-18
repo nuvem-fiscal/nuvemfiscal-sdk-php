@@ -302,6 +302,10 @@ class NfeSefazMed implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_pmc'] === null) {
             $invalidProperties[] = "'v_pmc' can't be null";
         }
+        if (($this->container['v_pmc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_pmc', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -421,6 +425,11 @@ class NfeSefazMed implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_pmc) && ($v_pmc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_pmc when calling NfeSefazMed., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_pmc'] = $v_pmc;
 
         return $this;

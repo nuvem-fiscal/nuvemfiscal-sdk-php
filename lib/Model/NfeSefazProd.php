@@ -583,8 +583,16 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['ncm'] === null) {
             $invalidProperties[] = "'ncm' can't be null";
         }
+        if (!is_null($this->container['nve']) && (count($this->container['nve']) > 8)) {
+            $invalidProperties[] = "invalid value for 'nve', number of items must be less than or equal to 8.";
+        }
+
         if (!is_null($this->container['cnpj_fab']) && (mb_strlen($this->container['cnpj_fab']) > 14)) {
             $invalidProperties[] = "invalid value for 'cnpj_fab', the character length must be smaller than or equal to 14.";
+        }
+
+        if (!is_null($this->container['g_cred']) && (count($this->container['g_cred']) > 4)) {
+            $invalidProperties[] = "invalid value for 'g_cred', number of items must be less than or equal to 4.";
         }
 
         if ($this->container['cfop'] === null) {
@@ -604,12 +612,24 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['q_com'] === null) {
             $invalidProperties[] = "'q_com' can't be null";
         }
+        if (($this->container['q_com'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_com', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_un_com'] === null) {
             $invalidProperties[] = "'v_un_com' can't be null";
         }
+        if (($this->container['v_un_com'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_un_com', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_prod'] === null) {
             $invalidProperties[] = "'v_prod' can't be null";
         }
+        if (($this->container['v_prod'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_prod', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['c_ean_trib'] === null) {
             $invalidProperties[] = "'c_ean_trib' can't be null";
         }
@@ -635,12 +655,44 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['q_trib'] === null) {
             $invalidProperties[] = "'q_trib' can't be null";
         }
+        if (($this->container['q_trib'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_trib', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_un_trib'] === null) {
             $invalidProperties[] = "'v_un_trib' can't be null";
         }
+        if (($this->container['v_un_trib'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_un_trib', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_frete']) && ($this->container['v_frete'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_frete', must be bigger than 0.";
+        }
+
+        if (!is_null($this->container['v_seg']) && ($this->container['v_seg'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_seg', must be bigger than 0.";
+        }
+
+        if (!is_null($this->container['v_desc']) && ($this->container['v_desc'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_desc', must be bigger than 0.";
+        }
+
+        if (!is_null($this->container['v_outro']) && ($this->container['v_outro'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_outro', must be bigger than 0.";
+        }
+
         if ($this->container['ind_tot'] === null) {
             $invalidProperties[] = "'ind_tot' can't be null";
         }
+        if (!is_null($this->container['di']) && (count($this->container['di']) > 100)) {
+            $invalidProperties[] = "invalid value for 'di', number of items must be less than or equal to 100.";
+        }
+
+        if (!is_null($this->container['det_export']) && (count($this->container['det_export']) > 500)) {
+            $invalidProperties[] = "invalid value for 'det_export', number of items must be less than or equal to 500.";
+        }
+
         if (!is_null($this->container['x_ped']) && (mb_strlen($this->container['x_ped']) > 15)) {
             $invalidProperties[] = "invalid value for 'x_ped', the character length must be smaller than or equal to 15.";
         }
@@ -655,6 +707,14 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['n_item_ped']) && ($this->container['n_item_ped'] < 0)) {
             $invalidProperties[] = "invalid value for 'n_item_ped', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['rastro']) && (count($this->container['rastro']) > 500)) {
+            $invalidProperties[] = "invalid value for 'rastro', number of items must be less than or equal to 500.";
+        }
+
+        if (!is_null($this->container['arma']) && (count($this->container['arma']) > 500)) {
+            $invalidProperties[] = "invalid value for 'arma', number of items must be less than or equal to 500.";
         }
 
         if (!is_null($this->container['n_recopi']) && (mb_strlen($this->container['n_recopi']) > 20)) {
@@ -889,6 +949,10 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($nve)) {
             throw new \InvalidArgumentException('non-nullable nve cannot be null');
         }
+
+        if ((count($nve) > 8)) {
+            throw new \InvalidArgumentException('invalid value for $nve when calling NfeSefazProd., number of items must be less than or equal to 8.');
+        }
         $this->container['nve'] = $nve;
 
         return $this;
@@ -1056,6 +1120,10 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($g_cred)) {
             throw new \InvalidArgumentException('non-nullable g_cred cannot be null');
         }
+
+        if ((count($g_cred) > 4)) {
+            throw new \InvalidArgumentException('invalid value for $g_cred when calling NfeSefazProd., number of items must be less than or equal to 4.');
+        }
         $this->container['g_cred'] = $g_cred;
 
         return $this;
@@ -1199,6 +1267,11 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_com) && ($q_com < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_com when calling NfeSefazProd., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_com'] = $q_com;
 
         return $this;
@@ -1233,6 +1306,11 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_un_com) && ($v_un_com < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_un_com when calling NfeSefazProd., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_un_com'] = $v_un_com;
 
         return $this;
@@ -1267,6 +1345,11 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_prod) && ($v_prod < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_prod when calling NfeSefazProd., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_prod'] = $v_prod;
 
         return $this;
@@ -1417,6 +1500,11 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_trib) && ($q_trib < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_trib when calling NfeSefazProd., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_trib'] = $q_trib;
 
         return $this;
@@ -1451,6 +1539,11 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_un_trib) && ($v_un_trib < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_un_trib when calling NfeSefazProd., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_un_trib'] = $v_un_trib;
 
         return $this;
@@ -1485,6 +1578,11 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_frete) && ($v_frete <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_frete when calling NfeSefazProd., must be bigger than 0.');
+        }
+
         $this->container['v_frete'] = $v_frete;
 
         return $this;
@@ -1519,6 +1617,11 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_seg) && ($v_seg <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_seg when calling NfeSefazProd., must be bigger than 0.');
+        }
+
         $this->container['v_seg'] = $v_seg;
 
         return $this;
@@ -1553,6 +1656,11 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_desc) && ($v_desc <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_desc when calling NfeSefazProd., must be bigger than 0.');
+        }
+
         $this->container['v_desc'] = $v_desc;
 
         return $this;
@@ -1587,6 +1695,11 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_outro) && ($v_outro <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_outro when calling NfeSefazProd., must be bigger than 0.');
+        }
+
         $this->container['v_outro'] = $v_outro;
 
         return $this;
@@ -1648,6 +1761,10 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($di)) {
             throw new \InvalidArgumentException('non-nullable di cannot be null');
         }
+
+        if ((count($di) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $di when calling NfeSefazProd., number of items must be less than or equal to 100.');
+        }
         $this->container['di'] = $di;
 
         return $this;
@@ -1674,6 +1791,10 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($det_export)) {
             throw new \InvalidArgumentException('non-nullable det_export cannot be null');
+        }
+
+        if ((count($det_export) > 500)) {
+            throw new \InvalidArgumentException('invalid value for $det_export when calling NfeSefazProd., number of items must be less than or equal to 500.');
         }
         $this->container['det_export'] = $det_export;
 
@@ -1819,6 +1940,10 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($rastro)) {
             throw new \InvalidArgumentException('non-nullable rastro cannot be null');
         }
+
+        if ((count($rastro) > 500)) {
+            throw new \InvalidArgumentException('invalid value for $rastro when calling NfeSefazProd., number of items must be less than or equal to 500.');
+        }
         $this->container['rastro'] = $rastro;
 
         return $this;
@@ -1953,6 +2078,10 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($arma)) {
             throw new \InvalidArgumentException('non-nullable arma cannot be null');
+        }
+
+        if ((count($arma) > 500)) {
+            throw new \InvalidArgumentException('invalid value for $arma when calling NfeSefazProd., number of items must be less than or equal to 500.');
         }
         $this->container['arma'] = $arma;
 

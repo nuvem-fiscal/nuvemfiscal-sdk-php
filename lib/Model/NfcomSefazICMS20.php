@@ -336,17 +336,45 @@ class NfcomSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['p_red_bc'] === null) {
             $invalidProperties[] = "'p_red_bc' can't be null";
         }
+        if (($this->container['p_red_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_red_bc', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_bc'] === null) {
             $invalidProperties[] = "'v_bc' can't be null";
         }
+        if (($this->container['v_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['p_icms'] === null) {
             $invalidProperties[] = "'p_icms' can't be null";
         }
+        if (($this->container['p_icms'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_icms', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_icms'] === null) {
             $invalidProperties[] = "'v_icms' can't be null";
         }
+        if (($this->container['v_icms'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_icms_deson']) && ($this->container['v_icms_deson'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_deson', must be bigger than or equal to 0.";
+        }
+
         if (!is_null($this->container['c_benef']) && (mb_strlen($this->container['c_benef']) > 10)) {
             $invalidProperties[] = "invalid value for 'c_benef', the character length must be smaller than or equal to 10.";
+        }
+
+        if (!is_null($this->container['p_fcp']) && ($this->container['p_fcp'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_fcp', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_fcp']) && ($this->container['v_fcp'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_fcp', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -427,6 +455,11 @@ class NfcomSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_red_bc) && ($p_red_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_red_bc when calling NfcomSefazICMS20., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_red_bc'] = $p_red_bc;
 
         return $this;
@@ -461,6 +494,11 @@ class NfcomSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc) && ($v_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc when calling NfcomSefazICMS20., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc'] = $v_bc;
 
         return $this;
@@ -495,6 +533,11 @@ class NfcomSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_icms) && ($p_icms < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_icms when calling NfcomSefazICMS20., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_icms'] = $p_icms;
 
         return $this;
@@ -529,6 +572,11 @@ class NfcomSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms) && ($v_icms < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms when calling NfcomSefazICMS20., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms'] = $v_icms;
 
         return $this;
@@ -563,6 +611,11 @@ class NfcomSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_deson) && ($v_icms_deson < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_deson when calling NfcomSefazICMS20., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_deson'] = $v_icms_deson;
 
         return $this;
@@ -635,6 +688,11 @@ class NfcomSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_fcp) && ($p_fcp < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_fcp when calling NfcomSefazICMS20., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_fcp'] = $p_fcp;
 
         return $this;
@@ -669,6 +727,11 @@ class NfcomSefazICMS20 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_fcp) && ($v_fcp < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_fcp when calling NfcomSefazICMS20., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_fcp'] = $v_fcp;
 
         return $this;

@@ -347,6 +347,22 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['trib_issqn'] === null) {
             $invalidProperties[] = "'trib_issqn' can't be null";
         }
+        if (!is_null($this->container['v_bc']) && ($this->container['v_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_aliq']) && ($this->container['p_aliq'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_aliq', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_issqn']) && ($this->container['v_issqn'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_issqn', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_liq']) && ($this->container['v_liq'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_liq', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -581,6 +597,11 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc) && ($v_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc when calling TribMunicipal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc'] = $v_bc;
 
         return $this;
@@ -615,6 +636,11 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_aliq) && ($p_aliq < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_aliq when calling TribMunicipal., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_aliq'] = $p_aliq;
 
         return $this;
@@ -649,6 +675,11 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_issqn) && ($v_issqn < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_issqn when calling TribMunicipal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_issqn'] = $v_issqn;
 
         return $this;
@@ -717,6 +748,11 @@ class TribMunicipal implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_liq) && ($v_liq < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_liq when calling TribMunicipal., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_liq'] = $v_liq;
 
         return $this;

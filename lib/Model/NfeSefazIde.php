@@ -528,6 +528,10 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'x_just', the character length must be bigger than or equal to 15.";
         }
 
+        if (!is_null($this->container['n_fref']) && (count($this->container['n_fref']) > 999)) {
+            $invalidProperties[] = "invalid value for 'n_fref', number of items must be less than or equal to 999.";
+        }
+
         return $invalidProperties;
     }
 
@@ -1391,6 +1395,10 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($n_fref)) {
             throw new \InvalidArgumentException('non-nullable n_fref cannot be null');
+        }
+
+        if ((count($n_fref) > 999)) {
+            throw new \InvalidArgumentException('invalid value for $n_fref when calling NfeSefazIde., number of items must be less than or equal to 999.');
         }
         $this->container['n_fref'] = $n_fref;
 

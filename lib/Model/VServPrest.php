@@ -281,9 +281,17 @@ class VServPrest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['v_receb']) && ($this->container['v_receb'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_receb', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_serv'] === null) {
             $invalidProperties[] = "'v_serv' can't be null";
         }
+        if (($this->container['v_serv'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_serv', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -328,6 +336,11 @@ class VServPrest implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_receb) && ($v_receb < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_receb when calling VServPrest., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_receb'] = $v_receb;
 
         return $this;
@@ -362,6 +375,11 @@ class VServPrest implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_serv) && ($v_serv < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_serv when calling VServPrest., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_serv'] = $v_serv;
 
         return $this;

@@ -291,12 +291,24 @@ class TribTotalPercent implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['p_tot_trib_fed'] === null) {
             $invalidProperties[] = "'p_tot_trib_fed' can't be null";
         }
+        if (($this->container['p_tot_trib_fed'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_tot_trib_fed', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['p_tot_trib_est'] === null) {
             $invalidProperties[] = "'p_tot_trib_est' can't be null";
         }
+        if (($this->container['p_tot_trib_est'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_tot_trib_est', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['p_tot_trib_mun'] === null) {
             $invalidProperties[] = "'p_tot_trib_mun' can't be null";
         }
+        if (($this->container['p_tot_trib_mun'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_tot_trib_mun', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -341,6 +353,11 @@ class TribTotalPercent implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_tot_trib_fed) && ($p_tot_trib_fed < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_tot_trib_fed when calling TribTotalPercent., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_tot_trib_fed'] = $p_tot_trib_fed;
 
         return $this;
@@ -375,6 +392,11 @@ class TribTotalPercent implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_tot_trib_est) && ($p_tot_trib_est < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_tot_trib_est when calling TribTotalPercent., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_tot_trib_est'] = $p_tot_trib_est;
 
         return $this;
@@ -409,6 +431,11 @@ class TribTotalPercent implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_tot_trib_mun) && ($p_tot_trib_mun < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_tot_trib_mun when calling TribTotalPercent., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_tot_trib_mun'] = $p_tot_trib_mun;
 
         return $this;

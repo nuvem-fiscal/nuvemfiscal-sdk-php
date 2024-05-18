@@ -298,15 +298,31 @@ class NfeSefazII implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_bc'] === null) {
             $invalidProperties[] = "'v_bc' can't be null";
         }
+        if (($this->container['v_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_desp_adu'] === null) {
             $invalidProperties[] = "'v_desp_adu' can't be null";
         }
+        if (($this->container['v_desp_adu'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_desp_adu', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_ii'] === null) {
             $invalidProperties[] = "'v_ii' can't be null";
         }
+        if (($this->container['v_ii'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_ii', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_iof'] === null) {
             $invalidProperties[] = "'v_iof' can't be null";
         }
+        if (($this->container['v_iof'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_iof', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -351,6 +367,11 @@ class NfeSefazII implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc) && ($v_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc when calling NfeSefazII., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc'] = $v_bc;
 
         return $this;
@@ -385,6 +406,11 @@ class NfeSefazII implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_desp_adu) && ($v_desp_adu < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_desp_adu when calling NfeSefazII., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_desp_adu'] = $v_desp_adu;
 
         return $this;
@@ -419,6 +445,11 @@ class NfeSefazII implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_ii) && ($v_ii < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_ii when calling NfeSefazII., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_ii'] = $v_ii;
 
         return $this;
@@ -453,6 +484,11 @@ class NfeSefazII implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_iof) && ($v_iof < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_iof when calling NfeSefazII., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_iof'] = $v_iof;
 
         return $this;

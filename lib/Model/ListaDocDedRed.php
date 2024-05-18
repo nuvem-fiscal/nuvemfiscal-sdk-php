@@ -277,6 +277,14 @@ class ListaDocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['doc_ded_red'] === null) {
             $invalidProperties[] = "'doc_ded_red' can't be null";
         }
+        if ((count($this->container['doc_ded_red']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'doc_ded_red', number of items must be less than or equal to 1000.";
+        }
+
+        if ((count($this->container['doc_ded_red']) < 1)) {
+            $invalidProperties[] = "invalid value for 'doc_ded_red', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -313,6 +321,13 @@ class ListaDocDedRed implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($doc_ded_red)) {
             throw new \InvalidArgumentException('non-nullable doc_ded_red cannot be null');
+        }
+
+        if ((count($doc_ded_red) > 1000)) {
+            throw new \InvalidArgumentException('invalid value for $doc_ded_red when calling ListaDocDedRed., number of items must be less than or equal to 1000.');
+        }
+        if ((count($doc_ded_red) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $doc_ded_red when calling ListaDocDedRed., number of items must be greater than or equal to 1.');
         }
         $this->container['doc_ded_red'] = $doc_ded_red;
 

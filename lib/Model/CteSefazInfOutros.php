@@ -342,6 +342,10 @@ class CteSefazInfOutros implements ModelInterface, ArrayAccess, \JsonSerializabl
             $invalidProperties[] = "invalid value for 'n_doc', the character length must be bigger than or equal to 1.";
         }
 
+        if (!is_null($this->container['v_doc_fisc']) && ($this->container['v_doc_fisc'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_doc_fisc', must be bigger than 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -536,6 +540,11 @@ class CteSefazInfOutros implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_doc_fisc) && ($v_doc_fisc <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_doc_fisc when calling CteSefazInfOutros., must be bigger than 0.');
+        }
+
         $this->container['v_doc_fisc'] = $v_doc_fisc;
 
         return $this;

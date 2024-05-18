@@ -301,12 +301,24 @@ class NfeSefazPISAliq implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_bc'] === null) {
             $invalidProperties[] = "'v_bc' can't be null";
         }
+        if (($this->container['v_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['p_pis'] === null) {
             $invalidProperties[] = "'p_pis' can't be null";
         }
+        if (($this->container['p_pis'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_pis', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_pis'] === null) {
             $invalidProperties[] = "'v_pis' can't be null";
         }
+        if (($this->container['v_pis'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_pis', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -385,6 +397,11 @@ class NfeSefazPISAliq implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc) && ($v_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc when calling NfeSefazPISAliq., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc'] = $v_bc;
 
         return $this;
@@ -419,6 +436,11 @@ class NfeSefazPISAliq implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_pis) && ($p_pis < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_pis when calling NfeSefazPISAliq., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_pis'] = $p_pis;
 
         return $this;
@@ -453,6 +475,11 @@ class NfeSefazPISAliq implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_pis) && ($v_pis < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_pis when calling NfeSefazPISAliq., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_pis'] = $v_pis;
 
         return $this;

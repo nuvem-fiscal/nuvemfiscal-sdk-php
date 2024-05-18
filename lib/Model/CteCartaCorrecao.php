@@ -408,6 +408,10 @@ class CteCartaCorrecao implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['correcoes'] === null) {
             $invalidProperties[] = "'correcoes' can't be null";
         }
+        if ((count($this->container['correcoes']) < 1)) {
+            $invalidProperties[] = "invalid value for 'correcoes', number of items must be greater than or equal to 1.";
+        }
+
         $allowedValues = $this->getAmbienteAllowableValues();
         if (!is_null($this->container['ambiente']) && !in_array($this->container['ambiente'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -462,6 +466,11 @@ class CteCartaCorrecao implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($correcoes)) {
             throw new \InvalidArgumentException('non-nullable correcoes cannot be null');
+        }
+
+
+        if ((count($correcoes) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $correcoes when calling CteCartaCorrecao., number of items must be greater than or equal to 1.');
         }
         $this->container['correcoes'] = $correcoes;
 

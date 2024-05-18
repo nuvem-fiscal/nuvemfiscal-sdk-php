@@ -284,9 +284,17 @@ class MdfeSefazInfEntregaParcial implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['qtd_total'] === null) {
             $invalidProperties[] = "'qtd_total' can't be null";
         }
+        if (($this->container['qtd_total'] < 0)) {
+            $invalidProperties[] = "invalid value for 'qtd_total', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['qtd_parcial'] === null) {
             $invalidProperties[] = "'qtd_parcial' can't be null";
         }
+        if (($this->container['qtd_parcial'] < 0)) {
+            $invalidProperties[] = "invalid value for 'qtd_parcial', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -331,6 +339,11 @@ class MdfeSefazInfEntregaParcial implements ModelInterface, ArrayAccess, \JsonSe
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($qtd_total) && ($qtd_total < 0)) {
+            throw new \InvalidArgumentException('invalid value for $qtd_total when calling MdfeSefazInfEntregaParcial., must be bigger than or equal to 0.');
+        }
+
         $this->container['qtd_total'] = $qtd_total;
 
         return $this;
@@ -365,6 +378,11 @@ class MdfeSefazInfEntregaParcial implements ModelInterface, ArrayAccess, \JsonSe
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($qtd_parcial) && ($qtd_parcial < 0)) {
+            throw new \InvalidArgumentException('invalid value for $qtd_parcial when calling MdfeSefazInfEntregaParcial., must be bigger than or equal to 0.');
+        }
+
         $this->container['qtd_parcial'] = $qtd_parcial;
 
         return $this;

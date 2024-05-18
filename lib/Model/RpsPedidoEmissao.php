@@ -345,6 +345,14 @@ class RpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['servicos'] === null) {
             $invalidProperties[] = "'servicos' can't be null";
         }
+        if ((count($this->container['servicos']) > 1)) {
+            $invalidProperties[] = "invalid value for 'servicos', number of items must be less than or equal to 1.";
+        }
+
+        if ((count($this->container['servicos']) < 1)) {
+            $invalidProperties[] = "invalid value for 'servicos', number of items must be greater than or equal to 1.";
+        }
+
         if (!is_null($this->container['outras_informacoes']) && (mb_strlen($this->container['outras_informacoes']) > 255)) {
             $invalidProperties[] = "invalid value for 'outras_informacoes', the character length must be smaller than or equal to 255.";
         }
@@ -601,6 +609,13 @@ class RpsPedidoEmissao implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($servicos)) {
             throw new \InvalidArgumentException('non-nullable servicos cannot be null');
+        }
+
+        if ((count($servicos) > 1)) {
+            throw new \InvalidArgumentException('invalid value for $servicos when calling RpsPedidoEmissao., number of items must be less than or equal to 1.');
+        }
+        if ((count($servicos) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $servicos when calling RpsPedidoEmissao., number of items must be greater than or equal to 1.');
         }
         $this->container['servicos'] = $servicos;
 

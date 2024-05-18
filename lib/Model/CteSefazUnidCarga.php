@@ -309,6 +309,10 @@ class CteSefazUnidCarga implements ModelInterface, ArrayAccess, \JsonSerializabl
             $invalidProperties[] = "invalid value for 'id_unid_carga', the character length must be bigger than or equal to 1.";
         }
 
+        if (!is_null($this->container['qtd_rat']) && ($this->container['qtd_rat'] < 0)) {
+            $invalidProperties[] = "invalid value for 'qtd_rat', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -455,6 +459,11 @@ class CteSefazUnidCarga implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($qtd_rat) && ($qtd_rat < 0)) {
+            throw new \InvalidArgumentException('invalid value for $qtd_rat when calling CteSefazUnidCarga., must be bigger than or equal to 0.');
+        }
+
         $this->container['qtd_rat'] = $qtd_rat;
 
         return $this;

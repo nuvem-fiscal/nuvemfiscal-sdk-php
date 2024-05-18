@@ -322,12 +322,32 @@ class CteSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['v_bcst_ret'] === null) {
             $invalidProperties[] = "'v_bcst_ret' can't be null";
         }
+        if (($this->container['v_bcst_ret'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bcst_ret', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_icmsst_ret'] === null) {
             $invalidProperties[] = "'v_icmsst_ret' can't be null";
         }
+        if (($this->container['v_icmsst_ret'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icmsst_ret', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['p_icmsst_ret'] === null) {
             $invalidProperties[] = "'p_icmsst_ret' can't be null";
         }
+        if (($this->container['p_icmsst_ret'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_icmsst_ret', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_cred']) && ($this->container['v_cred'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_cred', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_icms_deson']) && ($this->container['v_icms_deson'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_icms_deson', must be bigger than or equal to 0.";
+        }
+
         if (!is_null($this->container['c_benef']) && (mb_strlen($this->container['c_benef']) > 10)) {
             $invalidProperties[] = "invalid value for 'c_benef', the character length must be smaller than or equal to 10.";
         }
@@ -410,6 +430,11 @@ class CteSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bcst_ret) && ($v_bcst_ret < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bcst_ret when calling CteSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bcst_ret'] = $v_bcst_ret;
 
         return $this;
@@ -444,6 +469,11 @@ class CteSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icmsst_ret) && ($v_icmsst_ret < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icmsst_ret when calling CteSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icmsst_ret'] = $v_icmsst_ret;
 
         return $this;
@@ -478,6 +508,11 @@ class CteSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_icmsst_ret) && ($p_icmsst_ret < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_icmsst_ret when calling CteSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_icmsst_ret'] = $p_icmsst_ret;
 
         return $this;
@@ -512,6 +547,11 @@ class CteSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_cred) && ($v_cred < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_cred when calling CteSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_cred'] = $v_cred;
 
         return $this;
@@ -546,6 +586,11 @@ class CteSefazICMS60 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_icms_deson) && ($v_icms_deson < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_icms_deson when calling CteSefazICMS60., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_icms_deson'] = $v_icms_deson;
 
         return $this;

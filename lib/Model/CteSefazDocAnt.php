@@ -277,6 +277,10 @@ class CteSefazDocAnt implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['emi_doc_ant'] === null) {
             $invalidProperties[] = "'emi_doc_ant' can't be null";
         }
+        if ((count($this->container['emi_doc_ant']) < 1)) {
+            $invalidProperties[] = "invalid value for 'emi_doc_ant', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -313,6 +317,11 @@ class CteSefazDocAnt implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($emi_doc_ant)) {
             throw new \InvalidArgumentException('non-nullable emi_doc_ant cannot be null');
+        }
+
+
+        if ((count($emi_doc_ant) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $emi_doc_ant when calling CteSefazDocAnt., number of items must be greater than or equal to 1.');
         }
         $this->container['emi_doc_ant'] = $emi_doc_ant;
 

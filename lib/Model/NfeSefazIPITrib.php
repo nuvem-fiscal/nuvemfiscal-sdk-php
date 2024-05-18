@@ -311,9 +311,29 @@ class NfeSefazIPITrib implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cst'] === null) {
             $invalidProperties[] = "'cst' can't be null";
         }
+        if (!is_null($this->container['v_bc']) && ($this->container['v_bc'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['p_ipi']) && ($this->container['p_ipi'] < 0)) {
+            $invalidProperties[] = "invalid value for 'p_ipi', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['q_unid']) && ($this->container['q_unid'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_unid', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_unid']) && ($this->container['v_unid'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_unid', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['v_ipi'] === null) {
             $invalidProperties[] = "'v_ipi' can't be null";
         }
+        if (($this->container['v_ipi'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_ipi', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -392,6 +412,11 @@ class NfeSefazIPITrib implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc) && ($v_bc < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc when calling NfeSefazIPITrib., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_bc'] = $v_bc;
 
         return $this;
@@ -426,6 +451,11 @@ class NfeSefazIPITrib implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($p_ipi) && ($p_ipi < 0)) {
+            throw new \InvalidArgumentException('invalid value for $p_ipi when calling NfeSefazIPITrib., must be bigger than or equal to 0.');
+        }
+
         $this->container['p_ipi'] = $p_ipi;
 
         return $this;
@@ -460,6 +490,11 @@ class NfeSefazIPITrib implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($q_unid) && ($q_unid < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_unid when calling NfeSefazIPITrib., must be bigger than or equal to 0.');
+        }
+
         $this->container['q_unid'] = $q_unid;
 
         return $this;
@@ -494,6 +529,11 @@ class NfeSefazIPITrib implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_unid) && ($v_unid < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_unid when calling NfeSefazIPITrib., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_unid'] = $v_unid;
 
         return $this;
@@ -528,6 +568,11 @@ class NfeSefazIPITrib implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_ipi) && ($v_ipi < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_ipi when calling NfeSefazIPITrib., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_ipi'] = $v_ipi;
 
         return $this;

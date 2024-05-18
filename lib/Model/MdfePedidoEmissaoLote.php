@@ -309,6 +309,14 @@ class MdfePedidoEmissaoLote implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['documentos']) && (count($this->container['documentos']) > 1)) {
+            $invalidProperties[] = "invalid value for 'documentos', number of items must be less than or equal to 1.";
+        }
+
+        if (!is_null($this->container['documentos']) && (count($this->container['documentos']) < 1)) {
+            $invalidProperties[] = "invalid value for 'documentos', number of items must be greater than or equal to 1.";
+        }
+
         if ($this->container['ambiente'] === null) {
             $invalidProperties[] = "'ambiente' can't be null";
         }
@@ -360,6 +368,13 @@ class MdfePedidoEmissaoLote implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         if (is_null($documentos)) {
             throw new \InvalidArgumentException('non-nullable documentos cannot be null');
+        }
+
+        if ((count($documentos) > 1)) {
+            throw new \InvalidArgumentException('invalid value for $documentos when calling MdfePedidoEmissaoLote., number of items must be less than or equal to 1.');
+        }
+        if ((count($documentos) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $documentos when calling MdfePedidoEmissaoLote., number of items must be greater than or equal to 1.');
         }
         $this->container['documentos'] = $documentos;
 

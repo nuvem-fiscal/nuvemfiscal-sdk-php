@@ -316,6 +316,34 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['v_ret_pis']) && ($this->container['v_ret_pis'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_ret_pis', must be bigger than 0.";
+        }
+
+        if (!is_null($this->container['v_ret_cofins']) && ($this->container['v_ret_cofins'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_ret_cofins', must be bigger than 0.";
+        }
+
+        if (!is_null($this->container['v_ret_csll']) && ($this->container['v_ret_csll'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_ret_csll', must be bigger than 0.";
+        }
+
+        if (!is_null($this->container['v_bcirrf']) && ($this->container['v_bcirrf'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_bcirrf', must be bigger than 0.";
+        }
+
+        if (!is_null($this->container['v_irrf']) && ($this->container['v_irrf'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_irrf', must be bigger than 0.";
+        }
+
+        if (!is_null($this->container['v_bc_ret_prev']) && ($this->container['v_bc_ret_prev'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_bc_ret_prev', must be bigger than 0.";
+        }
+
+        if (!is_null($this->container['v_ret_prev']) && ($this->container['v_ret_prev'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_ret_prev', must be bigger than 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -360,6 +388,11 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_ret_pis) && ($v_ret_pis <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_ret_pis when calling NfeSefazRetTrib., must be bigger than 0.');
+        }
+
         $this->container['v_ret_pis'] = $v_ret_pis;
 
         return $this;
@@ -394,6 +427,11 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_ret_cofins) && ($v_ret_cofins <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_ret_cofins when calling NfeSefazRetTrib., must be bigger than 0.');
+        }
+
         $this->container['v_ret_cofins'] = $v_ret_cofins;
 
         return $this;
@@ -428,6 +466,11 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_ret_csll) && ($v_ret_csll <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_ret_csll when calling NfeSefazRetTrib., must be bigger than 0.');
+        }
+
         $this->container['v_ret_csll'] = $v_ret_csll;
 
         return $this;
@@ -462,6 +505,11 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bcirrf) && ($v_bcirrf <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bcirrf when calling NfeSefazRetTrib., must be bigger than 0.');
+        }
+
         $this->container['v_bcirrf'] = $v_bcirrf;
 
         return $this;
@@ -496,6 +544,11 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_irrf) && ($v_irrf <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_irrf when calling NfeSefazRetTrib., must be bigger than 0.');
+        }
+
         $this->container['v_irrf'] = $v_irrf;
 
         return $this;
@@ -530,6 +583,11 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_bc_ret_prev) && ($v_bc_ret_prev <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_bc_ret_prev when calling NfeSefazRetTrib., must be bigger than 0.');
+        }
+
         $this->container['v_bc_ret_prev'] = $v_bc_ret_prev;
 
         return $this;
@@ -564,6 +622,11 @@ class NfeSefazRetTrib implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_ret_prev) && ($v_ret_prev <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_ret_prev when calling NfeSefazRetTrib., must be bigger than 0.');
+        }
+
         $this->container['v_ret_prev'] = $v_ret_prev;
 
         return $this;

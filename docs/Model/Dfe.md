@@ -13,6 +13,7 @@ Nome | Tipo | Descrição | Comentários
 **modelo** | **int** |  | [optional]
 **serie** | **int** |  | [optional]
 **numero** | **int** |  | [optional]
+**tipo_emissao** | **int** |  | [optional]
 **valor_total** | **float** |  | [optional]
 **chave** | **string** | Chave de acesso do DF-e. | [optional]
 **autorizacao** | [**\NuvemFiscal\Model\DfeAutorizacao**](DfeAutorizacao.md) |  | [optional]
