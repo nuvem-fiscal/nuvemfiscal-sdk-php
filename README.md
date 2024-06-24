@@ -57,6 +57,10 @@ $token = get_oauth2_token(
 // Configurar access token OAuth2 para autorização: oauth2
 $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken($token->access_token);
 
+// Configurações gerais
+$config->setBooleanFormatForQueryString(Configuration::BOOLEAN_FORMAT_STRING);
+
+// Efetuar a chamada ao endpoint
 $apiInstance = new NuvemFiscal\Api\CepApi(
     // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
     // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
