@@ -1,6 +1,6 @@
 <?php
 /**
- * MdfeSefazFerrov
+ * DistribuicaoNfePedidoManifestacao
  *
  * PHP version 7.4
  *
@@ -31,16 +31,15 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * MdfeSefazFerrov Class Doc Comment
+ * DistribuicaoNfePedidoManifestacao Class Doc Comment
  *
  * @category Class
- * @description Informações do modal Ferroviário.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
+class DistribuicaoNfePedidoManifestacao implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +48,7 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MdfeSefazFerrov';
+    protected static $openAPIModelName = 'DistribuicaoNfePedidoManifestacao';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +56,11 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'trem' => '\NuvemFiscal\Model\MdfeSefazTrem',
-        'vag' => '\NuvemFiscal\Model\MdfeSefazVag[]'
+        'cpf_cnpj' => 'string',
+        'ambiente' => 'string',
+        'chave_acesso' => 'string',
+        'tipo_evento' => 'string',
+        'justificativa' => 'string'
     ];
 
     /**
@@ -69,8 +71,11 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'trem' => null,
-        'vag' => null
+        'cpf_cnpj' => null,
+        'ambiente' => null,
+        'chave_acesso' => null,
+        'tipo_evento' => null,
+        'justificativa' => null
     ];
 
     /**
@@ -79,8 +84,11 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'trem' => false,
-        'vag' => false
+        'cpf_cnpj' => false,
+        'ambiente' => false,
+        'chave_acesso' => false,
+        'tipo_evento' => false,
+        'justificativa' => true
     ];
 
     /**
@@ -169,8 +177,11 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'trem' => 'trem',
-        'vag' => 'vag'
+        'cpf_cnpj' => 'cpf_cnpj',
+        'ambiente' => 'ambiente',
+        'chave_acesso' => 'chave_acesso',
+        'tipo_evento' => 'tipo_evento',
+        'justificativa' => 'justificativa'
     ];
 
     /**
@@ -179,8 +190,11 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'trem' => 'setTrem',
-        'vag' => 'setVag'
+        'cpf_cnpj' => 'setCpfCnpj',
+        'ambiente' => 'setAmbiente',
+        'chave_acesso' => 'setChaveAcesso',
+        'tipo_evento' => 'setTipoEvento',
+        'justificativa' => 'setJustificativa'
     ];
 
     /**
@@ -189,8 +203,11 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'trem' => 'getTrem',
-        'vag' => 'getVag'
+        'cpf_cnpj' => 'getCpfCnpj',
+        'ambiente' => 'getAmbiente',
+        'chave_acesso' => 'getChaveAcesso',
+        'tipo_evento' => 'getTipoEvento',
+        'justificativa' => 'getJustificativa'
     ];
 
     /**
@@ -234,6 +251,21 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const AMBIENTE_HOMOLOGACAO = 'homologacao';
+    public const AMBIENTE_PRODUCAO = 'producao';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAmbienteAllowableValues()
+    {
+        return [
+            self::AMBIENTE_HOMOLOGACAO,
+            self::AMBIENTE_PRODUCAO,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -250,8 +282,11 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('trem', $data ?? [], null);
-        $this->setIfExists('vag', $data ?? [], null);
+        $this->setIfExists('cpf_cnpj', $data ?? [], null);
+        $this->setIfExists('ambiente', $data ?? [], null);
+        $this->setIfExists('chave_acesso', $data ?? [], null);
+        $this->setIfExists('tipo_evento', $data ?? [], null);
+        $this->setIfExists('justificativa', $data ?? [], null);
     }
 
     /**
@@ -281,14 +316,33 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['trem'] === null) {
-            $invalidProperties[] = "'trem' can't be null";
+        if ($this->container['cpf_cnpj'] === null) {
+            $invalidProperties[] = "'cpf_cnpj' can't be null";
         }
-        if ($this->container['vag'] === null) {
-            $invalidProperties[] = "'vag' can't be null";
+        if ($this->container['ambiente'] === null) {
+            $invalidProperties[] = "'ambiente' can't be null";
         }
-        if ((count($this->container['vag']) < 1)) {
-            $invalidProperties[] = "invalid value for 'vag', number of items must be greater than or equal to 1.";
+        $allowedValues = $this->getAmbienteAllowableValues();
+        if (!is_null($this->container['ambiente']) && !in_array($this->container['ambiente'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'ambiente', must be one of '%s'",
+                $this->container['ambiente'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['chave_acesso'] === null) {
+            $invalidProperties[] = "'chave_acesso' can't be null";
+        }
+        if ($this->container['tipo_evento'] === null) {
+            $invalidProperties[] = "'tipo_evento' can't be null";
+        }
+        if (!is_null($this->container['justificativa']) && (mb_strlen($this->container['justificativa']) > 255)) {
+            $invalidProperties[] = "invalid value for 'justificativa', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['justificativa']) && (mb_strlen($this->container['justificativa']) < 15)) {
+            $invalidProperties[] = "invalid value for 'justificativa', the character length must be bigger than or equal to 15.";
         }
 
         return $invalidProperties;
@@ -307,60 +361,160 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets trem
+     * Gets cpf_cnpj
      *
-     * @return \NuvemFiscal\Model\MdfeSefazTrem
+     * @return string
      */
-    public function getTrem()
+    public function getCpfCnpj()
     {
-        return $this->container['trem'];
+        return $this->container['cpf_cnpj'];
     }
 
     /**
-     * Sets trem
+     * Sets cpf_cnpj
      *
-     * @param \NuvemFiscal\Model\MdfeSefazTrem $trem trem
+     * @param string $cpf_cnpj CPF ou CNPJ do autor do evento.    *Utilize o valor sem máscara*.
      *
      * @return self
      */
-    public function setTrem($trem)
+    public function setCpfCnpj($cpf_cnpj)
     {
-        if (is_null($trem)) {
-            throw new \InvalidArgumentException('non-nullable trem cannot be null');
+        if (is_null($cpf_cnpj)) {
+            throw new \InvalidArgumentException('non-nullable cpf_cnpj cannot be null');
         }
-        $this->container['trem'] = $trem;
+        $this->container['cpf_cnpj'] = $cpf_cnpj;
 
         return $this;
     }
 
     /**
-     * Gets vag
+     * Gets ambiente
      *
-     * @return \NuvemFiscal\Model\MdfeSefazVag[]
+     * @return string
      */
-    public function getVag()
+    public function getAmbiente()
     {
-        return $this->container['vag'];
+        return $this->container['ambiente'];
     }
 
     /**
-     * Sets vag
+     * Sets ambiente
      *
-     * @param \NuvemFiscal\Model\MdfeSefazVag[] $vag vag
+     * @param string $ambiente Identificação do Ambiente.
      *
      * @return self
      */
-    public function setVag($vag)
+    public function setAmbiente($ambiente)
     {
-        if (is_null($vag)) {
-            throw new \InvalidArgumentException('non-nullable vag cannot be null');
+        if (is_null($ambiente)) {
+            throw new \InvalidArgumentException('non-nullable ambiente cannot be null');
+        }
+        $allowedValues = $this->getAmbienteAllowableValues();
+        if (!in_array($ambiente, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'ambiente', must be one of '%s'",
+                    $ambiente,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['ambiente'] = $ambiente;
+
+        return $this;
+    }
+
+    /**
+     * Gets chave_acesso
+     *
+     * @return string
+     */
+    public function getChaveAcesso()
+    {
+        return $this->container['chave_acesso'];
+    }
+
+    /**
+     * Sets chave_acesso
+     *
+     * @param string $chave_acesso Chave de Acesso da NF-e.
+     *
+     * @return self
+     */
+    public function setChaveAcesso($chave_acesso)
+    {
+        if (is_null($chave_acesso)) {
+            throw new \InvalidArgumentException('non-nullable chave_acesso cannot be null');
+        }
+        $this->container['chave_acesso'] = $chave_acesso;
+
+        return $this;
+    }
+
+    /**
+     * Gets tipo_evento
+     *
+     * @return string
+     */
+    public function getTipoEvento()
+    {
+        return $this->container['tipo_evento'];
+    }
+
+    /**
+     * Sets tipo_evento
+     *
+     * @param string $tipo_evento Tipo do evento de manifestação do destinatário.    Valores disponíveis:  * `210200` - Confirmação da operação;  * `210210` - Ciência da operação;  * `210220` - Desconhecimento da operação;  * `210240` - Operação não realizada.
+     *
+     * @return self
+     */
+    public function setTipoEvento($tipo_evento)
+    {
+        if (is_null($tipo_evento)) {
+            throw new \InvalidArgumentException('non-nullable tipo_evento cannot be null');
+        }
+        $this->container['tipo_evento'] = $tipo_evento;
+
+        return $this;
+    }
+
+    /**
+     * Gets justificativa
+     *
+     * @return string|null
+     */
+    public function getJustificativa()
+    {
+        return $this->container['justificativa'];
+    }
+
+    /**
+     * Sets justificativa
+     *
+     * @param string|null $justificativa Justificativa para o desconhecimento ou não-realização da operação.    **Nota**: Campo obrigatório para o evento `210240` (operação não realizada).
+     *
+     * @return self
+     */
+    public function setJustificativa($justificativa)
+    {
+        if (is_null($justificativa)) {
+            array_push($this->openAPINullablesSetToNull, 'justificativa');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('justificativa', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($justificativa) && (mb_strlen($justificativa) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $justificativa when calling DistribuicaoNfePedidoManifestacao., must be smaller than or equal to 255.');
+        }
+        if (!is_null($justificativa) && (mb_strlen($justificativa) < 15)) {
+            throw new \InvalidArgumentException('invalid length for $justificativa when calling DistribuicaoNfePedidoManifestacao., must be bigger than or equal to 15.');
         }
 
-
-        if ((count($vag) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $vag when calling MdfeSefazFerrov., number of items must be greater than or equal to 1.');
-        }
-        $this->container['vag'] = $vag;
+        $this->container['justificativa'] = $justificativa;
 
         return $this;
     }

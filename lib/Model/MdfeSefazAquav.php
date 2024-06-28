@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazAquav Class Doc Comment
  *
  * @category Class
+ * @description Informações do modal Aquaviário.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

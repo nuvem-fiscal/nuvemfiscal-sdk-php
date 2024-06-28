@@ -57,7 +57,8 @@ class NfcomSefazGCofat implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ch_nf_com_local' => 'string'
+        'ch_nf_com_local' => 'string',
+        'g_nf' => '\NuvemFiscal\Model\NfcomSefazGCofatGNF'
     ];
 
     /**
@@ -68,7 +69,8 @@ class NfcomSefazGCofat implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'ch_nf_com_local' => null
+        'ch_nf_com_local' => null,
+        'g_nf' => null
     ];
 
     /**
@@ -77,7 +79,8 @@ class NfcomSefazGCofat implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ch_nf_com_local' => true
+        'ch_nf_com_local' => true,
+        'g_nf' => false
     ];
 
     /**
@@ -166,7 +169,8 @@ class NfcomSefazGCofat implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'ch_nf_com_local' => 'chNFComLocal'
+        'ch_nf_com_local' => 'chNFComLocal',
+        'g_nf' => 'gNF'
     ];
 
     /**
@@ -175,7 +179,8 @@ class NfcomSefazGCofat implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'ch_nf_com_local' => 'setChNfComLocal'
+        'ch_nf_com_local' => 'setChNfComLocal',
+        'g_nf' => 'setGNf'
     ];
 
     /**
@@ -184,7 +189,8 @@ class NfcomSefazGCofat implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'ch_nf_com_local' => 'getChNfComLocal'
+        'ch_nf_com_local' => 'getChNfComLocal',
+        'g_nf' => 'getGNf'
     ];
 
     /**
@@ -245,6 +251,7 @@ class NfcomSefazGCofat implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('ch_nf_com_local', $data ?? [], null);
+        $this->setIfExists('g_nf', $data ?? [], null);
     }
 
     /**
@@ -274,10 +281,7 @@ class NfcomSefazGCofat implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['ch_nf_com_local'] === null) {
-            $invalidProperties[] = "'ch_nf_com_local' can't be null";
-        }
-        if ((mb_strlen($this->container['ch_nf_com_local']) > 44)) {
+        if (!is_null($this->container['ch_nf_com_local']) && (mb_strlen($this->container['ch_nf_com_local']) > 44)) {
             $invalidProperties[] = "invalid value for 'ch_nf_com_local', the character length must be smaller than or equal to 44.";
         }
 
@@ -299,7 +303,7 @@ class NfcomSefazGCofat implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ch_nf_com_local
      *
-     * @return string
+     * @return string|null
      */
     public function getChNfComLocal()
     {
@@ -309,7 +313,7 @@ class NfcomSefazGCofat implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ch_nf_com_local
      *
-     * @param string $ch_nf_com_local Chave de acesso da NFCom emitida pela Operadora Local.
+     * @param string|null $ch_nf_com_local Chave de acesso da NFCom emitida pela Operadora Local.
      *
      * @return self
      */
@@ -330,6 +334,33 @@ class NfcomSefazGCofat implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['ch_nf_com_local'] = $ch_nf_com_local;
+
+        return $this;
+    }
+
+    /**
+     * Gets g_nf
+     *
+     * @return \NuvemFiscal\Model\NfcomSefazGCofatGNF|null
+     */
+    public function getGNf()
+    {
+        return $this->container['g_nf'];
+    }
+
+    /**
+     * Sets g_nf
+     *
+     * @param \NuvemFiscal\Model\NfcomSefazGCofatGNF|null $g_nf g_nf
+     *
+     * @return self
+     */
+    public function setGNf($g_nf)
+    {
+        if (is_null($g_nf)) {
+            throw new \InvalidArgumentException('non-nullable g_nf cannot be null');
+        }
+        $this->container['g_nf'] = $g_nf;
 
         return $this;
     }

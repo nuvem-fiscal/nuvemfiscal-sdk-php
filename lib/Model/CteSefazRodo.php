@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazRodo Class Doc Comment
  *
  * @category Class
+ * @description Informações do modal Rodoviário.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

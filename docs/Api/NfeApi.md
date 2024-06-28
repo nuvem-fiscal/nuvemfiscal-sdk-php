@@ -21,6 +21,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**cancelarNfe()**](NfeApi.md#cancelarNfe) | **POST** /nfe/{id}/cancelamento | Cancelar uma NF-e autorizada |
 | [**consultarCancelamentoNfe()**](NfeApi.md#consultarCancelamentoNfe) | **GET** /nfe/{id}/cancelamento | Consultar o cancelamento da NF-e |
 | [**consultarCartaCorrecaoNfe()**](NfeApi.md#consultarCartaCorrecaoNfe) | **GET** /nfe/{id}/carta-correcao | Consultar a solicitação de correção da NF-e |
+| [**consultarContribuinteNfe()**](NfeApi.md#consultarContribuinteNfe) | **GET** /nfe/cadastro-contribuinte | Consultar contribuinte |
 | [**consultarEventoNfe()**](NfeApi.md#consultarEventoNfe) | **GET** /nfe/eventos/{id} | Consultar evento |
 | [**consultarInutilizacaoNfe()**](NfeApi.md#consultarInutilizacaoNfe) | **GET** /nfe/inutilizacoes/{id} | Consultar a inutilização de sequência de numeração |
 | [**consultarLoteNfe()**](NfeApi.md#consultarLoteNfe) | **GET** /nfe/lotes/{id} | Consultar lote de NF-e |
@@ -1123,6 +1124,77 @@ try {
 ### Tipo do retorno
 
 [**\NuvemFiscal\Model\DfeCartaCorrecao**](../Model/DfeCartaCorrecao.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `consultarContribuinteNfe()`
+
+```php
+consultarContribuinteNfe($cpf_cnpj, $argumento, $documento, $uf): \NuvemFiscal\Model\DfeContribuinteInfCons
+```
+
+Consultar contribuinte
+
+Consulta o Cadastro Centralizado de Contribuintes (CCC) do ICMS da unidade federada.
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfeApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$cpf_cnpj = 'cpf_cnpj_example'; // string | CPF ou CNPJ da empresa.    *Utilize o valor sem máscara*.
+$argumento = 'argumento_example'; // string | Argumento de pesquisa.    Valores válidos:  * `CNPJ`  * `CPF`  * `IE`
+$documento = 'documento_example'; // string | Documento a ser consultado (CNPJ, CPF ou Inscrição Estadual).
+$uf = 'uf_example'; // string | Sigla da UF consultada.     Utilize `SU` para SUFRAMA.    *Caso não seja informada, será utilizada a UF da empresa.*
+
+try {
+    $result = $apiInstance->consultarContribuinteNfe($cpf_cnpj, $argumento, $documento, $uf);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfeApi->consultarContribuinteNfe: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **cpf_cnpj** | **string**| CPF ou CNPJ da empresa.    *Utilize o valor sem máscara*. | |
+| **argumento** | **string**| Argumento de pesquisa.    Valores válidos:  * &#x60;CNPJ&#x60;  * &#x60;CPF&#x60;  * &#x60;IE&#x60; | |
+| **documento** | **string**| Documento a ser consultado (CNPJ, CPF ou Inscrição Estadual). | |
+| **uf** | **string**| Sigla da UF consultada.     Utilize &#x60;SU&#x60; para SUFRAMA.    *Caso não seja informada, será utilizada a UF da empresa.* | [optional] |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\DfeContribuinteInfCons**](../Model/DfeContribuinteInfCons.md)
 
 ### Autorização
 

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazMultimodal Class Doc Comment
  *
  * @category Class
+ * @description Informações do Multimodal.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

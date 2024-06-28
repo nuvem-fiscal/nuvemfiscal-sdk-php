@@ -335,7 +335,7 @@ class EmpresaConfigNfe implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets crt
      *
-     * @param int|null $crt Código de Regime Tributário.  Este campo será preenchido com:  * 1 – Simples Nacional;  * 2 – Simples Nacional – excesso de sublimite de receita bruta;  * 3 – Regime Normal.
+     * @param int|null $crt Código de Regime Tributário.  Este campo será preenchido com:  * 1 – Simples Nacional;  * 2 – Simples Nacional – excesso de sublimite de receita bruta;  * 3 – Regime Normal;  * 4 - Simples Nacional - Microempreendedor individual (MEI).
      *
      * @return self
      */

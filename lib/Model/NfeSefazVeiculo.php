@@ -34,7 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazVeiculo Class Doc Comment
  *
  * @category Class
- * @description Dados do reboque/Dolly (v2.0).
+ * @description Dados do veículo.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

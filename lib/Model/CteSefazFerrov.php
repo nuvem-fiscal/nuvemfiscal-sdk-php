@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazFerrov Class Doc Comment
  *
  * @category Class
+ * @description Informações do modal Ferroviário.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

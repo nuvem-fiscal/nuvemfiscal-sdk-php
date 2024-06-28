@@ -1,6 +1,6 @@
 <?php
 /**
- * MdfeSefazFerrov
+ * DistribuicaoNfeDocumentoListagem
  *
  * PHP version 7.4
  *
@@ -31,16 +31,15 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * MdfeSefazFerrov Class Doc Comment
+ * DistribuicaoNfeDocumentoListagem Class Doc Comment
  *
  * @category Class
- * @description Informações do modal Ferroviário.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
+class DistribuicaoNfeDocumentoListagem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +48,7 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MdfeSefazFerrov';
+    protected static $openAPIModelName = 'DistribuicaoNfeDocumentoListagem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +56,8 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'trem' => '\NuvemFiscal\Model\MdfeSefazTrem',
-        'vag' => '\NuvemFiscal\Model\MdfeSefazVag[]'
+        'at_count' => 'int',
+        'data' => '\NuvemFiscal\Model\DistribuicaoNfeDocumento[]'
     ];
 
     /**
@@ -69,8 +68,8 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'trem' => null,
-        'vag' => null
+        'at_count' => null,
+        'data' => null
     ];
 
     /**
@@ -79,8 +78,8 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'trem' => false,
-        'vag' => false
+        'at_count' => false,
+        'data' => false
     ];
 
     /**
@@ -169,8 +168,8 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'trem' => 'trem',
-        'vag' => 'vag'
+        'at_count' => '@count',
+        'data' => 'data'
     ];
 
     /**
@@ -179,8 +178,8 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'trem' => 'setTrem',
-        'vag' => 'setVag'
+        'at_count' => 'setAtCount',
+        'data' => 'setData'
     ];
 
     /**
@@ -189,8 +188,8 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'trem' => 'getTrem',
-        'vag' => 'getVag'
+        'at_count' => 'getAtCount',
+        'data' => 'getData'
     ];
 
     /**
@@ -250,8 +249,8 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('trem', $data ?? [], null);
-        $this->setIfExists('vag', $data ?? [], null);
+        $this->setIfExists('at_count', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -281,16 +280,6 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['trem'] === null) {
-            $invalidProperties[] = "'trem' can't be null";
-        }
-        if ($this->container['vag'] === null) {
-            $invalidProperties[] = "'vag' can't be null";
-        }
-        if ((count($this->container['vag']) < 1)) {
-            $invalidProperties[] = "invalid value for 'vag', number of items must be greater than or equal to 1.";
-        }
-
         return $invalidProperties;
     }
 
@@ -307,60 +296,55 @@ class MdfeSefazFerrov implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets trem
+     * Gets at_count
      *
-     * @return \NuvemFiscal\Model\MdfeSefazTrem
+     * @return int|null
      */
-    public function getTrem()
+    public function getAtCount()
     {
-        return $this->container['trem'];
+        return $this->container['at_count'];
     }
 
     /**
-     * Sets trem
+     * Sets at_count
      *
-     * @param \NuvemFiscal\Model\MdfeSefazTrem $trem trem
+     * @param int|null $at_count at_count
      *
      * @return self
      */
-    public function setTrem($trem)
+    public function setAtCount($at_count)
     {
-        if (is_null($trem)) {
-            throw new \InvalidArgumentException('non-nullable trem cannot be null');
+        if (is_null($at_count)) {
+            throw new \InvalidArgumentException('non-nullable at_count cannot be null');
         }
-        $this->container['trem'] = $trem;
+        $this->container['at_count'] = $at_count;
 
         return $this;
     }
 
     /**
-     * Gets vag
+     * Gets data
      *
-     * @return \NuvemFiscal\Model\MdfeSefazVag[]
+     * @return \NuvemFiscal\Model\DistribuicaoNfeDocumento[]|null
      */
-    public function getVag()
+    public function getData()
     {
-        return $this->container['vag'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets vag
+     * Sets data
      *
-     * @param \NuvemFiscal\Model\MdfeSefazVag[] $vag vag
+     * @param \NuvemFiscal\Model\DistribuicaoNfeDocumento[]|null $data data
      *
      * @return self
      */
-    public function setVag($vag)
+    public function setData($data)
     {
-        if (is_null($vag)) {
-            throw new \InvalidArgumentException('non-nullable vag cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-
-
-        if ((count($vag) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $vag when calling MdfeSefazFerrov., number of items must be greater than or equal to 1.');
-        }
-        $this->container['vag'] = $vag;
+        $this->container['data'] = $data;
 
         return $this;
     }

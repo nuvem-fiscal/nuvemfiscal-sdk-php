@@ -1,6 +1,6 @@
 <?php
 /**
- * NfcomSefazDet
+ * DfeContribuinteInfCons
  *
  * PHP version 7.4
  *
@@ -31,16 +31,16 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * NfcomSefazDet Class Doc Comment
+ * DfeContribuinteInfCons Class Doc Comment
  *
  * @category Class
- * @description Detalhamento de Produtos e Serviços.
+ * @description Dados do Resultado do Dados do Pedido de Consulta de cadastro de contribuintes.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class NfcomSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
+class DfeContribuinteInfCons implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class NfcomSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'NfcomSefazDet';
+    protected static $openAPIModelName = 'DfeContribuinteInfCons';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,15 +57,15 @@ class NfcomSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'n_item' => 'int',
-        'ch_nf_com_ant' => 'string',
-        'n_item_ant' => 'string',
-        'ind_nf_com_ant_papel_fat_central' => 'int',
-        'prod' => '\NuvemFiscal\Model\NfcomSefazProd',
-        'imposto' => '\NuvemFiscal\Model\NfcomSefazImposto',
-        'g_proc_ref' => '\NuvemFiscal\Model\NfcomSefazGProcRef',
-        'g_ressarc' => '\NuvemFiscal\Model\NfcomSefazGRessarc',
-        'inf_ad_prod' => 'string'
+        'codigo_status' => 'int',
+        'motivo_status' => 'string',
+        'uf' => 'string',
+        'ie' => 'string',
+        'cnpj' => 'string',
+        'cpf' => 'string',
+        'data_consulta' => '\DateTime',
+        'uf_atendimento' => 'int',
+        'informacoes_cadastrais' => '\NuvemFiscal\Model\DfeContribuinteInfCad[]'
     ];
 
     /**
@@ -76,15 +76,15 @@ class NfcomSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'n_item' => null,
-        'ch_nf_com_ant' => null,
-        'n_item_ant' => null,
-        'ind_nf_com_ant_papel_fat_central' => null,
-        'prod' => null,
-        'imposto' => null,
-        'g_proc_ref' => null,
-        'g_ressarc' => null,
-        'inf_ad_prod' => null
+        'codigo_status' => null,
+        'motivo_status' => null,
+        'uf' => null,
+        'ie' => null,
+        'cnpj' => null,
+        'cpf' => null,
+        'data_consulta' => 'date-time',
+        'uf_atendimento' => null,
+        'informacoes_cadastrais' => null
     ];
 
     /**
@@ -93,15 +93,15 @@ class NfcomSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'n_item' => true,
-        'ch_nf_com_ant' => true,
-        'n_item_ant' => true,
-        'ind_nf_com_ant_papel_fat_central' => true,
-        'prod' => false,
-        'imposto' => false,
-        'g_proc_ref' => false,
-        'g_ressarc' => false,
-        'inf_ad_prod' => true
+        'codigo_status' => true,
+        'motivo_status' => true,
+        'uf' => true,
+        'ie' => true,
+        'cnpj' => true,
+        'cpf' => true,
+        'data_consulta' => true,
+        'uf_atendimento' => true,
+        'informacoes_cadastrais' => false
     ];
 
     /**
@@ -190,15 +190,15 @@ class NfcomSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'n_item' => 'nItem',
-        'ch_nf_com_ant' => 'chNFComAnt',
-        'n_item_ant' => 'nItemAnt',
-        'ind_nf_com_ant_papel_fat_central' => 'indNFComAntPapelFatCentral',
-        'prod' => 'prod',
-        'imposto' => 'imposto',
-        'g_proc_ref' => 'gProcRef',
-        'g_ressarc' => 'gRessarc',
-        'inf_ad_prod' => 'infAdProd'
+        'codigo_status' => 'codigo_status',
+        'motivo_status' => 'motivo_status',
+        'uf' => 'uf',
+        'ie' => 'ie',
+        'cnpj' => 'cnpj',
+        'cpf' => 'cpf',
+        'data_consulta' => 'data_consulta',
+        'uf_atendimento' => 'uf_atendimento',
+        'informacoes_cadastrais' => 'informacoes_cadastrais'
     ];
 
     /**
@@ -207,15 +207,15 @@ class NfcomSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'n_item' => 'setNItem',
-        'ch_nf_com_ant' => 'setChNfComAnt',
-        'n_item_ant' => 'setNItemAnt',
-        'ind_nf_com_ant_papel_fat_central' => 'setIndNfComAntPapelFatCentral',
-        'prod' => 'setProd',
-        'imposto' => 'setImposto',
-        'g_proc_ref' => 'setGProcRef',
-        'g_ressarc' => 'setGRessarc',
-        'inf_ad_prod' => 'setInfAdProd'
+        'codigo_status' => 'setCodigoStatus',
+        'motivo_status' => 'setMotivoStatus',
+        'uf' => 'setUf',
+        'ie' => 'setIe',
+        'cnpj' => 'setCnpj',
+        'cpf' => 'setCpf',
+        'data_consulta' => 'setDataConsulta',
+        'uf_atendimento' => 'setUfAtendimento',
+        'informacoes_cadastrais' => 'setInformacoesCadastrais'
     ];
 
     /**
@@ -224,15 +224,15 @@ class NfcomSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'n_item' => 'getNItem',
-        'ch_nf_com_ant' => 'getChNfComAnt',
-        'n_item_ant' => 'getNItemAnt',
-        'ind_nf_com_ant_papel_fat_central' => 'getIndNfComAntPapelFatCentral',
-        'prod' => 'getProd',
-        'imposto' => 'getImposto',
-        'g_proc_ref' => 'getGProcRef',
-        'g_ressarc' => 'getGRessarc',
-        'inf_ad_prod' => 'getInfAdProd'
+        'codigo_status' => 'getCodigoStatus',
+        'motivo_status' => 'getMotivoStatus',
+        'uf' => 'getUf',
+        'ie' => 'getIe',
+        'cnpj' => 'getCnpj',
+        'cpf' => 'getCpf',
+        'data_consulta' => 'getDataConsulta',
+        'uf_atendimento' => 'getUfAtendimento',
+        'informacoes_cadastrais' => 'getInformacoesCadastrais'
     ];
 
     /**
@@ -292,15 +292,15 @@ class NfcomSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('n_item', $data ?? [], null);
-        $this->setIfExists('ch_nf_com_ant', $data ?? [], null);
-        $this->setIfExists('n_item_ant', $data ?? [], null);
-        $this->setIfExists('ind_nf_com_ant_papel_fat_central', $data ?? [], null);
-        $this->setIfExists('prod', $data ?? [], null);
-        $this->setIfExists('imposto', $data ?? [], null);
-        $this->setIfExists('g_proc_ref', $data ?? [], null);
-        $this->setIfExists('g_ressarc', $data ?? [], null);
-        $this->setIfExists('inf_ad_prod', $data ?? [], null);
+        $this->setIfExists('codigo_status', $data ?? [], null);
+        $this->setIfExists('motivo_status', $data ?? [], null);
+        $this->setIfExists('uf', $data ?? [], null);
+        $this->setIfExists('ie', $data ?? [], null);
+        $this->setIfExists('cnpj', $data ?? [], null);
+        $this->setIfExists('cpf', $data ?? [], null);
+        $this->setIfExists('data_consulta', $data ?? [], null);
+        $this->setIfExists('uf_atendimento', $data ?? [], null);
+        $this->setIfExists('informacoes_cadastrais', $data ?? [], null);
     }
 
     /**
@@ -330,35 +330,37 @@ class NfcomSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['n_item'] === null) {
-            $invalidProperties[] = "'n_item' can't be null";
+        if ($this->container['codigo_status'] === null) {
+            $invalidProperties[] = "'codigo_status' can't be null";
         }
-        if (($this->container['n_item'] > 9999)) {
-            $invalidProperties[] = "invalid value for 'n_item', must be smaller than or equal to 9999.";
-        }
-
-        if (($this->container['n_item'] < 1)) {
-            $invalidProperties[] = "invalid value for 'n_item', must be bigger than or equal to 1.";
+        if (($this->container['codigo_status'] > 999)) {
+            $invalidProperties[] = "invalid value for 'codigo_status', must be smaller than or equal to 999.";
         }
 
-        if (!is_null($this->container['ch_nf_com_ant']) && (mb_strlen($this->container['ch_nf_com_ant']) > 44)) {
-            $invalidProperties[] = "invalid value for 'ch_nf_com_ant', the character length must be smaller than or equal to 44.";
+        if (($this->container['codigo_status'] < 0)) {
+            $invalidProperties[] = "invalid value for 'codigo_status', must be bigger than or equal to 0.";
         }
 
-        if ($this->container['prod'] === null) {
-            $invalidProperties[] = "'prod' can't be null";
+        if ($this->container['motivo_status'] === null) {
+            $invalidProperties[] = "'motivo_status' can't be null";
         }
-        if ($this->container['imposto'] === null) {
-            $invalidProperties[] = "'imposto' can't be null";
-        }
-        if (!is_null($this->container['inf_ad_prod']) && (mb_strlen($this->container['inf_ad_prod']) > 500)) {
-            $invalidProperties[] = "invalid value for 'inf_ad_prod', the character length must be smaller than or equal to 500.";
+        if ((mb_strlen($this->container['motivo_status']) > 255)) {
+            $invalidProperties[] = "invalid value for 'motivo_status', the character length must be smaller than or equal to 255.";
         }
 
-        if (!is_null($this->container['inf_ad_prod']) && (mb_strlen($this->container['inf_ad_prod']) < 1)) {
-            $invalidProperties[] = "invalid value for 'inf_ad_prod', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['motivo_status']) < 1)) {
+            $invalidProperties[] = "invalid value for 'motivo_status', the character length must be bigger than or equal to 1.";
         }
 
+        if ($this->container['uf'] === null) {
+            $invalidProperties[] = "'uf' can't be null";
+        }
+        if ($this->container['data_consulta'] === null) {
+            $invalidProperties[] = "'data_consulta' can't be null";
+        }
+        if ($this->container['uf_atendimento'] === null) {
+            $invalidProperties[] = "'uf_atendimento' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -375,298 +377,315 @@ class NfcomSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets n_item
+     * Gets codigo_status
      *
      * @return int
      */
-    public function getNItem()
+    public function getCodigoStatus()
     {
-        return $this->container['n_item'];
+        return $this->container['codigo_status'];
     }
 
     /**
-     * Sets n_item
+     * Sets codigo_status
      *
-     * @param int $n_item Número do item da NFCom.
+     * @param int $codigo_status Código do status da mensagem enviada.
      *
      * @return self
      */
-    public function setNItem($n_item)
+    public function setCodigoStatus($codigo_status)
     {
-        if (is_null($n_item)) {
-            array_push($this->openAPINullablesSetToNull, 'n_item');
+        if (is_null($codigo_status)) {
+            array_push($this->openAPINullablesSetToNull, 'codigo_status');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('n_item', $nullablesSetToNull);
+            $index = array_search('codigo_status', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
 
-        if (!is_null($n_item) && ($n_item > 9999)) {
-            throw new \InvalidArgumentException('invalid value for $n_item when calling NfcomSefazDet., must be smaller than or equal to 9999.');
+        if (!is_null($codigo_status) && ($codigo_status > 999)) {
+            throw new \InvalidArgumentException('invalid value for $codigo_status when calling DfeContribuinteInfCons., must be smaller than or equal to 999.');
         }
-        if (!is_null($n_item) && ($n_item < 1)) {
-            throw new \InvalidArgumentException('invalid value for $n_item when calling NfcomSefazDet., must be bigger than or equal to 1.');
+        if (!is_null($codigo_status) && ($codigo_status < 0)) {
+            throw new \InvalidArgumentException('invalid value for $codigo_status when calling DfeContribuinteInfCons., must be bigger than or equal to 0.');
         }
 
-        $this->container['n_item'] = $n_item;
+        $this->container['codigo_status'] = $codigo_status;
 
         return $this;
     }
 
     /**
-     * Gets ch_nf_com_ant
+     * Gets motivo_status
+     *
+     * @return string
+     */
+    public function getMotivoStatus()
+    {
+        return $this->container['motivo_status'];
+    }
+
+    /**
+     * Sets motivo_status
+     *
+     * @param string $motivo_status Descrição literal do status do serviço solicitado.
+     *
+     * @return self
+     */
+    public function setMotivoStatus($motivo_status)
+    {
+        if (is_null($motivo_status)) {
+            array_push($this->openAPINullablesSetToNull, 'motivo_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('motivo_status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($motivo_status) && (mb_strlen($motivo_status) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $motivo_status when calling DfeContribuinteInfCons., must be smaller than or equal to 255.');
+        }
+        if (!is_null($motivo_status) && (mb_strlen($motivo_status) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $motivo_status when calling DfeContribuinteInfCons., must be bigger than or equal to 1.');
+        }
+
+        $this->container['motivo_status'] = $motivo_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets uf
+     *
+     * @return string
+     */
+    public function getUf()
+    {
+        return $this->container['uf'];
+    }
+
+    /**
+     * Sets uf
+     *
+     * @param string $uf sigla da UF consultada, utilizar SU para SUFRAMA.
+     *
+     * @return self
+     */
+    public function setUf($uf)
+    {
+        if (is_null($uf)) {
+            array_push($this->openAPINullablesSetToNull, 'uf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['uf'] = $uf;
+
+        return $this;
+    }
+
+    /**
+     * Gets ie
      *
      * @return string|null
      */
-    public function getChNfComAnt()
+    public function getIe()
     {
-        return $this->container['ch_nf_com_ant'];
+        return $this->container['ie'];
     }
 
     /**
-     * Sets ch_nf_com_ant
+     * Sets ie
      *
-     * @param string|null $ch_nf_com_ant Chave de Acesso da NFCom anterior.  Informar chave de acesso de referencia anterior  TAG OPCIONAL, DEVE SER INFORMADA APENAS NOS CASOS PREVISTOS DE NOTA ANTERIOR REFERENCIADA.
+     * @param string|null $ie Inscrição Estadual do contribuinte.
      *
      * @return self
      */
-    public function setChNfComAnt($ch_nf_com_ant)
+    public function setIe($ie)
     {
-        if (is_null($ch_nf_com_ant)) {
-            array_push($this->openAPINullablesSetToNull, 'ch_nf_com_ant');
+        if (is_null($ie)) {
+            array_push($this->openAPINullablesSetToNull, 'ie');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ch_nf_com_ant', $nullablesSetToNull);
+            $index = array_search('ie', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($ch_nf_com_ant) && (mb_strlen($ch_nf_com_ant) > 44)) {
-            throw new \InvalidArgumentException('invalid length for $ch_nf_com_ant when calling NfcomSefazDet., must be smaller than or equal to 44.');
-        }
-
-        $this->container['ch_nf_com_ant'] = $ch_nf_com_ant;
+        $this->container['ie'] = $ie;
 
         return $this;
     }
 
     /**
-     * Gets n_item_ant
+     * Gets cnpj
      *
      * @return string|null
      */
-    public function getNItemAnt()
+    public function getCnpj()
     {
-        return $this->container['n_item_ant'];
+        return $this->container['cnpj'];
     }
 
     /**
-     * Sets n_item_ant
+     * Sets cnpj
      *
-     * @param string|null $n_item_ant Número do item da NFCom anterior.  Informar nro do item da chave de acesso de referencia anterior  TAG OPCIONAL, DEVE SER INFORMADA APENAS NOS CASOS PREVISTOS DE NOTA ANTERIOR REFERENCIADA.
+     * @param string|null $cnpj CNPJ do contribuinte.
      *
      * @return self
      */
-    public function setNItemAnt($n_item_ant)
+    public function setCnpj($cnpj)
     {
-        if (is_null($n_item_ant)) {
-            array_push($this->openAPINullablesSetToNull, 'n_item_ant');
+        if (is_null($cnpj)) {
+            array_push($this->openAPINullablesSetToNull, 'cnpj');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('n_item_ant', $nullablesSetToNull);
+            $index = array_search('cnpj', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['n_item_ant'] = $n_item_ant;
+        $this->container['cnpj'] = $cnpj;
 
         return $this;
     }
 
     /**
-     * Gets ind_nf_com_ant_papel_fat_central
-     *
-     * @return int|null
-     */
-    public function getIndNfComAntPapelFatCentral()
-    {
-        return $this->container['ind_nf_com_ant_papel_fat_central'];
-    }
-
-    /**
-     * Sets ind_nf_com_ant_papel_fat_central
-     *
-     * @param int|null $ind_nf_com_ant_papel_fat_central Indicador de Nota anterior em papel no faturamento centralizado.  Informa que a NFCom Anterior de Faturamento centralizado não é eletrônica.
-     *
-     * @return self
-     */
-    public function setIndNfComAntPapelFatCentral($ind_nf_com_ant_papel_fat_central)
-    {
-        if (is_null($ind_nf_com_ant_papel_fat_central)) {
-            array_push($this->openAPINullablesSetToNull, 'ind_nf_com_ant_papel_fat_central');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ind_nf_com_ant_papel_fat_central', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['ind_nf_com_ant_papel_fat_central'] = $ind_nf_com_ant_papel_fat_central;
-
-        return $this;
-    }
-
-    /**
-     * Gets prod
-     *
-     * @return \NuvemFiscal\Model\NfcomSefazProd
-     */
-    public function getProd()
-    {
-        return $this->container['prod'];
-    }
-
-    /**
-     * Sets prod
-     *
-     * @param \NuvemFiscal\Model\NfcomSefazProd $prod prod
-     *
-     * @return self
-     */
-    public function setProd($prod)
-    {
-        if (is_null($prod)) {
-            throw new \InvalidArgumentException('non-nullable prod cannot be null');
-        }
-        $this->container['prod'] = $prod;
-
-        return $this;
-    }
-
-    /**
-     * Gets imposto
-     *
-     * @return \NuvemFiscal\Model\NfcomSefazImposto
-     */
-    public function getImposto()
-    {
-        return $this->container['imposto'];
-    }
-
-    /**
-     * Sets imposto
-     *
-     * @param \NuvemFiscal\Model\NfcomSefazImposto $imposto imposto
-     *
-     * @return self
-     */
-    public function setImposto($imposto)
-    {
-        if (is_null($imposto)) {
-            throw new \InvalidArgumentException('non-nullable imposto cannot be null');
-        }
-        $this->container['imposto'] = $imposto;
-
-        return $this;
-    }
-
-    /**
-     * Gets g_proc_ref
-     *
-     * @return \NuvemFiscal\Model\NfcomSefazGProcRef|null
-     */
-    public function getGProcRef()
-    {
-        return $this->container['g_proc_ref'];
-    }
-
-    /**
-     * Sets g_proc_ref
-     *
-     * @param \NuvemFiscal\Model\NfcomSefazGProcRef|null $g_proc_ref g_proc_ref
-     *
-     * @return self
-     */
-    public function setGProcRef($g_proc_ref)
-    {
-        if (is_null($g_proc_ref)) {
-            throw new \InvalidArgumentException('non-nullable g_proc_ref cannot be null');
-        }
-        $this->container['g_proc_ref'] = $g_proc_ref;
-
-        return $this;
-    }
-
-    /**
-     * Gets g_ressarc
-     *
-     * @return \NuvemFiscal\Model\NfcomSefazGRessarc|null
-     */
-    public function getGRessarc()
-    {
-        return $this->container['g_ressarc'];
-    }
-
-    /**
-     * Sets g_ressarc
-     *
-     * @param \NuvemFiscal\Model\NfcomSefazGRessarc|null $g_ressarc g_ressarc
-     *
-     * @return self
-     */
-    public function setGRessarc($g_ressarc)
-    {
-        if (is_null($g_ressarc)) {
-            throw new \InvalidArgumentException('non-nullable g_ressarc cannot be null');
-        }
-        $this->container['g_ressarc'] = $g_ressarc;
-
-        return $this;
-    }
-
-    /**
-     * Gets inf_ad_prod
+     * Gets cpf
      *
      * @return string|null
      */
-    public function getInfAdProd()
+    public function getCpf()
     {
-        return $this->container['inf_ad_prod'];
+        return $this->container['cpf'];
     }
 
     /**
-     * Sets inf_ad_prod
+     * Sets cpf
      *
-     * @param string|null $inf_ad_prod Informações adicionais do produto (norma referenciada, informações complementares, etc).
+     * @param string|null $cpf CPF do contribuinte.
      *
      * @return self
      */
-    public function setInfAdProd($inf_ad_prod)
+    public function setCpf($cpf)
     {
-        if (is_null($inf_ad_prod)) {
-            array_push($this->openAPINullablesSetToNull, 'inf_ad_prod');
+        if (is_null($cpf)) {
+            array_push($this->openAPINullablesSetToNull, 'cpf');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('inf_ad_prod', $nullablesSetToNull);
+            $index = array_search('cpf', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($inf_ad_prod) && (mb_strlen($inf_ad_prod) > 500)) {
-            throw new \InvalidArgumentException('invalid length for $inf_ad_prod when calling NfcomSefazDet., must be smaller than or equal to 500.');
-        }
-        if (!is_null($inf_ad_prod) && (mb_strlen($inf_ad_prod) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $inf_ad_prod when calling NfcomSefazDet., must be bigger than or equal to 1.');
-        }
+        $this->container['cpf'] = $cpf;
 
-        $this->container['inf_ad_prod'] = $inf_ad_prod;
+        return $this;
+    }
+
+    /**
+     * Gets data_consulta
+     *
+     * @return \DateTime
+     */
+    public function getDataConsulta()
+    {
+        return $this->container['data_consulta'];
+    }
+
+    /**
+     * Sets data_consulta
+     *
+     * @param \DateTime $data_consulta Data da Consulta.
+     *
+     * @return self
+     */
+    public function setDataConsulta($data_consulta)
+    {
+        if (is_null($data_consulta)) {
+            array_push($this->openAPINullablesSetToNull, 'data_consulta');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_consulta', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['data_consulta'] = $data_consulta;
+
+        return $this;
+    }
+
+    /**
+     * Gets uf_atendimento
+     *
+     * @return int
+     */
+    public function getUfAtendimento()
+    {
+        return $this->container['uf_atendimento'];
+    }
+
+    /**
+     * Sets uf_atendimento
+     *
+     * @param int $uf_atendimento código da UF de atendimento.
+     *
+     * @return self
+     */
+    public function setUfAtendimento($uf_atendimento)
+    {
+        if (is_null($uf_atendimento)) {
+            array_push($this->openAPINullablesSetToNull, 'uf_atendimento');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uf_atendimento', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['uf_atendimento'] = $uf_atendimento;
+
+        return $this;
+    }
+
+    /**
+     * Gets informacoes_cadastrais
+     *
+     * @return \NuvemFiscal\Model\DfeContribuinteInfCad[]|null
+     */
+    public function getInformacoesCadastrais()
+    {
+        return $this->container['informacoes_cadastrais'];
+    }
+
+    /**
+     * Sets informacoes_cadastrais
+     *
+     * @param \NuvemFiscal\Model\DfeContribuinteInfCad[]|null $informacoes_cadastrais informacoes_cadastrais
+     *
+     * @return self
+     */
+    public function setInformacoesCadastrais($informacoes_cadastrais)
+    {
+        if (is_null($informacoes_cadastrais)) {
+            throw new \InvalidArgumentException('non-nullable informacoes_cadastrais cannot be null');
+        }
+        $this->container['informacoes_cadastrais'] = $informacoes_cadastrais;
 
         return $this;
     }

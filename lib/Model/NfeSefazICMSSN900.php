@@ -34,7 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazICMSSN900 Class Doc Comment
  *
  * @category Class
- * @description Tributação do ICMS pelo SIMPLES NACIONAL, CRT&#x3D;1 - Simples Nacional e CSOSN&#x3D;900 (v2.0).
+ * @description Tributação do ICMS pelo SIMPLES NACIONAL, CRT&#x3D;1 - Simples Nacional, CRT&#x3D;4 - MEI e CSOSN&#x3D;900 (v2.0).
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -34,6 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * CteSefazAereo Class Doc Comment
  *
  * @category Class
+ * @description Informações do modal Aéreo.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -139,7 +139,17 @@ Classe | Método | Endpoint | Descrição
 *CteApi* | [**emitirCte**](docs/Api/CteApi.md#emitircte) | **POST** /cte | Emitir CT-e
 *CteApi* | [**listarCte**](docs/Api/CteApi.md#listarcte) | **GET** /cte | Listar CT-e
 *CteApi* | [**sincronizarCte**](docs/Api/CteApi.md#sincronizarcte) | **POST** /cte/{id}/sincronizar | Sincroniza dados no CT-e a partir da SEFAZ
+*DistribuioNFEApi* | [**baixarXmlDocumentoDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#baixarxmldocumentodistribuicaonfe) | **GET** /distribuicao/nfe/documentos/{id}/xml | Baixar XML do documento
+*DistribuioNFEApi* | [**consultarDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#consultardistribuicaonfe) | **GET** /distribuicao/nfe/{id} | Consultar distribuição
+*DistribuioNFEApi* | [**consultarDocumentoDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#consultardocumentodistribuicaonfe) | **GET** /distribuicao/nfe/documentos/{id} | Consultar documento
+*DistribuioNFEApi* | [**consultarManifestacaoNfe**](docs/Api/DistribuioNFEApi.md#consultarmanifestacaonfe) | **GET** /distribuicao/nfe/manifestacoes/{id} | Consultar manifestação
+*DistribuioNFEApi* | [**gerarDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#gerardistribuicaonfe) | **POST** /distribuicao/nfe | Distribuir documentos
+*DistribuioNFEApi* | [**listarDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#listardistribuicaonfe) | **GET** /distribuicao/nfe | Listar distribuições
+*DistribuioNFEApi* | [**listarDocumentoDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#listardocumentodistribuicaonfe) | **GET** /distribuicao/nfe/documentos | Listar documentos
+*DistribuioNFEApi* | [**listarManifestacaoNfe**](docs/Api/DistribuioNFEApi.md#listarmanifestacaonfe) | **GET** /distribuicao/nfe/manifestacoes | Listar Manifestações
+*DistribuioNFEApi* | [**manifestarNfe**](docs/Api/DistribuioNFEApi.md#manifestarnfe) | **POST** /distribuicao/nfe/manifestacoes | Manifestar nota
 *EmpresaApi* | [**alterarConfigCte**](docs/Api/EmpresaApi.md#alterarconfigcte) | **PUT** /empresas/{cpf_cnpj}/cte | Alterar configuração de CT-e
+*EmpresaApi* | [**alterarConfigDistribuicaoNfe**](docs/Api/EmpresaApi.md#alterarconfigdistribuicaonfe) | **PUT** /empresas/{cpf_cnpj}/distnfe | Alterar configuração de Distribuição de NF-e
 *EmpresaApi* | [**alterarConfigMdfe**](docs/Api/EmpresaApi.md#alterarconfigmdfe) | **PUT** /empresas/{cpf_cnpj}/mdfe | Alterar configuração de MDF-e
 *EmpresaApi* | [**alterarConfigNfce**](docs/Api/EmpresaApi.md#alterarconfignfce) | **PUT** /empresas/{cpf_cnpj}/nfce | Alterar configuração de NFC-e
 *EmpresaApi* | [**alterarConfigNfcom**](docs/Api/EmpresaApi.md#alterarconfignfcom) | **PUT** /empresas/{cpf_cnpj}/nfcom | Alterar configuração de NFCom
@@ -150,6 +160,7 @@ Classe | Método | Endpoint | Descrição
 *EmpresaApi* | [**cadastrarCertificadoEmpresa**](docs/Api/EmpresaApi.md#cadastrarcertificadoempresa) | **PUT** /empresas/{cpf_cnpj}/certificado | Cadastrar certificado
 *EmpresaApi* | [**consultarCertificadoEmpresa**](docs/Api/EmpresaApi.md#consultarcertificadoempresa) | **GET** /empresas/{cpf_cnpj}/certificado | Consultar certificado
 *EmpresaApi* | [**consultarConfigCte**](docs/Api/EmpresaApi.md#consultarconfigcte) | **GET** /empresas/{cpf_cnpj}/cte | Consultar configuração de CT-e
+*EmpresaApi* | [**consultarConfigDistribuicaoNfe**](docs/Api/EmpresaApi.md#consultarconfigdistribuicaonfe) | **GET** /empresas/{cpf_cnpj}/distnfe | Consultar configuração de Distribuição de NF-e
 *EmpresaApi* | [**consultarConfigMdfe**](docs/Api/EmpresaApi.md#consultarconfigmdfe) | **GET** /empresas/{cpf_cnpj}/mdfe | Consultar configuração de MDF-e
 *EmpresaApi* | [**consultarConfigNfce**](docs/Api/EmpresaApi.md#consultarconfignfce) | **GET** /empresas/{cpf_cnpj}/nfce | Consultar configuração de NFC-e
 *EmpresaApi* | [**consultarConfigNfcom**](docs/Api/EmpresaApi.md#consultarconfignfcom) | **GET** /empresas/{cpf_cnpj}/nfcom | Consultar configuração de NFCom
@@ -243,6 +254,7 @@ Classe | Método | Endpoint | Descrição
 *NfeApi* | [**cancelarNfe**](docs/Api/NfeApi.md#cancelarnfe) | **POST** /nfe/{id}/cancelamento | Cancelar uma NF-e autorizada
 *NfeApi* | [**consultarCancelamentoNfe**](docs/Api/NfeApi.md#consultarcancelamentonfe) | **GET** /nfe/{id}/cancelamento | Consultar o cancelamento da NF-e
 *NfeApi* | [**consultarCartaCorrecaoNfe**](docs/Api/NfeApi.md#consultarcartacorrecaonfe) | **GET** /nfe/{id}/carta-correcao | Consultar a solicitação de correção da NF-e
+*NfeApi* | [**consultarContribuinteNfe**](docs/Api/NfeApi.md#consultarcontribuintenfe) | **GET** /nfe/cadastro-contribuinte | Consultar contribuinte
 *NfeApi* | [**consultarEventoNfe**](docs/Api/NfeApi.md#consultareventonfe) | **GET** /nfe/eventos/{id} | Consultar evento
 *NfeApi* | [**consultarInutilizacaoNfe**](docs/Api/NfeApi.md#consultarinutilizacaonfe) | **GET** /nfe/inutilizacoes/{id} | Consultar a inutilização de sequência de numeração
 *NfeApi* | [**consultarLoteNfe**](docs/Api/NfeApi.md#consultarlotenfe) | **GET** /nfe/lotes/{id} | Consultar lote de NF-e
@@ -402,6 +414,9 @@ Classe | Método | Endpoint | Descrição
 - [DfeAutorizacao](docs/Model/DfeAutorizacao.md)
 - [DfeCancelamento](docs/Model/DfeCancelamento.md)
 - [DfeCartaCorrecao](docs/Model/DfeCartaCorrecao.md)
+- [DfeContribuinteEndereco](docs/Model/DfeContribuinteEndereco.md)
+- [DfeContribuinteInfCad](docs/Model/DfeContribuinteInfCad.md)
+- [DfeContribuinteInfCons](docs/Model/DfeContribuinteInfCons.md)
 - [DfeEvento](docs/Model/DfeEvento.md)
 - [DfeEventoListagem](docs/Model/DfeEventoListagem.md)
 - [DfeInutilizacao](docs/Model/DfeInutilizacao.md)
@@ -412,12 +427,20 @@ Classe | Método | Endpoint | Descrição
 - [DfeRecibo](docs/Model/DfeRecibo.md)
 - [DfeSefazStatus](docs/Model/DfeSefazStatus.md)
 - [DfeSincronizacao](docs/Model/DfeSincronizacao.md)
+- [DistribuicaoNfe](docs/Model/DistribuicaoNfe.md)
+- [DistribuicaoNfeDocumento](docs/Model/DistribuicaoNfeDocumento.md)
+- [DistribuicaoNfeDocumentoListagem](docs/Model/DistribuicaoNfeDocumentoListagem.md)
+- [DistribuicaoNfeEvento](docs/Model/DistribuicaoNfeEvento.md)
+- [DistribuicaoNfeListagem](docs/Model/DistribuicaoNfeListagem.md)
+- [DistribuicaoNfePedido](docs/Model/DistribuicaoNfePedido.md)
+- [DistribuicaoNfePedidoManifestacao](docs/Model/DistribuicaoNfePedidoManifestacao.md)
 - [DocDedRed](docs/Model/DocDedRed.md)
 - [DocNFNFS](docs/Model/DocNFNFS.md)
 - [DocOutNFSe](docs/Model/DocOutNFSe.md)
 - [Empresa](docs/Model/Empresa.md)
 - [EmpresaCertificado](docs/Model/EmpresaCertificado.md)
 - [EmpresaConfigCte](docs/Model/EmpresaConfigCte.md)
+- [EmpresaConfigDistribuicaoNfe](docs/Model/EmpresaConfigDistribuicaoNfe.md)
 - [EmpresaConfigMdfe](docs/Model/EmpresaConfigMdfe.md)
 - [EmpresaConfigNfce](docs/Model/EmpresaConfigNfce.md)
 - [EmpresaConfigNfceSefaz](docs/Model/EmpresaConfigNfceSefaz.md)
@@ -450,6 +473,7 @@ Classe | Método | Endpoint | Descrição
 - [ListaDocDedRed](docs/Model/ListaDocDedRed.md)
 - [LocPrest](docs/Model/LocPrest.md)
 - [LocacaoSublocacao](docs/Model/LocacaoSublocacao.md)
+- [ManifestacaoNfeListagem](docs/Model/ManifestacaoNfeListagem.md)
 - [MdfeDocumentoVinculado](docs/Model/MdfeDocumentoVinculado.md)
 - [MdfeEncerramento](docs/Model/MdfeEncerramento.md)
 - [MdfeInclusaoCondutor](docs/Model/MdfeInclusaoCondutor.md)
@@ -536,6 +560,7 @@ Classe | Método | Endpoint | Descrição
 - [NfcomSefazFUNTTEL](docs/Model/NfcomSefazFUNTTEL.md)
 - [NfcomSefazFUST](docs/Model/NfcomSefazFUST.md)
 - [NfcomSefazGCofat](docs/Model/NfcomSefazGCofat.md)
+- [NfcomSefazGCofatGNF](docs/Model/NfcomSefazGCofatGNF.md)
 - [NfcomSefazGFat](docs/Model/NfcomSefazGFat.md)
 - [NfcomSefazGFatCentral](docs/Model/NfcomSefazGFatCentral.md)
 - [NfcomSefazGFidelidade](docs/Model/NfcomSefazGFidelidade.md)
@@ -738,6 +763,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.32.0`
-    - Versão do package: `2.28.0`
+- Versão da API: `2.40.0`
+    - Versão do package: `2.29.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

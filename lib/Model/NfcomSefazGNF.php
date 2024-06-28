@@ -348,12 +348,12 @@ class NfcomSefazGNF implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'compet_emis', the character length must be bigger than or equal to 6.";
         }
 
-        if (!is_null($this->container['hash115']) && (mb_strlen($this->container['hash115']) > 32)) {
-            $invalidProperties[] = "invalid value for 'hash115', the character length must be smaller than or equal to 32.";
+        if (!is_null($this->container['hash115']) && (mb_strlen($this->container['hash115']) > 44)) {
+            $invalidProperties[] = "invalid value for 'hash115', the character length must be smaller than or equal to 44.";
         }
 
-        if (!is_null($this->container['hash115']) && (mb_strlen($this->container['hash115']) < 32)) {
-            $invalidProperties[] = "invalid value for 'hash115', the character length must be bigger than or equal to 32.";
+        if (!is_null($this->container['hash115']) && (mb_strlen($this->container['hash115']) < 44)) {
+            $invalidProperties[] = "invalid value for 'hash115', the character length must be bigger than or equal to 44.";
         }
 
         return $invalidProperties;
@@ -592,11 +592,11 @@ class NfcomSefazGNF implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($hash115) && (mb_strlen($hash115) > 32)) {
-            throw new \InvalidArgumentException('invalid length for $hash115 when calling NfcomSefazGNF., must be smaller than or equal to 32.');
+        if (!is_null($hash115) && (mb_strlen($hash115) > 44)) {
+            throw new \InvalidArgumentException('invalid length for $hash115 when calling NfcomSefazGNF., must be smaller than or equal to 44.');
         }
-        if (!is_null($hash115) && (mb_strlen($hash115) < 32)) {
-            throw new \InvalidArgumentException('invalid length for $hash115 when calling NfcomSefazGNF., must be bigger than or equal to 32.');
+        if (!is_null($hash115) && (mb_strlen($hash115) < 44)) {
+            throw new \InvalidArgumentException('invalid length for $hash115 when calling NfcomSefazGNF., must be bigger than or equal to 44.');
         }
 
         $this->container['hash115'] = $hash115;

@@ -1,6 +1,6 @@
 <?php
 /**
- * Endereco
+ * NfcomSefazGCofatGNF
  *
  * PHP version 7.4
  *
@@ -31,16 +31,16 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * Endereco Class Doc Comment
+ * NfcomSefazGCofatGNF Class Doc Comment
  *
  * @category Class
- * @description Dados de endereço do prestador.
+ * @description Informação da NF modelo 21/22 referenciada.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
+class NfcomSefazGCofatGNF implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Endereco';
+    protected static $openAPIModelName = 'NfcomSefazGCofat_GNF';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +57,12 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'end_nac' => '\NuvemFiscal\Model\EnderNac',
-        'end_ext' => '\NuvemFiscal\Model\EnderExt',
-        'x_lgr' => 'string',
-        'nro' => 'string',
-        'x_cpl' => 'string',
-        'x_bairro' => 'string'
+        'cnpj' => 'string',
+        'mod' => 'int',
+        'serie' => 'string',
+        'n_nf' => 'int',
+        'compet_emis' => 'string',
+        'hash115' => 'string'
     ];
 
     /**
@@ -73,12 +73,12 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'end_nac' => null,
-        'end_ext' => null,
-        'x_lgr' => null,
-        'nro' => null,
-        'x_cpl' => null,
-        'x_bairro' => null
+        'cnpj' => null,
+        'mod' => null,
+        'serie' => null,
+        'n_nf' => null,
+        'compet_emis' => null,
+        'hash115' => null
     ];
 
     /**
@@ -87,12 +87,12 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'end_nac' => false,
-        'end_ext' => false,
-        'x_lgr' => true,
-        'nro' => true,
-        'x_cpl' => true,
-        'x_bairro' => true
+        'cnpj' => true,
+        'mod' => true,
+        'serie' => true,
+        'n_nf' => true,
+        'compet_emis' => true,
+        'hash115' => true
     ];
 
     /**
@@ -181,12 +181,12 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'end_nac' => 'endNac',
-        'end_ext' => 'endExt',
-        'x_lgr' => 'xLgr',
-        'nro' => 'nro',
-        'x_cpl' => 'xCpl',
-        'x_bairro' => 'xBairro'
+        'cnpj' => 'CNPJ',
+        'mod' => 'mod',
+        'serie' => 'serie',
+        'n_nf' => 'nNF',
+        'compet_emis' => 'CompetEmis',
+        'hash115' => 'hash115'
     ];
 
     /**
@@ -195,12 +195,12 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'end_nac' => 'setEndNac',
-        'end_ext' => 'setEndExt',
-        'x_lgr' => 'setXLgr',
-        'nro' => 'setNro',
-        'x_cpl' => 'setXCpl',
-        'x_bairro' => 'setXBairro'
+        'cnpj' => 'setCnpj',
+        'mod' => 'setMod',
+        'serie' => 'setSerie',
+        'n_nf' => 'setNNf',
+        'compet_emis' => 'setCompetEmis',
+        'hash115' => 'setHash115'
     ];
 
     /**
@@ -209,12 +209,12 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'end_nac' => 'getEndNac',
-        'end_ext' => 'getEndExt',
-        'x_lgr' => 'getXLgr',
-        'nro' => 'getNro',
-        'x_cpl' => 'getXCpl',
-        'x_bairro' => 'getXBairro'
+        'cnpj' => 'getCnpj',
+        'mod' => 'getMod',
+        'serie' => 'getSerie',
+        'n_nf' => 'getNNf',
+        'compet_emis' => 'getCompetEmis',
+        'hash115' => 'getHash115'
     ];
 
     /**
@@ -274,12 +274,12 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('end_nac', $data ?? [], null);
-        $this->setIfExists('end_ext', $data ?? [], null);
-        $this->setIfExists('x_lgr', $data ?? [], null);
-        $this->setIfExists('nro', $data ?? [], null);
-        $this->setIfExists('x_cpl', $data ?? [], null);
-        $this->setIfExists('x_bairro', $data ?? [], null);
+        $this->setIfExists('cnpj', $data ?? [], null);
+        $this->setIfExists('mod', $data ?? [], null);
+        $this->setIfExists('serie', $data ?? [], null);
+        $this->setIfExists('n_nf', $data ?? [], null);
+        $this->setIfExists('compet_emis', $data ?? [], null);
+        $this->setIfExists('hash115', $data ?? [], null);
     }
 
     /**
@@ -309,36 +309,51 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['x_lgr']) && (mb_strlen($this->container['x_lgr']) > 255)) {
-            $invalidProperties[] = "invalid value for 'x_lgr', the character length must be smaller than or equal to 255.";
+        if ($this->container['cnpj'] === null) {
+            $invalidProperties[] = "'cnpj' can't be null";
+        }
+        if ($this->container['mod'] === null) {
+            $invalidProperties[] = "'mod' can't be null";
+        }
+        if ($this->container['serie'] === null) {
+            $invalidProperties[] = "'serie' can't be null";
+        }
+        if ((mb_strlen($this->container['serie']) > 3)) {
+            $invalidProperties[] = "invalid value for 'serie', the character length must be smaller than or equal to 3.";
         }
 
-        if (!is_null($this->container['x_lgr']) && (mb_strlen($this->container['x_lgr']) < 1)) {
-            $invalidProperties[] = "invalid value for 'x_lgr', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['serie']) < 3)) {
+            $invalidProperties[] = "invalid value for 'serie', the character length must be bigger than or equal to 3.";
         }
 
-        if (!is_null($this->container['nro']) && (mb_strlen($this->container['nro']) > 60)) {
-            $invalidProperties[] = "invalid value for 'nro', the character length must be smaller than or equal to 60.";
+        if ($this->container['n_nf'] === null) {
+            $invalidProperties[] = "'n_nf' can't be null";
+        }
+        if (($this->container['n_nf'] > 999999999)) {
+            $invalidProperties[] = "invalid value for 'n_nf', must be smaller than or equal to 999999999.";
         }
 
-        if (!is_null($this->container['nro']) && (mb_strlen($this->container['nro']) < 1)) {
-            $invalidProperties[] = "invalid value for 'nro', the character length must be bigger than or equal to 1.";
+        if (($this->container['n_nf'] < 1)) {
+            $invalidProperties[] = "invalid value for 'n_nf', must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['x_cpl']) && (mb_strlen($this->container['x_cpl']) > 156)) {
-            $invalidProperties[] = "invalid value for 'x_cpl', the character length must be smaller than or equal to 156.";
+        if ($this->container['compet_emis'] === null) {
+            $invalidProperties[] = "'compet_emis' can't be null";
+        }
+        if ((mb_strlen($this->container['compet_emis']) > 6)) {
+            $invalidProperties[] = "invalid value for 'compet_emis', the character length must be smaller than or equal to 6.";
         }
 
-        if (!is_null($this->container['x_cpl']) && (mb_strlen($this->container['x_cpl']) < 1)) {
-            $invalidProperties[] = "invalid value for 'x_cpl', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['compet_emis']) < 6)) {
+            $invalidProperties[] = "invalid value for 'compet_emis', the character length must be bigger than or equal to 6.";
         }
 
-        if (!is_null($this->container['x_bairro']) && (mb_strlen($this->container['x_bairro']) > 60)) {
-            $invalidProperties[] = "invalid value for 'x_bairro', the character length must be smaller than or equal to 60.";
+        if (!is_null($this->container['hash115']) && (mb_strlen($this->container['hash115']) > 44)) {
+            $invalidProperties[] = "invalid value for 'hash115', the character length must be smaller than or equal to 44.";
         }
 
-        if (!is_null($this->container['x_bairro']) && (mb_strlen($this->container['x_bairro']) < 1)) {
-            $invalidProperties[] = "invalid value for 'x_bairro', the character length must be bigger than or equal to 1.";
+        if (!is_null($this->container['hash115']) && (mb_strlen($this->container['hash115']) < 44)) {
+            $invalidProperties[] = "invalid value for 'hash115', the character length must be bigger than or equal to 44.";
         }
 
         return $invalidProperties;
@@ -357,219 +372,234 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets end_nac
+     * Gets cnpj
      *
-     * @return \NuvemFiscal\Model\EnderNac|null
+     * @return string
      */
-    public function getEndNac()
+    public function getCnpj()
     {
-        return $this->container['end_nac'];
+        return $this->container['cnpj'];
     }
 
     /**
-     * Sets end_nac
+     * Sets cnpj
      *
-     * @param \NuvemFiscal\Model\EnderNac|null $end_nac end_nac
+     * @param string $cnpj CNPJ do Emitente.  Informar o CNPJ do emitente do Documento Fiscal.
      *
      * @return self
      */
-    public function setEndNac($end_nac)
+    public function setCnpj($cnpj)
     {
-        if (is_null($end_nac)) {
-            throw new \InvalidArgumentException('non-nullable end_nac cannot be null');
-        }
-        $this->container['end_nac'] = $end_nac;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_ext
-     *
-     * @return \NuvemFiscal\Model\EnderExt|null
-     */
-    public function getEndExt()
-    {
-        return $this->container['end_ext'];
-    }
-
-    /**
-     * Sets end_ext
-     *
-     * @param \NuvemFiscal\Model\EnderExt|null $end_ext end_ext
-     *
-     * @return self
-     */
-    public function setEndExt($end_ext)
-    {
-        if (is_null($end_ext)) {
-            throw new \InvalidArgumentException('non-nullable end_ext cannot be null');
-        }
-        $this->container['end_ext'] = $end_ext;
-
-        return $this;
-    }
-
-    /**
-     * Gets x_lgr
-     *
-     * @return string|null
-     */
-    public function getXLgr()
-    {
-        return $this->container['x_lgr'];
-    }
-
-    /**
-     * Sets x_lgr
-     *
-     * @param string|null $x_lgr Tipo e nome do logradouro da localização do imóvel.
-     *
-     * @return self
-     */
-    public function setXLgr($x_lgr)
-    {
-        if (is_null($x_lgr)) {
-            array_push($this->openAPINullablesSetToNull, 'x_lgr');
+        if (is_null($cnpj)) {
+            array_push($this->openAPINullablesSetToNull, 'cnpj');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('x_lgr', $nullablesSetToNull);
+            $index = array_search('cnpj', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($x_lgr) && (mb_strlen($x_lgr) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $x_lgr when calling Endereco., must be smaller than or equal to 255.');
-        }
-        if (!is_null($x_lgr) && (mb_strlen($x_lgr) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $x_lgr when calling Endereco., must be bigger than or equal to 1.');
-        }
-
-        $this->container['x_lgr'] = $x_lgr;
+        $this->container['cnpj'] = $cnpj;
 
         return $this;
     }
 
     /**
-     * Gets nro
+     * Gets mod
      *
-     * @return string|null
+     * @return int
      */
-    public function getNro()
+    public function getMod()
     {
-        return $this->container['nro'];
+        return $this->container['mod'];
     }
 
     /**
-     * Sets nro
+     * Sets mod
      *
-     * @param string|null $nro Número do imóvel.
+     * @param int $mod Modelo do documento.  21 ou 22.
      *
      * @return self
      */
-    public function setNro($nro)
+    public function setMod($mod)
     {
-        if (is_null($nro)) {
-            array_push($this->openAPINullablesSetToNull, 'nro');
+        if (is_null($mod)) {
+            array_push($this->openAPINullablesSetToNull, 'mod');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('nro', $nullablesSetToNull);
+            $index = array_search('mod', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($nro) && (mb_strlen($nro) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $nro when calling Endereco., must be smaller than or equal to 60.');
-        }
-        if (!is_null($nro) && (mb_strlen($nro) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $nro when calling Endereco., must be bigger than or equal to 1.');
-        }
-
-        $this->container['nro'] = $nro;
+        $this->container['mod'] = $mod;
 
         return $this;
     }
 
     /**
-     * Gets x_cpl
+     * Gets serie
      *
-     * @return string|null
+     * @return string
      */
-    public function getXCpl()
+    public function getSerie()
     {
-        return $this->container['x_cpl'];
+        return $this->container['serie'];
     }
 
     /**
-     * Sets x_cpl
+     * Sets serie
      *
-     * @param string|null $x_cpl Complemento do endereço.
+     * @param string $serie Serie do documento fiscal.
      *
      * @return self
      */
-    public function setXCpl($x_cpl)
+    public function setSerie($serie)
     {
-        if (is_null($x_cpl)) {
-            array_push($this->openAPINullablesSetToNull, 'x_cpl');
+        if (is_null($serie)) {
+            array_push($this->openAPINullablesSetToNull, 'serie');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('x_cpl', $nullablesSetToNull);
+            $index = array_search('serie', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($x_cpl) && (mb_strlen($x_cpl) > 156)) {
-            throw new \InvalidArgumentException('invalid length for $x_cpl when calling Endereco., must be smaller than or equal to 156.');
+        if (!is_null($serie) && (mb_strlen($serie) > 3)) {
+            throw new \InvalidArgumentException('invalid length for $serie when calling NfcomSefazGCofatGNF., must be smaller than or equal to 3.');
         }
-        if (!is_null($x_cpl) && (mb_strlen($x_cpl) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $x_cpl when calling Endereco., must be bigger than or equal to 1.');
+        if (!is_null($serie) && (mb_strlen($serie) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $serie when calling NfcomSefazGCofatGNF., must be bigger than or equal to 3.');
         }
 
-        $this->container['x_cpl'] = $x_cpl;
+        $this->container['serie'] = $serie;
 
         return $this;
     }
 
     /**
-     * Gets x_bairro
+     * Gets n_nf
      *
-     * @return string|null
+     * @return int
      */
-    public function getXBairro()
+    public function getNNf()
     {
-        return $this->container['x_bairro'];
+        return $this->container['n_nf'];
     }
 
     /**
-     * Sets x_bairro
+     * Sets n_nf
      *
-     * @param string|null $x_bairro Bairro.
+     * @param int $n_nf Número do documento fiscal.
      *
      * @return self
      */
-    public function setXBairro($x_bairro)
+    public function setNNf($n_nf)
     {
-        if (is_null($x_bairro)) {
-            array_push($this->openAPINullablesSetToNull, 'x_bairro');
+        if (is_null($n_nf)) {
+            array_push($this->openAPINullablesSetToNull, 'n_nf');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('x_bairro', $nullablesSetToNull);
+            $index = array_search('n_nf', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($x_bairro) && (mb_strlen($x_bairro) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $x_bairro when calling Endereco., must be smaller than or equal to 60.');
+
+        if (!is_null($n_nf) && ($n_nf > 999999999)) {
+            throw new \InvalidArgumentException('invalid value for $n_nf when calling NfcomSefazGCofatGNF., must be smaller than or equal to 999999999.');
         }
-        if (!is_null($x_bairro) && (mb_strlen($x_bairro) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $x_bairro when calling Endereco., must be bigger than or equal to 1.');
+        if (!is_null($n_nf) && ($n_nf < 1)) {
+            throw new \InvalidArgumentException('invalid value for $n_nf when calling NfcomSefazGCofatGNF., must be bigger than or equal to 1.');
         }
 
-        $this->container['x_bairro'] = $x_bairro;
+        $this->container['n_nf'] = $n_nf;
+
+        return $this;
+    }
+
+    /**
+     * Gets compet_emis
+     *
+     * @return string
+     */
+    public function getCompetEmis()
+    {
+        return $this->container['compet_emis'];
+    }
+
+    /**
+     * Sets compet_emis
+     *
+     * @param string $compet_emis Ano e mês da emissão da NF (AAAAMM).
+     *
+     * @return self
+     */
+    public function setCompetEmis($compet_emis)
+    {
+        if (is_null($compet_emis)) {
+            array_push($this->openAPINullablesSetToNull, 'compet_emis');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('compet_emis', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($compet_emis) && (mb_strlen($compet_emis) > 6)) {
+            throw new \InvalidArgumentException('invalid length for $compet_emis when calling NfcomSefazGCofatGNF., must be smaller than or equal to 6.');
+        }
+        if (!is_null($compet_emis) && (mb_strlen($compet_emis) < 6)) {
+            throw new \InvalidArgumentException('invalid length for $compet_emis when calling NfcomSefazGCofatGNF., must be bigger than or equal to 6.');
+        }
+
+        $this->container['compet_emis'] = $compet_emis;
+
+        return $this;
+    }
+
+    /**
+     * Gets hash115
+     *
+     * @return string|null
+     */
+    public function getHash115()
+    {
+        return $this->container['hash115'];
+    }
+
+    /**
+     * Sets hash115
+     *
+     * @param string|null $hash115 Hash do registro no arquivo do convênio 115.  Campo poderá ser exigido a critério da UF - campo 36 do arquivo MESTRE DE DOCUMENTO FISCAL (Anexo Único, item 5 do Conv. 115/03).
+     *
+     * @return self
+     */
+    public function setHash115($hash115)
+    {
+        if (is_null($hash115)) {
+            array_push($this->openAPINullablesSetToNull, 'hash115');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('hash115', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($hash115) && (mb_strlen($hash115) > 44)) {
+            throw new \InvalidArgumentException('invalid length for $hash115 when calling NfcomSefazGCofatGNF., must be smaller than or equal to 44.');
+        }
+        if (!is_null($hash115) && (mb_strlen($hash115) < 44)) {
+            throw new \InvalidArgumentException('invalid length for $hash115 when calling NfcomSefazGCofatGNF., must be bigger than or equal to 44.');
+        }
+
+        $this->container['hash115'] = $hash115;
 
         return $this;
     }

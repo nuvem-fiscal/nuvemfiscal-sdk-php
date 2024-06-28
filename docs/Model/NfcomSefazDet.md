@@ -7,6 +7,7 @@ Nome | Tipo | Descrição | Comentários
 **n_item** | **int** | Número do item da NFCom. |
 **ch_nf_com_ant** | **string** | Chave de Acesso da NFCom anterior.  Informar chave de acesso de referencia anterior  TAG OPCIONAL, DEVE SER INFORMADA APENAS NOS CASOS PREVISTOS DE NOTA ANTERIOR REFERENCIADA. | [optional]
 **n_item_ant** | **string** | Número do item da NFCom anterior.  Informar nro do item da chave de acesso de referencia anterior  TAG OPCIONAL, DEVE SER INFORMADA APENAS NOS CASOS PREVISTOS DE NOTA ANTERIOR REFERENCIADA. | [optional]
+**ind_nf_com_ant_papel_fat_central** | **int** | Indicador de Nota anterior em papel no faturamento centralizado.  Informa que a NFCom Anterior de Faturamento centralizado não é eletrônica. | [optional]
 **prod** | [**\NuvemFiscal\Model\NfcomSefazProd**](NfcomSefazProd.md) |  |
 **imposto** | [**\NuvemFiscal\Model\NfcomSefazImposto**](NfcomSefazImposto.md) |  |
 **g_proc_ref** | [**\NuvemFiscal\Model\NfcomSefazGProcRef**](NfcomSefazGProcRef.md) |  | [optional]

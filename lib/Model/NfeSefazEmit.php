@@ -741,7 +741,7 @@ class NfeSefazEmit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets crt
      *
-     * @param int|null $crt Código de Regime Tributário.  Este campo será obrigatoriamente preenchido com:  * 1 - Simples Nacional  * 2 - Simples Nacional - excesso de sublimite de receita bruta  * 3 - Regime Normal    *Caso não seja informado, será utilizado o do cadastro da empresa.*
+     * @param int|null $crt Código de Regime Tributário.  Este campo será obrigatoriamente preenchido com:  * 1 - Simples Nacional  * 2 - Simples Nacional - excesso de sublimite de receita bruta  * 3 - Regime Normal  * 4 - Simples Nacional - Microempreendedor individual - MEI    *Caso não seja informado, será utilizado o do cadastro da empresa.*
      *
      * @return self
      */

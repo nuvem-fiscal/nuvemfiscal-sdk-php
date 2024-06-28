@@ -510,7 +510,7 @@ class NfeSefazICMS51 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cst
      *
-     * @param string $cst Tributção pelo ICMS  * 20 - Com redução de base de cálculo
+     * @param string $cst Tributação pelo ICMS 51 - Tributação com Diferimento.
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * Endereco
+ * DistribuicaoNfePedido
  *
  * PHP version 7.4
  *
@@ -31,16 +31,15 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * Endereco Class Doc Comment
+ * DistribuicaoNfePedido Class Doc Comment
  *
  * @category Class
- * @description Dados de endereço do prestador.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
+class DistribuicaoNfePedido implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +48,7 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Endereco';
+    protected static $openAPIModelName = 'DistribuicaoNfePedido';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +56,13 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'end_nac' => '\NuvemFiscal\Model\EnderNac',
-        'end_ext' => '\NuvemFiscal\Model\EnderExt',
-        'x_lgr' => 'string',
-        'nro' => 'string',
-        'x_cpl' => 'string',
-        'x_bairro' => 'string'
+        'cpf_cnpj' => 'string',
+        'ambiente' => 'string',
+        'uf_autor' => 'string',
+        'tipo_consulta' => 'string',
+        'dist_nsu' => 'int',
+        'cons_nsu' => 'int',
+        'cons_chave' => 'string'
     ];
 
     /**
@@ -73,12 +73,13 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'end_nac' => null,
-        'end_ext' => null,
-        'x_lgr' => null,
-        'nro' => null,
-        'x_cpl' => null,
-        'x_bairro' => null
+        'cpf_cnpj' => null,
+        'ambiente' => null,
+        'uf_autor' => null,
+        'tipo_consulta' => null,
+        'dist_nsu' => null,
+        'cons_nsu' => null,
+        'cons_chave' => null
     ];
 
     /**
@@ -87,12 +88,13 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'end_nac' => false,
-        'end_ext' => false,
-        'x_lgr' => true,
-        'nro' => true,
-        'x_cpl' => true,
-        'x_bairro' => true
+        'cpf_cnpj' => false,
+        'ambiente' => false,
+        'uf_autor' => true,
+        'tipo_consulta' => false,
+        'dist_nsu' => true,
+        'cons_nsu' => true,
+        'cons_chave' => true
     ];
 
     /**
@@ -181,12 +183,13 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'end_nac' => 'endNac',
-        'end_ext' => 'endExt',
-        'x_lgr' => 'xLgr',
-        'nro' => 'nro',
-        'x_cpl' => 'xCpl',
-        'x_bairro' => 'xBairro'
+        'cpf_cnpj' => 'cpf_cnpj',
+        'ambiente' => 'ambiente',
+        'uf_autor' => 'uf_autor',
+        'tipo_consulta' => 'tipo_consulta',
+        'dist_nsu' => 'dist_nsu',
+        'cons_nsu' => 'cons_nsu',
+        'cons_chave' => 'cons_chave'
     ];
 
     /**
@@ -195,12 +198,13 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'end_nac' => 'setEndNac',
-        'end_ext' => 'setEndExt',
-        'x_lgr' => 'setXLgr',
-        'nro' => 'setNro',
-        'x_cpl' => 'setXCpl',
-        'x_bairro' => 'setXBairro'
+        'cpf_cnpj' => 'setCpfCnpj',
+        'ambiente' => 'setAmbiente',
+        'uf_autor' => 'setUfAutor',
+        'tipo_consulta' => 'setTipoConsulta',
+        'dist_nsu' => 'setDistNsu',
+        'cons_nsu' => 'setConsNsu',
+        'cons_chave' => 'setConsChave'
     ];
 
     /**
@@ -209,12 +213,13 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'end_nac' => 'getEndNac',
-        'end_ext' => 'getEndExt',
-        'x_lgr' => 'getXLgr',
-        'nro' => 'getNro',
-        'x_cpl' => 'getXCpl',
-        'x_bairro' => 'getXBairro'
+        'cpf_cnpj' => 'getCpfCnpj',
+        'ambiente' => 'getAmbiente',
+        'uf_autor' => 'getUfAutor',
+        'tipo_consulta' => 'getTipoConsulta',
+        'dist_nsu' => 'getDistNsu',
+        'cons_nsu' => 'getConsNsu',
+        'cons_chave' => 'getConsChave'
     ];
 
     /**
@@ -258,6 +263,38 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const AMBIENTE_HOMOLOGACAO = 'homologacao';
+    public const AMBIENTE_PRODUCAO = 'producao';
+    public const TIPO_CONSULTA_DIST_NSU = 'dist-nsu';
+    public const TIPO_CONSULTA_CONS_NSU = 'cons-nsu';
+    public const TIPO_CONSULTA_CONS_CHAVE = 'cons-chave';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAmbienteAllowableValues()
+    {
+        return [
+            self::AMBIENTE_HOMOLOGACAO,
+            self::AMBIENTE_PRODUCAO,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTipoConsultaAllowableValues()
+    {
+        return [
+            self::TIPO_CONSULTA_DIST_NSU,
+            self::TIPO_CONSULTA_CONS_NSU,
+            self::TIPO_CONSULTA_CONS_CHAVE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -274,12 +311,13 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('end_nac', $data ?? [], null);
-        $this->setIfExists('end_ext', $data ?? [], null);
-        $this->setIfExists('x_lgr', $data ?? [], null);
-        $this->setIfExists('nro', $data ?? [], null);
-        $this->setIfExists('x_cpl', $data ?? [], null);
-        $this->setIfExists('x_bairro', $data ?? [], null);
+        $this->setIfExists('cpf_cnpj', $data ?? [], null);
+        $this->setIfExists('ambiente', $data ?? [], null);
+        $this->setIfExists('uf_autor', $data ?? [], null);
+        $this->setIfExists('tipo_consulta', $data ?? [], null);
+        $this->setIfExists('dist_nsu', $data ?? [], null);
+        $this->setIfExists('cons_nsu', $data ?? [], null);
+        $this->setIfExists('cons_chave', $data ?? [], null);
     }
 
     /**
@@ -309,36 +347,31 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['x_lgr']) && (mb_strlen($this->container['x_lgr']) > 255)) {
-            $invalidProperties[] = "invalid value for 'x_lgr', the character length must be smaller than or equal to 255.";
+        if ($this->container['cpf_cnpj'] === null) {
+            $invalidProperties[] = "'cpf_cnpj' can't be null";
+        }
+        if ($this->container['ambiente'] === null) {
+            $invalidProperties[] = "'ambiente' can't be null";
+        }
+        $allowedValues = $this->getAmbienteAllowableValues();
+        if (!is_null($this->container['ambiente']) && !in_array($this->container['ambiente'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'ambiente', must be one of '%s'",
+                $this->container['ambiente'],
+                implode("', '", $allowedValues)
+            );
         }
 
-        if (!is_null($this->container['x_lgr']) && (mb_strlen($this->container['x_lgr']) < 1)) {
-            $invalidProperties[] = "invalid value for 'x_lgr', the character length must be bigger than or equal to 1.";
+        if ($this->container['tipo_consulta'] === null) {
+            $invalidProperties[] = "'tipo_consulta' can't be null";
         }
-
-        if (!is_null($this->container['nro']) && (mb_strlen($this->container['nro']) > 60)) {
-            $invalidProperties[] = "invalid value for 'nro', the character length must be smaller than or equal to 60.";
-        }
-
-        if (!is_null($this->container['nro']) && (mb_strlen($this->container['nro']) < 1)) {
-            $invalidProperties[] = "invalid value for 'nro', the character length must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['x_cpl']) && (mb_strlen($this->container['x_cpl']) > 156)) {
-            $invalidProperties[] = "invalid value for 'x_cpl', the character length must be smaller than or equal to 156.";
-        }
-
-        if (!is_null($this->container['x_cpl']) && (mb_strlen($this->container['x_cpl']) < 1)) {
-            $invalidProperties[] = "invalid value for 'x_cpl', the character length must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['x_bairro']) && (mb_strlen($this->container['x_bairro']) > 60)) {
-            $invalidProperties[] = "invalid value for 'x_bairro', the character length must be smaller than or equal to 60.";
-        }
-
-        if (!is_null($this->container['x_bairro']) && (mb_strlen($this->container['x_bairro']) < 1)) {
-            $invalidProperties[] = "invalid value for 'x_bairro', the character length must be bigger than or equal to 1.";
+        $allowedValues = $this->getTipoConsultaAllowableValues();
+        if (!is_null($this->container['tipo_consulta']) && !in_array($this->container['tipo_consulta'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'tipo_consulta', must be one of '%s'",
+                $this->container['tipo_consulta'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -357,219 +390,238 @@ class Endereco implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets end_nac
+     * Gets cpf_cnpj
      *
-     * @return \NuvemFiscal\Model\EnderNac|null
+     * @return string
      */
-    public function getEndNac()
+    public function getCpfCnpj()
     {
-        return $this->container['end_nac'];
+        return $this->container['cpf_cnpj'];
     }
 
     /**
-     * Sets end_nac
+     * Sets cpf_cnpj
      *
-     * @param \NuvemFiscal\Model\EnderNac|null $end_nac end_nac
+     * @param string $cpf_cnpj CPF ou CNPJ da empresa.    *Utilize o valor sem máscara*.
      *
      * @return self
      */
-    public function setEndNac($end_nac)
+    public function setCpfCnpj($cpf_cnpj)
     {
-        if (is_null($end_nac)) {
-            throw new \InvalidArgumentException('non-nullable end_nac cannot be null');
+        if (is_null($cpf_cnpj)) {
+            throw new \InvalidArgumentException('non-nullable cpf_cnpj cannot be null');
         }
-        $this->container['end_nac'] = $end_nac;
+        $this->container['cpf_cnpj'] = $cpf_cnpj;
 
         return $this;
     }
 
     /**
-     * Gets end_ext
+     * Gets ambiente
      *
-     * @return \NuvemFiscal\Model\EnderExt|null
+     * @return string
      */
-    public function getEndExt()
+    public function getAmbiente()
     {
-        return $this->container['end_ext'];
+        return $this->container['ambiente'];
     }
 
     /**
-     * Sets end_ext
+     * Sets ambiente
      *
-     * @param \NuvemFiscal\Model\EnderExt|null $end_ext end_ext
+     * @param string $ambiente Identificação do Ambiente.
      *
      * @return self
      */
-    public function setEndExt($end_ext)
+    public function setAmbiente($ambiente)
     {
-        if (is_null($end_ext)) {
-            throw new \InvalidArgumentException('non-nullable end_ext cannot be null');
+        if (is_null($ambiente)) {
+            throw new \InvalidArgumentException('non-nullable ambiente cannot be null');
         }
-        $this->container['end_ext'] = $end_ext;
+        $allowedValues = $this->getAmbienteAllowableValues();
+        if (!in_array($ambiente, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'ambiente', must be one of '%s'",
+                    $ambiente,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['ambiente'] = $ambiente;
 
         return $this;
     }
 
     /**
-     * Gets x_lgr
+     * Gets uf_autor
      *
      * @return string|null
      */
-    public function getXLgr()
+    public function getUfAutor()
     {
-        return $this->container['x_lgr'];
+        return $this->container['uf_autor'];
     }
 
     /**
-     * Sets x_lgr
+     * Sets uf_autor
      *
-     * @param string|null $x_lgr Tipo e nome do logradouro da localização do imóvel.
+     * @param string|null $uf_autor Sigla da UF do autor.
      *
      * @return self
      */
-    public function setXLgr($x_lgr)
+    public function setUfAutor($uf_autor)
     {
-        if (is_null($x_lgr)) {
-            array_push($this->openAPINullablesSetToNull, 'x_lgr');
+        if (is_null($uf_autor)) {
+            array_push($this->openAPINullablesSetToNull, 'uf_autor');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('x_lgr', $nullablesSetToNull);
+            $index = array_search('uf_autor', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($x_lgr) && (mb_strlen($x_lgr) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $x_lgr when calling Endereco., must be smaller than or equal to 255.');
-        }
-        if (!is_null($x_lgr) && (mb_strlen($x_lgr) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $x_lgr when calling Endereco., must be bigger than or equal to 1.');
-        }
-
-        $this->container['x_lgr'] = $x_lgr;
+        $this->container['uf_autor'] = $uf_autor;
 
         return $this;
     }
 
     /**
-     * Gets nro
+     * Gets tipo_consulta
      *
-     * @return string|null
+     * @return string
      */
-    public function getNro()
+    public function getTipoConsulta()
     {
-        return $this->container['nro'];
+        return $this->container['tipo_consulta'];
     }
 
     /**
-     * Sets nro
+     * Sets tipo_consulta
      *
-     * @param string|null $nro Número do imóvel.
+     * @param string $tipo_consulta Tipo de consulta.   Valores possíveis: * `dist-nsu` - Consulta pelo último NSU recebido. * `cons-nsu` - Consulta por um NSU específico. * `cons-chave` - Consulta pela chave de acesso da NF-e.
      *
      * @return self
      */
-    public function setNro($nro)
+    public function setTipoConsulta($tipo_consulta)
     {
-        if (is_null($nro)) {
-            array_push($this->openAPINullablesSetToNull, 'nro');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('nro', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($tipo_consulta)) {
+            throw new \InvalidArgumentException('non-nullable tipo_consulta cannot be null');
         }
-        if (!is_null($nro) && (mb_strlen($nro) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $nro when calling Endereco., must be smaller than or equal to 60.');
+        $allowedValues = $this->getTipoConsultaAllowableValues();
+        if (!in_array($tipo_consulta, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'tipo_consulta', must be one of '%s'",
+                    $tipo_consulta,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        if (!is_null($nro) && (mb_strlen($nro) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $nro when calling Endereco., must be bigger than or equal to 1.');
-        }
-
-        $this->container['nro'] = $nro;
+        $this->container['tipo_consulta'] = $tipo_consulta;
 
         return $this;
     }
 
     /**
-     * Gets x_cpl
+     * Gets dist_nsu
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getXCpl()
+    public function getDistNsu()
     {
-        return $this->container['x_cpl'];
+        return $this->container['dist_nsu'];
     }
 
     /**
-     * Sets x_cpl
+     * Sets dist_nsu
      *
-     * @param string|null $x_cpl Complemento do endereço.
+     * @param int|null $dist_nsu Distribuição de conjunto de DF-e a partir do NSU informado.    *Obrigatório quando \"tipo_consulta\" for \"dist-nsu\".*
      *
      * @return self
      */
-    public function setXCpl($x_cpl)
+    public function setDistNsu($dist_nsu)
     {
-        if (is_null($x_cpl)) {
-            array_push($this->openAPINullablesSetToNull, 'x_cpl');
+        if (is_null($dist_nsu)) {
+            array_push($this->openAPINullablesSetToNull, 'dist_nsu');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('x_cpl', $nullablesSetToNull);
+            $index = array_search('dist_nsu', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($x_cpl) && (mb_strlen($x_cpl) > 156)) {
-            throw new \InvalidArgumentException('invalid length for $x_cpl when calling Endereco., must be smaller than or equal to 156.');
-        }
-        if (!is_null($x_cpl) && (mb_strlen($x_cpl) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $x_cpl when calling Endereco., must be bigger than or equal to 1.');
-        }
-
-        $this->container['x_cpl'] = $x_cpl;
+        $this->container['dist_nsu'] = $dist_nsu;
 
         return $this;
     }
 
     /**
-     * Gets x_bairro
+     * Gets cons_nsu
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getXBairro()
+    public function getConsNsu()
     {
-        return $this->container['x_bairro'];
+        return $this->container['cons_nsu'];
     }
 
     /**
-     * Sets x_bairro
+     * Sets cons_nsu
      *
-     * @param string|null $x_bairro Bairro.
+     * @param int|null $cons_nsu Consulta DF-e vinculado ao NSU informado.    *Obrigatório quando \"tipo_consulta\" for \"cons-nsu\".*
      *
      * @return self
      */
-    public function setXBairro($x_bairro)
+    public function setConsNsu($cons_nsu)
     {
-        if (is_null($x_bairro)) {
-            array_push($this->openAPINullablesSetToNull, 'x_bairro');
+        if (is_null($cons_nsu)) {
+            array_push($this->openAPINullablesSetToNull, 'cons_nsu');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('x_bairro', $nullablesSetToNull);
+            $index = array_search('cons_nsu', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($x_bairro) && (mb_strlen($x_bairro) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $x_bairro when calling Endereco., must be smaller than or equal to 60.');
-        }
-        if (!is_null($x_bairro) && (mb_strlen($x_bairro) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $x_bairro when calling Endereco., must be bigger than or equal to 1.');
-        }
+        $this->container['cons_nsu'] = $cons_nsu;
 
-        $this->container['x_bairro'] = $x_bairro;
+        return $this;
+    }
+
+    /**
+     * Gets cons_chave
+     *
+     * @return string|null
+     */
+    public function getConsChave()
+    {
+        return $this->container['cons_chave'];
+    }
+
+    /**
+     * Sets cons_chave
+     *
+     * @param string|null $cons_chave Consulta de NF-e por chave de acesso informada.    *Obrigatório quando \"tipo_consulta\" for \"cons-chave\".*
+     *
+     * @return self
+     */
+    public function setConsChave($cons_chave)
+    {
+        if (is_null($cons_chave)) {
+            array_push($this->openAPINullablesSetToNull, 'cons_chave');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cons_chave', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cons_chave'] = $cons_chave;
 
         return $this;
     }

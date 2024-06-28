@@ -4,7 +4,7 @@
 
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
-**crt** | **int** | Código de Regime Tributário.  Este campo será preenchido com:  * 1 – Simples Nacional;  * 2 – Simples Nacional – excesso de sublimite de receita bruta;  * 3 – Regime Normal. | [optional]
+**crt** | **int** | Código de Regime Tributário.  Este campo será preenchido com:  * 1 – Simples Nacional;  * 2 – Simples Nacional – excesso de sublimite de receita bruta;  * 3 – Regime Normal;  * 4 - Simples Nacional - Microempreendedor individual (MEI). | [optional]
 **sefaz** | [**\NuvemFiscal\Model\EmpresaConfigNfceSefaz**](EmpresaConfigNfceSefaz.md) |  |
 **ambiente** | **string** | Indica se a empresa irá emitir em produção ou homologação. |
 
