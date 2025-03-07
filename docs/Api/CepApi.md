@@ -15,6 +15,8 @@ consultarCep($cep): \NuvemFiscal\Model\CepEndereco
 
 Consultar endereço através do CEP
 
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#cep-consultas\">cep-consultas</a>  - Consumo: 1 unidade requisição.
+
 ### Exemplo
 
 ```php

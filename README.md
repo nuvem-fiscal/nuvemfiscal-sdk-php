@@ -139,6 +139,7 @@ Classe | Método | Endpoint | Descrição
 *CteApi* | [**emitirCte**](docs/Api/CteApi.md#emitircte) | **POST** /cte | Emitir CT-e
 *CteApi* | [**listarCte**](docs/Api/CteApi.md#listarcte) | **GET** /cte | Listar CT-e
 *CteApi* | [**sincronizarCte**](docs/Api/CteApi.md#sincronizarcte) | **POST** /cte/{id}/sincronizar | Sincroniza dados no CT-e a partir da SEFAZ
+*DistribuioNFEApi* | [**baixarPdfDocumentoDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#baixarpdfdocumentodistribuicaonfe) | **GET** /distribuicao/nfe/documentos/{id}/pdf | Baixar PDF do documento
 *DistribuioNFEApi* | [**baixarXmlDocumentoDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#baixarxmldocumentodistribuicaonfe) | **GET** /distribuicao/nfe/documentos/{id}/xml | Baixar XML do documento
 *DistribuioNFEApi* | [**consultarDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#consultardistribuicaonfe) | **GET** /distribuicao/nfe/{id} | Consultar distribuição
 *DistribuioNFEApi* | [**consultarDocumentoDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#consultardocumentodistribuicaonfe) | **GET** /distribuicao/nfe/documentos/{id} | Consultar documento
@@ -147,7 +148,10 @@ Classe | Método | Endpoint | Descrição
 *DistribuioNFEApi* | [**listarDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#listardistribuicaonfe) | **GET** /distribuicao/nfe | Listar distribuições
 *DistribuioNFEApi* | [**listarDocumentoDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#listardocumentodistribuicaonfe) | **GET** /distribuicao/nfe/documentos | Listar documentos
 *DistribuioNFEApi* | [**listarManifestacaoNfe**](docs/Api/DistribuioNFEApi.md#listarmanifestacaonfe) | **GET** /distribuicao/nfe/manifestacoes | Listar Manifestações
+*DistribuioNFEApi* | [**listarNfeSemManifestacao**](docs/Api/DistribuioNFEApi.md#listarnfesemmanifestacao) | **GET** /distribuicao/nfe/notas-sem-manifestacao | Listar notas sem manifestação
 *DistribuioNFEApi* | [**manifestarNfe**](docs/Api/DistribuioNFEApi.md#manifestarnfe) | **POST** /distribuicao/nfe/manifestacoes | Manifestar nota
+*EmailApi* | [**consultarEmail**](docs/Api/EmailApi.md#consultaremail) | **GET** /emails/{id} | Consultar e-mail
+*EmailApi* | [**listarEmails**](docs/Api/EmailApi.md#listaremails) | **GET** /emails | Listar e-mails
 *EmpresaApi* | [**alterarConfigCte**](docs/Api/EmpresaApi.md#alterarconfigcte) | **PUT** /empresas/{cpf_cnpj}/cte | Alterar configuração de CT-e
 *EmpresaApi* | [**alterarConfigDistribuicaoNfe**](docs/Api/EmpresaApi.md#alterarconfigdistribuicaonfe) | **PUT** /empresas/{cpf_cnpj}/distnfe | Alterar configuração de Distribuição de NF-e
 *EmpresaApi* | [**alterarConfigMdfe**](docs/Api/EmpresaApi.md#alterarconfigmdfe) | **PUT** /empresas/{cpf_cnpj}/mdfe | Alterar configuração de MDF-e
@@ -222,11 +226,13 @@ Classe | Método | Endpoint | Descrição
 *NfceApi* | [**consultarStatusSefazNfce**](docs/Api/NfceApi.md#consultarstatussefaznfce) | **GET** /nfce/sefaz/status | Consulta do Status do Serviço na SEFAZ Autorizadora
 *NfceApi* | [**emitirLoteNfce**](docs/Api/NfceApi.md#emitirlotenfce) | **POST** /nfce/lotes | Emitir lote de NFC-e
 *NfceApi* | [**emitirNfce**](docs/Api/NfceApi.md#emitirnfce) | **POST** /nfce | Emitir NFC-e
+*NfceApi* | [**enviarEmailNfce**](docs/Api/NfceApi.md#enviaremailnfce) | **POST** /nfce/{id}/email | Enviar e-mail
 *NfceApi* | [**inutilizarNumeracaoNfce**](docs/Api/NfceApi.md#inutilizarnumeracaonfce) | **POST** /nfce/inutilizacoes | Inutilizar uma sequência de numeração de NFC-e
 *NfceApi* | [**listarEventosNfce**](docs/Api/NfceApi.md#listareventosnfce) | **GET** /nfce/eventos | Listar eventos
 *NfceApi* | [**listarLotesNfce**](docs/Api/NfceApi.md#listarlotesnfce) | **GET** /nfce/lotes | Listar lotes de NFC-e
 *NfceApi* | [**listarNfce**](docs/Api/NfceApi.md#listarnfce) | **GET** /nfce | Listar NFC-e
 *NfceApi* | [**sincronizarNfce**](docs/Api/NfceApi.md#sincronizarnfce) | **POST** /nfce/{id}/sincronizar | Sincroniza dados na NFC-e a partir da SEFAZ
+*NfcomApi* | [**baixarPdfNfcom**](docs/Api/NfcomApi.md#baixarpdfnfcom) | **GET** /nfcom/{id}/pdf | Baixar PDF do DANFE-COM
 *NfcomApi* | [**baixarXmlCancelamentoNfcom**](docs/Api/NfcomApi.md#baixarxmlcancelamentonfcom) | **GET** /nfcom/{id}/cancelamento/xml | Baixar XML do cancelamento
 *NfcomApi* | [**baixarXmlNfcom**](docs/Api/NfcomApi.md#baixarxmlnfcom) | **GET** /nfcom/{id}/xml | Baixar XML da NFCom processada
 *NfcomApi* | [**baixarXmlNfcomNota**](docs/Api/NfcomApi.md#baixarxmlnfcomnota) | **GET** /nfcom/{id}/xml/nota | Baixar XML da NFCom
@@ -263,6 +269,7 @@ Classe | Método | Endpoint | Descrição
 *NfeApi* | [**criarCartaCorrecaoNfe**](docs/Api/NfeApi.md#criarcartacorrecaonfe) | **POST** /nfe/{id}/carta-correcao | Solicitar correção da NF-e
 *NfeApi* | [**emitirLoteNfe**](docs/Api/NfeApi.md#emitirlotenfe) | **POST** /nfe/lotes | Emitir lote de NF-e
 *NfeApi* | [**emitirNfe**](docs/Api/NfeApi.md#emitirnfe) | **POST** /nfe | Emitir NF-e
+*NfeApi* | [**enviarEmailNfe**](docs/Api/NfeApi.md#enviaremailnfe) | **POST** /nfe/{id}/email | Enviar e-mail
 *NfeApi* | [**inutilizarNumeracaoNfe**](docs/Api/NfeApi.md#inutilizarnumeracaonfe) | **POST** /nfe/inutilizacoes | Inutilizar uma sequência de numeração de NF-e
 *NfeApi* | [**listarEventosNfe**](docs/Api/NfeApi.md#listareventosnfe) | **GET** /nfe/eventos | Listar eventos
 *NfeApi* | [**listarLotesNfe**](docs/Api/NfeApi.md#listarlotesnfe) | **GET** /nfe/lotes | Listar lotes de NF-e
@@ -423,6 +430,7 @@ Classe | Método | Endpoint | Descrição
 - [DfeListagem](docs/Model/DfeListagem.md)
 - [DfeLote](docs/Model/DfeLote.md)
 - [DfeLoteListagem](docs/Model/DfeLoteListagem.md)
+- [DfePedidoEnvioEmail](docs/Model/DfePedidoEnvioEmail.md)
 - [DfePedidoInutilizacao](docs/Model/DfePedidoInutilizacao.md)
 - [DfeRecibo](docs/Model/DfeRecibo.md)
 - [DfeSefazStatus](docs/Model/DfeSefazStatus.md)
@@ -432,11 +440,19 @@ Classe | Método | Endpoint | Descrição
 - [DistribuicaoNfeDocumentoListagem](docs/Model/DistribuicaoNfeDocumentoListagem.md)
 - [DistribuicaoNfeEvento](docs/Model/DistribuicaoNfeEvento.md)
 - [DistribuicaoNfeListagem](docs/Model/DistribuicaoNfeListagem.md)
+- [DistribuicaoNfeNota](docs/Model/DistribuicaoNfeNota.md)
+- [DistribuicaoNfeNotaListagem](docs/Model/DistribuicaoNfeNotaListagem.md)
 - [DistribuicaoNfePedido](docs/Model/DistribuicaoNfePedido.md)
 - [DistribuicaoNfePedidoManifestacao](docs/Model/DistribuicaoNfePedidoManifestacao.md)
 - [DocDedRed](docs/Model/DocDedRed.md)
 - [DocNFNFS](docs/Model/DocNFNFS.md)
 - [DocOutNFSe](docs/Model/DocOutNFSe.md)
+- [Email](docs/Model/Email.md)
+- [EmailAttachment](docs/Model/EmailAttachment.md)
+- [EmailEvent](docs/Model/EmailEvent.md)
+- [EmailListagem](docs/Model/EmailListagem.md)
+- [EmailResumo](docs/Model/EmailResumo.md)
+- [EmailStatusResponse](docs/Model/EmailStatusResponse.md)
 - [Empresa](docs/Model/Empresa.md)
 - [EmpresaCertificado](docs/Model/EmpresaCertificado.md)
 - [EmpresaConfigCte](docs/Model/EmpresaConfigCte.md)
@@ -457,6 +473,7 @@ Classe | Método | Endpoint | Descrição
 - [EnderExtSimples](docs/Model/EnderExtSimples.md)
 - [EnderNac](docs/Model/EnderNac.md)
 - [Endereco](docs/Model/Endereco.md)
+- [EnderecoEmail](docs/Model/EnderecoEmail.md)
 - [EnderecoSimples](docs/Model/EnderecoSimples.md)
 - [ExigSuspensa](docs/Model/ExigSuspensa.md)
 - [ExploracaoRodoviaria](docs/Model/ExploracaoRodoviaria.md)
@@ -593,6 +610,7 @@ Classe | Método | Endpoint | Descrição
 - [NfePedidoEmissao](docs/Model/NfePedidoEmissao.md)
 - [NfePedidoEmissaoLote](docs/Model/NfePedidoEmissaoLote.md)
 - [NfeSefazAdi](docs/Model/NfeSefazAdi.md)
+- [NfeSefazAgropecuario](docs/Model/NfeSefazAgropecuario.md)
 - [NfeSefazArma](docs/Model/NfeSefazArma.md)
 - [NfeSefazAutXML](docs/Model/NfeSefazAutXML.md)
 - [NfeSefazAvulsa](docs/Model/NfeSefazAvulsa.md)
@@ -610,6 +628,7 @@ Classe | Método | Endpoint | Descrição
 - [NfeSefazCompra](docs/Model/NfeSefazCompra.md)
 - [NfeSefazDI](docs/Model/NfeSefazDI.md)
 - [NfeSefazDeduc](docs/Model/NfeSefazDeduc.md)
+- [NfeSefazDefensivo](docs/Model/NfeSefazDefensivo.md)
 - [NfeSefazDest](docs/Model/NfeSefazDest.md)
 - [NfeSefazDet](docs/Model/NfeSefazDet.md)
 - [NfeSefazDetExport](docs/Model/NfeSefazDetExport.md)
@@ -624,6 +643,7 @@ Classe | Método | Endpoint | Descrição
 - [NfeSefazFat](docs/Model/NfeSefazFat.md)
 - [NfeSefazForDia](docs/Model/NfeSefazForDia.md)
 - [NfeSefazGCred](docs/Model/NfeSefazGCred.md)
+- [NfeSefazGuiaTransito](docs/Model/NfeSefazGuiaTransito.md)
 - [NfeSefazICMS](docs/Model/NfeSefazICMS.md)
 - [NfeSefazICMS00](docs/Model/NfeSefazICMS00.md)
 - [NfeSefazICMS02](docs/Model/NfeSefazICMS02.md)
@@ -763,6 +783,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.40.0`
-    - Versão do package: `2.29.0`
+- Versão da API: `2.46.0`
+    - Versão do package: `2.30.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

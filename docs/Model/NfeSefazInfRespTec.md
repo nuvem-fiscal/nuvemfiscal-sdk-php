@@ -9,6 +9,7 @@ Nome | Tipo | Descrição | Comentários
 **email** | **string** | Informar o e-mail da pessoa a ser contatada na empresa desenvolvedora do sistema. |
 **fone** | **string** | Informar o telefone da pessoa a ser contatada na empresa desenvolvedora do sistema. Preencher com o Código DDD + número do telefone. |
 **id_csrt** | **int** | Identificador do CSRT utilizado para montar o hash do CSRT. | [optional]
-**hash_csrt** | **string** | O hashCSRT é o resultado da função hash (SHA-1 - Base64) do CSRT fornecido pelo fisco mais a Chave de Acesso da NFe. | [optional]
+**csrt** | **string** | Código de Segurança do Responsável Técnico utilizado para montar o hash do CSRT. | [optional]
+**hash_csrt** | **string** | O hashCSRT é o resultado da função hash (SHA-1 - Base64) do CSRT fornecido pelo fisco mais a Chave de Acesso da NFe.    *Se não informado, será calculado automaticamente, desde que os campos &#x60;idCSRT&#x60; e &#x60;CSRT&#x60; sejam fornecidos.* | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

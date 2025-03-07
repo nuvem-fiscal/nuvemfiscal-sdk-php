@@ -16,6 +16,8 @@ consultarCnpj($cnpj): \NuvemFiscal\Model\CnpjEmpresa
 
 Consultar dados do CNPJ
 
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#cnpj-consultas\">cnpj-consultas</a>  - Consumo: 1 unidade por requisição.
+
 ### Exemplo
 
 ```php
@@ -79,7 +81,7 @@ listarCnpj($cnae_principal, $municipio, $natureza_juridica, $top, $skip, $inline
 
 Listar estabelecimentos ativos a partir da base de CNPJ
 
-Retorna uma lista de estabelecimentos de acordo com os critérios de busca utilizados.  Somente serão retornados estabelecimentos com situação cadastral \"Ativa\".
+Retorna uma lista de estabelecimentos de acordo com os critérios de busca utilizados.  Somente serão retornados estabelecimentos com situação cadastral \"Ativa\".    **Informações adicionais**:  - Cota: <a href=\"/docs/limites#cnpj-listagem\">cnpj-listagem</a>  - Consumo: 1 unidade por estabelecimento listado ou requisição.
 
 ### Exemplo
 

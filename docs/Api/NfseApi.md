@@ -287,6 +287,8 @@ cancelarNfse($id, $body): \NuvemFiscal\Model\NfseCancelamento
 
 Cancelar uma NFS-e autorizada
 
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
+
 ### Exemplo
 
 ```php
@@ -672,6 +674,8 @@ emitirLoteNfse($body): \NuvemFiscal\Model\RpsLote
 
 Emitir lote de NFS-e
 
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por NFS-e.
+
 ### Exemplo
 
 ```php
@@ -734,6 +738,8 @@ emitirLoteNfseDps($body): \NuvemFiscal\Model\RpsLote
 ```
 
 Emitir lote de NFS-e
+
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por NFS-e.
 
 ### Exemplo
 
@@ -798,6 +804,8 @@ emitirNfse($body): \NuvemFiscal\Model\Nfse
 
 Emitir NFS-e
 
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
+
 ### Exemplo
 
 ```php
@@ -860,6 +868,8 @@ emitirNfseDps($body): \NuvemFiscal\Model\Nfse
 ```
 
 Emitir NFS-e
+
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
 
 ### Exemplo
 
@@ -1078,7 +1088,7 @@ sincronizarNfse($id, $body): \NuvemFiscal\Model\NfseSincronizacao
 
 Sincroniza dados na NFS-e a partir da Prefeitura
 
-Realiza a sincronização dos dados a partir da consulta da situação atual da NFS-e na prefeitura.    **Cenários de uso**:  * Sincronizar uma nota que se encontra com o status `processando` na Nuvem Fiscal, mas está autorizada na prefeitura;  * Sincronizar uma nota que se encontra com o status `erro` na Nuvem Fiscal, mas está autorizada na prefeitura (útil em casos de erros de transmissão, como instabilidades e timeouts);  * Sincronizar uma nota que se encontra com o status `autorizada`na Nuvem Fiscal, mas está cancelada na prefeitura.
+Realiza a sincronização dos dados a partir da consulta da situação atual da NFS-e na prefeitura.    **Cenários de uso**:  * Sincronizar uma nota que se encontra com o status `processando` na Nuvem Fiscal, mas está autorizada na prefeitura;  * Sincronizar uma nota que se encontra com o status `erro` na Nuvem Fiscal, mas está autorizada na prefeitura (útil em casos de erros de transmissão, como instabilidades e timeouts);  * Sincronizar uma nota que se encontra com o status `autorizada`na Nuvem Fiscal, mas está cancelada na prefeitura.    **Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por evento sincronizado ou requisição.
 
 ### Exemplo
 

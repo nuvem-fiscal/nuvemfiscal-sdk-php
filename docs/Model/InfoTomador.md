@@ -4,6 +4,7 @@
 
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
+**orgao_publico** | **bool** | Indica se o tomador do serviço é um orgão público.    **Atenção**: Para emissões pelo Sistema Nacional NFS-e, esse campo é ignorado. | [optional] [default to false]
 **cnpj** | **string** | Número do CNPJ. | [optional]
 **cpf** | **string** | Número do CPF. | [optional]
 **nif** | **string** | Número de Identificação Fiscal fornecido por órgão de administração tributária no exterior. | [optional]

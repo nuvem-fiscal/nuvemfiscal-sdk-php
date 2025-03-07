@@ -25,5 +25,6 @@ Nome | Tipo | Descrição | Comentários
 **cana** | [**\NuvemFiscal\Model\NfeSefazCana**](NfeSefazCana.md) |  | [optional]
 **inf_resp_tec** | [**\NuvemFiscal\Model\NfeSefazInfRespTec**](NfeSefazInfRespTec.md) |  | [optional]
 **inf_solic_nff** | [**\NuvemFiscal\Model\NfeSefazInfSolicNFF**](NfeSefazInfSolicNFF.md) |  | [optional]
+**agropecuario** | [**\NuvemFiscal\Model\NfeSefazAgropecuario**](NfeSefazAgropecuario.md) |  | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

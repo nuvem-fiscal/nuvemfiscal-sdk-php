@@ -4,6 +4,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 
 | Método | Endpoint | Descrição |
 | ------------- | ------------- | ------------- |
+| [**baixarPdfNfcom()**](NfcomApi.md#baixarPdfNfcom) | **GET** /nfcom/{id}/pdf | Baixar PDF do DANFE-COM |
 | [**baixarXmlCancelamentoNfcom()**](NfcomApi.md#baixarXmlCancelamentoNfcom) | **GET** /nfcom/{id}/cancelamento/xml | Baixar XML do cancelamento |
 | [**baixarXmlNfcom()**](NfcomApi.md#baixarXmlNfcom) | **GET** /nfcom/{id}/xml | Baixar XML da NFCom processada |
 | [**baixarXmlNfcomNota()**](NfcomApi.md#baixarXmlNfcomNota) | **GET** /nfcom/{id}/xml/nota | Baixar XML da NFCom |
@@ -15,6 +16,71 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**emitirNfcom()**](NfcomApi.md#emitirNfcom) | **POST** /nfcom | Emitir NFCom |
 | [**listarNfcom()**](NfcomApi.md#listarNfcom) | **GET** /nfcom | Listar NFCom |
 
+
+## `baixarPdfNfcom()`
+
+```php
+baixarPdfNfcom($id, $logotipo): \SplFileObject
+```
+
+Baixar PDF do DANFE-COM
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfcomApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NFCom gerado pela Nuvem Fiscal.
+$logotipo = false; // bool | Imprime o documento com logotipo, desde que esteja cadastrado na empresa.
+
+try {
+    $result = $apiInstance->baixarPdfNfcom($id, $logotipo);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfcomApi->baixarPdfNfcom: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NFCom gerado pela Nuvem Fiscal. | |
+| **logotipo** | **bool**| Imprime o documento com logotipo, desde que esteja cadastrado na empresa. | [optional] [default to false] |
+
+### Tipo do retorno
+
+**\SplFileObject**
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
 
 ## `baixarXmlCancelamentoNfcom()`
 
@@ -280,6 +346,8 @@ cancelarNfcom($id, $body): \NuvemFiscal\Model\DfeCancelamento
 
 Cancelar uma NFCom autorizada
 
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
+
 ### Exemplo
 
 ```php
@@ -539,6 +607,8 @@ emitirNfcom($body): \NuvemFiscal\Model\Dfe
 ```
 
 Emitir NFCom
+
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
 
 ### Exemplo
 

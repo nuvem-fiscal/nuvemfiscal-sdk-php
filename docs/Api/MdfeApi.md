@@ -676,6 +676,8 @@ cancelarMdfe($id, $body): \NuvemFiscal\Model\DfeCancelamento
 
 Cancelar um MDF-e autorizado
 
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
+
 ### Exemplo
 
 ```php
@@ -1190,6 +1192,8 @@ emitirLoteMdfe($body): \NuvemFiscal\Model\DfeLote
 
 Emitir lote de MDF-e
 
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por MDF-e.
+
 ### Exemplo
 
 ```php
@@ -1253,6 +1257,8 @@ emitirMdfe($body): \NuvemFiscal\Model\Dfe
 
 Emitir MDF-e
 
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
+
 ### Exemplo
 
 ```php
@@ -1315,6 +1321,8 @@ encerrarMdfe($id, $body): \NuvemFiscal\Model\MdfeEncerramento
 ```
 
 Encerrar um MDF-e autorizado
+
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
 
 ### Exemplo
 
@@ -1381,6 +1389,8 @@ incluirCondutorMdfe($id, $body): \NuvemFiscal\Model\MdfeInclusaoCondutor
 
 Incluir um condutor em um MDF-e autorizado
 
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
+
 ### Exemplo
 
 ```php
@@ -1445,6 +1455,8 @@ incluirDfeMdfe($id, $body): \NuvemFiscal\Model\MdfeInclusaoDfe
 ```
 
 Incluir um DF-e em um MDF-e autorizado
+
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
 
 ### Exemplo
 
@@ -1665,7 +1677,7 @@ sincronizarMdfe($id): \NuvemFiscal\Model\DfeSincronizacao
 
 Sincroniza dados no MDF-e a partir da SEFAZ
 
-Realiza a sincronização dos dados a partir da consulta da situação atual da MDF-e na Base de Dados do Portal da Secretaria de Fazenda Estadual.    **Cenários de uso**:  * Sincronizar um manifesto que se encontra com o status `erro` na Nuvem Fiscal, mas está autorizado na SEFAZ (útil em casos de erros de transmissão com a SEFAZ, como instabilidades e timeouts).  * Sincronizar um manifesto que se encontra com o status `autorizado`na Nuvem Fiscal, mas está cancelado ou encerrado na SEFAZ.  * Sincronizar todos os eventos de Cancelamento, Encerramento, Inclusão de condutor e Inclusão de DF-e de um manifesto que porventura não tenham sido feitos a partir da Nuvem Fiscal.
+Realiza a sincronização dos dados a partir da consulta da situação atual da MDF-e na Base de Dados do Portal da Secretaria de Fazenda Estadual.    **Cenários de uso**:  * Sincronizar um manifesto que se encontra com o status `erro` na Nuvem Fiscal, mas está autorizado na SEFAZ (útil em casos de erros de transmissão com a SEFAZ, como instabilidades e timeouts).  * Sincronizar um manifesto que se encontra com o status `autorizado`na Nuvem Fiscal, mas está cancelado ou encerrado na SEFAZ.  * Sincronizar todos os eventos de Cancelamento, Encerramento, Inclusão de condutor e Inclusão de DF-e de um manifesto que porventura não tenham sido feitos a partir da Nuvem Fiscal.    **Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por evento sincronizado ou requisição.
 
 ### Exemplo
 

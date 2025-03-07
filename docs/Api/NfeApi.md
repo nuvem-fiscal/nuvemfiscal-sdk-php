@@ -30,6 +30,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**criarCartaCorrecaoNfe()**](NfeApi.md#criarCartaCorrecaoNfe) | **POST** /nfe/{id}/carta-correcao | Solicitar correção da NF-e |
 | [**emitirLoteNfe()**](NfeApi.md#emitirLoteNfe) | **POST** /nfe/lotes | Emitir lote de NF-e |
 | [**emitirNfe()**](NfeApi.md#emitirNfe) | **POST** /nfe | Emitir NF-e |
+| [**enviarEmailNfe()**](NfeApi.md#enviarEmailNfe) | **POST** /nfe/{id}/email | Enviar e-mail |
 | [**inutilizarNumeracaoNfe()**](NfeApi.md#inutilizarNumeracaoNfe) | **POST** /nfe/inutilizacoes | Inutilizar uma sequência de numeração de NF-e |
 | [**listarEventosNfe()**](NfeApi.md#listarEventosNfe) | **GET** /nfe/eventos | Listar eventos |
 | [**listarLotesNfe()**](NfeApi.md#listarLotesNfe) | **GET** /nfe/lotes | Listar lotes de NF-e |
@@ -370,7 +371,7 @@ baixarPreviaPdfNfe($body, $logotipo, $nome_fantasia, $formato, $mensagem_rodape,
 
 Prévia do PDF do DANFE
 
-Através desse endpoint, é possível enviar os dados de uma NF-e e gerar uma prévia do DANFE.    Os dados de entrada são os mesmos do endpoint de emissão de NF-e (`POST /nfe`).    **Atenção**: O DANFE gerado por este endpoint é apenas para fins de visualização e não possui valor fiscal. Para a emissão de uma NF-e com valor fiscal, utilize o processo de emissão padrão descrito na documentação.
+Através desse endpoint, é possível enviar os dados de uma NF-e e gerar uma prévia do DANFE.    Os dados de entrada são os mesmos do endpoint de emissão de NF-e (`POST /nfe`).    **Atenção**: O DANFE gerado por este endpoint é apenas para fins de visualização e não possui valor fiscal. Para a emissão de uma NF-e com valor fiscal, utilize o processo de emissão padrão descrito na documentação.    **Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
 
 ### Exemplo
 
@@ -445,7 +446,7 @@ baixarPreviaXmlNfe($body): \SplFileObject
 
 Prévia do XML da NF-e
 
-Através desse endpoint, é possível enviar os dados de uma NF-e e gerar uma prévia do XML, sem a assinatura digital.    Os dados de entrada são os mesmos do endpoint de emissão de NF-e (`POST /nfe`).    **Atenção**: O XML gerado por este endpoint é apenas para fins de visualização e não possui valor fiscal. Para a emissão de uma NF-e com valor fiscal, utilize o processo de emissão padrão descrito na documentação.
+Através desse endpoint, é possível enviar os dados de uma NF-e e gerar uma prévia do XML, sem a assinatura digital.    Os dados de entrada são os mesmos do endpoint de emissão de NF-e (`POST /nfe`).    **Atenção**: O XML gerado por este endpoint é apenas para fins de visualização e não possui valor fiscal. Para a emissão de uma NF-e com valor fiscal, utilize o processo de emissão padrão descrito na documentação.    **Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
 
 ### Exemplo
 
@@ -955,6 +956,8 @@ cancelarNfe($id, $body): \NuvemFiscal\Model\DfeCancelamento
 
 Cancelar uma NF-e autorizada
 
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
+
 ### Exemplo
 
 ```php
@@ -1146,7 +1149,7 @@ consultarContribuinteNfe($cpf_cnpj, $argumento, $documento, $uf): \NuvemFiscal\M
 
 Consultar contribuinte
 
-Consulta o Cadastro Centralizado de Contribuintes (CCC) do ICMS da unidade federada.
+Consulta o Cadastro Centralizado de Contribuintes (CCC) do ICMS da unidade federada.    **Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
 
 ### Exemplo
 
@@ -1540,7 +1543,7 @@ criarCartaCorrecaoNfe($id, $body): \NuvemFiscal\Model\DfeCartaCorrecao
 
 Solicitar correção da NF-e
 
-É possível enviar até 20 correções diferentes, sendo que será válido sempre a última correção enviada.
+É possível enviar até 20 correções diferentes, sendo que será válido sempre a última correção enviada.    **Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
 
 ### Exemplo
 
@@ -1607,6 +1610,8 @@ emitirLoteNfe($body): \NuvemFiscal\Model\DfeLote
 
 Emitir lote de NF-e
 
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por NF-e.
+
 ### Exemplo
 
 ```php
@@ -1670,6 +1675,8 @@ emitirNfe($body): \NuvemFiscal\Model\Dfe
 
 Emitir NF-e
 
+Este endpoint permite a emissão de Notas Fiscais Eletrônicas (NF-e).  A solicitação deve ser feita enviando os dados necessários para a  emissão de uma NF-e.     A estrutura do JSON utilizado na solicitação segue a hierarquia e  nomenclatura de campos definidos no <a href=\"https://www.nfe.fazenda.gov.br/portal/principal.aspx\" target=\"_blank\">  Manual de Orientação ao Contribuinte (MOC)</a>.  Esta conformidade visa facilitar a integração de novos usuários que já  possuem familiaridade com o padrão, além de permitir a resolução de  dúvidas diretamente no MOC, com um profissional de contabilidade  habilitado ou em outras fontes confiáveis que tratam do mesmo assunto.    **Comportamento Assíncrono**    A resposta desse endpoint inclui a propriedade *status* no JSON.  Caso o valor retornado seja *pendente*, significa que a solicitação está  sendo realizada de forma assíncrona pela API. Nesse caso, o usuário deverá  adotar um fluxo que consiste em requisitar periodicamente o endpoint  <a href=\"#tag/Nfe/operation/ConsultarNfe\">Consultar NF-e</a> até que  seja retornado um status indicando o fim da emissão.    **Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
+
 ### Exemplo
 
 ```php
@@ -1725,6 +1732,73 @@ try {
 [[Voltar à lista de DTOs]](../../README.md#models)
 [[Voltar ao README]](../../README.md)
 
+## `enviarEmailNfe()`
+
+```php
+enviarEmailNfe($id, $body): \NuvemFiscal\Model\EmailStatusResponse
+```
+
+Enviar e-mail
+
+Envia o XML e PDF da nota via email.    **Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\NfeApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID único da NF-e gerado pela Nuvem Fiscal.
+$body = new \NuvemFiscal\Model\DfePedidoEnvioEmail(); // \NuvemFiscal\Model\DfePedidoEnvioEmail
+
+try {
+    $result = $apiInstance->enviarEmailNfe($id, $body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NfeApi->enviarEmailNfe: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID único da NF-e gerado pela Nuvem Fiscal. | |
+| **body** | [**\NuvemFiscal\Model\DfePedidoEnvioEmail**](../Model/DfePedidoEnvioEmail.md)|  | [optional] |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\EmailStatusResponse**](../Model/EmailStatusResponse.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
 ## `inutilizarNumeracaoNfe()`
 
 ```php
@@ -1732,6 +1806,8 @@ inutilizarNumeracaoNfe($body): \NuvemFiscal\Model\DfeInutilizacao
 ```
 
 Inutilizar uma sequência de numeração de NF-e
+
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
 
 ### Exemplo
 
@@ -2021,7 +2097,7 @@ sincronizarNfe($id): \NuvemFiscal\Model\DfeSincronizacao
 
 Sincroniza dados na NF-e a partir da SEFAZ
 
-Realiza a sincronização dos dados a partir da consulta da situação atual da NF-e na Base de Dados do Portal da Secretaria de Fazenda Estadual.    **Cenários de uso**:  * Sincronizar uma nota que se encontra com o status `erro` na Nuvem Fiscal, mas está autorizada na SEFAZ (útil em casos de erros de transmissão com a SEFAZ, como instabilidades e timeouts).  * Sincronizar uma nota que se encontra com o status `autorizado`na Nuvem Fiscal, mas está cancelada na SEFAZ.  * Sincronizar todos os eventos de Cancelamento, Carta de Correção e EPEC de uma nota que porventura não tenham sido feitos a partir da Nuvem Fiscal.
+Realiza a sincronização dos dados a partir da consulta da situação atual da NF-e na Base de Dados do Portal da Secretaria de Fazenda Estadual.    **Cenários de uso**:  * Sincronizar uma nota que se encontra com o status `erro` na Nuvem Fiscal, mas está autorizada na SEFAZ (útil em casos de erros de transmissão com a SEFAZ, como instabilidades e timeouts).  * Sincronizar uma nota que se encontra com o status `autorizado`na Nuvem Fiscal, mas está cancelada na SEFAZ.  * Sincronizar todos os eventos de Cancelamento, Carta de Correção e EPEC de uma nota que porventura não tenham sido feitos a partir da Nuvem Fiscal.    **Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por evento sincronizado ou requisição.
 
 ### Exemplo
 
