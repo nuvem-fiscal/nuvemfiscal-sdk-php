@@ -1,6 +1,6 @@
 <?php
 /**
- * CteSefazRespTec
+ * DceSefazProd
  *
  * PHP version 7.4
  *
@@ -31,16 +31,16 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * CteSefazRespTec Class Doc Comment
+ * DceSefazProd Class Doc Comment
  *
  * @category Class
- * @description Informações do Responsável Técnico pela emissão do DF-e.
+ * @description Dados do Produto ou Serviço.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
+class DceSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CteSefazRespTec';
+    protected static $openAPIModelName = 'DceSefazProd';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,11 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'cnpj' => 'string',
-        'x_contato' => 'string',
-        'email' => 'string',
-        'fone' => 'string',
-        'id_csrt' => 'int',
-        'csrt' => 'string',
-        'hash_csrt' => 'string'
+        'x_prod' => 'string',
+        'ncm' => 'string',
+        'q_com' => 'float',
+        'v_un_com' => 'float',
+        'v_prod' => 'float'
     ];
 
     /**
@@ -74,13 +72,11 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'cnpj' => null,
-        'x_contato' => null,
-        'email' => null,
-        'fone' => null,
-        'id_csrt' => null,
-        'csrt' => null,
-        'hash_csrt' => null
+        'x_prod' => null,
+        'ncm' => null,
+        'q_com' => null,
+        'v_un_com' => null,
+        'v_prod' => null
     ];
 
     /**
@@ -89,13 +85,11 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cnpj' => true,
-        'x_contato' => true,
-        'email' => true,
-        'fone' => true,
-        'id_csrt' => true,
-        'csrt' => true,
-        'hash_csrt' => true
+        'x_prod' => true,
+        'ncm' => true,
+        'q_com' => true,
+        'v_un_com' => true,
+        'v_prod' => true
     ];
 
     /**
@@ -184,13 +178,11 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'cnpj' => 'CNPJ',
-        'x_contato' => 'xContato',
-        'email' => 'email',
-        'fone' => 'fone',
-        'id_csrt' => 'idCSRT',
-        'csrt' => 'CSRT',
-        'hash_csrt' => 'hashCSRT'
+        'x_prod' => 'xProd',
+        'ncm' => 'NCM',
+        'q_com' => 'qCom',
+        'v_un_com' => 'vUnCom',
+        'v_prod' => 'vProd'
     ];
 
     /**
@@ -199,13 +191,11 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'cnpj' => 'setCnpj',
-        'x_contato' => 'setXContato',
-        'email' => 'setEmail',
-        'fone' => 'setFone',
-        'id_csrt' => 'setIdCsrt',
-        'csrt' => 'setCsrt',
-        'hash_csrt' => 'setHashCsrt'
+        'x_prod' => 'setXProd',
+        'ncm' => 'setNcm',
+        'q_com' => 'setQCom',
+        'v_un_com' => 'setVUnCom',
+        'v_prod' => 'setVProd'
     ];
 
     /**
@@ -214,13 +204,11 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'cnpj' => 'getCnpj',
-        'x_contato' => 'getXContato',
-        'email' => 'getEmail',
-        'fone' => 'getFone',
-        'id_csrt' => 'getIdCsrt',
-        'csrt' => 'getCsrt',
-        'hash_csrt' => 'getHashCsrt'
+        'x_prod' => 'getXProd',
+        'ncm' => 'getNcm',
+        'q_com' => 'getQCom',
+        'v_un_com' => 'getVUnCom',
+        'v_prod' => 'getVProd'
     ];
 
     /**
@@ -280,13 +268,11 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('cnpj', $data ?? [], null);
-        $this->setIfExists('x_contato', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
-        $this->setIfExists('fone', $data ?? [], null);
-        $this->setIfExists('id_csrt', $data ?? [], null);
-        $this->setIfExists('csrt', $data ?? [], null);
-        $this->setIfExists('hash_csrt', $data ?? [], null);
+        $this->setIfExists('x_prod', $data ?? [], null);
+        $this->setIfExists('ncm', $data ?? [], null);
+        $this->setIfExists('q_com', $data ?? [], null);
+        $this->setIfExists('v_un_com', $data ?? [], null);
+        $this->setIfExists('v_prod', $data ?? [], null);
     }
 
     /**
@@ -316,46 +302,33 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['cnpj'] === null) {
-            $invalidProperties[] = "'cnpj' can't be null";
+        if ($this->container['x_prod'] === null) {
+            $invalidProperties[] = "'x_prod' can't be null";
         }
-        if ($this->container['x_contato'] === null) {
-            $invalidProperties[] = "'x_contato' can't be null";
-        }
-        if ((mb_strlen($this->container['x_contato']) > 60)) {
-            $invalidProperties[] = "invalid value for 'x_contato', the character length must be smaller than or equal to 60.";
+        if ((mb_strlen($this->container['x_prod']) > 120)) {
+            $invalidProperties[] = "invalid value for 'x_prod', the character length must be smaller than or equal to 120.";
         }
 
-        if ((mb_strlen($this->container['x_contato']) < 2)) {
-            $invalidProperties[] = "invalid value for 'x_contato', the character length must be bigger than or equal to 2.";
+        if ((mb_strlen($this->container['x_prod']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_prod', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
+        if ($this->container['ncm'] === null) {
+            $invalidProperties[] = "'ncm' can't be null";
         }
-        if ((mb_strlen($this->container['email']) > 60)) {
-            $invalidProperties[] = "invalid value for 'email', the character length must be smaller than or equal to 60.";
+        if ($this->container['q_com'] === null) {
+            $invalidProperties[] = "'q_com' can't be null";
         }
-
-        if ((mb_strlen($this->container['email']) < 1)) {
-            $invalidProperties[] = "invalid value for 'email', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['fone'] === null) {
-            $invalidProperties[] = "'fone' can't be null";
-        }
-        if (!is_null($this->container['id_csrt']) && ($this->container['id_csrt'] > 999)) {
-            $invalidProperties[] = "invalid value for 'id_csrt', must be smaller than or equal to 999.";
+        if (($this->container['q_com'] < 0)) {
+            $invalidProperties[] = "invalid value for 'q_com', must be bigger than or equal to 0.";
         }
 
-        if (!is_null($this->container['id_csrt']) && ($this->container['id_csrt'] < 0)) {
-            $invalidProperties[] = "invalid value for 'id_csrt', must be bigger than or equal to 0.";
+        if ($this->container['v_un_com'] === null) {
+            $invalidProperties[] = "'v_un_com' can't be null";
         }
-
-        if (!is_null($this->container['hash_csrt']) && (mb_strlen($this->container['hash_csrt']) > 28)) {
-            $invalidProperties[] = "invalid value for 'hash_csrt', the character length must be smaller than or equal to 28.";
+        if ($this->container['v_prod'] === null) {
+            $invalidProperties[] = "'v_prod' can't be null";
         }
-
         return $invalidProperties;
     }
 
@@ -372,265 +345,183 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets cnpj
+     * Gets x_prod
      *
      * @return string
      */
-    public function getCnpj()
+    public function getXProd()
     {
-        return $this->container['cnpj'];
+        return $this->container['x_prod'];
     }
 
     /**
-     * Sets cnpj
+     * Sets x_prod
      *
-     * @param string $cnpj CNPJ da pessoa jurídica responsável técnica pelo sistema utilizado na emissão do documento fiscal eletrônico.  Informar o CNPJ da pessoa jurídica desenvolvedora do sistema utilizado na emissão do documento fiscal eletrônico.
+     * @param string $x_prod Descrição do produto, bem ou mercadoria.
      *
      * @return self
      */
-    public function setCnpj($cnpj)
+    public function setXProd($x_prod)
     {
-        if (is_null($cnpj)) {
-            array_push($this->openAPINullablesSetToNull, 'cnpj');
+        if (is_null($x_prod)) {
+            array_push($this->openAPINullablesSetToNull, 'x_prod');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cnpj', $nullablesSetToNull);
+            $index = array_search('x_prod', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['cnpj'] = $cnpj;
+        if (!is_null($x_prod) && (mb_strlen($x_prod) > 120)) {
+            throw new \InvalidArgumentException('invalid length for $x_prod when calling DceSefazProd., must be smaller than or equal to 120.');
+        }
+        if (!is_null($x_prod) && (mb_strlen($x_prod) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_prod when calling DceSefazProd., must be bigger than or equal to 1.');
+        }
+
+        $this->container['x_prod'] = $x_prod;
 
         return $this;
     }
 
     /**
-     * Gets x_contato
+     * Gets ncm
      *
      * @return string
      */
-    public function getXContato()
+    public function getNcm()
     {
-        return $this->container['x_contato'];
+        return $this->container['ncm'];
     }
 
     /**
-     * Sets x_contato
+     * Sets ncm
      *
-     * @param string $x_contato Nome da pessoa a ser contatada.  Informar o nome da pessoa a ser contatada na empresa desenvolvedora do sistema utilizado na emissão do documento fiscal eletrônico. No caso de pessoa física, informar o respectivo nome.
+     * @param string $ncm Código NCM.  Capítulo do Código NCM com 2 dígitos ou NCM completo.
      *
      * @return self
      */
-    public function setXContato($x_contato)
+    public function setNcm($ncm)
     {
-        if (is_null($x_contato)) {
-            array_push($this->openAPINullablesSetToNull, 'x_contato');
+        if (is_null($ncm)) {
+            array_push($this->openAPINullablesSetToNull, 'ncm');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('x_contato', $nullablesSetToNull);
+            $index = array_search('ncm', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($x_contato) && (mb_strlen($x_contato) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $x_contato when calling CteSefazRespTec., must be smaller than or equal to 60.');
-        }
-        if (!is_null($x_contato) && (mb_strlen($x_contato) < 2)) {
-            throw new \InvalidArgumentException('invalid length for $x_contato when calling CteSefazRespTec., must be bigger than or equal to 2.');
-        }
-
-        $this->container['x_contato'] = $x_contato;
+        $this->container['ncm'] = $ncm;
 
         return $this;
     }
 
     /**
-     * Gets email
+     * Gets q_com
      *
-     * @return string
+     * @return float
      */
-    public function getEmail()
+    public function getQCom()
     {
-        return $this->container['email'];
+        return $this->container['q_com'];
     }
 
     /**
-     * Sets email
+     * Sets q_com
      *
-     * @param string $email Email da pessoa jurídica a ser contatada.
+     * @param float $q_com Quantidade.
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setQCom($q_com)
     {
-        if (is_null($email)) {
-            array_push($this->openAPINullablesSetToNull, 'email');
+        if (is_null($q_com)) {
+            array_push($this->openAPINullablesSetToNull, 'q_com');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('email', $nullablesSetToNull);
+            $index = array_search('q_com', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($email) && (mb_strlen($email) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $email when calling CteSefazRespTec., must be smaller than or equal to 60.');
-        }
-        if (!is_null($email) && (mb_strlen($email) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $email when calling CteSefazRespTec., must be bigger than or equal to 1.');
+
+        if (!is_null($q_com) && ($q_com < 0)) {
+            throw new \InvalidArgumentException('invalid value for $q_com when calling DceSefazProd., must be bigger than or equal to 0.');
         }
 
-        $this->container['email'] = $email;
+        $this->container['q_com'] = $q_com;
 
         return $this;
     }
 
     /**
-     * Gets fone
+     * Gets v_un_com
      *
-     * @return string
+     * @return float
      */
-    public function getFone()
+    public function getVUnCom()
     {
-        return $this->container['fone'];
+        return $this->container['v_un_com'];
     }
 
     /**
-     * Sets fone
+     * Sets v_un_com
      *
-     * @param string $fone Telefone da pessoa jurídica a ser contatada.  Preencher com o Código DDD + número do telefone.
+     * @param float $v_un_com Valor unitário do item.
      *
      * @return self
      */
-    public function setFone($fone)
+    public function setVUnCom($v_un_com)
     {
-        if (is_null($fone)) {
-            array_push($this->openAPINullablesSetToNull, 'fone');
+        if (is_null($v_un_com)) {
+            array_push($this->openAPINullablesSetToNull, 'v_un_com');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('fone', $nullablesSetToNull);
+            $index = array_search('v_un_com', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['fone'] = $fone;
+        $this->container['v_un_com'] = $v_un_com;
 
         return $this;
     }
 
     /**
-     * Gets id_csrt
+     * Gets v_prod
      *
-     * @return int|null
+     * @return float
      */
-    public function getIdCsrt()
+    public function getVProd()
     {
-        return $this->container['id_csrt'];
+        return $this->container['v_prod'];
     }
 
     /**
-     * Sets id_csrt
+     * Sets v_prod
      *
-     * @param int|null $id_csrt Identificador do código de segurança do responsável técnico.  Identificador do CSRT utilizado para geração do hash.
+     * @param float $v_prod Valor total brutp do item.
      *
      * @return self
      */
-    public function setIdCsrt($id_csrt)
+    public function setVProd($v_prod)
     {
-        if (is_null($id_csrt)) {
-            array_push($this->openAPINullablesSetToNull, 'id_csrt');
+        if (is_null($v_prod)) {
+            array_push($this->openAPINullablesSetToNull, 'v_prod');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id_csrt', $nullablesSetToNull);
+            $index = array_search('v_prod', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($id_csrt) && ($id_csrt > 999)) {
-            throw new \InvalidArgumentException('invalid value for $id_csrt when calling CteSefazRespTec., must be smaller than or equal to 999.');
-        }
-        if (!is_null($id_csrt) && ($id_csrt < 0)) {
-            throw new \InvalidArgumentException('invalid value for $id_csrt when calling CteSefazRespTec., must be bigger than or equal to 0.');
-        }
-
-        $this->container['id_csrt'] = $id_csrt;
-
-        return $this;
-    }
-
-    /**
-     * Gets csrt
-     *
-     * @return string|null
-     */
-    public function getCsrt()
-    {
-        return $this->container['csrt'];
-    }
-
-    /**
-     * Sets csrt
-     *
-     * @param string|null $csrt Código de Segurança do Responsável Técnico utilizado para montar o hash do CSRT.
-     *
-     * @return self
-     */
-    public function setCsrt($csrt)
-    {
-        if (is_null($csrt)) {
-            array_push($this->openAPINullablesSetToNull, 'csrt');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('csrt', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['csrt'] = $csrt;
-
-        return $this;
-    }
-
-    /**
-     * Gets hash_csrt
-     *
-     * @return string|null
-     */
-    public function getHashCsrt()
-    {
-        return $this->container['hash_csrt'];
-    }
-
-    /**
-     * Sets hash_csrt
-     *
-     * @param string|null $hash_csrt Hash do token do código de segurança do responsável técnico.  O hashCSRT é o resultado das funções SHA-1 e base64 do token CSRT fornecido pelo fisco + chave de acesso do DF-e. (Implementação em futura NT)  Observação: 28 caracteres são representados no schema como 20 bytes do tipo base64Binary.    *Se não informado, será calculado automaticamente, desde que os campos `idCSRT` e `CSRT` sejam fornecidos.*
-     *
-     * @return self
-     */
-    public function setHashCsrt($hash_csrt)
-    {
-        if (is_null($hash_csrt)) {
-            array_push($this->openAPINullablesSetToNull, 'hash_csrt');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hash_csrt', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        if (!is_null($hash_csrt) && (mb_strlen($hash_csrt) > 28)) {
-            throw new \InvalidArgumentException('invalid length for $hash_csrt when calling CteSefazRespTec., must be smaller than or equal to 28.');
-        }
-
-        $this->container['hash_csrt'] = $hash_csrt;
+        $this->container['v_prod'] = $v_prod;
 
         return $this;
     }

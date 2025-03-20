@@ -1,6 +1,6 @@
 <?php
 /**
- * InfoTomador
+ * DceSefazEndeDest
  *
  * PHP version 7.4
  *
@@ -31,16 +31,16 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * InfoTomador Class Doc Comment
+ * DceSefazEndeDest Class Doc Comment
  *
  * @category Class
- * @description Grupo de informações do DPS relativas ao Tomador de Serviços.
+ * @description Endereço do destinatário / assinante.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
+class DceSefazEndeDest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'InfoTomador';
+    protected static $openAPIModelName = 'DceSefazEndeDest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,16 +57,16 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'orgao_publico' => 'bool',
-        'cnpj' => 'string',
-        'cpf' => 'string',
-        'nif' => 'string',
-        'c_nao_nif' => 'int',
-        'caepf' => 'string',
-        'im' => 'string',
-        'ie' => 'string',
-        'x_nome' => 'string',
-        'end' => '\NuvemFiscal\Model\Endereco',
+        'x_lgr' => 'string',
+        'nro' => 'string',
+        'x_cpl' => 'string',
+        'x_bairro' => 'string',
+        'c_mun' => 'string',
+        'x_mun' => 'string',
+        'uf' => 'string',
+        'cep' => 'string',
+        'c_pais' => 'string',
+        'x_pais' => 'string',
         'fone' => 'string',
         'email' => 'string'
     ];
@@ -79,16 +79,16 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'orgao_publico' => null,
-        'cnpj' => null,
-        'cpf' => null,
-        'nif' => null,
-        'c_nao_nif' => null,
-        'caepf' => null,
-        'im' => null,
-        'ie' => null,
-        'x_nome' => null,
-        'end' => null,
+        'x_lgr' => null,
+        'nro' => null,
+        'x_cpl' => null,
+        'x_bairro' => null,
+        'c_mun' => null,
+        'x_mun' => null,
+        'uf' => null,
+        'cep' => null,
+        'c_pais' => null,
+        'x_pais' => null,
         'fone' => null,
         'email' => null
     ];
@@ -99,16 +99,16 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'orgao_publico' => true,
-        'cnpj' => true,
-        'cpf' => true,
-        'nif' => true,
-        'c_nao_nif' => true,
-        'caepf' => true,
-        'im' => true,
-        'ie' => true,
-        'x_nome' => true,
-        'end' => false,
+        'x_lgr' => true,
+        'nro' => true,
+        'x_cpl' => true,
+        'x_bairro' => true,
+        'c_mun' => true,
+        'x_mun' => true,
+        'uf' => true,
+        'cep' => true,
+        'c_pais' => true,
+        'x_pais' => true,
         'fone' => true,
         'email' => true
     ];
@@ -199,16 +199,16 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'orgao_publico' => 'orgaoPublico',
-        'cnpj' => 'CNPJ',
-        'cpf' => 'CPF',
-        'nif' => 'NIF',
-        'c_nao_nif' => 'cNaoNIF',
-        'caepf' => 'CAEPF',
-        'im' => 'IM',
-        'ie' => 'IE',
-        'x_nome' => 'xNome',
-        'end' => 'end',
+        'x_lgr' => 'xLgr',
+        'nro' => 'nro',
+        'x_cpl' => 'xCpl',
+        'x_bairro' => 'xBairro',
+        'c_mun' => 'cMun',
+        'x_mun' => 'xMun',
+        'uf' => 'UF',
+        'cep' => 'CEP',
+        'c_pais' => 'cPais',
+        'x_pais' => 'xPais',
         'fone' => 'fone',
         'email' => 'email'
     ];
@@ -219,16 +219,16 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'orgao_publico' => 'setOrgaoPublico',
-        'cnpj' => 'setCnpj',
-        'cpf' => 'setCpf',
-        'nif' => 'setNif',
-        'c_nao_nif' => 'setCNaoNif',
-        'caepf' => 'setCaepf',
-        'im' => 'setIm',
-        'ie' => 'setIe',
-        'x_nome' => 'setXNome',
-        'end' => 'setEnd',
+        'x_lgr' => 'setXLgr',
+        'nro' => 'setNro',
+        'x_cpl' => 'setXCpl',
+        'x_bairro' => 'setXBairro',
+        'c_mun' => 'setCMun',
+        'x_mun' => 'setXMun',
+        'uf' => 'setUf',
+        'cep' => 'setCep',
+        'c_pais' => 'setCPais',
+        'x_pais' => 'setXPais',
         'fone' => 'setFone',
         'email' => 'setEmail'
     ];
@@ -239,16 +239,16 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'orgao_publico' => 'getOrgaoPublico',
-        'cnpj' => 'getCnpj',
-        'cpf' => 'getCpf',
-        'nif' => 'getNif',
-        'c_nao_nif' => 'getCNaoNif',
-        'caepf' => 'getCaepf',
-        'im' => 'getIm',
-        'ie' => 'getIe',
-        'x_nome' => 'getXNome',
-        'end' => 'getEnd',
+        'x_lgr' => 'getXLgr',
+        'nro' => 'getNro',
+        'x_cpl' => 'getXCpl',
+        'x_bairro' => 'getXBairro',
+        'c_mun' => 'getCMun',
+        'x_mun' => 'getXMun',
+        'uf' => 'getUf',
+        'cep' => 'getCep',
+        'c_pais' => 'getCPais',
+        'x_pais' => 'getXPais',
         'fone' => 'getFone',
         'email' => 'getEmail'
     ];
@@ -310,16 +310,16 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('orgao_publico', $data ?? [], false);
-        $this->setIfExists('cnpj', $data ?? [], null);
-        $this->setIfExists('cpf', $data ?? [], null);
-        $this->setIfExists('nif', $data ?? [], null);
-        $this->setIfExists('c_nao_nif', $data ?? [], null);
-        $this->setIfExists('caepf', $data ?? [], null);
-        $this->setIfExists('im', $data ?? [], null);
-        $this->setIfExists('ie', $data ?? [], null);
-        $this->setIfExists('x_nome', $data ?? [], null);
-        $this->setIfExists('end', $data ?? [], null);
+        $this->setIfExists('x_lgr', $data ?? [], null);
+        $this->setIfExists('nro', $data ?? [], null);
+        $this->setIfExists('x_cpl', $data ?? [], null);
+        $this->setIfExists('x_bairro', $data ?? [], null);
+        $this->setIfExists('c_mun', $data ?? [], null);
+        $this->setIfExists('x_mun', $data ?? [], null);
+        $this->setIfExists('uf', $data ?? [], null);
+        $this->setIfExists('cep', $data ?? [], null);
+        $this->setIfExists('c_pais', $data ?? [], null);
+        $this->setIfExists('x_pais', $data ?? [], null);
         $this->setIfExists('fone', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
     }
@@ -351,47 +351,83 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['cnpj']) && (mb_strlen($this->container['cnpj']) > 14)) {
-            $invalidProperties[] = "invalid value for 'cnpj', the character length must be smaller than or equal to 14.";
+        if ($this->container['x_lgr'] === null) {
+            $invalidProperties[] = "'x_lgr' can't be null";
+        }
+        if ((mb_strlen($this->container['x_lgr']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_lgr', the character length must be smaller than or equal to 60.";
         }
 
-        if (!is_null($this->container['cpf']) && (mb_strlen($this->container['cpf']) > 11)) {
-            $invalidProperties[] = "invalid value for 'cpf', the character length must be smaller than or equal to 11.";
+        if ((mb_strlen($this->container['x_lgr']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_lgr', the character length must be bigger than or equal to 2.";
         }
 
-        if (!is_null($this->container['nif']) && (mb_strlen($this->container['nif']) > 40)) {
-            $invalidProperties[] = "invalid value for 'nif', the character length must be smaller than or equal to 40.";
+        if ($this->container['nro'] === null) {
+            $invalidProperties[] = "'nro' can't be null";
+        }
+        if ((mb_strlen($this->container['nro']) > 60)) {
+            $invalidProperties[] = "invalid value for 'nro', the character length must be smaller than or equal to 60.";
         }
 
-        if (!is_null($this->container['nif']) && (mb_strlen($this->container['nif']) < 1)) {
-            $invalidProperties[] = "invalid value for 'nif', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['nro']) < 1)) {
+            $invalidProperties[] = "invalid value for 'nro', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['caepf']) && (mb_strlen($this->container['caepf']) > 14)) {
-            $invalidProperties[] = "invalid value for 'caepf', the character length must be smaller than or equal to 14.";
+        if (!is_null($this->container['x_cpl']) && (mb_strlen($this->container['x_cpl']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_cpl', the character length must be smaller than or equal to 60.";
         }
 
-        if (!is_null($this->container['im']) && (mb_strlen($this->container['im']) > 15)) {
-            $invalidProperties[] = "invalid value for 'im', the character length must be smaller than or equal to 15.";
+        if (!is_null($this->container['x_cpl']) && (mb_strlen($this->container['x_cpl']) < 1)) {
+            $invalidProperties[] = "invalid value for 'x_cpl', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['im']) && (mb_strlen($this->container['im']) < 1)) {
-            $invalidProperties[] = "invalid value for 'im', the character length must be bigger than or equal to 1.";
+        if ($this->container['x_bairro'] === null) {
+            $invalidProperties[] = "'x_bairro' can't be null";
+        }
+        if ((mb_strlen($this->container['x_bairro']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_bairro', the character length must be smaller than or equal to 60.";
         }
 
-        if ($this->container['x_nome'] === null) {
-            $invalidProperties[] = "'x_nome' can't be null";
-        }
-        if ((mb_strlen($this->container['x_nome']) > 300)) {
-            $invalidProperties[] = "invalid value for 'x_nome', the character length must be smaller than or equal to 300.";
+        if ((mb_strlen($this->container['x_bairro']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_bairro', the character length must be bigger than or equal to 2.";
         }
 
-        if ((mb_strlen($this->container['x_nome']) < 1)) {
-            $invalidProperties[] = "invalid value for 'x_nome', the character length must be bigger than or equal to 1.";
+        if ($this->container['c_mun'] === null) {
+            $invalidProperties[] = "'c_mun' can't be null";
+        }
+        if ($this->container['x_mun'] === null) {
+            $invalidProperties[] = "'x_mun' can't be null";
+        }
+        if ((mb_strlen($this->container['x_mun']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_mun', the character length must be smaller than or equal to 60.";
         }
 
-        if (!is_null($this->container['email']) && (mb_strlen($this->container['email']) > 80)) {
-            $invalidProperties[] = "invalid value for 'email', the character length must be smaller than or equal to 80.";
+        if ((mb_strlen($this->container['x_mun']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_mun', the character length must be bigger than or equal to 2.";
+        }
+
+        if ($this->container['uf'] === null) {
+            $invalidProperties[] = "'uf' can't be null";
+        }
+        if ($this->container['cep'] === null) {
+            $invalidProperties[] = "'cep' can't be null";
+        }
+        if ($this->container['c_pais'] === null) {
+            $invalidProperties[] = "'c_pais' can't be null";
+        }
+        if ($this->container['x_pais'] === null) {
+            $invalidProperties[] = "'x_pais' can't be null";
+        }
+        if ((mb_strlen($this->container['x_pais']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_pais', the character length must be smaller than or equal to 60.";
+        }
+
+        if ((mb_strlen($this->container['x_pais']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_pais', the character length must be bigger than or equal to 2.";
+        }
+
+        if (!is_null($this->container['email']) && (mb_strlen($this->container['email']) > 60)) {
+            $invalidProperties[] = "invalid value for 'email', the character length must be smaller than or equal to 60.";
         }
 
         if (!is_null($this->container['email']) && (mb_strlen($this->container['email']) < 1)) {
@@ -414,367 +450,383 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets orgao_publico
-     *
-     * @return bool|null
-     */
-    public function getOrgaoPublico()
-    {
-        return $this->container['orgao_publico'];
-    }
-
-    /**
-     * Sets orgao_publico
-     *
-     * @param bool|null $orgao_publico Indica se o tomador do serviço é um orgão público.    **Atenção**: Para emissões pelo Sistema Nacional NFS-e, esse campo é ignorado.
-     *
-     * @return self
-     */
-    public function setOrgaoPublico($orgao_publico)
-    {
-        if (is_null($orgao_publico)) {
-            array_push($this->openAPINullablesSetToNull, 'orgao_publico');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('orgao_publico', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['orgao_publico'] = $orgao_publico;
-
-        return $this;
-    }
-
-    /**
-     * Gets cnpj
-     *
-     * @return string|null
-     */
-    public function getCnpj()
-    {
-        return $this->container['cnpj'];
-    }
-
-    /**
-     * Sets cnpj
-     *
-     * @param string|null $cnpj Número do CNPJ.
-     *
-     * @return self
-     */
-    public function setCnpj($cnpj)
-    {
-        if (is_null($cnpj)) {
-            array_push($this->openAPINullablesSetToNull, 'cnpj');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cnpj', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        if (!is_null($cnpj) && (mb_strlen($cnpj) > 14)) {
-            throw new \InvalidArgumentException('invalid length for $cnpj when calling InfoTomador., must be smaller than or equal to 14.');
-        }
-
-        $this->container['cnpj'] = $cnpj;
-
-        return $this;
-    }
-
-    /**
-     * Gets cpf
-     *
-     * @return string|null
-     */
-    public function getCpf()
-    {
-        return $this->container['cpf'];
-    }
-
-    /**
-     * Sets cpf
-     *
-     * @param string|null $cpf Número do CPF.
-     *
-     * @return self
-     */
-    public function setCpf($cpf)
-    {
-        if (is_null($cpf)) {
-            array_push($this->openAPINullablesSetToNull, 'cpf');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cpf', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        if (!is_null($cpf) && (mb_strlen($cpf) > 11)) {
-            throw new \InvalidArgumentException('invalid length for $cpf when calling InfoTomador., must be smaller than or equal to 11.');
-        }
-
-        $this->container['cpf'] = $cpf;
-
-        return $this;
-    }
-
-    /**
-     * Gets nif
-     *
-     * @return string|null
-     */
-    public function getNif()
-    {
-        return $this->container['nif'];
-    }
-
-    /**
-     * Sets nif
-     *
-     * @param string|null $nif Número de Identificação Fiscal fornecido por órgão de administração tributária no exterior.
-     *
-     * @return self
-     */
-    public function setNif($nif)
-    {
-        if (is_null($nif)) {
-            array_push($this->openAPINullablesSetToNull, 'nif');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('nif', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        if (!is_null($nif) && (mb_strlen($nif) > 40)) {
-            throw new \InvalidArgumentException('invalid length for $nif when calling InfoTomador., must be smaller than or equal to 40.');
-        }
-        if (!is_null($nif) && (mb_strlen($nif) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $nif when calling InfoTomador., must be bigger than or equal to 1.');
-        }
-
-        $this->container['nif'] = $nif;
-
-        return $this;
-    }
-
-    /**
-     * Gets c_nao_nif
-     *
-     * @return int|null
-     */
-    public function getCNaoNif()
-    {
-        return $this->container['c_nao_nif'];
-    }
-
-    /**
-     * Sets c_nao_nif
-     *
-     * @param int|null $c_nao_nif Motivo para não informação do NIF:  * 0 - Não informado na nota de origem  * 1 - Dispensado do NIF  * 2 - Não exigência do NIF
-     *
-     * @return self
-     */
-    public function setCNaoNif($c_nao_nif)
-    {
-        if (is_null($c_nao_nif)) {
-            array_push($this->openAPINullablesSetToNull, 'c_nao_nif');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('c_nao_nif', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['c_nao_nif'] = $c_nao_nif;
-
-        return $this;
-    }
-
-    /**
-     * Gets caepf
-     *
-     * @return string|null
-     */
-    public function getCaepf()
-    {
-        return $this->container['caepf'];
-    }
-
-    /**
-     * Sets caepf
-     *
-     * @param string|null $caepf Número do Cadastro de Atividade Econômica da Pessoa Física (CAEPF).
-     *
-     * @return self
-     */
-    public function setCaepf($caepf)
-    {
-        if (is_null($caepf)) {
-            array_push($this->openAPINullablesSetToNull, 'caepf');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('caepf', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        if (!is_null($caepf) && (mb_strlen($caepf) > 14)) {
-            throw new \InvalidArgumentException('invalid length for $caepf when calling InfoTomador., must be smaller than or equal to 14.');
-        }
-
-        $this->container['caepf'] = $caepf;
-
-        return $this;
-    }
-
-    /**
-     * Gets im
-     *
-     * @return string|null
-     */
-    public function getIm()
-    {
-        return $this->container['im'];
-    }
-
-    /**
-     * Sets im
-     *
-     * @param string|null $im Número da inscrição municipal.
-     *
-     * @return self
-     */
-    public function setIm($im)
-    {
-        if (is_null($im)) {
-            array_push($this->openAPINullablesSetToNull, 'im');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('im', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        if (!is_null($im) && (mb_strlen($im) > 15)) {
-            throw new \InvalidArgumentException('invalid length for $im when calling InfoTomador., must be smaller than or equal to 15.');
-        }
-        if (!is_null($im) && (mb_strlen($im) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $im when calling InfoTomador., must be bigger than or equal to 1.');
-        }
-
-        $this->container['im'] = $im;
-
-        return $this;
-    }
-
-    /**
-     * Gets ie
-     *
-     * @return string|null
-     */
-    public function getIe()
-    {
-        return $this->container['ie'];
-    }
-
-    /**
-     * Sets ie
-     *
-     * @param string|null $ie Número da inscrição estadual.    **Atenção**: Para emissões pelo Sistema Nacional NFS-e, esse campo é ignorado.
-     *
-     * @return self
-     */
-    public function setIe($ie)
-    {
-        if (is_null($ie)) {
-            array_push($this->openAPINullablesSetToNull, 'ie');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ie', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['ie'] = $ie;
-
-        return $this;
-    }
-
-    /**
-     * Gets x_nome
+     * Gets x_lgr
      *
      * @return string
      */
-    public function getXNome()
+    public function getXLgr()
     {
-        return $this->container['x_nome'];
+        return $this->container['x_lgr'];
     }
 
     /**
-     * Sets x_nome
+     * Sets x_lgr
      *
-     * @param string $x_nome Nome/Nome Empresarial.
+     * @param string $x_lgr Logradouro.
      *
      * @return self
      */
-    public function setXNome($x_nome)
+    public function setXLgr($x_lgr)
     {
-        if (is_null($x_nome)) {
-            array_push($this->openAPINullablesSetToNull, 'x_nome');
+        if (is_null($x_lgr)) {
+            array_push($this->openAPINullablesSetToNull, 'x_lgr');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('x_nome', $nullablesSetToNull);
+            $index = array_search('x_lgr', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($x_nome) && (mb_strlen($x_nome) > 300)) {
-            throw new \InvalidArgumentException('invalid length for $x_nome when calling InfoTomador., must be smaller than or equal to 300.');
+        if (!is_null($x_lgr) && (mb_strlen($x_lgr) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_lgr when calling DceSefazEndeDest., must be smaller than or equal to 60.');
         }
-        if (!is_null($x_nome) && (mb_strlen($x_nome) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $x_nome when calling InfoTomador., must be bigger than or equal to 1.');
+        if (!is_null($x_lgr) && (mb_strlen($x_lgr) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_lgr when calling DceSefazEndeDest., must be bigger than or equal to 2.');
         }
 
-        $this->container['x_nome'] = $x_nome;
+        $this->container['x_lgr'] = $x_lgr;
 
         return $this;
     }
 
     /**
-     * Gets end
+     * Gets nro
      *
-     * @return \NuvemFiscal\Model\Endereco|null
+     * @return string
      */
-    public function getEnd()
+    public function getNro()
     {
-        return $this->container['end'];
+        return $this->container['nro'];
     }
 
     /**
-     * Sets end
+     * Sets nro
      *
-     * @param \NuvemFiscal\Model\Endereco|null $end end
+     * @param string $nro Número.
      *
      * @return self
      */
-    public function setEnd($end)
+    public function setNro($nro)
     {
-        if (is_null($end)) {
-            throw new \InvalidArgumentException('non-nullable end cannot be null');
+        if (is_null($nro)) {
+            array_push($this->openAPINullablesSetToNull, 'nro');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('nro', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['end'] = $end;
+        if (!is_null($nro) && (mb_strlen($nro) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $nro when calling DceSefazEndeDest., must be smaller than or equal to 60.');
+        }
+        if (!is_null($nro) && (mb_strlen($nro) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $nro when calling DceSefazEndeDest., must be bigger than or equal to 1.');
+        }
+
+        $this->container['nro'] = $nro;
+
+        return $this;
+    }
+
+    /**
+     * Gets x_cpl
+     *
+     * @return string|null
+     */
+    public function getXCpl()
+    {
+        return $this->container['x_cpl'];
+    }
+
+    /**
+     * Sets x_cpl
+     *
+     * @param string|null $x_cpl Complemento.
+     *
+     * @return self
+     */
+    public function setXCpl($x_cpl)
+    {
+        if (is_null($x_cpl)) {
+            array_push($this->openAPINullablesSetToNull, 'x_cpl');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_cpl', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($x_cpl) && (mb_strlen($x_cpl) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_cpl when calling DceSefazEndeDest., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_cpl) && (mb_strlen($x_cpl) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $x_cpl when calling DceSefazEndeDest., must be bigger than or equal to 1.');
+        }
+
+        $this->container['x_cpl'] = $x_cpl;
+
+        return $this;
+    }
+
+    /**
+     * Gets x_bairro
+     *
+     * @return string
+     */
+    public function getXBairro()
+    {
+        return $this->container['x_bairro'];
+    }
+
+    /**
+     * Sets x_bairro
+     *
+     * @param string $x_bairro Bairro.
+     *
+     * @return self
+     */
+    public function setXBairro($x_bairro)
+    {
+        if (is_null($x_bairro)) {
+            array_push($this->openAPINullablesSetToNull, 'x_bairro');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_bairro', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($x_bairro) && (mb_strlen($x_bairro) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_bairro when calling DceSefazEndeDest., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_bairro) && (mb_strlen($x_bairro) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_bairro when calling DceSefazEndeDest., must be bigger than or equal to 2.');
+        }
+
+        $this->container['x_bairro'] = $x_bairro;
+
+        return $this;
+    }
+
+    /**
+     * Gets c_mun
+     *
+     * @return string
+     */
+    public function getCMun()
+    {
+        return $this->container['c_mun'];
+    }
+
+    /**
+     * Sets c_mun
+     *
+     * @param string $c_mun Código do município (utilizar a tabela do IBGE).
+     *
+     * @return self
+     */
+    public function setCMun($c_mun)
+    {
+        if (is_null($c_mun)) {
+            array_push($this->openAPINullablesSetToNull, 'c_mun');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_mun', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['c_mun'] = $c_mun;
+
+        return $this;
+    }
+
+    /**
+     * Gets x_mun
+     *
+     * @return string
+     */
+    public function getXMun()
+    {
+        return $this->container['x_mun'];
+    }
+
+    /**
+     * Sets x_mun
+     *
+     * @param string $x_mun Nome do município.
+     *
+     * @return self
+     */
+    public function setXMun($x_mun)
+    {
+        if (is_null($x_mun)) {
+            array_push($this->openAPINullablesSetToNull, 'x_mun');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_mun', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($x_mun) && (mb_strlen($x_mun) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_mun when calling DceSefazEndeDest., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_mun) && (mb_strlen($x_mun) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_mun when calling DceSefazEndeDest., must be bigger than or equal to 2.');
+        }
+
+        $this->container['x_mun'] = $x_mun;
+
+        return $this;
+    }
+
+    /**
+     * Gets uf
+     *
+     * @return string
+     */
+    public function getUf()
+    {
+        return $this->container['uf'];
+    }
+
+    /**
+     * Sets uf
+     *
+     * @param string $uf Sigla da UF.
+     *
+     * @return self
+     */
+    public function setUf($uf)
+    {
+        if (is_null($uf)) {
+            array_push($this->openAPINullablesSetToNull, 'uf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['uf'] = $uf;
+
+        return $this;
+    }
+
+    /**
+     * Gets cep
+     *
+     * @return string
+     */
+    public function getCep()
+    {
+        return $this->container['cep'];
+    }
+
+    /**
+     * Sets cep
+     *
+     * @param string $cep CEP.  Informar zeros não significativos.
+     *
+     * @return self
+     */
+    public function setCep($cep)
+    {
+        if (is_null($cep)) {
+            array_push($this->openAPINullablesSetToNull, 'cep');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cep', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cep'] = $cep;
+
+        return $this;
+    }
+
+    /**
+     * Gets c_pais
+     *
+     * @return string
+     */
+    public function getCPais()
+    {
+        return $this->container['c_pais'];
+    }
+
+    /**
+     * Sets c_pais
+     *
+     * @param string $c_pais Código do país.  Utilizar a tabela do BACEN.
+     *
+     * @return self
+     */
+    public function setCPais($c_pais)
+    {
+        if (is_null($c_pais)) {
+            array_push($this->openAPINullablesSetToNull, 'c_pais');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_pais', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['c_pais'] = $c_pais;
+
+        return $this;
+    }
+
+    /**
+     * Gets x_pais
+     *
+     * @return string
+     */
+    public function getXPais()
+    {
+        return $this->container['x_pais'];
+    }
+
+    /**
+     * Sets x_pais
+     *
+     * @param string $x_pais Nome do país.
+     *
+     * @return self
+     */
+    public function setXPais($x_pais)
+    {
+        if (is_null($x_pais)) {
+            array_push($this->openAPINullablesSetToNull, 'x_pais');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_pais', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($x_pais) && (mb_strlen($x_pais) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_pais when calling DceSefazEndeDest., must be smaller than or equal to 60.');
+        }
+        if (!is_null($x_pais) && (mb_strlen($x_pais) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_pais when calling DceSefazEndeDest., must be bigger than or equal to 2.');
+        }
+
+        $this->container['x_pais'] = $x_pais;
 
         return $this;
     }
@@ -792,7 +844,7 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fone
      *
-     * @param string|null $fone Número do telefone do prestador:  Preencher com o Código DDD + número do telefone.  Nas operações com exterior é permitido informar o código do país + código da localidade + número do telefone).
+     * @param string|null $fone Telefone.
      *
      * @return self
      */
@@ -826,7 +878,7 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets email
      *
-     * @param string|null $email * E-mail
+     * @param string|null $email Endereço de E-mail.
      *
      * @return self
      */
@@ -842,11 +894,11 @@ class InfoTomador implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($email) && (mb_strlen($email) > 80)) {
-            throw new \InvalidArgumentException('invalid length for $email when calling InfoTomador., must be smaller than or equal to 80.');
+        if (!is_null($email) && (mb_strlen($email) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $email when calling DceSefazEndeDest., must be smaller than or equal to 60.');
         }
         if (!is_null($email) && (mb_strlen($email) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $email when calling InfoTomador., must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid length for $email when calling DceSefazEndeDest., must be bigger than or equal to 1.');
         }
 
         $this->container['email'] = $email;

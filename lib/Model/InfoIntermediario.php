@@ -63,6 +63,7 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
         'c_nao_nif' => 'int',
         'caepf' => 'string',
         'im' => 'string',
+        'ie' => 'string',
         'x_nome' => 'string',
         'end' => '\NuvemFiscal\Model\Endereco',
         'fone' => 'string',
@@ -83,6 +84,7 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
         'c_nao_nif' => null,
         'caepf' => null,
         'im' => null,
+        'ie' => null,
         'x_nome' => null,
         'end' => null,
         'fone' => null,
@@ -101,6 +103,7 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
         'c_nao_nif' => true,
         'caepf' => true,
         'im' => true,
+        'ie' => true,
         'x_nome' => true,
         'end' => false,
         'fone' => true,
@@ -199,6 +202,7 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
         'c_nao_nif' => 'cNaoNIF',
         'caepf' => 'CAEPF',
         'im' => 'IM',
+        'ie' => 'IE',
         'x_nome' => 'xNome',
         'end' => 'end',
         'fone' => 'fone',
@@ -217,6 +221,7 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
         'c_nao_nif' => 'setCNaoNif',
         'caepf' => 'setCaepf',
         'im' => 'setIm',
+        'ie' => 'setIe',
         'x_nome' => 'setXNome',
         'end' => 'setEnd',
         'fone' => 'setFone',
@@ -235,6 +240,7 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
         'c_nao_nif' => 'getCNaoNif',
         'caepf' => 'getCaepf',
         'im' => 'getIm',
+        'ie' => 'getIe',
         'x_nome' => 'getXNome',
         'end' => 'getEnd',
         'fone' => 'getFone',
@@ -304,6 +310,7 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('c_nao_nif', $data ?? [], null);
         $this->setIfExists('caepf', $data ?? [], null);
         $this->setIfExists('im', $data ?? [], null);
+        $this->setIfExists('ie', $data ?? [], null);
         $this->setIfExists('x_nome', $data ?? [], null);
         $this->setIfExists('end', $data ?? [], null);
         $this->setIfExists('fone', $data ?? [], null);
@@ -625,6 +632,40 @@ class InfoIntermediario implements ModelInterface, ArrayAccess, \JsonSerializabl
         }
 
         $this->container['im'] = $im;
+
+        return $this;
+    }
+
+    /**
+     * Gets ie
+     *
+     * @return string|null
+     */
+    public function getIe()
+    {
+        return $this->container['ie'];
+    }
+
+    /**
+     * Sets ie
+     *
+     * @param string|null $ie Número da inscrição estadual.    **Atenção**: Para emissões pelo Sistema Nacional NFS-e, esse campo é ignorado.
+     *
+     * @return self
+     */
+    public function setIe($ie)
+    {
+        if (is_null($ie)) {
+            array_push($this->openAPINullablesSetToNull, 'ie');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ie', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ie'] = $ie;
 
         return $this;
     }

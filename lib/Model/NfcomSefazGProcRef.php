@@ -361,6 +361,10 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['v_item'] === null) {
             $invalidProperties[] = "'v_item' can't be null";
         }
+        if (($this->container['v_item'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_item', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['q_faturada'] === null) {
             $invalidProperties[] = "'q_faturada' can't be null";
         }
@@ -371,6 +375,10 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['v_prod'] === null) {
             $invalidProperties[] = "'v_prod' can't be null";
         }
+        if (($this->container['v_prod'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_prod', must be bigger than or equal to 0.";
+        }
+
         if (!is_null($this->container['v_desc']) && ($this->container['v_desc'] < 0)) {
             $invalidProperties[] = "invalid value for 'v_desc', must be bigger than or equal to 0.";
         }
@@ -458,6 +466,11 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_item) && ($v_item < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_item when calling NfcomSefazGProcRef., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_item'] = $v_item;
 
         return $this;
@@ -531,6 +544,11 @@ class NfcomSefazGProcRef implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($v_prod) && ($v_prod < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_prod when calling NfcomSefazGProcRef., must be bigger than or equal to 0.');
+        }
+
         $this->container['v_prod'] = $v_prod;
 
         return $this;

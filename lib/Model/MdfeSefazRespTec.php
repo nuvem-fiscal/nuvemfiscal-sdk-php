@@ -62,6 +62,7 @@ class MdfeSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
         'email' => 'string',
         'fone' => 'string',
         'id_csrt' => 'int',
+        'csrt' => 'string',
         'hash_csrt' => 'string'
     ];
 
@@ -78,6 +79,7 @@ class MdfeSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
         'email' => null,
         'fone' => null,
         'id_csrt' => null,
+        'csrt' => null,
         'hash_csrt' => null
     ];
 
@@ -92,6 +94,7 @@ class MdfeSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
         'email' => true,
         'fone' => true,
         'id_csrt' => true,
+        'csrt' => true,
         'hash_csrt' => true
     ];
 
@@ -186,6 +189,7 @@ class MdfeSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
         'email' => 'email',
         'fone' => 'fone',
         'id_csrt' => 'idCSRT',
+        'csrt' => 'CSRT',
         'hash_csrt' => 'hashCSRT'
     ];
 
@@ -200,6 +204,7 @@ class MdfeSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
         'email' => 'setEmail',
         'fone' => 'setFone',
         'id_csrt' => 'setIdCsrt',
+        'csrt' => 'setCsrt',
         'hash_csrt' => 'setHashCsrt'
     ];
 
@@ -214,6 +219,7 @@ class MdfeSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
         'email' => 'getEmail',
         'fone' => 'getFone',
         'id_csrt' => 'getIdCsrt',
+        'csrt' => 'getCsrt',
         'hash_csrt' => 'getHashCsrt'
     ];
 
@@ -279,6 +285,7 @@ class MdfeSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('fone', $data ?? [], null);
         $this->setIfExists('id_csrt', $data ?? [], null);
+        $this->setIfExists('csrt', $data ?? [], null);
         $this->setIfExists('hash_csrt', $data ?? [], null);
     }
 
@@ -557,6 +564,40 @@ class MdfeSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets csrt
+     *
+     * @return string|null
+     */
+    public function getCsrt()
+    {
+        return $this->container['csrt'];
+    }
+
+    /**
+     * Sets csrt
+     *
+     * @param string|null $csrt Código de Segurança do Responsável Técnico utilizado para montar o hash do CSRT.
+     *
+     * @return self
+     */
+    public function setCsrt($csrt)
+    {
+        if (is_null($csrt)) {
+            array_push($this->openAPINullablesSetToNull, 'csrt');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('csrt', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['csrt'] = $csrt;
+
+        return $this;
+    }
+
+    /**
      * Gets hash_csrt
      *
      * @return string|null
@@ -569,7 +610,7 @@ class MdfeSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hash_csrt
      *
-     * @param string|null $hash_csrt Hash do token do código de segurança do responsável técnico.  O hashCSRT é o resultado das funções SHA-1 e base64 do token CSRT fornecido pelo fisco + chave de acesso do DF-e. (Implementação em futura NT)  Observação: 28 caracteres são representados no schema como 20 bytes do tipo base64Binary.
+     * @param string|null $hash_csrt Hash do token do código de segurança do responsável técnico.  O hashCSRT é o resultado das funções SHA-1 e base64 do token CSRT fornecido pelo fisco + chave de acesso do DF-e. (Implementação em futura NT)  Observação: 28 caracteres são representados no schema como 20 bytes do tipo base64Binary.    *Se não informado, será calculado automaticamente, desde que os campos `idCSRT` e `CSRT` sejam fornecidos.*
      *
      * @return self
      */

@@ -431,8 +431,8 @@ class Configuration
         $report  = 'PHP SDK (NuvemFiscal) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
-        $report .= '    The version of the OpenAPI document: 2.46.0' . PHP_EOL;
-        $report .= '    SDK Package Version: 2.30.0' . PHP_EOL;
+        $report .= '    The version of the OpenAPI document: 2.50.0' . PHP_EOL;
+        $report .= '    SDK Package Version: 2.31.0' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;

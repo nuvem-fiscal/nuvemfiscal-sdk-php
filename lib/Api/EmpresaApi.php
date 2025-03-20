@@ -73,6 +73,9 @@ class EmpresaApi
         'alterarConfigCte' => [
             'application/json',
         ],
+        'alterarConfigDce' => [
+            'application/json',
+        ],
         'alterarConfigDistribuicaoNfe' => [
             'application/json',
         ],
@@ -104,6 +107,9 @@ class EmpresaApi
             'application/json',
         ],
         'consultarConfigCte' => [
+            'application/json',
+        ],
+        'consultarConfigDce' => [
             'application/json',
         ],
         'consultarConfigDistribuicaoNfe' => [
@@ -444,6 +450,341 @@ class EmpresaApi
 
 
         $resourcePath = '/empresas/{cpf_cnpj}/cte';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($cpf_cnpj !== null) {
+            $resourcePath = str_replace(
+                '{' . 'cpf_cnpj' . '}',
+                ObjectSerializer::toPathValue($cpf_cnpj),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation alterarConfigDce
+     *
+     * Alterar configuração de DC-e
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  \NuvemFiscal\Model\EmpresaConfigDce $body body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigDce'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \NuvemFiscal\Model\EmpresaConfigDce
+     */
+    public function alterarConfigDce($cpf_cnpj, $body, string $contentType = self::contentTypes['alterarConfigDce'][0])
+    {
+        list($response) = $this->alterarConfigDceWithHttpInfo($cpf_cnpj, $body, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation alterarConfigDceWithHttpInfo
+     *
+     * Alterar configuração de DC-e
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  \NuvemFiscal\Model\EmpresaConfigDce $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigDce'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \NuvemFiscal\Model\EmpresaConfigDce, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function alterarConfigDceWithHttpInfo($cpf_cnpj, $body, string $contentType = self::contentTypes['alterarConfigDce'][0])
+    {
+        $request = $this->alterarConfigDceRequest($cpf_cnpj, $body, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\NuvemFiscal\Model\EmpresaConfigDce' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\NuvemFiscal\Model\EmpresaConfigDce' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\NuvemFiscal\Model\EmpresaConfigDce', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\NuvemFiscal\Model\EmpresaConfigDce';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\NuvemFiscal\Model\EmpresaConfigDce',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation alterarConfigDceAsync
+     *
+     * Alterar configuração de DC-e
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  \NuvemFiscal\Model\EmpresaConfigDce $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigDce'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function alterarConfigDceAsync($cpf_cnpj, $body, string $contentType = self::contentTypes['alterarConfigDce'][0])
+    {
+        return $this->alterarConfigDceAsyncWithHttpInfo($cpf_cnpj, $body, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation alterarConfigDceAsyncWithHttpInfo
+     *
+     * Alterar configuração de DC-e
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  \NuvemFiscal\Model\EmpresaConfigDce $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigDce'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function alterarConfigDceAsyncWithHttpInfo($cpf_cnpj, $body, string $contentType = self::contentTypes['alterarConfigDce'][0])
+    {
+        $returnType = '\NuvemFiscal\Model\EmpresaConfigDce';
+        $request = $this->alterarConfigDceRequest($cpf_cnpj, $body, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'alterarConfigDce'
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  \NuvemFiscal\Model\EmpresaConfigDce $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['alterarConfigDce'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function alterarConfigDceRequest($cpf_cnpj, $body, string $contentType = self::contentTypes['alterarConfigDce'][0])
+    {
+
+        // verify the required parameter 'cpf_cnpj' is set
+        if ($cpf_cnpj === null || (is_array($cpf_cnpj) && count($cpf_cnpj) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $cpf_cnpj when calling alterarConfigDce'
+            );
+        }
+
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling alterarConfigDce'
+            );
+        }
+
+
+        $resourcePath = '/empresas/{cpf_cnpj}/dce';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4079,6 +4420,322 @@ class EmpresaApi
 
 
         $resourcePath = '/empresas/{cpf_cnpj}/cte';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($cpf_cnpj !== null) {
+            $resourcePath = str_replace(
+                '{' . 'cpf_cnpj' . '}',
+                ObjectSerializer::toPathValue($cpf_cnpj),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation consultarConfigDce
+     *
+     * Consultar configuração de DC-e
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigDce'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \NuvemFiscal\Model\EmpresaConfigDce
+     */
+    public function consultarConfigDce($cpf_cnpj, string $contentType = self::contentTypes['consultarConfigDce'][0])
+    {
+        list($response) = $this->consultarConfigDceWithHttpInfo($cpf_cnpj, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation consultarConfigDceWithHttpInfo
+     *
+     * Consultar configuração de DC-e
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigDce'] to see the possible values for this operation
+     *
+     * @throws \NuvemFiscal\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \NuvemFiscal\Model\EmpresaConfigDce, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function consultarConfigDceWithHttpInfo($cpf_cnpj, string $contentType = self::contentTypes['consultarConfigDce'][0])
+    {
+        $request = $this->consultarConfigDceRequest($cpf_cnpj, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\NuvemFiscal\Model\EmpresaConfigDce' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\NuvemFiscal\Model\EmpresaConfigDce' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\NuvemFiscal\Model\EmpresaConfigDce', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\NuvemFiscal\Model\EmpresaConfigDce';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\NuvemFiscal\Model\EmpresaConfigDce',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation consultarConfigDceAsync
+     *
+     * Consultar configuração de DC-e
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigDce'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function consultarConfigDceAsync($cpf_cnpj, string $contentType = self::contentTypes['consultarConfigDce'][0])
+    {
+        return $this->consultarConfigDceAsyncWithHttpInfo($cpf_cnpj, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation consultarConfigDceAsyncWithHttpInfo
+     *
+     * Consultar configuração de DC-e
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigDce'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function consultarConfigDceAsyncWithHttpInfo($cpf_cnpj, string $contentType = self::contentTypes['consultarConfigDce'][0])
+    {
+        $returnType = '\NuvemFiscal\Model\EmpresaConfigDce';
+        $request = $this->consultarConfigDceRequest($cpf_cnpj, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'consultarConfigDce'
+     *
+     * @param  string $cpf_cnpj CPF ou CNPJ da empresa.  Utilize o valor sem máscara. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consultarConfigDce'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function consultarConfigDceRequest($cpf_cnpj, string $contentType = self::contentTypes['consultarConfigDce'][0])
+    {
+
+        // verify the required parameter 'cpf_cnpj' is set
+        if ($cpf_cnpj === null || (is_array($cpf_cnpj) && count($cpf_cnpj) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $cpf_cnpj when calling consultarConfigDce'
+            );
+        }
+
+
+        $resourcePath = '/empresas/{cpf_cnpj}/dce';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

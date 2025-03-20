@@ -1,6 +1,6 @@
 <?php
 /**
- * CteSefazRespTec
+ * DceSefazMarketplace
  *
  * PHP version 7.4
  *
@@ -31,16 +31,16 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * CteSefazRespTec Class Doc Comment
+ * DceSefazMarketplace Class Doc Comment
  *
  * @category Class
- * @description Informações do Responsável Técnico pela emissão do DF-e.
+ * @description Identificação do Marketplace (uso exclusivo Marketplace).
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
+class DceSefazMarketplace implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CteSefazRespTec';
+    protected static $openAPIModelName = 'DceSefazMarketplace';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,8 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'cnpj' => 'string',
-        'x_contato' => 'string',
-        'email' => 'string',
-        'fone' => 'string',
-        'id_csrt' => 'int',
-        'csrt' => 'string',
-        'hash_csrt' => 'string'
+        'x_nome' => 'string',
+        'site' => 'string'
     ];
 
     /**
@@ -75,12 +71,8 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'cnpj' => null,
-        'x_contato' => null,
-        'email' => null,
-        'fone' => null,
-        'id_csrt' => null,
-        'csrt' => null,
-        'hash_csrt' => null
+        'x_nome' => null,
+        'site' => null
     ];
 
     /**
@@ -90,12 +82,8 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'cnpj' => true,
-        'x_contato' => true,
-        'email' => true,
-        'fone' => true,
-        'id_csrt' => true,
-        'csrt' => true,
-        'hash_csrt' => true
+        'x_nome' => true,
+        'site' => true
     ];
 
     /**
@@ -185,12 +173,8 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'cnpj' => 'CNPJ',
-        'x_contato' => 'xContato',
-        'email' => 'email',
-        'fone' => 'fone',
-        'id_csrt' => 'idCSRT',
-        'csrt' => 'CSRT',
-        'hash_csrt' => 'hashCSRT'
+        'x_nome' => 'xNome',
+        'site' => 'Site'
     ];
 
     /**
@@ -200,12 +184,8 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'cnpj' => 'setCnpj',
-        'x_contato' => 'setXContato',
-        'email' => 'setEmail',
-        'fone' => 'setFone',
-        'id_csrt' => 'setIdCsrt',
-        'csrt' => 'setCsrt',
-        'hash_csrt' => 'setHashCsrt'
+        'x_nome' => 'setXNome',
+        'site' => 'setSite'
     ];
 
     /**
@@ -215,12 +195,8 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'cnpj' => 'getCnpj',
-        'x_contato' => 'getXContato',
-        'email' => 'getEmail',
-        'fone' => 'getFone',
-        'id_csrt' => 'getIdCsrt',
-        'csrt' => 'getCsrt',
-        'hash_csrt' => 'getHashCsrt'
+        'x_nome' => 'getXNome',
+        'site' => 'getSite'
     ];
 
     /**
@@ -281,12 +257,8 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('cnpj', $data ?? [], null);
-        $this->setIfExists('x_contato', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
-        $this->setIfExists('fone', $data ?? [], null);
-        $this->setIfExists('id_csrt', $data ?? [], null);
-        $this->setIfExists('csrt', $data ?? [], null);
-        $this->setIfExists('hash_csrt', $data ?? [], null);
+        $this->setIfExists('x_nome', $data ?? [], null);
+        $this->setIfExists('site', $data ?? [], null);
     }
 
     /**
@@ -319,41 +291,26 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['cnpj'] === null) {
             $invalidProperties[] = "'cnpj' can't be null";
         }
-        if ($this->container['x_contato'] === null) {
-            $invalidProperties[] = "'x_contato' can't be null";
+        if ($this->container['x_nome'] === null) {
+            $invalidProperties[] = "'x_nome' can't be null";
         }
-        if ((mb_strlen($this->container['x_contato']) > 60)) {
-            $invalidProperties[] = "invalid value for 'x_contato', the character length must be smaller than or equal to 60.";
-        }
-
-        if ((mb_strlen($this->container['x_contato']) < 2)) {
-            $invalidProperties[] = "invalid value for 'x_contato', the character length must be bigger than or equal to 2.";
+        if ((mb_strlen($this->container['x_nome']) > 60)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be smaller than or equal to 60.";
         }
 
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
-        }
-        if ((mb_strlen($this->container['email']) > 60)) {
-            $invalidProperties[] = "invalid value for 'email', the character length must be smaller than or equal to 60.";
+        if ((mb_strlen($this->container['x_nome']) < 2)) {
+            $invalidProperties[] = "invalid value for 'x_nome', the character length must be bigger than or equal to 2.";
         }
 
-        if ((mb_strlen($this->container['email']) < 1)) {
-            $invalidProperties[] = "invalid value for 'email', the character length must be bigger than or equal to 1.";
+        if ($this->container['site'] === null) {
+            $invalidProperties[] = "'site' can't be null";
+        }
+        if ((mb_strlen($this->container['site']) > 120)) {
+            $invalidProperties[] = "invalid value for 'site', the character length must be smaller than or equal to 120.";
         }
 
-        if ($this->container['fone'] === null) {
-            $invalidProperties[] = "'fone' can't be null";
-        }
-        if (!is_null($this->container['id_csrt']) && ($this->container['id_csrt'] > 999)) {
-            $invalidProperties[] = "invalid value for 'id_csrt', must be smaller than or equal to 999.";
-        }
-
-        if (!is_null($this->container['id_csrt']) && ($this->container['id_csrt'] < 0)) {
-            $invalidProperties[] = "invalid value for 'id_csrt', must be bigger than or equal to 0.";
-        }
-
-        if (!is_null($this->container['hash_csrt']) && (mb_strlen($this->container['hash_csrt']) > 28)) {
-            $invalidProperties[] = "invalid value for 'hash_csrt', the character length must be smaller than or equal to 28.";
+        if ((mb_strlen($this->container['site']) < 2)) {
+            $invalidProperties[] = "invalid value for 'site', the character length must be bigger than or equal to 2.";
         }
 
         return $invalidProperties;
@@ -384,7 +341,7 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cnpj
      *
-     * @param string $cnpj CNPJ da pessoa jurídica responsável técnica pelo sistema utilizado na emissão do documento fiscal eletrônico.  Informar o CNPJ da pessoa jurídica desenvolvedora do sistema utilizado na emissão do documento fiscal eletrônico.
+     * @param string $cnpj Número do CNPJ do Marketplace.
      *
      * @return self
      */
@@ -406,231 +363,83 @@ class CteSefazRespTec implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets x_contato
+     * Gets x_nome
      *
      * @return string
      */
-    public function getXContato()
+    public function getXNome()
     {
-        return $this->container['x_contato'];
+        return $this->container['x_nome'];
     }
 
     /**
-     * Sets x_contato
+     * Sets x_nome
      *
-     * @param string $x_contato Nome da pessoa a ser contatada.  Informar o nome da pessoa a ser contatada na empresa desenvolvedora do sistema utilizado na emissão do documento fiscal eletrônico. No caso de pessoa física, informar o respectivo nome.
+     * @param string $x_nome Razão Social ou Nome do Marketplace.
      *
      * @return self
      */
-    public function setXContato($x_contato)
+    public function setXNome($x_nome)
     {
-        if (is_null($x_contato)) {
-            array_push($this->openAPINullablesSetToNull, 'x_contato');
+        if (is_null($x_nome)) {
+            array_push($this->openAPINullablesSetToNull, 'x_nome');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('x_contato', $nullablesSetToNull);
+            $index = array_search('x_nome', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($x_contato) && (mb_strlen($x_contato) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $x_contato when calling CteSefazRespTec., must be smaller than or equal to 60.');
+        if (!is_null($x_nome) && (mb_strlen($x_nome) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling DceSefazMarketplace., must be smaller than or equal to 60.');
         }
-        if (!is_null($x_contato) && (mb_strlen($x_contato) < 2)) {
-            throw new \InvalidArgumentException('invalid length for $x_contato when calling CteSefazRespTec., must be bigger than or equal to 2.');
+        if (!is_null($x_nome) && (mb_strlen($x_nome) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $x_nome when calling DceSefazMarketplace., must be bigger than or equal to 2.');
         }
 
-        $this->container['x_contato'] = $x_contato;
+        $this->container['x_nome'] = $x_nome;
 
         return $this;
     }
 
     /**
-     * Gets email
+     * Gets site
      *
      * @return string
      */
-    public function getEmail()
+    public function getSite()
     {
-        return $this->container['email'];
+        return $this->container['site'];
     }
 
     /**
-     * Sets email
+     * Sets site
      *
-     * @param string $email Email da pessoa jurídica a ser contatada.
+     * @param string $site Endereço ou site do Marketplace.
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setSite($site)
     {
-        if (is_null($email)) {
-            array_push($this->openAPINullablesSetToNull, 'email');
+        if (is_null($site)) {
+            array_push($this->openAPINullablesSetToNull, 'site');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('email', $nullablesSetToNull);
+            $index = array_search('site', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($email) && (mb_strlen($email) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $email when calling CteSefazRespTec., must be smaller than or equal to 60.');
+        if (!is_null($site) && (mb_strlen($site) > 120)) {
+            throw new \InvalidArgumentException('invalid length for $site when calling DceSefazMarketplace., must be smaller than or equal to 120.');
         }
-        if (!is_null($email) && (mb_strlen($email) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $email when calling CteSefazRespTec., must be bigger than or equal to 1.');
-        }
-
-        $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets fone
-     *
-     * @return string
-     */
-    public function getFone()
-    {
-        return $this->container['fone'];
-    }
-
-    /**
-     * Sets fone
-     *
-     * @param string $fone Telefone da pessoa jurídica a ser contatada.  Preencher com o Código DDD + número do telefone.
-     *
-     * @return self
-     */
-    public function setFone($fone)
-    {
-        if (is_null($fone)) {
-            array_push($this->openAPINullablesSetToNull, 'fone');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('fone', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['fone'] = $fone;
-
-        return $this;
-    }
-
-    /**
-     * Gets id_csrt
-     *
-     * @return int|null
-     */
-    public function getIdCsrt()
-    {
-        return $this->container['id_csrt'];
-    }
-
-    /**
-     * Sets id_csrt
-     *
-     * @param int|null $id_csrt Identificador do código de segurança do responsável técnico.  Identificador do CSRT utilizado para geração do hash.
-     *
-     * @return self
-     */
-    public function setIdCsrt($id_csrt)
-    {
-        if (is_null($id_csrt)) {
-            array_push($this->openAPINullablesSetToNull, 'id_csrt');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id_csrt', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (!is_null($site) && (mb_strlen($site) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $site when calling DceSefazMarketplace., must be bigger than or equal to 2.');
         }
 
-        if (!is_null($id_csrt) && ($id_csrt > 999)) {
-            throw new \InvalidArgumentException('invalid value for $id_csrt when calling CteSefazRespTec., must be smaller than or equal to 999.');
-        }
-        if (!is_null($id_csrt) && ($id_csrt < 0)) {
-            throw new \InvalidArgumentException('invalid value for $id_csrt when calling CteSefazRespTec., must be bigger than or equal to 0.');
-        }
-
-        $this->container['id_csrt'] = $id_csrt;
-
-        return $this;
-    }
-
-    /**
-     * Gets csrt
-     *
-     * @return string|null
-     */
-    public function getCsrt()
-    {
-        return $this->container['csrt'];
-    }
-
-    /**
-     * Sets csrt
-     *
-     * @param string|null $csrt Código de Segurança do Responsável Técnico utilizado para montar o hash do CSRT.
-     *
-     * @return self
-     */
-    public function setCsrt($csrt)
-    {
-        if (is_null($csrt)) {
-            array_push($this->openAPINullablesSetToNull, 'csrt');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('csrt', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['csrt'] = $csrt;
-
-        return $this;
-    }
-
-    /**
-     * Gets hash_csrt
-     *
-     * @return string|null
-     */
-    public function getHashCsrt()
-    {
-        return $this->container['hash_csrt'];
-    }
-
-    /**
-     * Sets hash_csrt
-     *
-     * @param string|null $hash_csrt Hash do token do código de segurança do responsável técnico.  O hashCSRT é o resultado das funções SHA-1 e base64 do token CSRT fornecido pelo fisco + chave de acesso do DF-e. (Implementação em futura NT)  Observação: 28 caracteres são representados no schema como 20 bytes do tipo base64Binary.    *Se não informado, será calculado automaticamente, desde que os campos `idCSRT` e `CSRT` sejam fornecidos.*
-     *
-     * @return self
-     */
-    public function setHashCsrt($hash_csrt)
-    {
-        if (is_null($hash_csrt)) {
-            array_push($this->openAPINullablesSetToNull, 'hash_csrt');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hash_csrt', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        if (!is_null($hash_csrt) && (mb_strlen($hash_csrt) > 28)) {
-            throw new \InvalidArgumentException('invalid length for $hash_csrt when calling CteSefazRespTec., must be smaller than or equal to 28.');
-        }
-
-        $this->container['hash_csrt'] = $hash_csrt;
+        $this->container['site'] = $site;
 
         return $this;
     }
