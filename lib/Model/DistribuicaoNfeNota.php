@@ -59,6 +59,7 @@ class DistribuicaoNfeNota implements ModelInterface, ArrayAccess, \JsonSerializa
         'chave_acesso' => 'string',
         'numero_protocolo' => 'string',
         'tipo_nfe' => 'int',
+        'data_emissao' => '\DateTime',
         'valor_nfe' => 'float',
         'digest_value' => 'string',
         'emitente_cpf_cnpj' => 'string',
@@ -77,6 +78,7 @@ class DistribuicaoNfeNota implements ModelInterface, ArrayAccess, \JsonSerializa
         'chave_acesso' => null,
         'numero_protocolo' => null,
         'tipo_nfe' => null,
+        'data_emissao' => 'date-time',
         'valor_nfe' => null,
         'digest_value' => null,
         'emitente_cpf_cnpj' => null,
@@ -93,6 +95,7 @@ class DistribuicaoNfeNota implements ModelInterface, ArrayAccess, \JsonSerializa
         'chave_acesso' => true,
         'numero_protocolo' => true,
         'tipo_nfe' => true,
+        'data_emissao' => true,
         'valor_nfe' => true,
         'digest_value' => true,
         'emitente_cpf_cnpj' => true,
@@ -189,6 +192,7 @@ class DistribuicaoNfeNota implements ModelInterface, ArrayAccess, \JsonSerializa
         'chave_acesso' => 'chave_acesso',
         'numero_protocolo' => 'numero_protocolo',
         'tipo_nfe' => 'tipo_nfe',
+        'data_emissao' => 'data_emissao',
         'valor_nfe' => 'valor_nfe',
         'digest_value' => 'digest_value',
         'emitente_cpf_cnpj' => 'emitente_cpf_cnpj',
@@ -205,6 +209,7 @@ class DistribuicaoNfeNota implements ModelInterface, ArrayAccess, \JsonSerializa
         'chave_acesso' => 'setChaveAcesso',
         'numero_protocolo' => 'setNumeroProtocolo',
         'tipo_nfe' => 'setTipoNfe',
+        'data_emissao' => 'setDataEmissao',
         'valor_nfe' => 'setValorNfe',
         'digest_value' => 'setDigestValue',
         'emitente_cpf_cnpj' => 'setEmitenteCpfCnpj',
@@ -221,6 +226,7 @@ class DistribuicaoNfeNota implements ModelInterface, ArrayAccess, \JsonSerializa
         'chave_acesso' => 'getChaveAcesso',
         'numero_protocolo' => 'getNumeroProtocolo',
         'tipo_nfe' => 'getTipoNfe',
+        'data_emissao' => 'getDataEmissao',
         'valor_nfe' => 'getValorNfe',
         'digest_value' => 'getDigestValue',
         'emitente_cpf_cnpj' => 'getEmitenteCpfCnpj',
@@ -288,6 +294,7 @@ class DistribuicaoNfeNota implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('chave_acesso', $data ?? [], null);
         $this->setIfExists('numero_protocolo', $data ?? [], null);
         $this->setIfExists('tipo_nfe', $data ?? [], null);
+        $this->setIfExists('data_emissao', $data ?? [], null);
         $this->setIfExists('valor_nfe', $data ?? [], null);
         $this->setIfExists('digest_value', $data ?? [], null);
         $this->setIfExists('emitente_cpf_cnpj', $data ?? [], null);
@@ -435,6 +442,40 @@ class DistribuicaoNfeNota implements ModelInterface, ArrayAccess, \JsonSerializa
             }
         }
         $this->container['tipo_nfe'] = $tipo_nfe;
+
+        return $this;
+    }
+
+    /**
+     * Gets data_emissao
+     *
+     * @return \DateTime|null
+     */
+    public function getDataEmissao()
+    {
+        return $this->container['data_emissao'];
+    }
+
+    /**
+     * Sets data_emissao
+     *
+     * @param \DateTime|null $data_emissao Data e hora da emissão do documento fiscal.
+     *
+     * @return self
+     */
+    public function setDataEmissao($data_emissao)
+    {
+        if (is_null($data_emissao)) {
+            array_push($this->openAPINullablesSetToNull, 'data_emissao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_emissao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['data_emissao'] = $data_emissao;
 
         return $this;
     }

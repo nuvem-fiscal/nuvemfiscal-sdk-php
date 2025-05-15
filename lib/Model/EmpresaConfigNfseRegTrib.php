@@ -384,7 +384,7 @@ class EmpresaConfigNfseRegTrib implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets reg_esp_trib
      *
-     * @param int|null $reg_esp_trib Tipos de Regimes Especiais de Tributação:  * 0 - Nenhum;  * 1 - Ato Cooperado (Cooperativa);  * 2 - Estimativa;  * 3 - Microempresa Municipal;  * 4 - Notário ou Registrador;  * 5 - Profissional Autônomo;  * 6 - Sociedade de Profissionais.
+     * @param int|null $reg_esp_trib Regime Especial de Tributação (Padrão Nacional):  * 0 - Nenhum;  * 1 - Ato Cooperado (Cooperativa);  * 2 - Estimativa;  * 3 - Microempresa Municipal;  * 4 - Notário ou Registrador;  * 5 - Profissional Autônomo;  * 6 - Sociedade de Profissionais.    **Comportamento:**   - Quando o envio for feito para o Ambiente Nacional, o valor é utilizado     exatamente como se apresenta, sem qualquer transformação ou mapeamento.   - Quando o envio for feito diretamente para a prefeitura, o valor será     convertido internamente pela Nuvem Fiscal para o código correspondente     esperado pela prefeitura, **se essa conversão for possível**.     **Observação:** Em algumas prefeituras, existem códigos específicos que não têm   correspondência direta no padrão nacional. Para lidar com esses casos, utilize   o campo `prest.regTrib.regEspTrib` diretamente no endpoint de emissão de NFS-e.
      *
      * @return self
      */

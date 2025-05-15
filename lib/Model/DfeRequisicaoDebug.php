@@ -1,6 +1,6 @@
 <?php
 /**
- * EmpresaConfigDistribuicaoNfe
+ * DfeRequisicaoDebug
  *
  * PHP version 7.4
  *
@@ -31,7 +31,7 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * EmpresaConfigDistribuicaoNfe Class Doc Comment
+ * DfeRequisicaoDebug Class Doc Comment
  *
  * @category Class
  * @package  NuvemFiscal
@@ -39,7 +39,7 @@ use \NuvemFiscal\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \JsonSerializable
+class DfeRequisicaoDebug implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EmpresaConfigDistribuicaoNfe';
+    protected static $openAPIModelName = 'DfeRequisicaoDebug';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,10 +56,12 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'distribuicao_automatica' => 'bool',
-        'distribuicao_intervalo_horas' => 'int',
-        'ciencia_automatica' => 'bool',
-        'ambiente' => 'string'
+        'created_at' => '\DateTime',
+        'tipo' => 'string',
+        'lote_id' => 'string',
+        'codigo_status' => 'int',
+        'motivo_status' => 'string',
+        'http_request' => '\NuvemFiscal\Model\HttpRequestDebug'
     ];
 
     /**
@@ -70,10 +72,12 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'distribuicao_automatica' => null,
-        'distribuicao_intervalo_horas' => null,
-        'ciencia_automatica' => null,
-        'ambiente' => null
+        'created_at' => 'date-time',
+        'tipo' => null,
+        'lote_id' => null,
+        'codigo_status' => null,
+        'motivo_status' => null,
+        'http_request' => null
     ];
 
     /**
@@ -82,10 +86,12 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'distribuicao_automatica' => true,
-        'distribuicao_intervalo_horas' => true,
-        'ciencia_automatica' => true,
-        'ambiente' => false
+        'created_at' => false,
+        'tipo' => false,
+        'lote_id' => false,
+        'codigo_status' => false,
+        'motivo_status' => false,
+        'http_request' => false
     ];
 
     /**
@@ -174,10 +180,12 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'distribuicao_automatica' => 'distribuicao_automatica',
-        'distribuicao_intervalo_horas' => 'distribuicao_intervalo_horas',
-        'ciencia_automatica' => 'ciencia_automatica',
-        'ambiente' => 'ambiente'
+        'created_at' => 'created_at',
+        'tipo' => 'tipo',
+        'lote_id' => 'lote_id',
+        'codigo_status' => 'codigo_status',
+        'motivo_status' => 'motivo_status',
+        'http_request' => 'http_request'
     ];
 
     /**
@@ -186,10 +194,12 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'distribuicao_automatica' => 'setDistribuicaoAutomatica',
-        'distribuicao_intervalo_horas' => 'setDistribuicaoIntervaloHoras',
-        'ciencia_automatica' => 'setCienciaAutomatica',
-        'ambiente' => 'setAmbiente'
+        'created_at' => 'setCreatedAt',
+        'tipo' => 'setTipo',
+        'lote_id' => 'setLoteId',
+        'codigo_status' => 'setCodigoStatus',
+        'motivo_status' => 'setMotivoStatus',
+        'http_request' => 'setHttpRequest'
     ];
 
     /**
@@ -198,10 +208,12 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'distribuicao_automatica' => 'getDistribuicaoAutomatica',
-        'distribuicao_intervalo_horas' => 'getDistribuicaoIntervaloHoras',
-        'ciencia_automatica' => 'getCienciaAutomatica',
-        'ambiente' => 'getAmbiente'
+        'created_at' => 'getCreatedAt',
+        'tipo' => 'getTipo',
+        'lote_id' => 'getLoteId',
+        'codigo_status' => 'getCodigoStatus',
+        'motivo_status' => 'getMotivoStatus',
+        'http_request' => 'getHttpRequest'
     ];
 
     /**
@@ -245,21 +257,6 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    public const AMBIENTE_HOMOLOGACAO = 'homologacao';
-    public const AMBIENTE_PRODUCAO = 'producao';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAmbienteAllowableValues()
-    {
-        return [
-            self::AMBIENTE_HOMOLOGACAO,
-            self::AMBIENTE_PRODUCAO,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -276,10 +273,12 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('distribuicao_automatica', $data ?? [], false);
-        $this->setIfExists('distribuicao_intervalo_horas', $data ?? [], null);
-        $this->setIfExists('ciencia_automatica', $data ?? [], false);
-        $this->setIfExists('ambiente', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('tipo', $data ?? [], null);
+        $this->setIfExists('lote_id', $data ?? [], null);
+        $this->setIfExists('codigo_status', $data ?? [], null);
+        $this->setIfExists('motivo_status', $data ?? [], null);
+        $this->setIfExists('http_request', $data ?? [], null);
     }
 
     /**
@@ -309,26 +308,6 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['distribuicao_intervalo_horas']) && ($this->container['distribuicao_intervalo_horas'] > 24)) {
-            $invalidProperties[] = "invalid value for 'distribuicao_intervalo_horas', must be smaller than or equal to 24.";
-        }
-
-        if (!is_null($this->container['distribuicao_intervalo_horas']) && ($this->container['distribuicao_intervalo_horas'] < 1)) {
-            $invalidProperties[] = "invalid value for 'distribuicao_intervalo_horas', must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['ambiente'] === null) {
-            $invalidProperties[] = "'ambiente' can't be null";
-        }
-        $allowedValues = $this->getAmbienteAllowableValues();
-        if (!is_null($this->container['ambiente']) && !in_array($this->container['ambiente'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'ambiente', must be one of '%s'",
-                $this->container['ambiente'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -345,148 +324,163 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets distribuicao_automatica
+     * Gets created_at
      *
-     * @return bool|null
+     * @return \DateTime|null
      */
-    public function getDistribuicaoAutomatica()
+    public function getCreatedAt()
     {
-        return $this->container['distribuicao_automatica'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets distribuicao_automatica
+     * Sets created_at
      *
-     * @param bool|null $distribuicao_automatica Indica se a distribuição automática está habilitada.    Quando ativada, a API da Nuvem Fiscal realizará automaticamente pedidos de  distribuição de notas fiscais eletrônicas (NF-e) utilizando o último NSU.    A frequência dessas distribuições é controlada pelo campo `distribuicao_intervalo_horas`,  cujo valor padrão é 24 horas (uma vez ao dia).
+     * @param \DateTime|null $created_at Data e hora da criação da requisição, representada no formato UTC (Tempo Universal Coordenado).  O valor é retornado no padrão ISO 8601, incluindo o deslocamento de fuso horário 'Z' no final.    Exemplo: \"2025-04-15T14:16:47.775Z\"
      *
      * @return self
      */
-    public function setDistribuicaoAutomatica($distribuicao_automatica)
+    public function setCreatedAt($created_at)
     {
-        if (is_null($distribuicao_automatica)) {
-            array_push($this->openAPINullablesSetToNull, 'distribuicao_automatica');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('distribuicao_automatica', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
-        $this->container['distribuicao_automatica'] = $distribuicao_automatica;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
 
     /**
-     * Gets distribuicao_intervalo_horas
+     * Gets tipo
+     *
+     * @return string|null
+     */
+    public function getTipo()
+    {
+        return $this->container['tipo'];
+    }
+
+    /**
+     * Sets tipo
+     *
+     * @param string|null $tipo Tipo da operação realizada na requisição para o autorizador.  Pode assumir um dos seguintes valores:  - 'envio_lote'      : envio do lote de documentos fiscais para autorização;  - 'consulta_lote'   : consulta do processamento do lote;  - 'cons_sit_dfe'    : consulta de situação individual de um DFe.    Esse campo indica a natureza da interação com a SEFAZ ou prefeitura,  e é útil para fins de rastreamento e diagnóstico do fluxo.
+     *
+     * @return self
+     */
+    public function setTipo($tipo)
+    {
+        if (is_null($tipo)) {
+            throw new \InvalidArgumentException('non-nullable tipo cannot be null');
+        }
+        $this->container['tipo'] = $tipo;
+
+        return $this;
+    }
+
+    /**
+     * Gets lote_id
+     *
+     * @return string|null
+     */
+    public function getLoteId()
+    {
+        return $this->container['lote_id'];
+    }
+
+    /**
+     * Sets lote_id
+     *
+     * @param string|null $lote_id Identificador do lote vinculado à requisição.
+     *
+     * @return self
+     */
+    public function setLoteId($lote_id)
+    {
+        if (is_null($lote_id)) {
+            throw new \InvalidArgumentException('non-nullable lote_id cannot be null');
+        }
+        $this->container['lote_id'] = $lote_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets codigo_status
      *
      * @return int|null
      */
-    public function getDistribuicaoIntervaloHoras()
+    public function getCodigoStatus()
     {
-        return $this->container['distribuicao_intervalo_horas'];
+        return $this->container['codigo_status'];
     }
 
     /**
-     * Sets distribuicao_intervalo_horas
+     * Sets codigo_status
      *
-     * @param int|null $distribuicao_intervalo_horas Define o intervalo mínimo, em horas, entre distribuições automáticas de documentos.    Esse valor determina com que frequência a API da Nuvem Fiscal executará novas  requisições automáticas de distribuição de notas fiscais eletrônicas (NF-e).    Deve ser um valor entre 1 e 24. Por exemplo, se configurado como 4, uma nova  tentativa de distribuição só será feita se pelo menos 4 horas tiverem se passado  desde a última requisição.    Esse campo só é relevante quando `distribuicao_automatica` estiver habilitado.
+     * @param int|null $codigo_status Código de status retornado pela SEFAZ/prefeitura.
      *
      * @return self
      */
-    public function setDistribuicaoIntervaloHoras($distribuicao_intervalo_horas)
+    public function setCodigoStatus($codigo_status)
     {
-        if (is_null($distribuicao_intervalo_horas)) {
-            array_push($this->openAPINullablesSetToNull, 'distribuicao_intervalo_horas');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('distribuicao_intervalo_horas', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($codigo_status)) {
+            throw new \InvalidArgumentException('non-nullable codigo_status cannot be null');
         }
-
-        if (!is_null($distribuicao_intervalo_horas) && ($distribuicao_intervalo_horas > 24)) {
-            throw new \InvalidArgumentException('invalid value for $distribuicao_intervalo_horas when calling EmpresaConfigDistribuicaoNfe., must be smaller than or equal to 24.');
-        }
-        if (!is_null($distribuicao_intervalo_horas) && ($distribuicao_intervalo_horas < 1)) {
-            throw new \InvalidArgumentException('invalid value for $distribuicao_intervalo_horas when calling EmpresaConfigDistribuicaoNfe., must be bigger than or equal to 1.');
-        }
-
-        $this->container['distribuicao_intervalo_horas'] = $distribuicao_intervalo_horas;
+        $this->container['codigo_status'] = $codigo_status;
 
         return $this;
     }
 
     /**
-     * Gets ciencia_automatica
+     * Gets motivo_status
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getCienciaAutomatica()
+    public function getMotivoStatus()
     {
-        return $this->container['ciencia_automatica'];
+        return $this->container['motivo_status'];
     }
 
     /**
-     * Sets ciencia_automatica
+     * Sets motivo_status
      *
-     * @param bool|null $ciencia_automatica Indica se a manifestação de Ciência da Operação (210210) deve ser feita  automaticamente pela API.    Caso habilitada, a manifestação de ciência será realizada para notas  recebidas por qualquer forma de consulta ou modo de distribuição (manual ou automático).
+     * @param string|null $motivo_status Motivo associado ao status retornado.
      *
      * @return self
      */
-    public function setCienciaAutomatica($ciencia_automatica)
+    public function setMotivoStatus($motivo_status)
     {
-        if (is_null($ciencia_automatica)) {
-            array_push($this->openAPINullablesSetToNull, 'ciencia_automatica');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ciencia_automatica', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($motivo_status)) {
+            throw new \InvalidArgumentException('non-nullable motivo_status cannot be null');
         }
-        $this->container['ciencia_automatica'] = $ciencia_automatica;
+        $this->container['motivo_status'] = $motivo_status;
 
         return $this;
     }
 
     /**
-     * Gets ambiente
+     * Gets http_request
      *
-     * @return string
+     * @return \NuvemFiscal\Model\HttpRequestDebug|null
      */
-    public function getAmbiente()
+    public function getHttpRequest()
     {
-        return $this->container['ambiente'];
+        return $this->container['http_request'];
     }
 
     /**
-     * Sets ambiente
+     * Sets http_request
      *
-     * @param string $ambiente Indica se a empresa irá emitir em produção ou homologação.
+     * @param \NuvemFiscal\Model\HttpRequestDebug|null $http_request http_request
      *
      * @return self
      */
-    public function setAmbiente($ambiente)
+    public function setHttpRequest($http_request)
     {
-        if (is_null($ambiente)) {
-            throw new \InvalidArgumentException('non-nullable ambiente cannot be null');
+        if (is_null($http_request)) {
+            throw new \InvalidArgumentException('non-nullable http_request cannot be null');
         }
-        $allowedValues = $this->getAmbienteAllowableValues();
-        if (!in_array($ambiente, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ambiente', must be one of '%s'",
-                    $ambiente,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['ambiente'] = $ambiente;
+        $this->container['http_request'] = $http_request;
 
         return $this;
     }

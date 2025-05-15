@@ -86,7 +86,7 @@ class DistribuicaoNfeDocumento implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPIFormats = [
         'id' => null,
         'created_at' => 'date-time',
-        'nsu' => null,
+        'nsu' => 'int64',
         'schema' => null,
         'tipo_documento' => null,
         'chave_acesso' => null,

@@ -74,7 +74,7 @@ class NfeSefazIpi implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'cnpj_prod' => null,
         'c_selo' => null,
-        'q_selo' => null,
+        'q_selo' => 'int64',
         'c_enq' => null,
         'ipi_trib' => null,
         'ipint' => null

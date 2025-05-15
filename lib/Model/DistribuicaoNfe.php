@@ -87,14 +87,14 @@ class DistribuicaoNfe implements ModelInterface, ArrayAccess, \JsonSerializable
         'ambiente' => null,
         'uf_autor' => null,
         'tipo_consulta' => null,
-        'dist_nsu' => null,
-        'cons_nsu' => null,
+        'dist_nsu' => 'int64',
+        'cons_nsu' => 'int64',
         'cons_chave' => null,
         'codigo_status' => null,
         'motivo_status' => null,
         'data_hora_resposta' => 'date-time',
-        'ultimo_nsu' => null,
-        'max_nsu' => null,
+        'ultimo_nsu' => 'int64',
+        'max_nsu' => 'int64',
         'documentos' => null
     ];
 

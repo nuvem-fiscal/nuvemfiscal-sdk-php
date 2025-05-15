@@ -71,7 +71,7 @@ class DocNFNFS implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'n_nfs' => null,
-        'mod_nfs' => null,
+        'mod_nfs' => 'int64',
         'serie_nfs' => null
     ];
 

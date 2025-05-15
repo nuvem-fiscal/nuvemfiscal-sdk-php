@@ -74,7 +74,7 @@ class NfeSefazVol implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'q_vol' => null,
+        'q_vol' => 'int64',
         'esp' => null,
         'marca' => null,
         'n_vol' => null,

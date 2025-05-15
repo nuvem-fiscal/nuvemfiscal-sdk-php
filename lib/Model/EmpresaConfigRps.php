@@ -70,9 +70,9 @@ class EmpresaConfigRps implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'lote' => null,
+        'lote' => 'int64',
         'serie' => null,
-        'numero' => null
+        'numero' => 'int64'
     ];
 
     /**
@@ -294,6 +294,10 @@ class EmpresaConfigRps implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['serie'] === null) {
             $invalidProperties[] = "'serie' can't be null";
         }
+        if ((mb_strlen($this->container['serie']) > 20)) {
+            $invalidProperties[] = "invalid value for 'serie', the character length must be smaller than or equal to 20.";
+        }
+
         if ($this->container['numero'] === null) {
             $invalidProperties[] = "'numero' can't be null";
         }
@@ -361,6 +365,10 @@ class EmpresaConfigRps implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($serie)) {
             throw new \InvalidArgumentException('non-nullable serie cannot be null');
         }
+        if ((mb_strlen($serie) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $serie when calling EmpresaConfigRps., must be smaller than or equal to 20.');
+        }
+
         $this->container['serie'] = $serie;
 
         return $this;

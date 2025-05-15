@@ -150,6 +150,10 @@ Classe | Método | Endpoint | Descrição
 *DceApi* | [**consultarStatusSefazDce**](docs/Api/DceApi.md#consultarstatussefazdce) | **GET** /dce/sefaz/status | Consulta do Status do Serviço na SEFAZ Autorizadora
 *DceApi* | [**emitirDce**](docs/Api/DceApi.md#emitirdce) | **POST** /dce | Emitir DC-e
 *DceApi* | [**listarDce**](docs/Api/DceApi.md#listardce) | **GET** /dce | Listar DC-e
+*DebugApi* | [**debugDfe**](docs/Api/DebugApi.md#debugdfe) | **GET** /debug/{id} | Debug de DF-e
+*DebugApi* | [**debugDfeOriginalPayload**](docs/Api/DebugApi.md#debugdfeoriginalpayload) | **GET** /debug/{id}/original-payload | Payload original recebido
+*DebugApi* | [**debugHttpRequestContent**](docs/Api/DebugApi.md#debughttprequestcontent) | **GET** /debug/http-requests/{id}/request-content | Corpo da requisição HTTP
+*DebugApi* | [**debugHttpResponseContent**](docs/Api/DebugApi.md#debughttpresponsecontent) | **GET** /debug/http-requests/{id}/response-content | Corpo da resposta HTTP
 *DistribuioNFEApi* | [**baixarPdfDocumentoDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#baixarpdfdocumentodistribuicaonfe) | **GET** /distribuicao/nfe/documentos/{id}/pdf | Baixar PDF do documento
 *DistribuioNFEApi* | [**baixarXmlDocumentoDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#baixarxmldocumentodistribuicaonfe) | **GET** /distribuicao/nfe/documentos/{id}/xml | Baixar XML do documento
 *DistribuioNFEApi* | [**consultarDistribuicaoNfe**](docs/Api/DistribuioNFEApi.md#consultardistribuicaonfe) | **GET** /distribuicao/nfe/{id} | Consultar distribuição
@@ -461,6 +465,7 @@ Classe | Método | Endpoint | Descrição
 - [DfeContribuinteEndereco](docs/Model/DfeContribuinteEndereco.md)
 - [DfeContribuinteInfCad](docs/Model/DfeContribuinteInfCad.md)
 - [DfeContribuinteInfCons](docs/Model/DfeContribuinteInfCons.md)
+- [DfeDebug](docs/Model/DfeDebug.md)
 - [DfeEvento](docs/Model/DfeEvento.md)
 - [DfeEventoListagem](docs/Model/DfeEventoListagem.md)
 - [DfeInutilizacao](docs/Model/DfeInutilizacao.md)
@@ -470,6 +475,7 @@ Classe | Método | Endpoint | Descrição
 - [DfePedidoEnvioEmail](docs/Model/DfePedidoEnvioEmail.md)
 - [DfePedidoInutilizacao](docs/Model/DfePedidoInutilizacao.md)
 - [DfeRecibo](docs/Model/DfeRecibo.md)
+- [DfeRequisicaoDebug](docs/Model/DfeRequisicaoDebug.md)
 - [DfeSefazStatus](docs/Model/DfeSefazStatus.md)
 - [DfeSincronizacao](docs/Model/DfeSincronizacao.md)
 - [DistribuicaoNfe](docs/Model/DistribuicaoNfe.md)
@@ -515,6 +521,7 @@ Classe | Método | Endpoint | Descrição
 - [EnderecoSimples](docs/Model/EnderecoSimples.md)
 - [ExigSuspensa](docs/Model/ExigSuspensa.md)
 - [ExploracaoRodoviaria](docs/Model/ExploracaoRodoviaria.md)
+- [HttpRequestDebug](docs/Model/HttpRequestDebug.md)
 - [InfDPS](docs/Model/InfDPS.md)
 - [InfoCompl](docs/Model/InfoCompl.md)
 - [InfoDedRed](docs/Model/InfoDedRed.md)
@@ -767,6 +774,7 @@ Classe | Método | Endpoint | Descrição
 - [NfsePedidoEmissao](docs/Model/NfsePedidoEmissao.md)
 - [NfsePedidoSincronizacao](docs/Model/NfsePedidoSincronizacao.md)
 - [NfseSincronizacao](docs/Model/NfseSincronizacao.md)
+- [RegTrib](docs/Model/RegTrib.md)
 - [Rps](docs/Model/Rps.md)
 - [RpsDados](docs/Model/RpsDados.md)
 - [RpsDadosConstrucaoCivil](docs/Model/RpsDadosConstrucaoCivil.md)
@@ -821,6 +829,6 @@ Classe | Método | Endpoint | Descrição
 
 ## Sobre este package
 
-- Versão da API: `2.50.0`
-    - Versão do package: `2.31.0`
+- Versão da API: `2.55.1`
+    - Versão do package: `2.32.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

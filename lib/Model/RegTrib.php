@@ -1,6 +1,6 @@
 <?php
 /**
- * EmpresaConfigDistribuicaoNfe
+ * RegTrib
  *
  * PHP version 7.4
  *
@@ -31,15 +31,16 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * EmpresaConfigDistribuicaoNfe Class Doc Comment
+ * RegTrib Class Doc Comment
  *
  * @category Class
+ * @description Grupo de informações relativas aos regimes de tributação do prestador de serviços.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \JsonSerializable
+class RegTrib implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +49,7 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EmpresaConfigDistribuicaoNfe';
+    protected static $openAPIModelName = 'RegTrib';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,10 +57,7 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'distribuicao_automatica' => 'bool',
-        'distribuicao_intervalo_horas' => 'int',
-        'ciencia_automatica' => 'bool',
-        'ambiente' => 'string'
+        'reg_esp_trib' => 'int'
     ];
 
     /**
@@ -70,10 +68,7 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'distribuicao_automatica' => null,
-        'distribuicao_intervalo_horas' => null,
-        'ciencia_automatica' => null,
-        'ambiente' => null
+        'reg_esp_trib' => null
     ];
 
     /**
@@ -82,10 +77,7 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'distribuicao_automatica' => true,
-        'distribuicao_intervalo_horas' => true,
-        'ciencia_automatica' => true,
-        'ambiente' => false
+        'reg_esp_trib' => true
     ];
 
     /**
@@ -174,10 +166,7 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'distribuicao_automatica' => 'distribuicao_automatica',
-        'distribuicao_intervalo_horas' => 'distribuicao_intervalo_horas',
-        'ciencia_automatica' => 'ciencia_automatica',
-        'ambiente' => 'ambiente'
+        'reg_esp_trib' => 'regEspTrib'
     ];
 
     /**
@@ -186,10 +175,7 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'distribuicao_automatica' => 'setDistribuicaoAutomatica',
-        'distribuicao_intervalo_horas' => 'setDistribuicaoIntervaloHoras',
-        'ciencia_automatica' => 'setCienciaAutomatica',
-        'ambiente' => 'setAmbiente'
+        'reg_esp_trib' => 'setRegEspTrib'
     ];
 
     /**
@@ -198,10 +184,7 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'distribuicao_automatica' => 'getDistribuicaoAutomatica',
-        'distribuicao_intervalo_horas' => 'getDistribuicaoIntervaloHoras',
-        'ciencia_automatica' => 'getCienciaAutomatica',
-        'ambiente' => 'getAmbiente'
+        'reg_esp_trib' => 'getRegEspTrib'
     ];
 
     /**
@@ -245,21 +228,6 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    public const AMBIENTE_HOMOLOGACAO = 'homologacao';
-    public const AMBIENTE_PRODUCAO = 'producao';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAmbienteAllowableValues()
-    {
-        return [
-            self::AMBIENTE_HOMOLOGACAO,
-            self::AMBIENTE_PRODUCAO,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -276,10 +244,7 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('distribuicao_automatica', $data ?? [], false);
-        $this->setIfExists('distribuicao_intervalo_horas', $data ?? [], null);
-        $this->setIfExists('ciencia_automatica', $data ?? [], false);
-        $this->setIfExists('ambiente', $data ?? [], null);
+        $this->setIfExists('reg_esp_trib', $data ?? [], null);
     }
 
     /**
@@ -309,26 +274,6 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['distribuicao_intervalo_horas']) && ($this->container['distribuicao_intervalo_horas'] > 24)) {
-            $invalidProperties[] = "invalid value for 'distribuicao_intervalo_horas', must be smaller than or equal to 24.";
-        }
-
-        if (!is_null($this->container['distribuicao_intervalo_horas']) && ($this->container['distribuicao_intervalo_horas'] < 1)) {
-            $invalidProperties[] = "invalid value for 'distribuicao_intervalo_horas', must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['ambiente'] === null) {
-            $invalidProperties[] = "'ambiente' can't be null";
-        }
-        $allowedValues = $this->getAmbienteAllowableValues();
-        if (!is_null($this->container['ambiente']) && !in_array($this->container['ambiente'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'ambiente', must be one of '%s'",
-                $this->container['ambiente'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -345,148 +290,35 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets distribuicao_automatica
-     *
-     * @return bool|null
-     */
-    public function getDistribuicaoAutomatica()
-    {
-        return $this->container['distribuicao_automatica'];
-    }
-
-    /**
-     * Sets distribuicao_automatica
-     *
-     * @param bool|null $distribuicao_automatica Indica se a distribuição automática está habilitada.    Quando ativada, a API da Nuvem Fiscal realizará automaticamente pedidos de  distribuição de notas fiscais eletrônicas (NF-e) utilizando o último NSU.    A frequência dessas distribuições é controlada pelo campo `distribuicao_intervalo_horas`,  cujo valor padrão é 24 horas (uma vez ao dia).
-     *
-     * @return self
-     */
-    public function setDistribuicaoAutomatica($distribuicao_automatica)
-    {
-        if (is_null($distribuicao_automatica)) {
-            array_push($this->openAPINullablesSetToNull, 'distribuicao_automatica');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('distribuicao_automatica', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['distribuicao_automatica'] = $distribuicao_automatica;
-
-        return $this;
-    }
-
-    /**
-     * Gets distribuicao_intervalo_horas
+     * Gets reg_esp_trib
      *
      * @return int|null
      */
-    public function getDistribuicaoIntervaloHoras()
+    public function getRegEspTrib()
     {
-        return $this->container['distribuicao_intervalo_horas'];
+        return $this->container['reg_esp_trib'];
     }
 
     /**
-     * Sets distribuicao_intervalo_horas
+     * Sets reg_esp_trib
      *
-     * @param int|null $distribuicao_intervalo_horas Define o intervalo mínimo, em horas, entre distribuições automáticas de documentos.    Esse valor determina com que frequência a API da Nuvem Fiscal executará novas  requisições automáticas de distribuição de notas fiscais eletrônicas (NF-e).    Deve ser um valor entre 1 e 24. Por exemplo, se configurado como 4, uma nova  tentativa de distribuição só será feita se pelo menos 4 horas tiverem se passado  desde a última requisição.    Esse campo só é relevante quando `distribuicao_automatica` estiver habilitado.
+     * @param int|null $reg_esp_trib Regime Especial de Tributação da Prefeitura.    Campo opcional utilizado no momento da emissão da NFS-e para informar  diretamente o código de regime especial de tributação esperado pela  prefeitura.    **Comportamento:**  - Ao preencher este campo, o valor será inserido diretamente no XML    da NFS-e, sem qualquer conversão pela Nuvem Fiscal.  - Esse campo sobrescreve o valor configurado previamente nas    configurações de NFS-e da empresa.  - É especialmente útil quando a prefeitura utiliza códigos próprios que    não existem no padrão nacional (como valores diferentes dos listados    de 0 a 6).    **Cenários de uso:**  - Quando a prefeitura exige um código que não pode ser representado    pelos valores do padrão nacional.  - Quando houver necessidade de enviar o código exato esperado pela    prefeitura, sem depender da lógica de conversão automática da Nuvem Fiscal.    **Atenção**: Para emissões pelo Sistema Nacional NFS-e, esse campo é ignorado.
      *
      * @return self
      */
-    public function setDistribuicaoIntervaloHoras($distribuicao_intervalo_horas)
+    public function setRegEspTrib($reg_esp_trib)
     {
-        if (is_null($distribuicao_intervalo_horas)) {
-            array_push($this->openAPINullablesSetToNull, 'distribuicao_intervalo_horas');
+        if (is_null($reg_esp_trib)) {
+            array_push($this->openAPINullablesSetToNull, 'reg_esp_trib');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('distribuicao_intervalo_horas', $nullablesSetToNull);
+            $index = array_search('reg_esp_trib', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($distribuicao_intervalo_horas) && ($distribuicao_intervalo_horas > 24)) {
-            throw new \InvalidArgumentException('invalid value for $distribuicao_intervalo_horas when calling EmpresaConfigDistribuicaoNfe., must be smaller than or equal to 24.');
-        }
-        if (!is_null($distribuicao_intervalo_horas) && ($distribuicao_intervalo_horas < 1)) {
-            throw new \InvalidArgumentException('invalid value for $distribuicao_intervalo_horas when calling EmpresaConfigDistribuicaoNfe., must be bigger than or equal to 1.');
-        }
-
-        $this->container['distribuicao_intervalo_horas'] = $distribuicao_intervalo_horas;
-
-        return $this;
-    }
-
-    /**
-     * Gets ciencia_automatica
-     *
-     * @return bool|null
-     */
-    public function getCienciaAutomatica()
-    {
-        return $this->container['ciencia_automatica'];
-    }
-
-    /**
-     * Sets ciencia_automatica
-     *
-     * @param bool|null $ciencia_automatica Indica se a manifestação de Ciência da Operação (210210) deve ser feita  automaticamente pela API.    Caso habilitada, a manifestação de ciência será realizada para notas  recebidas por qualquer forma de consulta ou modo de distribuição (manual ou automático).
-     *
-     * @return self
-     */
-    public function setCienciaAutomatica($ciencia_automatica)
-    {
-        if (is_null($ciencia_automatica)) {
-            array_push($this->openAPINullablesSetToNull, 'ciencia_automatica');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ciencia_automatica', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['ciencia_automatica'] = $ciencia_automatica;
-
-        return $this;
-    }
-
-    /**
-     * Gets ambiente
-     *
-     * @return string
-     */
-    public function getAmbiente()
-    {
-        return $this->container['ambiente'];
-    }
-
-    /**
-     * Sets ambiente
-     *
-     * @param string $ambiente Indica se a empresa irá emitir em produção ou homologação.
-     *
-     * @return self
-     */
-    public function setAmbiente($ambiente)
-    {
-        if (is_null($ambiente)) {
-            throw new \InvalidArgumentException('non-nullable ambiente cannot be null');
-        }
-        $allowedValues = $this->getAmbienteAllowableValues();
-        if (!in_array($ambiente, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ambiente', must be one of '%s'",
-                    $ambiente,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['ambiente'] = $ambiente;
+        $this->container['reg_esp_trib'] = $reg_esp_trib;
 
         return $this;
     }

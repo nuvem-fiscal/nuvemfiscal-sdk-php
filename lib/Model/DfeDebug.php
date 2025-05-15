@@ -1,6 +1,6 @@
 <?php
 /**
- * EmpresaConfigDistribuicaoNfe
+ * DfeDebug
  *
  * PHP version 7.4
  *
@@ -31,7 +31,7 @@ use \ArrayAccess;
 use \NuvemFiscal\ObjectSerializer;
 
 /**
- * EmpresaConfigDistribuicaoNfe Class Doc Comment
+ * DfeDebug Class Doc Comment
  *
  * @category Class
  * @package  NuvemFiscal
@@ -39,7 +39,7 @@ use \NuvemFiscal\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \JsonSerializable
+class DfeDebug implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EmpresaConfigDistribuicaoNfe';
+    protected static $openAPIModelName = 'DfeDebug';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,10 +56,10 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'distribuicao_automatica' => 'bool',
-        'distribuicao_intervalo_horas' => 'int',
-        'ciencia_automatica' => 'bool',
-        'ambiente' => 'string'
+        'id' => 'string',
+        'tipo' => 'string',
+        'created_at' => '\DateTime',
+        'requisicoes' => '\NuvemFiscal\Model\DfeRequisicaoDebug[]'
     ];
 
     /**
@@ -70,10 +70,10 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'distribuicao_automatica' => null,
-        'distribuicao_intervalo_horas' => null,
-        'ciencia_automatica' => null,
-        'ambiente' => null
+        'id' => null,
+        'tipo' => null,
+        'created_at' => 'date-time',
+        'requisicoes' => null
     ];
 
     /**
@@ -82,10 +82,10 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'distribuicao_automatica' => true,
-        'distribuicao_intervalo_horas' => true,
-        'ciencia_automatica' => true,
-        'ambiente' => false
+        'id' => false,
+        'tipo' => false,
+        'created_at' => false,
+        'requisicoes' => false
     ];
 
     /**
@@ -174,10 +174,10 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'distribuicao_automatica' => 'distribuicao_automatica',
-        'distribuicao_intervalo_horas' => 'distribuicao_intervalo_horas',
-        'ciencia_automatica' => 'ciencia_automatica',
-        'ambiente' => 'ambiente'
+        'id' => 'id',
+        'tipo' => 'tipo',
+        'created_at' => 'created_at',
+        'requisicoes' => 'requisicoes'
     ];
 
     /**
@@ -186,10 +186,10 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'distribuicao_automatica' => 'setDistribuicaoAutomatica',
-        'distribuicao_intervalo_horas' => 'setDistribuicaoIntervaloHoras',
-        'ciencia_automatica' => 'setCienciaAutomatica',
-        'ambiente' => 'setAmbiente'
+        'id' => 'setId',
+        'tipo' => 'setTipo',
+        'created_at' => 'setCreatedAt',
+        'requisicoes' => 'setRequisicoes'
     ];
 
     /**
@@ -198,10 +198,10 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'distribuicao_automatica' => 'getDistribuicaoAutomatica',
-        'distribuicao_intervalo_horas' => 'getDistribuicaoIntervaloHoras',
-        'ciencia_automatica' => 'getCienciaAutomatica',
-        'ambiente' => 'getAmbiente'
+        'id' => 'getId',
+        'tipo' => 'getTipo',
+        'created_at' => 'getCreatedAt',
+        'requisicoes' => 'getRequisicoes'
     ];
 
     /**
@@ -245,21 +245,6 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    public const AMBIENTE_HOMOLOGACAO = 'homologacao';
-    public const AMBIENTE_PRODUCAO = 'producao';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAmbienteAllowableValues()
-    {
-        return [
-            self::AMBIENTE_HOMOLOGACAO,
-            self::AMBIENTE_PRODUCAO,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -276,10 +261,10 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('distribuicao_automatica', $data ?? [], false);
-        $this->setIfExists('distribuicao_intervalo_horas', $data ?? [], null);
-        $this->setIfExists('ciencia_automatica', $data ?? [], false);
-        $this->setIfExists('ambiente', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('tipo', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('requisicoes', $data ?? [], null);
     }
 
     /**
@@ -309,26 +294,6 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['distribuicao_intervalo_horas']) && ($this->container['distribuicao_intervalo_horas'] > 24)) {
-            $invalidProperties[] = "invalid value for 'distribuicao_intervalo_horas', must be smaller than or equal to 24.";
-        }
-
-        if (!is_null($this->container['distribuicao_intervalo_horas']) && ($this->container['distribuicao_intervalo_horas'] < 1)) {
-            $invalidProperties[] = "invalid value for 'distribuicao_intervalo_horas', must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['ambiente'] === null) {
-            $invalidProperties[] = "'ambiente' can't be null";
-        }
-        $allowedValues = $this->getAmbienteAllowableValues();
-        if (!is_null($this->container['ambiente']) && !in_array($this->container['ambiente'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'ambiente', must be one of '%s'",
-                $this->container['ambiente'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -345,148 +310,109 @@ class EmpresaConfigDistribuicaoNfe implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets distribuicao_automatica
+     * Gets id
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getDistribuicaoAutomatica()
+    public function getId()
     {
-        return $this->container['distribuicao_automatica'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets distribuicao_automatica
+     * Sets id
      *
-     * @param bool|null $distribuicao_automatica Indica se a distribuição automática está habilitada.    Quando ativada, a API da Nuvem Fiscal realizará automaticamente pedidos de  distribuição de notas fiscais eletrônicas (NF-e) utilizando o último NSU.    A frequência dessas distribuições é controlada pelo campo `distribuicao_intervalo_horas`,  cujo valor padrão é 24 horas (uma vez ao dia).
+     * @param string|null $id Identificador do documento fiscal.
      *
      * @return self
      */
-    public function setDistribuicaoAutomatica($distribuicao_automatica)
+    public function setId($id)
     {
-        if (is_null($distribuicao_automatica)) {
-            array_push($this->openAPINullablesSetToNull, 'distribuicao_automatica');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('distribuicao_automatica', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['distribuicao_automatica'] = $distribuicao_automatica;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets distribuicao_intervalo_horas
+     * Gets tipo
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getDistribuicaoIntervaloHoras()
+    public function getTipo()
     {
-        return $this->container['distribuicao_intervalo_horas'];
+        return $this->container['tipo'];
     }
 
     /**
-     * Sets distribuicao_intervalo_horas
+     * Sets tipo
      *
-     * @param int|null $distribuicao_intervalo_horas Define o intervalo mínimo, em horas, entre distribuições automáticas de documentos.    Esse valor determina com que frequência a API da Nuvem Fiscal executará novas  requisições automáticas de distribuição de notas fiscais eletrônicas (NF-e).    Deve ser um valor entre 1 e 24. Por exemplo, se configurado como 4, uma nova  tentativa de distribuição só será feita se pelo menos 4 horas tiverem se passado  desde a última requisição.    Esse campo só é relevante quando `distribuicao_automatica` estiver habilitado.
+     * @param string|null $tipo Tipo do documento: nfe, nfce, mdfe, nfse, etc.
      *
      * @return self
      */
-    public function setDistribuicaoIntervaloHoras($distribuicao_intervalo_horas)
+    public function setTipo($tipo)
     {
-        if (is_null($distribuicao_intervalo_horas)) {
-            array_push($this->openAPINullablesSetToNull, 'distribuicao_intervalo_horas');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('distribuicao_intervalo_horas', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($tipo)) {
+            throw new \InvalidArgumentException('non-nullable tipo cannot be null');
         }
-
-        if (!is_null($distribuicao_intervalo_horas) && ($distribuicao_intervalo_horas > 24)) {
-            throw new \InvalidArgumentException('invalid value for $distribuicao_intervalo_horas when calling EmpresaConfigDistribuicaoNfe., must be smaller than or equal to 24.');
-        }
-        if (!is_null($distribuicao_intervalo_horas) && ($distribuicao_intervalo_horas < 1)) {
-            throw new \InvalidArgumentException('invalid value for $distribuicao_intervalo_horas when calling EmpresaConfigDistribuicaoNfe., must be bigger than or equal to 1.');
-        }
-
-        $this->container['distribuicao_intervalo_horas'] = $distribuicao_intervalo_horas;
+        $this->container['tipo'] = $tipo;
 
         return $this;
     }
 
     /**
-     * Gets ciencia_automatica
+     * Gets created_at
      *
-     * @return bool|null
+     * @return \DateTime|null
      */
-    public function getCienciaAutomatica()
+    public function getCreatedAt()
     {
-        return $this->container['ciencia_automatica'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets ciencia_automatica
+     * Sets created_at
      *
-     * @param bool|null $ciencia_automatica Indica se a manifestação de Ciência da Operação (210210) deve ser feita  automaticamente pela API.    Caso habilitada, a manifestação de ciência será realizada para notas  recebidas por qualquer forma de consulta ou modo de distribuição (manual ou automático).
+     * @param \DateTime|null $created_at Data e hora da criação do documento, representada no formato UTC (Tempo Universal Coordenado).  O valor é retornado no padrão ISO 8601, incluindo o deslocamento de fuso horário 'Z' no final.    Exemplo: \"2025-04-15T14:16:47.775Z\"
      *
      * @return self
      */
-    public function setCienciaAutomatica($ciencia_automatica)
+    public function setCreatedAt($created_at)
     {
-        if (is_null($ciencia_automatica)) {
-            array_push($this->openAPINullablesSetToNull, 'ciencia_automatica');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ciencia_automatica', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
-        $this->container['ciencia_automatica'] = $ciencia_automatica;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
 
     /**
-     * Gets ambiente
+     * Gets requisicoes
      *
-     * @return string
+     * @return \NuvemFiscal\Model\DfeRequisicaoDebug[]|null
      */
-    public function getAmbiente()
+    public function getRequisicoes()
     {
-        return $this->container['ambiente'];
+        return $this->container['requisicoes'];
     }
 
     /**
-     * Sets ambiente
+     * Sets requisicoes
      *
-     * @param string $ambiente Indica se a empresa irá emitir em produção ou homologação.
+     * @param \NuvemFiscal\Model\DfeRequisicaoDebug[]|null $requisicoes Lista de requisições feitas ao autorizador durante o processamento.
      *
      * @return self
      */
-    public function setAmbiente($ambiente)
+    public function setRequisicoes($requisicoes)
     {
-        if (is_null($ambiente)) {
-            throw new \InvalidArgumentException('non-nullable ambiente cannot be null');
+        if (is_null($requisicoes)) {
+            throw new \InvalidArgumentException('non-nullable requisicoes cannot be null');
         }
-        $allowedValues = $this->getAmbienteAllowableValues();
-        if (!in_array($ambiente, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ambiente', must be one of '%s'",
-                    $ambiente,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['ambiente'] = $ambiente;
+        $this->container['requisicoes'] = $requisicoes;
 
         return $this;
     }

@@ -78,8 +78,8 @@ class DistribuicaoNfePedido implements ModelInterface, ArrayAccess, \JsonSeriali
         'ambiente' => null,
         'uf_autor' => null,
         'tipo_consulta' => null,
-        'dist_nsu' => null,
-        'cons_nsu' => null,
+        'dist_nsu' => 'int64',
+        'cons_nsu' => 'int64',
         'cons_chave' => null,
         'ignorar_tempo_espera' => null
     ];

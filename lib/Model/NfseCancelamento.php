@@ -258,7 +258,6 @@ class NfseCancelamento implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     public const STATUS_PENDENTE = 'pendente';
-    public const STATUS_FILA_CANCELAMENTO = 'fila_cancelamento';
     public const STATUS_CONCLUIDO = 'concluido';
     public const STATUS_REJEITADO = 'rejeitado';
     public const STATUS_ERRO = 'erro';
@@ -272,7 +271,6 @@ class NfseCancelamento implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::STATUS_PENDENTE,
-            self::STATUS_FILA_CANCELAMENTO,
             self::STATUS_CONCLUIDO,
             self::STATUS_REJEITADO,
             self::STATUS_ERRO,

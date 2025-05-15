@@ -60,6 +60,7 @@ class EnderecoSimples implements ModelInterface, ArrayAccess, \JsonSerializable
         'cep' => 'string',
         'end_ext' => '\NuvemFiscal\Model\EnderExtSimples',
         'x_lgr' => 'string',
+        'tp_lgr' => 'string',
         'nro' => 'string',
         'x_cpl' => 'string',
         'x_bairro' => 'string'
@@ -76,6 +77,7 @@ class EnderecoSimples implements ModelInterface, ArrayAccess, \JsonSerializable
         'cep' => null,
         'end_ext' => null,
         'x_lgr' => null,
+        'tp_lgr' => null,
         'nro' => null,
         'x_cpl' => null,
         'x_bairro' => null
@@ -90,6 +92,7 @@ class EnderecoSimples implements ModelInterface, ArrayAccess, \JsonSerializable
         'cep' => true,
         'end_ext' => false,
         'x_lgr' => true,
+        'tp_lgr' => true,
         'nro' => true,
         'x_cpl' => true,
         'x_bairro' => true
@@ -184,6 +187,7 @@ class EnderecoSimples implements ModelInterface, ArrayAccess, \JsonSerializable
         'cep' => 'CEP',
         'end_ext' => 'endExt',
         'x_lgr' => 'xLgr',
+        'tp_lgr' => 'tpLgr',
         'nro' => 'nro',
         'x_cpl' => 'xCpl',
         'x_bairro' => 'xBairro'
@@ -198,6 +202,7 @@ class EnderecoSimples implements ModelInterface, ArrayAccess, \JsonSerializable
         'cep' => 'setCep',
         'end_ext' => 'setEndExt',
         'x_lgr' => 'setXLgr',
+        'tp_lgr' => 'setTpLgr',
         'nro' => 'setNro',
         'x_cpl' => 'setXCpl',
         'x_bairro' => 'setXBairro'
@@ -212,6 +217,7 @@ class EnderecoSimples implements ModelInterface, ArrayAccess, \JsonSerializable
         'cep' => 'getCep',
         'end_ext' => 'getEndExt',
         'x_lgr' => 'getXLgr',
+        'tp_lgr' => 'getTpLgr',
         'nro' => 'getNro',
         'x_cpl' => 'getXCpl',
         'x_bairro' => 'getXBairro'
@@ -277,6 +283,7 @@ class EnderecoSimples implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('cep', $data ?? [], null);
         $this->setIfExists('end_ext', $data ?? [], null);
         $this->setIfExists('x_lgr', $data ?? [], null);
+        $this->setIfExists('tp_lgr', $data ?? [], null);
         $this->setIfExists('nro', $data ?? [], null);
         $this->setIfExists('x_cpl', $data ?? [], null);
         $this->setIfExists('x_bairro', $data ?? [], null);
@@ -463,6 +470,40 @@ class EnderecoSimples implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['x_lgr'] = $x_lgr;
+
+        return $this;
+    }
+
+    /**
+     * Gets tp_lgr
+     *
+     * @return string|null
+     */
+    public function getTpLgr()
+    {
+        return $this->container['tp_lgr'];
+    }
+
+    /**
+     * Sets tp_lgr
+     *
+     * @param string|null $tp_lgr Tipo do Logradouro.    **Atenção**: Para emissões pelo Sistema Nacional NFS-e, esse campo é ignorado.
+     *
+     * @return self
+     */
+    public function setTpLgr($tp_lgr)
+    {
+        if (is_null($tp_lgr)) {
+            array_push($this->openAPINullablesSetToNull, 'tp_lgr');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_lgr', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tp_lgr'] = $tp_lgr;
 
         return $this;
     }

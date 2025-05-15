@@ -58,7 +58,8 @@ class InfoPrestador implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'cnpj' => 'string',
-        'cpf' => 'string'
+        'cpf' => 'string',
+        'reg_trib' => '\NuvemFiscal\Model\RegTrib'
     ];
 
     /**
@@ -70,7 +71,8 @@ class InfoPrestador implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'cnpj' => null,
-        'cpf' => null
+        'cpf' => null,
+        'reg_trib' => null
     ];
 
     /**
@@ -80,7 +82,8 @@ class InfoPrestador implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'cnpj' => true,
-        'cpf' => true
+        'cpf' => true,
+        'reg_trib' => false
     ];
 
     /**
@@ -170,7 +173,8 @@ class InfoPrestador implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'cnpj' => 'CNPJ',
-        'cpf' => 'CPF'
+        'cpf' => 'CPF',
+        'reg_trib' => 'regTrib'
     ];
 
     /**
@@ -180,7 +184,8 @@ class InfoPrestador implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'cnpj' => 'setCnpj',
-        'cpf' => 'setCpf'
+        'cpf' => 'setCpf',
+        'reg_trib' => 'setRegTrib'
     ];
 
     /**
@@ -190,7 +195,8 @@ class InfoPrestador implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'cnpj' => 'getCnpj',
-        'cpf' => 'getCpf'
+        'cpf' => 'getCpf',
+        'reg_trib' => 'getRegTrib'
     ];
 
     /**
@@ -252,6 +258,7 @@ class InfoPrestador implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('cnpj', $data ?? [], null);
         $this->setIfExists('cpf', $data ?? [], null);
+        $this->setIfExists('reg_trib', $data ?? [], null);
     }
 
     /**
@@ -376,6 +383,33 @@ class InfoPrestador implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['cpf'] = $cpf;
+
+        return $this;
+    }
+
+    /**
+     * Gets reg_trib
+     *
+     * @return \NuvemFiscal\Model\RegTrib|null
+     */
+    public function getRegTrib()
+    {
+        return $this->container['reg_trib'];
+    }
+
+    /**
+     * Sets reg_trib
+     *
+     * @param \NuvemFiscal\Model\RegTrib|null $reg_trib reg_trib
+     *
+     * @return self
+     */
+    public function setRegTrib($reg_trib)
+    {
+        if (is_null($reg_trib)) {
+            throw new \InvalidArgumentException('non-nullable reg_trib cannot be null');
+        }
+        $this->container['reg_trib'] = $reg_trib;
 
         return $this;
     }

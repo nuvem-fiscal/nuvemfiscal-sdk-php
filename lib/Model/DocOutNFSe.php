@@ -71,7 +71,7 @@ class DocOutNFSe implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'c_mun_nfse_mun' => null,
-        'n_nfse_mun' => null,
+        'n_nfse_mun' => 'int64',
         'c_verif_nfse_mun' => null
     ];
 
