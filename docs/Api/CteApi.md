@@ -22,6 +22,7 @@ Todas as URIs relativas a https://api.nuvemfiscal.com.br, exceto se a operação
 | [**consultarStatusSefazCte()**](CteApi.md#consultarStatusSefazCte) | **GET** /cte/sefaz/status | Consulta do Status do Serviço na SEFAZ Autorizadora |
 | [**criarCartaCorrecaoCte()**](CteApi.md#criarCartaCorrecaoCte) | **POST** /cte/{id}/carta-correcao | Solicitar correção do CT-e |
 | [**emitirCte()**](CteApi.md#emitirCte) | **POST** /cte | Emitir CT-e |
+| [**emitirCteSimp()**](CteApi.md#emitirCteSimp) | **POST** /cte/simp | Emitir CT-e Simplificado |
 | [**listarCte()**](CteApi.md#listarCte) | **GET** /cte | Listar CT-e |
 | [**sincronizarCte()**](CteApi.md#sincronizarCte) | **POST** /cte/{id}/sincronizar | Sincroniza dados no CT-e a partir da SEFAZ |
 
@@ -1164,6 +1165,71 @@ try {
 | Nome | Tipo | Descrição  | Notas |
 | ------------- | ------------- | ------------- | ------------- |
 | **body** | [**\NuvemFiscal\Model\CtePedidoEmissao**](../Model/CtePedidoEmissao.md)|  | |
+
+### Tipo do retorno
+
+[**\NuvemFiscal\Model\Dfe**](../Model/Dfe.md)
+
+### Autorização
+
+[jwt](../../README.md#jwt), [oauth2](../../README.md#oauth2)
+
+### Headers HTTP da requisição
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Voltar ao topo]](#) [[Back to API list]](../../README.md#endpoints)
+[[Voltar à lista de DTOs]](../../README.md#models)
+[[Voltar ao README]](../../README.md)
+
+## `emitirCteSimp()`
+
+```php
+emitirCteSimp($body): \NuvemFiscal\Model\Dfe
+```
+
+Emitir CT-e Simplificado
+
+**Informações adicionais**:  - Cota: <a href=\"/docs/limites#dfe-eventos\">dfe-eventos</a>  - Consumo: 1 unidade por requisição.
+
+### Exemplo
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configurar authorização via API key: jwt
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NuvemFiscal\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configurar access token OAuth2 para autorização: oauth2
+$config = NuvemFiscal\Configuration::getDefaultConfiguration()->setAccessToken('SEU_ACCESS_TOKEN');
+
+
+$apiInstance = new NuvemFiscal\Api\CteApi(
+    // Se quiser usar um client http customizado, passe um client que implemente `GuzzleHttp\ClientInterface`.
+    // Isso é opcional, `GuzzleHttp\Client` será usado por padrão.
+    new GuzzleHttp\Client(),
+    $config
+);
+$body = new \NuvemFiscal\Model\CteSimpPedidoEmissao(); // \NuvemFiscal\Model\CteSimpPedidoEmissao
+
+try {
+    $result = $apiInstance->emitirCteSimp($body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CteApi->emitirCteSimp: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parâmetros
+
+| Nome | Tipo | Descrição  | Notas |
+| ------------- | ------------- | ------------- | ------------- |
+| **body** | [**\NuvemFiscal\Model\CteSimpPedidoEmissao**](../Model/CteSimpPedidoEmissao.md)|  | |
 
 ### Tipo do retorno
 
