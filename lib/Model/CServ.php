@@ -61,7 +61,9 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
         'c_trib_mun' => 'string',
         'cnae' => 'string',
         'x_desc_serv' => 'string',
-        'c_nbs' => 'string'
+        'c_nbs' => 'string',
+        'c_nat_op' => 'string',
+        'c_sit_trib' => 'string'
     ];
 
     /**
@@ -76,7 +78,9 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
         'c_trib_mun' => null,
         'cnae' => null,
         'x_desc_serv' => null,
-        'c_nbs' => null
+        'c_nbs' => null,
+        'c_nat_op' => null,
+        'c_sit_trib' => null
     ];
 
     /**
@@ -89,7 +93,9 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
         'c_trib_mun' => true,
         'cnae' => true,
         'x_desc_serv' => true,
-        'c_nbs' => true
+        'c_nbs' => true,
+        'c_nat_op' => true,
+        'c_sit_trib' => true
     ];
 
     /**
@@ -182,7 +188,9 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
         'c_trib_mun' => 'cTribMun',
         'cnae' => 'CNAE',
         'x_desc_serv' => 'xDescServ',
-        'c_nbs' => 'cNBS'
+        'c_nbs' => 'cNBS',
+        'c_nat_op' => 'cNatOp',
+        'c_sit_trib' => 'cSitTrib'
     ];
 
     /**
@@ -195,7 +203,9 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
         'c_trib_mun' => 'setCTribMun',
         'cnae' => 'setCnae',
         'x_desc_serv' => 'setXDescServ',
-        'c_nbs' => 'setCNbs'
+        'c_nbs' => 'setCNbs',
+        'c_nat_op' => 'setCNatOp',
+        'c_sit_trib' => 'setCSitTrib'
     ];
 
     /**
@@ -208,7 +218,9 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
         'c_trib_mun' => 'getCTribMun',
         'cnae' => 'getCnae',
         'x_desc_serv' => 'getXDescServ',
-        'c_nbs' => 'getCNbs'
+        'c_nbs' => 'getCNbs',
+        'c_nat_op' => 'getCNatOp',
+        'c_sit_trib' => 'getCSitTrib'
     ];
 
     /**
@@ -273,6 +285,8 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('cnae', $data ?? [], null);
         $this->setIfExists('x_desc_serv', $data ?? [], null);
         $this->setIfExists('c_nbs', $data ?? [], null);
+        $this->setIfExists('c_nat_op', $data ?? [], null);
+        $this->setIfExists('c_sit_trib', $data ?? [], null);
     }
 
     /**
@@ -344,7 +358,7 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets c_trib_nac
      *
-     * @param string $c_trib_nac Código de tributação nacional do ISSQN.  - **Ambiente Nacional**: O código deve conter exatamente 6 dígitos numéricos, sendo 2 para Item (LC 116/2003), 2 para Subitem (LC 116/2003) e 2 para Desdobro Nacional. Exemplo: `010701`.  - **Envio direto para a Prefeitura**: Em muitos municípios, continua sendo exigido apenas o código conforme a LC 116/2003, totalizando 4 dígitos numéricos (2 para Item e 2 para Subitem). Exemplo: `0107`.
+     * @param string $c_trib_nac Código de tributação nacional do ISSQN.  **Ambiente Nacional**: O código deve conter exatamente 6 dígitos numéricos, sendo 2 para Item (LC 116/2003), 2 para Subitem (LC 116/2003) e 2 para Desdobro Nacional. Exemplo: `010701`.  **Envio direto para a Prefeitura**: Em muitos municípios, continua sendo exigido apenas o código conforme a LC 116/2003, totalizando 4 dígitos numéricos (2 para Item e 2 para Subitem). Exemplo: `0107`.
      *
      * @return self
      */
@@ -504,6 +518,74 @@ class CServ implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['c_nbs'] = $c_nbs;
+
+        return $this;
+    }
+
+    /**
+     * Gets c_nat_op
+     *
+     * @return string|null
+     */
+    public function getCNatOp()
+    {
+        return $this->container['c_nat_op'];
+    }
+
+    /**
+     * Sets c_nat_op
+     *
+     * @param string|null $c_nat_op Código de natureza da operação.    **Atenção**: Para emissões pelo Sistema Nacional NFS-e, esse campo é ignorado.
+     *
+     * @return self
+     */
+    public function setCNatOp($c_nat_op)
+    {
+        if (is_null($c_nat_op)) {
+            array_push($this->openAPINullablesSetToNull, 'c_nat_op');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_nat_op', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['c_nat_op'] = $c_nat_op;
+
+        return $this;
+    }
+
+    /**
+     * Gets c_sit_trib
+     *
+     * @return string|null
+     */
+    public function getCSitTrib()
+    {
+        return $this->container['c_sit_trib'];
+    }
+
+    /**
+     * Sets c_sit_trib
+     *
+     * @param string|null $c_sit_trib Código de situação tributária.    **Atenção**: Para emissões pelo Sistema Nacional NFS-e, esse campo é ignorado.
+     *
+     * @return self
+     */
+    public function setCSitTrib($c_sit_trib)
+    {
+        if (is_null($c_sit_trib)) {
+            array_push($this->openAPINullablesSetToNull, 'c_sit_trib');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_sit_trib', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['c_sit_trib'] = $c_sit_trib;
 
         return $this;
     }
