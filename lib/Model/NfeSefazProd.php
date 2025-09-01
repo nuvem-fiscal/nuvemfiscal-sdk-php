@@ -84,6 +84,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_desc' => 'float',
         'v_outro' => 'float',
         'ind_tot' => 'int',
+        'ind_bem_movel_usado' => 'int',
         'di' => '\NuvemFiscal\Model\NfeSefazDI[]',
         'det_export' => '\NuvemFiscal\Model\NfeSefazDetExport[]',
         'x_ped' => 'string',
@@ -134,6 +135,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_desc' => null,
         'v_outro' => null,
         'ind_tot' => null,
+        'ind_bem_movel_usado' => null,
         'di' => null,
         'det_export' => null,
         'x_ped' => null,
@@ -182,6 +184,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_desc' => true,
         'v_outro' => true,
         'ind_tot' => true,
+        'ind_bem_movel_usado' => true,
         'di' => false,
         'det_export' => false,
         'x_ped' => true,
@@ -310,6 +313,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_desc' => 'vDesc',
         'v_outro' => 'vOutro',
         'ind_tot' => 'indTot',
+        'ind_bem_movel_usado' => 'indBemMovelUsado',
         'di' => 'DI',
         'det_export' => 'detExport',
         'x_ped' => 'xPed',
@@ -358,6 +362,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_desc' => 'setVDesc',
         'v_outro' => 'setVOutro',
         'ind_tot' => 'setIndTot',
+        'ind_bem_movel_usado' => 'setIndBemMovelUsado',
         'di' => 'setDi',
         'det_export' => 'setDetExport',
         'x_ped' => 'setXPed',
@@ -406,6 +411,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_desc' => 'getVDesc',
         'v_outro' => 'getVOutro',
         'ind_tot' => 'getIndTot',
+        'ind_bem_movel_usado' => 'getIndBemMovelUsado',
         'di' => 'getDi',
         'det_export' => 'getDetExport',
         'x_ped' => 'getXPed',
@@ -505,6 +511,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('v_desc', $data ?? [], null);
         $this->setIfExists('v_outro', $data ?? [], null);
         $this->setIfExists('ind_tot', $data ?? [], null);
+        $this->setIfExists('ind_bem_movel_usado', $data ?? [], null);
         $this->setIfExists('di', $data ?? [], null);
         $this->setIfExists('det_export', $data ?? [], null);
         $this->setIfExists('x_ped', $data ?? [], null);
@@ -1523,7 +1530,7 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets v_un_trib
      *
-     * @param float $v_un_trib Valor unitário de tributação - - alterado para aceitar 0 a 10 casas decimais e 11 inteiros.
+     * @param float $v_un_trib Valor unitário de tributação - alterado para aceitar 0 a 10 casas decimais e 11 inteiros.
      *
      * @return self
      */
@@ -1735,6 +1742,40 @@ class NfeSefazProd implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['ind_tot'] = $ind_tot;
+
+        return $this;
+    }
+
+    /**
+     * Gets ind_bem_movel_usado
+     *
+     * @return int|null
+     */
+    public function getIndBemMovelUsado()
+    {
+        return $this->container['ind_bem_movel_usado'];
+    }
+
+    /**
+     * Sets ind_bem_movel_usado
+     *
+     * @param int|null $ind_bem_movel_usado Indicador de fornecimento de bem móvel usado: 1-Bem Móvel Usado.
+     *
+     * @return self
+     */
+    public function setIndBemMovelUsado($ind_bem_movel_usado)
+    {
+        if (is_null($ind_bem_movel_usado)) {
+            array_push($this->openAPINullablesSetToNull, 'ind_bem_movel_usado');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_bem_movel_usado', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ind_bem_movel_usado'] = $ind_bem_movel_usado;
 
         return $this;
     }

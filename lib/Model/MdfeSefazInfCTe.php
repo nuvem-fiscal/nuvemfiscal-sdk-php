@@ -62,7 +62,9 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
         'ind_reentrega' => 'int',
         'inf_unid_transp' => '\NuvemFiscal\Model\MdfeSefazUnidadeTransp[]',
         'peri' => '\NuvemFiscal\Model\MdfeSefazPeri[]',
-        'inf_entrega_parcial' => '\NuvemFiscal\Model\MdfeSefazInfEntregaParcial'
+        'inf_entrega_parcial' => '\NuvemFiscal\Model\MdfeSefazInfEntregaParcial',
+        'ind_prestacao_parcial' => 'int',
+        'inf_nfe_prest_parcial' => '\NuvemFiscal\Model\MdfeSefazInfNFePrestParcial[]'
     ];
 
     /**
@@ -78,7 +80,9 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
         'ind_reentrega' => null,
         'inf_unid_transp' => null,
         'peri' => null,
-        'inf_entrega_parcial' => null
+        'inf_entrega_parcial' => null,
+        'ind_prestacao_parcial' => null,
+        'inf_nfe_prest_parcial' => null
     ];
 
     /**
@@ -92,7 +96,9 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
         'ind_reentrega' => true,
         'inf_unid_transp' => false,
         'peri' => false,
-        'inf_entrega_parcial' => false
+        'inf_entrega_parcial' => false,
+        'ind_prestacao_parcial' => true,
+        'inf_nfe_prest_parcial' => false
     ];
 
     /**
@@ -186,7 +192,9 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
         'ind_reentrega' => 'indReentrega',
         'inf_unid_transp' => 'infUnidTransp',
         'peri' => 'peri',
-        'inf_entrega_parcial' => 'infEntregaParcial'
+        'inf_entrega_parcial' => 'infEntregaParcial',
+        'ind_prestacao_parcial' => 'indPrestacaoParcial',
+        'inf_nfe_prest_parcial' => 'infNFePrestParcial'
     ];
 
     /**
@@ -200,7 +208,9 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
         'ind_reentrega' => 'setIndReentrega',
         'inf_unid_transp' => 'setInfUnidTransp',
         'peri' => 'setPeri',
-        'inf_entrega_parcial' => 'setInfEntregaParcial'
+        'inf_entrega_parcial' => 'setInfEntregaParcial',
+        'ind_prestacao_parcial' => 'setIndPrestacaoParcial',
+        'inf_nfe_prest_parcial' => 'setInfNfePrestParcial'
     ];
 
     /**
@@ -214,7 +224,9 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
         'ind_reentrega' => 'getIndReentrega',
         'inf_unid_transp' => 'getInfUnidTransp',
         'peri' => 'getPeri',
-        'inf_entrega_parcial' => 'getInfEntregaParcial'
+        'inf_entrega_parcial' => 'getInfEntregaParcial',
+        'ind_prestacao_parcial' => 'getIndPrestacaoParcial',
+        'inf_nfe_prest_parcial' => 'getInfNfePrestParcial'
     ];
 
     /**
@@ -280,6 +292,8 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('inf_unid_transp', $data ?? [], null);
         $this->setIfExists('peri', $data ?? [], null);
         $this->setIfExists('inf_entrega_parcial', $data ?? [], null);
+        $this->setIfExists('ind_prestacao_parcial', $data ?? [], null);
+        $this->setIfExists('inf_nfe_prest_parcial', $data ?? [], null);
     }
 
     /**
@@ -514,6 +528,67 @@ class MdfeSefazInfCTe implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable inf_entrega_parcial cannot be null');
         }
         $this->container['inf_entrega_parcial'] = $inf_entrega_parcial;
+
+        return $this;
+    }
+
+    /**
+     * Gets ind_prestacao_parcial
+     *
+     * @return int|null
+     */
+    public function getIndPrestacaoParcial()
+    {
+        return $this->container['ind_prestacao_parcial'];
+    }
+
+    /**
+     * Sets ind_prestacao_parcial
+     *
+     * @param int|null $ind_prestacao_parcial Indicador de Prestação parcial.
+     *
+     * @return self
+     */
+    public function setIndPrestacaoParcial($ind_prestacao_parcial)
+    {
+        if (is_null($ind_prestacao_parcial)) {
+            array_push($this->openAPINullablesSetToNull, 'ind_prestacao_parcial');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ind_prestacao_parcial', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ind_prestacao_parcial'] = $ind_prestacao_parcial;
+
+        return $this;
+    }
+
+    /**
+     * Gets inf_nfe_prest_parcial
+     *
+     * @return \NuvemFiscal\Model\MdfeSefazInfNFePrestParcial[]|null
+     */
+    public function getInfNfePrestParcial()
+    {
+        return $this->container['inf_nfe_prest_parcial'];
+    }
+
+    /**
+     * Sets inf_nfe_prest_parcial
+     *
+     * @param \NuvemFiscal\Model\MdfeSefazInfNFePrestParcial[]|null $inf_nfe_prest_parcial inf_nfe_prest_parcial
+     *
+     * @return self
+     */
+    public function setInfNfePrestParcial($inf_nfe_prest_parcial)
+    {
+        if (is_null($inf_nfe_prest_parcial)) {
+            throw new \InvalidArgumentException('non-nullable inf_nfe_prest_parcial cannot be null');
+        }
+        $this->container['inf_nfe_prest_parcial'] = $inf_nfe_prest_parcial;
 
         return $this;
     }

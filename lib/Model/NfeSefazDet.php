@@ -62,7 +62,9 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
         'imposto' => '\NuvemFiscal\Model\NfeSefazImposto',
         'imposto_devol' => '\NuvemFiscal\Model\NfeSefazImpostoDevol',
         'inf_ad_prod' => 'string',
-        'obs_item' => '\NuvemFiscal\Model\NfeSefazObsItem'
+        'obs_item' => '\NuvemFiscal\Model\NfeSefazObsItem',
+        'v_item' => 'float',
+        'dfe_referenciado' => '\NuvemFiscal\Model\NfeSefazDFeReferenciado'
     ];
 
     /**
@@ -78,7 +80,9 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
         'imposto' => null,
         'imposto_devol' => null,
         'inf_ad_prod' => null,
-        'obs_item' => null
+        'obs_item' => null,
+        'v_item' => null,
+        'dfe_referenciado' => null
     ];
 
     /**
@@ -92,7 +96,9 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
         'imposto' => false,
         'imposto_devol' => false,
         'inf_ad_prod' => true,
-        'obs_item' => false
+        'obs_item' => false,
+        'v_item' => true,
+        'dfe_referenciado' => false
     ];
 
     /**
@@ -186,7 +192,9 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
         'imposto' => 'imposto',
         'imposto_devol' => 'impostoDevol',
         'inf_ad_prod' => 'infAdProd',
-        'obs_item' => 'obsItem'
+        'obs_item' => 'obsItem',
+        'v_item' => 'vItem',
+        'dfe_referenciado' => 'DFeReferenciado'
     ];
 
     /**
@@ -200,7 +208,9 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
         'imposto' => 'setImposto',
         'imposto_devol' => 'setImpostoDevol',
         'inf_ad_prod' => 'setInfAdProd',
-        'obs_item' => 'setObsItem'
+        'obs_item' => 'setObsItem',
+        'v_item' => 'setVItem',
+        'dfe_referenciado' => 'setDfeReferenciado'
     ];
 
     /**
@@ -214,7 +224,9 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
         'imposto' => 'getImposto',
         'imposto_devol' => 'getImpostoDevol',
         'inf_ad_prod' => 'getInfAdProd',
-        'obs_item' => 'getObsItem'
+        'obs_item' => 'getObsItem',
+        'v_item' => 'getVItem',
+        'dfe_referenciado' => 'getDfeReferenciado'
     ];
 
     /**
@@ -280,6 +292,8 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('imposto_devol', $data ?? [], null);
         $this->setIfExists('inf_ad_prod', $data ?? [], null);
         $this->setIfExists('obs_item', $data ?? [], null);
+        $this->setIfExists('v_item', $data ?? [], null);
+        $this->setIfExists('dfe_referenciado', $data ?? [], null);
     }
 
     /**
@@ -332,6 +346,10 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['inf_ad_prod']) && (mb_strlen($this->container['inf_ad_prod']) < 1)) {
             $invalidProperties[] = "invalid value for 'inf_ad_prod', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['v_item']) && ($this->container['v_item'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_item', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -536,6 +554,72 @@ class NfeSefazDet implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable obs_item cannot be null');
         }
         $this->container['obs_item'] = $obs_item;
+
+        return $this;
+    }
+
+    /**
+     * Gets v_item
+     *
+     * @return float|null
+     */
+    public function getVItem()
+    {
+        return $this->container['v_item'];
+    }
+
+    /**
+     * Sets v_item
+     *
+     * @param float|null $v_item Valor total do Item, correspondente à sua participação no total da nota. A soma dos itens deverá corresponder ao total da nota.
+     *
+     * @return self
+     */
+    public function setVItem($v_item)
+    {
+        if (is_null($v_item)) {
+            array_push($this->openAPINullablesSetToNull, 'v_item');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_item', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($v_item) && ($v_item < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_item when calling NfeSefazDet., must be bigger than or equal to 0.');
+        }
+
+        $this->container['v_item'] = $v_item;
+
+        return $this;
+    }
+
+    /**
+     * Gets dfe_referenciado
+     *
+     * @return \NuvemFiscal\Model\NfeSefazDFeReferenciado|null
+     */
+    public function getDfeReferenciado()
+    {
+        return $this->container['dfe_referenciado'];
+    }
+
+    /**
+     * Sets dfe_referenciado
+     *
+     * @param \NuvemFiscal\Model\NfeSefazDFeReferenciado|null $dfe_referenciado dfe_referenciado
+     *
+     * @return self
+     */
+    public function setDfeReferenciado($dfe_referenciado)
+    {
+        if (is_null($dfe_referenciado)) {
+            throw new \InvalidArgumentException('non-nullable dfe_referenciado cannot be null');
+        }
+        $this->container['dfe_referenciado'] = $dfe_referenciado;
 
         return $this;
     }

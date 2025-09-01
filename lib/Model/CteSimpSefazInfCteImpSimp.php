@@ -60,7 +60,8 @@ class CteSimpSefazInfCteImpSimp implements ModelInterface, ArrayAccess, \JsonSer
         'icms' => '\NuvemFiscal\Model\CteSimpSefazImpSimp',
         'v_tot_trib' => 'float',
         'inf_ad_fisco' => 'string',
-        'icmsuf_fim' => '\NuvemFiscal\Model\CteSimpSefazICMSUFFimSimp'
+        'icmsuf_fim' => '\NuvemFiscal\Model\CteSimpSefazICMSUFFimSimp',
+        'ibscbs' => '\NuvemFiscal\Model\CteSimpSefazTribCTeSimp'
     ];
 
     /**
@@ -74,7 +75,8 @@ class CteSimpSefazInfCteImpSimp implements ModelInterface, ArrayAccess, \JsonSer
         'icms' => null,
         'v_tot_trib' => null,
         'inf_ad_fisco' => null,
-        'icmsuf_fim' => null
+        'icmsuf_fim' => null,
+        'ibscbs' => null
     ];
 
     /**
@@ -86,7 +88,8 @@ class CteSimpSefazInfCteImpSimp implements ModelInterface, ArrayAccess, \JsonSer
         'icms' => false,
         'v_tot_trib' => true,
         'inf_ad_fisco' => true,
-        'icmsuf_fim' => false
+        'icmsuf_fim' => false,
+        'ibscbs' => false
     ];
 
     /**
@@ -178,7 +181,8 @@ class CteSimpSefazInfCteImpSimp implements ModelInterface, ArrayAccess, \JsonSer
         'icms' => 'ICMS',
         'v_tot_trib' => 'vTotTrib',
         'inf_ad_fisco' => 'infAdFisco',
-        'icmsuf_fim' => 'ICMSUFFim'
+        'icmsuf_fim' => 'ICMSUFFim',
+        'ibscbs' => 'IBSCBS'
     ];
 
     /**
@@ -190,7 +194,8 @@ class CteSimpSefazInfCteImpSimp implements ModelInterface, ArrayAccess, \JsonSer
         'icms' => 'setIcms',
         'v_tot_trib' => 'setVTotTrib',
         'inf_ad_fisco' => 'setInfAdFisco',
-        'icmsuf_fim' => 'setIcmsufFim'
+        'icmsuf_fim' => 'setIcmsufFim',
+        'ibscbs' => 'setIbscbs'
     ];
 
     /**
@@ -202,7 +207,8 @@ class CteSimpSefazInfCteImpSimp implements ModelInterface, ArrayAccess, \JsonSer
         'icms' => 'getIcms',
         'v_tot_trib' => 'getVTotTrib',
         'inf_ad_fisco' => 'getInfAdFisco',
-        'icmsuf_fim' => 'getIcmsufFim'
+        'icmsuf_fim' => 'getIcmsufFim',
+        'ibscbs' => 'getIbscbs'
     ];
 
     /**
@@ -266,6 +272,7 @@ class CteSimpSefazInfCteImpSimp implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('v_tot_trib', $data ?? [], null);
         $this->setIfExists('inf_ad_fisco', $data ?? [], null);
         $this->setIfExists('icmsuf_fim', $data ?? [], null);
+        $this->setIfExists('ibscbs', $data ?? [], null);
     }
 
     /**
@@ -455,6 +462,33 @@ class CteSimpSefazInfCteImpSimp implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable icmsuf_fim cannot be null');
         }
         $this->container['icmsuf_fim'] = $icmsuf_fim;
+
+        return $this;
+    }
+
+    /**
+     * Gets ibscbs
+     *
+     * @return \NuvemFiscal\Model\CteSimpSefazTribCTeSimp|null
+     */
+    public function getIbscbs()
+    {
+        return $this->container['ibscbs'];
+    }
+
+    /**
+     * Sets ibscbs
+     *
+     * @param \NuvemFiscal\Model\CteSimpSefazTribCTeSimp|null $ibscbs ibscbs
+     *
+     * @return self
+     */
+    public function setIbscbs($ibscbs)
+    {
+        if (is_null($ibscbs)) {
+            throw new \InvalidArgumentException('non-nullable ibscbs cannot be null');
+        }
+        $this->container['ibscbs'] = $ibscbs;
 
         return $this;
     }

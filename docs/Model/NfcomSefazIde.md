@@ -23,5 +23,6 @@ Nome | Tipo | Descrição | Comentários
 **ind_nota_entrada** | **int** | Indicador de nota de entrada.  * 1 - Informar quando for nota de ajuste e possuir itens com CFOP de entrada | [optional]
 **dh_cont** | **\DateTime** | Data e Hora da entrada em contingência.  Informar a data e hora no formato AAAA-MM-DDTHH:MM:SS. | [optional]
 **x_just** | **string** | Justificativa da entrada em contingência. | [optional]
+**g_compra_gov** | [**\NuvemFiscal\Model\NfcomSefazCompraGovReduzido**](NfcomSefazCompraGovReduzido.md) |  | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

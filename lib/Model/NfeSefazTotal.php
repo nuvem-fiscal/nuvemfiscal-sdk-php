@@ -59,7 +59,10 @@ class NfeSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'icms_tot' => '\NuvemFiscal\Model\NfeSefazICMSTot',
         'issq_ntot' => '\NuvemFiscal\Model\NfeSefazISSQNtot',
-        'ret_trib' => '\NuvemFiscal\Model\NfeSefazRetTrib'
+        'ret_trib' => '\NuvemFiscal\Model\NfeSefazRetTrib',
+        'is_tot' => '\NuvemFiscal\Model\NfeSefazISTot',
+        'ibscbs_tot' => '\NuvemFiscal\Model\NfeSefazIBSCBSMonoTot',
+        'v_nf_tot' => 'float'
     ];
 
     /**
@@ -72,7 +75,10 @@ class NfeSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'icms_tot' => null,
         'issq_ntot' => null,
-        'ret_trib' => null
+        'ret_trib' => null,
+        'is_tot' => null,
+        'ibscbs_tot' => null,
+        'v_nf_tot' => null
     ];
 
     /**
@@ -83,7 +89,10 @@ class NfeSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'icms_tot' => false,
         'issq_ntot' => false,
-        'ret_trib' => false
+        'ret_trib' => false,
+        'is_tot' => false,
+        'ibscbs_tot' => false,
+        'v_nf_tot' => true
     ];
 
     /**
@@ -174,7 +183,10 @@ class NfeSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'icms_tot' => 'ICMSTot',
         'issq_ntot' => 'ISSQNtot',
-        'ret_trib' => 'retTrib'
+        'ret_trib' => 'retTrib',
+        'is_tot' => 'ISTot',
+        'ibscbs_tot' => 'IBSCBSTot',
+        'v_nf_tot' => 'vNFTot'
     ];
 
     /**
@@ -185,7 +197,10 @@ class NfeSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'icms_tot' => 'setIcmsTot',
         'issq_ntot' => 'setIssqNtot',
-        'ret_trib' => 'setRetTrib'
+        'ret_trib' => 'setRetTrib',
+        'is_tot' => 'setIsTot',
+        'ibscbs_tot' => 'setIbscbsTot',
+        'v_nf_tot' => 'setVNfTot'
     ];
 
     /**
@@ -196,7 +211,10 @@ class NfeSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'icms_tot' => 'getIcmsTot',
         'issq_ntot' => 'getIssqNtot',
-        'ret_trib' => 'getRetTrib'
+        'ret_trib' => 'getRetTrib',
+        'is_tot' => 'getIsTot',
+        'ibscbs_tot' => 'getIbscbsTot',
+        'v_nf_tot' => 'getVNfTot'
     ];
 
     /**
@@ -259,6 +277,9 @@ class NfeSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('icms_tot', $data ?? [], null);
         $this->setIfExists('issq_ntot', $data ?? [], null);
         $this->setIfExists('ret_trib', $data ?? [], null);
+        $this->setIfExists('is_tot', $data ?? [], null);
+        $this->setIfExists('ibscbs_tot', $data ?? [], null);
+        $this->setIfExists('v_nf_tot', $data ?? [], null);
     }
 
     /**
@@ -291,6 +312,10 @@ class NfeSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['icms_tot'] === null) {
             $invalidProperties[] = "'icms_tot' can't be null";
         }
+        if (!is_null($this->container['v_nf_tot']) && ($this->container['v_nf_tot'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'v_nf_tot', must be bigger than 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -383,6 +408,99 @@ class NfeSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable ret_trib cannot be null');
         }
         $this->container['ret_trib'] = $ret_trib;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_tot
+     *
+     * @return \NuvemFiscal\Model\NfeSefazISTot|null
+     */
+    public function getIsTot()
+    {
+        return $this->container['is_tot'];
+    }
+
+    /**
+     * Sets is_tot
+     *
+     * @param \NuvemFiscal\Model\NfeSefazISTot|null $is_tot is_tot
+     *
+     * @return self
+     */
+    public function setIsTot($is_tot)
+    {
+        if (is_null($is_tot)) {
+            throw new \InvalidArgumentException('non-nullable is_tot cannot be null');
+        }
+        $this->container['is_tot'] = $is_tot;
+
+        return $this;
+    }
+
+    /**
+     * Gets ibscbs_tot
+     *
+     * @return \NuvemFiscal\Model\NfeSefazIBSCBSMonoTot|null
+     */
+    public function getIbscbsTot()
+    {
+        return $this->container['ibscbs_tot'];
+    }
+
+    /**
+     * Sets ibscbs_tot
+     *
+     * @param \NuvemFiscal\Model\NfeSefazIBSCBSMonoTot|null $ibscbs_tot ibscbs_tot
+     *
+     * @return self
+     */
+    public function setIbscbsTot($ibscbs_tot)
+    {
+        if (is_null($ibscbs_tot)) {
+            throw new \InvalidArgumentException('non-nullable ibscbs_tot cannot be null');
+        }
+        $this->container['ibscbs_tot'] = $ibscbs_tot;
+
+        return $this;
+    }
+
+    /**
+     * Gets v_nf_tot
+     *
+     * @return float|null
+     */
+    public function getVNfTot()
+    {
+        return $this->container['v_nf_tot'];
+    }
+
+    /**
+     * Sets v_nf_tot
+     *
+     * @param float|null $v_nf_tot Valor Total da NF considerando os impostos por fora IBS, CBS e IS.
+     *
+     * @return self
+     */
+    public function setVNfTot($v_nf_tot)
+    {
+        if (is_null($v_nf_tot)) {
+            array_push($this->openAPINullablesSetToNull, 'v_nf_tot');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_nf_tot', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($v_nf_tot) && ($v_nf_tot <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_nf_tot when calling NfeSefazTotal., must be bigger than 0.');
+        }
+
+        $this->container['v_nf_tot'] = $v_nf_tot;
 
         return $this;
     }

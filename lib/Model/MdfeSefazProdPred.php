@@ -34,7 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazProdPred Class Doc Comment
  *
  * @category Class
- * @description Produto predominante.  Informar a descrição do produto predominante.
+ * @description Produto predominante.  Informar a descrição do produto predominante, conforme o item de maior valor financeiro conforme Resolução ANTT n° 5.867 de 2020).
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -344,7 +344,7 @@ class MdfeSefazProdPred implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets tp_carga
      *
-     * @param string $tp_carga Tipo de Carga.  Conforme Resolução ANTT nº.  5.849/2019.  * 01 - Granel sólido  * 02 - Granel líquido  * 03 - Frigorificada  * 04 - Conteinerizada  * 05 - Carga Geral  * 06 - Neogranel  * 07 - Perigosa (granel sólido)  * 08 - Perigosa (granel líquido)  * 09 - Perigosa (carga frigorificada)  * 10 - Perigosa (conteinerizada)  * 11 - Perigosa (carga geral)
+     * @param string $tp_carga Tipo de Carga.  Conforme Resolução ANTT nº.  5.849/2019.  * 01 - Granel sólido  * 02 - Granel líquido  * 03 - Frigorificada  * 04 - Conteinerizada  * 05 - Carga Geral  * 06 - Neogranel  * 07 - Perigosa (granel sólido)  * 08 - Perigosa (granel líquido)  * 09 - Perigosa (carga frigorificada)  * 10 - Perigosa (conteinerizada)  * 11 - Perigosa (carga geral)  * 12 - Granel pressurizada
      *
      * @return self
      */

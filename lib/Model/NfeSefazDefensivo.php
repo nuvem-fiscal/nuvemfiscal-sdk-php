@@ -284,8 +284,8 @@ class NfeSefazDefensivo implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['n_receituario'] === null) {
             $invalidProperties[] = "'n_receituario' can't be null";
         }
-        if ((mb_strlen($this->container['n_receituario']) > 20)) {
-            $invalidProperties[] = "invalid value for 'n_receituario', the character length must be smaller than or equal to 20.";
+        if ((mb_strlen($this->container['n_receituario']) > 30)) {
+            $invalidProperties[] = "invalid value for 'n_receituario', the character length must be smaller than or equal to 30.";
         }
 
         if ((mb_strlen($this->container['n_receituario']) < 1)) {
@@ -343,8 +343,8 @@ class NfeSefazDefensivo implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($n_receituario) && (mb_strlen($n_receituario) > 20)) {
-            throw new \InvalidArgumentException('invalid length for $n_receituario when calling NfeSefazDefensivo., must be smaller than or equal to 20.');
+        if (!is_null($n_receituario) && (mb_strlen($n_receituario) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $n_receituario when calling NfeSefazDefensivo., must be smaller than or equal to 30.');
         }
         if (!is_null($n_receituario) && (mb_strlen($n_receituario) < 1)) {
             throw new \InvalidArgumentException('invalid length for $n_receituario when calling NfeSefazDefensivo., must be bigger than or equal to 1.');

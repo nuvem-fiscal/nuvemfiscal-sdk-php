@@ -57,7 +57,7 @@ class NfeSefazAgropecuario implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'defensivo' => '\NuvemFiscal\Model\NfeSefazDefensivo',
+        'defensivo' => '\NuvemFiscal\Model\NfeSefazDefensivo[]',
         'guia_transito' => '\NuvemFiscal\Model\NfeSefazGuiaTransito'
     ];
 
@@ -281,6 +281,10 @@ class NfeSefazAgropecuario implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['defensivo']) && (count($this->container['defensivo']) > 20)) {
+            $invalidProperties[] = "invalid value for 'defensivo', number of items must be less than or equal to 20.";
+        }
+
         return $invalidProperties;
     }
 
@@ -299,7 +303,7 @@ class NfeSefazAgropecuario implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets defensivo
      *
-     * @return \NuvemFiscal\Model\NfeSefazDefensivo|null
+     * @return \NuvemFiscal\Model\NfeSefazDefensivo[]|null
      */
     public function getDefensivo()
     {
@@ -309,7 +313,7 @@ class NfeSefazAgropecuario implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets defensivo
      *
-     * @param \NuvemFiscal\Model\NfeSefazDefensivo|null $defensivo defensivo
+     * @param \NuvemFiscal\Model\NfeSefazDefensivo[]|null $defensivo defensivo
      *
      * @return self
      */
@@ -317,6 +321,10 @@ class NfeSefazAgropecuario implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         if (is_null($defensivo)) {
             throw new \InvalidArgumentException('non-nullable defensivo cannot be null');
+        }
+
+        if ((count($defensivo) > 20)) {
+            throw new \InvalidArgumentException('invalid value for $defensivo when calling NfeSefazAgropecuario., number of items must be less than or equal to 20.');
         }
         $this->container['defensivo'] = $defensivo;
 

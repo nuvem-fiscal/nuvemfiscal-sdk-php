@@ -30,5 +30,6 @@ Nome | Tipo | Descrição | Comentários
 **x_det_retira** | **string** | Detalhes do retira. | [optional]
 **dh_cont** | **\DateTime** | Data e Hora da entrada em contingência.  Informar a data e hora no formato AAAA-MM-DDTHH:MM:SS. | [optional]
 **x_just** | **string** | Justificativa da entrada em contingência. | [optional]
+**g_compra_gov** | [**\NuvemFiscal\Model\CteSimpSefazCompraGovReduzidoSimp**](CteSimpSefazCompraGovReduzidoSimp.md) |  | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

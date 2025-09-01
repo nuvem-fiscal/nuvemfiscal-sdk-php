@@ -288,9 +288,6 @@ class MdfeSefazInfCIOT implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['ciot'] === null) {
-            $invalidProperties[] = "'ciot' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -309,7 +306,7 @@ class MdfeSefazInfCIOT implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ciot
      *
-     * @return string
+     * @return string|null
      */
     public function getCiot()
     {
@@ -319,7 +316,7 @@ class MdfeSefazInfCIOT implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ciot
      *
-     * @param string $ciot Código Identificador da Operação de Transporte.  Também Conhecido como conta frete.
+     * @param string|null $ciot Código Identificador da Operação de Transporte.  Também Conhecido como conta frete.
      *
      * @return self
      */

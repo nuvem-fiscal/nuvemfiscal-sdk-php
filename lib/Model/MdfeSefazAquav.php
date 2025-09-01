@@ -70,7 +70,8 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
         'inf_term_descarreg' => '\NuvemFiscal\Model\MdfeSefazInfTermDescarreg[]',
         'inf_emb_comb' => '\NuvemFiscal\Model\MdfeSefazInfEmbComb[]',
         'inf_unid_carga_vazia' => '\NuvemFiscal\Model\MdfeSefazInfUnidCargaVazia[]',
-        'inf_unid_transp_vazia' => '\NuvemFiscal\Model\MdfeSefazInfUnidTranspVazia[]'
+        'inf_unid_transp_vazia' => '\NuvemFiscal\Model\MdfeSefazInfUnidTranspVazia[]',
+        'mmsi' => 'string'
     ];
 
     /**
@@ -94,7 +95,8 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
         'inf_term_descarreg' => null,
         'inf_emb_comb' => null,
         'inf_unid_carga_vazia' => null,
-        'inf_unid_transp_vazia' => null
+        'inf_unid_transp_vazia' => null,
+        'mmsi' => null
     ];
 
     /**
@@ -116,7 +118,8 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
         'inf_term_descarreg' => false,
         'inf_emb_comb' => false,
         'inf_unid_carga_vazia' => false,
-        'inf_unid_transp_vazia' => false
+        'inf_unid_transp_vazia' => false,
+        'mmsi' => true
     ];
 
     /**
@@ -218,7 +221,8 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
         'inf_term_descarreg' => 'infTermDescarreg',
         'inf_emb_comb' => 'infEmbComb',
         'inf_unid_carga_vazia' => 'infUnidCargaVazia',
-        'inf_unid_transp_vazia' => 'infUnidTranspVazia'
+        'inf_unid_transp_vazia' => 'infUnidTranspVazia',
+        'mmsi' => 'MMSI'
     ];
 
     /**
@@ -240,7 +244,8 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
         'inf_term_descarreg' => 'setInfTermDescarreg',
         'inf_emb_comb' => 'setInfEmbComb',
         'inf_unid_carga_vazia' => 'setInfUnidCargaVazia',
-        'inf_unid_transp_vazia' => 'setInfUnidTranspVazia'
+        'inf_unid_transp_vazia' => 'setInfUnidTranspVazia',
+        'mmsi' => 'setMmsi'
     ];
 
     /**
@@ -262,7 +267,8 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
         'inf_term_descarreg' => 'getInfTermDescarreg',
         'inf_emb_comb' => 'getInfEmbComb',
         'inf_unid_carga_vazia' => 'getInfUnidCargaVazia',
-        'inf_unid_transp_vazia' => 'getInfUnidTranspVazia'
+        'inf_unid_transp_vazia' => 'getInfUnidTranspVazia',
+        'mmsi' => 'getMmsi'
     ];
 
     /**
@@ -336,6 +342,7 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('inf_emb_comb', $data ?? [], null);
         $this->setIfExists('inf_unid_carga_vazia', $data ?? [], null);
         $this->setIfExists('inf_unid_transp_vazia', $data ?? [], null);
+        $this->setIfExists('mmsi', $data ?? [], null);
     }
 
     /**
@@ -444,6 +451,14 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['inf_emb_comb']) && (count($this->container['inf_emb_comb']) > 30)) {
             $invalidProperties[] = "invalid value for 'inf_emb_comb', number of items must be less than or equal to 30.";
+        }
+
+        if (!is_null($this->container['mmsi']) && (mb_strlen($this->container['mmsi']) > 9)) {
+            $invalidProperties[] = "invalid value for 'mmsi', the character length must be smaller than or equal to 9.";
+        }
+
+        if (!is_null($this->container['mmsi']) && (mb_strlen($this->container['mmsi']) < 1)) {
+            $invalidProperties[] = "invalid value for 'mmsi', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -952,6 +967,47 @@ class MdfeSefazAquav implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable inf_unid_transp_vazia cannot be null');
         }
         $this->container['inf_unid_transp_vazia'] = $inf_unid_transp_vazia;
+
+        return $this;
+    }
+
+    /**
+     * Gets mmsi
+     *
+     * @return string|null
+     */
+    public function getMmsi()
+    {
+        return $this->container['mmsi'];
+    }
+
+    /**
+     * Sets mmsi
+     *
+     * @param string|null $mmsi Maritime Mobile Service Identify.  Preencher com o MMSI (Maritime Mobile Service Identify) fornecido pela ANATEL ou autoridade de telecomunicações de origem da embarcação.
+     *
+     * @return self
+     */
+    public function setMmsi($mmsi)
+    {
+        if (is_null($mmsi)) {
+            array_push($this->openAPINullablesSetToNull, 'mmsi');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mmsi', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($mmsi) && (mb_strlen($mmsi) > 9)) {
+            throw new \InvalidArgumentException('invalid length for $mmsi when calling MdfeSefazAquav., must be smaller than or equal to 9.');
+        }
+        if (!is_null($mmsi) && (mb_strlen($mmsi) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $mmsi when calling MdfeSefazAquav., must be bigger than or equal to 1.');
+        }
+
+        $this->container['mmsi'] = $mmsi;
 
         return $this;
     }

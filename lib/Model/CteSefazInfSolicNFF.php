@@ -277,8 +277,8 @@ class CteSefazInfSolicNFF implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['x_solic'] === null) {
             $invalidProperties[] = "'x_solic' can't be null";
         }
-        if ((mb_strlen($this->container['x_solic']) > 2000)) {
-            $invalidProperties[] = "invalid value for 'x_solic', the character length must be smaller than or equal to 2000.";
+        if ((mb_strlen($this->container['x_solic']) > 8000)) {
+            $invalidProperties[] = "invalid value for 'x_solic', the character length must be smaller than or equal to 8000.";
         }
 
         if ((mb_strlen($this->container['x_solic']) < 2)) {
@@ -329,8 +329,8 @@ class CteSefazInfSolicNFF implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($x_solic) && (mb_strlen($x_solic) > 2000)) {
-            throw new \InvalidArgumentException('invalid length for $x_solic when calling CteSefazInfSolicNFF., must be smaller than or equal to 2000.');
+        if (!is_null($x_solic) && (mb_strlen($x_solic) > 8000)) {
+            throw new \InvalidArgumentException('invalid length for $x_solic when calling CteSefazInfSolicNFF., must be smaller than or equal to 8000.');
         }
         if (!is_null($x_solic) && (mb_strlen($x_solic) < 2)) {
             throw new \InvalidArgumentException('invalid length for $x_solic when calling CteSefazInfSolicNFF., must be bigger than or equal to 2.');

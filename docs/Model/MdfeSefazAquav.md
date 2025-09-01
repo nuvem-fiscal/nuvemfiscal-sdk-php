@@ -18,5 +18,6 @@ Nome | Tipo | Descrição | Comentários
 **inf_emb_comb** | [**\NuvemFiscal\Model\MdfeSefazInfEmbComb[]**](MdfeSefazInfEmbComb.md) |  | [optional]
 **inf_unid_carga_vazia** | [**\NuvemFiscal\Model\MdfeSefazInfUnidCargaVazia[]**](MdfeSefazInfUnidCargaVazia.md) |  | [optional]
 **inf_unid_transp_vazia** | [**\NuvemFiscal\Model\MdfeSefazInfUnidTranspVazia[]**](MdfeSefazInfUnidTranspVazia.md) |  | [optional]
+**mmsi** | **string** | Maritime Mobile Service Identify.  Preencher com o MMSI (Maritime Mobile Service Identify) fornecido pela ANATEL ou autoridade de telecomunicações de origem da embarcação. | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

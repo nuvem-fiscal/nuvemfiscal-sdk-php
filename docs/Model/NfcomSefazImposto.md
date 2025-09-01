@@ -17,5 +17,6 @@ Nome | Tipo | Descrição | Comentários
 **fust** | [**\NuvemFiscal\Model\NfcomSefazFUST**](NfcomSefazFUST.md) |  | [optional]
 **funttel** | [**\NuvemFiscal\Model\NfcomSefazFUNTTEL**](NfcomSefazFUNTTEL.md) |  | [optional]
 **ret_trib** | [**\NuvemFiscal\Model\NfcomSefazRetTrib**](NfcomSefazRetTrib.md) |  | [optional]
+**ibscbs** | [**\NuvemFiscal\Model\NfcomSefazTribNFCom**](NfcomSefazTribNFCom.md) |  | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

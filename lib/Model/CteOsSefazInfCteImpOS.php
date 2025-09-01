@@ -61,7 +61,9 @@ class CteOsSefazInfCteImpOS implements ModelInterface, ArrayAccess, \JsonSeriali
         'v_tot_trib' => 'float',
         'inf_ad_fisco' => 'string',
         'icmsuf_fim' => '\NuvemFiscal\Model\CteOsSefazICMSUFFimOS',
-        'inf_trib_fed' => '\NuvemFiscal\Model\CteOsSefazInfTribFedOS'
+        'inf_trib_fed' => '\NuvemFiscal\Model\CteOsSefazInfTribFedOS',
+        'ibscbs' => '\NuvemFiscal\Model\CteOsSefazTribCTeOS',
+        'v_tot_dfe' => 'float'
     ];
 
     /**
@@ -76,7 +78,9 @@ class CteOsSefazInfCteImpOS implements ModelInterface, ArrayAccess, \JsonSeriali
         'v_tot_trib' => null,
         'inf_ad_fisco' => null,
         'icmsuf_fim' => null,
-        'inf_trib_fed' => null
+        'inf_trib_fed' => null,
+        'ibscbs' => null,
+        'v_tot_dfe' => null
     ];
 
     /**
@@ -89,7 +93,9 @@ class CteOsSefazInfCteImpOS implements ModelInterface, ArrayAccess, \JsonSeriali
         'v_tot_trib' => true,
         'inf_ad_fisco' => true,
         'icmsuf_fim' => false,
-        'inf_trib_fed' => false
+        'inf_trib_fed' => false,
+        'ibscbs' => false,
+        'v_tot_dfe' => true
     ];
 
     /**
@@ -182,7 +188,9 @@ class CteOsSefazInfCteImpOS implements ModelInterface, ArrayAccess, \JsonSeriali
         'v_tot_trib' => 'vTotTrib',
         'inf_ad_fisco' => 'infAdFisco',
         'icmsuf_fim' => 'ICMSUFFim',
-        'inf_trib_fed' => 'infTribFed'
+        'inf_trib_fed' => 'infTribFed',
+        'ibscbs' => 'IBSCBS',
+        'v_tot_dfe' => 'vTotDFe'
     ];
 
     /**
@@ -195,7 +203,9 @@ class CteOsSefazInfCteImpOS implements ModelInterface, ArrayAccess, \JsonSeriali
         'v_tot_trib' => 'setVTotTrib',
         'inf_ad_fisco' => 'setInfAdFisco',
         'icmsuf_fim' => 'setIcmsufFim',
-        'inf_trib_fed' => 'setInfTribFed'
+        'inf_trib_fed' => 'setInfTribFed',
+        'ibscbs' => 'setIbscbs',
+        'v_tot_dfe' => 'setVTotDfe'
     ];
 
     /**
@@ -208,7 +218,9 @@ class CteOsSefazInfCteImpOS implements ModelInterface, ArrayAccess, \JsonSeriali
         'v_tot_trib' => 'getVTotTrib',
         'inf_ad_fisco' => 'getInfAdFisco',
         'icmsuf_fim' => 'getIcmsufFim',
-        'inf_trib_fed' => 'getInfTribFed'
+        'inf_trib_fed' => 'getInfTribFed',
+        'ibscbs' => 'getIbscbs',
+        'v_tot_dfe' => 'getVTotDfe'
     ];
 
     /**
@@ -273,6 +285,8 @@ class CteOsSefazInfCteImpOS implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('inf_ad_fisco', $data ?? [], null);
         $this->setIfExists('icmsuf_fim', $data ?? [], null);
         $this->setIfExists('inf_trib_fed', $data ?? [], null);
+        $this->setIfExists('ibscbs', $data ?? [], null);
+        $this->setIfExists('v_tot_dfe', $data ?? [], null);
     }
 
     /**
@@ -315,6 +329,10 @@ class CteOsSefazInfCteImpOS implements ModelInterface, ArrayAccess, \JsonSeriali
 
         if (!is_null($this->container['inf_ad_fisco']) && (mb_strlen($this->container['inf_ad_fisco']) < 1)) {
             $invalidProperties[] = "invalid value for 'inf_ad_fisco', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['v_tot_dfe']) && ($this->container['v_tot_dfe'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_tot_dfe', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -489,6 +507,72 @@ class CteOsSefazInfCteImpOS implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable inf_trib_fed cannot be null');
         }
         $this->container['inf_trib_fed'] = $inf_trib_fed;
+
+        return $this;
+    }
+
+    /**
+     * Gets ibscbs
+     *
+     * @return \NuvemFiscal\Model\CteOsSefazTribCTeOS|null
+     */
+    public function getIbscbs()
+    {
+        return $this->container['ibscbs'];
+    }
+
+    /**
+     * Sets ibscbs
+     *
+     * @param \NuvemFiscal\Model\CteOsSefazTribCTeOS|null $ibscbs ibscbs
+     *
+     * @return self
+     */
+    public function setIbscbs($ibscbs)
+    {
+        if (is_null($ibscbs)) {
+            throw new \InvalidArgumentException('non-nullable ibscbs cannot be null');
+        }
+        $this->container['ibscbs'] = $ibscbs;
+
+        return $this;
+    }
+
+    /**
+     * Gets v_tot_dfe
+     *
+     * @return float|null
+     */
+    public function getVTotDfe()
+    {
+        return $this->container['v_tot_dfe'];
+    }
+
+    /**
+     * Sets v_tot_dfe
+     *
+     * @param float|null $v_tot_dfe Valor total do documento fiscal  (vTPrest + total do IBS + total da CBS).
+     *
+     * @return self
+     */
+    public function setVTotDfe($v_tot_dfe)
+    {
+        if (is_null($v_tot_dfe)) {
+            array_push($this->openAPINullablesSetToNull, 'v_tot_dfe');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_tot_dfe', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($v_tot_dfe) && ($v_tot_dfe < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_tot_dfe when calling CteOsSefazInfCteImpOS., must be bigger than or equal to 0.');
+        }
+
+        $this->container['v_tot_dfe'] = $v_tot_dfe;
 
         return $this;
     }

@@ -68,11 +68,14 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'tp_nf' => 'int',
         'id_dest' => 'int',
         'c_mun_fg' => 'string',
+        'c_mun_fgibs' => 'string',
         'tp_imp' => 'int',
         'tp_emis' => 'int',
         'c_dv' => 'int',
         'tp_amb' => 'int',
         'fin_nfe' => 'int',
+        'tp_nf_debito' => 'string',
+        'tp_nf_credito' => 'string',
         'ind_final' => 'int',
         'ind_pres' => 'int',
         'ind_intermed' => 'int',
@@ -80,7 +83,9 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'ver_proc' => 'string',
         'dh_cont' => '\DateTime',
         'x_just' => 'string',
-        'n_fref' => '\NuvemFiscal\Model\NfeSefazNFref[]'
+        'n_fref' => '\NuvemFiscal\Model\NfeSefazNFref[]',
+        'g_compra_gov' => '\NuvemFiscal\Model\NfeSefazCompraGov',
+        'g_pag_antecipado' => '\NuvemFiscal\Model\NfeSefazGPagAntecipado'
     ];
 
     /**
@@ -102,11 +107,14 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'tp_nf' => null,
         'id_dest' => null,
         'c_mun_fg' => null,
+        'c_mun_fgibs' => null,
         'tp_imp' => null,
         'tp_emis' => null,
         'c_dv' => null,
         'tp_amb' => null,
         'fin_nfe' => null,
+        'tp_nf_debito' => null,
+        'tp_nf_credito' => null,
         'ind_final' => null,
         'ind_pres' => null,
         'ind_intermed' => null,
@@ -114,7 +122,9 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'ver_proc' => null,
         'dh_cont' => 'date-time',
         'x_just' => null,
-        'n_fref' => null
+        'n_fref' => null,
+        'g_compra_gov' => null,
+        'g_pag_antecipado' => null
     ];
 
     /**
@@ -134,11 +144,14 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'tp_nf' => true,
         'id_dest' => true,
         'c_mun_fg' => true,
+        'c_mun_fgibs' => true,
         'tp_imp' => true,
         'tp_emis' => true,
         'c_dv' => true,
         'tp_amb' => true,
         'fin_nfe' => true,
+        'tp_nf_debito' => true,
+        'tp_nf_credito' => true,
         'ind_final' => true,
         'ind_pres' => true,
         'ind_intermed' => true,
@@ -146,7 +159,9 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'ver_proc' => true,
         'dh_cont' => true,
         'x_just' => true,
-        'n_fref' => false
+        'n_fref' => false,
+        'g_compra_gov' => false,
+        'g_pag_antecipado' => false
     ];
 
     /**
@@ -246,11 +261,14 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'tp_nf' => 'tpNF',
         'id_dest' => 'idDest',
         'c_mun_fg' => 'cMunFG',
+        'c_mun_fgibs' => 'cMunFGIBS',
         'tp_imp' => 'tpImp',
         'tp_emis' => 'tpEmis',
         'c_dv' => 'cDV',
         'tp_amb' => 'tpAmb',
         'fin_nfe' => 'finNFe',
+        'tp_nf_debito' => 'tpNFDebito',
+        'tp_nf_credito' => 'tpNFCredito',
         'ind_final' => 'indFinal',
         'ind_pres' => 'indPres',
         'ind_intermed' => 'indIntermed',
@@ -258,7 +276,9 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'ver_proc' => 'verProc',
         'dh_cont' => 'dhCont',
         'x_just' => 'xJust',
-        'n_fref' => 'NFref'
+        'n_fref' => 'NFref',
+        'g_compra_gov' => 'gCompraGov',
+        'g_pag_antecipado' => 'gPagAntecipado'
     ];
 
     /**
@@ -278,11 +298,14 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'tp_nf' => 'setTpNf',
         'id_dest' => 'setIdDest',
         'c_mun_fg' => 'setCMunFg',
+        'c_mun_fgibs' => 'setCMunFgibs',
         'tp_imp' => 'setTpImp',
         'tp_emis' => 'setTpEmis',
         'c_dv' => 'setCDv',
         'tp_amb' => 'setTpAmb',
         'fin_nfe' => 'setFinNfe',
+        'tp_nf_debito' => 'setTpNfDebito',
+        'tp_nf_credito' => 'setTpNfCredito',
         'ind_final' => 'setIndFinal',
         'ind_pres' => 'setIndPres',
         'ind_intermed' => 'setIndIntermed',
@@ -290,7 +313,9 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'ver_proc' => 'setVerProc',
         'dh_cont' => 'setDhCont',
         'x_just' => 'setXJust',
-        'n_fref' => 'setNFref'
+        'n_fref' => 'setNFref',
+        'g_compra_gov' => 'setGCompraGov',
+        'g_pag_antecipado' => 'setGPagAntecipado'
     ];
 
     /**
@@ -310,11 +335,14 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'tp_nf' => 'getTpNf',
         'id_dest' => 'getIdDest',
         'c_mun_fg' => 'getCMunFg',
+        'c_mun_fgibs' => 'getCMunFgibs',
         'tp_imp' => 'getTpImp',
         'tp_emis' => 'getTpEmis',
         'c_dv' => 'getCDv',
         'tp_amb' => 'getTpAmb',
         'fin_nfe' => 'getFinNfe',
+        'tp_nf_debito' => 'getTpNfDebito',
+        'tp_nf_credito' => 'getTpNfCredito',
         'ind_final' => 'getIndFinal',
         'ind_pres' => 'getIndPres',
         'ind_intermed' => 'getIndIntermed',
@@ -322,7 +350,9 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'ver_proc' => 'getVerProc',
         'dh_cont' => 'getDhCont',
         'x_just' => 'getXJust',
-        'n_fref' => 'getNFref'
+        'n_fref' => 'getNFref',
+        'g_compra_gov' => 'getGCompraGov',
+        'g_pag_antecipado' => 'getGPagAntecipado'
     ];
 
     /**
@@ -393,11 +423,14 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('tp_nf', $data ?? [], null);
         $this->setIfExists('id_dest', $data ?? [], null);
         $this->setIfExists('c_mun_fg', $data ?? [], null);
+        $this->setIfExists('c_mun_fgibs', $data ?? [], null);
         $this->setIfExists('tp_imp', $data ?? [], null);
         $this->setIfExists('tp_emis', $data ?? [], null);
         $this->setIfExists('c_dv', $data ?? [], null);
         $this->setIfExists('tp_amb', $data ?? [], null);
         $this->setIfExists('fin_nfe', $data ?? [], null);
+        $this->setIfExists('tp_nf_debito', $data ?? [], null);
+        $this->setIfExists('tp_nf_credito', $data ?? [], null);
         $this->setIfExists('ind_final', $data ?? [], null);
         $this->setIfExists('ind_pres', $data ?? [], null);
         $this->setIfExists('ind_intermed', $data ?? [], null);
@@ -406,6 +439,8 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('dh_cont', $data ?? [], null);
         $this->setIfExists('x_just', $data ?? [], null);
         $this->setIfExists('n_fref', $data ?? [], null);
+        $this->setIfExists('g_compra_gov', $data ?? [], null);
+        $this->setIfExists('g_pag_antecipado', $data ?? [], null);
     }
 
     /**
@@ -945,6 +980,40 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets c_mun_fgibs
+     *
+     * @return string|null
+     */
+    public function getCMunFgibs()
+    {
+        return $this->container['c_mun_fgibs'];
+    }
+
+    /**
+     * Sets c_mun_fgibs
+     *
+     * @param string|null $c_mun_fgibs Informar o município de ocorrência do fato gerador do fato gerador do IBS / CBS.  Campo preenchido somente quando “indPres = 5 (Operação presencial, fora do estabelecimento) ”, e não tiver endereço do destinatário (Grupo: E05) ou local de entrega (Grupo: G01).
+     *
+     * @return self
+     */
+    public function setCMunFgibs($c_mun_fgibs)
+    {
+        if (is_null($c_mun_fgibs)) {
+            array_push($this->openAPINullablesSetToNull, 'c_mun_fgibs');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('c_mun_fgibs', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['c_mun_fgibs'] = $c_mun_fgibs;
+
+        return $this;
+    }
+
+    /**
      * Gets tp_imp
      *
      * @return int
@@ -1101,7 +1170,7 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fin_nfe
      *
-     * @param int $fin_nfe Finalidade da emissão da NF-e:  * 1 - NFe normal  * 2 - NFe complementar  * 3 - NFe de ajuste  * 4 - Devolução/Retorno
+     * @param int $fin_nfe Finalidade da emissão da NF-e:  * 1 - NFe normal  * 2 - NFe complementar  * 3 - NFe de ajuste  * 4 - Devolução/Retorno  * 5 - Nota de crédito  * 6 - Nota de débito
      *
      * @return self
      */
@@ -1118,6 +1187,74 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['fin_nfe'] = $fin_nfe;
+
+        return $this;
+    }
+
+    /**
+     * Gets tp_nf_debito
+     *
+     * @return string|null
+     */
+    public function getTpNfDebito()
+    {
+        return $this->container['tp_nf_debito'];
+    }
+
+    /**
+     * Sets tp_nf_debito
+     *
+     * @param string|null $tp_nf_debito Tipo de Nota de Débito:  * 01 - Transferência de créditos para Cooperativas  * 02 - Anulação de Crédito por Saídas Imunes/Isentas  * 03 - Débitos de notas fiscais não processadas na apuração  * 04 - Multa e juros  * 05 - Transferência de crédito de sucessão
+     *
+     * @return self
+     */
+    public function setTpNfDebito($tp_nf_debito)
+    {
+        if (is_null($tp_nf_debito)) {
+            array_push($this->openAPINullablesSetToNull, 'tp_nf_debito');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_nf_debito', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tp_nf_debito'] = $tp_nf_debito;
+
+        return $this;
+    }
+
+    /**
+     * Gets tp_nf_credito
+     *
+     * @return string|null
+     */
+    public function getTpNfCredito()
+    {
+        return $this->container['tp_nf_credito'];
+    }
+
+    /**
+     * Sets tp_nf_credito
+     *
+     * @param string|null $tp_nf_credito Tipo de Nota de Crédito.
+     *
+     * @return self
+     */
+    public function setTpNfCredito($tp_nf_credito)
+    {
+        if (is_null($tp_nf_credito)) {
+            array_push($this->openAPINullablesSetToNull, 'tp_nf_credito');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_nf_credito', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tp_nf_credito'] = $tp_nf_credito;
 
         return $this;
     }
@@ -1401,6 +1538,60 @@ class NfeSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('invalid value for $n_fref when calling NfeSefazIde., number of items must be less than or equal to 999.');
         }
         $this->container['n_fref'] = $n_fref;
+
+        return $this;
+    }
+
+    /**
+     * Gets g_compra_gov
+     *
+     * @return \NuvemFiscal\Model\NfeSefazCompraGov|null
+     */
+    public function getGCompraGov()
+    {
+        return $this->container['g_compra_gov'];
+    }
+
+    /**
+     * Sets g_compra_gov
+     *
+     * @param \NuvemFiscal\Model\NfeSefazCompraGov|null $g_compra_gov g_compra_gov
+     *
+     * @return self
+     */
+    public function setGCompraGov($g_compra_gov)
+    {
+        if (is_null($g_compra_gov)) {
+            throw new \InvalidArgumentException('non-nullable g_compra_gov cannot be null');
+        }
+        $this->container['g_compra_gov'] = $g_compra_gov;
+
+        return $this;
+    }
+
+    /**
+     * Gets g_pag_antecipado
+     *
+     * @return \NuvemFiscal\Model\NfeSefazGPagAntecipado|null
+     */
+    public function getGPagAntecipado()
+    {
+        return $this->container['g_pag_antecipado'];
+    }
+
+    /**
+     * Sets g_pag_antecipado
+     *
+     * @param \NuvemFiscal\Model\NfeSefazGPagAntecipado|null $g_pag_antecipado g_pag_antecipado
+     *
+     * @return self
+     */
+    public function setGPagAntecipado($g_pag_antecipado)
+    {
+        if (is_null($g_pag_antecipado)) {
+            throw new \InvalidArgumentException('non-nullable g_pag_antecipado cannot be null');
+        }
+        $this->container['g_pag_antecipado'] = $g_pag_antecipado;
 
         return $this;
     }

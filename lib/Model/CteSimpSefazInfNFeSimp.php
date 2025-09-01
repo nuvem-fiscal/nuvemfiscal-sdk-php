@@ -305,10 +305,6 @@ class CteSimpSefazInfNFeSimp implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['ch_nfe'] === null) {
             $invalidProperties[] = "'ch_nfe' can't be null";
         }
-        if ((mb_strlen($this->container['ch_nfe']) > 44)) {
-            $invalidProperties[] = "invalid value for 'ch_nfe', the character length must be smaller than or equal to 44.";
-        }
-
         if (!is_null($this->container['pin']) && (mb_strlen($this->container['pin']) > 9)) {
             $invalidProperties[] = "invalid value for 'pin', the character length must be smaller than or equal to 9.";
         }
@@ -361,10 +357,6 @@ class CteSimpSefazInfNFeSimp implements ModelInterface, ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($ch_nfe) && (mb_strlen($ch_nfe) > 44)) {
-            throw new \InvalidArgumentException('invalid length for $ch_nfe when calling CteSimpSefazInfNFeSimp., must be smaller than or equal to 44.');
-        }
-
         $this->container['ch_nfe'] = $ch_nfe;
 
         return $this;

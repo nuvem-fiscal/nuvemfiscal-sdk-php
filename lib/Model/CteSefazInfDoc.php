@@ -59,7 +59,8 @@ class CteSefazInfDoc implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'inf_nf' => '\NuvemFiscal\Model\CteSefazInfNF[]',
         'inf_nfe' => '\NuvemFiscal\Model\CteSefazInfNFe[]',
-        'inf_outros' => '\NuvemFiscal\Model\CteSefazInfOutros[]'
+        'inf_outros' => '\NuvemFiscal\Model\CteSefazInfOutros[]',
+        'inf_dce' => '\NuvemFiscal\Model\CteSefazInfDCe[]'
     ];
 
     /**
@@ -72,7 +73,8 @@ class CteSefazInfDoc implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'inf_nf' => null,
         'inf_nfe' => null,
-        'inf_outros' => null
+        'inf_outros' => null,
+        'inf_dce' => null
     ];
 
     /**
@@ -83,7 +85,8 @@ class CteSefazInfDoc implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'inf_nf' => false,
         'inf_nfe' => false,
-        'inf_outros' => false
+        'inf_outros' => false,
+        'inf_dce' => false
     ];
 
     /**
@@ -174,7 +177,8 @@ class CteSefazInfDoc implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'inf_nf' => 'infNF',
         'inf_nfe' => 'infNFe',
-        'inf_outros' => 'infOutros'
+        'inf_outros' => 'infOutros',
+        'inf_dce' => 'infDCe'
     ];
 
     /**
@@ -185,7 +189,8 @@ class CteSefazInfDoc implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'inf_nf' => 'setInfNf',
         'inf_nfe' => 'setInfNfe',
-        'inf_outros' => 'setInfOutros'
+        'inf_outros' => 'setInfOutros',
+        'inf_dce' => 'setInfDce'
     ];
 
     /**
@@ -196,7 +201,8 @@ class CteSefazInfDoc implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'inf_nf' => 'getInfNf',
         'inf_nfe' => 'getInfNfe',
-        'inf_outros' => 'getInfOutros'
+        'inf_outros' => 'getInfOutros',
+        'inf_dce' => 'getInfDce'
     ];
 
     /**
@@ -259,6 +265,7 @@ class CteSefazInfDoc implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('inf_nf', $data ?? [], null);
         $this->setIfExists('inf_nfe', $data ?? [], null);
         $this->setIfExists('inf_outros', $data ?? [], null);
+        $this->setIfExists('inf_dce', $data ?? [], null);
     }
 
     /**
@@ -380,6 +387,33 @@ class CteSefazInfDoc implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable inf_outros cannot be null');
         }
         $this->container['inf_outros'] = $inf_outros;
+
+        return $this;
+    }
+
+    /**
+     * Gets inf_dce
+     *
+     * @return \NuvemFiscal\Model\CteSefazInfDCe[]|null
+     */
+    public function getInfDce()
+    {
+        return $this->container['inf_dce'];
+    }
+
+    /**
+     * Sets inf_dce
+     *
+     * @param \NuvemFiscal\Model\CteSefazInfDCe[]|null $inf_dce inf_dce
+     *
+     * @return self
+     */
+    public function setInfDce($inf_dce)
+    {
+        if (is_null($inf_dce)) {
+            throw new \InvalidArgumentException('non-nullable inf_dce cannot be null');
+        }
+        $this->container['inf_dce'] = $inf_dce;
 
         return $this;
     }

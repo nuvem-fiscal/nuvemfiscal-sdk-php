@@ -66,7 +66,9 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_ret_trib_tot' => '\NuvemFiscal\Model\NfcomSefazVRetTribTot',
         'v_desc' => 'float',
         'v_outro' => 'float',
-        'v_nf' => 'float'
+        'v_nf' => 'float',
+        'ibscbs_tot' => '\NuvemFiscal\Model\NfcomSefazIBSCBSTot',
+        'v_tot_dfe' => 'float'
     ];
 
     /**
@@ -86,7 +88,9 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_ret_trib_tot' => null,
         'v_desc' => null,
         'v_outro' => null,
-        'v_nf' => null
+        'v_nf' => null,
+        'ibscbs_tot' => null,
+        'v_tot_dfe' => null
     ];
 
     /**
@@ -104,7 +108,9 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_ret_trib_tot' => false,
         'v_desc' => true,
         'v_outro' => true,
-        'v_nf' => true
+        'v_nf' => true,
+        'ibscbs_tot' => false,
+        'v_tot_dfe' => true
     ];
 
     /**
@@ -202,7 +208,9 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_ret_trib_tot' => 'vRetTribTot',
         'v_desc' => 'vDesc',
         'v_outro' => 'vOutro',
-        'v_nf' => 'vNF'
+        'v_nf' => 'vNF',
+        'ibscbs_tot' => 'IBSCBSTot',
+        'v_tot_dfe' => 'vTotDFe'
     ];
 
     /**
@@ -220,7 +228,9 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_ret_trib_tot' => 'setVRetTribTot',
         'v_desc' => 'setVDesc',
         'v_outro' => 'setVOutro',
-        'v_nf' => 'setVNf'
+        'v_nf' => 'setVNf',
+        'ibscbs_tot' => 'setIbscbsTot',
+        'v_tot_dfe' => 'setVTotDfe'
     ];
 
     /**
@@ -238,7 +248,9 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
         'v_ret_trib_tot' => 'getVRetTribTot',
         'v_desc' => 'getVDesc',
         'v_outro' => 'getVOutro',
-        'v_nf' => 'getVNf'
+        'v_nf' => 'getVNf',
+        'ibscbs_tot' => 'getIbscbsTot',
+        'v_tot_dfe' => 'getVTotDfe'
     ];
 
     /**
@@ -308,6 +320,8 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('v_desc', $data ?? [], null);
         $this->setIfExists('v_outro', $data ?? [], null);
         $this->setIfExists('v_nf', $data ?? [], null);
+        $this->setIfExists('ibscbs_tot', $data ?? [], null);
+        $this->setIfExists('v_tot_dfe', $data ?? [], null);
     }
 
     /**
@@ -397,6 +411,10 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if (($this->container['v_nf'] < 0)) {
             $invalidProperties[] = "invalid value for 'v_nf', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_tot_dfe']) && ($this->container['v_tot_dfe'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_tot_dfe', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -776,6 +794,72 @@ class NfcomSefazTotal implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['v_nf'] = $v_nf;
+
+        return $this;
+    }
+
+    /**
+     * Gets ibscbs_tot
+     *
+     * @return \NuvemFiscal\Model\NfcomSefazIBSCBSTot|null
+     */
+    public function getIbscbsTot()
+    {
+        return $this->container['ibscbs_tot'];
+    }
+
+    /**
+     * Sets ibscbs_tot
+     *
+     * @param \NuvemFiscal\Model\NfcomSefazIBSCBSTot|null $ibscbs_tot ibscbs_tot
+     *
+     * @return self
+     */
+    public function setIbscbsTot($ibscbs_tot)
+    {
+        if (is_null($ibscbs_tot)) {
+            throw new \InvalidArgumentException('non-nullable ibscbs_tot cannot be null');
+        }
+        $this->container['ibscbs_tot'] = $ibscbs_tot;
+
+        return $this;
+    }
+
+    /**
+     * Gets v_tot_dfe
+     *
+     * @return float|null
+     */
+    public function getVTotDfe()
+    {
+        return $this->container['v_tot_dfe'];
+    }
+
+    /**
+     * Sets v_tot_dfe
+     *
+     * @param float|null $v_tot_dfe Valor total do documento fiscal  (vNF + total do IBS + total da CBS).
+     *
+     * @return self
+     */
+    public function setVTotDfe($v_tot_dfe)
+    {
+        if (is_null($v_tot_dfe)) {
+            array_push($this->openAPINullablesSetToNull, 'v_tot_dfe');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_tot_dfe', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($v_tot_dfe) && ($v_tot_dfe < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_tot_dfe when calling NfcomSefazTotal., must be bigger than or equal to 0.');
+        }
+
+        $this->container['v_tot_dfe'] = $v_tot_dfe;
 
         return $this;
     }

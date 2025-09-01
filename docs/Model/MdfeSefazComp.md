@@ -4,7 +4,7 @@
 
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
-**tp_comp** | **string** | Tipo do Componente.  Preencher com: 01 - Vale Pedágio  * 02 - Impostos, taxas e contribuições  * 03 - Despesas (bancárias, meios de pagamento, outras)  * 99 - Outros |
+**tp_comp** | **string** | Tipo do Componente.  Preencher com:  * 01 - Vale Pedágio  * 02 - Impostos, taxas e contribuições  * 03 - Despesas (bancárias, meios de pagamento, outras)  * 04 - Frete  * 99 - Outros |
 **v_comp** | **float** | Valor do componente. |
 **x_comp** | **string** | Descrição do componente do tipo Outros. | [optional]
 

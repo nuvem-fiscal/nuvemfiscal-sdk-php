@@ -4,7 +4,7 @@
 
 Nome | Tipo | Descrição | Comentários
 ------------ | ------------- | ------------- | -------------
-**ciot** | **string** | Código Identificador da Operação de Transporte.  Também Conhecido como conta frete. |
+**ciot** | **string** | Código Identificador da Operação de Transporte.  Também Conhecido como conta frete. | [optional]
 **cpf** | **string** | Número do CPF responsável pela geração do CIOT.  Informar os zeros não significativos. | [optional]
 **cnpj** | **string** | Número do CNPJ responsável pela geração do CIOT.  Informar os zeros não significativos. | [optional]
 

@@ -14,5 +14,7 @@ Nome | Tipo | Descrição | Comentários
 **cofins** | [**\NuvemFiscal\Model\NfeSefazCOFINS**](NfeSefazCOFINS.md) |  | [optional]
 **cofinsst** | [**\NuvemFiscal\Model\NfeSefazCOFINSST**](NfeSefazCOFINSST.md) |  | [optional]
 **icmsuf_dest** | [**\NuvemFiscal\Model\NfeSefazICMSUFDest**](NfeSefazICMSUFDest.md) |  | [optional]
+**is** | [**\NuvemFiscal\Model\NfeSefazIS**](NfeSefazIS.md) |  | [optional]
+**ibscbs** | [**\NuvemFiscal\Model\NfeSefazTribNFe**](NfeSefazTribNFe.md) |  | [optional]
 
 [[Voltar à lista de DTOs]](../../README.md#models) [[Voltar à lista de API]](../../README.md#endpoints) [[Voltar ao README]](../../README.md)

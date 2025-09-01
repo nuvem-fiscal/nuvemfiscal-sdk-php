@@ -69,7 +69,8 @@ class NfcomSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializabl
         'cofins' => '\NuvemFiscal\Model\NfcomSefazCOFINS',
         'fust' => '\NuvemFiscal\Model\NfcomSefazFUST',
         'funttel' => '\NuvemFiscal\Model\NfcomSefazFUNTTEL',
-        'ret_trib' => '\NuvemFiscal\Model\NfcomSefazRetTrib'
+        'ret_trib' => '\NuvemFiscal\Model\NfcomSefazRetTrib',
+        'ibscbs' => '\NuvemFiscal\Model\NfcomSefazTribNFCom'
     ];
 
     /**
@@ -92,7 +93,8 @@ class NfcomSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializabl
         'cofins' => null,
         'fust' => null,
         'funttel' => null,
-        'ret_trib' => null
+        'ret_trib' => null,
+        'ibscbs' => null
     ];
 
     /**
@@ -113,7 +115,8 @@ class NfcomSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializabl
         'cofins' => false,
         'fust' => false,
         'funttel' => false,
-        'ret_trib' => false
+        'ret_trib' => false,
+        'ibscbs' => false
     ];
 
     /**
@@ -214,7 +217,8 @@ class NfcomSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializabl
         'cofins' => 'COFINS',
         'fust' => 'FUST',
         'funttel' => 'FUNTTEL',
-        'ret_trib' => 'retTrib'
+        'ret_trib' => 'retTrib',
+        'ibscbs' => 'IBSCBS'
     ];
 
     /**
@@ -235,7 +239,8 @@ class NfcomSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializabl
         'cofins' => 'setCofins',
         'fust' => 'setFust',
         'funttel' => 'setFunttel',
-        'ret_trib' => 'setRetTrib'
+        'ret_trib' => 'setRetTrib',
+        'ibscbs' => 'setIbscbs'
     ];
 
     /**
@@ -256,7 +261,8 @@ class NfcomSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializabl
         'cofins' => 'getCofins',
         'fust' => 'getFust',
         'funttel' => 'getFunttel',
-        'ret_trib' => 'getRetTrib'
+        'ret_trib' => 'getRetTrib',
+        'ibscbs' => 'getIbscbs'
     ];
 
     /**
@@ -329,6 +335,7 @@ class NfcomSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('fust', $data ?? [], null);
         $this->setIfExists('funttel', $data ?? [], null);
         $this->setIfExists('ret_trib', $data ?? [], null);
+        $this->setIfExists('ibscbs', $data ?? [], null);
     }
 
     /**
@@ -727,6 +734,33 @@ class NfcomSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable ret_trib cannot be null');
         }
         $this->container['ret_trib'] = $ret_trib;
+
+        return $this;
+    }
+
+    /**
+     * Gets ibscbs
+     *
+     * @return \NuvemFiscal\Model\NfcomSefazTribNFCom|null
+     */
+    public function getIbscbs()
+    {
+        return $this->container['ibscbs'];
+    }
+
+    /**
+     * Sets ibscbs
+     *
+     * @param \NuvemFiscal\Model\NfcomSefazTribNFCom|null $ibscbs ibscbs
+     *
+     * @return self
+     */
+    public function setIbscbs($ibscbs)
+    {
+        if (is_null($ibscbs)) {
+            throw new \InvalidArgumentException('non-nullable ibscbs cannot be null');
+        }
+        $this->container['ibscbs'] = $ibscbs;
 
         return $this;
     }

@@ -34,7 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * MdfeSefazInfPag Class Doc Comment
  *
  * @category Class
- * @description Informações do Pagamento do Frete.
+ * @description Informações do Pagamento do Contrato.
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

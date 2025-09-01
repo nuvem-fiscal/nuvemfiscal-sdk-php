@@ -449,7 +449,7 @@ class MdfeSefazDisp implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets n_compra
      *
-     * @param string|null $n_compra Número do comprovante de compra.  Número de ordem do comprovante de compra do Vale-Pedágio fornecido para cada veículo ou combinação veicular, por viagem.
+     * @param string|null $n_compra Identificador do vale pedagio obrigatório - IDVPO.
      *
      * @return self
      */
@@ -522,7 +522,7 @@ class MdfeSefazDisp implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tp_vale_ped
      *
-     * @param string|null $tp_vale_ped Tipo do Vale Pedagio.  * 01 - TAG  * 02 - Cupom  * 03 - Cartão
+     * @param string|null $tp_vale_ped Tipo do Vale Pedagio.  * 01 - TAG; 04 - Leitura de placa (pela placa de identificação veicular)
      *
      * @return self
      */

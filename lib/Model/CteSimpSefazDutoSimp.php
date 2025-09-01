@@ -59,7 +59,12 @@ class CteSimpSefazDutoSimp implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPITypes = [
         'v_tar' => 'float',
         'd_ini' => '\DateTime',
-        'd_fim' => '\DateTime'
+        'd_fim' => '\DateTime',
+        'class_duto' => 'int',
+        'tp_contratacao' => 'int',
+        'cod_ponto_entrada' => 'string',
+        'cod_ponto_saida' => 'string',
+        'n_contrato' => 'string'
     ];
 
     /**
@@ -72,7 +77,12 @@ class CteSimpSefazDutoSimp implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPIFormats = [
         'v_tar' => null,
         'd_ini' => 'date',
-        'd_fim' => 'date'
+        'd_fim' => 'date',
+        'class_duto' => null,
+        'tp_contratacao' => null,
+        'cod_ponto_entrada' => null,
+        'cod_ponto_saida' => null,
+        'n_contrato' => null
     ];
 
     /**
@@ -83,7 +93,12 @@ class CteSimpSefazDutoSimp implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static array $openAPINullables = [
         'v_tar' => true,
         'd_ini' => true,
-        'd_fim' => true
+        'd_fim' => true,
+        'class_duto' => true,
+        'tp_contratacao' => true,
+        'cod_ponto_entrada' => true,
+        'cod_ponto_saida' => true,
+        'n_contrato' => true
     ];
 
     /**
@@ -174,7 +189,12 @@ class CteSimpSefazDutoSimp implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $attributeMap = [
         'v_tar' => 'vTar',
         'd_ini' => 'dIni',
-        'd_fim' => 'dFim'
+        'd_fim' => 'dFim',
+        'class_duto' => 'classDuto',
+        'tp_contratacao' => 'tpContratacao',
+        'cod_ponto_entrada' => 'codPontoEntrada',
+        'cod_ponto_saida' => 'codPontoSaida',
+        'n_contrato' => 'nContrato'
     ];
 
     /**
@@ -185,7 +205,12 @@ class CteSimpSefazDutoSimp implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $setters = [
         'v_tar' => 'setVTar',
         'd_ini' => 'setDIni',
-        'd_fim' => 'setDFim'
+        'd_fim' => 'setDFim',
+        'class_duto' => 'setClassDuto',
+        'tp_contratacao' => 'setTpContratacao',
+        'cod_ponto_entrada' => 'setCodPontoEntrada',
+        'cod_ponto_saida' => 'setCodPontoSaida',
+        'n_contrato' => 'setNContrato'
     ];
 
     /**
@@ -196,7 +221,12 @@ class CteSimpSefazDutoSimp implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $getters = [
         'v_tar' => 'getVTar',
         'd_ini' => 'getDIni',
-        'd_fim' => 'getDFim'
+        'd_fim' => 'getDFim',
+        'class_duto' => 'getClassDuto',
+        'tp_contratacao' => 'getTpContratacao',
+        'cod_ponto_entrada' => 'getCodPontoEntrada',
+        'cod_ponto_saida' => 'getCodPontoSaida',
+        'n_contrato' => 'getNContrato'
     ];
 
     /**
@@ -259,6 +289,11 @@ class CteSimpSefazDutoSimp implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('v_tar', $data ?? [], null);
         $this->setIfExists('d_ini', $data ?? [], null);
         $this->setIfExists('d_fim', $data ?? [], null);
+        $this->setIfExists('class_duto', $data ?? [], null);
+        $this->setIfExists('tp_contratacao', $data ?? [], null);
+        $this->setIfExists('cod_ponto_entrada', $data ?? [], null);
+        $this->setIfExists('cod_ponto_saida', $data ?? [], null);
+        $this->setIfExists('n_contrato', $data ?? [], null);
     }
 
     /**
@@ -298,6 +333,30 @@ class CteSimpSefazDutoSimp implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['d_fim'] === null) {
             $invalidProperties[] = "'d_fim' can't be null";
         }
+        if (!is_null($this->container['cod_ponto_entrada']) && (mb_strlen($this->container['cod_ponto_entrada']) > 20)) {
+            $invalidProperties[] = "invalid value for 'cod_ponto_entrada', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['cod_ponto_entrada']) && (mb_strlen($this->container['cod_ponto_entrada']) < 2)) {
+            $invalidProperties[] = "invalid value for 'cod_ponto_entrada', the character length must be bigger than or equal to 2.";
+        }
+
+        if (!is_null($this->container['cod_ponto_saida']) && (mb_strlen($this->container['cod_ponto_saida']) > 20)) {
+            $invalidProperties[] = "invalid value for 'cod_ponto_saida', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['cod_ponto_saida']) && (mb_strlen($this->container['cod_ponto_saida']) < 2)) {
+            $invalidProperties[] = "invalid value for 'cod_ponto_saida', the character length must be bigger than or equal to 2.";
+        }
+
+        if (!is_null($this->container['n_contrato']) && (mb_strlen($this->container['n_contrato']) > 20)) {
+            $invalidProperties[] = "invalid value for 'n_contrato', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['n_contrato']) && (mb_strlen($this->container['n_contrato']) < 2)) {
+            $invalidProperties[] = "invalid value for 'n_contrato', the character length must be bigger than or equal to 2.";
+        }
+
         return $invalidProperties;
     }
 
@@ -416,6 +475,197 @@ class CteSimpSefazDutoSimp implements ModelInterface, ArrayAccess, \JsonSerializ
             }
         }
         $this->container['d_fim'] = $d_fim;
+
+        return $this;
+    }
+
+    /**
+     * Gets class_duto
+     *
+     * @return int|null
+     */
+    public function getClassDuto()
+    {
+        return $this->container['class_duto'];
+    }
+
+    /**
+     * Sets class_duto
+     *
+     * @param int|null $class_duto Classificação do Dutoviário.  Informar: 1 - Gasoduto 2 - Mineroduto 3 - Oleoduto.
+     *
+     * @return self
+     */
+    public function setClassDuto($class_duto)
+    {
+        if (is_null($class_duto)) {
+            array_push($this->openAPINullablesSetToNull, 'class_duto');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('class_duto', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['class_duto'] = $class_duto;
+
+        return $this;
+    }
+
+    /**
+     * Gets tp_contratacao
+     *
+     * @return int|null
+     */
+    public function getTpContratacao()
+    {
+        return $this->container['tp_contratacao'];
+    }
+
+    /**
+     * Sets tp_contratacao
+     *
+     * @param int|null $tp_contratacao Tipo de contratação do serviço de transporte (apenas para gasoduto).  Informar:  * 0 - Ponta a ponto  * 1 - Capacidade de Entrada  * 2 - Capacidade de Saida
+     *
+     * @return self
+     */
+    public function setTpContratacao($tp_contratacao)
+    {
+        if (is_null($tp_contratacao)) {
+            array_push($this->openAPINullablesSetToNull, 'tp_contratacao');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tp_contratacao', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tp_contratacao'] = $tp_contratacao;
+
+        return $this;
+    }
+
+    /**
+     * Gets cod_ponto_entrada
+     *
+     * @return string|null
+     */
+    public function getCodPontoEntrada()
+    {
+        return $this->container['cod_ponto_entrada'];
+    }
+
+    /**
+     * Sets cod_ponto_entrada
+     *
+     * @param string|null $cod_ponto_entrada Código do Ponto de Entrada.
+     *
+     * @return self
+     */
+    public function setCodPontoEntrada($cod_ponto_entrada)
+    {
+        if (is_null($cod_ponto_entrada)) {
+            array_push($this->openAPINullablesSetToNull, 'cod_ponto_entrada');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cod_ponto_entrada', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($cod_ponto_entrada) && (mb_strlen($cod_ponto_entrada) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $cod_ponto_entrada when calling CteSimpSefazDutoSimp., must be smaller than or equal to 20.');
+        }
+        if (!is_null($cod_ponto_entrada) && (mb_strlen($cod_ponto_entrada) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $cod_ponto_entrada when calling CteSimpSefazDutoSimp., must be bigger than or equal to 2.');
+        }
+
+        $this->container['cod_ponto_entrada'] = $cod_ponto_entrada;
+
+        return $this;
+    }
+
+    /**
+     * Gets cod_ponto_saida
+     *
+     * @return string|null
+     */
+    public function getCodPontoSaida()
+    {
+        return $this->container['cod_ponto_saida'];
+    }
+
+    /**
+     * Sets cod_ponto_saida
+     *
+     * @param string|null $cod_ponto_saida Código do Ponto de Saída.
+     *
+     * @return self
+     */
+    public function setCodPontoSaida($cod_ponto_saida)
+    {
+        if (is_null($cod_ponto_saida)) {
+            array_push($this->openAPINullablesSetToNull, 'cod_ponto_saida');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cod_ponto_saida', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($cod_ponto_saida) && (mb_strlen($cod_ponto_saida) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $cod_ponto_saida when calling CteSimpSefazDutoSimp., must be smaller than or equal to 20.');
+        }
+        if (!is_null($cod_ponto_saida) && (mb_strlen($cod_ponto_saida) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $cod_ponto_saida when calling CteSimpSefazDutoSimp., must be bigger than or equal to 2.');
+        }
+
+        $this->container['cod_ponto_saida'] = $cod_ponto_saida;
+
+        return $this;
+    }
+
+    /**
+     * Gets n_contrato
+     *
+     * @return string|null
+     */
+    public function getNContrato()
+    {
+        return $this->container['n_contrato'];
+    }
+
+    /**
+     * Sets n_contrato
+     *
+     * @param string|null $n_contrato Número do Contrato de Capacidade.
+     *
+     * @return self
+     */
+    public function setNContrato($n_contrato)
+    {
+        if (is_null($n_contrato)) {
+            array_push($this->openAPINullablesSetToNull, 'n_contrato');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('n_contrato', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($n_contrato) && (mb_strlen($n_contrato) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $n_contrato when calling CteSimpSefazDutoSimp., must be smaller than or equal to 20.');
+        }
+        if (!is_null($n_contrato) && (mb_strlen($n_contrato) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $n_contrato when calling CteSimpSefazDutoSimp., must be bigger than or equal to 2.');
+        }
+
+        $this->container['n_contrato'] = $n_contrato;
 
         return $this;
     }

@@ -397,8 +397,8 @@ class NfcomSefazInfNFCom implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['det'] === null) {
             $invalidProperties[] = "'det' can't be null";
         }
-        if ((count($this->container['det']) > 9990)) {
-            $invalidProperties[] = "invalid value for 'det', number of items must be less than or equal to 9990.";
+        if ((count($this->container['det']) > 990)) {
+            $invalidProperties[] = "invalid value for 'det', number of items must be less than or equal to 990.";
         }
 
         if ((count($this->container['det']) < 1)) {
@@ -680,8 +680,8 @@ class NfcomSefazInfNFCom implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable det cannot be null');
         }
 
-        if ((count($det) > 9990)) {
-            throw new \InvalidArgumentException('invalid value for $det when calling NfcomSefazInfNFCom., number of items must be less than or equal to 9990.');
+        if ((count($det) > 990)) {
+            throw new \InvalidArgumentException('invalid value for $det when calling NfcomSefazInfNFCom., number of items must be less than or equal to 990.');
         }
         if ((count($det) < 1)) {
             throw new \InvalidArgumentException('invalid length for $det when calling NfcomSefazInfNFCom., number of items must be greater than or equal to 1.');

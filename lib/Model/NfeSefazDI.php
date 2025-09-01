@@ -34,7 +34,7 @@ use \NuvemFiscal\ObjectSerializer;
  * NfeSefazDI Class Doc Comment
  *
  * @category Class
- * @description Delcaração de Importação  (NT 2011/004).
+ * @description Declaração de Importação (NT 2011/004).
  * @package  NuvemFiscal
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

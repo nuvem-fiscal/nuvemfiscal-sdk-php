@@ -66,7 +66,9 @@ class NfeSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializable
         'pisst' => '\NuvemFiscal\Model\NfeSefazPISST',
         'cofins' => '\NuvemFiscal\Model\NfeSefazCOFINS',
         'cofinsst' => '\NuvemFiscal\Model\NfeSefazCOFINSST',
-        'icmsuf_dest' => '\NuvemFiscal\Model\NfeSefazICMSUFDest'
+        'icmsuf_dest' => '\NuvemFiscal\Model\NfeSefazICMSUFDest',
+        'is' => '\NuvemFiscal\Model\NfeSefazIS',
+        'ibscbs' => '\NuvemFiscal\Model\NfeSefazTribNFe'
     ];
 
     /**
@@ -86,7 +88,9 @@ class NfeSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializable
         'pisst' => null,
         'cofins' => null,
         'cofinsst' => null,
-        'icmsuf_dest' => null
+        'icmsuf_dest' => null,
+        'is' => null,
+        'ibscbs' => null
     ];
 
     /**
@@ -104,7 +108,9 @@ class NfeSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializable
         'pisst' => false,
         'cofins' => false,
         'cofinsst' => false,
-        'icmsuf_dest' => false
+        'icmsuf_dest' => false,
+        'is' => false,
+        'ibscbs' => false
     ];
 
     /**
@@ -202,7 +208,9 @@ class NfeSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializable
         'pisst' => 'PISST',
         'cofins' => 'COFINS',
         'cofinsst' => 'COFINSST',
-        'icmsuf_dest' => 'ICMSUFDest'
+        'icmsuf_dest' => 'ICMSUFDest',
+        'is' => 'IS',
+        'ibscbs' => 'IBSCBS'
     ];
 
     /**
@@ -220,7 +228,9 @@ class NfeSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializable
         'pisst' => 'setPisst',
         'cofins' => 'setCofins',
         'cofinsst' => 'setCofinsst',
-        'icmsuf_dest' => 'setIcmsufDest'
+        'icmsuf_dest' => 'setIcmsufDest',
+        'is' => 'setIs',
+        'ibscbs' => 'setIbscbs'
     ];
 
     /**
@@ -238,7 +248,9 @@ class NfeSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializable
         'pisst' => 'getPisst',
         'cofins' => 'getCofins',
         'cofinsst' => 'getCofinsst',
-        'icmsuf_dest' => 'getIcmsufDest'
+        'icmsuf_dest' => 'getIcmsufDest',
+        'is' => 'getIs',
+        'ibscbs' => 'getIbscbs'
     ];
 
     /**
@@ -308,6 +320,8 @@ class NfeSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('cofins', $data ?? [], null);
         $this->setIfExists('cofinsst', $data ?? [], null);
         $this->setIfExists('icmsuf_dest', $data ?? [], null);
+        $this->setIfExists('is', $data ?? [], null);
+        $this->setIfExists('ibscbs', $data ?? [], null);
     }
 
     /**
@@ -634,6 +648,60 @@ class NfeSefazImposto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable icmsuf_dest cannot be null');
         }
         $this->container['icmsuf_dest'] = $icmsuf_dest;
+
+        return $this;
+    }
+
+    /**
+     * Gets is
+     *
+     * @return \NuvemFiscal\Model\NfeSefazIS|null
+     */
+    public function getIs()
+    {
+        return $this->container['is'];
+    }
+
+    /**
+     * Sets is
+     *
+     * @param \NuvemFiscal\Model\NfeSefazIS|null $is is
+     *
+     * @return self
+     */
+    public function setIs($is)
+    {
+        if (is_null($is)) {
+            throw new \InvalidArgumentException('non-nullable is cannot be null');
+        }
+        $this->container['is'] = $is;
+
+        return $this;
+    }
+
+    /**
+     * Gets ibscbs
+     *
+     * @return \NuvemFiscal\Model\NfeSefazTribNFe|null
+     */
+    public function getIbscbs()
+    {
+        return $this->container['ibscbs'];
+    }
+
+    /**
+     * Sets ibscbs
+     *
+     * @param \NuvemFiscal\Model\NfeSefazTribNFe|null $ibscbs ibscbs
+     *
+     * @return self
+     */
+    public function setIbscbs($ibscbs)
+    {
+        if (is_null($ibscbs)) {
+            throw new \InvalidArgumentException('non-nullable ibscbs cannot be null');
+        }
+        $this->container['ibscbs'] = $ibscbs;
 
         return $this;
     }

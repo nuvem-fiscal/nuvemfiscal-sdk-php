@@ -58,7 +58,8 @@ class CteSimpSefazTotalSimp implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'v_t_prest' => 'float',
-        'v_t_rec' => 'float'
+        'v_t_rec' => 'float',
+        'v_tot_dfe' => 'float'
     ];
 
     /**
@@ -70,7 +71,8 @@ class CteSimpSefazTotalSimp implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPIFormats = [
         'v_t_prest' => null,
-        'v_t_rec' => null
+        'v_t_rec' => null,
+        'v_tot_dfe' => null
     ];
 
     /**
@@ -80,7 +82,8 @@ class CteSimpSefazTotalSimp implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPINullables = [
         'v_t_prest' => true,
-        'v_t_rec' => true
+        'v_t_rec' => true,
+        'v_tot_dfe' => true
     ];
 
     /**
@@ -170,7 +173,8 @@ class CteSimpSefazTotalSimp implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'v_t_prest' => 'vTPrest',
-        'v_t_rec' => 'vTRec'
+        'v_t_rec' => 'vTRec',
+        'v_tot_dfe' => 'vTotDFe'
     ];
 
     /**
@@ -180,7 +184,8 @@ class CteSimpSefazTotalSimp implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'v_t_prest' => 'setVTPrest',
-        'v_t_rec' => 'setVTRec'
+        'v_t_rec' => 'setVTRec',
+        'v_tot_dfe' => 'setVTotDfe'
     ];
 
     /**
@@ -190,7 +195,8 @@ class CteSimpSefazTotalSimp implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'v_t_prest' => 'getVTPrest',
-        'v_t_rec' => 'getVTRec'
+        'v_t_rec' => 'getVTRec',
+        'v_tot_dfe' => 'getVTotDfe'
     ];
 
     /**
@@ -252,6 +258,7 @@ class CteSimpSefazTotalSimp implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $this->setIfExists('v_t_prest', $data ?? [], null);
         $this->setIfExists('v_t_rec', $data ?? [], null);
+        $this->setIfExists('v_tot_dfe', $data ?? [], null);
     }
 
     /**
@@ -293,6 +300,10 @@ class CteSimpSefazTotalSimp implements ModelInterface, ArrayAccess, \JsonSeriali
         }
         if (($this->container['v_t_rec'] < 0)) {
             $invalidProperties[] = "invalid value for 'v_t_rec', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['v_tot_dfe']) && ($this->container['v_tot_dfe'] < 0)) {
+            $invalidProperties[] = "invalid value for 'v_tot_dfe', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -384,6 +395,45 @@ class CteSimpSefazTotalSimp implements ModelInterface, ArrayAccess, \JsonSeriali
         }
 
         $this->container['v_t_rec'] = $v_t_rec;
+
+        return $this;
+    }
+
+    /**
+     * Gets v_tot_dfe
+     *
+     * @return float|null
+     */
+    public function getVTotDfe()
+    {
+        return $this->container['v_tot_dfe'];
+    }
+
+    /**
+     * Sets v_tot_dfe
+     *
+     * @param float|null $v_tot_dfe Valor total do documento fiscal  (vTPrest + total do IBS + total da CBS).
+     *
+     * @return self
+     */
+    public function setVTotDfe($v_tot_dfe)
+    {
+        if (is_null($v_tot_dfe)) {
+            array_push($this->openAPINullablesSetToNull, 'v_tot_dfe');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('v_tot_dfe', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($v_tot_dfe) && ($v_tot_dfe < 0)) {
+            throw new \InvalidArgumentException('invalid value for $v_tot_dfe when calling CteSimpSefazTotalSimp., must be bigger than or equal to 0.');
+        }
+
+        $this->container['v_tot_dfe'] = $v_tot_dfe;
 
         return $this;
     }

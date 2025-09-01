@@ -86,7 +86,8 @@ class CteOsSefazIdeOS implements ModelInterface, ArrayAccess, \JsonSerializable
         'uf_fim' => 'string',
         'inf_percurso' => '\NuvemFiscal\Model\CteOsSefazInfPercursoOS[]',
         'dh_cont' => '\DateTime',
-        'x_just' => 'string'
+        'x_just' => 'string',
+        'g_compra_gov' => '\NuvemFiscal\Model\CteOsSefazCompraGovReduzidoOS'
     ];
 
     /**
@@ -126,7 +127,8 @@ class CteOsSefazIdeOS implements ModelInterface, ArrayAccess, \JsonSerializable
         'uf_fim' => null,
         'inf_percurso' => null,
         'dh_cont' => 'date-time',
-        'x_just' => null
+        'x_just' => null,
+        'g_compra_gov' => null
     ];
 
     /**
@@ -164,7 +166,8 @@ class CteOsSefazIdeOS implements ModelInterface, ArrayAccess, \JsonSerializable
         'uf_fim' => true,
         'inf_percurso' => false,
         'dh_cont' => true,
-        'x_just' => true
+        'x_just' => true,
+        'g_compra_gov' => false
     ];
 
     /**
@@ -282,7 +285,8 @@ class CteOsSefazIdeOS implements ModelInterface, ArrayAccess, \JsonSerializable
         'uf_fim' => 'UFFim',
         'inf_percurso' => 'infPercurso',
         'dh_cont' => 'dhCont',
-        'x_just' => 'xJust'
+        'x_just' => 'xJust',
+        'g_compra_gov' => 'gCompraGov'
     ];
 
     /**
@@ -320,7 +324,8 @@ class CteOsSefazIdeOS implements ModelInterface, ArrayAccess, \JsonSerializable
         'uf_fim' => 'setUfFim',
         'inf_percurso' => 'setInfPercurso',
         'dh_cont' => 'setDhCont',
-        'x_just' => 'setXJust'
+        'x_just' => 'setXJust',
+        'g_compra_gov' => 'setGCompraGov'
     ];
 
     /**
@@ -358,7 +363,8 @@ class CteOsSefazIdeOS implements ModelInterface, ArrayAccess, \JsonSerializable
         'uf_fim' => 'getUfFim',
         'inf_percurso' => 'getInfPercurso',
         'dh_cont' => 'getDhCont',
-        'x_just' => 'getXJust'
+        'x_just' => 'getXJust',
+        'g_compra_gov' => 'getGCompraGov'
     ];
 
     /**
@@ -448,6 +454,7 @@ class CteOsSefazIdeOS implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('inf_percurso', $data ?? [], null);
         $this->setIfExists('dh_cont', $data ?? [], null);
         $this->setIfExists('x_just', $data ?? [], null);
+        $this->setIfExists('g_compra_gov', $data ?? [], null);
     }
 
     /**
@@ -1698,6 +1705,33 @@ class CteOsSefazIdeOS implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['x_just'] = $x_just;
+
+        return $this;
+    }
+
+    /**
+     * Gets g_compra_gov
+     *
+     * @return \NuvemFiscal\Model\CteOsSefazCompraGovReduzidoOS|null
+     */
+    public function getGCompraGov()
+    {
+        return $this->container['g_compra_gov'];
+    }
+
+    /**
+     * Sets g_compra_gov
+     *
+     * @param \NuvemFiscal\Model\CteOsSefazCompraGovReduzidoOS|null $g_compra_gov g_compra_gov
+     *
+     * @return self
+     */
+    public function setGCompraGov($g_compra_gov)
+    {
+        if (is_null($g_compra_gov)) {
+            throw new \InvalidArgumentException('non-nullable g_compra_gov cannot be null');
+        }
+        $this->container['g_compra_gov'] = $g_compra_gov;
 
         return $this;
     }

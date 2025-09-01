@@ -90,7 +90,8 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'toma3' => '\NuvemFiscal\Model\CteSefazToma3',
         'toma4' => '\NuvemFiscal\Model\CteSefazToma4',
         'dh_cont' => '\DateTime',
-        'x_just' => 'string'
+        'x_just' => 'string',
+        'g_compra_gov' => '\NuvemFiscal\Model\CteSefazCompraGovReduzido'
     ];
 
     /**
@@ -134,7 +135,8 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'toma3' => null,
         'toma4' => null,
         'dh_cont' => 'date-time',
-        'x_just' => null
+        'x_just' => null,
+        'g_compra_gov' => null
     ];
 
     /**
@@ -176,7 +178,8 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'toma3' => false,
         'toma4' => false,
         'dh_cont' => true,
-        'x_just' => true
+        'x_just' => true,
+        'g_compra_gov' => false
     ];
 
     /**
@@ -298,7 +301,8 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'toma3' => 'toma3',
         'toma4' => 'toma4',
         'dh_cont' => 'dhCont',
-        'x_just' => 'xJust'
+        'x_just' => 'xJust',
+        'g_compra_gov' => 'gCompraGov'
     ];
 
     /**
@@ -340,7 +344,8 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'toma3' => 'setToma3',
         'toma4' => 'setToma4',
         'dh_cont' => 'setDhCont',
-        'x_just' => 'setXJust'
+        'x_just' => 'setXJust',
+        'g_compra_gov' => 'setGCompraGov'
     ];
 
     /**
@@ -382,7 +387,8 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         'toma3' => 'getToma3',
         'toma4' => 'getToma4',
         'dh_cont' => 'getDhCont',
-        'x_just' => 'getXJust'
+        'x_just' => 'getXJust',
+        'g_compra_gov' => 'getGCompraGov'
     ];
 
     /**
@@ -476,6 +482,7 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('toma4', $data ?? [], null);
         $this->setIfExists('dh_cont', $data ?? [], null);
         $this->setIfExists('x_just', $data ?? [], null);
+        $this->setIfExists('g_compra_gov', $data ?? [], null);
     }
 
     /**
@@ -1883,6 +1890,33 @@ class CteSefazIde implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['x_just'] = $x_just;
+
+        return $this;
+    }
+
+    /**
+     * Gets g_compra_gov
+     *
+     * @return \NuvemFiscal\Model\CteSefazCompraGovReduzido|null
+     */
+    public function getGCompraGov()
+    {
+        return $this->container['g_compra_gov'];
+    }
+
+    /**
+     * Sets g_compra_gov
+     *
+     * @param \NuvemFiscal\Model\CteSefazCompraGovReduzido|null $g_compra_gov g_compra_gov
+     *
+     * @return self
+     */
+    public function setGCompraGov($g_compra_gov)
+    {
+        if (is_null($g_compra_gov)) {
+            throw new \InvalidArgumentException('non-nullable g_compra_gov cannot be null');
+        }
+        $this->container['g_compra_gov'] = $g_compra_gov;
 
         return $this;
     }
